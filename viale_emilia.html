@@ -1,0 +1,981 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌳 Dashboard Alberi Viale Emilia</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
+            color: white;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+        header h1 {
+            font-size: 32px;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        header p {
+            font-size: 15px;
+            opacity: 0.95;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+        .sidebar {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            height: fit-content;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: sticky;
+            top: 20px;
+        }
+        .sidebar h2 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #27ae60;
+            border-bottom: 3px solid #27ae60;
+            padding-bottom: 10px;
+        }
+        .filter-group {
+            margin-bottom: 18px;
+        }
+        .filter-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        select, input[type="range"], input[type="number"] {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 13px;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+        select:focus, input:focus {
+            outline: none;
+            border-color: #27ae60;
+            box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.1);
+        }
+        .filter-info {
+            font-size: 12px;
+            color: #999;
+            margin-top: 4px;
+            font-style: italic;
+        }
+        .stats-box {
+            background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #fff;
+        }
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+        .stat-value {
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        button {
+            flex: 1;
+            padding: 11px;
+            background: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.3s;
+        }
+        button:hover {
+            background: #1e8449;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+        }
+        button.secondary {
+            background: #95a5a6;
+        }
+        button.secondary:hover {
+            background: #7f8c8d;
+        }
+        .main {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        #map {
+            width: 100%;
+            height: 450px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            background: white;
+        }
+        .charts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+        }
+        .chart-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            min-height: 350px;
+        }
+        .chart-box h3 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #333;
+            border-bottom: 3px solid #27ae60;
+            padding-bottom: 10px;
+        }
+        .chart-wrapper {
+            position: relative;
+            height: 300px;
+            width: 100%;
+        }
+        .tree-details {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .tree-details h3 {
+            color: #27ae60;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+        }
+        .detail-item {
+            padding: 12px;
+            background: #f9f9f9;
+            border-radius: 6px;
+            border-left: 4px solid #27ae60;
+        }
+        .detail-label {
+            font-size: 11px;
+            color: #888;
+            font-weight: 700;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .detail-value {
+            font-size: 14px;
+            color: #333;
+            word-break: break-word;
+            font-weight: 500;
+        }
+        .legend {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+        }
+        .legend h4 {
+            color: #27ae60;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+        .legend-item {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 0 3px rgba(0,0,0,0.2);
+            flex-shrink: 0;
+        }
+        .info-banner {
+            background: #e8f5e9;
+            border-left: 4px solid #27ae60;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
+        @media (max-width: 1200px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                position: relative;
+                top: auto;
+                max-height: none;
+            }
+            #map {
+                height: 350px;
+            }
+        }
+        .no-data {
+            padding: 40px;
+            text-align: center;
+            color: #999;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>🌳 Dashboard Alberi Viale Emilia</h1>
+        <p>Palermo - Monitoraggio e Analisi dello Stato di Salute</p>
+    </header>
+
+    <div class="container">
+        <div class="sidebar">
+            <div class="info-banner">
+                ℹ️ I filtri aggiornano mappa e grafici in tempo reale
+            </div>
+
+            <h2>🔍 Filtri</h2>
+
+            <div class="filter-group">
+                <label>Specie Botanica</label>
+                <select id="specieFilter" onchange="applyFilters()">
+                    <option value="">Tutte le specie</option>
+                </select>
+                <div class="filter-info" id="specieInfo"></div>
+            </div>
+
+            <div class="filter-group">
+                <label>Stato Salute (CPC)</label>
+                <select id="cpcFilter" onchange="applyFilters()">
+                    <option value="">Tutti</option>
+                    <option value="B">B - Buono</option>
+                    <option value="C">C - Mediocre</option>
+                    <option value="D">D - Cattivo</option>
+                </select>
+                <div class="filter-info" id="cpcInfo"></div>
+            </div>
+
+            <div class="filter-group">
+                <label>Sito Impianto</label>
+                <select id="siteFilter" onchange="applyFilters()">
+                    <option value="">Tutti i siti</option>
+                </select>
+                <div class="filter-info" id="siteInfo"></div>
+            </div>
+
+            <div class="filter-group">
+                <label>Altezza Minima (m)</label>
+                <input type="range" id="minHeight" min="8" max="16" value="8" onchange="updateHeightLabel(); applyFilters()">
+                <div class="filter-info">Min: <span id="minHeightLabel">8</span>m</div>
+            </div>
+
+            <div class="filter-group">
+                <label>Diametro Minimo (cm)</label>
+                <input type="range" id="minDiameter" min="18" max="137" value="18" onchange="updateDiameterLabel(); applyFilters()">
+                <div class="filter-info">Min: <span id="minDiameterLabel">18</span>cm</div>
+            </div>
+
+            <div class="button-group">
+                <button onclick="applyFilters()">✓ Applica</button>
+                <button class="secondary" onclick="resetFilters()">↺ Ripristina</button>
+            </div>
+
+            <h2 style="margin-top: 25px;">📊 Statistiche</h2>
+            <div class="stats-box">
+                <div class="stat-row">
+                    <span>Alberi Visualizzati</span>
+                    <span class="stat-value" id="statFiltered">0</span>
+                </div>
+                <div class="stat-row">
+                    <span>Totale Dataset</span>
+                    <span class="stat-value" id="statTotal">0</span>
+                </div>
+                <div class="stat-row">
+                    <span>Altezza Media</span>
+                    <span class="stat-value" id="statAvgHeight">-</span>
+                </div>
+                <div class="stat-row">
+                    <span>Diametro Medio</span>
+                    <span class="stat-value" id="statAvgDiameter">-</span>
+                </div>
+                <div class="stat-row">
+                    <span>Specie Presenti</span>
+                    <span class="stat-value" id="statSpecies">0</span>
+                </div>
+				<h2 style="margin-top: 25px;">📋 Classificazione CPC</h2>
+<div class="stats-box">
+    <div class="stat-row">
+        <span style="color: #2ecc71;">● B - Buono</span>
+        <span class="stat-value" id="statCpcB">0</span>
+    </div>
+    <div class="stat-row">
+        <span style="color: #f39c12;">● C - Mediocre</span>
+        <span class="stat-value" id="statCpcC">0</span>
+    </div>
+    <div class="stat-row">
+        <span style="color: #e74c3c;">● D - Cattivo</span>
+        <span class="stat-value" id="statCpcD">0</span>
+    </div>
+</div>
+
+<h2 style="margin-top: 25px;">🔧 Cod. Lavorazione</h2>
+<div id="statLavorazione" style="font-size: 12px; color: #666;">
+    <!-- Popolato dinamicamente -->
+</div>
+            </div>
+
+            <h2>🎨 Legenda CPC</h2>
+            <div class="legend">
+                <h4>Classificazione</h4>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #2ecc71;"></div>
+                    <div><strong>B</strong> - Buono</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #f39c12;"></div>
+                    <div><strong>C</strong> - Mediocre</div>
+                </div>
+                <div class="legend-item">
+                    <div class="legend-color" style="background: #e74c3c;"></div>
+                    <div><strong>D</strong> - Cattivo</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main">
+            <div id="map"></div>
+
+            <div class="charts-container">
+                <div class="chart-box">
+                    <h3>📈 Distribuzione Altezze</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="heightChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-box">
+                    <h3>🏥 Stato Salute (CPC)</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="healthChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-box">
+                    <h3>🌱 Specie Principali</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="speciesChart"></canvas>
+                    </div>
+                </div>
+                <div class="chart-box">
+                    <h3>📍 Distribuzione Siti</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="siteChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tree-details">
+                <h3>🌿 Dettagli Selezionati</h3>
+                <div id="selectedTreeInfo" class="details-grid">
+                    <div class="no-data">👆 Click su un albero per dettagli</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ===== DATI INCORPORATI =====
+        const rawGeoJson = {"type":"FeatureCollection","name":"viale_emilia_gb","crs":{"type":"name","properties":{"name":"urn:ogc:def:crs:OGC:1.3:CRS84"}},"features":[{"type":"Feature","properties":{"ID Pianta":"001","Specie":"Ficus microcarpa","Sito Impianto":"Aiuola spartitraffico","h (m)":"12","Diametro (cm)":"47","Dist. sede stradale (m)":"1.3","Dist. marciapiede (m)":"n/a","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":1,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.340707432205175,38.14742963255994]}},{"type":"Feature","properties":{"ID Pianta":"002","Specie":"Ficus microcarpa","Sito Impianto":"Aiuola spartitraffico","h (m)":"12","Diametro (cm)":"49","Dist. sede stradale (m)":"1.25","Dist. marciapiede (m)":"n/a","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":2,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.340651516147563,38.14740660535529]}},{"type":"Feature","properties":{"ID Pianta":"003","Specie":"Ficus microcarpa","Sito Impianto":"Aiuola spartitraffico","h (m)":"12","Diametro (cm)":"42","Dist. sede stradale (m)":"1.4","Dist. marciapiede (m)":"n/a","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":3,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.340594532108463,38.1473831383373]}},{"type":"Feature","properties":{"ID Pianta":"004","Specie":"Ficus microcarpa","Sito Impianto":"Aiuola spartitraffico","h (m)":"12","Diametro (cm)":"32","Dist. sede stradale (m)":"1.4","Dist. marciapiede (m)":"n/a","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":4,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.34053463097277,38.14735847000821]}},{"type":"Feature","properties":{"ID Pianta":"005","Specie":"Ficus microcarpa","Sito Impianto":"Aiuola pedonale","h (m)":"12","Diametro (cm)":"52","Dist. sede stradale (m)":"1.3","Dist. marciapiede (m)":"0.6","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":5,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.340480162681406,38.14733603754664]}},{"type":"Feature","properties":{"ID Pianta":"006","Specie":"Ficus microcarpa","Sito Impianto":"Aiuola pedonale","h (m)":"12","Diametro (cm)":"34","Dist. sede stradale (m)":"1.3","Dist. marciapiede (m)":"0.6","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":6,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.340420967202753,38.147311656326075]}},{"type":"Feature","properties":{"ID Pianta":"007","Specie":"Ficus microcarpa","Sito Impianto":"Aiuola pedonale","h (m)":"12","Diametro (cm)":"39","Dist. sede stradale (m)":"1.3","Dist. marciapiede (m)":"0.6","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":7,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.340351964230228,38.147283235630255]}},{"type":"Feature","properties":{"ID Pianta":"008","Specie":"Ficus microcarpa","Sito Impianto":"Aiuola pedonale","h (m)":"12","Diametro (cm)":"42","Dist. sede stradale (m)":"1.3","Dist. marciapiede (m)":"0.6","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":8,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.340264950718694,38.14724734309226]}},{"type":"Feature","properties":{"ID Pianta":"009","Specie":"Ficus microcarpa","Sito Impianto":"Aiuola pedonale","h (m)":"12","Diametro (cm)":"42","Dist. sede stradale (m)":"1.3","Dist. marciapiede (m)":"0.6","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":9,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.340264950718694,38.14724734309226]}},{"type":"Feature","properties":{"ID Pianta":"010","Specie":"Ficus microcarpa","Sito Impianto":"Aiuola pedonale","h (m)":"12","Diametro (cm)":"39","Dist. sede stradale (m)":"1.3","Dist. marciapiede (m)":"0.6","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":10,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.340100478877332,38.147179369208935]}},{"type":"Feature","properties":{"ID Pianta":"011","Specie":"Ficus microcarpa","Sito Impianto":"Aiuola pedonale","h (m)":"12","Diametro (cm)":"36","Dist. sede stradale (m)":"1.3","Dist. marciapiede (m)":"0.6","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":11,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.34004119323633,38.147155588315734]}},{"type":"Feature","properties":{"ID Pianta":"012","Specie":"Ficus microcarpa","Sito Impianto":"Aiuola pedonale","h (m)":"12","Diametro (cm)":"48","Dist. sede stradale (m)":"1.3","Dist. marciapiede (m)":"0.6","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":12,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.339986214596806,38.14713353506417]}},{"type":"Feature","properties":{"ID Pianta":"013","Specie":"Ficus microcarpa","Sito Impianto":"Aiuola pedonale","h (m)":"12","Diametro (cm)":"55","Dist. sede stradale (m)":"1.3","Dist. marciapiede (m)":"0.5","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":13,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.33992726964308,38.147109890828816]}},{"type":"Feature","properties":{"ID Pianta":"014","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"15","Diametro (cm)":"36","Dist. sede stradale (m)":"1.3","Dist. marciapiede (m)":"0.4","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":14,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.339611,38.14713]}},{"type":"Feature","properties":{"ID Pianta":"015","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"15","Diametro (cm)":"42","Dist. sede stradale (m)":"1.3","Dist. marciapiede (m)":"0.4","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":15,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.339546930448144,38.14710416132423]}},{"type":"Feature","properties":{"ID Pianta":"016","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"15","Diametro (cm)":"38","Dist. sede stradale (m)":"1.3","Dist. marciapiede (m)":"0.4","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":16,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.339479852057432,38.147077109154296]}},{"type":"Feature","properties":{"ID Pianta":"017","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"15","Diametro (cm)":"47","Dist. sede stradale (m)":"1.3","Dist. marciapiede (m)":"0.4","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":17,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.33943,38.147057]}},{"type":"Feature","properties":{"ID Pianta":"018","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"15","Diametro (cm)":"32","Dist. sede stradale (m)":"1.3","Dist. marciapiede (m)":"0.4","CPC":"C","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":18,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Moderata - Difetti significativi che riducono sensibilmente il fattore di sicurezza. Controlli visivi e indagini strumentali regolari (max ogni 2 anni). Si possono intervenire con trattamenti colturali per ridurre la pericolosità."},"geometry":{"type":"Point","coordinates":[13.339368,38.147032]}},{"type":"Feature","properties":{"ID Pianta":"019","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"12","Diametro (cm)":"70","Dist. sede stradale (m)":"3","Dist. marciapiede (m)":"1","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":19,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.339368,38.147032]}},{"type":"Feature","properties":{"ID Pianta":"020","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"12","Diametro (cm)":"45","Dist. sede stradale (m)":"3.1","Dist. marciapiede (m)":"1.1","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":20,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.337477166859044,38.14614168283214]}},{"type":"Feature","properties":{"ID Pianta":"021","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"12","Diametro (cm)":"62","Dist. sede stradale (m)":"3","Dist. marciapiede (m)":"1","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":21,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.337477166859044,38.14614168283214]}},{"type":"Feature","properties":{"ID Pianta":"022","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"12","Diametro (cm)":"68","Dist. sede stradale (m)":"3","Dist. marciapiede (m)":"1","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":22,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.337274140051017,38.146053813140604]}},{"type":"Feature","properties":{"ID Pianta":"023","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"12","Diametro (cm)":"77","Dist. sede stradale (m)":"3","Dist. marciapiede (m)":"1","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":23,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.337168065721514,38.146015272170544]}},{"type":"Feature","properties":{"ID Pianta":"024","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"12","Diametro (cm)":"42","Dist. sede stradale (m)":"3","Dist. marciapiede (m)":"1","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":24,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.337047708243885,38.14596744379985]}},{"type":"Feature","properties":{"ID Pianta":"025","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"12","Diametro (cm)":"50","Dist. sede stradale (m)":"3","Dist. marciapiede (m)":"1","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":25,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.336907961430432,38.14591907299349]}},{"type":"Feature","properties":{"ID Pianta":"026","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"12","Diametro (cm)":"49","Dist. sede stradale (m)":"3","Dist. marciapiede (m)":"1","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":26,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.336773687429917,38.145862582440635]}},{"type":"Feature","properties":{"ID Pianta":"027","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"12","Diametro (cm)":"38","Dist. sede stradale (m)":"3","Dist. marciapiede (m)":"1","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":27,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.336636003759853,38.14581366935156]}},{"type":"Feature","properties":{"ID Pianta":"028","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"12","Diametro (cm)":"45","Dist. sede stradale (m)":"3","Dist. marciapiede (m)":"1","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":28,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.336460850590548,38.14575464062538]}},{"type":"Feature","properties":{"ID Pianta":"029","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"12","Diametro (cm)":"62","Dist. sede stradale (m)":"3","Dist. marciapiede (m)":"1","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":29,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.336350325058268,38.1456946375545]}},{"type":"Feature","properties":{"ID Pianta":"030","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"12","Diametro (cm)":"79","Dist. sede stradale (m)":"3","Dist. marciapiede (m)":"1","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":30,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.33623953119109,38.14564463687291]}},{"type":"Feature","properties":{"ID Pianta":"031","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"12","Diametro (cm)":"77","Dist. sede stradale (m)":"3","Dist. marciapiede (m)":"1","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":31,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.336114198096503,38.14558938097395]}},{"type":"Feature","properties":{"ID Pianta":"032","Specie":"Ficus microcarpa","Sito Impianto":"Aiuola pedonale","h (m)":"15","Diametro (cm)":"45","Dist. sede stradale (m)":"3","Dist. marciapiede (m)":"1","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":32,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.335966592594712,38.14554020985969]}},{"type":"Feature","properties":{"ID Pianta":"033","Specie":"Ficus microcarpa","Sito Impianto":"Aiuola pedonale","h (m)":"15","Diametro (cm)":"42","Dist. sede stradale (m)":"3","Dist. marciapiede (m)":"1","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":33,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.33588553464619,38.1455100661622]}},{"type":"Feature","properties":{"ID Pianta":"034","Specie":"Ficus microcarpa","Sito Impianto":"Aiuola pedonale","h (m)":"15","Diametro (cm)":"38","Dist. sede stradale (m)":"3","Dist. marciapiede (m)":"1","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":34,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.335829440690231,38.145487785136396]}},{"type":"Feature","properties":{"ID Pianta":"035","Specie":"Ficus microcarpa","Sito Impianto":"Aiuola pedonale","h (m)":"15","Diametro (cm)":"52","Dist. sede stradale (m)":"3","Dist. marciapiede (m)":"1","CPC":"C","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":35,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Moderata - Difetti significativi che riducono sensibilmente il fattore di sicurezza. Controlli visivi e indagini strumentali regolari (max ogni 2 anni). Si possono intervenire con trattamenti colturali per ridurre la pericolosità."},"geometry":{"type":"Point","coordinates":[13.335751,38.145476]}},{"type":"Feature","properties":{"ID Pianta":"036","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"12","Diametro (cm)":"48","Dist. sede stradale (m)":"0.9","Dist. marciapiede (m)":"0.5","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":36,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.335907336302398,38.1456608342422]}},{"type":"Feature","properties":{"ID Pianta":"037","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"12","Diametro (cm)":"43","Dist. sede stradale (m)":"0.9","Dist. marciapiede (m)":"0.5","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":37,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.335811325753093,38.14562486065468]}},{"type":"Feature","properties":{"ID Pianta":"038","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"12","Diametro (cm)":"43","Dist. sede stradale (m)":"0.9","Dist. marciapiede (m)":"0.5","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":38,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.335718311539322,38.145585258722754]}},{"type":"Feature","properties":{"ID Pianta":"039","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"12","Diametro (cm)":"45","Dist. sede stradale (m)":"0.9","Dist. marciapiede (m)":"0.5","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":39,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.335607961201264,38.145540375512915]}},{"type":"Feature","properties":{"ID Pianta":"040","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"12","Diametro (cm)":"50","Dist. sede stradale (m)":"0.9","Dist. marciapiede (m)":"0.5","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":40,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.33553653358324,38.1455089529245]}},{"type":"Feature","properties":{"ID Pianta":"041","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"12","Diametro (cm)":"55","Dist. sede stradale (m)":"0.9","Dist. marciapiede (m)":"0.5","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":41,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.335469044294074,38.14547929119705]}},{"type":"Feature","properties":{"ID Pianta":"042","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"12","Diametro (cm)":"45","Dist. sede stradale (m)":"0.9","Dist. marciapiede (m)":"0.5","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":42,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.335414567501486,38.14545738141178]}},{"type":"Feature","properties":{"ID Pianta":"043","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"12","Diametro (cm)":"48","Dist. sede stradale (m)":"0.9","Dist. marciapiede (m)":"0.5","CPC":"C","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":43,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Moderata - Difetti significativi che riducono sensibilmente il fattore di sicurezza. Controlli visivi e indagini strumentali regolari (max ogni 2 anni). Si possono intervenire con trattamenti colturali per ridurre la pericolosità."},"geometry":{"type":"Point","coordinates":[13.335362562669378,38.14543646577814]}},{"type":"Feature","properties":{"ID Pianta":"044","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"12","Diametro (cm)":"55","Dist. sede stradale (m)":"0.9","Dist. marciapiede (m)":"0.5","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":44,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.335486715447011,38.145215702853534]}},{"type":"Feature","properties":{"ID Pianta":"045","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"12","Diametro (cm)":"41","Dist. sede stradale (m)":"0.9","Dist. marciapiede (m)":"0.5","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":45,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.335558215148769,38.14524595050538]}},{"type":"Feature","properties":{"ID Pianta":"046","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"12","Diametro (cm)":"39","Dist. sede stradale (m)":"0.9","Dist. marciapiede (m)":"0.5","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":46,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.335624176195894,38.14527385499223]}},{"type":"Feature","properties":{"ID Pianta":"047","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"12","Diametro (cm)":"38","Dist. sede stradale (m)":"0.9","Dist. marciapiede (m)":"0.5","CPC":"D","Cod. lavorazione/elenco prezzi":"APL.018S","Note":"","source_id":47,"Descrizione":"Abbattimento alberi alt. 12-16 m","Prezzo Unitario €":"316.9","descrizione ccp":"Estrema - Difetti molto gravi che esauriscono il fattore di sicurezza; gli alberi di questa classe devono essere abbattuti."},"geometry":{"type":"Point","coordinates":[13.335694228495454,38.14530349019955]}},{"type":"Feature","properties":{"ID Pianta":"048","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"12","Diametro (cm)":"37","Dist. sede stradale (m)":"0.9","Dist. marciapiede (m)":"0.5","CPC":"C","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":48,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Moderata - Difetti significativi che riducono sensibilmente il fattore di sicurezza. Controlli visivi e indagini strumentali regolari (max ogni 2 anni). Si possono intervenire con trattamenti colturali per ridurre la pericolosità."},"geometry":{"type":"Point","coordinates":[13.335746687705036,38.14532608849508]}},{"type":"Feature","properties":{"ID Pianta":"049","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"12","Diametro (cm)":"39","Dist. sede stradale (m)":"0.9","Dist. marciapiede (m)":"0.5","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":49,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.335880316423673,38.14538271788895]}},{"type":"Feature","properties":{"ID Pianta":"050","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"12","Diametro (cm)":"38","Dist. sede stradale (m)":"0.9","Dist. marciapiede (m)":"0.5","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":50,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.335955864183939,38.14540968320827]}},{"type":"Feature","properties":{"ID Pianta":"051","Specie":"Ficus microcarpa","Sito Impianto":"Cercine","h (m)":"12","Diametro (cm)":"45","Dist. sede stradale (m)":"0.9","Dist. marciapiede (m)":"0.5","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":51,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.336044071058655,38.14544116686906]}},{"type":"Feature","properties":{"ID Pianta":"052","Specie":"Brachychiton acerifolius ","Sito Impianto":"Cercine","h (m)":"10","Diametro (cm)":"27","Dist. sede stradale (m)":"1.2","Dist. marciapiede (m)":"0.5","CPC":"C","Cod. lavorazione/elenco prezzi":"APL.002S","Note":"","source_id":52,"Descrizione":"Potatura contenimento latifoglie alt. 8-16 m","Prezzo Unitario €":"358.16","descrizione ccp":"Moderata - Difetti significativi che riducono sensibilmente il fattore di sicurezza. Controlli visivi e indagini strumentali regolari (max ogni 2 anni). Si possono intervenire con trattamenti colturali per ridurre la pericolosità."},"geometry":{"type":"Point","coordinates":[13.336243787385282,38.145512426025114]}},{"type":"Feature","properties":{"ID Pianta":"053","Specie":"Brachychiton acerifolius ","Sito Impianto":"Cercine","h (m)":"10","Diametro (cm)":"32","Dist. sede stradale (m)":"1.2","Dist. marciapiede (m)":"0.5","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.002S","Note":"","source_id":53,"Descrizione":"Potatura contenimento latifoglie alt. 8-16 m","Prezzo Unitario €":"358.16","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.336333122350482,38.14555375356736]}},{"type":"Feature","properties":{"ID Pianta":"054","Specie":"Brachychiton acerifolius ","Sito Impianto":"Cercine","h (m)":"12","Diametro (cm)":"32","Dist. sede stradale (m)":"1.2","Dist. marciapiede (m)":"0.5","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.002S","Note":"","source_id":54,"Descrizione":"Potatura contenimento latifoglie alt. 8-16 m","Prezzo Unitario €":"358.16","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.336445066103622,38.145597953575695]}},{"type":"Feature","properties":{"ID Pianta":"055","Specie":"Ficus benjamina","Sito Impianto":"Cercine","h (m)":"10","Diametro (cm)":"18","Dist. sede stradale (m)":"1.2","Dist. marciapiede (m)":"0.5","CPC":"C","Cod. lavorazione/elenco prezzi":"APL.026S","Note":"","source_id":55,"Descrizione":"Potatura sempreverdi forma obbligata base 20-30 m²","Prezzo Unitario €":"575.2","descrizione ccp":"Moderata - Difetti significativi che riducono sensibilmente il fattore di sicurezza. Controlli visivi e indagini strumentali regolari (max ogni 2 anni). Si possono intervenire con trattamenti colturali per ridurre la pericolosità."},"geometry":{"type":"Point","coordinates":[13.336535385480076,38.1456310388395]}},{"type":"Feature","properties":{"ID Pianta":"056","Specie":"Celtis australis","Sito Impianto":"Cercine stradale","h (m)":"15","Diametro (cm)":"137","Dist. sede stradale (m)":"0.2","Dist. marciapiede (m)":"n/a","CPC":"C","Cod. lavorazione/elenco prezzi":"APL.006S","Note":"","source_id":56,"Descrizione":"Potatura decidui chioma espansa alt. 12-16 m","Prezzo Unitario €":"250.87","descrizione ccp":"Moderata - Difetti significativi che riducono sensibilmente il fattore di sicurezza. Controlli visivi e indagini strumentali regolari (max ogni 2 anni). Si possono intervenire con trattamenti colturali per ridurre la pericolosità."},"geometry":{"type":"Point","coordinates":[13.336530209018152,38.14579381169272]}},{"type":"Feature","properties":{"ID Pianta":"057","Specie":"Acer negundo","Sito Impianto":"Cercine","h (m)":"8","Diametro (cm)":"42","Dist. sede stradale (m)":"0.2","Dist. marciapiede (m)":"n/a","CPC":"D","Cod. lavorazione/elenco prezzi":"APL.017S","Note":"","source_id":57,"Descrizione":"Abbattimento alberi alt. 6-12 m","Prezzo Unitario €":"256.86","descrizione ccp":"Estrema - Difetti molto gravi che esauriscono il fattore di sicurezza; gli alberi di questa classe devono essere abbattuti."},"geometry":{"type":"Point","coordinates":[13.337621187233827,38.14620629172734]}},{"type":"Feature","properties":{"ID Pianta":"058","Specie":"Robinia pseudoacacia","Sito Impianto":"Aiuola pedonale","h (m)":"12","Diametro (cm)":"45","Dist. sede stradale (m)":"1.2","Dist. marciapiede (m)":"0.4","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.005S","Note":"","source_id":58,"Descrizione":"Potatura decidui chioma espansa alt. 6-12 m","Prezzo Unitario €":"186.07","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.338730738335888,38.14662520674641]}},{"type":"Feature","properties":{"ID Pianta":"059","Specie":"Sophora japonica","Sito Impianto":"Aiuola pedonale","h (m)":"12","Diametro (cm)":"38","Dist. sede stradale (m)":"1.2","Dist. marciapiede (m)":"0.4","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.005S","Note":"","source_id":59,"Descrizione":"Potatura decidui chioma espansa alt. 6-12 m","Prezzo Unitario €":"186.07","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.338807239944396,38.146655380616195]}},{"type":"Feature","properties":{"ID Pianta":"060","Specie":"Sophora japonica","Sito Impianto":"Aiuola pedonale","h (m)":"6-8","Diametro (cm)":"30","Dist. sede stradale (m)":"1.2","Dist. marciapiede (m)":"0.4","CPC":"B","Cod. lavorazione/elenco prezzi":"APL.005S","Note":"","source_id":60,"Descrizione":"Potatura decidui chioma espansa alt. 6-12 m","Prezzo Unitario €":"186.07","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.338868966720586,38.14668074463758]}},{"type":"Feature","properties":{"ID Pianta":"061","Specie":"Robinia pseudoacacia","Sito Impianto":"Aiuola pedonale","h (m)":"6-8","Diametro (cm)":"10-15","Dist. sede stradale (m)":"1.2","Dist. marciapiede (m)":"0.4","CPC":"B","Cod. lavorazione/elenco prezzi":"SIC24162","Note":"","source_id":61,"Descrizione":"","Prezzo Unitario €":"","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.339134111075605,38.14678969412522]}},{"type":"Feature","properties":{"ID Pianta":"062","Specie":"Robinia pseudoacacia","Sito Impianto":"Aiuola pedonale","h (m)":"6-8","Diametro (cm)":"10-15","Dist. sede stradale (m)":"1.2","Dist. marciapiede (m)":"0.4","CPC":"B","Cod. lavorazione/elenco prezzi":"SIC24162","Note":"","source_id":62,"Descrizione":"","Prezzo Unitario €":"","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.339347787391821,38.146877072399455]}},{"type":"Feature","properties":{"ID Pianta":"063","Specie":"Robinia pseudoacacia","Sito Impianto":"Aiuola pedonale","h (m)":"6-8","Diametro (cm)":"10-15","Dist. sede stradale (m)":"1.2","Dist. marciapiede (m)":"0.4","CPC":"B","Cod. lavorazione/elenco prezzi":"SIC24162","Note":"","source_id":63,"Descrizione":"","Prezzo Unitario €":"","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.339561748023389,38.14696317414221]}},{"type":"Feature","properties":{"ID Pianta":"064","Specie":"Robinia pseudoacacia","Sito Impianto":"Aiuola pedonale","h (m)":"6-8","Diametro (cm)":"10-15","Dist. sede stradale (m)":"1.2","Dist. marciapiede (m)":"0.4","CPC":"B","Cod. lavorazione/elenco prezzi":"SIC24162","Note":"","source_id":64,"Descrizione":"","Prezzo Unitario €":"","descrizione ccp":"Bassa - Segni o difetti lievi, fattore di sicurezza non sensibilmente ridotto. Controlli visivi più frequenti, circa ogni 3 anni, e indagini strumentali a discrezione del tecnico."},"geometry":{"type":"Point","coordinates":[13.339764230850436,38.147044483757206]}},{"type":"Feature","properties":{"ID Pianta":"065","Specie":"Pinus halepensis","Sito Impianto":"Cercine stradale","h (m)":"16","Diametro (cm)":"64","Dist. sede stradale (m)":"","Dist. marciapiede (m)":"","CPC":"D","Cod. lavorazione/elenco prezzi":"APL.024S","Note":"Coordinate rilevate da Google earth","source_id":65,"Descrizione":"Abbattimento alberi piramidale alt. 16-23 m","Prezzo Unitario €":"521.24","descrizione ccp":"Estrema - Difetti molto gravi che esauriscono il fattore di sicurezza; gli alberi di questa classe devono essere abbattuti."},"geometry":{"type":"Point","coordinates":[13.338889,38.146389]}}]};
+
+// ===== VARIABILI GLOBALI (MODIFICA) =====
+let allTrees = [];
+let filteredTrees = [];
+let map;
+let markers = [];
+let chartsInstances = {};
+let selectedTree = null;  // AGGIUNTO: Traccia l'albero selezionato
+
+const cpcColors = {
+     'B': '#2ecc71', 'C': '#f39c12', 'D': '#e74c3c'
+};
+
+        // ===== INIZIALIZZAZIONE =====
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('🚀 Inizializzazione...');
+            initMap();
+            loadData();
+            populateFilterSelects();
+            initCharts();
+            applyFilters();
+            console.log('✅ Inizializzazione completata');
+        });
+
+        // ===== MAPPA =====
+function initMap() {
+    map = L.map('map').setView([38.147, 13.341], 15);
+    
+    const osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap',
+        maxZoom: 19
+    });
+    
+    const ctrLayer = L.tileLayer('https://siciliahub.github.io/Tiles/ctr_pa_2k/{z}/{x}/{y}.png', {
+        attribution: '© CTC 2k Palermo - by @gbvitrano',
+        maxZoom: 19
+    });
+    
+	    const googleSatLayer = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+        attribution: '© Google',
+        maxZoom: 20
+    });
+    osmLayer.addTo(map);
+    
+    const baseMaps = {
+        'OpenStreetMap': osmLayer,
+        'CTC 2k Palermo': ctrLayer,
+		'Google Satellite': googleSatLayer
+    };
+    
+    L.control.layers(baseMaps).addTo(map);
+    console.log('✅ Mappa inizializzata');
+}
+
+        // ===== CARICAMENTO DATI =====
+        function loadData() {
+            try {
+                rawGeoJson.features.forEach(feature => {
+                    const props = feature.properties;
+                    const coords = feature.geometry.coordinates;
+
+                    const tree = {
+                        id: props['ID Pianta'],
+                        specie: props['Specie'] || '-',
+                        sito: props['Sito Impianto'] || '-',
+                        altezza: parseFloat(props['h (m)']) || null,
+                        diametro: parseFloat(props['Diametro (cm)']) || null,
+                        cpc: props['CPC'] || '-',
+                        distStrada: parseFloat(props['Dist. sede stradale (m)']) || null,
+                        distMarciapiede: props['Dist. marciapiede (m)'] || 'n/a',
+                        codice: props['Cod. lavorazione/elenco prezzi'] || '-',
+                        prezzo: parseFloat(props['Prezzo Unitario €']) || 0,
+                        descrizione: props['Descrizione'] || '-',
+                        descrizione_ccp: props['descrizione ccp'] || '-',
+                        lat: coords[1],
+                        lon: coords[0]
+                    };
+                    allTrees.push(tree);
+                });
+
+                filteredTrees = [...allTrees];
+                console.log(`✅ Caricati ${allTrees.length} alberi`);
+            } catch (error) {
+                console.error('❌ Errore caricamento:', error);
+            }
+        }
+
+        // ===== FILTRI =====
+        function populateFilterSelects() {
+            const species = [...new Set(allTrees.map(t => t.specie))].sort();
+            const specieSelect = document.getElementById('specieFilter');
+            species.forEach(sp => {
+                const opt = document.createElement('option');
+                opt.value = sp;
+                const count = allTrees.filter(t => t.specie === sp).length;
+                opt.textContent = `${sp} (${count})`;
+                specieSelect.appendChild(opt);
+            });
+
+            const sites = [...new Set(allTrees.map(t => t.sito))].sort();
+            const siteSelect = document.getElementById('siteFilter');
+            sites.forEach(site => {
+                const opt = document.createElement('option');
+                opt.value = site;
+                const count = allTrees.filter(t => t.sito === site).length;
+                opt.textContent = `${site} (${count})`;
+                siteSelect.appendChild(opt);
+            });
+        }
+
+        function updateHeightLabel() {
+            document.getElementById('minHeightLabel').textContent = document.getElementById('minHeight').value;
+        }
+
+        function updateDiameterLabel() {
+            document.getElementById('minDiameterLabel').textContent = document.getElementById('minDiameter').value;
+        }
+
+        function applyFilters() {
+            const specie = document.getElementById('specieFilter').value;
+            const cpc = document.getElementById('cpcFilter').value;
+            const site = document.getElementById('siteFilter').value;
+            const minHeight = parseFloat(document.getElementById('minHeight').value);
+            const minDiameter = parseFloat(document.getElementById('minDiameter').value);
+
+            filteredTrees = allTrees.filter(tree => {
+                return (!specie || tree.specie === specie) &&
+                       (!cpc || tree.cpc === cpc) &&
+                       (!site || tree.sito === site) &&
+                       (tree.altezza === null || tree.altezza >= minHeight) &&
+                       (tree.diametro === null || tree.diametro >= minDiameter);
+            });
+
+            updateFilterInfo();
+            updateMap();
+            updateStats();
+            updateCharts();
+        }
+
+        function updateFilterInfo() {
+            const specieValue = document.getElementById('specieFilter').value;
+            const cpcValue = document.getElementById('cpcFilter').value;
+            const siteValue = document.getElementById('siteFilter').value;
+
+            document.getElementById('specieInfo').textContent = 
+                specieValue ? `${filteredTrees.filter(t => t.specie === specieValue).length}` : '';
+            document.getElementById('cpcInfo').textContent = 
+                cpcValue ? `${filteredTrees.filter(t => t.cpc === cpcValue).length}` : '';
+            document.getElementById('siteInfo').textContent = 
+                siteValue ? `${filteredTrees.filter(t => t.sito === siteValue).length}` : '';
+        }
+
+        function resetFilters() {
+            document.getElementById('specieFilter').value = '';
+            document.getElementById('cpcFilter').value = '';
+            document.getElementById('siteFilter').value = '';
+            document.getElementById('minHeight').value = '8';
+            document.getElementById('minDiameter').value = '18';
+            updateHeightLabel();
+            updateDiameterLabel();
+            applyFilters();
+        }
+
+        // ===== MAPPA =====
+        function updateMap() {
+            markers.forEach(m => map.removeLayer(m));
+            markers = [];
+
+            filteredTrees.forEach(tree => {
+                const color = cpcColors[tree.cpc] || '#95a5a6';
+                const radius = Math.max(3, Math.min(tree.diametro ? tree.diametro / 8 : 6, 15));
+
+                const marker = L.circleMarker([tree.lat, tree.lon], {
+                    radius: radius,
+                    fillColor: color,
+                    color: '#fff',
+                    weight: 2.5,
+                    opacity: 1,
+                    fillOpacity: 0.85
+                }).addTo(map);
+
+                marker.bindPopup(`#${tree.id} | ${tree.specie} | CPC: ${tree.cpc}`);
+                marker.on('click', () => showTreeDetails(tree));
+                markers.push(marker);
+            });
+
+            if (filteredTrees.length > 0) {
+                const group = new L.featureGroup(markers);
+                map.fitBounds(group.getBounds().pad(0.15), {maxZoom: 16});
+            }
+        }
+
+        // ===== STATISTICHE =====
+function updateStats() {
+    const total = allTrees.length;
+    const filtered = filteredTrees.length;
+    const altezze = filteredTrees.filter(t => t.altezza !== null).map(t => t.altezza);
+    const diametri = filteredTrees.filter(t => t.diametro !== null).map(t => t.diametro);
+    const species = new Set(filteredTrees.map(t => t.specie)).size;
+
+    // Statistiche base
+    document.getElementById('statTotal').textContent = total;
+    document.getElementById('statFiltered').textContent = filtered;
+    document.getElementById('statAvgHeight').textContent = altezze.length > 0 ? 
+        (altezze.reduce((a, b) => a + b, 0) / altezze.length).toFixed(1) + 'm' : '-';
+    document.getElementById('statAvgDiameter').textContent = diametri.length > 0 ? 
+        (diametri.reduce((a, b) => a + b, 0) / diametri.length).toFixed(1) + 'cm' : '-';
+    document.getElementById('statSpecies').textContent = species;
+
+    // ===== NUOVA PARTE: Conteggio CPC =====
+    const cpcCount = {B: 0, C: 0, D: 0};
+    filteredTrees.forEach(t => {
+        if (cpcCount.hasOwnProperty(t.cpc)) {
+            cpcCount[t.cpc]++;
+        }
+    });
+    document.getElementById('statCpcB').textContent = cpcCount.B;
+    document.getElementById('statCpcC').textContent = cpcCount.C;
+    document.getElementById('statCpcD').textContent = cpcCount.D;
+
+    // ===== NUOVA PARTE: Conteggio Cod. Lavorazione =====
+    const lavorazioneCount = {};
+    filteredTrees.forEach(t => {
+        lavorazioneCount[t.codice] = (lavorazioneCount[t.codice] || 0) + 1;
+    });
+    
+    // Ordina per frequenza decrescente
+    const sortedLavorazioni = Object.entries(lavorazioneCount)
+        .sort((a, b) => b[1] - a[1]);
+    
+    // Crea HTML per le lavorazioni
+    let lavorazioneHTML = '';
+    sortedLavorazioni.forEach(([cod, count]) => {
+        lavorazioneHTML += `
+            <div style="padding: 8px; margin-bottom: 8px; background: #f9f9f9; border-left: 3px solid #27ae60; border-radius: 4px;">
+                <strong>${cod}</strong>: <span style="color: #27ae60; font-weight: 700;">${count}</span>
+            </div>
+        `;
+    });
+    
+    document.getElementById('statLavorazione').innerHTML = lavorazioneHTML || 
+        '<div style="padding: 8px; color: #999;">Nessun dato</div>';
+}
+
+function showTreeDetails(tree) {
+    selectedTree = tree;  // SALVA L'ALBERO SELEZIONATO
+    const info = document.getElementById('selectedTreeInfo');
+    info.innerHTML = `
+        <div class="detail-item"><div class="detail-label">ID</div><div class="detail-value">${tree.id}</div></div>
+        <div class="detail-item"><div class="detail-label">Specie</div><div class="detail-value">${tree.specie}</div></div>
+        <div class="detail-item"><div class="detail-label">Sito</div><div class="detail-value">${tree.sito}</div></div>
+        <div class="detail-item"><div class="detail-label">Altezza (m)</div><div class="detail-value">${tree.altezza || 'n/a'}</div></div>
+        <div class="detail-item"><div class="detail-label">Diametro (cm)</div><div class="detail-value">${tree.diametro || 'n/a'}</div></div>
+        <div class="detail-item"><div class="detail-label">CPC</div><div class="detail-value" style="color: ${cpcColors[tree.cpc]}">${tree.cpc}</div></div>
+        <div class="detail-item"><div class="detail-label">Descrizione CPC</div><div class="detail-value">${tree.descrizione_ccp}</div></div>
+        <div class="detail-item"><div class="detail-label">Cod. Lavorazione</div><div class="detail-value">${tree.codice}</div></div>
+        <div class="detail-item"><div class="detail-label">Prezzo unitario (€)</div><div class="detail-value">${tree.prezzo.toFixed(2)}</div></div>
+        <div class="detail-item" style="grid-column: 1/-1;"><div class="detail-label">Lavorazione</div><div class="detail-value" style="font-size: 12px;">${tree.descrizione}</div></div>
+        <div class="detail-item" style="grid-column: 1/-1; margin-top: 10px;">
+            <button class="pdf-button" onclick="generateTreePDF()" style="width: 100%; background: #27ae60; color: white; padding: 10px; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">📥 Scarica PDF</button>
+        </div>
+    `;
+}
+
+function generateTreePDF() {
+    if (!selectedTree) {
+        alert('Seleziona un albero prima di generare il PDF');
+        return;
+    }
+
+    const tree = selectedTree;
+    
+    // Crea un iframe invisibile
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+    
+    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+    
+    const htmlContent = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    color: #333;
+                    padding: 20px;
+                    line-height: 1.6;
+                }
+                h1 {
+                    color: #27ae60;
+                    text-align: center;
+                    margin-bottom: 5px;
+                    font-size: 24px;
+                }
+                .header {
+                    text-align: center;
+                    color: #888;
+                    font-size: 12px;
+                    margin-bottom: 20px;
+                    border-bottom: 2px solid #27ae60;
+                    padding-bottom: 15px;
+                }
+                h2 {
+                    color: #1e8449;
+                    margin: 20px 0 10px 0;
+                    font-size: 14px;
+                    border-bottom: 2px solid #27ae60;
+                    padding-bottom: 5px;
+                }
+                table {
+                    width: 100%;
+                    margin-bottom: 15px;
+                    border-collapse: collapse;
+                }
+                td {
+                    padding: 8px;
+                    border-bottom: 1px solid #eee;
+                }
+                td:first-child {
+                    font-weight: bold;
+                    width: 40%;
+                }
+                .section {
+                    margin-bottom: 20px;
+                    padding: 10px;
+                    background: #f9f9f9;
+                    border-left: 3px solid #27ae60;
+                    border-radius: 4px;
+                }
+                .footer {
+                    text-align: center;
+                    color: #888;
+                    font-size: 10px;
+                    margin-top: 30px;
+                    border-top: 1px solid #ddd;
+                    padding-top: 15px;
+                }
+            </style>
+        </head>
+        <body>
+            <h1>Scheda Albero</h1>
+            <div class="header">Dashboard Alberi Viale Emilia - Palermo</div>
+            
+            <h2>Informazioni Generali</h2>
+            <table>
+                <tr><td>ID Pianta:</td><td>${tree.id}</td></tr>
+                <tr><td>Specie:</td><td>${tree.specie}</td></tr>
+                <tr><td>Sito Impianto:</td><td>${tree.sito}</td></tr>
+            </table>
+            
+            <h2>Dimensioni</h2>
+            <table>
+                <tr><td>Altezza (m):</td><td>${tree.altezza || 'n/a'}</td></tr>
+                <tr><td>Diametro (cm):</td><td>${tree.diametro || 'n/a'}</td></tr>
+            </table>
+            
+            <h2>Stato di Salute e Interventi</h2>
+            <table>
+                <tr><td>CPC:</td><td style="color: ${cpcColors[tree.cpc]}; font-weight: bold;">${tree.cpc}</td></tr>
+                <tr><td>Cod. Lavorazione:</td><td>${tree.codice}</td></tr>
+                <tr><td>Prezzo Unitario (€):</td><td>${tree.prezzo.toFixed(2)}</td></tr>
+            </table>
+            
+            <h2>Descrizione Intervento</h2>
+            <div class="section">${tree.descrizione}</div>
+            
+            <h2>Note CPC</h2>
+            <div class="section">${tree.descrizione_ccp}</div>
+            
+            <div class="footer">Documento generato il ${new Date().toLocaleDateString('it-IT')}</div>
+        </body>
+        </html>
+    `;
+    
+    iframeDoc.open();
+    iframeDoc.write(htmlContent);
+    iframeDoc.close();
+    
+    // Attendi il rendering e stampa
+    setTimeout(() => {
+        iframe.contentWindow.print();
+        // Rimuovi l'iframe dopo la stampa
+        setTimeout(() => {
+            document.body.removeChild(iframe);
+        }, 100);
+    }, 500);
+}
+        // ===== GRAFICI =====
+        function initCharts() {
+            console.log('📊 Inizializzazione grafici...');
+
+            // Altezze
+            const heightCtx = document.getElementById('heightChart');
+            if (heightCtx && heightCtx.getContext) {
+                chartsInstances.height = new Chart(heightCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['8-10m', '10-12m', '12-14m', '14-16m'],
+                        datasets: [{
+                            label: 'Alberi',
+                            data: [0, 0, 0, 0],
+                            backgroundColor: '#27ae60',
+                            borderColor: '#1e8449',
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: { y: { beginAtZero: true } }
+                    }
+                });
+            }
+
+            // CPC
+            const healthCtx = document.getElementById('healthChart');
+            if (healthCtx && healthCtx.getContext) {
+                chartsInstances.health = new Chart(healthCtx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['B', 'C', 'D'],
+                        datasets: [{
+                            data: [0, 0, 0, 0],
+                            backgroundColor: ['#2ecc71', '#f39c12', '#e74c3c'],
+                            borderColor: 'white',
+                            borderWidth: 3
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { position: 'bottom' } }
+                    }
+                });
+            }
+
+            // Specie
+            const speciesCtx = document.getElementById('speciesChart');
+            if (speciesCtx && speciesCtx.getContext) {
+                chartsInstances.species = new Chart(speciesCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: [],
+                        datasets: [{
+                            label: 'Esemplari',
+                            data: [],
+                            backgroundColor: '#2ecc71',
+                            borderColor: '#27ae60',
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: { x: { beginAtZero: true } }
+                    }
+                });
+            }
+
+            // Siti
+            const siteCtx = document.getElementById('siteChart');
+            if (siteCtx && siteCtx.getContext) {
+                chartsInstances.site = new Chart(siteCtx, {
+                    type: 'bar',
+                    data: {
+                        labels: [],
+                        datasets: [{
+                            label: 'Alberi',
+                            data: [],
+                            backgroundColor: '#f39c12',
+                            borderColor: '#d68910',
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        indexAxis: 'y',
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: { legend: { display: false } },
+                        scales: { x: { beginAtZero: true } }
+                    }
+                });
+            }
+
+            console.log('✅ Grafici inizializzati');
+        }
+
+        function updateCharts() {
+            console.log('📊 Aggiornamento grafici...');
+
+            // Altezze
+            const heights = [0, 0, 0, 0];
+            filteredTrees.forEach(t => {
+                if (t.altezza !== null) {
+                    if (t.altezza <= 10) heights[0]++;
+                    else if (t.altezza <= 12) heights[1]++;
+                    else if (t.altezza <= 14) heights[2]++;
+                    else heights[3]++;
+                }
+            });
+            if (chartsInstances.height) {
+                chartsInstances.height.data.datasets[0].data = heights;
+                chartsInstances.height.update();
+            }
+
+            // CPC
+            const cpcCounts = {B: 0, C: 0, D: 0 };
+            filteredTrees.forEach(t => {
+                if (cpcCounts.hasOwnProperty(t.cpc)) cpcCounts[t.cpc]++;
+            });
+            if (chartsInstances.health) {
+                chartsInstances.health.data.datasets[0].data = [cpcCounts.B, cpcCounts.C, cpcCounts.D];
+                chartsInstances.health.update();
+            }
+
+            // Specie
+            const speciesCount = {};
+            filteredTrees.forEach(t => {
+                speciesCount[t.specie] = (speciesCount[t.specie] || 0) + 1;
+            });
+            const sortedSpecies = Object.entries(speciesCount).sort((a, b) => b[1] - a[1]);
+            if (chartsInstances.species) {
+                chartsInstances.species.data.labels = sortedSpecies.map(s => s[0].substring(0, 15));
+                chartsInstances.species.data.datasets[0].data = sortedSpecies.map(s => s[1]);
+                chartsInstances.species.update();
+            }
+
+            // Siti
+            const siteCount = {};
+            filteredTrees.forEach(t => {
+                siteCount[t.sito] = (siteCount[t.sito] || 0) + 1;
+            });
+            const sortedSites = Object.entries(siteCount).sort((a, b) => b[1] - a[1]);
+            if (chartsInstances.site) {
+                chartsInstances.site.data.labels = sortedSites.map(s => s[0]);
+                chartsInstances.site.data.datasets[0].data = sortedSites.map(s => s[1]);
+                chartsInstances.site.update();
+            }
+
+            console.log('✅ Grafici aggiornati');
+        }
+    </script>
+</body>
+</html>
