@@ -72,7 +72,8 @@ hr {
         .sidebar h2 {
             font-size: 18px;
             margin-bottom: 15px;
-            color: #27ae60;
+            color: #313131;
+            color: #313131;
             border-bottom: 3px solid #27ae60;
             padding-bottom: 10px;
         }
@@ -180,7 +181,7 @@ hr {
         .chart-box h3 {
             font-size: 16px;
             margin-bottom: 15px;
-            color: #333;
+            color: #313131;
             border-bottom: 3px solid #27ae60;
             padding-bottom: 10px;
         }
@@ -234,7 +235,7 @@ hr {
             border: 1px solid #e0e0e0;
         }
         .legend h4 {
-            color: #27ae60;
+            color: #313131;
             margin-bottom: 10px;
             font-size: 13px;
         }
@@ -742,17 +743,19 @@ function initMap() {
     
     const osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap',
-        maxZoom: 19
+        minZoom: 14,
+		maxZoom: 18
     });
     
     const ctrLayer = L.tileLayer('https://siciliahub.github.io/Tiles/ctr_pa_2k/{z}/{x}/{y}.png', {
         attribution: '© CTC 2k Palermo - by @gbvitrano',
-        maxZoom: 19
-    });
+		minZoom: 14,
+        maxZoom: 18    });
     
 	    const googleSatLayer = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
         attribution: '© Google',
-        maxZoom: 20
+		minZoom: 14,
+        maxZoom: 18
     });
     osmLayer.addTo(map);
     
@@ -965,11 +968,12 @@ function showTreeDetails(tree) {
         <div class="detail-item"><div class="detail-label">Sito</div><div class="detail-value">${tree.sito}</div></div>
         <div class="detail-item"><div class="detail-label">Altezza (m)</div><div class="detail-value">${tree.altezza || 'n/a'}</div></div>
         <div class="detail-item"><div class="detail-label">Diametro (cm)</div><div class="detail-value">${tree.diametro || 'n/a'}</div></div>
-        <div class="detail-item"><div class="detail-label">CPC</div><div class="detail-value" style="color: ${cpcColors[tree.cpc]}">${tree.cpc}</div></div>
+        <div class="detail-item"><div class="detail-label">classe propensione cedimento - CPC</div><div class="detail-value" style="color: ${cpcColors[tree.cpc]}">${tree.cpc}</div></div>
         <div class="detail-item"><div class="detail-label">Descrizione CPC</div><div class="detail-value">${tree.descrizione_ccp}</div></div>
         <div class="detail-item"><div class="detail-label">Cod. Lavorazione</div><div class="detail-value">${tree.codice}</div></div>
+		<div class="detail-item" ><div class="detail-label">Tipo di lavorazione</div><div class="detail-value" style="font-size: 12px;">${tree.descrizione}</div></div>
         <div class="detail-item"><div class="detail-label">Prezzo unitario (€)</div><div class="detail-value">${tree.prezzo.toFixed(2)}</div></div>
-        <div class="detail-item" style="grid-column: 1/-1;"><div class="detail-label">Lavorazione</div><div class="detail-value" style="font-size: 12px;">${tree.descrizione}</div></div>
+
         <div class="detail-item" style="grid-column: 1/-1; margin-top: 10px;">
             <button class="pdf-button" onclick="generateTreePDF()" style="width: 100%; background: #27ae60; color: white; padding: 10px; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;">📥 Scarica PDF</button>
         </div>
