@@ -1137,9 +1137,10 @@ function initCharts() {
                 },
                 scales: { y: { beginAtZero: true } }
             },
-            plugins: [{
+plugins: [{
                 afterDatasetsDraw(chart) {
                     const ctx = chart.ctx;
+                    const chartArea = chart.chartArea;
                     chart.data.datasets.forEach((dataset, i) => {
                         const meta = chart.getDatasetMeta(i);
                         meta.data.forEach((bar, index) => {
@@ -1148,13 +1149,27 @@ function initCharts() {
                                 ctx.fillStyle = '#333';
                                 ctx.font = 'bold 12px Arial';
                                 ctx.textAlign = 'center';
-                                ctx.textBaseline = 'bottom';
-                                ctx.fillText(value, bar.x, bar.y - 5);
+                                ctx.textBaseline = 'middle';
+                                
+                                const barHeight = bar.height;
+                                const barY = bar.y;
+                                const labelY = barY + barHeight / 2;
+                                
+                                // Se la barra è abbastanza alta (> 30px), etichetta dentro
+                                if (barHeight > 30) {
+                                    ctx.fillStyle = 'white';
+                                    ctx.fillText(value, bar.x, labelY);
+                                } 
+                                // Altrimenti etichetta fuori sopra la barra
+                                else {
+                                    ctx.fillStyle = '#333';
+                                    ctx.fillText(value, bar.x, barY - 8);
+                                }
                             }
                         });
                     });
                 }
-            }]
+            }]		
         });
     }
 
@@ -1262,7 +1277,7 @@ function initCharts() {
                                 // Se la barra è abbastanza lunga (> 40px), etichetta dentro
                                 if (barWidth > 40) {
                                     ctx.textAlign = 'left';
-                                    ctx.fillText(value, bar.x + 5, bar.y);
+                                    ctx.fillText(value, bar.x - 30, bar.y);
                                 } 
                                 // Altrimenti etichetta fuori a destra
                                 else {
@@ -1318,7 +1333,7 @@ function initCharts() {
                                 // Se la barra è abbastanza lunga (> 40px), etichetta dentro
                                 if (barWidth > 40) {
                                     ctx.textAlign = 'left';
-                                    ctx.fillText(value, bar.x + 5, bar.y);
+                                    ctx.fillText(value, bar.x - 30, bar.y);
                                 } 
                                 // Altrimenti etichetta fuori a destra
                                 else {
