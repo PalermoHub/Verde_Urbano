@@ -835,6 +835,44 @@ function initMap() {
             document.getElementById('minDiameterLabel').textContent = document.getElementById('minDiameter').value;
         }
 
+        function getCountForFilter(filterType, filterValue) {
+            const specie = document.getElementById('specieFilter').value;
+            const cpc = document.getElementById('cpcFilter').value;
+            const site = document.getElementById('siteFilter').value;
+            const minHeight = parseFloat(document.getElementById('minHeight').value);
+            const minDiameter = parseFloat(document.getElementById('minDiameter').value);
+            
+            let testValue = filterValue;
+            if (filterType === 'specie') {
+                testValue = filterValue;
+                filterValue = specie;
+            } else if (filterType === 'cpc') {
+                testValue = filterValue;
+                filterValue = cpc;
+            } else if (filterType === 'site') {
+                testValue = filterValue;
+                filterValue = site;
+            }
+            
+            return allTrees.filter(tree => {
+                let match = true;
+                
+                if (filterType !== 'specie') match = match && (!specie || tree.specie === specie);
+                else match = match && tree.specie === testValue;
+                
+                if (filterType !== 'cpc') match = match && (!cpc || tree.cpc === cpc);
+                else match = match && tree.cpc === testValue;
+                
+                if (filterType !== 'site') match = match && (!site || tree.sito === site);
+                else match = match && tree.sito === testValue;
+                
+                match = match && (tree.altezza === null || tree.altezza >= minHeight);
+                match = match && (tree.diametro === null || tree.diametro >= minDiameter);
+                
+                return match;
+            }).length;
+        }
+
         function applyFilters() {
             const specie = document.getElementById('specieFilter').value;
             const cpc = document.getElementById('cpcFilter').value;
@@ -851,6 +889,7 @@ function initMap() {
             });
 
             updateFilterInfo();
+            updateFilterCounts();
             updateMap();
             updateStats();
             updateCharts();
@@ -867,6 +906,42 @@ function initMap() {
                 cpcValue ? `${filteredTrees.filter(t => t.cpc === cpcValue).length}` : '';
             document.getElementById('siteInfo').textContent = 
                 siteValue ? `${filteredTrees.filter(t => t.sito === siteValue).length}` : '';
+        }
+
+        function updateFilterCounts() {
+            // Aggiorna i conteggi dinamici per le opzioni dei select
+            const specieSelect = document.getElementById('specieFilter');
+            const species = [...new Set(allTrees.map(t => t.specie))].sort();
+            
+            Array.from(specieSelect.options).forEach((opt, idx) => {
+                if (idx > 0) {
+                    const count = getCountForFilter('specie', opt.value);
+                    const speciesName = species.find(s => s === opt.value);
+                    opt.textContent = `${opt.value} (${count})`;
+                    opt.disabled = count === 0;
+                }
+            });
+
+            const siteSelect = document.getElementById('siteFilter');
+            const sites = [...new Set(allTrees.map(t => t.sito))].sort();
+            
+            Array.from(siteSelect.options).forEach((opt, idx) => {
+                if (idx > 0) {
+                    const count = getCountForFilter('site', opt.value);
+                    opt.textContent = `${opt.value} (${count})`;
+                    opt.disabled = count === 0;
+                }
+            });
+
+            const cpcSelect = document.getElementById('cpcFilter');
+            const cpcOptions = ['B', 'C', 'D'];
+            
+            Array.from(cpcSelect.options).forEach((opt, idx) => {
+                if (idx > 0) {
+                    const count = getCountForFilter('cpc', opt.value);
+                    opt.disabled = count === 0;
+                }
+            });
         }
 
         function resetFilters() {
@@ -1137,7 +1212,7 @@ function initCharts() {
                 },
                 scales: { y: { beginAtZero: true } }
             },
-plugins: [{
+            plugins: [{
                 afterDatasetsDraw(chart) {
                     const ctx = chart.ctx;
                     const chartArea = chart.chartArea;
@@ -1155,81 +1230,80 @@ plugins: [{
                                 const barY = bar.y;
                                 const labelY = barY + barHeight / 2;
                                 
-                                // Se la barra è abbastanza alta (> 30px), etichetta dentro
-                                if (barHeight > 30) {
+                                // Se la barra è abbastanza alta (> 35px), etichetta dentro in bianco
+                                if (barHeight > 35) {
                                     ctx.fillStyle = 'white';
                                     ctx.fillText(value, bar.x, labelY);
                                 } 
-                                // Altrimenti etichetta fuori sopra la barra
+                                // Altrimenti etichetta fuori sopra la barra in grigio più visibile
                                 else {
-                                    ctx.fillStyle = '#333';
-                                    ctx.fillText(value, bar.x, barY - 8);
+                                    ctx.fillStyle = '#555';
+                                    ctx.fillText(value, bar.x, barY - 10);
                                 }
                             }
                         });
                     });
                 }
-            }]		
+            }]
         });
     }
 
-    // CPC
+    // CPC - TRASFORMATO IN GRAFICO A COLONNE VERTICALI
     const healthCtx = document.getElementById('healthChart');
     if (healthCtx && healthCtx.getContext) {
         chartsInstances.health = new Chart(healthCtx, {
-            type: 'doughnut',
+            type: 'bar',
             data: {
                 labels: ['B', 'C', 'D'],
                 datasets: [{
+                    label: 'Alberi',
                     data: [0, 0, 0],
                     backgroundColor: ['#2ecc71', '#f39c12', '#e74c3c'],
-                    borderColor: 'white',
-                    borderWidth: 3
+                    borderColor: ['#27ae60', '#d68910', '#c0392b'],
+                    borderWidth: 2
                 }]
             },
             options: {
+                indexAxis: 'x',
                 responsive: true,
                 maintainAspectRatio: false,
                 plugins: { 
-                    legend: { position: 'bottom' },
+                    legend: { display: false },
                     tooltip: { enabled: true }
+                },
+                scales: { 
+                    y: { beginAtZero: true }
                 }
             },
             plugins: [{
                 afterDatasetsDraw(chart) {
                     const ctx = chart.ctx;
-                    const centerX = chart.chartArea.left + (chart.chartArea.right - chart.chartArea.left) / 2;
-                    const centerY = chart.chartArea.top + (chart.chartArea.bottom - chart.chartArea.top) / 2;
-                    const radius = Math.min(chart.chartArea.right - chart.chartArea.left, chart.chartArea.bottom - chart.chartArea.top) / 2;
                     
-                    chart.getDatasetMeta(0).data.forEach((datapoint, index) => {
-                        const value = chart.data.datasets[0].data[index];
-                        const total = chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+                    chart.data.datasets.forEach((dataset, datasetIndex) => {
+                        const meta = chart.getDatasetMeta(datasetIndex);
                         
-                        if (value > 0) {
-                            const angle = (datapoint.$startAngle + datapoint.$endAngle) / 2;
-                            const labelRadius = radius * 0.65;
-                            const x = centerX + Math.cos(angle - Math.PI / 2) * labelRadius;
-                            const y = centerY + Math.sin(angle - Math.PI / 2) * labelRadius;
+                        meta.data.forEach((bar, index) => {
+                            const value = dataset.data[index];
                             
-                            const percentage = total > 0 ? Math.round((value / total) * 100) : 0;
-                            const label = chart.data.labels[index];
-                            
-                            // Label della categoria (B, C, D)
-                            ctx.fillStyle = 'white';
-                            ctx.font = 'bold 13px Arial';
-                            ctx.textAlign = 'center';
-                            ctx.textBaseline = 'middle';
-                            ctx.fillText(label, x, y - 10);
-                            
-                            // Valore
-                            ctx.font = 'bold 12px Arial';
-                            ctx.fillText(value, x, y + 3);
-                            
-                            // Percentuale
-                            ctx.font = 'bold 10px Arial';
-                            ctx.fillText(`${percentage}%`, x, y + 16);
-                        }
+                            if (value > 0) {
+                                ctx.fillStyle = '#333';
+                                ctx.font = 'bold 12px Arial';
+                                ctx.textAlign = 'center';
+                                ctx.textBaseline = 'middle';
+                                
+                                const barHeight = bar.height;
+                                const barY = bar.y;
+                                const barX = bar.x;
+                                
+                                if (barHeight > 35) {
+                                    ctx.fillStyle = 'white';
+                                    ctx.fillText(value, barX, barY + barHeight / 2);
+                                } else {
+                                    ctx.fillStyle = '#555';
+                                    ctx.fillText(value, barX, barY - 10);
+                                }
+                            }
+                        });
                     });
                 }
             }]
@@ -1264,6 +1338,7 @@ plugins: [{
             plugins: [{
                 afterDatasetsDraw(chart) {
                     const ctx = chart.ctx;
+                    const chartArea = chart.chartArea;
                     chart.data.datasets.forEach((dataset, i) => {
                         const meta = chart.getDatasetMeta(i);
                         meta.data.forEach((bar, index) => {
@@ -1274,15 +1349,17 @@ plugins: [{
                                 ctx.textBaseline = 'middle';
                                 const barWidth = bar.width;
                                 
-                                // Se la barra è abbastanza lunga (> 40px), etichetta dentro
-                                if (barWidth > 40) {
-                                    ctx.textAlign = 'left';
-                                    ctx.fillText(value, bar.x - 30, bar.y);
+                                // Se la barra è abbastanza lunga (> 50px), etichetta dentro in bianco
+                                if (barWidth > 45) {
+                                    ctx.fillStyle = 'white';
+                                    ctx.textAlign = 'center';
+                                    ctx.fillText(value, bar.x - 35, bar.y);
                                 } 
-                                // Altrimenti etichetta fuori a destra
+                                // Altrimenti etichetta fuori a destra in grigio
                                 else {
+                                    ctx.fillStyle = '#555';
                                     ctx.textAlign = 'left';
-                                    ctx.fillText(value, bar.x + barWidth + 5, bar.y);
+                                    ctx.fillText(value, bar.x + barWidth + 8, bar.y);
                                 }
                             }
                         });
@@ -1292,7 +1369,7 @@ plugins: [{
         });
     }
 
-    // Siti
+    // Sito impianto
     const siteCtx = document.getElementById('siteChart');
     if (siteCtx && siteCtx.getContext) {
         chartsInstances.site = new Chart(siteCtx, {
@@ -1300,10 +1377,10 @@ plugins: [{
             data: {
                 labels: [],
                 datasets: [{
-                    label: 'Alberi',
+                    label: 'Esemplari',
                     data: [],
-                    backgroundColor: '#f39c12',
-                    borderColor: '#d68910',
+                    backgroundColor: '#2ecc71',
+                    borderColor: '#27ae60',
                     borderWidth: 2
                 }]
             },
@@ -1320,6 +1397,7 @@ plugins: [{
             plugins: [{
                 afterDatasetsDraw(chart) {
                     const ctx = chart.ctx;
+                    const chartArea = chart.chartArea;
                     chart.data.datasets.forEach((dataset, i) => {
                         const meta = chart.getDatasetMeta(i);
                         meta.data.forEach((bar, index) => {
@@ -1330,15 +1408,17 @@ plugins: [{
                                 ctx.textBaseline = 'middle';
                                 const barWidth = bar.width;
                                 
-                                // Se la barra è abbastanza lunga (> 40px), etichetta dentro
-                                if (barWidth > 40) {
+                                // Se la barra è abbastanza lunga (> 50px), etichetta dentro in bianco
+                                if (barWidth > 45) {
+                                    ctx.fillStyle = 'white';
                                     ctx.textAlign = 'left';
-                                    ctx.fillText(value, bar.x - 30, bar.y);
+                                    ctx.fillText(value, bar.x - 35, bar.y);
                                 } 
-                                // Altrimenti etichetta fuori a destra
+                                // Altrimenti etichetta fuori a destra in grigio
                                 else {
+                                    ctx.fillStyle = '#555';
                                     ctx.textAlign = 'left';
-                                    ctx.fillText(value, bar.x + barWidth + 5, bar.y);
+                                    ctx.fillText(value, bar.x + barWidth + 8, bar.y);
                                 }
                             }
                         });
