@@ -1228,8 +1228,8 @@ function showTreeDetails(tree) {
     const info = document.getElementById('selectedTreeInfo');
     info.innerHTML = `
         <div class="detail-item"><div class="detail-label">ID</div><div class="detail-value">${tree.id}</div></div>
-        <div class="detail-item"><div class="detail-label">Specie</div><div class="detail-value">${tree.specie}</div></div>
-        <div class="detail-item"><div class="detail-label">Sito impianto</div><div class="detail-value">${tree.sito}</div></div>
+        <div class="detail-item"><div class="detail-label">Specie arborea</div><div class="detail-value">${tree.specie}</div></div>
+        <div class="detail-item"><div class="detail-label">Dimora</div><div class="detail-value">${tree.sito}</div></div>
         <div class="detail-item"><div class="detail-label">Altezza (m)</div><div class="detail-value">${tree.altezza || 'n/a'}</div></div>
         <div class="detail-item"><div class="detail-label">Diametro (cm)</div><div class="detail-value">${tree.diametro || 'n/a'}</div></div>
         <div class="detail-item"><div class="detail-label">classe propensione cedimento - CPC</div><div class="detail-value" style="color: ${cpcColors[tree.cpc]}">${tree.cpc}</div></div>
@@ -1347,8 +1347,8 @@ function generateTreePDF() {
             <h2>Informazioni Generali</h2>
             <table>
                 <tr><td>ID Pianta:</td><td>${tree.id}</td></tr>
-                <tr><td>Specie:</td><td>${tree.specie}</td></tr>
-                <tr><td>Sito Impianto:</td><td>${tree.sito}</td></tr>
+                <tr><td>Specie arborea:</td><td>${tree.specie}</td></tr>
+                <tr><td>Dimora:</td><td>${tree.sito}</td></tr>
             </table>
             
             <h2>Dimensioni</h2>
