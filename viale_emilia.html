@@ -659,6 +659,9 @@ hr {
                 <button onclick="applyFilters()">✓ Applica</button>
                 <button class="secondary" onclick="resetFilters()">↺ Ripristina</button>
             </div>
+            <button style="width: 100%; margin-top: 10px; padding: 11px; background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; transition: all 0.3s;" onclick="downloadRelazione()" title="Scarica la Relazione Tecnica">
+                <i class="fas fa-file-pdf"></i> Relazione Tecnica
+            </button>
 
             <h2 style="margin-top: 25px;"><i class="fas fa-chart-simple"></i> Statistiche</h2>
             <div class="stats-box">
@@ -1792,6 +1795,26 @@ function initCharts() {
     console.log('✅ Grafici inizializzati');
 }
 
+
+    // ===== DOWNLOAD RELAZIONE TECNICA DA FILE LINKATO =====
+    function downloadRelazione() {
+        // URL del file PDF - MODIFICA CON L'URL REALE DEL TUO FILE
+        const pdfUrl = 'https://palermohub.github.io/Verde_Urbano/Analisi_Viale_Emilia_Completa.pdf';
+        
+        const link = document.createElement('a');
+        link.href = pdfUrl;
+        link.download = 'Relazione_Tecnica_Viale_Emilia.pdf';
+        
+        try {
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            console.log('✅ Download relazione tecnica avviato');
+        } catch (error) {
+            console.error('❌ Errore nel download:', error);
+            alert('Errore nel download. Verifica che l\'URL sia corretto.');
+        }
+    }
 
         function updateCharts() {
             console.log('📊 Aggiornamento grafici...');
