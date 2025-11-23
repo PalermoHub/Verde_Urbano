@@ -645,14 +645,14 @@ hr {
 
             <div class="filter-group">
                 <label>Altezza Minima (m)</label>
-                <input type="range" id="minHeight" min="8" max="16" value="8" onchange="updateHeightLabel(); applyFilters()">
-                <div class="filter-info">Min: <span id="minHeightLabel">8</span>m</div>
+                <input type="range" id="minHeight" min="0" max="16" value="0" onchange="updateHeightLabel(); applyFilters()">
+                <div class="filter-info">Min: <span id="minHeightLabel">0</span>m</div>
             </div>
 
             <div class="filter-group">
                 <label>Diametro Minimo (cm)</label>
-                <input type="range" id="minDiameter" min="18" max="137" value="18" onchange="updateDiameterLabel(); applyFilters()">
-                <div class="filter-info">Min: <span id="minDiameterLabel">18</span>cm</div>
+                <input type="range" id="minDiameter" min="0" max="137" value="0" onchange="updateDiameterLabel(); applyFilters()">
+                <div class="filter-info">Min: <span id="minDiameterLabel">0</span>cm</div>
             </div>
 
             <div class="button-group">
@@ -870,7 +870,16 @@ function initMap() {
                         id: props['ID Pianta'],
                         specie: props['Specie'] || '-',
                         sito: props['Sito Impianto'] || '-',
-                        altezza: parseFloat(props['h (m)']) || null,
+                        altezza: (() => {
+                            const h = props['h (m)'];
+                            if (!h || h === 'n/a') return null;
+                            if (typeof h === 'string' && h.includes('-')) {
+                                const val = parseFloat(h.split('-')[0]);
+                                return isNaN(val) ? null : val;
+                            }
+                            const val = parseFloat(h);
+                            return isNaN(val) ? null : val;
+                        })(),
                         diametro: parseFloat(props['Diametro (cm)']) || null,
                         cpc: props['CPC'] || '-',
                         distStrada: parseFloat(props['Dist. sede stradale (m)']) || null,
@@ -1036,8 +1045,8 @@ function initMap() {
             document.getElementById('specieFilter').value = '';
             document.getElementById('cpcFilter').value = '';
             document.getElementById('siteFilter').value = '';
-            document.getElementById('minHeight').value = '8';
-            document.getElementById('minDiameter').value = '18';
+            document.getElementById('minHeight').value = '0';
+            document.getElementById('minDiameter').value = '0';
             updateHeightLabel();
             updateDiameterLabel();
             applyFilters();
@@ -1546,10 +1555,10 @@ function initCharts() {
         chartsInstances.height = new Chart(heightCtx, {
             type: 'bar',
             data: {
-                labels: ['8-10m', '10-12m', '12-14m', '14-16m'],
+                labels: ['6-8m', '8-10m', '10-12m', '12-14m', '14-16m', '>16m'],
                 datasets: [{
                     label: 'Alberi',
-                    data: [0, 0, 0, 0],
+                    data: [0, 0, 0, 0, 0, 0],
                     backgroundColor: '#27ae60',
                     borderColor: '#1e8449',
                     borderWidth: 2
@@ -1787,14 +1796,16 @@ function initCharts() {
         function updateCharts() {
             console.log('📊 Aggiornamento grafici...');
 
-            // Altezze
-            const heights = [0, 0, 0, 0];
+            // Altezze - Corretto con 6 range
+            const heights = [0, 0, 0, 0, 0, 0];
             filteredTrees.forEach(t => {
-                if (t.altezza !== null) {
-                    if (t.altezza <= 10) heights[0]++;
-                    else if (t.altezza <= 12) heights[1]++;
-                    else if (t.altezza <= 14) heights[2]++;
-                    else heights[3]++;
+                if (t.altezza !== null && !isNaN(t.altezza)) {
+                    if (t.altezza < 8) heights[0]++;
+                    else if (t.altezza < 10) heights[1]++;
+                    else if (t.altezza < 12) heights[2]++;
+                    else if (t.altezza < 14) heights[3]++;
+                    else if (t.altezza < 16) heights[4]++;
+                    else heights[5]++;
                 }
             });
             if (chartsInstances.height) {
