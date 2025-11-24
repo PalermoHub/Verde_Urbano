@@ -1962,6 +1962,28 @@ function initCharts() {
                     const imgHeight = (canvas.height * pdfWidth) / canvas.width;
 
                     pdf.addImage(imgData, 'JPEG', 0, 0, imgWidth, imgHeight);
+                    
+                    // Aggiungi timbro "work in progress" ruotato di 45°
+                    const pageWidth = pdf.internal.pageSize.getWidth();
+                    const pageHeight = pdf.internal.pageSize.getHeight();
+                    const centerX = pageWidth / 2
+                    const centerY = pageHeight / 1.5;
+                    
+                    // Imposta le proprietà del timbro
+                    pdf.setFont('helvetica', 'bold');
+                    pdf.setFontSize(30);
+                    pdf.setTextColor(220, 80, 80); // Rosso
+                    
+                    // Crea uno stato grafico con trasparenza
+                    pdf.setGState(new pdf.GState({opacity: 0.75}));
+                    
+                    // Ruota il testo di 45°
+                    pdf.text('Work in progress - Mappa non corretta', centerX, centerY, {
+                        align: 'center',
+                        baseline: 'middle',
+                        angle: 25
+                    });
+                    
                     pdf.save('Mappa_Viale_Emilia.pdf');
 
                     console.log('✅ Mappa stampata in PDF con layout landscape');
