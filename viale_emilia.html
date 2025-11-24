@@ -9,6 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         * {
@@ -166,6 +168,34 @@ hr {
             border-radius: 10px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.1);
             background: white;
+            margin: 0 auto;
+        }
+        .map-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        footer {
+            background: #f9f9f9;
+            border-top: 2px solid #27ae60;
+            padding: 25px 20px;
+            margin-top: 40px;
+            text-align: center;
+            color: #555;
+            font-size: 13px;
+            line-height: 1.6;
+            box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
+        }
+        footer h3 {
+            color: #27ae60;
+            font-size: 15px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        footer p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
         }
         .charts-container {
             display: grid;
@@ -659,9 +689,14 @@ hr {
                 <button onclick="applyFilters()">✓ Applica</button>
                 <button class="secondary" onclick="resetFilters()">↺ Ripristina</button>
             </div>
-            <button style="width: 100%; margin-top: 10px; padding: 11px; background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; transition: all 0.3s;" onclick="downloadRelazione()" title="Scarica la Relazione Tecnica">
-                <i class="fas fa-file-pdf"></i> Relazione Tecnica
-            </button>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
+                <button style="padding: 11px; background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; transition: all 0.3s;" onclick="downloadRelazione()" title="Scarica la Relazione Tecnica">
+                    <i class="fas fa-file-pdf"></i> Relazione
+                </button>
+                <button style="padding: 11px; background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; transition: all 0.3s;" onclick="printMapPdf()" title="Stampa la mappa in PDF">
+                    <i class="fas fa-map"></i> Mappa PDF
+                </button>
+            </div>
 
             <h2 style="margin-top: 25px;"><i class="fas fa-chart-simple"></i> Statistiche</h2>
             <div class="stats-box">
@@ -746,7 +781,9 @@ hr {
         </div>
 
         <div class="main">
-            <div id="map"></div>
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
 
             <div class="tree-details">
                 <h3><i class="fas fa-leaf"></i> Dettagli selezionati</h3>
@@ -755,28 +792,30 @@ hr {
                 </div>
 		   </div>
             <div class="charts-container">
-                <div class="chart-box">
-                    <h3><i class="fas fa-chart-line"></i> Distribuzione altezze</h3>
+			                <div class="chart-box">
+                    <h3><i class="fas fa-leaf"></i> Specie arboree principali</h3>
                     <div class="chart-wrapper">
-                        <canvas id="heightChart"></canvas>
+                        <canvas id="speciesChart"></canvas>
                     </div>
-                </div>
+                </div>	
+				
                 <div class="chart-box">
                     <h3><i class="fas fa-tree"></i> Stato salute - Classe Propensione Cedimento - CPC</h3>
                     <div class="chart-wrapper">
                         <canvas id="healthChart"></canvas>
                     </div>
                 </div>
-                <div class="chart-box">
-                    <h3><i class="fas fa-leaf"></i> Specie arboree principali</h3>
-                    <div class="chart-wrapper">
-                        <canvas id="speciesChart"></canvas>
-                    </div>
-                </div>
+								
                 <div class="chart-box">
                     <h3><i class="fas fa-location-dot"></i> Dimora</h3>
                     <div class="chart-wrapper">
                         <canvas id="siteChart"></canvas>
+                    </div>
+                </div>
+				                <div class="chart-box">
+                    <h3><i class="fas fa-chart-line"></i> Distribuzione altezze</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="heightChart"></canvas>
                     </div>
                 </div>
             </div>
@@ -1816,6 +1855,143 @@ function initCharts() {
         }
     }
 
+    // ===== STAMPA MAPPA IN PDF =====
+    function printMapPdf() {
+        const btn = event.target.closest('button');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generazione...';
+        btn.disabled = true;
+
+        setTimeout(() => {
+            try {
+                // Crea un contenitore temporaneo per il PDF - LANDSCAPE
+                const pdfContainer = document.createElement('div');
+                pdfContainer.style.width = '297mm';
+                pdfContainer.style.height = '210mm';
+                pdfContainer.style.padding = '12mm';
+                pdfContainer.style.fontFamily = 'Segoe UI, Arial, sans-serif';
+                pdfContainer.style.backgroundColor = '#ffffff';
+                pdfContainer.style.display = 'flex';
+                pdfContainer.style.flexDirection = 'column';
+                pdfContainer.style.fontSize = '12px';
+                pdfContainer.style.color = '#333';
+
+                // HEADER
+                const header = document.createElement('div');
+                header.style.flex = '0 0 auto';
+                header.style.borderBottom = '3px solid #27ae60';
+                header.style.paddingBottom = '8mm';
+                header.style.marginBottom = '8mm';
+                header.innerHTML = `
+                    <div style="font-size: 18px; font-weight: 700; color: #27ae60; margin-bottom: 4px;">
+                        <i class="fas fa-tree"></i> Demo prototipale | alberi Viale Emilia
+                    </div>
+                    <div style="font-size: 11px; color: #666;">
+                        Palermo 2025 - Monitoraggio e analisi dello stato di salute del verde urbano
+                    </div>
+                `;
+                pdfContainer.appendChild(header);
+
+                // SEZIONE MAPPA (la parte centrale - la più grande)
+                const mapSection = document.createElement('div');
+                mapSection.style.flex = '1 1 auto';
+                mapSection.style.display = 'flex';
+                mapSection.style.justifyContent = 'center';
+                mapSection.style.alignItems = 'center';
+                mapSection.style.marginBottom = '8mm';
+                mapSection.style.overflow = 'hidden';
+
+                // Clona la mappa
+                const mapElement = document.getElementById('map');
+                const mapClone = mapElement.cloneNode(true);
+                mapClone.style.width = '100%';
+                mapClone.style.height = '110mm';
+                mapClone.style.borderRadius = '4px';
+                mapClone.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+                mapSection.appendChild(mapClone);
+
+                pdfContainer.appendChild(mapSection);
+
+                // FOOTER
+                const footer = document.createElement('div');
+                footer.style.flex = '0 0 auto';
+                footer.style.borderTop = '2px solid #27ae60';
+                footer.style.paddingTop = '8mm';
+                footer.style.fontSize = '10px';
+                footer.style.lineHeight = '1.4';
+                footer.style.color = '#555';
+                footer.innerHTML = `
+                    <div style="font-weight: 700; color: #27ae60; margin-bottom: 4px; font-size: 11px;">
+                        <i class="fas fa-lightbulb"></i> Natura della Demo
+                    </div>
+                    <div style="text-align: justify;">
+                        Questa è una demo prototipale che mostra i dati di monitoraggio relativi a una singola strada (Viale Emilia). Il progetto completo di cui fa parte è molto più articolato e comprende ulteriori strade, zone e funzionalità avanzate non ancora rappresentate in questa versione.
+                    </div>
+                `;
+                pdfContainer.appendChild(footer);
+
+                // Aggiungi temporaneamente al DOM per il rendering
+                pdfContainer.style.position = 'fixed';
+                pdfContainer.style.top = '-5000px';
+                pdfContainer.style.left = '0';
+                pdfContainer.style.zIndex = '-1';
+                document.body.appendChild(pdfContainer);
+
+                // Usa html2canvas per catturare l'elemento
+                html2canvas(pdfContainer, {
+                    scale: 2,
+                    useCORS: true,
+                    backgroundColor: '#ffffff',
+                    allowTaint: true,
+                    logging: false
+                }).then(canvas => {
+                    const imgData = canvas.toDataURL('image/jpeg', 0.98);
+                    
+                    // Crea il PDF con jsPDF
+                    const { jsPDF } = window.jspdf;
+                    const pdf = new jsPDF({
+                        orientation: 'landscape',
+                        unit: 'mm',
+                        format: 'a4'
+                    });
+
+                    // Calcola le dimensioni per adattare l'immagine al PDF
+                    const pdfWidth = pdf.internal.pageSize.getWidth();
+                    const pdfHeight = pdf.internal.pageSize.getHeight();
+                    const imgWidth = pdfWidth;
+                    const imgHeight = (canvas.height * pdfWidth) / canvas.width;
+
+                    pdf.addImage(imgData, 'JPEG', 0, 0, imgWidth, imgHeight);
+                    pdf.save('Mappa_Viale_Emilia.pdf');
+
+                    console.log('✅ Mappa stampata in PDF con layout landscape');
+                    
+                    // Rimuovi il contenitore temporaneo
+                    document.body.removeChild(pdfContainer);
+                    
+                    // Ripristina il pulsante
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+
+                }).catch(error => {
+                    console.error('❌ Errore nella stampa:', error);
+                    alert('Errore nella generazione del PDF. Riprova.');
+                    if (document.body.contains(pdfContainer)) {
+                        document.body.removeChild(pdfContainer);
+                    }
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                });
+
+            } catch (error) {
+                console.error('❌ Errore nella stampa:', error);
+                alert('Errore nella generazione del PDF. Riprova.');
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        }, 100);
+    }
+
         function updateCharts() {
             console.log('📊 Aggiornamento grafici...');
 
@@ -1873,5 +2049,11 @@ function initCharts() {
             console.log('✅ Grafici aggiornati');
         }
     </script>
+
+    <!-- Footer -->
+    <footer>
+        <h3><i class="fas fa-lightbulb"></i> Natura della Demo</h3>
+        <p>Questa è una demo prototipale che mostra i dati di monitoraggio relativi a una singola strada (Viale Emilia). Il progetto completo di cui fa parte è molto più articolato e comprende ulteriori strade, zone e funzionalità avanzate non ancora rappresentate in questa versione.</p>
+    </footer>
 </body>
 </html>
