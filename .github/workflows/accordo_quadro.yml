@@ -3,49 +3,52 @@ name: Accordo Quadro - CUP D71G23000050001
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 6 * * *'  # Ogni giorno alle 6:00 UTC
+    - cron: '30 18 * * *'  # Ogni giorno alle 6:00 UTC
 
 jobs:
   download-sheets:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Checkout repository
+      - name: Checkout branch main
         uses: actions/checkout@v4
+        with:
+          ref: main
 
       - name: Backup vecchi dati
         run: |
-          mkdir -p backups
+          mkdir -p backup
           if [ -d "dati" ] && [ "$(ls -A dati 2>/dev/null)" ]; then
             BACKUP_DATE=$(date +'%Y%m%d_%H%M%S')
-            mkdir -p "backups/$BACKUP_DATE"
-            cp dati/*.csv "backups/$BACKUP_DATE/" 2>/dev/null || true
-            echo "✅ Backup creato in backups/$BACKUP_DATE"
+            mkdir -p "backup/$BACKUP_DATE"
+            cp dati/*.csv "backup/$BACKUP_DATE/" 2>/dev/null || true
+            echo "✅ Backup creato in backup/$BACKUP_DATE"
           else
             echo "ℹ️ Nessun dato esistente da backuppare"
           fi
 
-      - name: Accordo Quadro - CUP D71G23000050001
+      - name: Download Google Sheets
         run: |
           mkdir -p dati
           
           BASE_URL="https://docs.google.com/spreadsheets/d/e/2PACX-1vSunsI5HEZofRXsbtdjz7AJYYYlXhPVGwBVgvoFzlPY7c1G7MVvVkjTcT8sNWVfBTrx1QBj08ueBbYB/pub"
           
-          # Array di gid e nomi file (modifica i nomi secondo le tue esigenze)
+          # Array di gid e nomi file
           declare -A SHEETS=(
-            ["253723192"]="Query - Rilievo semplificato verde urbano"
-            ["1617221218"]="Quadrante"
-            ["1122783976"]="Tavole"
-            ["641613516"]="Specie_Arboree_Palermo"
-            ["52685852"]="Elenco_prezzi_2024"
-            ["1143303012"]="Specie"
-            ["778487951"]="CPC"
-            ["1105304956"]="Costo_lavori_vie"
-            ["1370911247"]="O2-CO2"
-            ["832007978"]="Sito_impianto"
-            ["1088493025"]="Altezza-Diametro"
-            ["1990469629"]="Altezza"
-            ["1758798851"]="CO2-Diametro"
+            ["253723192"]="01_query_rilievo_semplificato"
+            ["1617221218"]="02_quadrante"
+            ["1122783976"]="03_tavole"
+            ["641613516"]="04_specie_arboree_palermo"
+            ["50914242"]="05_foglio_05"
+            ["52685852"]="06_elenco_prezzi_2024"
+            ["1143303012"]="07_specie"
+            ["778487951"]="08_cpc"
+            ["1105304956"]="09_costo_lavori_vie"
+            ["1370911247"]="10_o2_co2"
+            ["832007978"]="11_sito_impianto"
+            ["1088493025"]="12_altezza_diametro"
+            ["1990469629"]="13_altezza"
+            ["1758798851"]="14_co2_diametro"
           )
           
           for gid in "${!SHEETS[@]}"; do
@@ -62,20 +65,20 @@ jobs:
 
       - name: Pulizia vecchi backup (mantieni ultimi 7)
         run: |
-          cd backups 2>/dev/null || exit 0
+          cd backup 2>/dev/null || exit 0
           ls -dt */ 2>/dev/null | tail -n +8 | xargs rm -rf 2>/dev/null || true
           echo "🧹 Mantenuti solo gli ultimi 7 backup"
 
-      - name: Commit e push
+      - name: Commit e push su main
         run: |
           git config user.name "GitHub Actions"
           git config user.email "actions@github.com"
-          git add dati/ backups/
+          git add dati/ backup/
           
           if git diff --staged --quiet; then
             echo "ℹ️ Nessuna modifica da committare"
           else
             git commit -m "📊 Aggiornamento dati $(date +'%Y-%m-%d %H:%M')"
-            git push
-            echo "✅ Modifiche pushate"
+            git push origin main
+            echo "✅ Modifiche pushate su main"
           fi
