@@ -1,4 +1,4 @@
-name: Download Google Sheets
+name: Accordo Quadro - CUP D71G23000050001
 
 on:
   workflow_dispatch:
@@ -25,7 +25,7 @@ jobs:
             echo "ℹ️ Nessun dato esistente da backuppare"
           fi
 
-      - name: Download Google Sheets
+      - name: Accordo Quadro - CUP D71G23000050001
         run: |
           mkdir -p dati
           
