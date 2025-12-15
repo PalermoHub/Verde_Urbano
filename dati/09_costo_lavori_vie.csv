@@ -1,13 +1,13 @@
-Odonimo,Descrizione,Prezzo Unitario,costo,count,colore,larg,,,
-Via Pignatelli Aragona,Potatura ars topiaria base 20-30m²,,€0.00,43,#194d30,0.2,,,#ff0000
-Via Pignatelli Aragona,Abbattimento chioma espansa h.12-16m,,€0.00,5,#ff0000,0.2,,,#194d30
-Via Delle Croci,Potatura ars topiaria base 20-30m²,€575.20,"€27,609.60",48,#194d30,0.2,,,#ff0000
-Via Delle Croci,Abbattimento chioma espansa h.12-16m,€316.90,"€1,267.60",4,#ff0000,0.2,,,#194d30
-Viale Emilia,Potatura ars topiaria base 20-30m²,€575.20,"€29,335.20",51,#194d30,0.8,,,#ff0000
-Viale Emilia,"Rimozione ceppaie 0,5-1,5 m³",€228.15,€912.60,4,#e3a82f,0.8,,,#257347
-Viale Emilia,Potatura latifoglie sempreverdi h.8-16m,€358.16,"€1,074.48",3,#7ecf9c,0.8,,,#ff0000
-Viale Emilia,Potatura decidui chioma espansa h.6-12m,€186.07,€558.21,3,#86b996,0.8,,,#194d30
-Viale Emilia,Potatura decidui chioma espansa h.12-16m,€250.87,€250.87,1,,0.8,,,#508363
-Viale Emilia,Abbattimento chioma piramidale h.16-23m,€521.24,€521.24,1,,0.8,,,#257347
-Viale Emilia,Abbattimento chioma espansa h.6-12m,€256.86,€256.86,1,#ff0000,0.8,,,#257347
-Viale Emilia,Abbattimento chioma espansa h.12-16m,€316.90,€316.90,1,#ff0000,0.8,,,#e1a81e
+Odonimo,Cod. lavorazione - F2,Cod. lavorazione - F3,costo,count,colore,larg,,,
+Via Pignatelli Aragona,,,0,43,#194d30,0.2,,,#ff0000
+Via Pignatelli Aragona,SIC24_1.6.2,Fornitura e messa a dimora…,0,5,#ff0000,0.2,,,#194d30
+Via Delle Croci,,,0,48,#194d30,0.2,,,#ff0000
+Via Delle Croci,SIC24_1.6.2,Fornitura e messa a dimora…,0,4,#ff0000,0.2,,,#194d30
+Viale Emilia,,,0,62,#194d30,0.8,,,#ff0000
+Viale Emilia,15030034,Fornitura e messa a dimora…,0,2,#e3a82f,0.8,,,#257347
+Viale Emilia,SIC24_1.6.2,Fornitura e messa a dimora…,0,1,#7ecf9c,0.8,,,#ff0000
+,,,,,#86b996,0.8,,,#194d30
+,,,,,,0.8,,,#508363
+,,,,,,0.8,,,#257347
+,,,,,#ff0000,0.8,,,#257347
+,,,,,#ff0000,0.8,,,#e1a81e
