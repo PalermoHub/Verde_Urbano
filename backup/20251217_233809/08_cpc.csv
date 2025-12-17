@@ -1,0 +1,12 @@
+Odonimo,CPC,count,legenda,%,colore
+Via Delle Croci,B,31,B (bassa),60%,#2cc15f
+Via Delle Croci,C,13,C (moderata),25%,#f39c12
+Via Delle Croci,D,4,C/D (elevata),8%,#cf87b6
+Via Delle Croci,C/D,4,D (estrema),8%,#e74c3c
+Via Pignatelli Aragona,B,32,B (bassa),67%,#2cc15f
+Via Pignatelli Aragona,C,8,C (moderata),17%,#f39c12
+Via Pignatelli Aragona,D,5,C/D (elevata),10%,#cf87b6
+Via Pignatelli Aragona,C/D,3,D (estrema),6%,#e74c3c
+Viale Emilia,B,55,B (bassa),85%,#2cc15f
+Viale Emilia,C,7,C (moderata),11%,#f39c12
+Viale Emilia,D,3,D (estrema),5%,#e74c3c

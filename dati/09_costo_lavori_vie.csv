@@ -1,13 +1,13 @@
-Odonimo,Cod. lavorazione - F2,Cod. lavorazione - F3,costo,count,colore,larg,,,
-Via Pignatelli Aragona,,,0,43,#194d30,0.2,,,#ff0000
-Via Pignatelli Aragona,SIC24_1.6.2,Fornitura e messa a dimora…,0,5,#ff0000,0.2,,,#194d30
-Via Delle Croci,,,0,48,#194d30,0.2,,,#ff0000
-Via Delle Croci,SIC24_1.6.2,Fornitura e messa a dimora…,0,4,#ff0000,0.2,,,#194d30
-Viale Emilia,,,0,58,#194d30,0.8,,,#ff0000
-Viale Emilia,Fornitura e messa a dimora…,15030034,0,4,#e3a82f,0.8,,,#257347
-Viale Emilia,SIC24_1.6.2,Fornitura e messa a dimora…,0,3,#7ecf9c,0.8,,,#ff0000
-,,,,,#86b996,0.8,,,#194d30
-,,,,,,0.8,,,#508363
-,,,,,,0.8,,,#257347
-,,,,,#ff0000,0.8,,,#257347
-,,,,,#ff0000,0.8,,,#e1a81e
+Odonimo,Cod. lavorazione/elenco prezzi,Lavori - F3,count,costo,colore,larg,,,
+Viale Emilia,APL.026S,,51,0,#194d30,0.2,,,#ff0000
+Viale Emilia,SIC24_1.6.2,Fornitura con posa in opera di una pianta,4,0,#ff0000,0.2,,,#194d30
+Viale Emilia,APL.005S,,3,0,#194d30,0.2,,,#ff0000
+Viale Emilia,APL.002S,,3,0,#ff0000,0.2,,,#194d30
+Viale Emilia,APL.024S,Fornitura con posa in opera di una pianta,1,0,#194d30,0.8,,,#ff0000
+Viale Emilia,APL.018S,Fornitura con posa in opera di una pianta,1,0,#e3a82f,0.8,,,#257347
+Viale Emilia,APL.017S,Fornitura con posa in opera di una pianta,1,0,#7ecf9c,0.8,,,#ff0000
+Viale Emilia,APL.006S,,1,0,#86b996,0.8,,,#194d30
+Via Delle Croci,APL.026S,,48,0,,0.8,,,#508363
+Via Delle Croci,APL.018S,Fornitura con posa in opera di una pianta,4,0,,0.8,,,#257347
+Via Pignatelli Aragona,APL.026S,,43,0,#ff0000,0.8,,,#257347
+Via Pignatelli Aragona,APL.018S,Fornitura con posa in opera di una pianta,5,0,#ff0000,0.8,,,#e1a81e
