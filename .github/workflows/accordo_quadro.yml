@@ -3,7 +3,7 @@ name: Accordo Quadro - CUP D71G23000050001
 on:
   workflow_dispatch:
   schedule:
-    - cron: '30 18 * * *'  # Ogni giorno alle 6:00 UTC
+    - cron: '00 17 * * *'  # Ogni giorno alle 6:00 UTC
 
 jobs:
   download-sheets:
