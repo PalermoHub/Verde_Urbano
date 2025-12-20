@@ -1,16 +1,17 @@
-Odonimo,Cod. lavorazione/elenco prezzi,count,SUM of Prezzo Unitario,,colore,larg,,,
-Viale Emilia,APL.002S,3,"€1,074.48",,#194d30,0.2,,,#ff0000
-Viale Emilia,APL.005S,3,€558.21,,#ff0000,0.2,,,#194d30
-Viale Emilia,APL.006S,1,€250.87,,#194d30,0.2,,,#ff0000
-Viale Emilia,APL.017S,1,€256.86,,#ff0000,0.2,,,#194d30
-Viale Emilia,APL.018S,1,€316.90,,#194d30,0.8,,,#ff0000
-Viale Emilia,APL.024S,1,€521.24,,#e3a82f,0.8,,,#257347
-Viale Emilia,APL.026S,51,"€29,335.20",,#7ecf9c,0.8,,,#ff0000
-Viale Emilia,SIC24_1.6.2,4,€912.60,,#86b996,0.8,,,#194d30
-Viale Dei Picciotti,APL.026S,65,"€29,910.40",,,0.8,,,#508363
-Via Delle Croci,APL.018S,4,"€1,267.60",,,0.8,,,#257347
-Via Delle Croci,APL.026S,48,"€27,609.60",,#ff0000,0.8,,,#257347
-Via Pignatelli Aragona,APL.018S,5,"€1,584.50",,#ff0000,0.8,,,#e1a81e
-Via Pignatelli Aragona,APL.026S,43,"€24,733.60",,,,,,
-Via Scoto Michele,APL.018S,1,€316.90,,,,,,
-Via Scoto Michele,APL.026S,27,"€15,530.40",,,,,,
+Odonimo,Cod. lavorazione/elenco prezzi,count,costo,larg
+Via Delle Croci,APL.026S,48,"€27,609.60",0.2
+Via Delle Croci,APL.018S,4,"€1,267.60",0.2
+Via Pignatelli Aragona,APL.026S,43,"€24,733.60",0.2
+Via Pignatelli Aragona,APL.018S,5,"€1,584.50",0.2
+Via Scoto Michele,APL.026S,27,"€15,530.40",0.8
+Via Scoto Michele,APL.018S,1,€316.90,0.8
+Viale Dei Picciotti - A,APL.026S,31,"€17,831.20",0.8
+Viale Dei Picciotti - B,APL.026S,34,"€12,079.20",0.8
+Viale Emilia,APL.026S,51,"€29,335.20",0.8
+Viale Emilia,SIC24_1.6.2,4,€912.60,0.8
+Viale Emilia,APL.005S,3,€558.21,0.8
+Viale Emilia,APL.002S,3,"€1,074.48",0.8
+Viale Emilia,APL.024S,1,€521.24,
+Viale Emilia,APL.018S,1,€316.90,
+Viale Emilia,APL.017S,1,€256.86,
+Viale Emilia,APL.006S,1,€250.87,
