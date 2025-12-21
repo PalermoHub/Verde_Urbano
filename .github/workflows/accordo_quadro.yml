@@ -49,6 +49,7 @@ jobs:
             ["1088493025"]="12_altezza_diametro"
             ["1990469629"]="13_altezza"
             ["1758798851"]="14_co2_diametro"
+            ["504168826"]="15_num_foglie"
           )
           
           for gid in "${!SHEETS[@]}"; do
