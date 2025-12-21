@@ -1,0 +1,259 @@
+Odonimo,ID Pianta,Specie,h (m),Diametro (cm),CPC,tipo_foglia,# Primavera, # Estate,# Autunno,# Inverno
+Viale Emilia,001,Ficus microcarpa,12,47,B,sempreverde,13977,14263,13977,13550
+Viale Emilia,002,Ficus microcarpa,12,49,B,sempreverde,14756,15057,14756,14304
+Viale Emilia,003,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+Viale Emilia,004,Ficus microcarpa,12,32,B,sempreverde,8480,8653,8480,8220
+Viale Emilia,005,Ficus microcarpa,12,52,B,sempreverde,15941,16266,15941,15453
+Viale Emilia,006,Ficus microcarpa,12,34,B,sempreverde,9175,9363,9175,8894
+Viale Emilia,007,Ficus microcarpa,12,39,B,sempreverde,10967,11191,10967,10631
+Viale Emilia,008,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+Viale Emilia,009,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+Viale Emilia,010,Ficus microcarpa,12,39,B,sempreverde,10967,11191,10967,10631
+Viale Emilia,011,Ficus microcarpa,12,36,B,sempreverde,9883,10085,9883,9581
+Viale Emilia,012,Ficus microcarpa,12,48,B,sempreverde,14365,14658,14365,13925
+Viale Emilia,013,Ficus microcarpa,12,55,B,sempreverde,17146,17496,17146,16621
+Viale Emilia,014,Ficus microcarpa,15,36,B,sempreverde,12081,12328,12081,11711
+Viale Emilia,015,Ficus microcarpa,15,42,B,sempreverde,14762,15063,14762,14310
+Viale Emilia,016,Ficus microcarpa,15,38,B,sempreverde,12961,13225,12961,12564
+Viale Emilia,017,Ficus microcarpa,15,47,B,sempreverde,17086,17435,17086,16563
+Viale Emilia,018,Ficus microcarpa,15,32,C,sempreverde,8537,8711,8537,8275
+Viale Emilia,019,Ficus microcarpa,12,70,B,sempreverde,23460,23939,23460,22742
+Viale Emilia,020,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+Viale Emilia,021,Ficus microcarpa,12,62,B,sempreverde,20036,20445,20036,19423
+Viale Emilia,022,Ficus microcarpa,12,68,B,sempreverde,22592,23053,22592,21901
+Viale Emilia,023,Ficus microcarpa,12,77,B,sempreverde,26554,27096,26554,25742
+Viale Emilia,024,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+Viale Emilia,025,Ficus microcarpa,12,50,B,sempreverde,15148,15457,15148,14684
+Viale Emilia,026,Ficus microcarpa,12,49,B,sempreverde,14756,15057,14756,14304
+Viale Emilia,027,Ficus microcarpa,12,38,B,sempreverde,10603,10819,10603,10278
+Viale Emilia,028,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+Viale Emilia,029,Ficus microcarpa,12,62,B,sempreverde,20036,20445,20036,19423
+Viale Emilia,030,Ficus microcarpa,12,79,B,sempreverde,27455,28015,27455,26614
+Viale Emilia,031,Ficus microcarpa,12,77,B,sempreverde,26554,27096,26554,25742
+Viale Emilia,032,Ficus microcarpa,15,45,B,sempreverde,16147,16477,16147,15653
+Viale Emilia,033,Ficus microcarpa,15,42,B,sempreverde,14762,15063,14762,14310
+Viale Emilia,034,Ficus microcarpa,15,38,B,sempreverde,12961,13225,12961,12564
+Viale Emilia,035,Ficus microcarpa,15,52,C,sempreverde,16047,16375,16047,15556
+Viale Emilia,036,Ficus microcarpa,12,48,B,sempreverde,14365,14658,14365,13925
+Viale Emilia,037,Ficus microcarpa,12,43,B,sempreverde,12451,12705,12451,12070
+Viale Emilia,038,Ficus microcarpa,12,43,B,sempreverde,12451,12705,12451,12070
+Viale Emilia,039,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+Viale Emilia,040,Ficus microcarpa,12,50,B,sempreverde,15148,15457,15148,14684
+Viale Emilia,041,Ficus microcarpa,12,55,B,sempreverde,17146,17496,17146,16621
+Viale Emilia,042,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+Viale Emilia,043,Ficus microcarpa,12,48,C,sempreverde,11830,12072,11830,11468
+Viale Emilia,044,Ficus microcarpa,12,55,B,sempreverde,17146,17496,17146,16621
+Viale Emilia,045,Ficus microcarpa,12,41,B,sempreverde,11704,11942,11704,11345
+Viale Emilia,046,Ficus microcarpa,12,39,B,sempreverde,10967,11191,10967,10631
+Viale Emilia,047,Ficus microcarpa,12,38,D,sempreverde,6237,6364,6237,6046
+Viale Emilia,048,Ficus microcarpa,12,37,C,sempreverde,8434,8606,8434,8176
+Viale Emilia,049,Ficus microcarpa,12,39,B,sempreverde,10967,11191,10967,10631
+Viale Emilia,050,Ficus microcarpa,12,38,B,sempreverde,10603,10819,10603,10278
+Viale Emilia,051,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+Viale Emilia,052,Brachychiton acerifolius ,10,27,C,semi-decidua,3231,4308,3662,2585
+Viale Emilia,053,Brachychiton acerifolius ,10,32,B,semi-decidua,4893,6524,5545,3914
+Viale Emilia,054,Brachychiton acerifolius ,12,32,B,semi-decidua,5765,7687,6534,4612
+Viale Emilia,055,Ficus benjamina,10,18,C,sempreverde,2639,2693,2639,2558
+Viale Emilia,056,Celtis australis,15,137,C,decidua,56533,80761,44419,0
+Viale Emilia,057,Acer negundo,8,42,D,decidua,3271,5032,2265,0
+Viale Emilia,058,Robinia pseudoacacia,12,45,B,decidua,11813,16875,8438,0
+Viale Emilia,059,Sophora japonica,12,38,B,decidua,9323,13318,6659,0
+Viale Emilia,060,Sophora japonica,,30,B,decidua,0,0,0,0
+Viale Emilia,061,Robinia pseudoacacia,,15,B,decidua,0,0,0,0
+Viale Emilia,062,Robinia pseudoacacia,,15,B,decidua,0,0,0,0
+Viale Emilia,063,Robinia pseudoacacia,,15,B,decidua,0,0,0,0
+Viale Emilia,064,Robinia pseudoacacia,,15,B,decidua,0,0,0,0
+Viale Emilia,065,Pinus halepensis,16,64,D,sempreverde,2923,2983,2923,2834
+Via Pignatelli Aragona,001,Ficus microcarpa,12,76,B,sempreverde,26107,26640,26107,25308
+Via Pignatelli Aragona,002,Ficus microcarpa,12,52,B,sempreverde,15941,16266,15941,15453
+Via Pignatelli Aragona,003,Ficus microcarpa,12,79,B,sempreverde,27455,28015,27455,26614
+Via Pignatelli Aragona,004,Ficus microcarpa,12,53,D,sempreverde,9612,9808,9612,9318
+Via Pignatelli Aragona,005,Ficus microcarpa,12,59,B,sempreverde,18785,19168,18785,18210
+Via Pignatelli Aragona,006,Ficus microcarpa,12,65,B,sempreverde,21305,21740,21305,20653
+Via Pignatelli Aragona,007,Ficus microcarpa,12,65,B,sempreverde,21305,21740,21305,20653
+Via Pignatelli Aragona,008,Ficus microcarpa,12,63,C,sempreverde,16847,17191,16847,16331
+Via Pignatelli Aragona,009,Ficus microcarpa,12,82,C,sempreverde,23732,24216,23732,23006
+Via Pignatelli Aragona,010,Ficus microcarpa,12,77,B,sempreverde,26554,27096,26554,25742
+Via Pignatelli Aragona,011,Ficus microcarpa,12,62,B,sempreverde,20036,20445,20036,19423
+Via Pignatelli Aragona,012,Ficus microcarpa,12,49,C,sempreverde,12152,12400,12152,11780
+Via Pignatelli Aragona,013,Ficus microcarpa,12,41,B,sempreverde,11704,11942,11704,11345
+Via Pignatelli Aragona,014,Ficus microcarpa,12,38,C/D,sempreverde,3742,3819,3742,3628
+Via Pignatelli Aragona,015,Ficus microcarpa,12,50,C/D,sempreverde,5346,5456,5346,5183
+Via Pignatelli Aragona,016,Ficus microcarpa,12,48,C,sempreverde,11830,12072,11830,11468
+Via Pignatelli Aragona,017,Ficus microcarpa,10,37,D,sempreverde,5113,5217,5113,4956
+Via Pignatelli Aragona,018,Ficus microcarpa,12,45,D,sempreverde,7770,7929,7770,7532
+Via Pignatelli Aragona,019,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+Via Pignatelli Aragona,020,Ficus microcarpa,12,35,B,sempreverde,9528,9722,9528,9236
+Via Pignatelli Aragona,021,Ficus microcarpa,12,47,B,sempreverde,13977,14263,13977,13550
+Via Pignatelli Aragona,022,Ficus microcarpa,12,65,B,sempreverde,21305,21740,21305,20653
+Via Pignatelli Aragona,023,Ficus microcarpa,12,40,B,sempreverde,11334,11565,11334,10987
+Via Pignatelli Aragona,024,Ficus microcarpa,12,49,B,sempreverde,14756,15057,14756,14304
+Via Pignatelli Aragona,025,Ficus microcarpa,12,47,B,sempreverde,13977,14263,13977,13550
+Via Pignatelli Aragona,026,Ficus microcarpa,12,50,C,sempreverde,12475,12730,12475,12093
+Via Pignatelli Aragona,027,Ficus microcarpa,12,46,C/D,sempreverde,4797,4895,4797,4650
+Via Pignatelli Aragona,028,Ficus microcarpa,12,65,B,sempreverde,21305,21740,21305,20653
+Via Pignatelli Aragona,029,Ficus microcarpa,12,62,B,sempreverde,20036,20445,20036,19423
+Via Pignatelli Aragona,030,Ficus microcarpa,12,68,B,sempreverde,22592,23053,22592,21901
+Via Pignatelli Aragona,031,Ficus microcarpa,12,38,B,sempreverde,10603,10819,10603,10278
+Via Pignatelli Aragona,032,Ficus microcarpa,12,58,D,sempreverde,10807,11028,10807,10476
+Via Pignatelli Aragona,033,Ficus microcarpa,12,38,D,sempreverde,6237,6364,6237,6046
+Via Pignatelli Aragona,034,Ficus microcarpa,12,41,B,sempreverde,11704,11942,11704,11345
+Via Pignatelli Aragona,035,Ficus microcarpa,12,43,B,sempreverde,12451,12705,12451,12070
+Via Pignatelli Aragona,036,Ficus microcarpa,12,52,B,sempreverde,15941,16266,15941,15453
+Via Pignatelli Aragona,037,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+Via Pignatelli Aragona,038,Ficus microcarpa,12,55,B,sempreverde,17146,17496,17146,16621
+Via Pignatelli Aragona,039,Ficus microcarpa,12,48,B,sempreverde,14365,14658,14365,13925
+Via Pignatelli Aragona,040,Ficus microcarpa,12,36,B,sempreverde,9883,10085,9883,9581
+Via Pignatelli Aragona,041,Ficus microcarpa,12,48,C,sempreverde,11830,12072,11830,11468
+Via Pignatelli Aragona,042,Ficus microcarpa,12,52,C,sempreverde,13128,13395,13128,12726
+Via Pignatelli Aragona,043,Ficus microcarpa,12,52,C,sempreverde,13128,13395,13128,12726
+Via Pignatelli Aragona,044,Ficus microcarpa,12,78,B,sempreverde,27004,27555,27004,26177
+Via Pignatelli Aragona,045,Ficus microcarpa,12,59,B,sempreverde,18785,19168,18785,18210
+Via Pignatelli Aragona,046,Ficus microcarpa,12,65,B,sempreverde,21305,21740,21305,20653
+Via Pignatelli Aragona,047,Ficus microcarpa,12,65,B,sempreverde,21305,21740,21305,20653
+Via Pignatelli Aragona,048,Ficus microcarpa,12,103,B,sempreverde,38760,39551,38760,37574
+Via Delle Croci,001,Ficus microcarpa,12,48,B,sempreverde,14365,14658,14365,13925
+Via Delle Croci,002,Ficus microcarpa,12,48,B,sempreverde,14365,14658,14365,13925
+Via Delle Croci,003,Ficus microcarpa,12,46,B,sempreverde,13592,13869,13592,13176
+Via Delle Croci,004,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+Via Delle Croci,005,Ficus microcarpa,12,47,B,sempreverde,13977,14263,13977,13550
+Via Delle Croci,006,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+Via Delle Croci,007,Ficus microcarpa,12,39,B,sempreverde,10967,11191,10967,10631
+Via Delle Croci,008,Ficus microcarpa,12,49,B,sempreverde,14756,15057,14756,14304
+Via Delle Croci,009,Ficus microcarpa,12,46,B,sempreverde,13592,13869,13592,13176
+Via Delle Croci,010,Ficus microcarpa,12,39,C,sempreverde,9032,9216,9032,8755
+Via Delle Croci,011,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+Via Delle Croci,012,Ficus microcarpa,12,48,C,sempreverde,11830,12072,11830,11468
+Via Delle Croci,013,Ficus microcarpa,12,50,B,sempreverde,15148,15457,15148,14684
+Via Delle Croci,014,Ficus microcarpa,12,48,B,sempreverde,14365,14658,14365,13925
+Via Delle Croci,015,Ficus microcarpa,12,56,B,sempreverde,17553,17911,17553,17015
+Via Delle Croci,016,Ficus microcarpa,12,49,C,sempreverde,12152,12400,12152,11780
+Via Delle Croci,017,Ficus microcarpa,12,38,C/D,sempreverde,3742,3819,3742,3628
+Via Delle Croci,018,Ficus microcarpa,12,49,B,sempreverde,14756,15057,14756,14304
+Via Delle Croci,019,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+Via Delle Croci,020,Ficus microcarpa,12,42,C,sempreverde,9945,10148,9945,9641
+Via Delle Croci,021,Ficus microcarpa,12,65,C,sempreverde,17546,17904,17546,17008
+Via Delle Croci,022,Ficus microcarpa,12,72,B,sempreverde,24335,24832,24335,23590
+Via Delle Croci,023,Ficus microcarpa,12,58,C,sempreverde,15130,15439,15130,14667
+Via Delle Croci,024,Ficus microcarpa,12,47,B,sempreverde,13977,14263,13977,13550
+Via Delle Croci,025,Ficus microcarpa,12,37,B,sempreverde,10241,10450,10241,9928
+Via Delle Croci,026,Ficus microcarpa,12,49,B,sempreverde,14756,15057,14756,14304
+Via Delle Croci,027,Ficus microcarpa,12,45,C/D,sempreverde,4662,4757,4662,4519
+Via Delle Croci,028,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+Via Delle Croci,029,Ficus microcarpa,12,42,C/D,sempreverde,4262,4349,4262,4132
+Via Delle Croci,030,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+Via Delle Croci,031,Ficus microcarpa,12,39,B,sempreverde,10967,11191,10967,10631
+Via Delle Croci,032,Ficus microcarpa,12,43,B,sempreverde,12451,12705,12451,12070
+Via Delle Croci,033,Ficus microcarpa,10,45,D,sempreverde,6594,6729,6594,6392
+Via Delle Croci,034,Ficus microcarpa,12,45,C,sempreverde,10878,11100,10878,10545
+Via Delle Croci,035,Ficus microcarpa,12,41,C,sempreverde,9638,9835,9638,9343
+Via Delle Croci,036,Ficus microcarpa,12,42,D,sempreverde,7104,7249,7104,6886
+Via Delle Croci,037,Ficus microcarpa,12,35,D,sempreverde,5605,5719,5605,5433
+Via Delle Croci,038,Ficus microcarpa,12,38,B,sempreverde,10603,10819,10603,10278
+Via Delle Croci,039,Ficus microcarpa,12,40,D,sempreverde,6667,6803,6667,6463
+Via Delle Croci,040,Ficus microcarpa,12,40,C,sempreverde,9334,9524,9334,9048
+Via Delle Croci,041,Ficus microcarpa,12,48,C/D,sempreverde,5070,5174,5070,4915
+Via Delle Croci,042,Ficus microcarpa,12,39,C,sempreverde,9032,9216,9032,8755
+Via Delle Croci,043,Ficus microcarpa,12,43,C,sempreverde,10254,10463,10254,9940
+Via Delle Croci,044,Ficus microcarpa,12,47,C,sempreverde,11511,11746,11511,11158
+Via Delle Croci,045,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+Via Delle Croci,046,Ficus microcarpa,12,41,C,sempreverde,9638,9835,9638,9343
+Via Delle Croci,047,Ficus microcarpa,12,35,B,sempreverde,9528,9722,9528,9236
+Via Delle Croci,048,Ficus microcarpa,12,59,B,sempreverde,18785,19168,18785,18210
+Via Delle Croci,049,Ficus microcarpa,12,35,B,sempreverde,9528,9722,9528,9236
+Via Delle Croci,050,Ficus microcarpa,12,38,B,sempreverde,10603,10819,10603,10278
+Via Delle Croci,051,Ficus microcarpa,12,37,B,sempreverde,10241,10450,10241,9928
+Via Delle Croci,052,Ficus microcarpa,12,35,B,sempreverde,9528,9722,9528,9236
+Via Scoto Michele,001,Ficus microcarpa,12,69,B,sempreverde,23025,23495,23025,22320
+Via Scoto Michele,002,Ficus microcarpa,12,64,B,sempreverde,20880,21306,20880,20241
+Via Scoto Michele,003,Ficus microcarpa,12,62,B,sempreverde,20036,20445,20036,19423
+Via Scoto Michele,004,Ficus microcarpa,12,58,B,sempreverde,18372,18747,18372,17810
+Via Scoto Michele,005,Ficus microcarpa,12,62,B,sempreverde,20036,20445,20036,19423
+Via Scoto Michele,006,Ficus microcarpa,12,65,B,sempreverde,21305,21740,21305,20653
+Via Scoto Michele,007,Ficus microcarpa,12,58,B,sempreverde,18372,18747,18372,17810
+Via Scoto Michele,008,Ficus microcarpa,12,72,B,sempreverde,24335,24832,24335,23590
+Via Scoto Michele,009,Ficus microcarpa,12,65,B,sempreverde,21305,21740,21305,20653
+Via Scoto Michele,010,Ficus microcarpa,12,70,B,sempreverde,23460,23939,23460,22742
+Via Scoto Michele,011,Ficus microcarpa,12,49,B,sempreverde,14756,15057,14756,14304
+Via Scoto Michele,012,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+Via Scoto Michele,013,Ficus microcarpa,12,51,B,sempreverde,15543,15860,15543,15067
+Via Scoto Michele,014,Ficus microcarpa,12,54,B,sempreverde,16742,17084,16742,16230
+Via Scoto Michele,015,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+Via Scoto Michele,016,Ficus microcarpa,12,56,B,sempreverde,17553,17911,17553,17015
+Via Scoto Michele,017,Ficus microcarpa,12,58,B,sempreverde,18372,18747,18372,17810
+Via Scoto Michele,018,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+Via Scoto Michele,019,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+Via Scoto Michele,020,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+Via Scoto Michele,021,Ficus microcarpa,12,47,D,sempreverde,8222,8390,8222,7970
+Via Scoto Michele,022,Ficus microcarpa,12,58,C,sempreverde,15130,15439,15130,14667
+Via Scoto Michele,023,Ficus microcarpa,12,58,B,sempreverde,18372,18747,18372,17810
+Via Scoto Michele,024,Ficus microcarpa,12,50,B,sempreverde,15148,15457,15148,14684
+Via Scoto Michele,025,Ficus microcarpa,12,61,B,sempreverde,19617,20017,19617,19016
+Via Scoto Michele,026,Ficus microcarpa,12,43,B,sempreverde,12451,12705,12451,12070
+Via Scoto Michele,027,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+Via Scoto Michele,028,Ficus microcarpa,12,43,B,sempreverde,12451,12705,12451,12070
+Viale Dei Picciotti - A,001,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+Viale Dei Picciotti - A,002,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+Viale Dei Picciotti - A,003,Ficus microcarpa,12,47,C,sempreverde,11511,11746,11511,11158
+Viale Dei Picciotti - A,004,Ficus microcarpa,12,53,B,sempreverde,16340,16674,16340,15840
+Viale Dei Picciotti - A,005,Ficus microcarpa,12,50,B,sempreverde,15148,15457,15148,14684
+Viale Dei Picciotti - A,006,Ficus microcarpa,12,56,B,sempreverde,17553,17911,17553,17015
+Viale Dei Picciotti - A,007,Ficus microcarpa,12,52,C,sempreverde,13128,13395,13128,12726
+Viale Dei Picciotti - A,008,Ficus microcarpa,12,48,C,sempreverde,11830,12072,11830,11468
+Viale Dei Picciotti - A,009,Ficus microcarpa,12,60,B,sempreverde,19200,19592,19200,18612
+Viale Dei Picciotti - A,010,Ficus microcarpa,12,58,B,sempreverde,18372,18747,18372,17810
+Viale Dei Picciotti - A,011,Ficus microcarpa,12,63,B,sempreverde,20457,20874,20457,19831
+Viale Dei Picciotti - A,012,Ficus microcarpa,12,71,C,sempreverde,19680,20081,19680,19077
+Viale Dei Picciotti - A,013,Ficus microcarpa,12,66,B,sempreverde,21732,22176,21732,21067
+Viale Dei Picciotti - A,014,Ficus microcarpa,12,60,B,sempreverde,19200,19592,19200,18612
+Viale Dei Picciotti - A,015,Ficus microcarpa,12,39,B,sempreverde,10967,11191,10967,10631
+Viale Dei Picciotti - A,016,Ficus microcarpa,12,41,B,sempreverde,11704,11942,11704,11345
+Viale Dei Picciotti - A,017,Ficus microcarpa,12,44,B,sempreverde,12829,13091,12829,12436
+Viale Dei Picciotti - A,018,Ficus microcarpa,12,37,B,sempreverde,10241,10450,10241,9928
+Viale Dei Picciotti - A,019,Ficus microcarpa,12,38,B,sempreverde,10603,10819,10603,10278
+Viale Dei Picciotti - A,020,Ficus microcarpa,12,47,B,sempreverde,13977,14263,13977,13550
+Viale Dei Picciotti - A,021,Ficus microcarpa,12,35,B,sempreverde,9528,9722,9528,9236
+Viale Dei Picciotti - A,022,Ficus microcarpa,12,47,B,sempreverde,13977,14263,13977,13550
+Viale Dei Picciotti - A,023,Ficus microcarpa,12,36,C/D,sempreverde,3488,3559,3488,3381
+Viale Dei Picciotti - A,024,Ficus microcarpa,12,40,C/D,sempreverde,4000,4082,4000,3878
+Viale Dei Picciotti - A,025,Ficus microcarpa,12,47,C,sempreverde,11511,11746,11511,11158
+Viale Dei Picciotti - A,026,Ficus microcarpa,12,38,B,sempreverde,10603,10819,10603,10278
+Viale Dei Picciotti - A,027,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+Viale Dei Picciotti - A,028,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+Viale Dei Picciotti - A,029,Ficus microcarpa,12,35,B,sempreverde,9528,9722,9528,9236
+Viale Dei Picciotti - A,030,Ficus microcarpa,12,48,B,sempreverde,14365,14658,14365,13925
+Viale Dei Picciotti - A,031,Ficus microcarpa,12,39,B,sempreverde,10967,11191,10967,10631
+Viale Dei Picciotti - B,032,Ficus microcarpa,12,47,B,sempreverde,13977,14263,13977,13550
+Viale Dei Picciotti - B,033,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+Viale Dei Picciotti - B,034,Ficus microcarpa,12,47,C/D,sempreverde,4933,5034,4933,4782
+Viale Dei Picciotti - B,035,Ficus microcarpa,12,52,B,sempreverde,15941,16266,15941,15453
+Viale Dei Picciotti - B,036,Ficus rubiginosa,12,32,B,sempreverde,7977,8139,7977,7732
+Viale Dei Picciotti - B,037,Ficus microcarpa,12,40,B,sempreverde,11334,11565,11334,10987
+Viale Dei Picciotti - B,038,Ficus microcarpa,12,39,B,sempreverde,10967,11191,10967,10631
+Viale Dei Picciotti - B,039,Ficus microcarpa,12,43,C,sempreverde,10254,10463,10254,9940
+Viale Dei Picciotti - B,040,Ficus microcarpa,12,55,B,sempreverde,17146,17496,17146,16621
+Viale Dei Picciotti - B,041,Ficus microcarpa,12,54,C,sempreverde,13788,14069,13788,13366
+Viale Dei Picciotti - B,042,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+Viale Dei Picciotti - B,043,Ficus microcarpa,12,49,B,sempreverde,14756,15057,14756,14304
+Viale Dei Picciotti - B,044,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+Viale Dei Picciotti - B,045,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+Viale Dei Picciotti - B,046,Ficus microcarpa,12,43,B,sempreverde,12451,12705,12451,12070
+Viale Dei Picciotti - B,047,Ficus microcarpa,12,35,B,sempreverde,9528,9722,9528,9236
+Viale Dei Picciotti - B,048,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+Viale Dei Picciotti - B,049,Ficus microcarpa,12,42,C,sempreverde,9945,10148,9945,9641
+Viale Dei Picciotti - B,050,Ficus microcarpa,12,46,C,sempreverde,11193,11422,11193,10851
+Viale Dei Picciotti - B,051,Ficus microcarpa,12,53,B,sempreverde,16340,16674,16340,15840
+Viale Dei Picciotti - B,052,Ficus microcarpa,12,53,B,sempreverde,16340,16674,16340,15840
+Viale Dei Picciotti - B,053,Ficus microcarpa,12,48,B,sempreverde,14365,14658,14365,13925
+Viale Dei Picciotti - B,054,Ficus microcarpa,12,50,C,sempreverde,12475,12730,12475,12093
+Viale Dei Picciotti - B,055,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+Viale Dei Picciotti - B,056,Ficus microcarpa,12,40,B,sempreverde,11334,11565,11334,10987
+Viale Dei Picciotti - B,057,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+Viale Dei Picciotti - B,058,Ficus microcarpa,12,78,B,sempreverde,27004,27555,27004,26177
+Viale Dei Picciotti - B,059,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+Viale Dei Picciotti - B,060,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+Viale Dei Picciotti - B,061,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+Viale Dei Picciotti - B,062,Ficus microcarpa,12,52,B,sempreverde,15941,16266,15941,15453
+Viale Dei Picciotti - B,063,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+Viale Dei Picciotti - B,064,Ficus microcarpa,12,50,B,sempreverde,15148,15457,15148,14684
+Viale Dei Picciotti - B,065,Ficus microcarpa,12,54,B,sempreverde,16742,17084,16742,16230
