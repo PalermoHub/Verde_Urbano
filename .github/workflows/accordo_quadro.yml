@@ -51,6 +51,7 @@ jobs:
             ["1758798851"]="14_co2_diametro"
             ["504168826"]="15_num_foglie"
             ["425906037"]="16_tot_foglie"
+            ["1621206908"]="17_query_web"
           )
           
           for gid in "${!SHEETS[@]}"; do
