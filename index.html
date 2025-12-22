@@ -248,6 +248,17 @@
                 <div class="filter-info">Min: <span id="minDiameterLabel">0</span>cm</div>
             </div>
 
+            <div class="filter-group">
+                <label><i class="fas fa-broom"></i> Necessità Pulizia Foglie</label>
+                <select id="puliziaFilter" onchange="applyFilters()">
+                    <option value="">Tutti gli alberi</option>
+                    <option value="alta">Alta priorità (&gt;30% variazione)</option>
+                    <option value="media">Media priorità (15-30%)</option>
+                    <option value="bassa">Bassa priorità (&lt;15%)</option>
+                </select>
+                <div class="filter-info" id="puliziaInfo"></div>
+            </div>
+
             <hr>
 
 <!-- Pulsanti -->

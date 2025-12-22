@@ -70,6 +70,17 @@ function updateDiameterLabel() {
     document.getElementById('minDiameterLabel').textContent = document.getElementById('minDiameter').value;
 }
 
+// Funzione helper per calcolare la priorità di pulizia
+function calcolaPrioritaPulizia(tree) {
+    const foglieValues = [tree.foglie_primavera, tree.foglie_estate, tree.foglie_autunno, tree.foglie_inverno];
+    const maxFoglie = Math.max(...foglieValues);
+    const minFoglie = Math.min(...foglieValues);
+    const differenza = maxFoglie - minFoglie;
+    const percentuale = maxFoglie > 0 ? ((differenza / maxFoglie) * 100) : 0;
+
+    return percentuale;
+}
+
 function getCountForFilter(filterType, filterValue) {
     const specie = document.getElementById('specieFilter').value;
     const cpc = document.getElementById('cpcFilter').value;
@@ -80,6 +91,7 @@ function getCountForFilter(filterType, filterValue) {
     const upl = document.getElementById('uplFilter').value;
     const quartiere = document.getElementById('quartiereFilter').value;
     const circoscrizione = document.getElementById('circoscrizioneFilter').value;
+    const pulizia = document.getElementById('puliziaFilter').value;
 
     let testValue = filterValue;
 
@@ -108,6 +120,19 @@ function getCountForFilter(filterType, filterValue) {
         if (filterType === 'circoscrizione') match = match && tree.circoscrizione === testValue;
         else if (circoscrizione) match = match && tree.circoscrizione === circoscrizione;
 
+        // Filtro pulizia foglie
+        if (filterType === 'pulizia') {
+            const percentuale = calcolaPrioritaPulizia(tree);
+            if (testValue === 'alta') match = match && percentuale > 30;
+            else if (testValue === 'media') match = match && percentuale >= 15 && percentuale <= 30;
+            else if (testValue === 'bassa') match = match && percentuale < 15;
+        } else if (pulizia) {
+            const percentuale = calcolaPrioritaPulizia(tree);
+            if (pulizia === 'alta') match = match && percentuale > 30;
+            else if (pulizia === 'media') match = match && percentuale >= 15 && percentuale <= 30;
+            else if (pulizia === 'bassa') match = match && percentuale < 15;
+        }
+
         match = match && (tree.altezza === null || tree.altezza >= minHeight);
         match = match && (tree.diametro === null || tree.diametro >= minDiameter);
 
@@ -125,9 +150,10 @@ function applyFilters() {
     const upl = document.getElementById('uplFilter').value;
     const quartiere = document.getElementById('quartiereFilter').value;
     const circoscrizione = document.getElementById('circoscrizioneFilter').value;
+    const pulizia = document.getElementById('puliziaFilter').value;
 
     filteredTrees = allTrees.filter(tree => {
-        return (!specie || tree.specie === specie) &&
+        let match = (!specie || tree.specie === specie) &&
                (!cpc || tree.cpc === cpc) &&
                (!site || tree.sito === site) &&
                (tree.altezza === null || tree.altezza >= minHeight) &&
@@ -136,6 +162,16 @@ function applyFilters() {
                (!upl || tree.upl === upl) &&
                (!quartiere || tree.quartiere === quartiere) &&
                (!circoscrizione || tree.circoscrizione === circoscrizione);
+
+        // Applica filtro pulizia foglie
+        if (match && pulizia) {
+            const percentuale = calcolaPrioritaPulizia(tree);
+            if (pulizia === 'alta') match = match && percentuale > 30;
+            else if (pulizia === 'media') match = match && percentuale >= 15 && percentuale <= 30;
+            else if (pulizia === 'bassa') match = match && percentuale < 15;
+        }
+
+        return match;
     });
 
     updateFilterInfo();
@@ -164,6 +200,7 @@ function updateFilterInfo() {
     const uplValue = document.getElementById('uplFilter').value;
     const quartiereValue = document.getElementById('quartiereFilter').value;
     const circoscrizioneValue = document.getElementById('circoscrizioneFilter').value;
+    const puliziaValue = document.getElementById('puliziaFilter').value;
 
     document.getElementById('specieInfo').textContent =
         specieValue ? `${filteredTrees.filter(t => t.specie === specieValue).length}` : '';
@@ -179,6 +216,8 @@ function updateFilterInfo() {
         quartiereValue ? `${filteredTrees.filter(t => t.quartiere === quartiereValue).length}` : '';
     document.getElementById('circoscrizioneInfo').textContent =
         circoscrizioneValue ? `${filteredTrees.filter(t => t.circoscrizione === circoscrizioneValue).length}` : '';
+    document.getElementById('puliziaInfo').textContent =
+        puliziaValue ? `${filteredTrees.length} alberi` : '';
 }
 
 function updateFilterCounts() {
@@ -205,6 +244,19 @@ function updateFilterCounts() {
     Array.from(cpcSelect.options).forEach((opt, idx) => {
         if (idx > 0) {
             const count = getCountForFilter('cpc', opt.value);
+            opt.disabled = count === 0;
+        }
+    });
+
+    // Aggiorna conteggi filtro pulizia
+    const puliziaSelect = document.getElementById('puliziaFilter');
+    Array.from(puliziaSelect.options).forEach((opt, idx) => {
+        if (idx > 0) {
+            const count = getCountForFilter('pulizia', opt.value);
+            const label = opt.value === 'alta' ? 'Alta priorità (>30% variazione)' :
+                         opt.value === 'media' ? 'Media priorità (15-30%)' :
+                         'Bassa priorità (<15%)';
+            opt.textContent = `${label} (${count})`;
             opt.disabled = count === 0;
         }
     });
@@ -257,6 +309,7 @@ function resetFilters() {
     document.getElementById('uplFilter').value = '';
     document.getElementById('quartiereFilter').value = '';
     document.getElementById('circoscrizioneFilter').value = '';
+    document.getElementById('puliziaFilter').value = '';
     updateHeightLabel();
     updateDiameterLabel();
     applyFilters();
