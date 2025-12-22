@@ -1,6 +1,12 @@
 // ===== MAPPA =====
+// Variabili globali per posizione iniziale
+let initialView = {
+    center: [38.147, 13.341],
+    zoom: 15
+};
+
 function initMap() {
-    map = L.map('map').setView([38.147, 13.341], 15);
+    map = L.map('map').setView(initialView.center, initialView.zoom);
 
     const osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap',
@@ -27,7 +33,41 @@ function initMap() {
     };
 
     L.control.layers(baseMaps).addTo(map);
+
+    // Aggiungi Leaflet Hash per sincronizzare URL con posizione mappa
+    if (typeof L.hash !== 'undefined') {
+        new L.Hash(map);
+    }
+
+    // Aggiungi pulsante Home
+    addHomeButton();
+
     console.log('✅ Mappa inizializzata');
+}
+
+// Aggiungi pulsante Home per tornare alla vista iniziale
+function addHomeButton() {
+    const HomeControl = L.Control.extend({
+        options: {
+            position: 'topleft'
+        },
+        onAdd: function(map) {
+            const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
+            const button = L.DomUtil.create('a', 'leaflet-control-home', container);
+            button.innerHTML = '<i class="fas fa-home"></i>';
+            button.href = '#';
+            button.title = 'Torna alla vista iniziale';
+
+            L.DomEvent.on(button, 'click', function(e) {
+                L.DomEvent.preventDefault(e);
+                map.setView(initialView.center, initialView.zoom);
+            });
+
+            return container;
+        }
+    });
+
+    map.addControl(new HomeControl());
 }
 
 // ===== MAPPA - UPDATE =====
@@ -50,7 +90,7 @@ function updateMap() {
 
         const popupContent = `
             <div style="font-family: Arial, sans-serif; font-size: 12px; min-width: 280px;">
-                <div style="background: #27ae60; color: white; padding: 8px; border-radius: 4px 4px 0 0; font-weight: bold; margin-bottom: 8px;">
+                <div style="background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%); color: white; padding: 10px; border-radius: 6px 6px 0 0; font-weight: bold; margin-bottom: 8px;">
                     <i class="fa fa-tree" aria-hidden="true"></i> Albero - ${tree.id}
                 </div>
                 <table style="width: 100%; border-collapse: collapse;">
@@ -58,7 +98,6 @@ function updateMap() {
                         <td style="padding: 6px; font-weight: bold; color: #27ae60;">Specie arborea:</td>
                         <td style="padding: 6px;">${tree.specie}</td>
                     </tr>
-										
                     <tr style="border-bottom: 1px solid #eee;">
                         <td style="padding: 6px; font-weight: bold; color: #27ae60;">Tipo foglia:</td>
                         <td style="padding: 6px;">${tree.tipo_foglia}</td>
@@ -83,12 +122,12 @@ function updateMap() {
                         <td style="padding: 6px; font-weight: bold; color: #27ae60;">Cod. lavorazione:</td>
                         <td style="padding: 6px;">${tree.codice}</td>
                     </tr>
-					  <tr style="border-bottom: 1px solid #eee;">
+                    <tr style="border-bottom: 1px solid #eee;">
                         <td style="padding: 6px; font-weight: bold; color: #27ae60;">Tipo lavorazione:</td>
                         <td style="padding: 6px;">${tree.descrizione}</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 6px; font-weight: bold; color: #27ae60;">Prezzo unitari:</td>
+                        <td style="padding: 6px; font-weight: bold; color: #27ae60;">Prezzo unitario:</td>
                         <td style="padding: 6px;">€ ${tree.prezzo.toFixed(2)}</td>
                     </tr>
                 </table>
@@ -113,15 +152,29 @@ function updateMap() {
                         </tr>
                     </table>
                 </div>
+                <div style="margin-top: 10px;">
+                    <button onclick="showTreeDetailsFromPopup('${tree.id}')" style="width: 100%; padding: 10px; background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                        <i class="fas fa-info-circle"></i>
+                        <span>Visualizza Scheda Completa</span>
+                    </button>
+                </div>
             </div>
         `;
-        marker.bindPopup(popupContent, {maxWidth: 400});
-        marker.on('click', () => showTreeDetails(tree));
+        marker.bindPopup(popupContent, {maxWidth: 400, className: 'custom-popup'});
         markers.push(marker);
     });
 
     if (filteredTrees.length > 0) {
         const group = new L.featureGroup(markers);
         map.fitBounds(group.getBounds().pad(0.15), {maxZoom: 16});
+    }
+}
+
+// Funzione per aprire i dettagli dell'albero dal popup
+function showTreeDetailsFromPopup(treeId) {
+    const tree = filteredTrees.find(t => t.id === treeId);
+    if (tree) {
+        map.closePopup(); // Chiudi il popup prima di aprire la modale
+        showTreeDetails(tree);
     }
 }

@@ -7,6 +7,11 @@ function showTreeDetails(tree) {
     const co2Absorption = calculateCO2Absorption(tree);
     const workingCost = getWorkingCost(tree);
 
+    // Mostra la modale
+    const modal = document.getElementById('treeDetailsModal');
+    modal.classList.add('active');
+    document.body.classList.add('modal-open');
+
     const info = document.getElementById('selectedTreeInfo');
     info.innerHTML = `
         <div class="detail-item"><div class="detail-label">ID</div><div class="detail-value">${tree.id}</div></div>
@@ -113,3 +118,32 @@ function showTreeDetails(tree) {
         </div>
     `;
 }
+
+// Funzione per chiudere la modale dei dettagli albero
+function closeTreeDetails() {
+    const modal = document.getElementById('treeDetailsModal');
+    modal.classList.remove('active');
+    document.body.classList.remove('modal-open');
+}
+
+// Chiudi la modale quando si clicca fuori dall'area del contenuto
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('treeDetailsModal');
+    if (modal) {
+        modal.addEventListener('click', function(e) {
+            if (e.target === modal) {
+                closeTreeDetails();
+            }
+        });
+    }
+});
+
+// Chiudi la modale con il tasto ESC
+document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+        const modal = document.getElementById('treeDetailsModal');
+        if (modal && modal.classList.contains('active')) {
+            closeTreeDetails();
+        }
+    }
+});
