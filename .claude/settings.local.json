@@ -7,7 +7,8 @@
       "Bash(node --version:*)",
       "Bash(py --version:*)",
       "Bash(py convert_csv_to_geojson.py:*)",
-      "Bash(php --version:*)"
+      "Bash(php --version:*)",
+      "Bash(python -m http.server:*)"
     ]
   }
 }

@@ -76,7 +76,6 @@ hr {
             font-size: 18px;
             margin-bottom: 15px;
             color: #313131;
-            color: #313131;
             border-bottom: 3px solid #27ae60;
             padding-bottom: 10px;
         }
@@ -780,50 +779,71 @@ hr {
                     <span>Specie Presenti</span>
                     <span class="stat-value" id="statSpecies">0</span>
                 </div>
-				<h2 style="margin-top: 25px;"><i class="fas fa-list-check"></i> Classificazione CPC</h2>
-<div class="stats-box">
-    <div class="stat-row">
-        <span style="color: #2cc15f;"><i class="fas fa-circle" style="color: #2cc15f;"></i> B - Bassa</span>
-        <span class="stat-value" id="statCpcB">0</span>
-    </div>
-    <div class="stat-row">
-        <span style="color: #f39c12;"><i class="fas fa-circle" style="color: #f39c12;"></i> C - Moderata</span>
-        <span class="stat-value" id="statCpcC">0</span>
-    </div>
-    <div class="stat-row">
-        <span style="color: #c164a1;"><i class="fas fa-circle" style="color: #c164a1;"></i> C/D - Elevata</span>
-        <span class="stat-value" id="statCpcCD">0</span>
-    </div>
-    <div class="stat-row">
-        <span style="color: #e74c3c;"><i class="fas fa-circle" style="color: #e74c3c;"></i> D - Estrema</span>
-        <span class="stat-value" id="statCpcD">0</span>
-    </div>
-</div>
+            </div>
 
-<h2 style="margin-top: 25px;"><i class="fas fa-tools"></i> Cod. Lavorazione</h2>
-<div id="statLavorazione" style="font-size: 12px; color: #666;">
-    <!-- Popolato dinamicamente -->
-</div>
+            <h2 style="margin-top: 25px;"><i class="fas fa-map-location-dot"></i> Dati Territorio</h2>
+            <div class="stats-box" style="background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);">
+                <div class="stat-row">
+                    <span>Vie interessate:</span>
+                    <span class="stat-value" id="statTotalStrade">0</span>
+                </div>
+                <div class="stat-row">
+                    <span>UPL:</span>
+                    <span class="stat-value" style="font-size: 11px;" id="statAlberiPerUPL">-</span>
+                </div>
+                <div class="stat-row">
+                    <span>Quartiere:</span>
+                    <span class="stat-value" style="font-size: 11px;" id="statAlberiPerQuartiere">-</span>
+                </div>
+                <div class="stat-row">
+                    <span>Circoscrizione:</span>
+                    <span class="stat-value" style="font-size: 11px;" id="statAlberiPerCircoscrizione">-</span>
+                </div>
+            </div>
 
-<h2 style="margin-top: 25px;"><i class="fas fa-leaf"></i> Benefici  Ambientali</h2>
-<div class="stats-box" style="background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);">
-    <div class="stat-row">
-        <span>Produzione O₂ totale:</span>
-        <span class="stat-value" id="statTotalO2">0 kg/anno</span>
-    </div>
-    <div class="stat-row">
-        <span>Assorbimento CO₂ totale:</span>
-        <span class="stat-value" id="statTotalCO2">0 kg/anno</span>
-    </div>
-</div>
+            <h2 style="margin-top: 25px;"><i class="fas fa-list-check"></i> Classificazione CPC</h2>
+            <div class="stats-box">
+                <div class="stat-row">
+                    <span style="color: #2cc15f;"><i class="fas fa-circle" style="color: #2cc15f;"></i> B - Bassa</span>
+                    <span class="stat-value" id="statCpcB">0</span>
+                </div>
+                <div class="stat-row">
+                    <span style="color: #f39c12;"><i class="fas fa-circle" style="color: #f39c12;"></i> C - Moderata</span>
+                    <span class="stat-value" id="statCpcC">0</span>
+                </div>
+                <div class="stat-row">
+                    <span style="color: #c164a1;"><i class="fas fa-circle" style="color: #c164a1;"></i> C/D - Elevata</span>
+                    <span class="stat-value" id="statCpcCD">0</span>
+                </div>
+                <div class="stat-row">
+                    <span style="color: #e74c3c;"><i class="fas fa-circle" style="color: #e74c3c;"></i> D - Estrema</span>
+                    <span class="stat-value" id="statCpcD">0</span>
+                </div>
+            </div>
 
-<h2 style="margin-top: 25px;"><i class="fas fa-euro-sign"></i> Costi Lavorazione</h2>
-<div class="stats-box" style="background: linear-gradient(135deg, #f39c12 0%, #d68910 100%);">
-    <div class="stat-row">
-        <span>Costo totale:</span>
-        <span class="stat-value" id="statTotalWorkingCost">0 €</span>
-    </div>
-</div>
+            <h2 style="margin-top: 25px;"><i class="fas fa-tools"></i> Cod. Lavorazione</h2>
+            <div id="statLavorazione" style="font-size: 12px; color: #666;">
+                <!-- Popolato dinamicamente -->
+            </div>
+
+            <h2 style="margin-top: 25px;"><i class="fas fa-leaf"></i> Benefici  Ambientali</h2>
+            <div class="stats-box" style="background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);">
+                <div class="stat-row">
+                    <span>Produzione O₂ totale:</span>
+                    <span class="stat-value" id="statTotalO2">0 kg/anno</span>
+                </div>
+                <div class="stat-row">
+                    <span>Assorbimento CO₂ totale:</span>
+                    <span class="stat-value" id="statTotalCO2">0 kg/anno</span>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 25px;"><i class="fas fa-euro-sign"></i> Costi Lavorazione</h2>
+            <div class="stats-box" style="background: linear-gradient(135deg, #f39c12 0%, #d68910 100%);">
+                <div class="stat-row">
+                    <span>Costo totale:</span>
+                    <span class="stat-value" id="statTotalWorkingCost">0 €</span>
+                </div>
             </div>
 
     <!--    <h2><i class="fas fa-palette"></i> Legenda CPC</h2> -->
@@ -880,6 +900,13 @@ hr {
                     <h3><i class="fas fa-chart-line"></i> Distribuzione altezze</h3>
                     <div class="chart-wrapper">
                         <canvas id="heightChart"></canvas>
+                    </div>
+                </div>
+
+				<div class="chart-box" style="grid-column: 1 / -1;">
+                    <h3><i class="fas fa-seedling"></i> Foglie totali per via nelle stagioni</h3>
+                    <div class="chart-wrapper" style="height: 400px;">
+                        <canvas id="seasonalLeavesChart"></canvas>
                     </div>
                 </div>
             </div>
@@ -942,6 +969,67 @@ function parseCSV(text) {
         data.push(row);
     }
     return data;
+}
+
+// Funzione per caricare dati foglie stagionali
+async function loadSeasonalLeavesData() {
+    try {
+        console.log('📥 Caricamento dati foglie stagionali...');
+
+        let csvText;
+        try {
+            const response = await fetch('dati/16_tot_foglie.csv');
+            if (!response.ok) throw new Error('Fetch fallito');
+            csvText = await response.text();
+        } catch (fetchError) {
+            console.warn('⚠️ Fetch bloccato (CORS), uso XMLHttpRequest...');
+            csvText = await new Promise((resolve, reject) => {
+                const xhr = new XMLHttpRequest();
+                xhr.open('GET', 'dati/16_tot_foglie.csv', true);
+                xhr.onload = () => {
+                    if (xhr.status === 200 || xhr.status === 0) {
+                        resolve(xhr.responseText);
+                    } else {
+                        reject(new Error(`HTTP ${xhr.status}`));
+                    }
+                };
+                xhr.onerror = () => reject(new Error('File non trovato'));
+                xhr.send();
+            });
+        }
+
+        const lines = csvText.trim().split('\n');
+        if (lines.length < 2) {
+            console.warn('⚠️ File foglie vuoto o invalido');
+            return false;
+        }
+
+        // Organizza i dati per via (salta la prima riga dell'header)
+        const dataByStreet = {};
+        for (let i = 1; i < lines.length; i++) {
+            const parts = lines[i].split(',');
+            if (parts.length < 4) continue;
+
+            const street = parts[0].trim();
+            const season = parts[1].trim();
+            const count = parseInt(parts[2]) || 0;
+            const color = parts[3].trim();
+
+            if (!street || !season) continue;
+
+            if (!dataByStreet[street]) {
+                dataByStreet[street] = {};
+            }
+            dataByStreet[street][season] = { count, color };
+        }
+
+        seasonalLeavesData = dataByStreet;
+        console.log('✅ Dati foglie stagionali caricati:', Object.keys(dataByStreet).length, 'vie');
+        return true;
+    } catch (error) {
+        console.error('❌ Errore caricamento dati foglie:', error);
+        return false;
+    }
 }
 
 // Funzione per caricare CSV e convertire in GeoJSON
@@ -1035,6 +1123,7 @@ let map;
 let markers = [];
 let chartsInstances = {};
 let selectedTree = null;  // AGGIUNTO: Traccia l'albero selezionato
+let seasonalLeavesData = [];  // AGGIUNTO: Dati foglie stagionali
 
 const cpcColors = {
      'B': '#2cc15f',
@@ -1053,6 +1142,12 @@ document.addEventListener('DOMContentLoaded', async function() {
     if (!loaded) {
         console.error('❌ Impossibile caricare i dati');
         return;
+    }
+
+    // Carica i dati foglie stagionali (opzionale)
+    const leavesLoaded = await loadSeasonalLeavesData();
+    if (!leavesLoaded) {
+        console.warn('⚠️ Continuazione senza dati foglie stagionali');
     }
 
     loadData();
@@ -1644,7 +1739,55 @@ function updateStats() {
     // Aggiorna i dati ambientali
     document.getElementById('statTotalO2').textContent = totalO2.toFixed(2) + ' kg/anno';
     document.getElementById('statTotalCO2').textContent = totalCO2.toFixed(2) + ' kg/anno';
-    document.getElementById('statTotalWorkingCost').textContent = totalWorkingCost.toFixed(2) + ' €';
+    document.getElementById('statTotalWorkingCost').textContent = formatCurrency(totalWorkingCost);
+
+    // ===== NUOVA PARTE: Dati Territorio =====
+    const strade = new Set(filteredTrees.map(t => t.odonimo).filter(o => o !== '-'));
+    const uplCount = {};
+    const quartiereCount = {};
+    const circoscrizioneCount = {};
+
+    filteredTrees.forEach(t => {
+        if (t.upl && t.upl !== '-') {
+            uplCount[t.upl] = (uplCount[t.upl] || 0) + 1;
+        }
+        if (t.quartiere && t.quartiere !== '-') {
+            quartiereCount[t.quartiere] = (quartiereCount[t.quartiere] || 0) + 1;
+        }
+        if (t.circoscrizione && t.circoscrizione !== '-') {
+            circoscrizioneCount[t.circoscrizione] = (circoscrizioneCount[t.circoscrizione] || 0) + 1;
+        }
+    });
+
+    // Formatta i dati per territorio (mostra solo i primi 2 valori)
+    const formatTerritorioData = (data) => {
+        const entries = Object.entries(data).sort((a, b) => b[1] - a[1]);
+        if (entries.length === 0) return '-';
+        if (entries.length === 1) return `${entries[0][0]}: ${entries[0][1]}`;
+        // Mostra i primi 2 risultati
+        const top2 = entries.slice(0, 2).map(([nome, count]) => `${nome}: ${count}`).join(', ');
+        return entries.length > 2 ? `${top2}, ...` : top2;
+    };
+
+    document.getElementById('statTotalStrade').textContent = strade.size;
+    document.getElementById('statAlberiPerUPL').textContent = formatTerritorioData(uplCount);
+    document.getElementById('statAlberiPerQuartiere').textContent = formatTerritorioData(quartiereCount);
+    document.getElementById('statAlberiPerCircoscrizione').textContent = formatTerritorioData(circoscrizioneCount);
+}
+
+// ===== FUNZIONE PER FORMATTARE VALUTA IN FORMATO ITALIANO =====
+function formatCurrency(value) {
+    if (value === 0 || !value) return '0,00 €';
+
+    // Converti in stringa con 2 decimali
+    const fixed = value.toFixed(2);
+    const [integerPart, decimalPart] = fixed.split('.');
+
+    // Aggiungi separatore migliaia
+    const formattedInteger = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+    // Ritorna nel formato italiano
+    return `${formattedInteger},${decimalPart} €`;
 }
 
 function showTreeDetails(tree) {
@@ -1666,7 +1809,7 @@ function showTreeDetails(tree) {
         <div class="detail-item"><div class="detail-label">Descrizione CPC</div><div class="detail-value">${tree.descrizione_ccp}</div></div>
         <div class="detail-item"><div class="detail-label">Cod. Lavorazione</div><div class="detail-value">${tree.codice}</div></div>
         <div class="detail-item" ><div class="detail-label">Tipo di lavorazione</div><div class="detail-value" style="font-size: 12px;">${tree.descrizione}</div></div>
-        <div class="detail-item"><div class="detail-label">Prezzo unitario (€)</div><div class="detail-value">${tree.prezzo.toFixed(2)}</div></div>
+        <div class="detail-item"><div class="detail-label">Prezzo unitario</div><div class="detail-value">${formatCurrency(tree.prezzo)}</div></div>
 
         <div class="detail-item" style="grid-column: 1/-1; margin-top: 15px; padding: 12px; background: linear-gradient(135deg, #e3f2fd 0%, #f1f8ff 100%); border-left: 4px solid #3498db; border-radius: 6px;">
             <div class="detail-label" style="margin-bottom: 10px;"><i class="fa fa-map-marker-alt"></i> LOCALIZZAZIONE TERRITORIALE</div>
@@ -2185,7 +2328,119 @@ function initCharts() {
         });
     }
 
+    // Foglie stagionali per via
+    const seasonalLeavesCtx = document.getElementById('seasonalLeavesChart');
+    if (seasonalLeavesCtx && seasonalLeavesCtx.getContext) {
+        chartsInstances.seasonalLeaves = new Chart(seasonalLeavesCtx, {
+            type: 'bar',
+            data: {
+                labels: [],
+                datasets: [
+                    {
+                        label: 'Primavera',
+                        data: [],
+                        backgroundColor: '#FAD5A5',
+                        borderColor: '#F4C78D',
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'Estate',
+                        data: [],
+                        backgroundColor: '#B0C4DE',
+                        borderColor: '#9BB3D0',
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'Autunno',
+                        data: [],
+                        backgroundColor: '#D2691E',
+                        borderColor: '#C05A18',
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'Inverno',
+                        data: [],
+                        backgroundColor: '#000080',
+                        borderColor: '#000066',
+                        borderWidth: 2
+                    }
+                ]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.parsed.x.toLocaleString('it-IT') + ' foglie';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        stacked: false,
+                        ticks: {
+                            callback: function(value) {
+                                return value.toLocaleString('it-IT');
+                            }
+                        }
+                    },
+                    y: {
+                        stacked: false
+                    }
+                }
+            }
+        });
+
+        // Popola il grafico con i dati
+        updateSeasonalLeavesChart();
+    }
+
     console.log('✅ Grafici inizializzati');
+}
+
+// Funzione per aggiornare il grafico delle foglie stagionali
+function updateSeasonalLeavesChart() {
+    if (!chartsInstances.seasonalLeaves) {
+        console.warn('⚠️ Grafico foglie stagionali non inizializzato');
+        return;
+    }
+
+    if (!seasonalLeavesData || Object.keys(seasonalLeavesData).length === 0) {
+        console.warn('⚠️ Nessun dato foglie stagionali disponibile');
+        return;
+    }
+
+    const streets = Object.keys(seasonalLeavesData).sort();
+    const primaveraData = [];
+    const estateData = [];
+    const autunnoData = [];
+    const invernoData = [];
+
+    streets.forEach(street => {
+        const data = seasonalLeavesData[street];
+        primaveraData.push((data['Primavera'] && data['Primavera'].count) || 0);
+        estateData.push((data['Estate'] && data['Estate'].count) || 0);
+        autunnoData.push((data['Autunno'] && data['Autunno'].count) || 0);
+        invernoData.push((data['Inverno'] && data['Inverno'].count) || 0);
+    });
+
+    chartsInstances.seasonalLeaves.data.labels = streets;
+    chartsInstances.seasonalLeaves.data.datasets[0].data = primaveraData;
+    chartsInstances.seasonalLeaves.data.datasets[1].data = estateData;
+    chartsInstances.seasonalLeaves.data.datasets[2].data = autunnoData;
+    chartsInstances.seasonalLeaves.data.datasets[3].data = invernoData;
+    chartsInstances.seasonalLeaves.update();
+
+    console.log('📊 Grafico foglie stagionali aggiornato con', streets.length, 'vie');
 }
 
 
