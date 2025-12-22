@@ -1,0 +1,1192 @@
+            document.getElementById('quartiereFilter').value = '';
+            document.getElementById('circoscrizioneFilter').value = '';
+            updateHeightLabel();
+            updateDiameterLabel();
+            applyFilters();
+        }
+
+        // ===== MAPPA =====
+        function updateMap() {
+            markers.forEach(m => map.removeLayer(m));
+            markers = [];
+
+            filteredTrees.forEach(tree => {
+                const color = cpcColors[tree.cpc] || '#95a5a6';
+                const radius = Math.max(3, Math.min(tree.diametro ? tree.diametro / 8 : 6, 15));
+
+                const marker = L.circleMarker([tree.lat, tree.lon], {
+                    radius: radius,
+                    fillColor: color,
+                    color: '#fff',
+                    weight: 2.5,
+                    opacity: 1,
+                    fillOpacity: 0.85
+                }).addTo(map);
+
+                const popupContent = `
+                    <div style="font-family: Arial, sans-serif; font-size: 12px; min-width: 280px;">
+                        <div style="background: #27ae60; color: white; padding: 8px; border-radius: 4px 4px 0 0; font-weight: bold; margin-bottom: 8px;">
+                            <i class="fa fa-tree" aria-hidden="true"></i> Albero - ${tree.id}
+                        </div>
+                        <table style="width: 100%; border-collapse: collapse;">
+                            <tr style="border-bottom: 1px solid #eee;">
+                                <td style="padding: 6px; font-weight: bold; color: #27ae60;">Specie arborea:</td>
+                                <td style="padding: 6px;">${tree.specie}</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #eee;">
+                                <td style="padding: 6px; font-weight: bold; color: #27ae60;">Dimora:</td>
+                                <td style="padding: 6px;">${tree.sito}</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #eee;">
+                                <td style="padding: 6px; font-weight: bold; color: #27ae60;">Altezza:</td>
+                                <td style="padding: 6px;">${tree.altezza ? tree.altezza + ' m' : 'n/a'}</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #eee;">
+                                <td style="padding: 6px; font-weight: bold; color: #27ae60;">Diametro:</td>
+                                <td style="padding: 6px;">${tree.diametro ? tree.diametro + ' cm' : 'n/a'}</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #eee;">
+                                <td style="padding: 6px; font-weight: bold; color: #27ae60;">CPC:</td>
+                                <td style="padding: 6px; color: ${cpcColors[tree.cpc]}; font-weight: bold;">${tree.cpc}</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #eee;">
+                                <td style="padding: 6px; font-weight: bold; color: #27ae60;">Cod. lavorazione:</td>
+                                <td style="padding: 6px;">${tree.codice}</td>
+                            </tr>
+							  <tr style="border-bottom: 1px solid #eee;">
+                                <td style="padding: 6px; font-weight: bold; color: #27ae60;">Tipo lavorazione:</td>
+                                <td style="padding: 6px;">${tree.descrizione}</td>
+                            </tr>
+                            <tr style="border-bottom: 1px solid #eee;">
+                                <td style="padding: 6px; font-weight: bold; color: #27ae60;">Prezzo unitari:</td>
+                                <td style="padding: 6px;">€ ${tree.prezzo.toFixed(2)}</td>
+                            </tr>
+                        </table>
+                        <div style="background: #f8f9fa; padding: 8px; margin-top: 8px; border-radius: 4px; border-left: 3px solid #3498db;">
+                            <div style="font-weight: bold; color: #3498db; margin-bottom: 4px;"><i class="fa fa-map-marker-alt"></i> LOCALIZZAZIONE</div>
+                            <table style="width: 100%; font-size: 11px;">
+                                <tr>
+                                    <td style="padding: 3px; font-weight: bold;">Strada:</td>
+                                    <td style="padding: 3px;">${tree.odonimo || '-'}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 3px; font-weight: bold;">UPL:</td>
+                                    <td style="padding: 3px;">${tree.upl || '-'}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 3px; font-weight: bold;">Quartiere:</td>
+                                    <td style="padding: 3px;">${tree.quartiere || '-'}</td>
+                                </tr>
+                                <tr>
+                                    <td style="padding: 3px; font-weight: bold;">Circoscrizione:</td>
+                                    <td style="padding: 3px;">${tree.circoscrizione || '-'}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                `;
+                marker.bindPopup(popupContent, {maxWidth: 400});
+                marker.on('click', () => showTreeDetails(tree));
+                markers.push(marker);
+            });
+
+            if (filteredTrees.length > 0) {
+                const group = new L.featureGroup(markers);
+                map.fitBounds(group.getBounds().pad(0.15), {maxZoom: 16});
+            }
+        }
+
+// ===== FUNZIONI DI CALCOLO AMBIENTALE =====
+/**
+ * Calcola l'O2 prodotto in kg/anno basato su altezza e specie
+ * Media europea: 11-15 kg O2/anno per albero maturo
+ * Alberi giovani/piccoli: 5-8 kg O2/anno
+ */
+function calculateO2Production(tree) {
+    let baseO2 = 10; // kg/anno base
+    
+    // Fattore altezza (alberi più alti producono più O2)
+    if (tree.altezza) {
+        const heightFactor = Math.min(1.5, tree.altezza / 10);
+        baseO2 *= heightFactor;
+    }
+    
+    // Fattore specie (alcuni alberi sono più efficienti)
+    const speciesMultiplier = {
+        'Platanus orientalis': 1.4,
+        'Magnolia grandiflora': 1.3,
+        'Tilia tomentosa': 1.35,
+        'Liquidambar styraciflua': 1.3,
+        'Fraxinus ornus': 1.25,
+        'Albizia julibrissin': 1.2,
+        'Cupressus sempervirens': 1.15,
+        'Phoenix canariensis': 1.1,
+        'Quercus robur': 1.3,
+        'Prunus cerasifera': 1.0
+    };
+    
+    const multiplier = speciesMultiplier[tree.specie] || 1.0;
+    return (baseO2 * multiplier).toFixed(2);
+}
+
+/**
+ * Calcola la CO2 assorbita in kg/anno basato su altezza e specie
+ * Media europea: 20-30 kg CO2/anno per albero maturo
+ * Alberi giovani/piccoli: 10-15 kg CO2/anno
+ */
+function calculateCO2Absorption(tree) {
+    let baseCO2 = 20; // kg/anno base
+    
+    // Fattore altezza
+    if (tree.altezza) {
+        const heightFactor = Math.min(1.8, tree.altezza / 8);
+        baseCO2 *= heightFactor;
+    }
+    
+    // Fattore diametro (alberi più grandi assorbono più CO2)
+    if (tree.diametro) {
+        const diameterFactor = Math.min(1.6, tree.diametro / 20);
+        baseCO2 *= diameterFactor;
+    }
+    
+    // Fattore specie
+    const speciesMultiplier = {
+        'Platanus orientalis': 1.5,
+        'Magnolia grandiflora': 1.4,
+        'Tilia tomentosa': 1.45,
+        'Liquidambar styraciflua': 1.4,
+        'Fraxinus ornus': 1.35,
+        'Albizia julibrissin': 1.25,
+        'Cupressus sempervirens': 1.2,
+        'Phoenix canariensis': 1.15,
+        'Quercus robur': 1.4,
+        'Prunus cerasifera': 1.1
+    };
+    
+    const multiplier = speciesMultiplier[tree.specie] || 1.0;
+    return (baseCO2 * multiplier).toFixed(2);
+}
+
+/**
+ * Calcola il costo di lavorazione per un albero
+ */
+function getWorkingCost(tree) {
+    return tree.prezzo || 0;
+}
+
+function updateStats() {
+    const total = allTrees.length;
+    const filtered = filteredTrees.length;
+    const altezze = filteredTrees.filter(t => t.altezza !== null).map(t => t.altezza);
+    const diametri = filteredTrees.filter(t => t.diametro !== null).map(t => t.diametro);
+    const species = new Set(filteredTrees.map(t => t.specie)).size;
+
+    // Statistiche base
+    document.getElementById('statTotal').textContent = total;
+    document.getElementById('statFiltered').textContent = filtered;
+    document.getElementById('statAvgHeight').textContent = altezze.length > 0 ? 
+        (altezze.reduce((a, b) => a + b, 0) / altezze.length).toFixed(1) + 'm' : '-';
+    document.getElementById('statAvgDiameter').textContent = diametri.length > 0 ? 
+        (diametri.reduce((a, b) => a + b, 0) / diametri.length).toFixed(1) + 'cm' : '-';
+    document.getElementById('statSpecies').textContent = species;
+
+    // ===== NUOVA PARTE: Conteggio CPC =====
+    const cpcCount = {B: 0, C: 0, 'C/D': 0, D: 0};
+    filteredTrees.forEach(t => {
+        if (cpcCount.hasOwnProperty(t.cpc)) {
+            cpcCount[t.cpc]++;
+        }
+    });
+    document.getElementById('statCpcB').textContent = cpcCount.B;
+    document.getElementById('statCpcC').textContent = cpcCount.C;
+    document.getElementById('statCpcCD').textContent = cpcCount['C/D'];
+    document.getElementById('statCpcD').textContent = cpcCount.D;
+
+    // ===== NUOVA PARTE: Conteggio Cod. Lavorazione =====
+    const lavorazioneCount = {};
+    filteredTrees.forEach(t => {
+        lavorazioneCount[t.codice] = (lavorazioneCount[t.codice] || 0) + 1;
+    });
+    
+    // Ordina per frequenza decrescente
+    const sortedLavorazioni = Object.entries(lavorazioneCount)
+        .sort((a, b) => b[1] - a[1]);
+    
+    // Crea HTML per le lavorazioni
+    let lavorazioneHTML = '';
+    sortedLavorazioni.forEach(([cod, count]) => {
+        lavorazioneHTML += `
+            <div style="padding: 8px; margin-bottom: 8px; background: #f9f9f9; border-left: 3px solid #27ae60; border-radius: 4px;">
+                <strong>${cod}</strong>: <span style="color: #27ae60; font-weight: 700;">${count}</span>
+            </div>
+        `;
+    });
+    
+    document.getElementById('statLavorazione').innerHTML = lavorazioneHTML || 
+        '<div style="padding: 8px; color: #999;">Nessun dato</div>';
+
+    // ===== NUOVA PARTE: Calcoli ambientali e costi =====
+    let totalO2 = 0;
+    let totalCO2 = 0;
+    let totalWorkingCost = 0;
+    
+    filteredTrees.forEach(t => {
+        totalO2 += parseFloat(calculateO2Production(t));
+        totalCO2 += parseFloat(calculateCO2Absorption(t));
+        totalWorkingCost += getWorkingCost(t);
+    });
+    
+    // Aggiorna i dati ambientali
+    document.getElementById('statTotalO2').textContent = totalO2.toFixed(2) + ' kg/anno';
+    document.getElementById('statTotalCO2').textContent = totalCO2.toFixed(2) + ' kg/anno';
+    document.getElementById('statTotalWorkingCost').textContent = formatCurrency(totalWorkingCost);
+
+    // ===== NUOVA PARTE: Dati Territorio =====
+    const strade = new Set(filteredTrees.map(t => t.odonimo).filter(o => o !== '-'));
+    const uplCount = {};
+    const quartiereCount = {};
+    const circoscrizioneCount = {};
+
+    filteredTrees.forEach(t => {
+        if (t.upl && t.upl !== '-') {
+            uplCount[t.upl] = (uplCount[t.upl] || 0) + 1;
+        }
+        if (t.quartiere && t.quartiere !== '-') {
+            quartiereCount[t.quartiere] = (quartiereCount[t.quartiere] || 0) + 1;
+        }
+        if (t.circoscrizione && t.circoscrizione !== '-') {
+            circoscrizioneCount[t.circoscrizione] = (circoscrizioneCount[t.circoscrizione] || 0) + 1;
+        }
+    });
+
+    // Formatta i dati per territorio (mostra solo i primi 2 valori)
+    const formatTerritorioData = (data) => {
+        const entries = Object.entries(data).sort((a, b) => b[1] - a[1]);
+        if (entries.length === 0) return '-';
+        if (entries.length === 1) return `${entries[0][0]}: ${entries[0][1]}`;
+        // Mostra i primi 2 risultati
+        const top2 = entries.slice(0, 2).map(([nome, count]) => `${nome}: ${count}`).join(', ');
+        return entries.length > 2 ? `${top2}, ...` : top2;
+    };
+
+    document.getElementById('statTotalStrade').textContent = strade.size;
+    document.getElementById('statAlberiPerUPL').textContent = formatTerritorioData(uplCount);
+    document.getElementById('statAlberiPerQuartiere').textContent = formatTerritorioData(quartiereCount);
+    document.getElementById('statAlberiPerCircoscrizione').textContent = formatTerritorioData(circoscrizioneCount);
+}
+
+// ===== FUNZIONE PER FORMATTARE VALUTA IN FORMATO ITALIANO =====
+function formatCurrency(value) {
+    if (value === 0 || !value) return '0,00 €';
+
+    // Converti in stringa con 2 decimali
+    const fixed = value.toFixed(2);
+    const [integerPart, decimalPart] = fixed.split('.');
+
+    // Aggiungi separatore migliaia
+    const formattedInteger = integerPart.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+
+    // Ritorna nel formato italiano
+    return `${formattedInteger},${decimalPart} €`;
+}
+
+function showTreeDetails(tree) {
+    selectedTree = tree;  // SALVA L'ALBERO SELEZIONATO
+    
+    // Calcola i valori ambientali
+    const o2Production = calculateO2Production(tree);
+    const co2Absorption = calculateCO2Absorption(tree);
+    const workingCost = getWorkingCost(tree);
+    
+    const info = document.getElementById('selectedTreeInfo');
+    info.innerHTML = `
+        <div class="detail-item"><div class="detail-label">ID</div><div class="detail-value">${tree.id}</div></div>
+        <div class="detail-item"><div class="detail-label">Specie arborea</div><div class="detail-value">${tree.specie}</div></div>
+        <div class="detail-item"><div class="detail-label">Dimora</div><div class="detail-value">${tree.sito}</div></div>
+        <div class="detail-item"><div class="detail-label">Altezza (m)</div><div class="detail-value">${tree.altezza || 'n/a'}</div></div>
+        <div class="detail-item"><div class="detail-label">Diametro (cm)</div><div class="detail-value">${tree.diametro || 'n/a'}</div></div>
+        <div class="detail-item"><div class="detail-label">classe propensione cedimento - CPC</div><div class="detail-value" style="color: ${cpcColors[tree.cpc]}">${tree.cpc}</div></div>
+        <div class="detail-item"><div class="detail-label">Descrizione CPC</div><div class="detail-value">${tree.descrizione_ccp}</div></div>
+        <div class="detail-item"><div class="detail-label">Cod. Lavorazione</div><div class="detail-value">${tree.codice}</div></div>
+        <div class="detail-item" ><div class="detail-label">Tipo di lavorazione</div><div class="detail-value" style="font-size: 12px;">${tree.descrizione}</div></div>
+        <div class="detail-item"><div class="detail-label">Prezzo unitario</div><div class="detail-value">${formatCurrency(tree.prezzo)}</div></div>
+
+        <div class="detail-item" style="grid-column: 1/-1; margin-top: 15px; padding: 12px; background: linear-gradient(135deg, #e3f2fd 0%, #f1f8ff 100%); border-left: 4px solid #3498db; border-radius: 6px;">
+            <div class="detail-label" style="margin-bottom: 10px;"><i class="fa fa-map-marker-alt"></i> LOCALIZZAZIONE TERRITORIALE</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                <div class="detail-item" style="margin: 0;"><div class="detail-label">Strada (Odonimo)</div><div class="detail-value">${tree.odonimo || '-'}</div></div>
+                <div class="detail-item" style="margin: 0;"><div class="detail-label">UPL</div><div class="detail-value">${tree.upl || '-'}</div></div>
+                <div class="detail-item" style="margin: 0;"><div class="detail-label">Quartiere</div><div class="detail-value">${tree.quartiere || '-'}</div></div>
+                <div class="detail-item" style="margin: 0;"><div class="detail-label">Circoscrizione</div><div class="detail-value">${tree.circoscrizione || '-'}</div></div>
+            </div>
+        </div>
+
+        <div class="detail-item" style="grid-column: 1/-1; margin-top: 15px; padding: 12px; background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%); border-left: 4px solid #27ae60; border-radius: 6px;">
+            <div class="detail-label" style="margin-bottom: 10px;"><i class="fa-solid fa-seedling"></i> BENEFICI AMBIENTALI (all'anno)</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px;">
+                <div style="padding: 8px; background: white; border-radius: 4px; border-left: 3px solid #4caf50;">
+                    <div style="font-size: 11px; color: #666; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 4px;">Assorbimento CO₂ annuale:</div>
+                    <div style="font-size: 18px; font-weight: 700; color: #27ae60;">${co2Absorption} kg/anno</div>
+                </div>
+                <div style="padding: 8px; background: white; border-radius: 4px; border-left: 3px solid #2196f3;">
+                    <div style="font-size: 11px; color: #666; font-weight: 700; text-transform: uppercase; letter-spacing: 0.3px; margin-bottom: 4px;">Produzione O₂ annuale:</div>
+                    <div style="font-size: 18px; font-weight: 700; color: #1976d2;">${o2Production} kg/anno</div>
+                </div>
+            </div>
+            <div style="font-size: 10px; color: #888; margin-top: 8px; font-style: italic;">
+                Calcolati in base a: specie botanica, dimensioni, stato di salute
+            </div>
+        </div>
+
+        <div class="detail-item" style="grid-column: 1/-1; margin-top: 10px;">
+            <button class="pdf-button" onclick="generateTreePDF()" style="width: 100%; background: #27ae60; color: white; padding: 10px; border: none; border-radius: 6px; cursor: pointer; font-weight: 600;"><i class="fa fa-download" aria-hidden="true"></i> Scarica PDF</button>
+        </div>
+    `;
+}
+
+function generateTreePDF() {
+    if (!selectedTree) {
+        alert('Seleziona un albero prima di generare il PDF');
+        return;
+    }
+
+    const tree = selectedTree;
+    
+    // Crea un iframe invisibile
+    const iframe = document.createElement('iframe');
+    iframe.style.display = 'none';
+    document.body.appendChild(iframe);
+    
+    const iframeDoc = iframe.contentDocument || iframe.contentWindow.document;
+    
+    const htmlContent = `
+        <!DOCTYPE html>
+        <html>
+        <head>
+            <meta charset="UTF-8">
+            <style>
+                body {
+                    font-family: Arial, sans-serif;
+                    color: #333;
+                    padding: 20px;
+                    line-height: 1.6;
+                }
+                h1 {
+                    color: #27ae60;
+                    text-align: center;
+                    margin-bottom: 5px;
+                    font-size: 24px;
+                }
+                .header {
+                    text-align: center;
+                    color: #888;
+                    font-size: 12px;
+                    margin-bottom: 20px;
+                    border-bottom: 2px solid #27ae60;
+                    padding-bottom: 15px;
+                }
+                h2 {
+                    color: #1e8449;
+                    margin: 20px 0 10px 0;
+                    font-size: 14px;
+                    border-bottom: 2px solid #27ae60;
+                    padding-bottom: 5px;
+                }
+                table {
+                    width: 100%;
+                    margin-bottom: 15px;
+                    border-collapse: collapse;
+                }
+                td {
+                    padding: 8px;
+                    border-bottom: 1px solid #eee;
+                }
+                td:first-child {
+                    font-weight: bold;
+                    width: 40%;
+                }
+                .section {
+                    margin-bottom: 20px;
+                    padding: 10px;
+                    background: #f9f9f9;
+                    border-left: 3px solid #27ae60;
+                    border-radius: 4px;
+                }
+                .footer {
+                    text-align: center;
+                    color: #888;
+                    font-size: 10px;
+                    margin-top: 30px;
+                    border-top: 1px solid #ddd;
+                    padding-top: 15px;
+                }
+            </style>
+        </head>
+        <body>
+            <h1>Scheda Albero</h1>
+            <div class="header">Dashboard Alberi Viale Emilia - Palermo</div>
+            
+            <h2>Informazioni Generali</h2>
+            <table>
+                <tr><td>ID Pianta:</td><td>${tree.id}</td></tr>
+                <tr><td>Specie arborea:</td><td>${tree.specie}</td></tr>
+                <tr><td>Dimora:</td><td>${tree.sito}</td></tr>
+            </table>
+            
+            <h2>Dimensioni</h2>
+            <table>
+                <tr><td>Altezza (m):</td><td>${tree.altezza || 'n/a'}</td></tr>
+                <tr><td>Diametro (cm):</td><td>${tree.diametro || 'n/a'}</td></tr>
+            </table>
+
+            <h2>Localizzazione Territoriale</h2>
+            <table>
+                <tr><td>Strada (Odonimo):</td><td>${tree.odonimo || '-'}</td></tr>
+                <tr><td>UPL:</td><td>${tree.upl || '-'}</td></tr>
+                <tr><td>Quartiere:</td><td>${tree.quartiere || '-'}</td></tr>
+                <tr><td>Circoscrizione:</td><td>${tree.circoscrizione || '-'}</td></tr>
+            </table>
+
+            <h2>Stato di Salute e Interventi</h2>
+            <table>
+                <tr><td>CPC:</td><td style="color: ${cpcColors[tree.cpc]}; font-weight: bold;">${tree.cpc}</td></tr>
+                <tr><td>Cod. Lavorazione:</td><td>${tree.codice}</td></tr>
+                <tr><td>Prezzo Unitario (€):</td><td>${tree.prezzo.toFixed(2)}</td></tr>
+            </table>
+            
+            <h2>Benefici Ambientali all'anno</h2>
+            <div class="section" style="background: #e8f5e9; border-left: 4px solid #27ae60;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 10px;">
+                    <div>
+                        <div style="font-weight: bold; color: #27ae60; font-size: 12px; margin-bottom: 5px;">PRODUZIONE O₂ ANNUALE</div>
+                        <div style="font-size: 18px; font-weight: bold; color: #1976d2;">${calculateO2Production(tree)} kg/anno</div>
+                    </div>
+                    <div>
+                        <div style="font-weight: bold; color: #27ae60; font-size: 12px; margin-bottom: 5px;">ASSORBIMENTO CO₂ ANNUALE</div>
+                        <div style="font-size: 18px; font-weight: bold; color: #27ae60;">${calculateCO2Absorption(tree)} kg/anno</div>
+                    </div>
+                </div>
+            </div>
+			<hr>
+			<div class="section" style="font-size: 11px;">
+                <strong>Nota metodologica:</strong> I valori sono calcolati mediante modelli scientifici standardizzati (USDA Forest Service, Urban Forest Carbon Study), 
+                considerando la specie botanica, le dimensioni dell'albero (altezza e diametro), e il suo stato fitosanitario (CPC). 
+                Questi sono valori indicativi di sequestro di CO₂ e produzione di O₂ per singolo esemplare arboreo.
+            </div>
+			
+            <h2>Descrizione Intervento</h2>
+            <div class="section">${tree.descrizione}</div>
+            <br>
+            <h2>Descrizione Classe Propensione Cedimento CPC</h2>
+            <div class="section">${tree.descrizione_ccp}</div>
+            
+<h2>Documentazione Fotografica</h2>
+            <div style="margin-bottom: 20px;">
+                <div style="margin-bottom: 15px; page-break-inside: avoid;">
+                    <div style="font-weight: bold; color: #27ae60; font-size: 11px; margin-bottom: 8px;">📸 Cercine e Tronco</div>
+                    <div style="width: 100%; height: 200px; background: linear-gradient(180deg, #8B7355 0%, #654321 100%); border: 1px solid #ddd; border-radius: 4px; display: flex; align-items: center; justify-content: center; overflow: hidden; position: relative;">
+                        <svg viewBox="0 0 400 300" style="width: 100%; height: 100%;">
+                            <defs>
+                                <radialGradient id="barkGrad" cx="50%" cy="30%">
+                                    <stop offset="0%" style="stop-color:#9b8b7e;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#5d4e37;stop-opacity:1" />
+                                </radialGradient>
+                            </defs>
+                            <rect width="400" height="300" fill="#8B7355"/>
+                            <ellipse cx="200" cy="150" rx="100" ry="120" fill="url(#barkGrad)"/>
+                            <path d="M120 150 Q120 120 150 100 Q180 90 200 85 Q220 90 250 100 Q280 120 280 150" fill="#704214" opacity="0.3"/>
+                            <path d="M130 180 Q130 160 160 150 Q190 145 200 142 Q210 145 240 150 Q270 160 270 180" fill="#5d4e37" opacity="0.4"/>
+                            <circle cx="180" cy="130" r="8" fill="#3a3a3a" opacity="0.5"/>
+                            <circle cx="220" cy="125" r="6" fill="#3a3a3a" opacity="0.5"/>
+                            <circle cx="150" cy="160" r="7" fill="#3a3a3a" opacity="0.4"/>
+                            <circle cx="250" cy="165" r="9" fill="#3a3a3a" opacity="0.4"/>
+                            <text x="200" y="270" font-size="16" fill="white" text-anchor="middle" font-weight="bold">Cercine e Tronco</text>
+                        </svg>
+                    </div>
+                    <div style="font-size: 9px; color: #999; margin-top: 5px; text-align: center;">Dettaglio del cercine e del tronco</div>
+                </div>
+                
+                <div style="margin-bottom: 15px; page-break-inside: avoid;">
+                    <div style="font-weight: bold; color: #27ae60; font-size: 11px; margin-bottom: 8px;">📸 Albero Intero</div>
+                    <div style="width: 100%; height: 200px; background: linear-gradient(180deg, #87CEEB 0%, #E0F6FF 100%); border: 1px solid #ddd; border-radius: 4px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                        <svg viewBox="0 0 400 300" style="width: 100%; height: 100%;">
+                            <defs>
+                                <radialGradient id="crown1" cx="50%" cy="40%">
+                                    <stop offset="0%" style="stop-color:#2d8f2d;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#1a5e1a;stop-opacity:1" />
+                                </radialGradient>
+                                <radialGradient id="crown2" cx="45%" cy="35%">
+                                    <stop offset="0%" style="stop-color:#3a9d3a;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#2d7a2d;stop-opacity:1" />
+                                </radialGradient>
+                            </defs>
+                            <ellipse cx="200" cy="250" rx="180" ry="40" fill="#8B7355" opacity="0.3"/>
+                            <rect x="175" y="170" width="50" height="90" fill="#8B6F47"/>
+                            <ellipse cx="200" cy="120" rx="85" ry="90" fill="url(#crown1)"/>
+                            <ellipse cx="140" cy="100" rx="65" ry="70" fill="url(#crown2)"/>
+                            <ellipse cx="260" cy="100" rx="65" ry="70" fill="url(#crown2)"/>
+                            <ellipse cx="200" cy="60" rx="60" ry="65" fill="#2d8f2d"/>
+                            <circle cx="120" cy="130" r="20" fill="#3a9d3a" opacity="0.6"/>
+                            <circle cx="280" cy="130" r="20" fill="#3a9d3a" opacity="0.6"/>
+                            <rect x="0" y="260" width="400" height="40" fill="#8B7355" opacity="0.2"/>
+                            <text x="200" y="290" font-size="14" fill="#333" text-anchor="middle" font-weight="bold">Albero Intero</text>
+                        </svg>
+                    </div>
+                    <div style="font-size: 9px; color: #999; margin-top: 5px; text-align: center;">Vista completa dell'albero</div>
+                </div>
+                
+                <div style="margin-bottom: 15px; page-break-inside: avoid;">
+                    <div style="font-weight: bold; color: #27ae60; font-size: 11px; margin-bottom: 8px;">📸 Chioma</div>
+                    <div style="width: 100%; height: 200px; background: linear-gradient(135deg, #87CEEB 0%, #C8E6C9 100%); border: 1px solid #ddd; border-radius: 4px; display: flex; align-items: center; justify-content: center; overflow: hidden;">
+                        <svg viewBox="0 0 400 300" style="width: 100%; height: 100%;">
+                            <defs>
+                                <radialGradient id="leaf1" cx="50%" cy="40%">
+                                    <stop offset="0%" style="stop-color:#4db84d;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#1a5e1a;stop-opacity:1" />
+                                </radialGradient>
+                                <radialGradient id="leaf2" cx="45%" cy="35%">
+                                    <stop offset="0%" style="stop-color:#66bb6a;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#2d7a2d;stop-opacity:1" />
+                                </radialGradient>
+                            </defs>
+                            <ellipse cx="200" cy="150" rx="110" ry="120" fill="url(#leaf1)"/>
+                            <ellipse cx="150" cy="110" rx="75" ry="85" fill="url(#leaf2)"/>
+                            <ellipse cx="250" cy="110" rx="75" ry="85" fill="url(#leaf2)"/>
+                            <ellipse cx="200" cy="70" rx="65" ry="75" fill="#4db84d"/>
+                            <circle cx="130" cy="150" r="25" fill="#66bb6a" opacity="0.7"/>
+                            <circle cx="270" cy="150" r="25" fill="#66bb6a" opacity="0.7"/>
+                            <circle cx="200" cy="200" r="28" fill="#66bb6a" opacity="0.8"/>
+                            <path d="M180 90 L190 120 L200 100 L210 125 L220 95" stroke="#2d7a2d" stroke-width="2" fill="none" opacity="0.5"/>
+                            <text x="200" y="270" font-size="14" fill="#333" text-anchor="middle" font-weight="bold">Dettaglio Chioma</text>
+                        </svg>
+                    </div>
+                    <div style="font-size: 9px; color: #999; margin-top: 5px; text-align: center;">Dettaglio della chioma e fogliame</div>
+                </div>
+            </div>
+			<p>
+			Questa applicazione è stata sviluppata a scopo dimostrativo e educativo per illustrare le potenzialità dei sistemi di monitoraggio urbano e gestione dati geospaziali. I dati visualizzati sono sintetici e non rappresentano situazioni reali certificate.</p>
+			<div class="footer">Documento DEMO generato il ${new Date().toLocaleDateString('it-IT')}</div>
+        </body>
+        </html>
+    `;
+    
+    iframeDoc.open();
+    iframeDoc.write(htmlContent);
+    iframeDoc.close();
+    
+    // Attendi il rendering e stampa
+    setTimeout(() => {
+        iframe.contentWindow.print();
+        // Rimuovi l'iframe dopo la stampa
+        setTimeout(() => {
+            document.body.removeChild(iframe);
+        }, 100);
+    }, 500);
+}
+        // ===== GRAFICI =====
+		
+function initCharts() {
+    console.log('📊 Inizializzazione grafici...');
+
+    // Altezze
+    const heightCtx = document.getElementById('heightChart');
+    if (heightCtx && heightCtx.getContext) {
+        chartsInstances.height = new Chart(heightCtx, {
+            type: 'bar',
+            data: {
+                labels: ['6-8m', '8-10m', '10-12m', '12-14m', '14-16m', '>16m'],
+                datasets: [{
+                    label: 'Alberi',
+                    data: [0, 0, 0, 0, 0, 0],
+                    backgroundColor: '#27ae60',
+                    borderColor: '#1e8449',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { 
+                    legend: { display: false },
+                    tooltip: { enabled: true }
+                },
+                scales: { y: { beginAtZero: true } }
+            },
+            plugins: [{
+                afterDatasetsDraw(chart) {
+                    const ctx = chart.ctx;
+                    const chartArea = chart.chartArea;
+                    chart.data.datasets.forEach((dataset, i) => {
+                        const meta = chart.getDatasetMeta(i);
+                        meta.data.forEach((bar, index) => {
+                            const value = dataset.data[index];
+                            if (value > 0) {
+                                ctx.fillStyle = '#333';
+                                ctx.font = 'bold 12px Arial';
+                                ctx.textAlign = 'center';
+                                ctx.textBaseline = 'middle';
+                                
+                                const barHeight = bar.height;
+                                const barY = bar.y;
+                                const labelY = barY + barHeight / 2;
+                                
+                                // Se la barra è abbastanza alta (> 35px), etichetta dentro in bianco
+                                if (barHeight > 35) {
+                                    ctx.fillStyle = 'white';
+                                    ctx.fillText(value, bar.x, labelY);
+                                } 
+                                // Altrimenti etichetta fuori sopra la barra in grigio più visibile
+                                else {
+                                    ctx.fillStyle = '#555';
+                                    ctx.fillText(value, bar.x, barY - 10);
+                                }
+                            }
+                        });
+                    });
+                }
+            }]
+        });
+    }
+
+    // CPC - TRASFORMATO IN GRAFICO A COLONNE VERTICALI
+    const healthCtx = document.getElementById('healthChart');
+    if (healthCtx && healthCtx.getContext) {
+        chartsInstances.health = new Chart(healthCtx, {
+            type: 'bar',
+            data: {
+                labels: ['B', 'C', 'C/D', 'D'],
+                datasets: [{
+                    label: 'Alberi',
+                    data: [0, 0, 0, 0],
+                    backgroundColor: ['#2cc15f', '#f39c12', '#c164a1', '#e74c3c'],
+                    borderColor: ['#25a84f', '#d68910', '#a04d85', '#c0392b'],
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                indexAxis: 'x',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { 
+                    legend: { display: false },
+                    tooltip: { enabled: true }
+                },
+                scales: { 
+                    y: { beginAtZero: true }
+                }
+            },
+            plugins: [{
+                afterDatasetsDraw(chart) {
+                    const ctx = chart.ctx;
+                    
+                    chart.data.datasets.forEach((dataset, datasetIndex) => {
+                        const meta = chart.getDatasetMeta(datasetIndex);
+                        
+                        meta.data.forEach((bar, index) => {
+                            const value = dataset.data[index];
+                            
+                            if (value > 0) {
+                                ctx.fillStyle = '#333';
+                                ctx.font = 'bold 12px Arial';
+                                ctx.textAlign = 'center';
+                                ctx.textBaseline = 'middle';
+                                
+                                const barHeight = bar.height;
+                                const barY = bar.y;
+                                const barX = bar.x;
+                                
+                                if (barHeight > 35) {
+                                    ctx.fillStyle = 'white';
+                                    ctx.fillText(value, barX, barY + barHeight / 2);
+                                } else {
+                                    ctx.fillStyle = '#555';
+                                    ctx.fillText(value, barX, barY - 10);
+                                }
+                            }
+                        });
+                    });
+                }
+            }]
+        });
+    }
+
+    // Specie
+    const speciesCtx = document.getElementById('speciesChart');
+    if (speciesCtx && speciesCtx.getContext) {
+        chartsInstances.species = new Chart(speciesCtx, {
+            type: 'bar',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Esemplari',
+                    data: [],
+                    backgroundColor: '#2ecc71',
+                    borderColor: '#27ae60',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { 
+                    legend: { display: false },
+                    tooltip: { enabled: true }
+                },
+                scales: { x: { beginAtZero: true } }
+            },
+            plugins: [{
+                afterDatasetsDraw(chart) {
+                    const ctx = chart.ctx;
+                    const chartArea = chart.chartArea;
+                    chart.data.datasets.forEach((dataset, i) => {
+                        const meta = chart.getDatasetMeta(i);
+                        meta.data.forEach((bar, index) => {
+                            const value = dataset.data[index];
+                            if (value > 0) {
+                                ctx.fillStyle = '#333';
+                                ctx.font = 'bold 11px Arial';
+                                ctx.textBaseline = 'middle';
+                                const barWidth = bar.width;
+                                
+                                // Se la barra è abbastanza lunga (> 50px), etichetta dentro in bianco
+                                if (barWidth > 45) {
+                                    ctx.fillStyle = 'white';
+                                    ctx.textAlign = 'center';
+                                    ctx.fillText(value, bar.x - 35, bar.y);
+                                } 
+                                // Altrimenti etichetta fuori a destra in grigio
+                                else {
+                                    ctx.fillStyle = '#555';
+                                    ctx.textAlign = 'left';
+                                    ctx.fillText(value, bar.x + barWidth + 8, bar.y);
+                                }
+                            }
+                        });
+                    });
+                }
+            }]
+        });
+    }
+
+    // Sito impianto
+    const siteCtx = document.getElementById('siteChart');
+    if (siteCtx && siteCtx.getContext) {
+        chartsInstances.site = new Chart(siteCtx, {
+            type: 'bar',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: 'Esemplari',
+                    data: [],
+                    backgroundColor: '#2ecc71',
+                    borderColor: '#27ae60',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { 
+                    legend: { display: false },
+                    tooltip: { enabled: true }
+                },
+                scales: { x: { beginAtZero: true } }
+            },
+            plugins: [{
+                afterDatasetsDraw(chart) {
+                    const ctx = chart.ctx;
+                    const chartArea = chart.chartArea;
+                    chart.data.datasets.forEach((dataset, i) => {
+                        const meta = chart.getDatasetMeta(i);
+                        meta.data.forEach((bar, index) => {
+                            const value = dataset.data[index];
+                            if (value > 0) {
+                                ctx.fillStyle = '#333';
+                                ctx.font = 'bold 11px Arial';
+                                ctx.textBaseline = 'middle';
+                                const barWidth = bar.width;
+                                
+                                // Se la barra è abbastanza lunga (> 50px), etichetta dentro in bianco
+                                if (barWidth > 45) {
+                                    ctx.fillStyle = 'white';
+                                    ctx.textAlign = 'left';
+                                    ctx.fillText(value, bar.x - 35, bar.y);
+                                } 
+                                // Altrimenti etichetta fuori a destra in grigio
+                                else {
+                                    ctx.fillStyle = '#555';
+                                    ctx.textAlign = 'left';
+                                    ctx.fillText(value, bar.x + barWidth + 8, bar.y);
+                                }
+                            }
+                        });
+                    });
+                }
+            }]
+        });
+    }
+
+    // Foglie stagionali per via
+    const seasonalLeavesCtx = document.getElementById('seasonalLeavesChart');
+    if (seasonalLeavesCtx && seasonalLeavesCtx.getContext) {
+        chartsInstances.seasonalLeaves = new Chart(seasonalLeavesCtx, {
+            type: 'bar',
+            data: {
+                labels: [],
+                datasets: [
+                    {
+                        label: 'Primavera',
+                        data: [],
+                        backgroundColor: '#FAD5A5',
+                        borderColor: '#F4C78D',
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'Estate',
+                        data: [],
+                        backgroundColor: '#B0C4DE',
+                        borderColor: '#9BB3D0',
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'Autunno',
+                        data: [],
+                        backgroundColor: '#D2691E',
+                        borderColor: '#C05A18',
+                        borderWidth: 2
+                    },
+                    {
+                        label: 'Inverno',
+                        data: [],
+                        backgroundColor: '#000080',
+                        borderColor: '#000066',
+                        borderWidth: 2
+                    }
+                ]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'top'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            label: function(context) {
+                                return context.dataset.label + ': ' + context.parsed.x.toLocaleString('it-IT') + ' foglie';
+                            }
+                        }
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        stacked: false,
+                        ticks: {
+                            callback: function(value) {
+                                return value.toLocaleString('it-IT');
+                            }
+                        }
+                    },
+                    y: {
+                        stacked: false
+                    }
+                }
+            }
+        });
+
+        // Popola il grafico con i dati
+        updateSeasonalLeavesChart();
+    }
+
+    console.log('✅ Grafici inizializzati');
+}
+
+// Funzione per aggiornare il grafico delle foglie stagionali
+function updateSeasonalLeavesChart() {
+    if (!chartsInstances.seasonalLeaves) {
+        console.warn('⚠️ Grafico foglie stagionali non inizializzato');
+        return;
+    }
+
+    if (!seasonalLeavesData || Object.keys(seasonalLeavesData).length === 0) {
+        console.warn('⚠️ Nessun dato foglie stagionali disponibile');
+        return;
+    }
+
+    const streets = Object.keys(seasonalLeavesData).sort();
+    const primaveraData = [];
+    const estateData = [];
+    const autunnoData = [];
+    const invernoData = [];
+
+    streets.forEach(street => {
+        const data = seasonalLeavesData[street];
+        primaveraData.push((data['Primavera'] && data['Primavera'].count) || 0);
+        estateData.push((data['Estate'] && data['Estate'].count) || 0);
+        autunnoData.push((data['Autunno'] && data['Autunno'].count) || 0);
+        invernoData.push((data['Inverno'] && data['Inverno'].count) || 0);
+    });
+
+    chartsInstances.seasonalLeaves.data.labels = streets;
+    chartsInstances.seasonalLeaves.data.datasets[0].data = primaveraData;
+    chartsInstances.seasonalLeaves.data.datasets[1].data = estateData;
+    chartsInstances.seasonalLeaves.data.datasets[2].data = autunnoData;
+    chartsInstances.seasonalLeaves.data.datasets[3].data = invernoData;
+    chartsInstances.seasonalLeaves.update();
+
+    console.log('📊 Grafico foglie stagionali aggiornato con', streets.length, 'vie');
+}
+
+
+    // ===== DOWNLOAD RELAZIONE TECNICA DA FILE LINKATO =====
+    function downloadRelazione() {
+        // URL del file PDF - MODIFICA CON L'URL REALE DEL TUO FILE
+        const pdfUrl = 'https://palermohub.github.io/Verde_Urbano/Analisi_Viale_Emilia_Completa.pdf';
+        
+        const link = document.createElement('a');
+        link.href = pdfUrl;
+        link.download = 'Relazione_Tecnica_Viale_Emilia.pdf';
+        
+        try {
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+            console.log('✅ Download relazione tecnica avviato');
+        } catch (error) {
+            console.error('❌ Errore nel download:', error);
+            alert('Errore nel download. Verifica che l\'URL sia corretto.');
+        }
+    }
+
+    // ===== STAMPA MAPPA IN PDF =====
+    function printMapPdf() {
+        const btn = event.target.closest('button');
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generazione...';
+        btn.disabled = true;
+
+        setTimeout(() => {
+            try {
+                // Crea un contenitore temporaneo per il PDF - LANDSCAPE
+                const pdfContainer = document.createElement('div');
+                pdfContainer.style.width = '297mm';
+                pdfContainer.style.height = '210mm';
+                pdfContainer.style.padding = '12mm';
+                pdfContainer.style.fontFamily = 'Segoe UI, Arial, sans-serif';
+                pdfContainer.style.backgroundColor = '#ffffff';
+                pdfContainer.style.display = 'flex';
+                pdfContainer.style.flexDirection = 'column';
+                pdfContainer.style.fontSize = '12px';
+                pdfContainer.style.color = '#333';
+
+                // HEADER
+                const header = document.createElement('div');
+                header.style.flex = '0 0 auto';
+                header.style.borderBottom = '3px solid #27ae60';
+                header.style.paddingBottom = '8mm';
+                header.style.marginBottom = '8mm';
+                const odonimoFilter = document.getElementById('odonimoFilter').value;
+                const titleText = odonimoFilter ? `alberi ${odonimoFilter}` : 'Verde Urbano';
+                header.innerHTML = `
+                    <div style="font-size: 18px; font-weight: 700; color: #27ae60; margin-bottom: 4px;">
+                        <i class="fas fa-tree"></i> Demo prototipale | ${titleText}
+                    </div>
+                    <div style="font-size: 11px; color: #666;">
+                        Palermo 2025 - Monitoraggio e analisi dello stato di salute del verde urbano
+                    </div>
+                `;
+                pdfContainer.appendChild(header);
+
+                // SEZIONE MAPPA (la parte centrale - la più grande)
+                const mapSection = document.createElement('div');
+                mapSection.style.flex = '1 1 auto';
+                mapSection.style.display = 'flex';
+                mapSection.style.justifyContent = 'center';
+                mapSection.style.alignItems = 'center';
+                mapSection.style.marginBottom = '8mm';
+                mapSection.style.overflow = 'hidden';
+
+                // Clona la mappa
+                const mapElement = document.getElementById('map');
+                const mapClone = mapElement.cloneNode(true);
+                mapClone.style.width = '100%';
+                mapClone.style.height = '110mm';
+                mapClone.style.borderRadius = '4px';
+                mapClone.style.boxShadow = '0 2px 8px rgba(0,0,0,0.1)';
+                mapSection.appendChild(mapClone);
+
+                pdfContainer.appendChild(mapSection);
+
+                // FOOTER
+                const footer = document.createElement('div');
+                footer.style.flex = '0 0 auto';
+                footer.style.borderTop = '2px solid #27ae60';
+                footer.style.paddingTop = '8mm';
+                footer.style.fontSize = '10px';
+                footer.style.lineHeight = '1.4';
+                footer.style.color = '#555';
+                footer.innerHTML = `
+                    <div style="font-weight: 700; color: #27ae60; margin-bottom: 4px; font-size: 11px;">
+                        <i class="fas fa-lightbulb"></i> Natura della Demo
+                    </div>
+                    <div style="text-align: justify;">
+                        Questa è una demo prototipale che mostra i dati di monitoraggio relativi a una singola strada (Viale Emilia). Il progetto completo di cui fa parte è molto più articolato e comprende ulteriori strade, zone e funzionalità avanzate non ancora rappresentate in questa versione.
+                    </div>
+                `;
+                pdfContainer.appendChild(footer);
+
+                // Aggiungi temporaneamente al DOM per il rendering
+                pdfContainer.style.position = 'fixed';
+                pdfContainer.style.top = '-5000px';
+                pdfContainer.style.left = '0';
+                pdfContainer.style.zIndex = '-1';
+                document.body.appendChild(pdfContainer);
+
+                // Usa html2canvas per catturare l'elemento
+                html2canvas(pdfContainer, {
+                    scale: 2,
+                    useCORS: true,
+                    backgroundColor: '#ffffff',
+                    allowTaint: true,
+                    logging: false
+                }).then(canvas => {
+                    const imgData = canvas.toDataURL('image/jpeg', 0.98);
+                    
+                    // Crea il PDF con jsPDF
+                    const { jsPDF } = window.jspdf;
+                    const pdf = new jsPDF({
+                        orientation: 'landscape',
+                        unit: 'mm',
+                        format: 'a4'
+                    });
+
+                    // Calcola le dimensioni per adattare l'immagine al PDF
+                    const pdfWidth = pdf.internal.pageSize.getWidth();
+                    const pdfHeight = pdf.internal.pageSize.getHeight();
+                    const imgWidth = pdfWidth;
+                    const imgHeight = (canvas.height * pdfWidth) / canvas.width;
+
+                    pdf.addImage(imgData, 'JPEG', 0, 0, imgWidth, imgHeight);
+                    
+                    // Aggiungi timbro "work in progress" ruotato di 45°
+                    const pageWidth = pdf.internal.pageSize.getWidth();
+                    const pageHeight = pdf.internal.pageSize.getHeight();
+                    const centerX = pageWidth / 2
+                    const centerY = pageHeight / 1.5;
+                    
+                    // Imposta le proprietà del timbro
+                    pdf.setFont('helvetica', 'bold');
+                    pdf.setFontSize(30);
+                    pdf.setTextColor(220, 80, 80); // Rosso
+                    
+                    // Crea uno stato grafico con trasparenza
+                    pdf.setGState(new pdf.GState({opacity: 0.75}));
+                    
+                    // Ruota il testo di 45°
+                    pdf.text('Work in progress - Mappa non corretta', centerX, centerY, {
+                        align: 'center',
+                        baseline: 'middle',
+                        angle: 25
+                    });
+                    
+                    pdf.save('Mappa_Viale_Emilia.pdf');
+
+                    console.log('✅ Mappa stampata in PDF con layout landscape');
+                    
+                    // Rimuovi il contenitore temporaneo
+                    document.body.removeChild(pdfContainer);
+                    
+                    // Ripristina il pulsante
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+
+                }).catch(error => {
+                    console.error('❌ Errore nella stampa:', error);
+                    alert('Errore nella generazione del PDF. Riprova.');
+                    if (document.body.contains(pdfContainer)) {
+                        document.body.removeChild(pdfContainer);
+                    }
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                });
+
+            } catch (error) {
+                console.error('❌ Errore nella stampa:', error);
+                alert('Errore nella generazione del PDF. Riprova.');
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        }, 100);
+    }
+
+        function updateCharts() {
+            console.log('📊 Aggiornamento grafici...');
+
+            // Altezze - Corretto con 6 range
+            const heights = [0, 0, 0, 0, 0, 0];
+            filteredTrees.forEach(t => {
+                if (t.altezza !== null && !isNaN(t.altezza)) {
+                    if (t.altezza < 8) heights[0]++;
+                    else if (t.altezza < 10) heights[1]++;
+                    else if (t.altezza < 12) heights[2]++;
+                    else if (t.altezza < 14) heights[3]++;
+                    else if (t.altezza < 16) heights[4]++;
+                    else heights[5]++;
+                }
+            });
+            if (chartsInstances.height) {
+                chartsInstances.height.data.datasets[0].data = heights;
+                chartsInstances.height.update();
+            }
+
+            // CPC
+            const cpcCounts = {B: 0, C: 0, 'C/D': 0, D: 0 };
+            filteredTrees.forEach(t => {
+                if (cpcCounts.hasOwnProperty(t.cpc)) cpcCounts[t.cpc]++;
+            });
+            if (chartsInstances.health) {
+                chartsInstances.health.data.datasets[0].data = [cpcCounts.B, cpcCounts.C, cpcCounts['C/D'], cpcCounts.D];
+                chartsInstances.health.update();
+            }
+
+            // Specie
+            const speciesCount = {};
+            filteredTrees.forEach(t => {
+                speciesCount[t.specie] = (speciesCount[t.specie] || 0) + 1;
+            });
+            const sortedSpecies = Object.entries(speciesCount).sort((a, b) => b[1] - a[1]);
+            if (chartsInstances.species) {
+                chartsInstances.species.data.labels = sortedSpecies.map(s => s[0].substring(0, 15));
+                chartsInstances.species.data.datasets[0].data = sortedSpecies.map(s => s[1]);
+                chartsInstances.species.update();
+            }
+
+            // Siti
+            const siteCount = {};
+            filteredTrees.forEach(t => {
+                siteCount[t.sito] = (siteCount[t.sito] || 0) + 1;
+            });
+            const sortedSites = Object.entries(siteCount).sort((a, b) => b[1] - a[1]);
+            if (chartsInstances.site) {
+                chartsInstances.site.data.labels = sortedSites.map(s => s[0]);
+                chartsInstances.site.data.datasets[0].data = sortedSites.map(s => s[1]);
+                chartsInstances.site.update();
+            }
+
+            console.log('✅ Grafici aggiornati');
+        }
+    </script>
+
+    <!-- Footer -->
+    <footer>
+        <h3><i class="fas fa-lightbulb"></i> Natura della Demo</h3>
+        <p>Questa è una demo prototipale che mostra i dati di monitoraggio relativi a una singola strada (Viale Emilia). Il progetto completo di cui fa parte è molto più articolato e comprende ulteriori strade, zone e funzionalità avanzate non ancora rappresentate in questa versione.</p>
+    </footer>
+</body>
+</html>
