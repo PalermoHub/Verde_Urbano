@@ -83,7 +83,7 @@ function updateMap() {
             radius: radius,
             fillColor: color,
             color: '#fff',
-            weight: 2.5,
+            weight: .75,
             opacity: 1,
             fillOpacity: 0.85
         }).addTo(map);

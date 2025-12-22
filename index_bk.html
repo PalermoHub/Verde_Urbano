@@ -6,10 +6,14 @@
     <title> 🌳 Demo prototipale</title>
 	<meta name="description" content="Questa è una demo prototipale che mostra i dati di monitoraggio relativi a una singola strada. Il progetto completo di cui fa parte è molto più articolato e comprende ulteriori strade, zone e funzionalità avanzate non ancora rappresentate in questa versione.">
     <link rel="stylesheet" href="css/verde_urbano.css">   
-
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
+	
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-hash@0.2.1/leaflet-hash.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -164,7 +168,8 @@
     </div>
 
     <div class="container">
-        <div class="sidebar">
+        <!-- Sidebar Sinistra: Filtri -->
+        <div class="sidebar sidebar-left">
             <div class="info-banner">
                 <i class="fas fa-info-circle"></i> I filtri aggiornano mappa e grafici in tempo reale
             </div>
@@ -266,14 +271,6 @@
             <div class="button-group">
                 <button onclick="applyFilters()">✓ Applica</button>
                 <button class="secondary" onclick="resetFilters()">↺ Ripristina</button>
-            </div>
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
-                <button style="padding: 11px; background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; transition: all 0.3s;" onclick="downloadRelazione()" title="Scarica la Relazione Tecnica">
-                    <i class="fas fa-file-pdf"></i> Relazione
-                </button>
-                <button style="padding: 11px; background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; transition: all 0.3s;" onclick="printMapPdf()" title="Stampa la mappa in PDF">
-                    <i class="fas fa-map"></i> Mappa PDF
-                </button>
             </div>
 
             <h2 style="margin-top: 25px;"><i class="fas fa-chart-simple"></i> Statistiche</h2>
@@ -378,22 +375,32 @@
                 </div>
                 <div class="legend-item">
                     <i class="fas fa-circle" style="color: #e74c3c; font-size: 16px;"></i>
-                    <div><strong>D</strong> - Cattivo</div> 
+                    <div><strong>D</strong> - Cattivo</div>
                 </div>
             </div>
         </div>
 
+        <!-- Area Centrale: Mappa -->
         <div class="main">
             <div class="map-container">
                 <div id="map"></div>
             </div>
+        </div>
 
-            <div class="tree-details">
-                <h3><i class="fas fa-leaf"></i> Dettagli selezionati</h3>
-                <div id="selectedTreeInfo" class="details-grid">
-                    <div class="no-data"><i class="fas fa-hand-pointer"></i> <b> Fai clic su un albero  per visualizzare o stampare la scheda informativa</b></div>
-                </div>
-		   </div>
+        <!-- Sidebar Destra: Controlli e Grafici -->
+        <div class="sidebar sidebar-right">
+            <h2><i class="fas fa-sliders"></i> Controlli Mappa</h2>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
+                <button style="padding: 11px; background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; transition: all 0.3s;" onclick="downloadRelazione()" title="Scarica la Relazione Tecnica">
+                    <i class="fas fa-file-pdf"></i> Relazione
+                </button>
+                <button style="padding: 11px; background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; transition: all 0.3s;" onclick="printMapPdf()" title="Stampa la mappa in PDF">
+                    <i class="fas fa-map"></i> Mappa PDF
+                </button>
+            </div>
+
+            <h2><i class="fas fa-chart-bar"></i> Grafici Analisi</h2>
             <div class="charts-container">
 			                <div class="chart-box">
                     <h3><i class="fas fa-leaf"></i> Specie arboree principali</h3>
@@ -422,14 +429,28 @@
                     </div>
                 </div>
 
-				<div class="chart-box" style="grid-column: 1 / -1;">
+				<div class="chart-box chart-box-full">
                     <h3><i class="fas fa-seedling"></i> Foglie totali per via nelle stagioni</h3>
-                    <div class="chart-wrapper" style="height: 400px;">
+                    <div class="chart-wrapper" style="height: 350px;">
                         <canvas id="seasonalLeavesChart"></canvas>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
 
+    <!-- Modale Dettagli Albero -->
+    <div class="modal-overlay" id="treeDetailsModal">
+        <div class="modal modal-tree-details">
+            <div class="modal-header">
+                <h2><i class="fas fa-leaf"></i> Dettagli Albero</h2>
+                <button class="modal-close" onclick="closeTreeDetails()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div id="selectedTreeInfo" class="details-grid">
+                    <div class="no-data"><i class="fas fa-hand-pointer"></i> <b> Fai clic su un albero per visualizzare o stampare la scheda informativa</b></div>
+                </div>
+            </div>
         </div>
     </div>
 
