@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python convert_csv_to_geojson.py:*)",
+      "Bash(python3:*)",
+      "Bash(node convert_csv.js:*)",
+      "Bash(node --version:*)",
+      "Bash(py --version:*)",
+      "Bash(py convert_csv_to_geojson.py:*)",
+      "Bash(php --version:*)"
+    ]
+  }
+}

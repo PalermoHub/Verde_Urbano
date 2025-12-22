@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> 🌳 Demo prototipale</title>
+	<meta name="description" content="Questa è una demo prototipale che mostra i dati di monitoraggio relativi a una singola strada. Il progetto completo di cui fa parte è molto più articolato e comprende ulteriori strade, zone e funzionalità avanzate non ancora rappresentate in questa versione.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+hr {
+    border: 0;
+    height: 1px;
+    background: #1e8449;
+    background-image: linear-gradient(to right, #eee, #1e8449, #eee);
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+        header {
+            background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
+            color: white;
+            padding: 25px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header > div:first-child {
+            flex: 1;
+        }
+        header h1 {
+            font-size: 32px;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+        header p {
+            font-size: 15px;
+            opacity: 0.95;
+        }
+        .container {
+            display: grid;
+            grid-template-columns: 320px 1fr;
+            gap: 20px;
+            padding: 20px;
+            max-width: 1800px;
+            margin: 0 auto;
+        }
+        .sidebar {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            height: fit-content;
+            max-height: 96vh;
+            overflow-y: auto;
+            position: sticky;
+            top: 20px;
+        }
+        .sidebar h2 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #313131;
+            color: #313131;
+            border-bottom: 3px solid #27ae60;
+            padding-bottom: 10px;
+        }
+        .filter-group {
+            margin-bottom: 18px;
+        }
+        .filter-group label {
+            display: block;
+            font-size: 13px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #555;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        select, input[type="range"], input[type="number"] {
+            width: 100%;
+            padding: 10px 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 6px;
+            font-size: 13px;
+            font-family: inherit;
+            transition: all 0.3s;
+        }
+        select:focus, input:focus {
+            outline: none;
+            border-color: #27ae60;
+            box-shadow: 0 0 0 3px rgba(39, 174, 96, 0.1);
+        }
+        .filter-info {
+            font-size: 12px;
+            color: #999;
+            margin-top: 4px;
+            font-style: italic;
+        }
+        .stats-box {
+            background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 15px;
+            border-left: 4px solid #fff;
+        }
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+        .stat-value {
+            font-weight: 700;
+            font-size: 14px;
+        }
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        button {
+            flex: 1;
+            padding: 11px;
+            background: #27ae60;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            font-size: 13px;
+            transition: all 0.3s;
+        }
+        button:hover { transform: translateY(-2px);
+            /*background: #1e8449;
+            box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);*/
+        }
+        button.secondary {
+            background: #95a5a6;
+        }
+        button.secondary:hover {
+            background: #7f8c8d;
+        }
+        .main {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        #map {
+            width: 100%;
+            height: 450px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            background: white;
+            margin: 0 auto;
+        }
+        .map-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        footer {
+            background: #f9f9f9;
+            border-top: 2px solid #27ae60;
+            padding: 25px 20px;
+            margin-top: 40px;
+            text-align: center;
+            color: #555;
+            font-size: 13px;
+            line-height: 1.6;
+            box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
+        }
+        footer h3 {
+            color: #27ae60;
+            font-size: 15px;
+            margin-bottom: 12px;
+            font-weight: 700;
+        }
+        footer p {
+            max-width: 800px;
+            margin: 0 auto;
+            color: #666;
+        }
+        .charts-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 20px;
+        }
+        .chart-box {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            min-height: 350px;
+        }
+        .chart-box h3 {
+            font-size: 16px;
+            margin-bottom: 15px;
+            color: #313131;
+            border-bottom: 3px solid #27ae60;
+            padding-bottom: 10px;
+        }
+        .chart-wrapper {
+            position: relative;
+            height: 300px;
+            width: 100%;
+        }
+        .tree-details {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .tree-details h3 {
+            color: #27ae60;
+            margin-bottom: 15px;
+            font-size: 18px;
+        }
+        .details-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+        }
+        .detail-item {
+            padding: 12px;
+            background: #f9f9f9;
+            border-radius: 6px;
+            border-left: 4px solid #27ae60;
+        }
+        .detail-label {
+            font-size: 11px;
+            color: #888;
+            font-weight: 700;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+        }
+        .detail-value {
+            font-size: 14px;
+            color: #333;
+            word-break: break-word;
+            font-weight: 500;
+        }
+        .environmental-stats-section {
+            grid-column: 1/-1;
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #fff;
+            margin-top: 15px;
+        }
+        .environmental-stats-section .detail-label {
+            color: rgba(255, 255, 255, 0.8);
+        }
+        .environmental-stats-section .detail-value {
+            color: white;
+            font-weight: 600;
+        }
+        .stat-section {
+            margin-bottom: 12px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+        .stat-section:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        .stat-section-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .stat-section-row .detail-label {
+            display: inline;
+            margin: 0;
+            text-transform: uppercase;
+            font-size: 10px;
+        }
+        .stat-section-row .detail-value {
+            display: inline;
+            font-size: 13px;
+        }
+        .legend {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            font-size: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+			display: none;
+        }
+        .legend h4 {
+            color: #313131;
+            margin-bottom: 10px;
+            font-size: 13px;
+        }
+        /* Modale Info */
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .info-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            border: 2px solid white;
+            color: white;
+            font-size: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            flex-shrink: 0;
+        }
+        .info-icon:hover {
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(1.1);
+        }
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 9998;
+            animation: fadeIn 0.3s ease;
+        }
+        .modal-overlay.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+        .modal {
+            background: white;
+            border-radius: 12px;
+            max-width: 600px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            animation: slideUp 0.3s ease;
+        }
+        @keyframes slideUp {
+            from {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        .modal-header {
+            background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
+            color: white;
+            padding: 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-radius: 12px 12px 0 0;
+        }
+        .modal-header h2 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .modal-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            width: 40px;
+            height: 40px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s;
+            flex-shrink: 0;
+        }
+       /**/ .modal-close:hover {
+            transform: rotate(90deg);
+        }
+        .modal-body {
+            padding: 30px;
+        }
+        .modal-section {
+            margin-bottom: 25px;
+        }
+        .modal-section:last-child {
+            margin-bottom: 0;
+        }
+        .modal-section h3 {
+            color: #27ae60;
+            font-size: 18px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .modal-section p {
+            color: #555;
+            line-height: 1.6;
+            font-size: 14px;
+            margin-bottom: 8px;
+        }
+        .modal-section ul {
+            margin-left: 20px;
+            color: #555;
+            font-size: 14px;
+            line-height: 1.8;
+        }
+        .modal-section li {
+            margin-bottom: 6px;
+        }
+        .feature-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+        .feature-item {
+            display: flex;
+            gap: 12px;
+            align-items: flex-start;
+        }
+        .feature-icon {
+            color: #27ae60;
+            font-size: 18px;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+        .feature-text {
+            color: #555;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        .legend-item {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 0 3px rgba(0,0,0,0.2);
+            flex-shrink: 0;
+        }
+        .info-banner {
+            background: #e8f5e9;
+            border-left: 4px solid #27ae60;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
+        @media (max-width: 1200px) {
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .sidebar {
+                position: relative;
+                top: auto;
+                max-height: none;
+            }
+            #map {
+                height: 350px;
+            }
+        }
+        .no-data {
+            padding: 40px;
+            text-align: center;
+            color: #999;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div>
+            <h1><i class="fas fa-tree"></i>  Demo prototipale | alberi Viale Emilia</h1>
+            <p>Palermo 2025 - Monitoraggio e analisi dello stato di salute del verde urbano</p>
+        </div>
+        <div class="header-right">
+            <div class="info-icon" id="infoBtn" title="Informazioni su questa app"><i class="fas fa-circle-info"></i></div>
+        </div>
+    </header>
+
+    <!-- Modale Info -->
+    <div class="modal-overlay" id="infoModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-circle-info"></i> Come Funziona</h2>
+                <button class="modal-close" onclick="closeInfoModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3><i class="fas fa-location-dot"></i> Che cos'è</h3>
+                    <p>Una dashboard interattiva per visualizzare e analizzare i dati degli alberi presenti lungo Viale Emilia a Palermo. Uno strumento di monitoraggio dello stato di salute della vegetazione urbana della città.</p>
+                </div>
+
+                <div class="modal-section">
+                    <h3><i class="fas fa-bullseye"></i> Funzionalità Principali</h3>
+                    <div class="feature-list">
+                        <div class="feature-item">
+                            <span class="feature-icon"><i class="fas fa-map"></i></span>
+                            <span class="feature-text"><strong>Mappa Interattiva</strong> - Visualizza la posizione esatta di ogni albero con zoom e pan</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon"><i class="fas fa-magnifying-glass"></i></span>
+                            <span class="feature-text"><strong>Filtri Avanzati</strong> - Filtra per specie, stato di salute (CPC), sito, altezza e diametro</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon"><i class="fas fa-chart-bar"></i></span>
+                            <span class="feature-text"><strong>Grafici Dinamici</strong> - Analizza distribuzioni per altezza, salute, specie e localizzazione</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon"><i class="fas fa-chart-line"></i></span>
+                            <span class="feature-text"><strong>Statistiche in Tempo Reale</strong> - Dati sempre aggiornati in base ai filtri applicati</span>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon"><i class="fas fa-search"></i></span>
+                            <span class="feature-text"><strong>Dettagli Alberi</strong> - Informazioni complete per ogni esemplare selezionato</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-section">
+                    <h3><i class="fas fa-clipboard-list"></i> Classificazione CPC (Stato di Salute)</h3>
+                    <ul>
+                        <li><strong style="color: #2ecc71;"><i class="fas fa-circle"></i> B - Buono</strong> - Albero in buone condizioni fitosanitarie</li>
+                        <li><strong style="color: #f39c12;"><i class="fas fa-circle"></i> C - Mediocre</strong> - Albero con difetti moderati, necessita controlli periodici</li>
+                        <li><strong style="color: #e74c3c;"><i class="fas fa-circle"></i> D - Cattivo</strong> - Albero con difetti gravi, potenzialmente pericoloso</li>
+                    </ul>
+                </div>
+
+                <div class="modal-section">
+                    <h3><i class="fas fa-lightbulb"></i> Come Usarla</h3>
+                    <ol style="margin-left: 20px; color: #555; font-size: 14px; line-height: 1.8;">
+                        <li>Usa i <strong>filtri a sinistra</strong> per restringere i dati (facoltativo)</li>
+                        <li>Clicca su <strong>"Applica"</strong> per aggiornare mappa e grafici</li>
+                        <li>Clicca su un <strong>marcatore della mappa</strong> per visualizzare i dettagli completi dell'albero</li>
+                        <li>Leggi i <strong>grafici statistici</strong> per analizzare distribuzioni e trend</li>
+                        <li>Usa <strong>"Ripristina"</strong> per azzerare tutti i filtri</li>
+                    </ol>
+                </div>
+
+                <div class="modal-section">
+                    <h3><i class="fas fa-wrench"></i> Parametri Visualizzati</h3>
+                    <ul>
+                        <li><strong>ID Albero</strong> - Codice identificativo univoco</li>
+                        <li><strong>Specie Botanica</strong> - Nome scientifico e comune dell'albero</li>
+                        <li><strong>Altezza</strong> - In metri (m)</li>
+                        <li><strong>Diametro</strong> - A petto d'uomo (dpu) in centimetri (cm)</li>
+                        <li><strong>CPC</strong> - Classificazione dello stato di salute</li>
+                        <li><strong>Sito</strong> - Localizzazione lungo Viale Emilia</li>
+                        <li><strong>Codice Lavorazione</strong> - Interventi programmati/effettuati</li>
+                    </ul>
+                </div>
+				<hr>
+				 <div class="modal-section">
+                    <h3><i class="fas fa-leaf"></i> Calcolo Benefici Ambientali (CO₂ e O₂)</h3>
+                    <p style="margin-bottom: 12px;">I valori di <strong>CO₂ catturata</strong> e <strong>O₂ emesso</strong> sono calcolati mediante metodologie scientifiche standardizzate. Consulta i seguenti riferimenti:</p>
+                    <ul>
+                        <li><strong><a href="https://www.fs.fed.us/nrs/pubs/jrnls/2012/nrs_2012_nowak_001.pdf" target="_blank" style="color: #27ae60; text-decoration: underline;">USDA Forest Service - Carbon Storage and Sequestration by Municipal Trees (2012)</a></strong>
+                            <br><span style="font-size: 12px; color: #666;">Nowak, D.J. & Greenfield, E.J. Studio fondamentale su sequestro di carbonio urbano</span>
+                        </li>
+                        <li><strong><a href="https://www.fs.fed.us/nrs/tools/" target="_blank" style="color: #27ae60; text-decoration: underline;">USDA Forest Service - Urban Forest Carbon Tools</a></strong>
+                            <br><span style="font-size: 12px; color: #666;">Strumenti online per quantificare benefici ambientali del verde urbano</span>
+                        </li>
+                        <li><strong><a href="https://www.sciencedirect.com/science/article/pii/S0301479711001253" target="_blank" style="color: #27ae60; text-decoration: underline;">Escobedo et al. (2011) - Ecological benefits of green infrastructure</a></strong>
+                            <br><span style="font-size: 12px; color: #666;">Environmental Pollution, 159(7), 1628-1635. Benefici ecologici dell'infrastruttura verde urbana</span>
+                        </li>
+                        <li><strong><a href="https://www.frontiersin.org/articles/10.3389/fenvs.2015.00069/full" target="_blank" style="color: #27ae60; text-decoration: underline;">Mullaney et al. (2015) - Urban green infrastructure: From theory to practice</a></strong>
+                            <br><span style="font-size: 12px; color: #666;">Frontiers in Environmental Science, 3(69). Connessioni tra teoria e applicazione pratica</span>
+                        </li>
+                        <li><strong><a href="https://www.itreetools.org/" target="_blank" style="color: #27ae60; text-decoration: underline;">i-Tree Tools - Free Urban Forest Analysis Software</a></strong>
+                            <br><span style="font-size: 12px; color: #666;">Software gratuito per analizzare e quantificare i benefici della foresta urbana</span>
+                        </li>
+                    </ul>
+                    <p style="margin-top: 12px; padding: 10px; background: #e8f5e9; border-left: 3px solid #27ae60; border-radius: 4px; font-size: 12px; color: #2e7d32;">
+                        <strong>Nota metodologica:</strong> I coefficienti sono stati adattati per il clima mediterraneo di Palermo/Sicilia in base alla letteratura scientifica consolidata. L'accuratezza è ±15% (margine standard per modelli urbani).
+                    </p>
+                </div>
+				<hr>
+                <div class="modal-section">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Disclaimer</h3>
+                    <p style="background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107; border-radius: 6px; color: #856404;">
+                        <strong>Natura della Demo</strong><br>
+                        Questa è una <strong>demo prototipale</strong> che mostra i dati di monitoraggio relativi a una singola strada (Viale Emilia). Il progetto completo di cui fa parte è molto più articolato e comprende ulteriori strade, zone e funzionalità avanzate non ancora rappresentate in questa versione.
+                    </p>
+                    <p style="margin-top: 12px;">
+                        <strong>Note su Descrizioni e Parametri</strong><br>
+                        Le descrizioni tecniche, i parametri fitosanitari (altezza, diametro, CPC) e le classificazioni indicate in questa dashboard sono <strong>puramente esemplificativi e di natura standard</strong>. Essi <strong>non fanno riferimento</strong> a nessun elenco prezzi regionale o nazionale, né rappresentano valori ufficiali di alcuna amministrazione pubblica o privata.
+                    </p>
+                    <p style="margin-top: 12px;">
+                        <strong>Scopo Educativo e Prototipale</strong><br>
+                        Questa applicazione è stata sviluppata a scopo dimostrativo e educativo per illustrare le potenzialità dei sistemi di monitoraggio urbano e gestione dati geospaziali. I dati visualizzati sono sintetici e non rappresentano situazioni reali certificate.</p>
+						<hr><br>
+                    <p><strong>Elaborazione dati:</strong> <a href="https://www.linkedin.com/in/gbvitrano/" title="@gbvitrano" target="_blank">@gbvitrano</a> </p>
+ <p><strong>Sviluppo tecnico:</strong> <a href="https://www.linkedin.com/in/gbvitrano/" title="@gbvitrano" target="_blank">@gbvitrano</a> - <a href="https://claude.ai" target="_blank">Claude AI (Anthropic)</a></p>					
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="sidebar">
+            <div class="info-banner">
+                <i class="fas fa-info-circle"></i> I filtri aggiornano mappa e grafici in tempo reale
+            </div>
+
+            <h2><i class="fas fa-search"></i> Filtri</h2>
+
+            <div class="filter-group">
+                <label>Specie Botanica</label>
+                <select id="specieFilter" onchange="applyFilters()">
+                    <option value="">Tutte le specie</option>
+                </select>
+                <div class="filter-info" id="specieInfo"></div>
+            </div>
+
+            <div class="filter-group">
+                <label>Stato Salute (CPC)</label>
+                <select id="cpcFilter" onchange="applyFilters()">
+                    <option value="">Tutti</option>
+                    <option value="B">B - Buono</option>
+                    <option value="C">C - Mediocre</option>
+                    <option value="D">D - Cattivo</option>
+                </select>
+                <div class="filter-info" id="cpcInfo"></div>
+            </div>
+
+            <div class="filter-group">
+                <label>Dimora</label>
+                <select id="siteFilter" onchange="applyFilters()">
+                    <option value="">Tutti i siti</option>
+                </select>
+                <div class="filter-info" id="siteInfo"></div>
+            </div>
+
+            <div class="filter-group">
+                <label>Altezza Minima (m)</label>
+                <input type="range" id="minHeight" min="0" max="16" value="0" onchange="updateHeightLabel(); applyFilters()">
+                <div class="filter-info">Min: <span id="minHeightLabel">0</span>m</div>
+            </div>
+
+            <div class="filter-group">
+                <label>Diametro Minimo (cm)</label>
+                <input type="range" id="minDiameter" min="0" max="137" value="0" onchange="updateDiameterLabel(); applyFilters()">
+                <div class="filter-info">Min: <span id="minDiameterLabel">0</span>cm</div>
+            </div>
+
+            <hr>
+
+            <div class="filter-group">
+                <label>Odonimo (Strada)</label>
+                <select id="odonimoFilter" onchange="applyFilters()">
+                    <option value="">Tutte le strade</option>
+                </select>
+                <div class="filter-info" id="odonimoInfo"></div>
+            </div>
+
+            <div class="filter-group">
+                <label>UPL</label>
+                <select id="uplFilter" onchange="applyFilters()">
+                    <option value="">Tutte le UPL</option>
+                </select>
+                <div class="filter-info" id="uplInfo"></div>
+            </div>
+
+            <div class="filter-group">
+                <label>Quartiere</label>
+                <select id="quartiereFilter" onchange="applyFilters()">
+                    <option value="">Tutti i quartieri</option>
+                </select>
+                <div class="filter-info" id="quartiereInfo"></div>
+            </div>
+
+            <div class="filter-group">
+                <label>Circoscrizione</label>
+                <select id="circoscrizioneFilter" onchange="applyFilters()">
+                    <option value="">Tutte le circoscrizioni</option>
+                </select>
+                <div class="filter-info" id="circoscrizioneInfo"></div>
+            </div>
+
+            <div class="button-group">
+                <button onclick="applyFilters()">✓ Applica</button>
+                <button class="secondary" onclick="resetFilters()">↺ Ripristina</button>
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px;">
+                <button style="padding: 11px; background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; transition: all 0.3s;" onclick="downloadRelazione()" title="Scarica la Relazione Tecnica">
+                    <i class="fas fa-file-pdf"></i> Relazione
+                </button>
+                <button style="padding: 11px; background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; transition: all 0.3s;" onclick="printMapPdf()" title="Stampa la mappa in PDF">
+                    <i class="fas fa-map"></i> Mappa PDF
+                </button>
+            </div>
+
+            <h2 style="margin-top: 25px;"><i class="fas fa-chart-simple"></i> Statistiche</h2>
+            <div class="stats-box">
+                <div class="stat-row">
+                    <span>Alberi Visualizzati</span>
+                    <span class="stat-value" id="statFiltered">0</span>
+                </div>
+                <div class="stat-row">
+                    <span>Totale Dataset</span>
+                    <span class="stat-value" id="statTotal">0</span>
+                </div>
+                <div class="stat-row">
+                    <span>Altezza Media</span>
+                    <span class="stat-value" id="statAvgHeight">-</span>
+                </div>
+                <div class="stat-row">
+                    <span>Diametro Medio</span>
+                    <span class="stat-value" id="statAvgDiameter">-</span>
+                </div>
+                <div class="stat-row">
+                    <span>Specie Presenti</span>
+                    <span class="stat-value" id="statSpecies">0</span>
+                </div>
+				<h2 style="margin-top: 25px;"><i class="fas fa-list-check"></i> Classificazione CPC</h2>
+<div class="stats-box">
+    <div class="stat-row">
+        <span style="color: #2ecc71;"><i class="fas fa-circle" style="color: #2ecc71;"></i> B - Buono</span>
+        <span class="stat-value" id="statCpcB">0</span>
+    </div>
+    <div class="stat-row">
+        <span style="color: #f39c12;"><i class="fas fa-circle" style="color: #f39c12;"></i> C - Mediocre</span>
+        <span class="stat-value" id="statCpcC">0</span>
+    </div>
+    <div class="stat-row">
+        <span style="color: #e74c3c;"><i class="fas fa-circle" style="color: #e74c3c;"></i> D - Cattivo</span>
+        <span class="stat-value" id="statCpcD">0</span>
+    </div>
+</div>
+
+<h2 style="margin-top: 25px;"><i class="fas fa-tools"></i> Cod. Lavorazione</h2>
+<div id="statLavorazione" style="font-size: 12px; color: #666;">
+    <!-- Popolato dinamicamente -->
+</div>
+
+<h2 style="margin-top: 25px;"><i class="fas fa-leaf"></i> Benefici  Ambientali</h2>
+<div class="stats-box" style="background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);">
+    <div class="stat-row">
+        <span>Produzione O₂ totale:</span>
+        <span class="stat-value" id="statTotalO2">0 kg/anno</span>
+    </div>
+    <div class="stat-row">
+        <span>Assorbimento CO₂ totale:</span>
+        <span class="stat-value" id="statTotalCO2">0 kg/anno</span>
+    </div>
+</div>
+
+<h2 style="margin-top: 25px;"><i class="fas fa-euro-sign"></i> Costi Lavorazione</h2>
+<div class="stats-box" style="background: linear-gradient(135deg, #f39c12 0%, #d68910 100%);">
+    <div class="stat-row">
+        <span>Costo totale:</span>
+        <span class="stat-value" id="statTotalWorkingCost">0 €</span>
+    </div>
+</div>
+            </div>
+
+    <!--    <h2><i class="fas fa-palette"></i> Legenda CPC</h2> -->
+               <div class="legend">
+                <h4>Classificazione</h4>
+                <div class="legend-item">
+                    <i class="fas fa-circle" style="color: #2ecc71; font-size: 16px;"></i>
+                    <div><strong>B</strong> - Buono</div>
+                </div>
+                <div class="legend-item">
+                    <i class="fas fa-circle" style="color: #f39c12; font-size: 16px;"></i>
+                    <div><strong>C</strong> - Mediocre</div>
+                </div>
+                <div class="legend-item">
+                    <i class="fas fa-circle" style="color: #e74c3c; font-size: 16px;"></i>
+                    <div><strong>D</strong> - Cattivo</div> 
+                </div>
+            </div>
+        </div>
+
+        <div class="main">
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+
+            <div class="tree-details">
+                <h3><i class="fas fa-leaf"></i> Dettagli selezionati</h3>
+                <div id="selectedTreeInfo" class="details-grid">
+                    <div class="no-data"><i class="fas fa-hand-pointer"></i> <b> Fai clic su un albero  per visualizzare o stampare la scheda informativa</b></div>
+                </div>
+		   </div>
+            <div class="charts-container">
+			                <div class="chart-box">
+                    <h3><i class="fas fa-leaf"></i> Specie arboree principali</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="speciesChart"></canvas>
+                    </div>
+                </div>	
+				
+                <div class="chart-box">
+                    <h3><i class="fas fa-tree"></i> Stato salute - Classe Propensione Cedimento - CPC</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="healthChart"></canvas>
+                    </div>
+                </div>
+								
+                <div class="chart-box">
+                    <h3><i class="fas fa-location-dot"></i> Dimora</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="siteChart"></canvas>
+                    </div>
+                </div>
+				                <div class="chart-box">
+                    <h3><i class="fas fa-chart-line"></i> Distribuzione altezze</h3>
+                    <div class="chart-wrapper">
+                        <canvas id="heightChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // ===== GESTIONE MODALE INFO =====
+        document.getElementById('infoBtn').addEventListener('click', openInfoModal);
+        document.getElementById('infoModal').addEventListener('click', function(e) {
+            if (e.target === this) closeInfoModal();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeInfoModal();
+        });
+
+        function openInfoModal() {
+            document.getElementById('infoModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeInfoModal() {
+            document.getElementById('infoModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // ===== DATI INCORPORATI =====

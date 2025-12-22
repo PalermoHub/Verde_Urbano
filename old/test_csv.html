@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test caricamento CSV</title>
+</head>
+<body>
+    <h1>Test caricamento CSV</h1>
+    <div id="result"></div>
+
+    <script>
+        // Funzione per parsare CSV
+        function parseCSV(text) {
+            const lines = text.split('\n');
+            const headers = lines[0].split(',').map(h => h.trim());
+            const data = [];
+
+            for (let i = 1; i < lines.length; i++) {
+                if (!lines[i].trim()) continue;
+
+                const values = [];
+                let current = '';
+                let inQuotes = false;
+
+                for (let char of lines[i]) {
+                    if (char === '"') {
+                        inQuotes = !inQuotes;
+                    } else if (char === ',' && !inQuotes) {
+                        values.push(current.trim());
+                        current = '';
+                    } else {
+                        current += char;
+                    }
+                }
+                values.push(current.trim());
+
+                const row = {};
+                headers.forEach((header, idx) => {
+                    row[header] = values[idx] || '';
+                });
+                data.push(row);
+            }
+            return data;
+        }
+
+        // Test
+        async function testCSV() {
+            try {
+                console.log('Caricamento CSV...');
+                const response = await fetch('dati/17_query_web.csv');
+                const csvText = await response.text();
+                console.log('CSV caricato, parsing...');
+                const csvData = parseCSV(csvText);
+                console.log(`Righe parsate: ${csvData.length}`);
+                console.log('Prima riga:', csvData[0]);
+
+                // Verifica campi
+                const firstRow = csvData[0];
+                console.log('Odonimo:', firstRow['Odonimo']);
+                console.log('UPL:', firstRow['UPL']);
+                console.log('Quartiere:', firstRow['Quartiere']);
+                console.log('Circoscrizione:', firstRow['Circoscrizione']);
+                console.log('Lat:', firstRow['Lat']);
+                console.log('Log:', firstRow['Log']);
+
+                document.getElementById('result').innerHTML = `
+                    <p>✅ CSV caricato con successo!</p>
+                    <p>Righe totali: ${csvData.length}</p>
+                    <p>Prima riga: ${JSON.stringify(csvData[0])}</p>
+                `;
+            } catch (error) {
+                console.error('Errore:', error);
+                document.getElementById('result').innerHTML = `<p style="color:red">❌ Errore: ${error.message}</p>`;
+            }
+        }
+
+        testCSV();
+    </script>
+</body>
+</html>
