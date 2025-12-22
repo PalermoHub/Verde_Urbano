@@ -43,6 +43,40 @@ function loadData() {
                 upl: props['UPL'] || '-',
                 quartiere: props['Quartiere'] || '-',
                 circoscrizione: props['Circoscrizione'] || '-',
+                data_lav_f1: props['Data lav. F1'] || '',
+                cod_lav_f2: props['Cod. lavorazione - F2'] || '',
+                lavori_f2: props['Lavori - F2'] || '',
+                prezzo_f2: (() => {
+                    const p = props['Prezzo F2'];
+                    if (!p) return 0;
+                    if (typeof p === 'string') {
+                        return parseFloat(p.replace('€', '').replace(',', '.')) || 0;
+                    }
+                    return parseFloat(p) || 0;
+                })(),
+                data_lav_f2: props['Data lav. F2'] || '',
+                cod_lav_f3: props['Cod. lavorazione - F3'] || '',
+                lavori_f3: props['Lavori - F3'] || '',
+                prezzo_f3: (() => {
+                    const p = props['Prezzo F3'];
+                    if (!p) return 0;
+                    if (typeof p === 'string') {
+                        return parseFloat(p.replace('€', '').replace(',', '.')) || 0;
+                    }
+                    return parseFloat(p) || 0;
+                })(),
+                data_lav_f3: props['Data lav. F3'] || '',
+                cod_lav_f4: props['Cod. lavorazione - F4'] || '',
+                lavori_f4: props['Lavori - F4'] || '',
+                prezzo_f4: (() => {
+                    const p = props['Prezzo F4'];
+                    if (!p) return 0;
+                    if (typeof p === 'string') {
+                        return parseFloat(p.replace('€', '').replace(',', '.')) || 0;
+                    }
+                    return parseFloat(p) || 0;
+                })(),
+                data_lav_f4: props['Data lav. F4'] || '',
                 lat: coords[1],
                 lon: coords[0]
             };

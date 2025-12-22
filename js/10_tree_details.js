@@ -20,10 +20,7 @@ function showTreeDetails(tree) {
         <div class="detail-item"><div class="detail-label">Altezza (m)</div><div class="detail-value">${tree.altezza || 'n/a'}</div></div>
         <div class="detail-item"><div class="detail-label">Diametro (cm)</div><div class="detail-value">${tree.diametro || 'n/a'}</div></div>
         <div class="detail-item"><div class="detail-label">classe propensione cedimento - CPC</div><div class="detail-value" style="color: ${cpcColors[tree.cpc]}">${tree.cpc}</div></div>
-        <div class="detail-item"><div class="detail-label">Descrizione CPC</div><div class="detail-value">${tree.descrizione_cpc}</div></div>
-        <div class="detail-item"><div class="detail-label">Cod. Lavorazione</div><div class="detail-value">${tree.codice}</div></div>
-        <div class="detail-item" ><div class="detail-label">Tipo di lavorazione</div><div class="detail-value" style="font-size: 12px;">${tree.descrizione}</div></div>
-        <div class="detail-item"><div class="detail-label">Prezzo unitario</div><div class="detail-value">${formatCurrency(tree.prezzo)}</div></div>
+        <div class="detail-item" style="grid-column: 1/-1;"><div class="detail-label">Descrizione CPC</div><div class="detail-value">${tree.descrizione_cpc}</div></div>
 
         <div class="detail-item" style="grid-column: 1/-1; margin-top: 15px; padding: 12px; background: linear-gradient(135deg, #e3f2fd 0%, #f1f8ff 100%); border-left: 4px solid #3498db; border-radius: 6px;">
             <div class="detail-label" style="margin-bottom: 10px;"><i class="fa fa-map-marker-alt"></i> LOCALIZZAZIONE TERRITORIALE</div>
@@ -34,6 +31,72 @@ function showTreeDetails(tree) {
                 <div class="detail-item" style="margin: 0;"><div class="detail-label">Circoscrizione</div><div class="detail-value">${tree.circoscrizione || '-'}</div></div>
             </div>
         </div>
+
+        <div class="detail-item" style="grid-column: 1/-1; margin-top: 15px; padding: 12px; background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%); border-left: 4px solid #ff9800; border-radius: 6px;">
+            <div class="detail-label" style="margin-bottom: 10px; font-size: 14px; font-weight: 700; color: #e65100;">
+                <i class="fas fa-scissors"></i> FASE 1: Potatura o Abbattimento
+            </div>
+            <div style="font-size: 11px; color: #666; margin-bottom: 10px; line-height: 1.5; font-style: italic;">
+                La prima fase comprende le operazioni di potatura ordinaria e straordinaria, oppure l'abbattimento dell'esemplare arboreo quando le sue condizioni fitopatologiche, strutturali o di sicurezza lo rendono necessario.
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
+                <div class="detail-item" style="margin: 0;"><div class="detail-label">Cod. Lavorazione</div><div class="detail-value">${tree.codice || '-'}</div></div>
+                <div class="detail-item" style="margin: 0;"><div class="detail-label">Data Lavori</div><div class="detail-value">${tree.data_lav_f1 || '-'}</div></div>
+                <div class="detail-item" style="margin: 0;"><div class="detail-label">Prezzo unitario</div><div class="detail-value">${formatCurrency(tree.prezzo)}</div></div>
+                <div class="detail-item" style="margin: 0; grid-column: 1/-1;"><div class="detail-label">Tipo di lavorazione</div><div class="detail-value" style="font-size: 12px;">${tree.descrizione || '-'}</div></div>
+            </div>
+        </div>
+
+        ${tree.cod_lav_f2 || tree.lavori_f2 || tree.prezzo_f2 || tree.data_lav_f2 ? `
+        <div class="detail-item" style="grid-column: 1/-1; margin-top: 15px; padding: 12px; background: linear-gradient(135deg, #fce4ec 0%, #f8bbd0 100%); border-left: 4px solid #e91e63; border-radius: 6px;">
+            <div class="detail-label" style="margin-bottom: 10px; font-size: 14px; font-weight: 700; color: #880e4f;">
+                <i class="fas fa-tree"></i> FASE 2: Rimozione del ceppo
+            </div>
+            <div style="font-size: 11px; color: #666; margin-bottom: 10px; line-height: 1.5; font-style: italic;">
+                In caso di abbattimento, la seconda fase consiste nella rimozione del ceppo e della relativa apparato radicale, inclusa l'asportazione dei materiali di risulta verso le aree di deposito temporaneo o i centri di smaltimento autorizzati.
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
+                <div class="detail-item" style="margin: 0;"><div class="detail-label">Cod. Lavorazione</div><div class="detail-value">${tree.cod_lav_f2 || '-'}</div></div>
+                <div class="detail-item" style="margin: 0;"><div class="detail-label">Data Lavori</div><div class="detail-value">${tree.data_lav_f2 || '-'}</div></div>
+                <div class="detail-item" style="margin: 0;"><div class="detail-label">Prezzo</div><div class="detail-value">${tree.prezzo_f2 ? formatCurrency(tree.prezzo_f2) : '-'}</div></div>
+                <div class="detail-item" style="margin: 0; grid-column: 1/-1;"><div class="detail-label">Lavori</div><div class="detail-value" style="font-size: 12px;">${tree.lavori_f2 || '-'}</div></div>
+            </div>
+        </div>
+        ` : ''}
+
+        ${tree.cod_lav_f3 || tree.lavori_f3 || tree.prezzo_f3 || tree.data_lav_f3 ? `
+        <div class="detail-item" style="grid-column: 1/-1; margin-top: 15px; padding: 12px; background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%); border-left: 4px solid #4caf50; border-radius: 6px;">
+            <div class="detail-label" style="margin-bottom: 10px; font-size: 14px; font-weight: 700; color: #1b5e20;">
+                <i class="fas fa-seedling"></i> FASE 3: Fornitura e messa a dimora di nuova pianta
+            </div>
+            <div style="font-size: 11px; color: #666; margin-bottom: 10px; line-height: 1.5; font-style: italic;">
+                La terza fase riguarda l'approvvigionamento di esemplari arborei e/o arbustivi conformi alle specifiche tecniche del progetto, seguita dalle operazioni di messa a dimora con realizzazione della buca di impianto a profondità e dimensioni adeguate alla zolla, nonché dalla sistemazione del terreno circostante.
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
+                <div class="detail-item" style="margin: 0;"><div class="detail-label">Cod. Lavorazione</div><div class="detail-value">${tree.cod_lav_f3 || '-'}</div></div>
+                <div class="detail-item" style="margin: 0;"><div class="detail-label">Data Lavori</div><div class="detail-value">${tree.data_lav_f3 || '-'}</div></div>
+                <div class="detail-item" style="margin: 0;"><div class="detail-label">Prezzo</div><div class="detail-value">${tree.prezzo_f3 ? formatCurrency(tree.prezzo_f3) : '-'}</div></div>
+                <div class="detail-item" style="margin: 0; grid-column: 1/-1;"><div class="detail-label">Lavori</div><div class="detail-value" style="font-size: 12px;">${tree.lavori_f3 || '-'}</div></div>
+            </div>
+        </div>
+        ` : ''}
+
+        ${tree.cod_lav_f4 || tree.lavori_f4 || tree.prezzo_f4 || tree.data_lav_f4 ? `
+        <div class="detail-item" style="grid-column: 1/-1; margin-top: 15px; padding: 12px; background: linear-gradient(135deg, #fff9c4 0%, #fff59d 100%); border-left: 4px solid #fbc02d; border-radius: 6px;">
+            <div class="detail-label" style="margin-bottom: 10px; font-size: 14px; font-weight: 700; color: #f57f17;">
+                <i class="fas fa-ruler-vertical"></i> FASE 4: Fornitura e posizionamento di pali tutori
+            </div>
+            <div style="font-size: 11px; color: #666; margin-bottom: 10px; line-height: 1.5; font-style: italic;">
+                La quarta e ultima fase prevede la fornitura di pali tutori in legno e la loro installazione secondo le migliori pratiche agronomiche, al fine di garantire la stabilità della pianta durante il periodo di attecchimento e il suo corretto sviluppo vegetativo.
+            </div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
+                <div class="detail-item" style="margin: 0;"><div class="detail-label">Cod. Lavorazione</div><div class="detail-value">${tree.cod_lav_f4 || '-'}</div></div>
+                <div class="detail-item" style="margin: 0;"><div class="detail-label">Data Lavori</div><div class="detail-value">${tree.data_lav_f4 || '-'}</div></div>
+                <div class="detail-item" style="margin: 0;"><div class="detail-label">Prezzo</div><div class="detail-value">${tree.prezzo_f4 ? formatCurrency(tree.prezzo_f4) : '-'}</div></div>
+                <div class="detail-item" style="margin: 0; grid-column: 1/-1;"><div class="detail-label">Lavori</div><div class="detail-value" style="font-size: 12px;">${tree.lavori_f4 || '-'}</div></div>
+            </div>
+        </div>
+        ` : ''}
 
         <div class="detail-item" style="grid-column: 1/-1; margin-top: 15px; padding: 12px; background: linear-gradient(135deg, #fff8e1 0%, #fffde7 100%); border-left: 4px solid #ffa726; border-radius: 6px;">
             <div class="detail-label" style="margin-bottom: 10px;"><i class="fas fa-leaf"></i> NUMERO DI FOGLIE PER STAGIONE</div>

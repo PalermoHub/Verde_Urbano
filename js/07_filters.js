@@ -92,6 +92,7 @@ function getCountForFilter(filterType, filterValue) {
     const quartiere = document.getElementById('quartiereFilter').value;
     const circoscrizione = document.getElementById('circoscrizioneFilter').value;
     const pulizia = document.getElementById('puliziaFilter').value;
+    const fase = document.getElementById('faseFilter').value;
 
     let testValue = filterValue;
 
@@ -133,6 +134,19 @@ function getCountForFilter(filterType, filterValue) {
             else if (pulizia === 'bassa') match = match && percentuale < 15;
         }
 
+        // Filtro fase lavorazione
+        if (filterType === 'fase') {
+            if (testValue === 'fase1') match = match && true; // Tutti hanno fase 1
+            else if (testValue === 'fase2') match = match && (tree.cod_lav_f2 || tree.lavori_f2 || tree.prezzo_f2 || tree.data_lav_f2);
+            else if (testValue === 'fase3') match = match && (tree.cod_lav_f3 || tree.lavori_f3 || tree.prezzo_f3 || tree.data_lav_f3);
+            else if (testValue === 'fase4') match = match && (tree.cod_lav_f4 || tree.lavori_f4 || tree.prezzo_f4 || tree.data_lav_f4);
+        } else if (fase) {
+            if (fase === 'fase1') match = match && true; // Tutti hanno fase 1
+            else if (fase === 'fase2') match = match && (tree.cod_lav_f2 || tree.lavori_f2 || tree.prezzo_f2 || tree.data_lav_f2);
+            else if (fase === 'fase3') match = match && (tree.cod_lav_f3 || tree.lavori_f3 || tree.prezzo_f3 || tree.data_lav_f3);
+            else if (fase === 'fase4') match = match && (tree.cod_lav_f4 || tree.lavori_f4 || tree.prezzo_f4 || tree.data_lav_f4);
+        }
+
         match = match && (tree.altezza === null || tree.altezza >= minHeight);
         match = match && (tree.diametro === null || tree.diametro >= minDiameter);
 
@@ -151,6 +165,7 @@ function applyFilters() {
     const quartiere = document.getElementById('quartiereFilter').value;
     const circoscrizione = document.getElementById('circoscrizioneFilter').value;
     const pulizia = document.getElementById('puliziaFilter').value;
+    const fase = document.getElementById('faseFilter').value;
 
     filteredTrees = allTrees.filter(tree => {
         let match = (!specie || tree.specie === specie) &&
@@ -169,6 +184,14 @@ function applyFilters() {
             if (pulizia === 'alta') match = match && percentuale > 30;
             else if (pulizia === 'media') match = match && percentuale >= 15 && percentuale <= 30;
             else if (pulizia === 'bassa') match = match && percentuale < 15;
+        }
+
+        // Applica filtro fase lavorazione
+        if (match && fase) {
+            if (fase === 'fase1') match = match && true; // Tutti hanno fase 1
+            else if (fase === 'fase2') match = match && (tree.cod_lav_f2 || tree.lavori_f2 || tree.prezzo_f2 || tree.data_lav_f2);
+            else if (fase === 'fase3') match = match && (tree.cod_lav_f3 || tree.lavori_f3 || tree.prezzo_f3 || tree.data_lav_f3);
+            else if (fase === 'fase4') match = match && (tree.cod_lav_f4 || tree.lavori_f4 || tree.prezzo_f4 || tree.data_lav_f4);
         }
 
         return match;
@@ -201,6 +224,7 @@ function updateFilterInfo() {
     const quartiereValue = document.getElementById('quartiereFilter').value;
     const circoscrizioneValue = document.getElementById('circoscrizioneFilter').value;
     const puliziaValue = document.getElementById('puliziaFilter').value;
+    const faseValue = document.getElementById('faseFilter').value;
 
     document.getElementById('specieInfo').textContent =
         specieValue ? `${filteredTrees.filter(t => t.specie === specieValue).length}` : '';
@@ -218,6 +242,8 @@ function updateFilterInfo() {
         circoscrizioneValue ? `${filteredTrees.filter(t => t.circoscrizione === circoscrizioneValue).length}` : '';
     document.getElementById('puliziaInfo').textContent =
         puliziaValue ? `${filteredTrees.length} alberi` : '';
+    document.getElementById('faseInfo').textContent =
+        faseValue ? `${filteredTrees.length} alberi` : '';
 }
 
 function updateFilterCounts() {
@@ -297,6 +323,20 @@ function updateFilterCounts() {
             opt.disabled = count === 0;
         }
     });
+
+    // Aggiorna conteggi filtro fase
+    const faseSelect = document.getElementById('faseFilter');
+    Array.from(faseSelect.options).forEach((opt, idx) => {
+        if (idx > 0) {
+            const count = getCountForFilter('fase', opt.value);
+            const label = opt.value === 'fase1' ? 'Solo Fase 1 (Potatura/Abbattimento)' :
+                         opt.value === 'fase2' ? 'Con Fase 2 (Rimozione ceppo)' :
+                         opt.value === 'fase3' ? 'Con Fase 3 (Nuova pianta)' :
+                         'Con Fase 4 (Pali tutori)';
+            opt.textContent = `${label} (${count})`;
+            opt.disabled = count === 0;
+        }
+    });
 }
 
 function resetFilters() {
@@ -310,6 +350,7 @@ function resetFilters() {
     document.getElementById('quartiereFilter').value = '';
     document.getElementById('circoscrizioneFilter').value = '';
     document.getElementById('puliziaFilter').value = '';
+    document.getElementById('faseFilter').value = '';
     updateHeightLabel();
     updateDiameterLabel();
     applyFilters();

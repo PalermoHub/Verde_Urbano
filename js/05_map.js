@@ -1,15 +1,15 @@
 // ===== MAPPA =====
 // Variabili globali per posizione iniziale
 let initialView = {
-    center: [38.147, 13.341],
-    zoom: 15
+    center: [38.1266,13.3476],
+    zoom: 14
 };
 
 function initMap() {
     map = L.map('map').setView(initialView.center, initialView.zoom);
 
-    const osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap',
+    const osmLayer = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap - Map tiles by cartodb.com - under ODbL ',
         minZoom: 14,
 		maxZoom: 18
     });

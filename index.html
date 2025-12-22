@@ -24,7 +24,7 @@
     <header>
         <div>
             <h1 id="pageTitle"><i class="fas fa-tree"></i>  Demo prototipale | Verde Urbano</h1>
-            <p>Palermo 2025 - Monitoraggio e analisi dello stato di salute del verde urbano</p>
+            <p>Palermo 2025 - Monitoraggio e analisi dello stato di salute del verde urbano - Accordo Quadro - CUP D71G23000050001</p>
         </div>
         <div class="header-right">
             <div class="info-icon" id="infoBtn" title="Informazioni su questa app"><i class="fas fa-circle-info"></i></div>
@@ -252,6 +252,21 @@
                 <input type="range" id="minDiameter" min="0" max="137" value="0" onchange="updateDiameterLabel(); applyFilters()">
                 <div class="filter-info">Min: <span id="minDiameterLabel">0</span>cm</div>
             </div>
+
+<hr>
+            <div class="filter-group">
+                <label><i class="fas fa-tasks"></i> Fase Lavorazione</label>
+                <select id="faseFilter" onchange="applyFilters()">
+                    <option value="">Tutte le fasi</option>
+                    <option value="fase1">Solo Fase 1 (Potatura/Abbattimento)</option>
+                    <option value="fase2">Con Fase 2 (Rimozione ceppo)</option>
+                    <option value="fase3">Con Fase 3 (Nuova pianta)</option>
+                    <option value="fase4">Con Fase 4 (Pali tutori)</option>
+                </select>
+                <div class="filter-info" id="faseInfo"></div>
+            </div>
+
+<hr>
 
             <div class="filter-group">
                 <label><i class="fas fa-broom"></i> Necessità Pulizia Foglie</label>
