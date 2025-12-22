@@ -133,7 +133,7 @@ function generateTreePDF() {
             <div class="section">${tree.descrizione}</div>
             <br>
             <h2>Descrizione Classe Propensione Cedimento CPC</h2>
-            <div class="section">${tree.descrizione_ccp}</div>
+            <div class="section">${tree.descrizione_cpc}</div>
 
 <h2>Documentazione Fotografica</h2>
             <div style="margin-bottom: 20px;">

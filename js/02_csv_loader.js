@@ -155,7 +155,12 @@ async function loadCSVData() {
                     'UPL': row['UPL'],
                     'Quartiere': row['Quartiere'],
                     'Circoscrizione': row['Circoscrizione'],
-                    'tipo_foglia': row['tipo_foglia']
+                    'tipo_foglia': row['tipo_foglia'],
+                    'descrizione cpc': row['descrizione cpc'],
+                    '# Primavera': row['# Primavera'],
+                    '# Estate': row['# Estate'],
+                    '# Autunno': row['# Autunno'],
+                    '# Inverno': row['# Inverno']
                 },
                 geometry: {
                     type: 'Point',

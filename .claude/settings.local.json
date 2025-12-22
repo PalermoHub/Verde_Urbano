@@ -13,7 +13,8 @@
       "Bash(if [ -d \"D:\\GitHub - Clone\\SiciliaHub\\Verde_Urbano\\script\" ])",
       "Bash(then echo \"exists\")",
       "Bash(else echo \"not exists\")",
-      "Bash(fi)"
+      "Bash(fi)",
+      "Bash(dir:*)"
     ]
   }
 }

@@ -33,7 +33,12 @@ function loadData() {
                     return parseFloat(p) || 0;
                 })(),
                 descrizione: props['Descrizione'] || '-',
-                descrizione_ccp: props['descrizione ccp'] || '-',
+                descrizione_cpc: props['descrizione cpc'] || '-',
+                tipo_foglia: props['tipo_foglia'] || '-',
+                foglie_primavera: parseInt(props['# Primavera']) || 0,
+                foglie_estate: parseInt(props['# Estate']) || 0,
+                foglie_autunno: parseInt(props['# Autunno']) || 0,
+                foglie_inverno: parseInt(props['# Inverno']) || 0,
                 odonimo: props['Odonimo'] || '-',
                 upl: props['UPL'] || '-',
                 quartiere: props['Quartiere'] || '-',

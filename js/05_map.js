@@ -58,6 +58,11 @@ function updateMap() {
                         <td style="padding: 6px; font-weight: bold; color: #27ae60;">Specie arborea:</td>
                         <td style="padding: 6px;">${tree.specie}</td>
                     </tr>
+										
+                    <tr style="border-bottom: 1px solid #eee;">
+                        <td style="padding: 6px; font-weight: bold; color: #27ae60;">Tipo foglia:</td>
+                        <td style="padding: 6px;">${tree.tipo_foglia}</td>
+                    </tr>
                     <tr style="border-bottom: 1px solid #eee;">
                         <td style="padding: 6px; font-weight: bold; color: #27ae60;">Dimora:</td>
                         <td style="padding: 6px;">${tree.sito}</td>

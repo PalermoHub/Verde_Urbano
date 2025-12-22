@@ -15,7 +15,7 @@ function showTreeDetails(tree) {
         <div class="detail-item"><div class="detail-label">Altezza (m)</div><div class="detail-value">${tree.altezza || 'n/a'}</div></div>
         <div class="detail-item"><div class="detail-label">Diametro (cm)</div><div class="detail-value">${tree.diametro || 'n/a'}</div></div>
         <div class="detail-item"><div class="detail-label">classe propensione cedimento - CPC</div><div class="detail-value" style="color: ${cpcColors[tree.cpc]}">${tree.cpc}</div></div>
-        <div class="detail-item"><div class="detail-label">Descrizione CPC</div><div class="detail-value">${tree.descrizione_ccp}</div></div>
+        <div class="detail-item"><div class="detail-label">Descrizione CPC</div><div class="detail-value">${tree.descrizione_cpc}</div></div>
         <div class="detail-item"><div class="detail-label">Cod. Lavorazione</div><div class="detail-value">${tree.codice}</div></div>
         <div class="detail-item" ><div class="detail-label">Tipo di lavorazione</div><div class="detail-value" style="font-size: 12px;">${tree.descrizione}</div></div>
         <div class="detail-item"><div class="detail-label">Prezzo unitario</div><div class="detail-value">${formatCurrency(tree.prezzo)}</div></div>
@@ -28,6 +28,67 @@ function showTreeDetails(tree) {
                 <div class="detail-item" style="margin: 0;"><div class="detail-label">Quartiere</div><div class="detail-value">${tree.quartiere || '-'}</div></div>
                 <div class="detail-item" style="margin: 0;"><div class="detail-label">Circoscrizione</div><div class="detail-value">${tree.circoscrizione || '-'}</div></div>
             </div>
+        </div>
+
+        <div class="detail-item" style="grid-column: 1/-1; margin-top: 15px; padding: 12px; background: linear-gradient(135deg, #fff8e1 0%, #fffde7 100%); border-left: 4px solid #ffa726; border-radius: 6px;">
+            <div class="detail-label" style="margin-bottom: 10px;"><i class="fas fa-leaf"></i> NUMERO DI FOGLIE PER STAGIONE</div>
+            <div style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 10px;">
+                <div style="padding: 8px; background: white; border-radius: 4px; border-left: 3px solid #8bc34a; text-align: center;">
+                    <div style="font-size: 10px; color: #666; font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">
+                        <i class="fas fa-seedling"></i> Primavera
+                    </div>
+                    <div style="font-size: 16px; font-weight: 700; color: #8bc34a;">${tree.foglie_primavera.toLocaleString()}</div>
+                </div>
+                <div style="padding: 8px; background: white; border-radius: 4px; border-left: 3px solid #fdd835; text-align: center;">
+                    <div style="font-size: 10px; color: #666; font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">
+                        <i class="fas fa-sun"></i> Estate
+                    </div>
+                    <div style="font-size: 16px; font-weight: 700; color: #f9a825;">${tree.foglie_estate.toLocaleString()}</div>
+                </div>
+                <div style="padding: 8px; background: white; border-radius: 4px; border-left: 3px solid #ff9800; text-align: center;">
+                    <div style="font-size: 10px; color: #666; font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">
+                        <i class="fas fa-leaf"></i> Autunno
+                    </div>
+                    <div style="font-size: 16px; font-weight: 700; color: #ff9800;">${tree.foglie_autunno.toLocaleString()}</div>
+                </div>
+                <div style="padding: 8px; background: white; border-radius: 4px; border-left: 3px solid #90a4ae; text-align: center;">
+                    <div style="font-size: 10px; color: #666; font-weight: 700; text-transform: uppercase; margin-bottom: 4px;">
+                        <i class="fas fa-snowflake"></i> Inverno
+                    </div>
+                    <div style="font-size: 16px; font-weight: 700; color: #607d8b;">${tree.foglie_inverno.toLocaleString()}</div>
+                </div>
+            </div>
+            ${(() => {
+                const foglieValues = [tree.foglie_primavera, tree.foglie_estate, tree.foglie_autunno, tree.foglie_inverno];
+                const maxFoglie = Math.max(...foglieValues);
+                const minFoglie = Math.min(...foglieValues);
+                const differenza = maxFoglie - minFoglie;
+                const percentuale = maxFoglie > 0 ? ((differenza / maxFoglie) * 100).toFixed(1) : 0;
+
+                return `
+                <div style="padding: 10px; background: #fff3e0; border-radius: 4px; border: 1px dashed #ff9800;">
+                    <div style="font-size: 11px; color: #e65100; font-weight: 700; text-transform: uppercase; margin-bottom: 6px;">
+                        <i class="fas fa-broom"></i> INDICATORE PULIZIA STAGIONALE
+                    </div>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; font-size: 12px;">
+                        <div>
+                            <span style="color: #666;">Max:</span> <strong style="color: #4caf50;">${maxFoglie.toLocaleString()}</strong>
+                        </div>
+                        <div>
+                            <span style="color: #666;">Min:</span> <strong style="color: #607d8b;">${minFoglie.toLocaleString()}</strong>
+                        </div>
+                        <div>
+                            <span style="color: #666;">Diff:</span> <strong style="color: #ff9800;">${differenza.toLocaleString()}</strong> <span style="font-size: 10px; color: #666;">(${percentuale}%)</span>
+                        </div>
+                    </div>
+                    <div style="font-size: 10px; color: #666; margin-top: 6px; font-style: italic;">
+                        ${differenza > maxFoglie * 0.3
+                            ? '<i class="fas fa-exclamation-triangle" style="color: #ff9800;"></i> Variazione significativa: pianificare pulizie intensive in autunno-inverno'
+                            : '<i class="fas fa-check-circle" style="color: #4caf50;"></i> Variazione moderata: manutenzione ordinaria sufficiente'}
+                    </div>
+                </div>
+                `;
+            })()}
         </div>
 
         <div class="detail-item" style="grid-column: 1/-1; margin-top: 15px; padding: 12px; background: linear-gradient(135deg, #e8f5e9 0%, #f1f8e9 100%); border-left: 4px solid #27ae60; border-radius: 6px;">
