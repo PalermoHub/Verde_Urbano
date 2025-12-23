@@ -363,6 +363,12 @@ function updateSeasonalLeavesChart() {
         return;
     }
 
+    // Se c'è un albero selezionato, usa la funzione specifica per singolo albero
+    if (selectedTree) {
+        updateSeasonalLeavesChartForSingleTree(selectedTree);
+        return;
+    }
+
     // Calcola i totali dalle foglie degli alberi filtrati
     const aggregatedData = {};
 
@@ -440,9 +446,12 @@ function updateSeasonalLeavesChart() {
 function updateCharts() {
     console.log('📊 Aggiornamento grafici...');
 
+    // Se c'è un albero selezionato, usa solo quello per i grafici
+    const treesToAnalyze = selectedTree ? [selectedTree] : filteredTrees;
+
     // Altezze - Corretto con 6 range
     const heights = [0, 0, 0, 0, 0, 0];
-    filteredTrees.forEach(t => {
+    treesToAnalyze.forEach(t => {
         if (t.altezza !== null && !isNaN(t.altezza)) {
             if (t.altezza < 8) heights[0]++;
             else if (t.altezza < 10) heights[1]++;
@@ -459,7 +468,7 @@ function updateCharts() {
 
     // CPC
     const cpcCounts = {B: 0, C: 0, 'C/D': 0, D: 0 };
-    filteredTrees.forEach(t => {
+    treesToAnalyze.forEach(t => {
         if (cpcCounts.hasOwnProperty(t.cpc)) cpcCounts[t.cpc]++;
     });
     if (chartsInstances.health) {
@@ -469,7 +478,7 @@ function updateCharts() {
 
     // Specie
     const speciesCount = {};
-    filteredTrees.forEach(t => {
+    treesToAnalyze.forEach(t => {
         speciesCount[t.specie] = (speciesCount[t.specie] || 0) + 1;
     });
     const sortedSpecies = Object.entries(speciesCount).sort((a, b) => b[1] - a[1]);
@@ -481,7 +490,7 @@ function updateCharts() {
 
     // Siti
     const siteCount = {};
-    filteredTrees.forEach(t => {
+    treesToAnalyze.forEach(t => {
         siteCount[t.sito] = (siteCount[t.sito] || 0) + 1;
     });
     const sortedSites = Object.entries(siteCount).sort((a, b) => b[1] - a[1]);

@@ -2,11 +2,14 @@
 function updateStats() {
     console.log('📊 Aggiornamento statistiche...', {totalTrees: allTrees.length, filteredTrees: filteredTrees.length});
 
+    // Se c'è un albero selezionato, usa solo quello per le statistiche
+    const treesToAnalyze = selectedTree ? [selectedTree] : filteredTrees;
+
     const total = allTrees.length;
-    const filtered = filteredTrees.length;
-    const altezze = filteredTrees.filter(t => t.altezza !== null).map(t => t.altezza);
-    const diametri = filteredTrees.filter(t => t.diametro !== null).map(t => t.diametro);
-    const species = new Set(filteredTrees.map(t => t.specie)).size;
+    const filtered = treesToAnalyze.length;
+    const altezze = treesToAnalyze.filter(t => t.altezza !== null).map(t => t.altezza);
+    const diametri = treesToAnalyze.filter(t => t.diametro !== null).map(t => t.diametro);
+    const species = new Set(treesToAnalyze.map(t => t.specie)).size;
 
     // Statistiche base
     document.getElementById('statTotal').textContent = total;
@@ -21,7 +24,7 @@ function updateStats() {
 
     // ===== NUOVA PARTE: Conteggio Cod. Lavorazione =====
     const lavorazioneCount = {};
-    filteredTrees.forEach(t => {
+    treesToAnalyze.forEach(t => {
         lavorazioneCount[t.codice] = (lavorazioneCount[t.codice] || 0) + 1;
     });
 
@@ -47,7 +50,7 @@ function updateStats() {
     let totalCO2 = 0;
     let totalWorkingCost = 0;
 
-    filteredTrees.forEach(t => {
+    treesToAnalyze.forEach(t => {
         totalO2 += parseFloat(calculateO2Production(t));
         totalCO2 += parseFloat(calculateCO2Absorption(t));
         totalWorkingCost += getWorkingCost(t);
@@ -59,12 +62,12 @@ function updateStats() {
     document.getElementById('statTotalWorkingCost').textContent = formatCurrency(totalWorkingCost);
 
     // ===== NUOVA PARTE: Dati Territorio =====
-    const strade = new Set(filteredTrees.map(t => t.odonimo).filter(o => o !== '-'));
+    const strade = new Set(treesToAnalyze.map(t => t.odonimo).filter(o => o !== '-'));
     const uplCount = {};
     const quartiereCount = {};
     const circoscrizioneCount = {};
 
-    filteredTrees.forEach(t => {
+    treesToAnalyze.forEach(t => {
         if (t.upl && t.upl !== '-') {
             uplCount[t.upl] = (uplCount[t.upl] || 0) + 1;
         }

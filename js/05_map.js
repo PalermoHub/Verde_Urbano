@@ -98,8 +98,8 @@ function filterBySelectedTree(tree) {
     // Salva l'albero selezionato
     selectedTree = tree;
 
-    // Filtra solo questo albero
-    filteredTrees = [tree];
+    // NON modifichiamo filteredTrees - manteniamo visibili tutti gli alberi sulla mappa
+    // I grafici e le statistiche useranno solo selectedTree quando è impostato
 
     // Mostra il banner con informazioni sull'albero selezionato
     const banner = document.getElementById('selectedTreeBanner');
@@ -247,7 +247,8 @@ function updateMap() {
         markers.push(marker);
     });
 
-    if (filteredTrees.length > 0) {
+    // Solo fai fitBounds se non c'è un albero selezionato
+    if (filteredTrees.length > 0 && !selectedTree) {
         const group = new L.featureGroup(markers);
         map.fitBounds(group.getBounds().pad(0.15), {maxZoom: 16});
     }
