@@ -9,18 +9,18 @@ function initMap() {
     map = L.map('map').setView(initialView.center, initialView.zoom);
 
     const osmLayer = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
-        attribution: '© OpenStreetMap - Map tiles by cartodb.com - under ODbL - Elaborazione dati: by @gbvitrano ',
+        attribution: '© OpenStreetMap - Map tiles by cartodb.com - under ODbL - Elaborazione dati: by <a href="https://www.linkedin.com/in/gbvitrano/" target="_blank" rel="noopener"> @gbvitrano</a>',
         minZoom: 14,
 		maxZoom: 18
     });
 
     const ctrLayer = L.tileLayer('https://siciliahub.github.io/Tiles/ctr_pa_2k/{z}/{x}/{y}.png', {
-        attribution: '© CTC 2k Palermo - Elaborazione dati: by @gbvitrano ',
+        attribution: '© CTC 2k Palermo - Elaborazione dati: by <a href="https://www.linkedin.com/in/gbvitrano/" target="_blank" rel="noopener"> @gbvitrano</a>',
 		minZoom: 14,
         maxZoom: 18    });
 
 	    const googleSatLayer = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
-        attribution: '© Google - Elaborazione dati: by @gbvitrano ',
+        attribution: '© Google - Elaborazione dati: by <a href="https://www.linkedin.com/in/gbvitrano/" target="_blank" rel="noopener"> @gbvitrano</a>',
 		minZoom: 14,
         maxZoom: 18
     });
