@@ -77,6 +77,7 @@ function loadData() {
                     return parseFloat(p) || 0;
                 })(),
                 data_lav_f4: props['Data lav. F4'] || '',
+                geouri: props['geouri'] || '',
                 lat: coords[1],
                 lon: coords[0]
             };

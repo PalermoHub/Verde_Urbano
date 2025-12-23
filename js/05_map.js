@@ -42,6 +42,9 @@ function initMap() {
     // Aggiungi pulsante Home
     addHomeButton();
 
+    // Aggiungi legenda CPC
+    addCpcLegend();
+
     console.log('✅ Mappa inizializzata');
 }
 
@@ -95,39 +98,39 @@ function updateMap() {
                 </div>
                 <table style="width: 100%; border-collapse: collapse;">
                     <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 6px; font-weight: bold; color: #27ae60;">Specie arborea:</td>
+                        <td style="padding: 6px; font-weight: bold; color: #313131;">Specie arborea:</td>
                         <td style="padding: 6px;">${tree.specie}</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 6px; font-weight: bold; color: #27ae60;">Tipo foglia:</td>
+                        <td style="padding: 6px; font-weight: bold; color: #313131;">Tipo foglia:</td>
                         <td style="padding: 6px;">${tree.tipo_foglia}</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 6px; font-weight: bold; color: #27ae60;">Dimora:</td>
+                        <td style="padding: 6px; font-weight: bold; color: #313131;">Dimora:</td>
                         <td style="padding: 6px;">${tree.sito}</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 6px; font-weight: bold; color: #27ae60;">Altezza:</td>
+                        <td style="padding: 6px; font-weight: bold; color: #313131;">Altezza:</td>
                         <td style="padding: 6px;">${tree.altezza ? tree.altezza + ' m' : 'n/a'}</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 6px; font-weight: bold; color: #27ae60;">Diametro:</td>
+                        <td style="padding: 6px; font-weight: bold; color: #313131;">Diametro:</td>
                         <td style="padding: 6px;">${tree.diametro ? tree.diametro + ' cm' : 'n/a'}</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 6px; font-weight: bold; color: #27ae60;">CPC:</td>
+                        <td style="padding: 6px; font-weight: bold; color: #313131;">CPC:</td>
                         <td style="padding: 6px; color: ${cpcColors[tree.cpc]}; font-weight: bold;">${tree.cpc}</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 6px; font-weight: bold; color: #27ae60;">Cod. lavorazione:</td>
+                        <td style="padding: 6px; font-weight: bold; color: #313131;">Cod. lavorazione:</td>
                         <td style="padding: 6px;">${tree.codice}</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 6px; font-weight: bold; color: #27ae60;">Tipo lavorazione:</td>
+                        <td style="padding: 6px; font-weight: bold; color: #313131;">Tipo lavorazione:</td>
                         <td style="padding: 6px;">${tree.descrizione}</td>
                     </tr>
                     <tr style="border-bottom: 1px solid #eee;">
-                        <td style="padding: 6px; font-weight: bold; color: #27ae60;">Prezzo unitario:</td>
+                        <td style="padding: 6px; font-weight: bold; color: #313131;">Prezzo unitario:</td>
                         <td style="padding: 6px;">€ ${tree.prezzo.toFixed(2)}</td>
                     </tr>
                 </table>
@@ -152,11 +155,15 @@ function updateMap() {
                         </tr>
                     </table>
                 </div>
-                <div style="margin-top: 10px;">
-                    <button onclick="showTreeDetailsFromPopup('${tree.id}')" style="width: 100%; padding: 10px; background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                <div style="margin-top: 10px; display: flex; gap: 8px;">
+                    <button onclick="showTreeDetailsFromPopup('${tree.id}')" style="flex: 1; padding: 10px; background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px;">
                         <i class="fas fa-info-circle"></i>
-                        <span>Visualizza Scheda Completa</span>
+                        <span>Scheda Completa</span>
                     </button>
+                    ${tree.geouri ? `<a href="${tree.geouri}" target="_blank" style="flex: 1; padding: 10px; background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Naviga</span>
+                    </a>` : ''}
                 </div>
             </div>
         `;
@@ -168,6 +175,9 @@ function updateMap() {
         const group = new L.featureGroup(markers);
         map.fitBounds(group.getBounds().pad(0.15), {maxZoom: 16});
     }
+
+    // Aggiorna la legenda con i nuovi conteggi
+    updateLegendContent();
 }
 
 // Funzione per aprire i dettagli dell'albero dal popup
@@ -177,4 +187,71 @@ function showTreeDetailsFromPopup(treeId) {
         map.closePopup(); // Chiudi il popup prima di aprire la modale
         showTreeDetails(tree);
     }
+}
+
+// Variabile globale per il controllo della legenda
+let legendControl = null;
+
+// Aggiungi legenda CPC sulla mappa
+function addCpcLegend() {
+    const LegendControl = L.Control.extend({
+        options: {
+            position: 'bottomright'
+        },
+        onAdd: function(map) {
+            const container = L.DomUtil.create('div', 'leaflet-control-legend');
+            container.id = 'map-legend-cpc';
+            updateLegendContent();
+            return container;
+        }
+    });
+
+    legendControl = new LegendControl();
+    map.addControl(legendControl);
+}
+
+// Aggiorna il contenuto della legenda con i conteggi
+function updateLegendContent() {
+    const container = document.getElementById('map-legend-cpc');
+    if (!container) return;
+
+    // Calcola i conteggi CPC dai dati filtrati
+    const cpcCount = {B: 0, C: 0, 'C/D': 0, D: 0};
+    filteredTrees.forEach(t => {
+        if (cpcCount.hasOwnProperty(t.cpc)) {
+            cpcCount[t.cpc]++;
+        }
+    });
+
+    container.innerHTML = `
+        <h4><i class="fas fa-list-check"></i> Classificazione CPC</h4>
+        <div class="legend-item" style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <i class="fas fa-circle" style="color: #2cc15f; font-size: 14px;"></i>
+                <span style="color: #313131; font-size: 11px;"><strong>B</strong> - Bassa</span>
+            </div>
+            <span style="color: #313131; font-weight: bold; font-size: 11px;">${cpcCount.B}</span>
+        </div>
+        <div class="legend-item" style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <i class="fas fa-circle" style="color: #f39c12; font-size: 14px;"></i>
+                <span style="color: #313131; font-size: 11px;"><strong>C</strong> - Moderata</span>
+            </div>
+            <span style="color: #313131; font-weight: bold; font-size: 11px;">${cpcCount.C}</span>
+        </div>
+        <div class="legend-item" style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <i class="fas fa-circle" style="color: #c164a1; font-size: 14px;"></i>
+                <span style="color: #313131; font-size: 11px;"><strong>C/D</strong> - Elevata</span>
+            </div>
+            <span style="color: #313131; font-weight: bold; font-size: 11px;">${cpcCount['C/D']}</span>
+        </div>
+        <div class="legend-item" style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <i class="fas fa-circle" style="color: #e74c3c; font-size: 14px;"></i>
+                <span style="color: #313131; font-size: 11px;"><strong>D</strong> - Estrema</span>
+            </div>
+            <span style="color: #313131; font-weight: bold; font-size: 11px;">${cpcCount.D}</span>
+        </div>
+    `;
 }

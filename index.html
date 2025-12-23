@@ -285,27 +285,6 @@
 
             <hr>
 
-
-            <h2 style="margin-top: 25px;"><i class="fas fa-list-check"></i> Classificazione CPC</h2>
-            <div class="stats-box">
-                <div class="stat-row">
-                    <span style="color: #2cc15f;"><i class="fas fa-circle" style="color: #2cc15f;"></i> B - Bassa</span>
-                    <span class="stat-value" id="statCpcB">0</span>
-                </div>
-                <div class="stat-row">
-                    <span style="color: #f39c12;"><i class="fas fa-circle" style="color: #f39c12;"></i> C - Moderata</span>
-                    <span class="stat-value" id="statCpcC">0</span>
-                </div>
-                <div class="stat-row">
-                    <span style="color: #c164a1;"><i class="fas fa-circle" style="color: #c164a1;"></i> C/D - Elevata</span>
-                    <span class="stat-value" id="statCpcCD">0</span>
-                </div>
-                <div class="stat-row">
-                    <span style="color: #e74c3c;"><i class="fas fa-circle" style="color: #e74c3c;"></i> D - Estrema</span>
-                    <span class="stat-value" id="statCpcD">0</span>
-                </div>
-            </div>
-
             <h2 style="margin-top: 25px;"><i class="fas fa-tools"></i> Cod. Lavorazione</h2>
             <div id="statLavorazione" style="font-size: 12px; color: #666;">
                 <!-- Popolato dinamicamente -->
@@ -318,23 +297,6 @@
                 <div class="stat-row">
                     <span>Costo totale:</span>
                     <span class="stat-value" id="statTotalWorkingCost">0 €</span>
-                </div>
-            </div>
-
-    <!--    <h2><i class="fas fa-palette"></i> Legenda CPC</h2> -->
-               <div class="legend">
-                <h4>Classificazione</h4>
-                <div class="legend-item">
-                    <i class="fas fa-circle" style="color: #2ecc71; font-size: 16px;"></i>
-                    <div><strong>B</strong> - Buono</div>
-                </div>
-                <div class="legend-item">
-                    <i class="fas fa-circle" style="color: #f39c12; font-size: 16px;"></i>
-                    <div><strong>C</strong> - Mediocre</div>
-                </div>
-                <div class="legend-item">
-                    <i class="fas fa-circle" style="color: #e74c3c; font-size: 16px;"></i>
-                    <div><strong>D</strong> - Cattivo</div>
                 </div>
             </div>
         </div>
@@ -354,6 +316,13 @@
 			<!-- Pulsanti -->
                 <button onclick="applyFilters()">✓ Applica</button>
                 <button class="secondary" onclick="resetFilters()">↺ Ripristina</button>
+
+                <button style="padding: 11px; background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; transition: all 0.3s;" onclick="showActiveFilters()" title="Mostra i filtri attivi">
+                    <i class="fas fa-filter"></i> Filtri Attivi
+                </button>
+                <button class="secondary" style="padding: 11px; font-size: 13px;" onclick="toggleFiltersSidebar()" title="Nascondi/Mostra filtri">
+                    <i class="fas fa-bars"></i> Toggle
+                </button>
 
                 <button style="padding: 11px; background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; transition: all 0.3s;" onclick="downloadRelazione()" title="Scarica la Relazione Tecnica">
                     <i class="fas fa-file-pdf"></i> Relazione
@@ -396,17 +365,17 @@
                     <span>Vie interessate:</span>
                     <span class="stat-value" id="statTotalStrade">0</span>
                 </div>
-                <div class="stat-row">
-                    <span>UPL:</span>
-                    <span class="stat-value" style="font-size: 11px;" id="statAlberiPerUPL">-</span>
+                <div style="margin-top: 15px;">
+                    <div style="font-weight: 600; margin-bottom: 8px; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 5px;">UPL</div>
+                    <div id="statAlberiPerUPL">-</div>
                 </div>
-                <div class="stat-row">
-                    <span>Quartiere:</span>
-                    <span class="stat-value" style="font-size: 11px;" id="statAlberiPerQuartiere">-</span>
+                <div style="margin-top: 15px;">
+                    <div style="font-weight: 600; margin-bottom: 8px; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 5px;">Quartiere</div>
+                    <div id="statAlberiPerQuartiere">-</div>
                 </div>
-                <div class="stat-row">
-                    <span>Circoscrizione:</span>
-                    <span class="stat-value" style="font-size: 11px;" id="statAlberiPerCircoscrizione">-</span>
+                <div style="margin-top: 15px;">
+                    <div style="font-weight: 600; margin-bottom: 8px; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 5px;">Circoscrizione</div>
+                    <div id="statAlberiPerCircoscrizione">-</div>
                 </div>
             </div>
 
@@ -476,6 +445,21 @@
         </div>
     </div>
 
+    <!-- Modale Filtri Attivi -->
+    <div class="modal-overlay" id="activeFiltersModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-filter"></i> Filtri Attivi</h2>
+                <button class="modal-close" onclick="closeActiveFilters()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div id="activeFiltersContent">
+                    <!-- Popolato dinamicamente -->
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 <script src="js/01_modal.js"></script>
 <script src="js/02_csv_loader.js"></script>
@@ -490,6 +474,7 @@
 <script src="js/11_pdf_generator.js"></script>
 <script src="js/12_charts.js"></script>
 <script src="js/13_reports.js"></script>
+<script src="js/14_active_filters.js"></script>
 
   <!-- Footer -->
     <footer>

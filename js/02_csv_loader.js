@@ -173,7 +173,8 @@ async function loadCSVData() {
                     '# Primavera': row['# Primavera'],
                     '# Estate': row['# Estate'],
                     '# Autunno': row['# Autunno'],
-                    '# Inverno': row['# Inverno']
+                    '# Inverno': row['# Inverno'],
+                    'geouri': row['geouri']
                 },
                 geometry: {
                     type: 'Point',

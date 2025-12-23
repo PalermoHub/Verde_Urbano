@@ -316,6 +316,23 @@ a:active {
             margin-bottom: 10px;
             font-size: 13px;
         }
+        /* Legenda CPC sulla mappa */
+        .leaflet-control-legend {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            border: 2px solid rgba(49, 49, 49, 0.1);
+        }
+        .leaflet-control-legend h4 {
+            color: #313131;
+            margin: 0 0 8px 0;
+            font-size: 13px;
+            font-weight: 700;
+            border-bottom: 2px solid #313131;
+            padding-bottom: 5px;
+        }
         /* Modale Info */
         .header-right {
             display: flex;
