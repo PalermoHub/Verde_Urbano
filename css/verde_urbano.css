@@ -12,6 +12,31 @@ hr {
     margin-bottom: 20px;
 }
 
+/* Stile base per tutti i link */
+a {
+  color: #fff;
+  text-decoration:underline;
+  /*transition: color 0.3s ease;*/
+}
+
+/* Stato hover */
+a:hover {
+  color: #ff9900;
+  text-decoration: underline;
+  font-weight: bold;
+}
+
+/* Link già visitati */
+a:visited {
+  color: #ffffff;
+}
+
+/* Link attivi (mentre si clicca) */
+a:active {
+  color: #ffffff;
+}
+
+
         body {
             font-family: "Titillium Web", sans-serif;
             background: #f5f5f5;

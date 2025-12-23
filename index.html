@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> 🌳 Demo prototipale</title>
 	<meta name="description" content="Questa è una demo prototipale che mostra i dati di monitoraggio relativi a una singola strada. Il progetto completo di cui fa parte è molto più articolato e comprende ulteriori strade, zone e funzionalità avanzate non ancora rappresentate in questa versione.">
+	    <meta name="author" content="Giovan Battista Vitrano">
+    <meta http-equiv="content-language" content="IT">
+    <meta name="robots" content="index,follow">
+    <meta name="creation_Date" content="24/12/2025">
+	    <link rel="shortcut icon" href="favicon.ico"/> 
+    <link rel="icon" href="favicon.png" type="image/png"/> 
+	
     <link rel="stylesheet" href="css/verde_urbano.css">   
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,7 +31,7 @@
     <header>
         <div>
             <h1 id="pageTitle"><i class="fas fa-tree"></i>  Demo prototipale | Verde Urbano</h1>
-            <p>Palermo 2025 - Monitoraggio e analisi dello stato di salute del verde urbano - Accordo Quadro - CUP D71G23000050001</p>
+            <p>Palermo 2025 - Monitoraggio e analisi dello stato di salute del verde urbano - <a href=https://www.opencup.gov.it//portale/it/web/opencup/home/progetto/-/cup/D71G23000050001 target="_blank" Title="STRADE E AREE A VERDE DELLA CITTA' DI PALERMO*VIA PALERMO*RIGENERAZIONE DEL VERDE URBANO DELLA CITTA' DI PALERMO- PIANTUMAZIONE E SOSTITUZIONE ALBERATURE, SERVIZI COLTURALI, RIPRISTINO AIUOLE E MARCIAPIEDI DISSESTATI, FORNITURA E POSA IN OPERA DI ARREDO URBANO E SISTEMI DI ILLUMINAZIONE AD ENERGIA SOLARE">Accordo Quadro - CUP D71G23000050001</A></p>
         </div>
         <div class="header-right">
             <div class="info-icon" id="infoBtn" title="Informazioni su questa app"><i class="fas fa-circle-info"></i></div>
@@ -41,7 +48,7 @@
             <div class="modal-body">
                 <div class="modal-section">
                     <h3><i class="fas fa-location-dot"></i> Che cos'è</h3>
-                    <p>Una dashboard interattiva per visualizzare e analizzare i dati degli alberi presenti lungo Viale Emilia a Palermo. Uno strumento di monitoraggio dello stato di salute della vegetazione urbana della città.</p>
+                    <p>Una mappa interattiva e moderna che monitora lo stato di salute della vegetazione urbana. Pensala come un "medico digitale" per gli alberi della città: raccoglie i dati, analizza le condizioni e supporta l'amministrazione nel prendere decisioni consapevoli e basate su evidenze.<br> La demo attuale si concentra sugli alberi dell'<b>Accordo Quadro CUP D71G23000050001</b>, ma il progetto è stato concepito per espandersi progressivamente a tutta la città.</p>
                 </div>
 
                 <div class="modal-section">
@@ -110,9 +117,6 @@
                     <ul>
                         <li><strong><a href="https://www.fs.fed.us/nrs/pubs/jrnls/2012/nrs_2012_nowak_001.pdf" target="_blank" style="color: #27ae60; text-decoration: underline;">USDA Forest Service - Carbon Storage and Sequestration by Municipal Trees (2012)</a></strong>
                             <br><span style="font-size: 12px; color: #666;">Nowak, D.J. & Greenfield, E.J. Studio fondamentale su sequestro di carbonio urbano</span>
-                        </li>
-                        <li><strong><a href="https://www.fs.fed.us/nrs/tools/" target="_blank" style="color: #27ae60; text-decoration: underline;">USDA Forest Service - Urban Forest Carbon Tools</a></strong>
-                            <br><span style="font-size: 12px; color: #666;">Strumenti online per quantificare benefici ambientali del verde urbano</span>
                         </li>
                         <li><strong><a href="https://www.sciencedirect.com/science/article/pii/S0301479711001253" target="_blank" style="color: #27ae60; text-decoration: underline;">Escobedo et al. (2011) - Ecological benefits of green infrastructure</a></strong>
                             <br><span style="font-size: 12px; color: #666;">Environmental Pollution, 159(7), 1628-1635. Benefici ecologici dell'infrastruttura verde urbana</span>
@@ -281,12 +285,86 @@
 
             <hr>
 
-<!-- Pulsanti -->
 
-            <div class="button-group">
+            <h2 style="margin-top: 25px;"><i class="fas fa-list-check"></i> Classificazione CPC</h2>
+            <div class="stats-box">
+                <div class="stat-row">
+                    <span style="color: #2cc15f;"><i class="fas fa-circle" style="color: #2cc15f;"></i> B - Bassa</span>
+                    <span class="stat-value" id="statCpcB">0</span>
+                </div>
+                <div class="stat-row">
+                    <span style="color: #f39c12;"><i class="fas fa-circle" style="color: #f39c12;"></i> C - Moderata</span>
+                    <span class="stat-value" id="statCpcC">0</span>
+                </div>
+                <div class="stat-row">
+                    <span style="color: #c164a1;"><i class="fas fa-circle" style="color: #c164a1;"></i> C/D - Elevata</span>
+                    <span class="stat-value" id="statCpcCD">0</span>
+                </div>
+                <div class="stat-row">
+                    <span style="color: #e74c3c;"><i class="fas fa-circle" style="color: #e74c3c;"></i> D - Estrema</span>
+                    <span class="stat-value" id="statCpcD">0</span>
+                </div>
+            </div>
+
+            <h2 style="margin-top: 25px;"><i class="fas fa-tools"></i> Cod. Lavorazione</h2>
+            <div id="statLavorazione" style="font-size: 12px; color: #666;">
+                <!-- Popolato dinamicamente -->
+            </div>
+
+
+
+            <h2 style="margin-top: 25px;"><i class="fas fa-euro-sign"></i> Costo Lavorazione (Dato indicativo)</h2>
+            <div class="stats-box" style="background: linear-gradient(135deg, #f39c12 0%, #d68910 100%);">
+                <div class="stat-row">
+                    <span>Costo totale:</span>
+                    <span class="stat-value" id="statTotalWorkingCost">0 €</span>
+                </div>
+            </div>
+
+    <!--    <h2><i class="fas fa-palette"></i> Legenda CPC</h2> -->
+               <div class="legend">
+                <h4>Classificazione</h4>
+                <div class="legend-item">
+                    <i class="fas fa-circle" style="color: #2ecc71; font-size: 16px;"></i>
+                    <div><strong>B</strong> - Buono</div>
+                </div>
+                <div class="legend-item">
+                    <i class="fas fa-circle" style="color: #f39c12; font-size: 16px;"></i>
+                    <div><strong>C</strong> - Mediocre</div>
+                </div>
+                <div class="legend-item">
+                    <i class="fas fa-circle" style="color: #e74c3c; font-size: 16px;"></i>
+                    <div><strong>D</strong> - Cattivo</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Area Centrale: Mappa -->
+        <div class="main">
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+        </div>
+
+        <!-- Sidebar Destra: Controlli e Grafici -->
+        <div class="sidebar sidebar-right">
+            <h2><i class="fas fa-sliders"></i> Controlli Mappa</h2>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
+			<!-- Pulsanti -->
                 <button onclick="applyFilters()">✓ Applica</button>
                 <button class="secondary" onclick="resetFilters()">↺ Ripristina</button>
+
+                <button style="padding: 11px; background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; transition: all 0.3s;" onclick="downloadRelazione()" title="Scarica la Relazione Tecnica">
+                    <i class="fas fa-file-pdf"></i> Relazione
+                </button>
+                <button style="padding: 11px; background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; transition: all 0.3s;" onclick="printMapPdf()" title="Stampa la mappa in PDF">
+                    <i class="fas fa-map"></i> Mappa PDF
+                </button>
             </div>
+						
+
+
 
             <h2 style="margin-top: 25px;"><i class="fas fa-chart-simple"></i> Statistiche</h2>
             <div class="stats-box">
@@ -332,31 +410,6 @@
                 </div>
             </div>
 
-            <h2 style="margin-top: 25px;"><i class="fas fa-list-check"></i> Classificazione CPC</h2>
-            <div class="stats-box">
-                <div class="stat-row">
-                    <span style="color: #2cc15f;"><i class="fas fa-circle" style="color: #2cc15f;"></i> B - Bassa</span>
-                    <span class="stat-value" id="statCpcB">0</span>
-                </div>
-                <div class="stat-row">
-                    <span style="color: #f39c12;"><i class="fas fa-circle" style="color: #f39c12;"></i> C - Moderata</span>
-                    <span class="stat-value" id="statCpcC">0</span>
-                </div>
-                <div class="stat-row">
-                    <span style="color: #c164a1;"><i class="fas fa-circle" style="color: #c164a1;"></i> C/D - Elevata</span>
-                    <span class="stat-value" id="statCpcCD">0</span>
-                </div>
-                <div class="stat-row">
-                    <span style="color: #e74c3c;"><i class="fas fa-circle" style="color: #e74c3c;"></i> D - Estrema</span>
-                    <span class="stat-value" id="statCpcD">0</span>
-                </div>
-            </div>
-
-            <h2 style="margin-top: 25px;"><i class="fas fa-tools"></i> Cod. Lavorazione</h2>
-            <div id="statLavorazione" style="font-size: 12px; color: #666;">
-                <!-- Popolato dinamicamente -->
-            </div>
-
             <h2 style="margin-top: 25px;"><i class="fas fa-leaf"></i> Benefici  Ambientali</h2>
             <div class="stats-box" style="background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);">
                 <div class="stat-row">
@@ -367,52 +420,6 @@
                     <span>Assorbimento CO₂ totale:</span>
                     <span class="stat-value" id="statTotalCO2">0 kg/anno</span>
                 </div>
-            </div>
-
-            <h2 style="margin-top: 25px;"><i class="fas fa-euro-sign"></i> Costi Lavorazione</h2>
-            <div class="stats-box" style="background: linear-gradient(135deg, #f39c12 0%, #d68910 100%);">
-                <div class="stat-row">
-                    <span>Costo totale:</span>
-                    <span class="stat-value" id="statTotalWorkingCost">0 €</span>
-                </div>
-            </div>
-
-    <!--    <h2><i class="fas fa-palette"></i> Legenda CPC</h2> -->
-               <div class="legend">
-                <h4>Classificazione</h4>
-                <div class="legend-item">
-                    <i class="fas fa-circle" style="color: #2ecc71; font-size: 16px;"></i>
-                    <div><strong>B</strong> - Buono</div>
-                </div>
-                <div class="legend-item">
-                    <i class="fas fa-circle" style="color: #f39c12; font-size: 16px;"></i>
-                    <div><strong>C</strong> - Mediocre</div>
-                </div>
-                <div class="legend-item">
-                    <i class="fas fa-circle" style="color: #e74c3c; font-size: 16px;"></i>
-                    <div><strong>D</strong> - Cattivo</div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Area Centrale: Mappa -->
-        <div class="main">
-            <div class="map-container">
-                <div id="map"></div>
-            </div>
-        </div>
-
-        <!-- Sidebar Destra: Controlli e Grafici -->
-        <div class="sidebar sidebar-right">
-            <h2><i class="fas fa-sliders"></i> Controlli Mappa</h2>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
-                <button style="padding: 11px; background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; transition: all 0.3s;" onclick="downloadRelazione()" title="Scarica la Relazione Tecnica">
-                    <i class="fas fa-file-pdf"></i> Relazione
-                </button>
-                <button style="padding: 11px; background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; transition: all 0.3s;" onclick="printMapPdf()" title="Stampa la mappa in PDF">
-                    <i class="fas fa-map"></i> Mappa PDF
-                </button>
             </div>
 
             <h2><i class="fas fa-chart-bar"></i> Grafici Analisi</h2>
