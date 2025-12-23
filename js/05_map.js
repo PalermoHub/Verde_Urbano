@@ -11,18 +11,18 @@ function initMap() {
     const osmLayer = L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
         attribution: '© OpenStreetMap - Map tiles by cartodb.com - under ODbL - Elaborazione dati: by <a href="https://www.linkedin.com/in/gbvitrano/" target="_blank" rel="noopener"> @gbvitrano</a>',
         minZoom: 14,
-		maxZoom: 18
+		maxZoom: 20
     });
 
     const ctrLayer = L.tileLayer('https://siciliahub.github.io/Tiles/ctr_pa_2k/{z}/{x}/{y}.png', {
         attribution: '© CTC 2k Palermo - Elaborazione dati: by <a href="https://www.linkedin.com/in/gbvitrano/" target="_blank" rel="noopener"> @gbvitrano</a>',
 		minZoom: 14,
-        maxZoom: 18    });
+        maxZoom: 20    });
 
 	    const googleSatLayer = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
         attribution: '© Google - Elaborazione dati: by <a href="https://www.linkedin.com/in/gbvitrano/" target="_blank" rel="noopener"> @gbvitrano</a>',
 		minZoom: 14,
-        maxZoom: 18
+        maxZoom: 20
     });
     osmLayer.addTo(map);
 
@@ -63,6 +63,11 @@ function initMap() {
                 clearSelectedTreeFilter();
             }
         }
+    });
+
+    // Aggiungi evento zoomend per aggiornare la dimensione dei marker in base al livello di zoom
+    map.on('zoomend', function() {
+        updateMarkerSizes();
     });
 
     console.log('✅ Mappa inizializzata');
@@ -134,14 +139,52 @@ function clearSelectedTreeFilter() {
     console.log('🔄 Filtro albero selezionato rimosso');
 }
 
+// Funzione per aggiornare solo le dimensioni dei marker senza ricrearli
+function updateMarkerSizes() {
+    const currentZoom = map.getZoom();
+
+    markers.forEach(marker => {
+        const tree = marker.treeData;
+        if (!tree) return;
+
+        // Calcola il nuovo raggio in base al livello di zoom
+        let radius;
+        if (currentZoom <= 15) {
+            // Zoom 14-15: dimensione fissa per tutti i punti
+            radius = 3;
+        } else {
+            // Zoom 16+: dimensione variabile in base al diametro
+            radius = Math.max(3, Math.min(tree.diametro ? tree.diametro / 8 : 6, 15));
+        }
+
+        // Verifica se questo marker è quello selezionato
+        const isSelected = selectedTree && selectedTree.id === tree.id;
+
+        // Aggiorna solo il raggio del marker
+        marker.setRadius(isSelected ? radius * 1.5 : radius);
+    });
+}
+
 // ===== MAPPA - UPDATE =====
 function updateMap() {
     markers.forEach(m => map.removeLayer(m));
     markers = [];
 
+    // Ottieni il livello di zoom corrente
+    const currentZoom = map.getZoom();
+
     filteredTrees.forEach(tree => {
         const color = cpcColors[tree.cpc] || '#95a5a6';
-        const radius = Math.max(3, Math.min(tree.diametro ? tree.diametro / 8 : 6, 15));
+
+        // Calcola il raggio in base al livello di zoom
+        let radius;
+        if (currentZoom <= 15) {
+            // Zoom 14-15: dimensione fissa per tutti i punti
+            radius = 3;
+        } else {
+            // Zoom 16+: dimensione variabile in base al diametro
+            radius = Math.max(3, Math.min(tree.diametro ? tree.diametro / 8 : 6, 15));
+        }
 
         // Verifica se questo marker è quello selezionato
         const isSelected = selectedTree && selectedTree.id === tree.id;
@@ -235,6 +278,14 @@ function updateMap() {
             </div>
         `;
         marker.bindPopup(popupContent, {maxWidth: 400, className: 'custom-popup'});
+
+        // Aggiungi tooltip con ID Pianta e Odonimo
+        const tooltipContent = `${tree.id} - ${tree.odonimo || 'n/a'}`;
+        marker.bindTooltip(tooltipContent, {
+            permanent: false,
+            direction: 'top',
+            className: 'custom-tooltip'
+        });
 
         // Aggiungi evento click al marker per filtrare tutto per questo albero
         marker.on('click', function(e) {

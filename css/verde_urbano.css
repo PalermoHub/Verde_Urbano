@@ -14,7 +14,7 @@ hr {
 
 /* Stile base per tutti i link */
 a {
-  color: #fff;
+  color: #ff9900;
   text-decoration:underline;
   /*transition: color 0.3s ease;*/
 }
@@ -28,7 +28,7 @@ a:hover {
 
 /* Link già visitati */
 a:visited {
-  color: #ffffff;
+  color: #ff9900;
 }
 
 /* Link attivi (mentre si clicca) */
@@ -435,12 +435,13 @@ a:active {
             padding: 0;
             display: flex;
             align-items: center;
-            justify-content: center;
+            justify-content: right;
             transition: transform 0.2s;
             flex-shrink: 0;
         }
-       /**/ .modal-close:hover {
-            transform: rotate(90deg);
+       .modal-close:hover {
+            /* transform: rotate(90deg);			*/
+			color: #ff9900;
         }
         .modal-body {
             padding: 30px;
@@ -630,4 +631,20 @@ a:active {
         .custom-popup button:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(39, 174, 96, 0.4);
+        }
+
+        /* Stili personalizzati per tooltip mappa */
+        .custom-tooltip {
+            background: rgba(39, 174, 96, 0.95);
+            border: 2px solid #1e8449;
+            border-radius: 6px;
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            padding: 6px 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+            white-space: nowrap;
+        }
+        .custom-tooltip::before {
+            border-top-color: rgba(39, 174, 96, 0.95);
         }
