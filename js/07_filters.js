@@ -213,9 +213,9 @@ function applyFilters() {
 function updatePageTitle(odonimo) {
     const titleElement = document.getElementById('pageTitle');
     if (odonimo) {
-        titleElement.innerHTML = `<i class="fas fa-tree"></i>  Demo prototipale | alberi ${odonimo}`;
+        titleElement.innerHTML = `<i class="fas fa-tree"></i> Rigenerazione del Verde Urbano di Palermo: Riqualificazione Stradale e Arredo della Città | ${odonimo}`;
     } else {
-        titleElement.innerHTML = `<i class="fas fa-tree"></i>  Demo prototipale | Verde Urbano`;
+        titleElement.innerHTML = `<i class="fas fa-tree"></i> Rigenerazione del Verde Urbano di Palermo: Riqualificazione Stradale e Arredo della Città`;
     }
 }
 
