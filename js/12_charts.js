@@ -243,43 +243,14 @@ function initCharts() {
         });
     }
 
-    // Foglie stagionali per via
+    // Foglie stagionali - grafico orizzontale con stagioni sull'asse Y
     const seasonalLeavesCtx = document.getElementById('seasonalLeavesChart');
     if (seasonalLeavesCtx && seasonalLeavesCtx.getContext) {
         chartsInstances.seasonalLeaves = new Chart(seasonalLeavesCtx, {
             type: 'bar',
             data: {
-                labels: [],
-                datasets: [
-                    {
-                        label: 'Primavera',
-                        data: [],
-                        backgroundColor: '#FAD5A5',
-                        borderColor: '#F4C78D',
-                        borderWidth: 2
-                    },
-                    {
-                        label: 'Estate',
-                        data: [],
-                        backgroundColor: '#B0C4DE',
-                        borderColor: '#9BB3D0',
-                        borderWidth: 2
-                    },
-                    {
-                        label: 'Autunno',
-                        data: [],
-                        backgroundColor: '#D2691E',
-                        borderColor: '#C05A18',
-                        borderWidth: 2
-                    },
-                    {
-                        label: 'Inverno',
-                        data: [],
-                        backgroundColor: '#000080',
-                        borderColor: '#000066',
-                        borderWidth: 2
-                    }
-                ]
+                labels: ['Primavera', 'Estate', 'Autunno', 'Inverno'],
+                datasets: []
             },
             options: {
                 indexAxis: 'y',
@@ -287,8 +258,7 @@ function initCharts() {
                 maintainAspectRatio: false,
                 plugins: {
                     legend: {
-                        display: true,
-                        position: 'top'
+                        display: false
                     },
                     tooltip: {
                         callbacks: {
@@ -301,7 +271,6 @@ function initCharts() {
                 scales: {
                     x: {
                         beginAtZero: true,
-                        stacked: false,
                         ticks: {
                             callback: function(value) {
                                 return value.toLocaleString('it-IT');
@@ -309,10 +278,46 @@ function initCharts() {
                         }
                     },
                     y: {
-                        stacked: false
+                        ticks: {
+                            font: {
+                                size: 13,
+                                weight: 'bold'
+                            }
+                        }
                     }
                 }
-            }
+            },
+            plugins: [{
+                afterDatasetsDraw(chart) {
+                    const ctx = chart.ctx;
+                    chart.data.datasets.forEach((dataset, datasetIndex) => {
+                        const meta = chart.getDatasetMeta(datasetIndex);
+                        meta.data.forEach((bar, index) => {
+                            const value = dataset.data[index];
+                            if (value > 0) {
+                                const barWidth = bar.width;
+                                const barX = bar.x;
+                                const barY = bar.y;
+
+                                ctx.font = 'bold 11px Arial';
+                                ctx.textBaseline = 'middle';
+
+                                // Se la barra è abbastanza lunga, etichetta bianca dentro
+                                if (barWidth > 80) {
+                                    ctx.fillStyle = 'white';
+                                    ctx.textAlign = 'center';
+                                    ctx.fillText(value.toLocaleString('it-IT'), barX - barWidth / 2 + 40, barY);
+                                } else {
+                                    // Altrimenti etichetta fuori a destra
+                                    ctx.fillStyle = '#555';
+                                    ctx.textAlign = 'left';
+                                    ctx.fillText(value.toLocaleString('it-IT'), barX + 5, barY);
+                                }
+                            }
+                        });
+                    });
+                }
+            }]
         });
 
         // Popola il grafico con i dati
@@ -322,6 +327,35 @@ function initCharts() {
     console.log('✅ Grafici inizializzati');
 }
 
+// Funzione per aggiornare il grafico delle foglie stagionali con un singolo albero
+function updateSeasonalLeavesChartForSingleTree(tree) {
+    if (!chartsInstances.seasonalLeaves) {
+        console.warn('⚠️ Grafico foglie stagionali non inizializzato');
+        return;
+    }
+
+    // Colori stagionali specifici
+    const seasonalColors = [
+        { bg: '#FAD5A5', border: '#F4C78D' },  // Primavera
+        { bg: '#B0C4DE', border: '#9BB3D0' },  // Estate
+        { bg: '#D2691E', border: '#C05A18' },  // Autunno
+        { bg: '#000080', border: '#000066' }   // Inverno
+    ];
+
+    const dataset = {
+        label: `Albero ${tree.id} - ${tree.specie}`,
+        data: [tree.foglie_primavera || 0, tree.foglie_estate || 0, tree.foglie_autunno || 0, tree.foglie_inverno || 0],
+        backgroundColor: seasonalColors.map(c => c.bg),
+        borderColor: seasonalColors.map(c => c.border),
+        borderWidth: 2
+    };
+
+    chartsInstances.seasonalLeaves.data.datasets = [dataset];
+    chartsInstances.seasonalLeaves.update();
+
+    console.log('📊 Grafico foglie aggiornato per albero:', tree.id);
+}
+
 // Funzione per aggiornare il grafico delle foglie stagionali
 function updateSeasonalLeavesChart() {
     if (!chartsInstances.seasonalLeaves) {
@@ -329,33 +363,78 @@ function updateSeasonalLeavesChart() {
         return;
     }
 
-    if (!seasonalLeavesData || Object.keys(seasonalLeavesData).length === 0) {
-        console.warn('⚠️ Nessun dato foglie stagionali disponibile');
-        return;
-    }
+    // Calcola i totali dalle foglie degli alberi filtrati
+    const aggregatedData = {};
 
-    const streets = Object.keys(seasonalLeavesData).sort();
-    const primaveraData = [];
-    const estateData = [];
-    const autunnoData = [];
-    const invernoData = [];
+    filteredTrees.forEach(tree => {
+        // Determina la chiave di aggregazione basata sui filtri attivi
+        let key = 'Totale Generale';
 
-    streets.forEach(street => {
-        const data = seasonalLeavesData[street];
-        primaveraData.push((data['Primavera'] && data['Primavera'].count) || 0);
-        estateData.push((data['Estate'] && data['Estate'].count) || 0);
-        autunnoData.push((data['Autunno'] && data['Autunno'].count) || 0);
-        invernoData.push((data['Inverno'] && data['Inverno'].count) || 0);
+        // Se ci sono filtri territoriali attivi, aggrega per quello più specifico
+        const odonimoFilter = document.getElementById('odonimoFilter').value;
+        const quartiereFilter = document.getElementById('quartiereFilter').value;
+        const circoscrizioneFilter = document.getElementById('circoscrizioneFilter').value;
+        const uplFilter = document.getElementById('uplFilter').value;
+
+        // Priorità: singolo albero > odonimo > UPL > quartiere > circoscrizione > totale generale
+        if (filteredTrees.length === 1) {
+            // Se c'è un solo albero filtrato, mostra i dati per quell'albero
+            key = `Albero ${tree.id} - ${tree.specie}`;
+        } else if (odonimoFilter) {
+            key = tree.odonimo || 'Sconosciuto';
+        } else if (uplFilter) {
+            key = tree.upl || 'Sconosciuto';
+        } else if (quartiereFilter) {
+            key = tree.quartiere || 'Sconosciuto';
+        } else if (circoscrizioneFilter) {
+            key = tree.circoscrizione || 'Sconosciuto';
+        }
+
+        // Inizializza l'aggregazione se non esiste
+        if (!aggregatedData[key]) {
+            aggregatedData[key] = {
+                primavera: 0,
+                estate: 0,
+                autunno: 0,
+                inverno: 0
+            };
+        }
+
+        // Somma le foglie stagionali
+        aggregatedData[key].primavera += tree.foglie_primavera || 0;
+        aggregatedData[key].estate += tree.foglie_estate || 0;
+        aggregatedData[key].autunno += tree.foglie_autunno || 0;
+        aggregatedData[key].inverno += tree.foglie_inverno || 0;
     });
 
-    chartsInstances.seasonalLeaves.data.labels = streets;
-    chartsInstances.seasonalLeaves.data.datasets[0].data = primaveraData;
-    chartsInstances.seasonalLeaves.data.datasets[1].data = estateData;
-    chartsInstances.seasonalLeaves.data.datasets[2].data = autunnoData;
-    chartsInstances.seasonalLeaves.data.datasets[3].data = invernoData;
+    // Prepara i datasets per ogni categoria (via, UPL, quartiere, ecc.)
+    const categories = Object.keys(aggregatedData).sort();
+    const datasets = [];
+
+    // Colori stagionali specifici
+    const seasonalColors = [
+        { bg: '#FAD5A5', border: '#F4C78D' },  // Primavera
+        { bg: '#B0C4DE', border: '#9BB3D0' },  // Estate
+        { bg: '#D2691E', border: '#C05A18' },  // Autunno
+        { bg: '#000080', border: '#000066' }   // Inverno
+    ];
+
+    categories.forEach((category, index) => {
+        const data = aggregatedData[category];
+
+        datasets.push({
+            label: category,
+            data: [data.primavera, data.estate, data.autunno, data.inverno],
+            backgroundColor: seasonalColors.map(c => c.bg),
+            borderColor: seasonalColors.map(c => c.border),
+            borderWidth: 2
+        });
+    });
+
+    chartsInstances.seasonalLeaves.data.datasets = datasets;
     chartsInstances.seasonalLeaves.update();
 
-    console.log('📊 Grafico foglie stagionali aggiornato con', streets.length, 'vie');
+    console.log('📊 Grafico foglie stagionali aggiornato con', categories.length, 'categorie');
 }
 
 function updateCharts() {
@@ -411,6 +490,9 @@ function updateCharts() {
         chartsInstances.site.data.datasets[0].data = sortedSites.map(s => s[1]);
         chartsInstances.site.update();
     }
+
+    // Aggiorna anche il grafico delle foglie stagionali
+    updateSeasonalLeavesChart();
 
     console.log('✅ Grafici aggiornati');
 }

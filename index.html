@@ -178,6 +178,17 @@
                 <i class="fas fa-info-circle"></i> I filtri aggiornano mappa e grafici in tempo reale
             </div>
 
+            <!-- Banner albero selezionato -->
+            <div id="selectedTreeBanner" class="selected-tree-banner" style="display: none;">
+                <div style="flex: 1;">
+                    <i class="fas fa-map-marker-alt"></i> <strong>Albero selezionato:</strong>
+                    <div id="selectedTreeName" style="margin-top: 5px; font-size: 11px;"></div>
+                </div>
+                <button onclick="clearSelectedTreeFilter()" style="background: #e74c3c; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 11px; font-weight: 600;">
+                    <i class="fas fa-times"></i> Deseleziona
+                </button>
+            </div>
+
             <h2><i class="fas fa-search"></i> Filtri</h2>
 
 <!-- Territorio -->
@@ -421,7 +432,7 @@
                 </div>
 
 				<div class="chart-box chart-box-full">
-                    <h3><i class="fas fa-seedling"></i> Foglie totali per via nelle stagioni</h3>
+                    <h3><i class="fas fa-seedling"></i> Foglie totali nelle stagioni</h3>
                     <div class="chart-wrapper" style="height: 350px;">
                         <canvas id="seasonalLeavesChart"></canvas>
                     </div>

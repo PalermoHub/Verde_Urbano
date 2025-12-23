@@ -5,6 +5,7 @@ let map;
 let markers = [];
 let chartsInstances = {};
 let selectedTree = null;  // AGGIUNTO: Traccia l'albero selezionato
+let selectedMarker = null;  // AGGIUNTO: Traccia il marker selezionato
 let seasonalLeavesData = [];  // AGGIUNTO: Dati foglie stagionali
 
 const cpcColors = {

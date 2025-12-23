@@ -155,6 +155,10 @@ function getCountForFilter(filterType, filterValue) {
 }
 
 function applyFilters() {
+    // Resetta l'albero selezionato quando si applicano i filtri manuali
+    selectedTree = null;
+    selectedMarker = null;
+
     const specie = document.getElementById('specieFilter').value;
     const cpc = document.getElementById('cpcFilter').value;
     const site = document.getElementById('siteFilter').value;
@@ -340,6 +344,10 @@ function updateFilterCounts() {
 }
 
 function resetFilters() {
+    // Resetta anche l'albero selezionato dalla mappa
+    selectedTree = null;
+    selectedMarker = null;
+
     document.getElementById('specieFilter').value = '';
     document.getElementById('cpcFilter').value = '';
     document.getElementById('siteFilter').value = '';

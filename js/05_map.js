@@ -45,6 +45,26 @@ function initMap() {
     // Aggiungi legenda CPC
     addCpcLegend();
 
+    // Aggiungi evento click sulla mappa per deselezionare l'albero
+    map.on('click', function(e) {
+        // Deseleziona solo se c'è un albero selezionato
+        // e se il click non è su un marker (il click sui marker viene gestito separatamente)
+        if (selectedTree) {
+            // Verifica che il click non sia su un marker
+            let clickedOnMarker = false;
+            markers.forEach(marker => {
+                if (marker.getLatLng().distanceTo(e.latlng) < 20) { // 20 metri di tolleranza
+                    clickedOnMarker = true;
+                }
+            });
+
+            // Se non ha cliccato su un marker, deseleziona
+            if (!clickedOnMarker) {
+                clearSelectedTreeFilter();
+            }
+        }
+    });
+
     console.log('✅ Mappa inizializzata');
 }
 
@@ -73,6 +93,47 @@ function addHomeButton() {
     map.addControl(new HomeControl());
 }
 
+// Funzione per filtrare tutto in base a un albero selezionato dalla mappa
+function filterBySelectedTree(tree) {
+    // Salva l'albero selezionato
+    selectedTree = tree;
+
+    // Filtra solo questo albero
+    filteredTrees = [tree];
+
+    // Mostra il banner con informazioni sull'albero selezionato
+    const banner = document.getElementById('selectedTreeBanner');
+    const nameDiv = document.getElementById('selectedTreeName');
+    if (banner && nameDiv) {
+        nameDiv.textContent = `ID: ${tree.id} - ${tree.specie}`;
+        banner.style.display = 'flex';
+    }
+
+    // Aggiorna tutti i componenti
+    updateStats();
+    updateCharts();
+    updateMap();
+
+    console.log('🎯 Filtrato per albero selezionato:', tree.id);
+}
+
+// Funzione per ripristinare i filtri normali
+function clearSelectedTreeFilter() {
+    selectedTree = null;
+    selectedMarker = null;
+
+    // Nascondi il banner
+    const banner = document.getElementById('selectedTreeBanner');
+    if (banner) {
+        banner.style.display = 'none';
+    }
+
+    // Riapplica i filtri normali
+    applyFilters();
+
+    console.log('🔄 Filtro albero selezionato rimosso');
+}
+
 // ===== MAPPA - UPDATE =====
 function updateMap() {
     markers.forEach(m => map.removeLayer(m));
@@ -82,14 +143,20 @@ function updateMap() {
         const color = cpcColors[tree.cpc] || '#95a5a6';
         const radius = Math.max(3, Math.min(tree.diametro ? tree.diametro / 8 : 6, 15));
 
+        // Verifica se questo marker è quello selezionato
+        const isSelected = selectedTree && selectedTree.id === tree.id;
+
         const marker = L.circleMarker([tree.lat, tree.lon], {
-            radius: radius,
+            radius: isSelected ? radius * 1.5 : radius,
             fillColor: color,
-            color: '#fff',
-            weight: .75,
+            color: isSelected ? '#FFD700' : '#fff',
+            weight: isSelected ? 3 : 0.75,
             opacity: 1,
-            fillOpacity: 0.85
+            fillOpacity: isSelected ? 1 : 0.85
         }).addTo(map);
+
+        // Salva il riferimento all'albero nel marker
+        marker.treeData = tree;
 
         const popupContent = `
             <div style="font-family: Arial, sans-serif; font-size: 12px; min-width: 280px;">
@@ -168,6 +235,15 @@ function updateMap() {
             </div>
         `;
         marker.bindPopup(popupContent, {maxWidth: 400, className: 'custom-popup'});
+
+        // Aggiungi evento click al marker per filtrare tutto per questo albero
+        marker.on('click', function(e) {
+            // Previeni il comportamento di default solo se non stiamo già visualizzando questo albero
+            if (!selectedTree || selectedTree.id !== tree.id) {
+                filterBySelectedTree(tree);
+            }
+        });
+
         markers.push(marker);
     });
 
@@ -196,7 +272,7 @@ let legendControl = null;
 function addCpcLegend() {
     const LegendControl = L.Control.extend({
         options: {
-            position: 'bottomright'
+            position: 'bottomleft'
         },
         onAdd: function(map) {
             const container = L.DomUtil.create('div', 'leaflet-control-legend');

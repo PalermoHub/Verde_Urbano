@@ -12,6 +12,9 @@ function showTreeDetails(tree) {
     modal.classList.add('active');
     document.body.classList.add('modal-open');
 
+    // Aggiorna il grafico delle foglie per mostrare solo questo albero
+    updateSeasonalLeavesChartForSingleTree(tree);
+
     const info = document.getElementById('selectedTreeInfo');
     info.innerHTML = `
         <div class="detail-item"><div class="detail-label">ID</div><div class="detail-value">${tree.id}</div></div>
@@ -187,6 +190,9 @@ function closeTreeDetails() {
     const modal = document.getElementById('treeDetailsModal');
     modal.classList.remove('active');
     document.body.classList.remove('modal-open');
+
+    // Ripristina il grafico delle foglie alla visualizzazione normale
+    updateSeasonalLeavesChart();
 }
 
 // Chiudi la modale quando si clicca fuori dall'area del contenuto

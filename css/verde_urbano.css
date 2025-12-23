@@ -413,7 +413,7 @@ a:active {
         .modal-header {
             background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
             color: white;
-            padding: 25px;
+            padding: 25px 15px;
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -422,6 +422,7 @@ a:active {
         .modal-header h2 {
             margin: 0;
             font-size: 24px;
+            flex: 1;
         }
         .modal-close {
             background: none;
@@ -516,6 +517,29 @@ a:active {
             font-size: 12px;
             color: #2e7d32;
             margin-bottom: 15px;
+        }
+        .selected-tree-banner {
+            background: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            color: #e65100;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            animation: slideIn 0.3s ease;
+        }
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         @media (max-width: 1400px) {
             .container {
