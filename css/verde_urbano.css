@@ -50,6 +50,7 @@ a:active {
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: relative;
         }
         header > div:first-child {
             flex: 1;
@@ -206,9 +207,7 @@ a:active {
             margin-bottom: 5px;
             font-weight: 700;
         }
-		
-		
-		
+				
 		footer h2 {
             color: #27ae60;
             font-size: 18px;
@@ -670,4 +669,31 @@ a:active {
         }
         .custom-tooltip::before {
             border-top-color: rgba(39, 174, 96, 0.95);
+        }
+
+        /* Timbro DEMO */
+        .demo-stamp {
+            position: absolute;
+            background-color: #e74c3c;
+            color: white;
+            font-weight: 700;
+            font-size: 12px;
+            padding: 10px 10px;
+            transform: rotate(-30deg);
+            z-index: 1000;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            border: 1px solid #c0392b;
+            letter-spacing: 3px;
+            opacity: 0.9;
+        }
+
+        .demo-stamp-header {
+            top: 15px;
+            right: 120px;
+        }
+
+        .demo-stamp-footer {
+            position: relative;
+            display: inline-block;
+            margin: 10px 80%;
         }
