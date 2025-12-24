@@ -71,8 +71,7 @@ function calculateCO2Absorption(tree) {
 
 /**
  * Calcola il costo di lavorazione per un albero
- * Include le fasi 1, 2 e 3 del progetto dove presenti
- * FASE 4 DISATTIVATA - Non rientra nel calcolo del costo finale
+ * Include tutte le 4 fasi del progetto dove presenti
  */
 function getWorkingCost(tree) {
     let totalCost = 0;
@@ -86,9 +85,8 @@ function getWorkingCost(tree) {
     // Fase 3 - Nuova pianta
     totalCost += tree.prezzo_f3 || 0;
 
-    // FASE 4 DISATTIVATA - Pali tutori - Non rientra nel calcolo del costo finale
-    // Il codice è disponibile per eventuali usi futuri
-    // totalCost += tree.prezzo_f4 || 0;
+    // Fase 4 - Pali tutori
+    totalCost += tree.prezzo_f4 || 0;
 
     return totalCost;
 }

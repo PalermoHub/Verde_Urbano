@@ -73,7 +73,7 @@ function showTreeDetails(tree) {
                 <i class="fas fa-seedling"></i> FASE 3: Fornitura e messa a dimora di nuova pianta
             </div>
             <div style="font-size: 11px; color: #666; margin-bottom: 10px; line-height: 1.5; font-style: italic;">
-                La terza fase riguarda l'approvvigionamento di esemplari arborei e/o arbustivi conformi alle specifiche tecniche del progetto, seguita dalle operazioni di messa a dimora con realizzazione della buca di impianto a profondità e dimensioni adeguate alla zolla, nonché dalla sistemazione del terreno circostante e fornitura di pali tutori in legno e la loro installazione secondo le migliori pratiche agronomiche, al fine di garantire la stabilità della pianta durante il periodo di attecchimento e il suo corretto sviluppo vegetativo.
+                La terza fase riguarda l'approvvigionamento di esemplari arborei e/o arbustivi conformi alle specifiche tecniche del progetto, seguita dalle operazioni di messa a dimora con realizzazione della buca di impianto a profondità e dimensioni adeguate alla zolla, nonché dalla sistemazione del terreno circostante.
             </div>
             <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px;">
                 <div class="detail-item" style="margin: 0;"><div class="detail-label">Cod. Lavorazione</div><div class="detail-value">${tree.cod_lav_f3 || '-'}</div></div>
@@ -83,7 +83,7 @@ function showTreeDetails(tree) {
             </div>
         </div>
         ` : ''}
-<!--
+
         ${tree.cod_lav_f4 || tree.lavori_f4 || tree.prezzo_f4 || tree.data_lav_f4 ? `
         <div class="detail-item" style="grid-column: 1/-1; margin-top: 15px; padding: 12px; background: linear-gradient(135deg, #fff9c4 0%, #fff59d 100%); border-left: 4px solid #fbc02d; border-radius: 6px;">
             <div class="detail-label" style="margin-bottom: 10px; font-size: 14px; font-weight: 700; color: #f57f17;">
@@ -100,7 +100,6 @@ function showTreeDetails(tree) {
             </div>
         </div>
         ` : ''}
-		-->
 
         <div class="detail-item" style="grid-column: 1/-1; margin-top: 15px; padding: 12px; background: linear-gradient(135deg, #fff8e1 0%, #fffde7 100%); border-left: 4px solid #ffa726; border-radius: 6px;">
             <div class="detail-label" style="margin-bottom: 10px;"><i class="fas fa-leaf"></i> NUMERO DI FOGLIE PER STAGIONE</div>

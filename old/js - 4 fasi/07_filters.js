@@ -139,14 +139,12 @@ function getCountForFilter(filterType, filterValue) {
             if (testValue === 'fase1') match = match && true; // Tutti hanno fase 1
             else if (testValue === 'fase2') match = match && (tree.cod_lav_f2 || tree.lavori_f2 || tree.prezzo_f2 || tree.data_lav_f2);
             else if (testValue === 'fase3') match = match && (tree.cod_lav_f3 || tree.lavori_f3 || tree.prezzo_f3 || tree.data_lav_f3);
-            // FASE 4 DISATTIVATA - Non rientra nei filtri
-            // else if (testValue === 'fase4') match = match && (tree.cod_lav_f4 || tree.lavori_f4 || tree.prezzo_f4 || tree.data_lav_f4);
+            else if (testValue === 'fase4') match = match && (tree.cod_lav_f4 || tree.lavori_f4 || tree.prezzo_f4 || tree.data_lav_f4);
         } else if (fase) {
             if (fase === 'fase1') match = match && true; // Tutti hanno fase 1
             else if (fase === 'fase2') match = match && (tree.cod_lav_f2 || tree.lavori_f2 || tree.prezzo_f2 || tree.data_lav_f2);
             else if (fase === 'fase3') match = match && (tree.cod_lav_f3 || tree.lavori_f3 || tree.prezzo_f3 || tree.data_lav_f3);
-            // FASE 4 DISATTIVATA - Non rientra nei filtri
-            // else if (fase === 'fase4') match = match && (tree.cod_lav_f4 || tree.lavori_f4 || tree.prezzo_f4 || tree.data_lav_f4);
+            else if (fase === 'fase4') match = match && (tree.cod_lav_f4 || tree.lavori_f4 || tree.prezzo_f4 || tree.data_lav_f4);
         }
 
         match = match && (tree.altezza === null || tree.altezza >= minHeight);
@@ -197,8 +195,7 @@ function applyFilters() {
             if (fase === 'fase1') match = match && true; // Tutti hanno fase 1
             else if (fase === 'fase2') match = match && (tree.cod_lav_f2 || tree.lavori_f2 || tree.prezzo_f2 || tree.data_lav_f2);
             else if (fase === 'fase3') match = match && (tree.cod_lav_f3 || tree.lavori_f3 || tree.prezzo_f3 || tree.data_lav_f3);
-            // FASE 4 DISATTIVATA - Non rientra nei filtri
-            // else if (fase === 'fase4') match = match && (tree.cod_lav_f4 || tree.lavori_f4 || tree.prezzo_f4 || tree.data_lav_f4);
+            else if (fase === 'fase4') match = match && (tree.cod_lav_f4 || tree.lavori_f4 || tree.prezzo_f4 || tree.data_lav_f4);
         }
 
         return match;
@@ -339,7 +336,6 @@ function updateFilterCounts() {
             const label = opt.value === 'fase1' ? 'Solo Fase 1 (Potatura/Abbattimento)' :
                          opt.value === 'fase2' ? 'Con Fase 2 (Rimozione ceppo)' :
                          opt.value === 'fase3' ? 'Con Fase 3 (Nuova pianta)' :
-                         // FASE 4 DISATTIVATA
                          'Con Fase 4 (Pali tutori)';
             opt.textContent = `${label} (${count})`;
             opt.disabled = count === 0;
