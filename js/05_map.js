@@ -266,11 +266,11 @@ function updateMap() {
                     </table>
                 </div>
                 <div style="margin-top: 10px; display: flex; gap: 8px;">
-                    <button onclick="showTreeDetailsFromPopup('${tree.id}')" style="flex: 1; padding: 10px; background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    <button onclick="showTreeDetailsFromPopup('${tree.id}')" Title="Visualizza la scheda completa"style="flex: 1; padding: 10px; background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; transition: all 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px;">
                         <i class="fas fa-info-circle"></i>
                         <span>Scheda Completa</span>
                     </button>
-                    ${tree.geouri ? `<a href="${tree.geouri}" target="_blank" style="flex: 1; padding: 10px; background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                    ${tree.geouri ? `<a href="${tree.geouri}" title="Naviga da Mobile" target="_blank" style="flex: 1; padding: 10px; background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px;">
                         <i class="fas fa-map-marker-alt"></i>
                         <span>Naviga</span>
                     </a>` : ''}

@@ -12,9 +12,6 @@ hr {
     margin-bottom: 20px;
 }
 
-
-
-
 /* Stile base per tutti i link */
 a {
   color: #ff9900;
@@ -68,7 +65,7 @@ a:active {
         }
         .container {
             display: grid;
-            grid-template-columns: 320px 1fr 380px;
+            grid-template-columns: 330px 1fr 330px;
             gap: 0;
             padding: 0;
             width: 100%;
@@ -77,7 +74,7 @@ a:active {
         .sidebar {
             background: white;
             border-radius: 0;
-            padding: 15px;
+            padding: 8px;
             box-shadow: 2px 0 8px rgba(0,0,0,0.1);
             height: 100%;
             overflow-y: auto;
@@ -169,7 +166,7 @@ a:active {
         .sidebar-right {
             background: white;
             border-radius: 0;
-            padding: 15px;
+            padding: 8px;
             box-shadow: -2px 0 8px rgba(0,0,0,0.1);
             height: 100%;
             overflow-y: auto;
@@ -326,7 +323,7 @@ a:active {
             border-radius: 6px;
             font-size: 12px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.15);
-            border: 2px solid rgba(49, 49, 49, 0.1);
+            border: 2px solid rgba(49, 49, 49, 0.1); margin-bottom: 40px!important;
         }
         .leaflet-control-legend h4 {
             color: #313131;
@@ -335,7 +332,9 @@ a:active {
             font-weight: 700;
             border-bottom: 2px solid #313131;
             padding-bottom: 5px;
+			
         }
+		
         /* Modale Info */
         .header-right {
             display: flex;
@@ -392,9 +391,9 @@ a:active {
         .modal {
             background: white;
             border-radius: 12px;
-            max-width: 600px;
-            width: 90%;
-            max-height: 80vh;
+            max-width: 700px;
+            width: 95%;
+            max-height: 90vh;
             overflow-y: auto;
             box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
             animation: slideUp 0.3s ease;
@@ -402,6 +401,7 @@ a:active {
         .modal-tree-details {
             max-width: 900px;
             width: 95%;
+            max-height: 90vh;
         }
         @keyframes slideUp {
             from {
@@ -547,7 +547,7 @@ a:active {
         }
         @media (max-width: 1400px) {
             .container {
-                grid-template-columns: 300px 1fr;
+                grid-template-columns: 330px 1fr;
                 height: calc(100vh - 95px);
             }
             .sidebar-right {
@@ -587,6 +587,7 @@ a:active {
             .modal-tree-details {
                 max-width: 95%;
                 width: 95%;
+                max-height: 85vh;
             }
         }
         .no-data {
