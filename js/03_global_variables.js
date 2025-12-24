@@ -12,5 +12,6 @@ const cpcColors = {
      'B': '#2cc15f',
      'C': '#f39c12',
      'D': '#e74c3c',
-     'C/D': '#c164a1'
+     'C/D': '#c164a1',
+     'Ceppaia': '#434343'
 };

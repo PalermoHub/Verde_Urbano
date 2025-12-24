@@ -344,7 +344,7 @@ function updateLegendContent() {
     if (!container) return;
 
     // Calcola i conteggi CPC dai dati filtrati
-    const cpcCount = {B: 0, C: 0, 'C/D': 0, D: 0};
+    const cpcCount = {B: 0, C: 0, 'C/D': 0, D: 0, 'Ceppaia': 0};
     filteredTrees.forEach(t => {
         if (cpcCount.hasOwnProperty(t.cpc)) {
             cpcCount[t.cpc]++;
@@ -374,12 +374,19 @@ function updateLegendContent() {
             </div>
             <span style="color: #313131; font-weight: bold; font-size: 11px;">${cpcCount['C/D']}</span>
         </div>
-        <div class="legend-item" style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+        <div class="legend-item" style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px;">
             <div style="display: flex; align-items: center; gap: 8px;">
                 <i class="fas fa-circle" style="color: #e74c3c; font-size: 14px;"></i>
                 <span style="color: #313131; font-size: 11px;"><strong>D</strong> - Estrema</span>
             </div>
             <span style="color: #313131; font-weight: bold; font-size: 11px;">${cpcCount.D}</span>
+        </div>
+        <div class="legend-item" style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <i class="fas fa-circle" style="color: #434343; font-size: 14px;"></i>
+                <span style="color: #313131; font-size: 11px;"><strong>Ceppaia</strong></span>
+            </div>
+            <span style="color: #313131; font-weight: bold; font-size: 11px;">${cpcCount.Ceppaia}</span>
         </div>
     `;
 }

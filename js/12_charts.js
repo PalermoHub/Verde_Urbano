@@ -69,12 +69,12 @@ function initCharts() {
         chartsInstances.health = new Chart(healthCtx, {
             type: 'bar',
             data: {
-                labels: ['B', 'C', 'C/D', 'D'],
+                labels: ['B', 'C', 'C/D', 'D', 'Ceppaia'],
                 datasets: [{
                     label: 'Alberi',
-                    data: [0, 0, 0, 0],
-                    backgroundColor: ['#2cc15f', '#f39c12', '#c164a1', '#e74c3c'],
-                    borderColor: ['#25a84f', '#d68910', '#a04d85', '#c0392b'],
+                    data: [0, 0, 0, 0, 0],
+                    backgroundColor: ['#2cc15f', '#f39c12', '#c164a1', '#e74c3c', '#434343'],
+                    borderColor: ['#25a84f', '#d68910', '#a04d85', '#c0392b', '#2d2d2d'],
                     borderWidth: 2
                 }]
             },
@@ -467,12 +467,12 @@ function updateCharts() {
     }
 
     // CPC
-    const cpcCounts = {B: 0, C: 0, 'C/D': 0, D: 0 };
+    const cpcCounts = {B: 0, C: 0, 'C/D': 0, D: 0, 'Ceppaia': 0 };
     treesToAnalyze.forEach(t => {
         if (cpcCounts.hasOwnProperty(t.cpc)) cpcCounts[t.cpc]++;
     });
     if (chartsInstances.health) {
-        chartsInstances.health.data.datasets[0].data = [cpcCounts.B, cpcCounts.C, cpcCounts['C/D'], cpcCounts.D];
+        chartsInstances.health.data.datasets[0].data = [cpcCounts.B, cpcCounts.C, cpcCounts['C/D'], cpcCounts.D, cpcCounts.Ceppaia];
         chartsInstances.health.update();
     }
 

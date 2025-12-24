@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> 🌳 Demo prototipale</title>
-	<meta name="description" content="Questa è una demo prototipale che mostra i dati di monitoraggio relativi a una singola strada. Il progetto completo di cui fa parte è molto più articolato e comprende ulteriori strade, zone e funzionalità avanzate non ancora rappresentate in questa versione.">
+    <title> 🌳 Rigenerazione del Verde Urbano di Palermo: Riqualificazione Stradale e Arredo della Città</title>
+	<meta name="description" content="Progetto di riqualificazione e rigenerazione delle strade e delle aree verdi della città di Palermo, volto al miglioramento della qualità urbana e della sostenibilità ambientale. Gli interventi prevedono la piantumazione e la sostituzione delle alberature esistenti, l'esecuzione di servizi colturali, il ripristino delle aiuole e dei marciapiedi danneggiati, nonché la fornitura e la posa in opera di arredi urbani funzionali e di sistemi di illuminazione alimentati da energia solare. - Accordo Quadro - CUP D71G23000050001 ">
 	    <meta name="author" content="Giovan Battista Vitrano">
     <meta http-equiv="content-language" content="IT">
     <meta name="robots" content="index,follow">
@@ -30,8 +30,9 @@
 <body>
     <header>
         <div>
-            <h1 id="pageTitle"><i class="fas fa-tree"></i>  Demo prototipale | Verde Urbano</h1>
-            <p>Palermo 2025 - Monitoraggio e analisi dello stato di salute del verde urbano - <a href=https://www.opencup.gov.it//portale/it/web/opencup/home/progetto/-/cup/D71G23000050001 target="_blank" Title="STRADE E AREE A VERDE DELLA CITTA' DI PALERMO*VIA PALERMO*RIGENERAZIONE DEL VERDE URBANO DELLA CITTA' DI PALERMO- PIANTUMAZIONE E SOSTITUZIONE ALBERATURE, SERVIZI COLTURALI, RIPRISTINO AIUOLE E MARCIAPIEDI DISSESTATI, FORNITURA E POSA IN OPERA DI ARREDO URBANO E SISTEMI DI ILLUMINAZIONE AD ENERGIA SOLARE">Accordo Quadro - CUP D71G23000050001</A></p>
+            <h2 id="pageTitle"><i class="fas fa-tree"></i> Rigenerazione del Verde Urbano di Palermo: Riqualificazione Stradale e Arredo della Città</h2>
+            <p>Progetto di riqualificazione e rigenerazione delle strade e delle aree verdi della città di Palermo, volto al miglioramento della qualità urbana e della sostenibilità ambientale. Gli interventi prevedono la piantumazione e la sostituzione delle alberature esistenti, l'esecuzione di servizi colturali, il ripristino delle aiuole e dei marciapiedi danneggiati, nonché la fornitura e la posa in opera di arredi urbani funzionali e di sistemi di illuminazione alimentati da energia solare. - <a href=https://www.opencup.gov.it//portale/it/web/opencup/home/progetto/-/cup/D71G23000050001 target="_blank" Title="STRADE E AREE A VERDE DELLA CITTA' DI PALERMO*VIA PALERMO*RIGENERAZIONE DEL VERDE URBANO DELLA CITTA' DI PALERMO- PIANTUMAZIONE E SOSTITUZIONE ALBERATURE, SERVIZI COLTURALI, RIPRISTINO AIUOLE E MARCIAPIEDI DISSESTATI, FORNITURA E POSA IN OPERA DI ARREDO URBANO E SISTEMI DI ILLUMINAZIONE AD ENERGIA SOLARE">Accordo Quadro - CUP D71G23000050001</A>
+			</p>
         </div>
         <div class="header-right">
             <div class="info-icon" id="infoBtn" title="Informazioni su questa app"><i class="fas fa-circle-info"></i></div>
@@ -84,6 +85,7 @@
                         <li><strong style="color: #f39c12;"><i class="fas fa-circle"></i> C (moderata)</strong> - Anomalie significative, sicurezza ridotta; interventi colturali obbligatori e controlli frequenti.</li>
 						<li><strong style="color: #c164a1;"><i class="fas fa-circle"></i> C/D (elevata)</strong> - Difetti gravi, sicurezza esaurita; rimozione immediata o messa in sicurezza area.</li>
                         <li><strong style="color: #e74c3c;"><i class="fas fa-circle"></i> D (estrema)</strong> - Rischio intermedio con evoluzione incerta; approfondimenti e interventi per stabilizzare.</li>
+                        <li><strong style="color: #434343;"><i class="fas fa-circle"></i> Ceppaia</strong> - Albero rimosso, presente solo la ceppaia; richiede rimozione del ceppo e eventuale nuova piantumazione.</li>
                     </ul>
                 </div>
 
@@ -154,7 +156,7 @@
                     <h3><i class="fas fa-exclamation-triangle"></i> Disclaimer</h3>
                     <p style="background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107; border-radius: 6px; color: #856404;">
                         <strong>Natura della Demo</strong><br>
-                        Questa è una <strong>demo prototipale</strong> che mostra i dati di monitoraggio relativi a una singola strada (Viale Emilia). Il progetto completo di cui fa parte è molto più articolato e comprende ulteriori strade, zone e funzionalità avanzate non ancora rappresentate in questa versione.
+                        Questa è una <strong>demo prototipale</strong> che mostra i dati di monitoraggio relativi al Progetto di riqualificazione e rigenerazione delle strade e delle aree verdi della città di Palermo, volto al miglioramento della qualità urbana e della sostenibilità ambientale.
                     </p>
                     <p style="margin-top: 12px;">
                         <strong>Note su Descrizioni e Parametri</strong><br>
@@ -244,6 +246,7 @@
                     <option value="C">C - Moderata</option>
                     <option value="C/D">C/D - Elevata</option>
                     <option value="D">D - Estrema</option>
+                    <option value="Ceppaia">Ceppaia</option>
                 </select>
                 <div class="filter-info" id="cpcInfo"></div>
             </div>
@@ -321,7 +324,7 @@
 
         <!-- Sidebar Destra: Controlli e Grafici -->
         <div class="sidebar sidebar-right">
-            <h2><i class="fas fa-sliders"></i> Controlli Mappa</h2>
+            <h2><i class="fas fa-sliders"></i> Controlli, Statistiche e DatyaViz</h2>
 
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
 			<!-- Pulsanti -->
@@ -335,12 +338,12 @@
                     <i class="fas fa-bars"></i> Toggle
                 </button>
 
-                <button style="padding: 11px; background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; transition: all 0.3s;" onclick="downloadRelazione()" title="Scarica la Relazione Tecnica">
+            <!--    <button style="padding: 11px; background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; transition: all 0.3s;" onclick="downloadRelazione()" title="Scarica la Relazione Tecnica">
                     <i class="fas fa-file-pdf"></i> Relazione
                 </button>
                 <button style="padding: 11px; background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; transition: all 0.3s;" onclick="printMapPdf()" title="Stampa la mappa in PDF">
                     <i class="fas fa-map"></i> Mappa PDF
-                </button>
+                </button> -->
             </div>
 						
 
@@ -373,8 +376,8 @@
             <h2 style="margin-top: 25px;"><i class="fas fa-map-location-dot"></i> Statistiche sul Territorio</h2>
             <div class="stats-box" style="background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);">
                 <div class="stat-row">
-                    <span>Vie interessate:</span>
-                    <span class="stat-value" id="statTotalStrade">0</span>
+                    <span>Vie interessate dalla Rigenerazione <br> del Verde Urbano:</span>
+                    <span class="stat-value" style="font-size:30px" id="statTotalStrade">0</span>
                 </div>
                 <div style="margin-top: 15px;">
                     <div style="font-weight: 600; margin-bottom: 8px; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 5px;">UPL</div>
@@ -391,18 +394,18 @@
             </div>
 
             <h2 style="margin-top: 25px;"><i class="fas fa-leaf"></i> Benefici  Ambientali</h2>
+			<img src="img/co2-albero.svg" width="300" style="display: block; margin: 0 auto;" Title="CO₂ assorbita - O₂ prodotto" alt="Benefici Ambientali">
             <div class="stats-box" style="background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);">
-                <div class="stat-row">
-                    <span>Produzione O₂ totale:</span>
-                    <span class="stat-value" id="statTotalO2">0 kg/anno</span>
-                </div>
-                <div class="stat-row">
+                                <div class="stat-row">
                     <span>Assorbimento CO₂ totale:</span>
                     <span class="stat-value" id="statTotalCO2">0 kg/anno</span>
                 </div>
-            </div>
-
-            <h2><i class="fas fa-chart-bar"></i> Grafici Analisi</h2>
+				<div class="stat-row">
+                    <span>Produzione O₂ totale:</span>
+                    <span class="stat-value" id="statTotalO2">0 kg/anno</span>
+                </div>
+				 </div>
+            <h2><i class="fas fa-chart-bar"></i> DatyaViz</h2>
             <div class="charts-container">
 			                <div class="chart-box">
                     <h3><i class="fas fa-leaf"></i> Specie arboree principali</h3>
@@ -490,7 +493,7 @@
   <!-- Footer -->
     <footer>
         <h3><i class="fas fa-lightbulb"></i> Natura della Demo</h3>
-        <p>Questa è una demo prototipale che mostra i dati di monitoraggio relativi a una singola strada (Viale Emilia). Il progetto completo di cui fa parte è molto più articolato e comprende ulteriori strade, zone e funzionalità avanzate non ancora rappresentate in questa versione.</p>
+        <p>Questa è una demo prototipale che mostra i dati di monitoraggio relativi al  Progetto di riqualificazione e rigenerazione delle strade e delle aree verdi della città di Palermo, volto al miglioramento della qualità urbana e della sostenibilità ambientale.</p>
     </footer>
 </body>
 </html>
