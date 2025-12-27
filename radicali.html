@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestione Apparati Radicali - Verde Urbano Palermo</title>
+    <meta name="description" content="Tecniche innovative per la gestione degli apparati radicali: scavo non invasivo Air-Spade, barriere anti-radici, sistemi di aerazione e pavimentazioni drenanti.">
+    <meta name="author" content="Giovan Battista Vitrano">
+    <meta http-equiv="content-language" content="IT">
+    <meta name="robots" content="index,follow">
+
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link rel="icon" href="favicon.png" type="image/png"/>
+
+    <link rel="stylesheet" href="css/verde_urbano.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Titillium Web', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+        }
+
+        .page-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: white;
+            min-height: calc(100vh - 200px);
+        }
+
+        .page-header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
+            color: white;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+
+        .page-header h1 {
+            margin: 0 0 15px 0;
+            font-size: 2.2em;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            margin: 0;
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        .content-section {
+            margin-bottom: 50px;
+        }
+
+        .content-section h2 {
+            color: #27ae60;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #27ae60;
+        }
+
+        .content-section h3 {
+            color: #1e8449;
+            font-size: 1.4em;
+            margin: 30px 0 15px 0;
+        }
+
+        .content-section p {
+            line-height: 1.8;
+            color: #2c3e50;
+            font-size: 1.05em;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .content-section ul {
+            margin: 20px 0;
+            padding-left: 25px;
+        }
+
+        .content-section li {
+            line-height: 1.8;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            font-size: 1.05em;
+        }
+
+        .content-section li strong {
+            color: #27ae60;
+        }
+
+        .highlight-box {
+            background: #e8f5e9;
+            border-left: 5px solid #27ae60;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .highlight-box h4 {
+            margin: 0 0 15px 0;
+            color: #1e8449;
+            font-size: 1.3em;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: #2c3e50;
+            line-height: 1.7;
+        }
+
+        .technique-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 25px 0;
+            border-left: 5px solid #3498db;
+            transition: all 0.3s;
+        }
+
+        .technique-card:hover {
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateX(5px);
+        }
+
+        .technique-card h3 {
+            color: #3498db;
+            margin-top: 0;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .cta-section h3 {
+            margin: 0 0 15px 0;
+            font-size: 1.8em;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #2980b9;
+            padding: 15px 35px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1em;
+            margin: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+
+        footer {
+            background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
+
+        footer h1, footer h2, footer h3 {
+            margin: 8px 0;
+            font-weight: 400;
+        }
+
+        footer h1 {
+            font-size: 1.5em;
+        }
+
+        footer h2 {
+            font-size: 1.1em;
+        }
+
+        footer h3 {
+            font-size: 0.95em;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 1.6em;
+            }
+
+            .page-header p {
+                font-size: 1em;
+            }
+
+            .content-section h2 {
+                font-size: 1.4em;
+            }
+
+            .content-section h3 {
+                font-size: 1.2em;
+            }
+
+            .cta-section {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KHR1GHDRQS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KHR1GHDRQS');
+    </script>
+</head>
+<body>
+    <header>
+        <div class="demo-stamp demo-stamp-header">DEMO!</div>
+        <div>
+            <h2 id="pageTitle"><i class="fas fa-tree"></i> Rigenerazione del Verde Urbano di Palermo: Riqualificazione Stradale e Arredo della Città</h2>
+            <p>Progetto di riqualificazione e rigenerazione delle strade e delle aree verdi della città di Palermo, volto al miglioramento della qualità urbana e della sostenibilità ambientale. Gli interventi prevedono la piantumazione e la sostituzione delle alberature esistenti, l'esecuzione di servizi colturali, il ripristino delle aiuole e dei marciapiedi danneggiati, nonché la fornitura e la posa in opera di arredi urbani funzionali e di sistemi di illuminazione alimentati da energia solare. - <a href=https://www.opencup.gov.it//portale/it/web/opencup/home/progetto/-/cup/D71G23000050001 target="_blank" Title="STRADE E AREE A VERDE DELLA CITTA' DI PALERMO*VIA PALERMO*RIGENERAZIONE DEL VERDE URBANO DELLA CITTA' DI PALERMO- PIANTUMAZIONE E SOSTITUZIONE ALBERATURE, SERVIZI COLTURALI, RIPRISTINO AIUOLE E MARCIAPIEDI DISSESTATI, FORNITURA E POSA IN OPERA DI ARREDO URBANO E SISTEMI DI ILLUMINAZIONE AD ENERGIA SOLARE">Accordo Quadro - CUP D71G23000050001</A>
+			</p>
+        </div>
+        <div class="header-right">
+            <div class="info-icon" id="infoBtn" title="Informazioni su questa app"><i class="fas fa-circle-info"></i></div>
+        </div>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <button class="navbar-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i> Menu
+            </button>
+
+            <ul class="navbar-menu">
+                <button class="navbar-close" aria-label="Close menu">
+                    <i class="fas fa-times"></i>
+                </button>
+
+                <li>
+                    <a href="index.html">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="il-progetto.html">
+                        <i class="fas fa-book-open"></i>
+                        <span>Il Progetto</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="obiettivi.html">
+                        <i class="fas fa-bullseye"></i>
+                        <span>Obiettivi e Finalità</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="obiettivi.html#riqualificazione"><i class="fas fa-seedling"></i> Riqualificazione patrimonio arboreo</a></li>
+                        <li><a href="obiettivi.html#sicurezza"><i class="fas fa-shield-alt"></i> Sicurezza e incolumità pubblica</a></li>
+                        <li><a href="obiettivi.html#barriere"><i class="fas fa-wheelchair"></i> Abbattimento barriere architettoniche</a></li>
+                        <li><a href="obiettivi.html#clima"><i class="fas fa-cloud-sun"></i> Mitigazione cambiamenti climatici</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="fasi.html">
+                        <i class="fas fa-tasks"></i>
+                        <span>Fasi dell'Intervento</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="fasi.html#analisi"><i class="fas fa-search"></i> Analisi stato di fatto</a></li>
+                        <li><a href="fasi.html#vta"><i class="fas fa-clipboard-check"></i> Valutazione stabilità VTA</a></li>
+                        <li><a href="fasi.html#abbattimenti"><i class="fas fa-cut"></i> Abbattimenti e potature</a></li>
+                        <li><a href="fasi.html#apparati"><i class="fas fa-project-diagram"></i> Contenimento apparati radicali</a></li>
+                        <li><a href="fasi.html#mitigazione"><i class="fas fa-balance-scale"></i> Misure di mitigazione e compensazione</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="potatura.html">
+                        <i class="fas fa-scissors"></i>
+                        <span>Tipologie di Potatura</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="potatura.html#rimonda"><i class="fas fa-broom"></i> Rimonda del secco</a></li>
+                        <li><a href="potatura.html#mantenimento"><i class="fas fa-leaf"></i> Mantenimento e risanamento</a></li>
+                        <li><a href="potatura.html#contenimento"><i class="fas fa-compress"></i> Contenimento e spalcatura</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="radicali.html">
+                        <i class="fas fa-code-branch"></i>
+                        <span>Gestione Apparati Radicali</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="radicali.html#airspade"><i class="fas fa-wind"></i> Scavo non invasivo Air-Spade</a></li>
+                        <li><a href="radicali.html#barriere"><i class="fas fa-shield"></i> Installazione barriere anti-radici</a></li>
+                        <li><a href="radicali.html#aerazione"><i class="fas fa-fan"></i> Sistemi di aerazione del terreno</a></li>
+                        <li><a href="radicali.html#pavimentazioni"><i class="fas fa-road"></i> Pavimentazioni drenanti</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="impianti.html">
+                        <i class="fas fa-tree"></i>
+                        <span>Nuovi Impianti</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="impianti.html#specie"><i class="fas fa-leaf"></i> Scelta specie autoctone/naturalizzate</a></li>
+                        <li><a href="impianti.html#irrigazione"><i class="fas fa-tint"></i> Sistemi di irrigazione automatizzati</a></li>
+                        <li><a href="impianti.html#arredo"><i class="fas fa-chair"></i> Arredo urbano (panchine, fioriere)</a></li>
+                        <li><a href="impianti.html#illuminazione"><i class="fas fa-lightbulb"></i> Illuminazione a basso consumo</a></li>
+                        <li><a href="impianti.html#ludiche"><i class="fas fa-volleyball-ball"></i> Aree ludiche e inclusive</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                   <a href="sicurezza.html">
+                        <i class="fas fa-hard-hat"></i>
+                        <span>Sicurezza e Cantiere</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="sicurezza.html#delimitazione"><i class="fas fa-traffic-cone"></i> Delimitazione aree e segnaletica</a></li>
+                        <li><a href="sicurezza.html#piattaforme"><i class="fas fa-forklift"></i> Piattaforme elevatrici e cestelli</a></li>
+                        <li><a href="sicurezza.html#dpi"><i class="fas fa-vest"></i> DPI obbligatori</a></li>
+                        <li><a href="sicurezza.html#traffico"><i class="fas fa-car"></i> Gestione interferenze e traffico</a></li>
+                        <li><a href="sicurezza.html#emergenza"><i class="fas fa-ambulance"></i> Piani di emergenza</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                   <a href="dati-economici.html">
+                        <i class="fas fa-euro-sign"></i>
+                        <span>Dati Economici</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="dati-economici.html#accordo"><i class="fas fa-file-contract"></i> Accordo Quadro quadriennale</a></li>
+                        <li><a href="dati-economici.html#importo"><i class="fas fa-coins"></i> Importo totale: 12 milioni €</a></li>
+                        <li><a href="dati-economici.html#stima"><i class="fas fa-tree"></i> Stima: 31.000-50.000 alberature</a></li>
+                        <li><a href="dati-economici.html#oneri"><i class="fas fa-calculator"></i> Oneri sicurezza: 530.449,87 €</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="open-data.html">
+                        <i class="fas fa-database"></i>
+                        <span>Open Data</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Overlay per mobile menu -->
+    <div class="navbar-overlay"></div>
+
+    <div class="page-content">
+        <div class="page-header">
+            <h1><i class="fas fa-code-branch"></i> Alberi e Città</h1>
+            <p>Come salvare le Radici e i nostri marciapiedi</p>
+        </div>
+
+        <!-- Introduzione -->
+        <section class="content-section">
+            <h2><i class="fas fa-road"></i> Introduzione: L'eterna sfida tra radici e asfalto</h2>
+            <p>
+                Quante volte, passeggiando per la città, abbiamo notato marciapiedi sollevati, asfalto increspato o cordoli divelti vicino a un grande albero? È un'esperienza comune che ci porta a pensare a un inevitabile conflitto tra la crescita vigorosa della natura e le nostre infrastrutture urbane. Sembra quasi che alberi e marciapiedi siano destinati a una lotta perenne per lo spazio.
+            </p>
+
+            <div style="text-align: center; margin: 30px 0;">
+                <img src="img/radicali.jpg" alt="Gestione Apparati Radicali" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+            </div>
+            <p>
+                <strong>Fortunatamente, non è così.</strong> Oggi esistono soluzioni moderne, intelligenti e non distruttive che permettono una convivenza armoniosa. Questo articolo vuole spiegare, con un linguaggio semplice, come sia possibile risolvere questi conflitti, preservando sia la sicurezza dei cittadini sia il nostro prezioso patrimonio verde.
+            </p>
+            <p>
+                Prenderemo come esempio gli interventi previsti nel progetto di <strong>"Rigenerazione del Verde Urbano della Città di Palermo"</strong>, un modello di come la tecnica agronomica moderna possa curare e valorizzare le nostre città.
+            </p>
+        </section>
+
+        <!-- Perché le radici "invadono" -->
+        <section class="content-section">
+            <h2><i class="fas fa-question-circle"></i> Perché le radici "invadono" i nostri spazi?</h2>
+            <p>
+                Prima di esplorare le soluzioni, è utile capire il perché del problema. Le radici degli alberi, soprattutto quelle più superficiali, crescendo possono esercitare una <strong>forza enorme</strong>, sufficiente a sollevare pavimentazioni pesanti. Questo fenomeno crea disagi, ostacoli e veri e propri rischi per la sicurezza di pedoni, ciclisti e veicoli.
+            </p>
+            <p>
+                Tuttavia, è fondamentale comprendere che la reazione a questo problema non deve essere drastica. L'obiettivo degli interventi moderni non è quasi mai quello di tagliare le radici portanti, un'azione che comprometterebbe irrimediabilmente la stabilità e la salute dell'albero.
+            </p>
+            <div class="highlight-box">
+                <h4><i class="fas fa-lightbulb"></i> Principio Fondamentale</h4>
+                <p>
+                    Si tratta invece di trovare <strong>soluzioni alternative e intelligenti</strong> che consentano di conservare gli esemplari arborei, garantendo allo stesso tempo la piena fruibilità degli spazi pubblici in sicurezza.
+                </p>
+            </div>
+        </section>
+
+        <!-- Le Tecniche Innovative -->
+        <section class="content-section">
+            <h2><i class="fas fa-tools"></i> Le Tecniche Innovative per una Convivenza Felice</h2>
+            <p>
+                Gli interventi di contenimento degli apparati radicali sono operazioni delicate che seguono un protocollo preciso, volto a risolvere il conflitto con le infrastrutture senza danneggiare l'albero. Vediamo insieme le fasi di questo approccio metodico e rispettoso.
+            </p>
+
+            <!-- Tecnica 1: Air-Spade -->
+            <div class="technique-card" id="airspade">
+                <h3><i class="fas fa-wind"></i> 1. Esplorare con delicatezza: lo scavo non invasivo con Air-Spade®</h3>
+                <p>
+                    Il primo passo è capire la situazione sotto la superficie, senza fare danni. Invece di usare ruspe o picconi, che potrebbero tranciare e ferire le radici, si utilizza uno <strong>"scavo non invasivo"</strong>.
+                </p>
+                <p>
+                    La tecnologia più avanzata è l'<strong>AIR-SPADE®</strong>, un sistema che impiega un getto di aria compressa ad alta velocità per rimuovere delicatamente il terreno. In questo modo, l'intero apparato radicale viene esposto in modo sicuro, permettendo ai tecnici agronomi di valutare con precisione quali radici stiano effettivamente causando il problema e di pianificare l'intervento più corretto.
+                </p>
+                <div class="highlight-box" style="margin-top: 20px;">
+                    <h4><i class="fas fa-check-circle"></i> Vantaggi della Tecnica</h4>
+                    <p>
+                        Nessun danno all'apparato radicale, mappatura completa delle radici, intervento mirato e chirurgico.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Tecnica 2: Taglio Chirurgico -->
+            <div class="technique-card">
+                <h3><i class="fas fa-cut"></i> 2. Curare e ridurre selettivamente: il taglio chirurgico e la disinfezione</h3>
+                <p>
+                    Una volta mappato l'apparato radicale, si interviene solo dove serve. Vengono ridotte selettivamente soltanto le radici che interferiscono con le infrastrutture, lasciando intatte quelle fondamentali per la stabilità dell'albero.
+                </p>
+                <p>
+                    Questo non è un semplice taglio: ogni superficie di taglio viene accuratamente definita e <strong>disinfettata</strong>. Questo passaggio, fondamentale nelle buone pratiche di arboricoltura, è cruciale per proteggere la salute dell'albero, prevenendo l'ingresso di funghi e patogeni che potrebbero causare infezioni e carie del legno.
+                </p>
+            </div>
+
+            <!-- Tecnica 3: Aerazione -->
+            <div class="technique-card" id="aerazione">
+                <h3><i class="fas fa-fan"></i> 3. Un respiro di sollievo per le radici: sottofondo drenante e sistemi di aerazione</h3>
+                <p>
+                    Una delle ragioni principali per cui le radici tendono a svilupparsi in superficie è la <strong>ricerca di ossigeno</strong>. Per risolvere il problema alla base, si agisce sul loro ambiente di crescita.
+                </p>
+                <p>
+                    Per prima cosa, si ripristina il sottofondo dello scavo con materiali specifici, come materiale drenante di adeguata pezzatura o sabbia arricchita con sostanza organica. Successivamente, si installano appositi <strong>sistemi di aerazione</strong>: una rete di tubi forati, posata sotto la futura pavimentazione e collegata a pozzetti esterni, che garantisce un costante scambio gassoso.
+                </p>
+                <div class="highlight-box" style="margin-top: 20px;">
+                    <h4><i class="fas fa-leaf"></i> Il Principio</h4>
+                    <p>
+                        "Le radici, trovando ossigeno disponibile, non si spingono verso l'alto e non danneggiano i manufatti".
+                    </p>
+                </div>
+            </div>
+
+            <!-- Tecnica 4: Barriere -->
+            <div class="technique-card" id="barriere">
+                <h3><i class="fas fa-shield"></i> 4. Indirizzare la crescita futura: le barriere anti-radici</h3>
+                <p>
+                    Risolto il problema immediato e migliorato l'ambiente sotterraneo, si pensa al futuro. Viene installato un <strong>"telo antiradici"</strong>, ovvero una barriera fisica che viene posata in verticale lungo il bordo dello scavo.
+                </p>
+                <p>
+                    Questo telo non blocca la crescita, ma agisce come uno scudo protettivo che guida lo sviluppo delle nuove radici, indirizzandole in profondità, lontano dalla superficie e dalle pavimentazioni, prevenendo così il ripetersi del problema.
+                </p>
+            </div>
+
+            <!-- Tecnica 5: Pavimentazioni -->
+            <div class="technique-card" id="pavimentazioni">
+                <h3><i class="fas fa-road"></i> 5. Chiudere il cerchio: le pavimentazioni "intelligenti"</h3>
+                <p>
+                    L'ultimo passo è la chiusura dello scavo. Ove possibile, invece di ripristinare la classica copertura in asfalto o cemento, si opta per <strong>"pavimentazioni permeabili"</strong>.
+                </p>
+                <p>
+                    Queste superfici speciali, realizzate con materiali drenanti, lasciano passare l'acqua piovana e l'aria. In questo modo si contribuisce a mantenere il terreno sottostante sano, umido e ossigenato, migliorando ulteriormente le condizioni di vita dell'albero e chiudendo un cerchio virtuoso che beneficia sia la pianta che l'ambiente urbano circostante.
+                </p>
+            </div>
+        </section>
+
+        <!-- Conclusione -->
+        <section class="content-section">
+            <h2><i class="fas fa-leaf"></i> Un Beneficio per Tutti: Più Sicurezza e Più Verde per una Città Resiliente</h2>
+            <p>
+                Questi interventi, apparentemente tecnici, hanno un impatto profondo sulla qualità della vita urbana. Non si limitano a risolvere il problema di un marciapiede rotto, ma si inseriscono in una visione più ampia: quella del <strong>recupero e miglioramento della qualità ambientale della città</strong>.
+            </p>
+            <p>
+                Salvaguardare il patrimonio arboreo significa garantire i preziosi servizi ecosistemici che gli alberi ci offrono, come l'assorbimento di CO₂, la mitigazione delle isole di calore e la riduzione dell'inquinamento.
+            </p>
+            <p>
+                Investire in queste tecniche è una strategia concreta per contrastare gli effetti dei cambiamenti climatici, rendendo Palermo una città non solo più sicura e bella, ma anche <strong>più resiliente, sana e sostenibile</strong> per le generazioni future.
+            </p>
+
+            <div class="highlight-box">
+                <h4><i class="fas fa-heart"></i> La Dimostrazione</h4>
+                <p>
+                    È la dimostrazione che, con la giusta conoscenza, natura e città possono prosperare insieme, in perfetta armonia.
+                </p>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h3><i class="fas fa-chart-bar"></i> Esplora i Dati del Progetto</h3>
+            <p style="margin-bottom: 25px;">Utilizza la dashboard interattiva per visualizzare gli alberi censiti, filtrare per specie e stato di salute, e consultare le statistiche ambientali.</p>
+            <a href="index.html" class="cta-button"><i class="fas fa-map"></i> Vai alla Dashboard</a>
+            <a href="open-data.html" class="cta-button"><i class="fas fa-database"></i> Open Data</a>
+        </div>
+    </div>
+
+    <footer>
+        <h1>Comune di Palermo</h1>
+        <h2>Area delle Politiche Ambientali, Transizione Ecologica e Rigenerazione del Verde</h2>
+        <h3>Ufficio Autonomo Gestione Verde Urbano, Agricoltura Urbana e Rapporti con Re.Se.T.</h3>
+        <h3><i class="fas fa-lightbulb"></i> Natura della Demo</h3>
+        <p>Questa è una <b>DEMO</b> prototipale che mostra i dati di monitoraggio relativi al Progetto di riqualificazione e rigenerazione delle strade e delle aree verdi della città di Palermo, volto al miglioramento della qualità urbana e della sostenibilità ambientale.</p>
+    </footer>
+
+    <!-- Modal Info -->
+    <div class="modal-overlay" id="infoModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-circle-info"></i> Come Funziona</h2>
+                <button class="modal-close" onclick="closeInfoModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3><i class="fas fa-location-dot"></i> Che cos'è</h3>
+                    <p>Una mappa interattiva e moderna che monitora lo stato di salute della vegetazione urbana. Pensala come un "medico digitale" per gli alberi della città: raccoglie i dati, analizza le condizioni e supporta l'amministrazione nel prendere decisioni consapevoli e basate su evidenze.<br> La demo attuale si concentra sugli alberi dell'<b>Accordo Quadro CUP D71G23000050001</b>, ma il progetto è stato concepito per espandersi progressivamente a tutta la città.</p>
+                </div>
+                <div class="modal-section">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Disclaimer</h3>
+                    <p style="background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107; border-radius: 6px; color: #856404;">
+                        <strong>Natura della Demo</strong><br>
+                        Questa è una <strong>demo prototipale</strong> che mostra i dati di monitoraggio relativi al Progetto di riqualificazione e rigenerazione delle strade e delle aree verdi della città di Palermo.
+                    </p>
+                    <hr><br>
+                    <p><strong>Elaborazione dati:</strong> <a href="https://www.linkedin.com/in/gbvitrano/" title="@gbvitrano" target="_blank">@gbvitrano</a></p>
+                    <p><strong>Sviluppo tecnico:</strong> <a href="https://www.linkedin.com/in/gbvitrano/" title="@gbvitrano" target="_blank">@gbvitrano</a> - <a href="https://claude.ai" target="_blank">Claude AI (Anthropic)</a> - <a href="https://notebooklm.google/" target="_blank">NotebookLM</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/navigation.js"></script>
+    <script src="js/info-modal.js"></script>
+</body>
+</html>

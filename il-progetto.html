@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Il Progetto - Verde Urbano Palermo</title>
+    <meta name="description" content="Rigenerazione del Verde Urbano di Palermo - Presentazione generale del progetto di riqualificazione delle aree verdi cittadine">
+    <meta name="author" content="Giovan Battista Vitrano">
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link rel="icon" href="favicon.png" type="image/png"/>
+
+    <link rel="stylesheet" href="css/verde_urbano.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* Stili specifici per pagina Il Progetto */
+        .page-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 50px;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+            color: white;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+
+        .page-header h1 {
+            font-size: 36px;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            font-size: 18px;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .content-section {
+            background: white;
+            padding: 40px;
+            margin-bottom: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
+        }
+
+        .content-section h2 {
+            color: #27ae60;
+            font-size: 28px;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 3px solid #27ae60;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .content-section h3 {
+            color: #2c3e50;
+            font-size: 22px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .content-section p {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .content-section ul, .content-section ol {
+            margin-left: 25px;
+            margin-bottom: 20px;
+        }
+
+        .content-section li {
+            font-size: 16px;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 10px;
+        }
+
+        .highlight-box {
+            background: #e8f5e9;
+            border-left: 5px solid #27ae60;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 25px 0;
+        }
+
+        .highlight-box h4 {
+            color: #27ae60;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .info-card {
+            background: linear-gradient(135deg, #f8f9fa 0%, #ecf0f1 100%);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            border: 2px solid #e0e0e0;
+            transition: all 0.3s;
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+            border-color: #27ae60;
+        }
+
+        .info-card i {
+            font-size: 40px;
+            color: #27ae60;
+            margin-bottom: 15px;
+        }
+
+        .info-card h4 {
+            font-size: 18px;
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+
+        .info-card p {
+            font-size: 14px;
+            color: #666;
+            text-align: center;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .cta-section h3 {
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #3498db;
+            padding: 15px 35px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            transition: all 0.3s;
+            margin: 0 10px;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 28px;
+            }
+
+            .content-section {
+                padding: 25px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+     <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KHR1GHDRQS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KHR1GHDRQS');
+    </script>
+</head>
+<body>
+    <header>
+        <div class="demo-stamp demo-stamp-header">DEMO!</div>
+        <div>
+            <h2 id="pageTitle"><i class="fas fa-tree"></i> Rigenerazione del Verde Urbano di Palermo: Riqualificazione Stradale e Arredo della Città</h2>
+            <p>Progetto di riqualificazione e rigenerazione delle strade e delle aree verdi della città di Palermo, volto al miglioramento della qualità urbana e della sostenibilità ambientale. Gli interventi prevedono la piantumazione e la sostituzione delle alberature esistenti, l'esecuzione di servizi colturali, il ripristino delle aiuole e dei marciapiedi danneggiati, nonché la fornitura e la posa in opera di arredi urbani funzionali e di sistemi di illuminazione alimentati da energia solare. - <a href=https://www.opencup.gov.it//portale/it/web/opencup/home/progetto/-/cup/D71G23000050001 target="_blank" Title="STRADE E AREE A VERDE DELLA CITTA' DI PALERMO*VIA PALERMO*RIGENERAZIONE DEL VERDE URBANO DELLA CITTA' DI PALERMO- PIANTUMAZIONE E SOSTITUZIONE ALBERATURE, SERVIZI COLTURALI, RIPRISTINO AIUOLE E MARCIAPIEDI DISSESTATI, FORNITURA E POSA IN OPERA DI ARREDO URBANO E SISTEMI DI ILLUMINAZIONE AD ENERGIA SOLARE">Accordo Quadro - CUP D71G23000050001</A>
+			</p>
+        </div>
+        <div class="header-right">
+            <div class="info-icon" id="infoBtn" title="Informazioni su questa app"><i class="fas fa-circle-info"></i></div>
+        </div>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <button class="navbar-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i> Menu
+            </button>
+
+            <ul class="navbar-menu">
+                <button class="navbar-close" aria-label="Close menu">
+                    <i class="fas fa-times"></i>
+                </button>
+
+                <li>
+                    <a href="index.html">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="il-progetto.html">
+                        <i class="fas fa-book-open"></i>
+                        <span>Il Progetto</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="obiettivi.html">
+                        <i class="fas fa-bullseye"></i>
+                        <span>Obiettivi e Finalità</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="obiettivi.html#riqualificazione"><i class="fas fa-seedling"></i> Riqualificazione patrimonio arboreo</a></li>
+                        <li><a href="obiettivi.html#sicurezza"><i class="fas fa-shield-alt"></i> Sicurezza e incolumità pubblica</a></li>
+                        <li><a href="obiettivi.html#barriere"><i class="fas fa-wheelchair"></i> Abbattimento barriere architettoniche</a></li>
+                        <li><a href="obiettivi.html#clima"><i class="fas fa-cloud-sun"></i> Mitigazione cambiamenti climatici</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="fasi.html">
+                        <i class="fas fa-tasks"></i>
+                        <span>Fasi dell'Intervento</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="fasi.html#analisi"><i class="fas fa-search"></i> Analisi stato di fatto</a></li>
+                        <li><a href="fasi.html#vta"><i class="fas fa-clipboard-check"></i> Valutazione stabilità VTA</a></li>
+                        <li><a href="fasi.html#abbattimenti"><i class="fas fa-cut"></i> Abbattimenti e potature</a></li>
+                        <li><a href="fasi.html#apparati"><i class="fas fa-project-diagram"></i> Contenimento apparati radicali</a></li>
+                        <li><a href="fasi.html#mitigazione"><i class="fas fa-balance-scale"></i> Misure di mitigazione e compensazione</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="potatura.html">
+                        <i class="fas fa-scissors"></i>
+                        <span>Tipologie di Potatura</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="potatura.html#formazione"><i class="fas fa-spa"></i> Formazione e allevamento</a></li>
+                        <li><a href="potatura.html#mantenimento"><i class="fas fa-leaf"></i> Mantenimento e risanamento</a></li>
+                        <li><a href="potatura.html#contenimento"><i class="fas fa-compress"></i> Contenimento e spalcatura</a></li>
+                        <li><a href="potatura.html#rimonda"><i class="fas fa-broom"></i> Rimonda del secco</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="radicali.html">
+                        <i class="fas fa-code-branch"></i>
+                        <span>Gestione Apparati Radicali</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="radicali.html#airspade"><i class="fas fa-wind"></i> Scavo non invasivo Air-Spade</a></li>
+                        <li><a href="radicali.html#barriere"><i class="fas fa-shield"></i> Installazione barriere anti-radici</a></li>
+                        <li><a href="radicali.html#aerazione"><i class="fas fa-fan"></i> Sistemi di aerazione del terreno</a></li>
+                        <li><a href="radicali.html#pavimentazioni"><i class="fas fa-road"></i> Pavimentazioni drenanti</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="impianti.html">
+                        <i class="fas fa-tree"></i>
+                        <span>Nuovi Impianti</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="impianti.html#specie"><i class="fas fa-leaf"></i> Scelta specie autoctone/naturalizzate</a></li>
+                        <li><a href="impianti.html#irrigazione"><i class="fas fa-tint"></i> Sistemi di irrigazione automatizzati</a></li>
+                        <li><a href="impianti.html#arredo"><i class="fas fa-chair"></i> Arredo urbano (panchine, fioriere)</a></li>
+                        <li><a href="impianti.html#illuminazione"><i class="fas fa-lightbulb"></i> Illuminazione a basso consumo</a></li>
+                        <li><a href="impianti.html#ludiche"><i class="fas fa-volleyball-ball"></i> Aree ludiche e inclusive</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="sicurezza.html">
+                        <i class="fas fa-hard-hat"></i>
+                        <span>Sicurezza e Cantiere</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="sicurezza.html#delimitazione"><i class="fas fa-traffic-cone"></i> Delimitazione aree e segnaletica</a></li>
+                        <li><a href="sicurezza.html#piattaforme"><i class="fas fa-forklift"></i> Piattaforme elevatrici e cestelli</a></li>
+                        <li><a href="sicurezza.html#dpi"><i class="fas fa-vest"></i> DPI obbligatori</a></li>
+                        <li><a href="sicurezza.html#traffico"><i class="fas fa-car"></i> Gestione interferenze e traffico</a></li>
+                        <li><a href="sicurezza.html#emergenza"><i class="fas fa-ambulance"></i> Piani di emergenza</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="dati-economici.html">
+                        <i class="fas fa-euro-sign"></i>
+                        <span>Dati Economici</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="dati-economici.html#accordo"><i class="fas fa-file-contract"></i> Accordo Quadro quadriennale</a></li>
+                        <li><a href="dati-economici.html#importo"><i class="fas fa-coins"></i> Importo totale: 12 milioni €</a></li>
+                        <li><a href="dati-economici.html#stima"><i class="fas fa-tree"></i> Stima: 31.000-50.000 alberature</a></li>
+                        <li><a href="dati-economici.html#oneri"><i class="fas fa-calculator"></i> Oneri sicurezza: 530.449,87 €</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="open-data.html">
+                        <i class="fas fa-database"></i>
+                        <span>Open Data</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Overlay per mobile menu -->
+    <div class="navbar-overlay"></div>
+
+    <div class="page-content">
+        <div class="page-header">
+            <h1><i class="fas fa-leaf"></i> Palermo, Rivoluzione Verde</h1>
+            <p>5 Cose che non sapevi sul Progetto da 8 Milioni che sta trasformando la Città</p>
+        </div>
+
+        <!-- Introduzione -->
+        <section class="content-section">
+            <h2><i class="fas fa-tree"></i> L'Albero Sotto Casa Tua è Più Complesso di Quel Che Pensi</h2>
+            <p>
+                A Palermo, vivere circondati dagli alberi è un'esperienza quotidiana. Ci offrono ombra nelle giornate afose, abbelliscono le strade e ci ricordano che la natura resiste anche nel cuore della città. Allo stesso tempo, chi non ha mai dovuto fare lo slalom tra le radici che dissestano i marciapiedi? Dietro questa convivenza, fatta di benefici e piccoli fastidi, si nasconde una gestione complessa che spesso ignoriamo.
+            </p>
+            <p>
+                Forse non lo sai, ma in questo momento è in corso un'iniziativa monumentale chiamata <strong>"Rigenerazione del Verde Urbano della Città di Palermo"</strong>. Non si tratta di qualche potatura sporadica, ma di un piano quadriennale che, con un investimento di oltre 8 milioni di euro, interverrà su circa 31.000 alberi stradali. È un'operazione scientifica e logistica di vasta portata, con dettagli sorprendenti che cambieranno il modo in cui guardi l'albero sotto casa tua.
+            </p>
+        </section>
+
+        <!-- Punto 1 -->
+        <section class="content-section">
+            <h2><i class="fas fa-cut"></i> 1. La Potatura non è (Sempre) per il Bene dell'Albero, ma per Rimediare ai Nostri Errori</h2>
+            <p>
+                Istintivamente, pensiamo alla potatura come a una "spuntatina" benefica per la salute della pianta. In un contesto urbano, la realtà è più complessa. <strong>L'intervento cesorio non nasce quasi mai da un'esigenza fisiologica dell'albero.</strong> In natura, le piante crescono trovando il loro equilibrio. In città, invece, la potatura diventa spesso uno strumento per correggere errori di progettazione umana.
+            </p>
+            <p>
+                Si interviene perché gli alberi sono stati piantati troppo vicini a edifici e linee elettriche, perché le alberate sono troppo fitte o perché è necessario riequilibrare una chioma cresciuta a dismisura rispetto allo spazio limitato concesso alle radici sotto l'asfalto. In pratica, "curiamo" l'albero per adattarlo a un ambiente che non abbiamo progettato a sua misura.
+            </p>
+            <div class="highlight-box">
+                <h4><i class="fas fa-lightbulb"></i> Da Ricordare</h4>
+                <p>
+                    Non è quindi una esigenza fisiologica e strutturale dell'albero, ma può essere anche un rimedio a un errore di progettazione per mantenerne la vitalità e le funzioni.
+                </p>
+            </div>
+        </section>
+
+        <!-- Punto 2 -->
+        <section class="content-section">
+            <h2><i class="fas fa-wind"></i> 2. Le Radici Ricevono una "Chirurgia" ad Alta Tecnologia per Salvare Alberi e Marciapiedi</h2>
+            <p>
+                Il problema delle radici che sollevano marciapiedi e asfalto è una delle sfide più grandi nella gestione del verde urbano. L'approccio del progetto non è quello drastico dell'abbattimento, ma una sorta di <strong>"chirurgia radicale" ad alta tecnologia</strong> che mira a risolvere il conflitto preservando l'albero.
+            </p>
+
+            <h3><i class="fas fa-wrench"></i> Le Tecniche Utilizzate</h3>
+            <ul>
+                <li><strong>Scavi ad Aria Compressa:</strong> Invece di usare mezzi meccanici che strapperebbero le radici, si utilizza un sistema ad aria compressa (come l'AIR-SPADE®) che smuove il terreno delicatamente, esponendo l'apparato radicale senza danneggiarlo.</li>
+                <li><strong>Riduzione Selettiva:</strong> Solo dopo aver mappato l'apparato, i tecnici tagliano selettivamente unicamente le radici che creano il problema. La regola è ferrea e non ammette eccezioni: la relazione tecnica del progetto stabilisce che <strong>mai possono eseguirsi tagli su radici portanti</strong>, perché comprometterebbero irrimediabilmente la stabilità dell'albero.</li>
+                <li><strong>Barriere e Aerazione:</strong> Per guidare la crescita futura, vengono installate delle barriere verticali ("telo antiradici") che impediscono alle radici di espandersi in superficie. Contemporaneamente, si posa una rete di tubi e pozzetti di aerazione che, fornendo ossigeno in profondità, incoraggiano le radici a svilupparsi verso il basso, dove non creano danni.</li>
+            </ul>
+            <p>
+                Questo approccio permette di conservare alberi preziosi, garantendo al contempo la piena sicurezza e fruibilità degli spazi pubblici.
+            </p>
+        </section>
+
+        <!-- Punto 3 -->
+        <section class="content-section">
+            <h2><i class="fas fa-clipboard-check"></i> 3. Ogni Albero Riceve una "Pagella di Sicurezza" Prima di Qualsiasi Intervento</h2>
+            <p>
+                Le decisioni su quali alberi potare, mettere in sicurezza o, nei casi più estremi, abbattere, non sono mai arbitrarie. Ogni singolo esemplare viene sottoposto a un'analisi rigorosa chiamata <strong>VTA (Visual Tree Assessment)</strong>, una metodologia scientifica per valutarne la stabilità.
+            </p>
+            <p>
+                Un tecnico esperto esamina l'albero alla ricerca di difetti strutturali, anomalie, patologie o danni che potrebbero comprometterne la sicurezza, come cavità nel tronco, infezioni fungine, rami deperenti a seguito di attacchi parassitari o evidenti debolezze strutturali.
+            </p>
+            <p>
+                In base a questa analisi visiva e, se necessario, strumentale, l'albero riceve una classificazione in diverse <strong>"classi di pericolosità"</strong>. Questa "pagella" determina l'intervento più appropriato: per gli alberi con problemi risolvibili si procede alla messa in sicurezza (ad esempio con potature mirate o l'installazione di cavi di ancoraggio), mentre per quelli la cui pericolosità è giudicata troppo alta e non mitigabile, l'unica opzione per garantire la sicurezza pubblica è l'abbattimento.
+            </p>
+            <div class="highlight-box">
+                <h4><i class="fas fa-check-circle"></i> Decisioni Basate sui Dati</h4>
+                <p>
+                    È un processo che assicura che ogni decisione sia basata su dati oggettivi e non su impressioni.
+                </p>
+            </div>
+        </section>
+
+        <!-- Punto 4 -->
+        <section class="content-section">
+            <h2><i class="fas fa-car"></i> 4. Il Pericolo Maggiore per gli Operatori non è la Motosega, ma il Traffico</h2>
+            <p>
+                Quando pensiamo a un cantiere per la potatura di alberi, immaginiamo rischi come l'uso di motoseghe o la caduta dall'alto. Sebbene questi siano pericoli reali e attentamente gestiti, il Piano di Sicurezza del progetto evidenzia una minaccia ancora più seria.
+            </p>
+            <p>
+                Ufficialmente, il rischio di <strong>"Investimento da parte dei veicoli transitanti"</strong> è classificato come <strong>"Alto"</strong>, risultato di una probabilità definita "Probabile" e una magnitudo del danno potenziale giudicata "Gravissimo".
+            </p>
+
+            <h3><i class="fas fa-traffic-cone"></i> Misure di Sicurezza</h3>
+            <p>
+                Lavorare lungo le trafficate strade di Palermo espone le squadre a un rischio costante. Per questo motivo, la logistica del cantiere è estremamente complessa e prevede misure rigorose:
+            </p>
+            <ul>
+                <li>L'area di intervento viene sempre delimitata con un'adeguata <strong>segnaletica stradale</strong>.</li>
+                <li>Gli operatori hanno l'obbligo di indossare <strong>indumenti ad alta visibilità</strong> per essere sempre riconoscibili.</li>
+                <li>A seconda della pericolosità della strada, il traffico può essere deviato o temporaneamente chiuso, con la gestione della viabilità affidata a personale specializzato, i cosiddetti <strong>"movieri"</strong> (addetti alla gestione della viabilità del cantiere).</li>
+            </ul>
+            <p>
+                Queste procedure dimostrano come la gestione del verde urbano sia anche una complessa operazione logistica che deve fare i conti con la caotica realtà di una grande città.
+            </p>
+        </section>
+
+        <!-- Punto 5 -->
+        <section class="content-section">
+            <h2><i class="fas fa-city"></i> 5. Non Solo Alberi: un Progetto per Rigenerare lo Spazio Pubblico</h2>
+            <p>
+                L'obiettivo del progetto "Rigenerazione del Verde Urbano" va ben oltre la semplice cura degli alberi. L'iniziativa ha l'ambizione più ampia di <strong>migliorare la qualità ambientale e la vivibilità degli spazi pubblici</strong> di Palermo.
+            </p>
+            <p>
+                Le cure arboree sono il cuore dell'intervento, ma sono affiancate da una serie di azioni integrate che mirano a restituire ai cittadini aree più funzionali, sicure e belle.
+            </p>
+
+            <h3><i class="fas fa-list-check"></i> Altre Attività Previste</h3>
+            <ul>
+                <li>Installazione di nuovi <strong>impianti di irrigazione automatizzati</strong> per una gestione idrica più efficiente.</li>
+                <li>Posa di <strong>sistemi di illuminazione a basso consumo energetico</strong> in alcune delle aree interessate.</li>
+                <li>Posizionamento di nuovo <strong>arredo urbano</strong>, come panchine, fioriere, cestini porta rifiuti e rastrelliere per biciclette.</li>
+                <li>Realizzazione di <strong>aree ludiche</strong> e interventi per l'eliminazione delle barriere architettoniche, come la realizzazione di rampe e la creazione di percorsi specifici per ipovedenti.</li>
+            </ul>
+            <p>
+                Il progetto, quindi, non si limita a "sistemare gli alberi", ma li usa come punto di partenza per una rigenerazione urbana a tutto tondo.
+            </p>
+        </section>
+
+        <!-- Immagine di Sintesi -->
+        <section class="content-section" style="text-align: center;">
+            <img src="img/progetto_sintesi.jpg" alt="Sintesi del Progetto Verde Urbano Palermo" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 16px rgba(0,0,0,0.1);">
+        </section>
+
+        <!-- Conclusione -->
+        <section class="content-section">
+            <h2><i class="fas fa-eye"></i> Conclusione: Uno Sguardo Nuovo sul Verde che ci Circonda</h2>
+            <p>
+                Dietro un'operazione apparentemente semplice come la potatura di un albero si cela un mondo di analisi scientifica, ingegneria, pianificazione della sicurezza e visione urbanistica. La gestione del verde urbano non è giardinaggio, ma un'attività cruciale e complessa che incide direttamente sulla nostra sicurezza, sulla qualità dell'aria che respiriamo e sulla bellezza degli spazi che viviamo ogni giorno.
+            </p>
+            <div class="highlight-box">
+                <h4><i class="fas fa-question-circle"></i> Una Domanda per Te</h4>
+                <p>
+                    La prossima volta che passeggerete per Palermo, guarderete l'albero all'angolo della vostra strada con occhi diversi?
+                </p>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h3><i class="fas fa-chart-bar"></i> Esplora i Dati del Progetto</h3>
+            <p style="margin-bottom: 25px;">Utilizza la dashboard interattiva per visualizzare gli alberi censiti, filtrare per specie e stato di salute, e consultare le statistiche ambientali.</p>
+            <a href="index.html" class="cta-button"><i class="fas fa-map"></i> Vai alla Dashboard</a>
+            <a href="open-data.html" class="cta-button"><i class="fas fa-database"></i> Scarica i Dati</a>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <h1>Comune di Palermo</h1>
+        <h2>Area delle Politiche Ambientali, Transizione Ecologica e Rigenerazione del Verde</h2>
+        <h3>Ufficio Autonomo Gestione Verde Urbano, Agricoltura Urbana e Rapporti con Re.Se.T.</h3>
+        <h3><i class="fas fa-lightbulb"></i> Natura della Demo</h3>
+        <p>Questa è una <b>DEMO</b> prototipale che mostra i dati di monitoraggio relativi al Progetto di riqualificazione e rigenerazione delle strade e delle aree verdi della città di Palermo.</p>
+    </footer>
+
+    <script src="js/navigation.js"></script>
+</body>
+</html>

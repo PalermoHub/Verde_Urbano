@@ -12,7 +12,8 @@
 	    <link rel="shortcut icon" href="favicon.ico"/> 
     <link rel="icon" href="favicon.png" type="image/png"/> 
 	
-    <link rel="stylesheet" href="css/verde_urbano.css">   
+    <link rel="stylesheet" href="css/verde_urbano.css">
+	<link rel="stylesheet" href="css/navigation.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -62,6 +63,146 @@
             <div class="info-icon" id="infoBtn" title="Informazioni su questa app"><i class="fas fa-circle-info"></i></div>
         </div>
     </header>
+
+    <!-- Navigation Menu -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <button class="navbar-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i> Menu
+            </button>
+
+            <ul class="navbar-menu">
+                <button class="navbar-close" aria-label="Close menu">
+                    <i class="fas fa-times"></i>
+                </button>
+
+                <li>
+                    <a href="index.html">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="il-progetto.html">
+                        <i class="fas fa-book-open"></i>
+                        <span>Il Progetto</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="obiettivi.html">
+                        <i class="fas fa-bullseye"></i>
+                        <span>Obiettivi e Finalità</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="obiettivi.html#riqualificazione"><i class="fas fa-seedling"></i> Riqualificazione patrimonio arboreo</a></li>
+                        <li><a href="obiettivi.html#sicurezza"><i class="fas fa-shield-alt"></i> Sicurezza e incolumità pubblica</a></li>
+                        <li><a href="obiettivi.html#barriere"><i class="fas fa-wheelchair"></i> Abbattimento barriere architettoniche</a></li>
+                        <li><a href="obiettivi.html#clima"><i class="fas fa-cloud-sun"></i> Mitigazione cambiamenti climatici</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="fasi.html">
+                        <i class="fas fa-tasks"></i>
+                        <span>Fasi dell'Intervento</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="fasi.html#analisi"><i class="fas fa-search"></i> Analisi stato di fatto</a></li>
+                        <li><a href="fasi.html#vta"><i class="fas fa-clipboard-check"></i> Valutazione stabilità VTA</a></li>
+                        <li><a href="fasi.html#abbattimenti"><i class="fas fa-cut"></i> Abbattimenti e potature</a></li>
+                        <li><a href="fasi.html#apparati"><i class="fas fa-project-diagram"></i> Contenimento apparati radicali</a></li>
+                        <li><a href="fasi.html#mitigazione"><i class="fas fa-balance-scale"></i> Misure di mitigazione e compensazione</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="potatura.html">
+                        <i class="fas fa-scissors"></i>
+                        <span>Tipologie di Potatura</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="potatura.html#formazione"><i class="fas fa-spa"></i> Formazione e allevamento</a></li>
+                        <li><a href="potatura.html#mantenimento"><i class="fas fa-leaf"></i> Mantenimento e risanamento</a></li>
+                        <li><a href="potatura.html#contenimento"><i class="fas fa-compress"></i> Contenimento e spalcatura</a></li>
+                        <li><a href="potatura.html#rimonda"><i class="fas fa-broom"></i> Rimonda del secco</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="radicali.html">
+                        <i class="fas fa-code-branch"></i>
+                        <span>Gestione Apparati Radicali</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="radicali.html#airspade"><i class="fas fa-wind"></i> Scavo non invasivo Air-Spade</a></li>
+                        <li><a href="radicali.html#barriere"><i class="fas fa-shield"></i> Installazione barriere anti-radici</a></li>
+                        <li><a href="radicali.html#aerazione"><i class="fas fa-fan"></i> Sistemi di aerazione del terreno</a></li>
+                        <li><a href="radicali.html#pavimentazioni"><i class="fas fa-road"></i> Pavimentazioni drenanti</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="impianti.html">
+                        <i class="fas fa-tree"></i>
+                        <span>Nuovi Impianti</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="impianti.html#specie"><i class="fas fa-leaf"></i> Scelta specie autoctone/naturalizzate</a></li>
+                        <li><a href="impianti.html#irrigazione"><i class="fas fa-tint"></i> Sistemi di irrigazione automatizzati</a></li>
+                        <li><a href="impianti.html#arredo"><i class="fas fa-chair"></i> Arredo urbano (panchine, fioriere)</a></li>
+                        <li><a href="impianti.html#illuminazione"><i class="fas fa-lightbulb"></i> Illuminazione a basso consumo</a></li>
+                        <li><a href="impianti.html#ludiche"><i class="fas fa-volleyball-ball"></i> Aree ludiche e inclusive</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="sicurezza.html">
+                        <i class="fas fa-hard-hat"></i>
+                        <span>Sicurezza e Cantiere</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="sicurezza.html#delimitazione"><i class="fas fa-traffic-cone"></i> Delimitazione aree e segnaletica</a></li>
+                        <li><a href="sicurezza.html#piattaforme"><i class="fas fa-forklift"></i> Piattaforme elevatrici e cestelli</a></li>
+                        <li><a href="sicurezza.html#dpi"><i class="fas fa-vest"></i> DPI obbligatori</a></li>
+                        <li><a href="sicurezza.html#traffico"><i class="fas fa-car"></i> Gestione interferenze e traffico</a></li>
+                        <li><a href="sicurezza.html#emergenza"><i class="fas fa-ambulance"></i> Piani di emergenza</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="dati-economici.html">
+                        <i class="fas fa-euro-sign"></i>
+                        <span>Dati Economici</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="dati-economici.html#accordo"><i class="fas fa-file-contract"></i> Accordo Quadro quadriennale</a></li>
+                        <li><a href="dati-economici.html#importo"><i class="fas fa-coins"></i> Importo totale: 12 milioni €</a></li>
+                        <li><a href="dati-economici.html#stima"><i class="fas fa-tree"></i> Stima: 31.000-50.000 alberature</a></li>
+                        <li><a href="dati-economici.html#oneri"><i class="fas fa-calculator"></i> Oneri sicurezza: 530.449,87 €</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="open-data.html">
+                        <i class="fas fa-database"></i>
+                        <span>Open Data</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Overlay per mobile menu -->
+    <div class="navbar-overlay"></div>
 
     <!-- Modale Info -->
     <div class="modal-overlay" id="infoModal">
@@ -191,7 +332,7 @@
                         Questa applicazione è stata sviluppata a scopo dimostrativo e educativo per illustrare le potenzialità dei sistemi di monitoraggio urbano e gestione dati geospaziali. I dati visualizzati sono sintetici e non rappresentano situazioni reali certificate.</p>
 						<hr><br>
                     <p><strong>Elaborazione dati:</strong> <a href="https://www.linkedin.com/in/gbvitrano/" title="@gbvitrano" target="_blank">@gbvitrano</a> </p>
- <p><strong>Sviluppo tecnico:</strong> <a href="https://www.linkedin.com/in/gbvitrano/" title="@gbvitrano" target="_blank">@gbvitrano</a> - <a href="https://claude.ai" target="_blank">Claude AI (Anthropic)</a></p>					
+ <p><strong>Sviluppo tecnico:</strong> <a href="https://www.linkedin.com/in/gbvitrano/" title="@gbvitrano" target="_blank">@gbvitrano</a> - <a href="https://claude.ai" target="_blank">Claude AI (Anthropic)</a> - <a href="https://notebooklm.google/" target="_blank">NotebookLM</a></p>					
                 </div>
             </div>
         </div>
@@ -501,6 +642,7 @@
     </div>
 
 
+<script src="js/navigation.js"></script>
 <script src="js/01_modal.js"></script>
 <script src="js/02_csv_loader.js"></script>
 <script src="js/03_global_variables.js"></script>

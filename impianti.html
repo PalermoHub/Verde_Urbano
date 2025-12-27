@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nuovi Impianti e Forniture - Verde Urbano Palermo</title>
+    <meta name="description" content="Scopri i nuovi impianti del progetto: scelta specie autoctone, irrigazione automatizzata, arredo urbano, illuminazione sostenibile e aree ludiche inclusive.">
+    <meta name="author" content="Giovan Battista Vitrano">
+    <meta http-equiv="content-language" content="IT">
+    <meta name="robots" content="index,follow">
+
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link rel="icon" href="favicon.png" type="image/png"/>
+
+    <link rel="stylesheet" href="css/verde_urbano.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Titillium Web', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+        }
+
+        .page-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: white;
+            min-height: calc(100vh - 200px);
+        }
+
+        .page-header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
+            color: white;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+
+        .page-header h1 {
+            margin: 0 0 15px 0;
+            font-size: 2.2em;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            margin: 0;
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        .content-section {
+            margin-bottom: 50px;
+        }
+
+        .content-section h2 {
+            color: #27ae60;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #27ae60;
+        }
+
+        .content-section h3 {
+            color: #1e8449;
+            font-size: 1.4em;
+            margin: 30px 0 15px 0;
+        }
+
+        .content-section p {
+            line-height: 1.8;
+            color: #2c3e50;
+            font-size: 1.05em;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .content-section ul {
+            margin: 20px 0;
+            padding-left: 25px;
+        }
+
+        .content-section li {
+            line-height: 1.8;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            font-size: 1.05em;
+        }
+
+        .content-section li strong {
+            color: #27ae60;
+        }
+
+        .highlight-box {
+            background: #e8f5e9;
+            border-left: 5px solid #27ae60;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .highlight-box h4 {
+            margin: 0 0 15px 0;
+            color: #1e8449;
+            font-size: 1.3em;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: #2c3e50;
+            line-height: 1.7;
+        }
+
+        .species-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .species-card {
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s;
+            border: 2px solid #e8f5e9;
+        }
+
+        .species-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+            border-color: #27ae60;
+        }
+
+        .species-card i {
+            font-size: 2.5em;
+            color: #27ae60;
+            margin-bottom: 10px;
+        }
+
+        .species-card h4 {
+            color: #1e8449;
+            margin: 10px 0 5px 0;
+            font-size: 1.1em;
+        }
+
+        .species-card p {
+            color: #7f8c8d;
+            font-size: 0.9em;
+            font-style: italic;
+            margin: 0;
+            text-align: center;
+        }
+
+        .benefit-list {
+            background: #fff9e6;
+            border-left: 5px solid #f39c12;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .benefit-list h4 {
+            color: #e67e22;
+            margin: 0 0 15px 0;
+        }
+
+        .benefit-list ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+
+        .benefit-list li {
+            margin-bottom: 10px;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .cta-section h3 {
+            margin: 0 0 15px 0;
+            font-size: 1.8em;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #2980b9;
+            padding: 15px 35px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1em;
+            margin: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+
+        footer {
+            background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
+
+        footer h1, footer h2, footer h3 {
+            margin: 8px 0;
+            font-weight: 400;
+        }
+
+        footer h1 {
+            font-size: 1.5em;
+        }
+
+        footer h2 {
+            font-size: 1.1em;
+        }
+
+        footer h3 {
+            font-size: 0.95em;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 1.6em;
+            }
+
+            .page-header p {
+                font-size: 1em;
+            }
+
+            .content-section h2 {
+                font-size: 1.4em;
+            }
+
+            .content-section h3 {
+                font-size: 1.2em;
+            }
+
+            .species-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KHR1GHDRQS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KHR1GHDRQS');
+    </script>
+</head>
+<body>
+    <header>
+        <div class="demo-stamp demo-stamp-header">DEMO!</div>
+        <div>
+            <h2 id="pageTitle"><i class="fas fa-tree"></i> Rigenerazione del Verde Urbano di Palermo: Riqualificazione Stradale e Arredo della Città</h2>
+            <p>Progetto di riqualificazione e rigenerazione delle strade e delle aree verdi della città di Palermo, volto al miglioramento della qualità urbana e della sostenibilità ambientale. Gli interventi prevedono la piantumazione e la sostituzione delle alberature esistenti, l'esecuzione di servizi colturali, il ripristino delle aiuole e dei marciapiedi danneggiati, nonché la fornitura e la posa in opera di arredi urbani funzionali e di sistemi di illuminazione alimentati da energia solare. - <a href=https://www.opencup.gov.it//portale/it/web/opencup/home/progetto/-/cup/D71G23000050001 target="_blank" Title="STRADE E AREE A VERDE DELLA CITTA' DI PALERMO*VIA PALERMO*RIGENERAZIONE DEL VERDE URBANO DELLA CITTA' DI PALERMO- PIANTUMAZIONE E SOSTITUZIONE ALBERATURE, SERVIZI COLTURALI, RIPRISTINO AIUOLE E MARCIAPIEDI DISSESTATI, FORNITURA E POSA IN OPERA DI ARREDO URBANO E SISTEMI DI ILLUMINAZIONE AD ENERGIA SOLARE">Accordo Quadro - CUP D71G23000050001</A>
+			</p>
+        </div>
+        <div class="header-right">
+            <div class="info-icon" id="infoBtn" title="Informazioni su questa app"><i class="fas fa-circle-info"></i></div>
+        </div>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <button class="navbar-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i> Menu
+            </button>
+
+            <ul class="navbar-menu">
+                <button class="navbar-close" aria-label="Close menu">
+                    <i class="fas fa-times"></i>
+                </button>
+
+                <li>
+                    <a href="index.html">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="il-progetto.html">
+                        <i class="fas fa-book-open"></i>
+                        <span>Il Progetto</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="obiettivi.html">
+                        <i class="fas fa-bullseye"></i>
+                        <span>Obiettivi e Finalità</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="obiettivi.html#riqualificazione"><i class="fas fa-seedling"></i> Riqualificazione patrimonio arboreo</a></li>
+                        <li><a href="obiettivi.html#sicurezza"><i class="fas fa-shield-alt"></i> Sicurezza e incolumità pubblica</a></li>
+                        <li><a href="obiettivi.html#barriere"><i class="fas fa-wheelchair"></i> Abbattimento barriere architettoniche</a></li>
+                        <li><a href="obiettivi.html#clima"><i class="fas fa-cloud-sun"></i> Mitigazione cambiamenti climatici</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="fasi.html">
+                        <i class="fas fa-tasks"></i>
+                        <span>Fasi dell'Intervento</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="fasi.html#analisi"><i class="fas fa-search"></i> Analisi stato di fatto</a></li>
+                        <li><a href="fasi.html#vta"><i class="fas fa-clipboard-check"></i> Valutazione stabilità VTA</a></li>
+                        <li><a href="fasi.html#abbattimenti"><i class="fas fa-cut"></i> Abbattimenti e potature</a></li>
+                        <li><a href="fasi.html#apparati"><i class="fas fa-project-diagram"></i> Contenimento apparati radicali</a></li>
+                        <li><a href="fasi.html#mitigazione"><i class="fas fa-balance-scale"></i> Misure di mitigazione e compensazione</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="potatura.html">
+                        <i class="fas fa-scissors"></i>
+                        <span>Tipologie di Potatura</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="potatura.html#rimonda"><i class="fas fa-broom"></i> Rimonda del secco</a></li>
+                        <li><a href="potatura.html#mantenimento"><i class="fas fa-leaf"></i> Mantenimento e risanamento</a></li>
+                        <li><a href="potatura.html#contenimento"><i class="fas fa-compress"></i> Contenimento e spalcatura</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="radicali.html">
+                        <i class="fas fa-code-branch"></i>
+                        <span>Gestione Apparati Radicali</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="radicali.html#airspade"><i class="fas fa-wind"></i> Scavo non invasivo Air-Spade</a></li>
+                        <li><a href="radicali.html#barriere"><i class="fas fa-shield"></i> Installazione barriere anti-radici</a></li>
+                        <li><a href="radicali.html#aerazione"><i class="fas fa-fan"></i> Sistemi di aerazione del terreno</a></li>
+                        <li><a href="radicali.html#pavimentazioni"><i class="fas fa-road"></i> Pavimentazioni drenanti</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="impianti.html">
+                        <i class="fas fa-tree"></i>
+                        <span>Nuovi Impianti</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="impianti.html#specie"><i class="fas fa-leaf"></i> Scelta specie autoctone/naturalizzate</a></li>
+                        <li><a href="impianti.html#irrigazione"><i class="fas fa-tint"></i> Sistemi di irrigazione automatizzati</a></li>
+                        <li><a href="impianti.html#arredo"><i class="fas fa-chair"></i> Arredo urbano (panchine, fioriere)</a></li>
+                        <li><a href="impianti.html#illuminazione"><i class="fas fa-lightbulb"></i> Illuminazione a basso consumo</a></li>
+                        <li><a href="impianti.html#ludiche"><i class="fas fa-volleyball-ball"></i> Aree ludiche e inclusive</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="sicurezza.html">
+                        <i class="fas fa-hard-hat"></i>
+                        <span>Sicurezza e Cantiere</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="sicurezza.html#delimitazione"><i class="fas fa-traffic-cone"></i> Delimitazione aree e segnaletica</a></li>
+                        <li><a href="sicurezza.html#piattaforme"><i class="fas fa-forklift"></i> Piattaforme elevatrici e cestelli</a></li>
+                        <li><a href="sicurezza.html#dpi"><i class="fas fa-vest"></i> DPI obbligatori</a></li>
+                        <li><a href="sicurezza.html#traffico"><i class="fas fa-car"></i> Gestione interferenze e traffico</a></li>
+                        <li><a href="sicurezza.html#emergenza"><i class="fas fa-ambulance"></i> Piani di emergenza</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="dati-economici.html">
+                        <i class="fas fa-euro-sign"></i>
+                        <span>Dati Economici</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="dati-economici.html#accordo"><i class="fas fa-file-contract"></i> Accordo Quadro quadriennale</a></li>
+                        <li><a href="dati-economici.html#importo"><i class="fas fa-coins"></i> Importo totale: 12 milioni €</a></li>
+                        <li><a href="dati-economici.html#stima"><i class="fas fa-tree"></i> Stima: 31.000-50.000 alberature</a></li>
+                        <li><a href="dati-economici.html#oneri"><i class="fas fa-calculator"></i> Oneri sicurezza: 530.449,87 €</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="open-data.html">
+                        <i class="fas fa-database"></i>
+                        <span>Open Data</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Overlay per mobile menu -->
+    <div class="navbar-overlay"></div>
+
+    <div class="page-content">
+        <div class="page-header">
+            <h1><i class="fas fa-seedling"></i> La Nostra Città Respira</h1>
+            <p>Scopri il progetto di Rigenerazione del Verde a Palermo</p>
+        </div>
+
+        <!-- Introduzione -->
+        <section class="content-section">
+            <h2><i class="fas fa-city"></i> Introduzione: Un Nuovo Volto per Palermo</h2>
+            <p>
+                Cari cittadini e studenti, avete mai immaginato una Palermo con più alberi, parchi più moderni e strade più accoglienti? Questo sogno sta per diventare realtà grazie al progetto di <strong>"Rigenerazione del Verde Urbano della Città di Palermo"</strong>.
+            </p>
+
+            <div style="text-align: center; margin: 30px 0;">
+                <img src="img/impianti.jpg" alt="Nuovi Impianti" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+            </div>
+            <p>
+                Non si tratta di un piccolo intervento: il progetto si prenderà cura di circa <strong>31.000 alberi</strong> lungo le nostre strade, un patrimonio immenso che verrà valorizzato per rendere la nostra città non solo più bella, ma anche più sicura, efficiente e sostenibile per tutti noi.
+            </p>
+            <p>
+                In questo articolo scopriremo insieme, con parole semplici, alcuni degli interventi più importanti che trasformeranno il volto della nostra Palermo.
+            </p>
+        </section>
+
+        <!-- Scelta delle Nuove Piante -->
+        <section class="content-section" id="specie">
+            <h2><i class="fas fa-leaf"></i> 1. Più Alberi, Più Vita: La Scelta delle Nuove Piante</h2>
+            <p>
+                Molti di noi hanno visto marciapiedi dissestati o sollevati dalle radici degli alberi e sanno quanto possano essere pericolose le piante instabili o a fine vita. Questi problemi, oltre a creare disagi, hanno generato negli anni contenziosi e costi significativi per la nostra comunità. Il progetto nasce proprio per affrontare queste criticità in modo scientifico e lungimirante.
+            </p>
+            <p>
+                Ma come si decide se un albero va sostituito? Gli esperti non si basano su impressioni, ma usano un metodo scientifico chiamato <strong>VTA (Valutazione di Stabilità dell'Albero)</strong>. Attraverso analisi visive e strumentali, valutano la salute e la sicurezza di ogni singola pianta, garantendo che le decisioni siano prese per la sicurezza di tutti e il benessere del nostro patrimonio verde.
+            </p>
+
+            <div class="highlight-box">
+                <h4><i class="fas fa-balance-scale"></i> Mitigazione e Compensazione</h4>
+                <p>
+                    Quando un albero deve essere rimosso, entrano in gioco le <strong>"misure di mitigazione e compensazione"</strong>. Questo significa che non solo sostituiamo ciò che viene rimosso, ma aumentiamo il verde totale della città. Questo è fondamentale per potenziare i "servizi ecosistemici": alberi e piante che ci aiutano a combattere il caldo, a purificare l'aria e a rendere Palermo più resiliente ai cambiamenti climatici.
+                </p>
+            </div>
+
+            <p>
+                La scelta delle nuove piante non è casuale: vengono selezionate attentamente <strong>specie compatibili con i siti d'intervento</strong>, cioè piante adatte al clima, al terreno e agli spazi urbani di Palermo, per garantire che crescano sane, forti e in armonia con l'ambiente circostante.
+            </p>
+
+            <h3><i class="fas fa-tree"></i> Ecco alcune delle nuove piante che vedremo presto nelle nostre strade e piazze:</h3>
+
+            <div class="species-grid">
+                <div class="species-card">
+                    <i class="fas fa-leaf"></i>
+                    <h4>Biancospino</h4>
+                    <p>Crataegus monogyna</p>
+                </div>
+                <div class="species-card">
+                    <i class="fas fa-leaf"></i>
+                    <h4>Alloro</h4>
+                    <p>Laurus nobilis</p>
+                </div>
+                <div class="species-card">
+                    <i class="fas fa-leaf"></i>
+                    <h4>Oleandro</h4>
+                    <p>Nerium oleander</p>
+                </div>
+                <div class="species-card">
+                    <i class="fas fa-leaf"></i>
+                    <h4>Rosmarino</h4>
+                    <p>Rosmarinus officinalis</p>
+                </div>
+                <div class="species-card">
+                    <i class="fas fa-tree"></i>
+                    <h4>Carrubo</h4>
+                    <p>Ceratonia siliqua</p>
+                </div>
+                <div class="species-card">
+                    <i class="fas fa-tree"></i>
+                    <h4>Orniello</h4>
+                    <p>Fraxinus ornus</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tecnologia Amica dell'Ambiente -->
+        <section class="content-section">
+            <h2><i class="fas fa-microchip"></i> 2. Tecnologia Amica dell'Ambiente: Irrigazione e Illuminazione Intelligenti</h2>
+            <p>
+                Il progetto non si limita a piantare nuovi alberi, ma introduce anche tecnologie innovative per gestire il verde in modo più intelligente e rispettoso dell'ambiente. L'obiettivo è usare le risorse in modo efficiente, risparmiando acqua ed energia.
+            </p>
+
+            <h3 id="irrigazione"><i class="fas fa-tint"></i> 2.1. Acqua Preziosa: I Nuovi Sistemi di Irrigazione Automatizzati</h3>
+            <p>
+                Verranno installati moderni <strong>impianti di irrigazione automatizzati</strong> per prendersi cura delle nuove aree verdi. Si tratta di sistemi intelligenti che distribuiscono l'acqua solo quando e dove serve, portando enormi vantaggi per la città.
+            </p>
+
+            <div class="benefit-list">
+                <h4><i class="fas fa-check-circle"></i> I Benefici Principali</h4>
+                <ul>
+                    <li><strong>Risparmio di acqua:</strong> Utilizzano solo la quantità d'acqua strettamente necessaria, eliminando ogni spreco.</li>
+                    <li><strong>Risorse ottimizzate:</strong> I sistemi automatici liberano il personale da ore di irrigazione manuale, permettendo di impiegare queste preziose risorse in altre attività di cura del verde.</li>
+                    <li><strong>Piante più sane:</strong> Garantiscono al verde un'irrigazione regolare e programmata, fondamentale per una crescita rigogliosa.</li>
+                </ul>
+            </div>
+
+            <h3 id="illuminazione"><i class="fas fa-lightbulb"></i> 2.2. Luce Sostenibile: L'Illuminazione a Basso Consumo</h3>
+            <p>
+                In diverse aree interessate dal progetto verranno installati anche <strong>sistemi di illuminazione a basso consumo energetico</strong>. Questa scelta è fondamentale per una città moderna e attenta all'ambiente.
+            </p>
+            <p>
+                Utilizzare lampade a basso consumo significa ridurre l'inquinamento luminoso e abbattere i costi energetici, liberando risorse preziose che possono essere investite in altri servizi per i cittadini.
+            </p>
+        </section>
+
+        <!-- Spazi per Tutti -->
+        <section class="content-section">
+            <h2><i class="fas fa-users"></i> 3. Spazi per Tutti: Arredo, Gioco e Inclusività</h2>
+            <p>
+                Rigenerare il verde significa anche migliorare la qualità della vita negli spazi pubblici, rendendoli più funzionali, accoglienti e accessibili a chiunque. Il progetto, infatti, non pensa solo alle piante, ma anche alle persone che vivranno questi spazi rinnovati.
+            </p>
+
+            <h3 id="arredo"><i class="fas fa-chair"></i> 3.1. Nuovi Spazi per Stare Insieme</h3>
+            <p>
+                Le aree verdi e pedonali saranno arricchite con <strong>nuovo arredo urbano</strong>, pensato per rendere più piacevole e comodo passare del tempo all'aperto. Saranno installati elementi funzionali e di design, come:
+            </p>
+            <ul>
+                <li><i class="fas fa-chair"></i> <strong>Panchine</strong></li>
+                <li><i class="fas fa-leaf"></i> <strong>Fioriere</strong></li>
+                <li><i class="fas fa-trash-alt"></i> <strong>Cestini porta rifiuti</strong></li>
+                <li><i class="fas fa-bicycle"></i> <strong>Rastrelliere per biciclette</strong></li>
+            </ul>
+
+            <h3 id="ludiche"><i class="fas fa-volleyball-ball"></i> 3.2. Aree Ludiche e Inclusive per una Città Davvero di Tutti</h3>
+            <p>
+                Il progetto ha un'attenzione speciale per i più piccoli e per l'inclusività. In particolare, soltanto per le nuove aree a verde che verranno create, sorgeranno <strong>moderne aree ludiche</strong>, spazi sicuri e stimolanti dove i bambini potranno giocare liberamente.
+            </p>
+            <p>
+                Inoltre, un punto fondamentale è l'<strong>eliminazione delle barriere architettoniche</strong>. La città deve essere di tutti, senza ostacoli. Per questo, verranno realizzati interventi specifici come:
+            </p>
+            <ul>
+                <li><i class="fas fa-wheelchair"></i> <strong>Rampe e scivoli</strong> per facilitare l'accesso a chi si muove in carrozzina</li>
+                <li><i class="fas fa-eye"></i> <strong>Percorsi per persone ipovedenti</strong>, per garantire a tutti la possibilità di muoversi in autonomia e sicurezza</li>
+            </ul>
+
+            <div class="highlight-box">
+                <h4><i class="fas fa-universal-access"></i> Accessibilità Universale</h4>
+                <p>
+                    Questi interventi garantiranno che tutti i cittadini, indipendentemente dalle loro capacità fisiche, possano godere pienamente degli spazi pubblici rinnovati.
+                </p>
+            </div>
+        </section>
+
+        <!-- Conclusione -->
+        <section class="content-section">
+            <h2><i class="fas fa-heart"></i> Conclusione: Un Futuro più Verde e Vivibile per Palermo</h2>
+            <p>
+                Questo progetto non è semplice giardinaggio su larga scala; è la progettazione di un <strong>nuovo sistema circolatorio</strong> per la nostra città, dove linfa vitale—fatta di acqua, ombra e aria pulita—possa raggiungere ogni quartiere.
+            </p>
+            <p>
+                Grazie a questi interventi, Palermo diventerà:
+            </p>
+            <ul>
+                <li><strong>Una città più sicura</strong>, con alberi sani e stabili</li>
+                <li><strong>Più sostenibile</strong>, grazie all'uso intelligente di acqua ed energia</li>
+                <li><strong>Più inclusiva e bella</strong>, con spazi pubblici pensati per il benessere di tutti i cittadini</li>
+            </ul>
+            <p>
+                Stiamo costruendo insieme una città dove la natura e le persone possono crescere in armonia, un luogo migliore per noi e per le generazioni che verranno.
+            </p>
+
+            <div class="highlight-box">
+                <h4><i class="fas fa-seedling"></i> Il Nostro Impegno</h4>
+                <p>
+                    Ogni albero piantato, ogni panchina installata, ogni rampa costruita è un mattone nella costruzione di una Palermo più verde, più giusta e più vivibile.
+                </p>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h3><i class="fas fa-chart-bar"></i> Esplora i Dati del Progetto</h3>
+            <p style="margin-bottom: 25px;">Utilizza la dashboard interattiva per visualizzare gli alberi censiti, filtrare per specie e stato di salute, e consultare le statistiche ambientali.</p>
+            <a href="index.html" class="cta-button"><i class="fas fa-map"></i> Vai alla Dashboard</a>
+            <a href="open-data.html" class="cta-button"><i class="fas fa-database"></i> Open Data</a>
+        </div>
+    </div>
+
+    <footer>
+        <h1>Comune di Palermo</h1>
+        <h2>Area delle Politiche Ambientali, Transizione Ecologica e Rigenerazione del Verde</h2>
+        <h3>Ufficio Autonomo Gestione Verde Urbano, Agricoltura Urbana e Rapporti con Re.Se.T.</h3>
+        <h3><i class="fas fa-lightbulb"></i> Natura della Demo</h3>
+        <p>Questa è una <b>DEMO</b> prototipale che mostra i dati di monitoraggio relativi al Progetto di riqualificazione e rigenerazione delle strade e delle aree verdi della città di Palermo, volto al miglioramento della qualità urbana e della sostenibilità ambientale.</p>
+    </footer>
+
+    <!-- Modal Info -->
+    <div class="modal-overlay" id="infoModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-circle-info"></i> Come Funziona</h2>
+                <button class="modal-close" onclick="closeInfoModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3><i class="fas fa-location-dot"></i> Che cos'è</h3>
+                    <p>Una mappa interattiva e moderna che monitora lo stato di salute della vegetazione urbana. Pensala come un "medico digitale" per gli alberi della città: raccoglie i dati, analizza le condizioni e supporta l'amministrazione nel prendere decisioni consapevoli e basate su evidenze.<br> La demo attuale si concentra sugli alberi dell'<b>Accordo Quadro CUP D71G23000050001</b>, ma il progetto è stato concepito per espandersi progressivamente a tutta la città.</p>
+                </div>
+                <div class="modal-section">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Disclaimer</h3>
+                    <p style="background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107; border-radius: 6px; color: #856404;">
+                        <strong>Natura della Demo</strong><br>
+                        Questa è una <strong>demo prototipale</strong> che mostra i dati di monitoraggio relativi al Progetto di riqualificazione e rigenerazione delle strade e delle aree verdi della città di Palermo.
+                    </p>
+                    <hr><br>
+                    <p><strong>Elaborazione dati:</strong> <a href="https://www.linkedin.com/in/gbvitrano/" title="@gbvitrano" target="_blank">@gbvitrano</a></p>
+                    <p><strong>Sviluppo tecnico:</strong> <a href="https://www.linkedin.com/in/gbvitrano/" title="@gbvitrano" target="_blank">@gbvitrano</a> - <a href="https://claude.ai" target="_blank">Claude AI (Anthropic)</a> - <a href="https://notebooklm.google/" target="_blank">NotebookLM</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/navigation.js"></script>
+    <script src="js/info-modal.js"></script>
+</body>
+</html>

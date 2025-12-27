@@ -1,0 +1,133 @@
+<!-- Modal Info - Come Funziona -->
+<div class="modal-overlay" id="infoModal">
+    <div class="modal">
+        <div class="modal-header">
+            <h2><i class="fas fa-circle-info"></i> Come Funziona</h2>
+            <button class="modal-close" onclick="closeInfoModal()"><i class="fas fa-times"></i></button>
+        </div>
+        <div class="modal-body">
+            <div class="modal-section">
+                <h3><i class="fas fa-location-dot"></i> Che cos'è</h3>
+                <p>Una mappa interattiva e moderna che monitora lo stato di salute della vegetazione urbana. Pensala come un "medico digitale" per gli alberi della città: raccoglie i dati, analizza le condizioni e supporta l'amministrazione nel prendere decisioni consapevoli e basate su evidenze.<br> La demo attuale si concentra sugli alberi dell'<b>Accordo Quadro CUP D71G23000050001</b>, ma il progetto è stato concepito per espandersi progressivamente a tutta la città.</p>
+            </div>
+
+            <div class="modal-section">
+                <h3><i class="fas fa-bullseye"></i> Funzionalità Principali</h3>
+                <div class="feature-list">
+                    <div class="feature-item">
+                        <span class="feature-icon"><i class="fas fa-map"></i></span>
+                        <span class="feature-text"><strong>Mappa Interattiva</strong> - Visualizza la posizione esatta di ogni albero con zoom e pan</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon"><i class="fas fa-magnifying-glass"></i></span>
+                        <span class="feature-text"><strong>Filtri Avanzati</strong> - Filtra per specie, stato di salute (CPC), sito, altezza e diametro</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon"><i class="fas fa-chart-bar"></i></span>
+                        <span class="feature-text"><strong>Grafici Dinamici</strong> - Analizza distribuzioni per altezza, salute, specie e localizzazione</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon"><i class="fas fa-chart-line"></i></span>
+                        <span class="feature-text"><strong>Statistiche in Tempo Reale</strong> - Dati sempre aggiornati in base ai filtri applicati</span>
+                    </div>
+                    <div class="feature-item">
+                        <span class="feature-icon"><i class="fas fa-search"></i></span>
+                        <span class="feature-text"><strong>Dettagli Alberi</strong> - Informazioni complete per ogni esemplare selezionato</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-section">
+                <h3><i class="fas fa-clipboard-list"></i> Classificazione CPC (Stato di Salute)</h3>
+                <ul>
+                    <li><strong style="color: #2ecc71;"><i class="fas fa-circle"></i> B (bassa)</strong> - Difetti lievi, fattore di sicurezza adeguato; monitoraggi periodici e interventi minimi.</li>
+                    <li><strong style="color: #f39c12;"><i class="fas fa-circle"></i> C (moderata)</strong> - Anomalie significative, sicurezza ridotta; interventi colturali obbligatori e controlli frequenti.</li>
+                    <li><strong style="color: #c164a1;"><i class="fas fa-circle"></i> C/D (elevata)</strong> - Difetti gravi, sicurezza esaurita; rimozione immediata o messa in sicurezza area.</li>
+                    <li><strong style="color: #e74c3c;"><i class="fas fa-circle"></i> D (estrema)</strong> - Rischio intermedio con evoluzione incerta; approfondimenti e interventi per stabilizzare.</li>
+                    <li><strong style="color: #434343;"><i class="fas fa-circle"></i> Ceppaia</strong> - Albero rimosso, presente solo la ceppaia; richiede rimozione del ceppo e eventuale nuova piantumazione.</li>
+                </ul>
+            </div>
+
+            <div class="modal-section">
+                <h3><i class="fas fa-lightbulb"></i> Come Usarla</h3>
+                <ol style="margin-left: 20px; color: #555; font-size: 14px; line-height: 1.8;">
+                    <li>Usa i <strong>filtri a sinistra</strong> per restringere i dati (facoltativo)</li>
+                    <li>Clicca su <strong>"Applica"</strong> per aggiornare mappa e grafici</li>
+                    <li>Clicca su un <strong>marcatore della mappa</strong> per visualizzare i dettagli completi dell'albero</li>
+                    <li>Leggi i <strong>grafici statistici</strong> per analizzare distribuzioni e trend</li>
+                    <li>Usa <strong>"Ripristina"</strong> per azzerare tutti i filtri</li>
+                </ol>
+            </div>
+
+            <div class="modal-section">
+                <h3><i class="fas fa-wrench"></i> Parametri Visualizzati</h3>
+                <ul>
+                    <li><strong>ID Albero</strong> - Codice identificativo univoco</li>
+                    <li><strong>Specie Botanica</strong> - Nome scientifico e comune dell'albero</li>
+                    <li><strong>Altezza</strong> - In metri (m)</li>
+                    <li><strong>Diametro</strong> - A petto d'uomo (dpu) in centimetri (cm)</li>
+                    <li><strong>CPC</strong> - Classificazione dello stato di salute</li>
+                    <li><strong>Sito</strong> - Localizzazione lungo Viale Emilia</li>
+                    <li><strong>Codice Lavorazione</strong> - Interventi programmati/effettuati</li>
+                </ul>
+            </div>
+            <hr>
+            <div class="modal-section">
+                <h3><i class="fas fa-leaf"></i> Calcolo Benefici Ambientali (CO₂ e O₂)</h3>
+                <p style="margin-bottom: 12px;">I valori di <strong>CO₂ catturata</strong> e <strong>O₂ emesso</strong> sono calcolati mediante metodologie scientifiche standardizzate. Consulta i seguenti riferimenti:</p>
+                <ul>
+                    <li><strong><a href="https://www.fs.fed.us/nrs/pubs/jrnls/2012/nrs_2012_nowak_001.pdf" target="_blank" style="color: #27ae60; text-decoration: underline;">USDA Forest Service - Carbon Storage and Sequestration by Municipal Trees (2012)</a></strong>
+                        <br><span style="font-size: 12px; color: #666;">Nowak, D.J. & Greenfield, E.J. Studio fondamentale su sequestro di carbonio urbano</span>
+                    </li>
+                    <li><strong><a href="https://www.sciencedirect.com/science/article/pii/S0301479711001253" target="_blank" style="color: #27ae60; text-decoration: underline;">Escobedo et al. (2011) - Ecological benefits of green infrastructure</a></strong>
+                        <br><span style="font-size: 12px; color: #666;">Environmental Pollution, 159(7), 1628-1635. Benefici ecologici dell'infrastruttura verde urbana</span>
+                    </li>
+                    <li><strong><a href="https://www.frontiersin.org/articles/10.3389/fenvs.2015.00069/full" target="_blank" style="color: #27ae60; text-decoration: underline;">Mullaney et al. (2015) - Urban green infrastructure: From theory to practice</a></strong>
+                        <br><span style="font-size: 12px; color: #666;">Frontiers in Environmental Science, 3(69). Connessioni tra teoria e applicazione pratica</span>
+                    </li>
+                    <li><strong><a href="https://www.itreetools.org/" target="_blank" style="color: #27ae60; text-decoration: underline;">i-Tree Tools - Free Urban Forest Analysis Software</a></strong>
+                        <br><span style="font-size: 12px; color: #666;">Software gratuito per analizzare e quantificare i benefici della foresta urbana</span>
+                    </li>
+                </ul>
+
+                <hr>
+            <div class="modal-section">
+                <h3><i class="fas fa-leaf"></i> Metodologia per la Stima del Numero di Foglie del Patrimonio Arboreo</h3>
+                <p style="margin-bottom: 12px;">La quantificazione del numero di foglie per ciascun esemplare arboreo censito è stata effettuata mediante un modello di calcolo che integra parametri dendrometrici rilevati in campo con coefficienti botanici specifici per specie.</p>
+                <ul>
+                    <li>Per ogni albero sono stati considerati i seguenti parametri misurati: altezza (h) espressa in metri, diametro del tronco a petto d'uomo (DBH) espresso in centimetri, e classificazione fitosanitaria (CPC) che indica lo stato di salute dell'esemplare. A questi dati sono stati associati coefficienti standard ricavati dalla letteratura scientifica e specifici per ciascuna specie arborea, tra cui: il Leaf Area Index base (LAI_base), il coefficiente moltiplicativo del diametro (coeff_diametro), il coefficiente moltiplicativo dell'altezza (coeff_altezza) e la densità fogliare espressa in numero di foglie per metro quadrato di chioma (densita_foglie).
+                    </li>
+                    <li><strong><a href="https://www.fs.fed.us/nrs/tools/" target="_blank" style="color: #27ae60; text-decoration: underline;">USDA Forest Service - Urban Forest Carbon Tools</a></strong>
+                        <br><span style="font-size: 12px; color: #666;">Strumenti online per quantificare benefici ambientali del verde urbano</span>
+                    </li>
+                    <li>Il modello di calcolo adottato prevede l'applicazione della seguente formula: N_Foglie = LAI_base × (DBH/100)^coeff_diametro × h^coeff_altezza × densita_foglie × fattore_stagionale × fattore_CPC. Il fattore stagionale tiene conto della fenologia della specie, differenziando tra specie decidue (che perdono completamente le foglie in inverno), sempreverdi (che mantengono il 90-95% delle foglie durante tutto l'anno) e semi-decidue. Il fattore CPC introduce una correzione basata sullo stato di salute dell'albero, con valori compresi tra 1,0 per esemplari in condizioni ottimali e 0,5 per esemplari in condizioni critiche.
+                    </li>
+                    <li>Tale approccio consente di ottenere una stima del numero di foglie per ciascuna delle quattro stagioni (primavera, estate, autunno, inverno), fornendo un dato quantitativo utile per valutazioni ecosistemiche quali la capacità di assorbimento di CO₂, la produzione di ossigeno e i servizi di regolazione del microclima urbano.
+                    </li>
+                </ul>
+                </div>
+                <p style="margin-top: 12px; padding: 10px; background: #e8f5e9; border-left: 3px solid #27ae60; border-radius: 4px; font-size: 12px; color: #2e7d32;">
+                    <strong>Nota metodologica:</strong> I coefficienti sono stati adattati per il clima mediterraneo di Palermo/Sicilia in base alla letteratura scientifica consolidata. L'accuratezza è ±15% (margine standard per modelli urbani).
+                </p>
+            </div>
+            <hr>
+            <div class="modal-section">
+                <h3><i class="fas fa-exclamation-triangle"></i> Disclaimer</h3>
+                <p style="background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107; border-radius: 6px; color: #856404;">
+                    <strong>Natura della Demo</strong><br>
+                    Questa è una <strong>demo prototipale</strong> che mostra i dati di monitoraggio relativi al Progetto di riqualificazione e rigenerazione delle strade e delle aree verdi della città di Palermo, volto al miglioramento della qualità urbana e della sostenibilità ambientale.
+                </p>
+                <p style="margin-top: 12px;">
+                    <strong>Note su Descrizioni e Parametri</strong><br>
+                    Le descrizioni tecniche, i parametri fitosanitari (altezza, diametro, CPC) e le classificazioni indicate in questa dashboard sono <strong>puramente esemplificativi e di natura standard</strong>. Essi <strong>non fanno riferimento</strong> a nessun elenco prezzi regionale o nazionale, né rappresentano valori ufficiali di alcuna amministrazione pubblica o privata.
+                </p>
+                <p style="margin-top: 12px;">
+                    <strong>Scopo Educativo e Prototipale</strong><br>
+                    Questa applicazione è stata sviluppata a scopo dimostrativo e educativo per illustrare le potenzialità dei sistemi di monitoraggio urbano e gestione dati geospaziali. I dati visualizzati sono sintetici e non rappresentano situazioni reali certificate.</p>
+                    <hr><br>
+                <p><strong>Elaborazione dati:</strong> <a href="https://www.linkedin.com/in/gbvitrano/" title="@gbvitrano" target="_blank">@gbvitrano</a> </p>
+                <p><strong>Sviluppo tecnico:</strong> <a href="https://www.linkedin.com/in/gbvitrano/" title="@gbvitrano" target="_blank">@gbvitrano</a> - <a href="https://claude.ai" target="_blank">Claude AI (Anthropic)</a> - <a href="https://notebooklm.google/" target="_blank">NotebookLM</a></p>
+            </div>
+        </div>
+    </div>
+</div>

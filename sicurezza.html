@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sicurezza e Cantiere - Verde Urbano Palermo</title>
+    <meta name="description" content="Le misure di sicurezza del progetto: delimitazione aree, piattaforme elevatrici, DPI obbligatori, gestione traffico e piani di emergenza.">
+    <meta name="author" content="Giovan Battista Vitrano">
+    <meta http-equiv="content-language" content="IT">
+    <meta name="robots" content="index,follow">
+
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link rel="icon" href="favicon.png" type="image/png"/>
+
+    <link rel="stylesheet" href="css/verde_urbano.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        body {
+            font-family: 'Titillium Web', sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f5f5f5;
+        }
+
+        .page-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 30px 20px;
+            background: white;
+            min-height: calc(100vh - 200px);
+        }
+
+        .page-header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+            color: white;
+            border-radius: 12px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+
+        .page-header h1 {
+            margin: 0 0 15px 0;
+            font-size: 2.2em;
+            font-weight: 700;
+        }
+
+        .page-header p {
+            margin: 0;
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+
+        .content-section {
+            margin-bottom: 50px;
+        }
+
+        .content-section h2 {
+            color: #e74c3c;
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #e74c3c;
+        }
+
+        .content-section h3 {
+            color: #c0392b;
+            font-size: 1.4em;
+            margin: 30px 0 15px 0;
+        }
+
+        .content-section p {
+            line-height: 1.8;
+            color: #2c3e50;
+            font-size: 1.05em;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .content-section ul {
+            margin: 20px 0;
+            padding-left: 25px;
+        }
+
+        .content-section li {
+            line-height: 1.8;
+            color: #2c3e50;
+            margin-bottom: 12px;
+            font-size: 1.05em;
+        }
+
+        .content-section li strong {
+            color: #e74c3c;
+        }
+
+        .content-section ol {
+            margin: 20px 0;
+            padding-left: 25px;
+        }
+
+        .content-section ol li {
+            line-height: 1.8;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        .highlight-box {
+            background: #ffebee;
+            border-left: 5px solid #e74c3c;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .highlight-box h4 {
+            margin: 0 0 15px 0;
+            color: #c0392b;
+            font-size: 1.3em;
+        }
+
+        .highlight-box p {
+            margin: 0;
+            color: #2c3e50;
+            line-height: 1.7;
+        }
+
+        .safety-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .safety-table th {
+            background: #e74c3c;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .safety-table td {
+            padding: 15px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+
+        .safety-table tr:hover {
+            background: #ffebee;
+        }
+
+        .safety-table td:first-child {
+            font-weight: 600;
+            color: #c0392b;
+        }
+
+        .procedure-card {
+            background: #fff9e6;
+            border-left: 5px solid #f39c12;
+            padding: 25px;
+            margin: 25px 0;
+            border-radius: 8px;
+        }
+
+        .procedure-card h4 {
+            color: #e67e22;
+            margin: 0 0 15px 0;
+        }
+
+        .emergency-box {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .emergency-box h4 {
+            color: #e67e22;
+            margin: 0 0 15px 0;
+            font-size: 1.3em;
+        }
+
+        .emergency-box ul {
+            margin: 10px 0;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .cta-section h3 {
+            margin: 0 0 15px 0;
+            font-size: 1.8em;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #2980b9;
+            padding: 15px 35px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1em;
+            margin: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
+        }
+
+        footer {
+            background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 50px;
+        }
+
+        footer h1, footer h2, footer h3 {
+            margin: 8px 0;
+            font-weight: 400;
+        }
+
+        footer h1 {
+            font-size: 1.5em;
+        }
+
+        footer h2 {
+            font-size: 1.1em;
+        }
+
+        footer h3 {
+            font-size: 0.95em;
+        }
+
+        @media (max-width: 768px) {
+            .page-header h1 {
+                font-size: 1.6em;
+            }
+
+            .page-header p {
+                font-size: 1em;
+            }
+
+            .content-section h2 {
+                font-size: 1.4em;
+            }
+
+            .content-section h3 {
+                font-size: 1.2em;
+            }
+
+            .safety-table {
+                font-size: 0.9em;
+            }
+
+            .safety-table th,
+            .safety-table td {
+                padding: 10px;
+            }
+
+            .cta-section {
+                padding: 25px 20px;
+            }
+        }
+    </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KHR1GHDRQS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KHR1GHDRQS');
+    </script>
+</head>
+<body>
+    <header>
+        <div class="demo-stamp demo-stamp-header">DEMO!</div>
+        <div>
+            <h2 id="pageTitle"><i class="fas fa-tree"></i> Rigenerazione del Verde Urbano di Palermo: Riqualificazione Stradale e Arredo della Città</h2>
+            <p>Progetto di riqualificazione e rigenerazione delle strade e delle aree verdi della città di Palermo, volto al miglioramento della qualità urbana e della sostenibilità ambientale. Gli interventi prevedono la piantumazione e la sostituzione delle alberature esistenti, l'esecuzione di servizi colturali, il ripristino delle aiuole e dei marciapiedi danneggiati, nonché la fornitura e la posa in opera di arredi urbani funzionali e di sistemi di illuminazione alimentati da energia solare. - <a href=https://www.opencup.gov.it//portale/it/web/opencup/home/progetto/-/cup/D71G23000050001 target="_blank" Title="STRADE E AREE A VERDE DELLA CITTA' DI PALERMO*VIA PALERMO*RIGENERAZIONE DEL VERDE URBANO DELLA CITTA' DI PALERMO- PIANTUMAZIONE E SOSTITUZIONE ALBERATURE, SERVIZI COLTURALI, RIPRISTINO AIUOLE E MARCIAPIEDI DISSESTATI, FORNITURA E POSA IN OPERA DI ARREDO URBANO E SISTEMI DI ILLUMINAZIONE AD ENERGIA SOLARE">Accordo Quadro - CUP D71G23000050001</A>
+			</p>
+        </div>
+        <div class="header-right">
+            <div class="info-icon" id="infoBtn" title="Informazioni su questa app"><i class="fas fa-circle-info"></i></div>
+        </div>
+    </header>
+
+    <!-- Navigation Menu -->
+    <nav class="navbar">
+        <div class="navbar-container">
+            <button class="navbar-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i> Menu
+            </button>
+
+            <ul class="navbar-menu">
+                <button class="navbar-close" aria-label="Close menu">
+                    <i class="fas fa-times"></i>
+                </button>
+
+                <li>
+                    <a href="index.html">
+                        <i class="fas fa-home"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="il-progetto.html">
+                        <i class="fas fa-book-open"></i>
+                        <span>Il Progetto</span>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="obiettivi.html">
+                        <i class="fas fa-bullseye"></i>
+                        <span>Obiettivi e Finalità</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="obiettivi.html#riqualificazione"><i class="fas fa-seedling"></i> Riqualificazione patrimonio arboreo</a></li>
+                        <li><a href="obiettivi.html#sicurezza"><i class="fas fa-shield-alt"></i> Sicurezza e incolumità pubblica</a></li>
+                        <li><a href="obiettivi.html#barriere"><i class="fas fa-wheelchair"></i> Abbattimento barriere architettoniche</a></li>
+                        <li><a href="obiettivi.html#clima"><i class="fas fa-cloud-sun"></i> Mitigazione cambiamenti climatici</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="fasi.html">
+                        <i class="fas fa-tasks"></i>
+                        <span>Fasi dell'Intervento</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="fasi.html#analisi"><i class="fas fa-search"></i> Analisi stato di fatto</a></li>
+                        <li><a href="fasi.html#vta"><i class="fas fa-clipboard-check"></i> Valutazione stabilità VTA</a></li>
+                        <li><a href="fasi.html#abbattimenti"><i class="fas fa-cut"></i> Abbattimenti e potature</a></li>
+                        <li><a href="fasi.html#apparati"><i class="fas fa-project-diagram"></i> Contenimento apparati radicali</a></li>
+                        <li><a href="fasi.html#mitigazione"><i class="fas fa-balance-scale"></i> Misure di mitigazione e compensazione</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="potatura.html">
+                        <i class="fas fa-scissors"></i>
+                        <span>Tipologie di Potatura</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="potatura.html#rimonda"><i class="fas fa-broom"></i> Rimonda del secco</a></li>
+                        <li><a href="potatura.html#mantenimento"><i class="fas fa-leaf"></i> Mantenimento e risanamento</a></li>
+                        <li><a href="potatura.html#contenimento"><i class="fas fa-compress"></i> Contenimento e spalcatura</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="radicali.html">
+                        <i class="fas fa-code-branch"></i>
+                        <span>Gestione Apparati Radicali</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="radicali.html#airspade"><i class="fas fa-wind"></i> Scavo non invasivo Air-Spade</a></li>
+                        <li><a href="radicali.html#barriere"><i class="fas fa-shield"></i> Installazione barriere anti-radici</a></li>
+                        <li><a href="radicali.html#aerazione"><i class="fas fa-fan"></i> Sistemi di aerazione del terreno</a></li>
+                        <li><a href="radicali.html#pavimentazioni"><i class="fas fa-road"></i> Pavimentazioni drenanti</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="impianti.html">
+                        <i class="fas fa-tree"></i>
+                        <span>Nuovi Impianti</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="impianti.html#specie"><i class="fas fa-leaf"></i> Scelta specie autoctone/naturalizzate</a></li>
+                        <li><a href="impianti.html#irrigazione"><i class="fas fa-tint"></i> Sistemi di irrigazione automatizzati</a></li>
+                        <li><a href="impianti.html#arredo"><i class="fas fa-chair"></i> Arredo urbano (panchine, fioriere)</a></li>
+                        <li><a href="impianti.html#illuminazione"><i class="fas fa-lightbulb"></i> Illuminazione a basso consumo</a></li>
+                        <li><a href="impianti.html#ludiche"><i class="fas fa-volleyball-ball"></i> Aree ludiche e inclusive</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="sicurezza.html">
+                        <i class="fas fa-hard-hat"></i>
+                        <span>Sicurezza e Cantiere</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="sicurezza.html#delimitazione"><i class="fas fa-traffic-cone"></i> Delimitazione aree e segnaletica</a></li>
+                        <li><a href="sicurezza.html#piattaforme"><i class="fas fa-forklift"></i> Piattaforme elevatrici e cestelli</a></li>
+                        <li><a href="sicurezza.html#dpi"><i class="fas fa-vest"></i> DPI obbligatori</a></li>
+                        <li><a href="sicurezza.html#traffico"><i class="fas fa-car"></i> Gestione interferenze e traffico</a></li>
+                        <li><a href="sicurezza.html#emergenza"><i class="fas fa-ambulance"></i> Piani di emergenza</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                     <a href="dati-economici.html">
+                        <i class="fas fa-euro-sign"></i>
+                        <span>Dati Economici</span>
+                        <i class="fas fa-chevron-down dropdown-arrow"></i>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="dati-economici.html#accordo"><i class="fas fa-file-contract"></i> Accordo Quadro quadriennale</a></li>
+                        <li><a href="dati-economici.html#importo"><i class="fas fa-coins"></i> Importo totale: 12 milioni €</a></li>
+                        <li><a href="dati-economici.html#stima"><i class="fas fa-tree"></i> Stima: 31.000-50.000 alberature</a></li>
+                        <li><a href="dati-economici.html#oneri"><i class="fas fa-calculator"></i> Oneri sicurezza: 530.449,87 €</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="open-data.html">
+                        <i class="fas fa-database"></i>
+                        <span>Open Data</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Overlay per mobile menu -->
+    <div class="navbar-overlay"></div>
+
+    <div class="page-content">
+        <div class="page-header">
+            <h1><i class="fas fa-hard-hat"></i> La Sicurezza Prima di Tutto</h1>
+            <p>Come rendiamo Palermo più Verde e sicura per tutti</p>
+        </div>
+
+        <!-- Introduzione -->
+        <section class="content-section">
+            <h2><i class="fas fa-construction"></i> Introduzione: Un Cantiere per una Città Più Bella</h2>
+            <p>
+                Se avete passeggiato per Palermo di recente, avrete sicuramente notato i cantieri del progetto <strong>"Rigenerazione del Verde Urbano della Città di Palermo"</strong>. Questo progetto vitale interessa oltre <strong>31.000 alberi</strong> lungo le nostre strade ed è fondamentale per curare il nostro prezioso patrimonio verde, rendendo la città più accogliente per tutti.
+            </p>
+
+            <div style="text-align: center; margin: 30px 0;">
+                <img src="img/sicurezza.jpg" alt="Sicurezza e Cantiere" style="max-width: 100%; height: auto; border-radius: 8px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+            </div>
+            <p>
+                Comprendiamo che un cantiere possa causare qualche disagio temporaneo, ma dietro ogni recinzione e segnale stradale c'è un impegno costante per la sicurezza. In questo articolo, vi spieghiamo le rigorose misure che adottiamo ogni giorno per proteggere sia i nostri lavoratori sia voi cittadini.
+            </p>
+            <div class="highlight-box">
+                <h4><i class="fas fa-shield-alt"></i> Piano di Sicurezza e Coordinamento</h4>
+                <p>
+                    Queste procedure, parte di un formale e obbligatorio <strong>"Piano di Sicurezza e Coordinamento"</strong>, sono essenziali per migliorare la nostra città, garantendo che ogni operazione si svolga nel modo più sicuro possibile.
+                </p>
+            </div>
+        </section>
+
+        <!-- Delimitazione Aree -->
+        <section class="content-section" id="delimitazione">
+            <h2><i class="fas fa-traffic-cone"></i> 1. La Delimitazione delle Aree: Uno Scudo Protettivo per Lavoratori e Cittadini</h2>
+            <p>
+                Il primo passo di ogni intervento è la creazione di un'area di lavoro sicura e ben definita. Questo "scudo" serve a proteggere chiunque si trovi nelle vicinanze, perché la caduta di un ramo può essere imprevedibile e pericolosa anche a una certa distanza.
+            </p>
+            <p>
+                Per farlo, utilizziamo diversi strumenti:
+            </p>
+            <ul>
+                <li><strong>Segnaletica Stradale:</strong> Vengono posizionati segnali specifici, come coni e cartelli di direzione obbligatoria, per gestire il flusso del traffico e guidare automobilisti e pedoni in sicurezza attorno all'area di lavoro.</li>
+                <li><strong>Recinzioni Fisse o Mobili:</strong> Queste barriere fisiche, sempre solide e stabili, impediscono l'accesso non autorizzato alla zona operativa. Sono accompagnate da chiari cartelli di pericolo e di divieto, perché sono fondamentali dove c'è il rischio di caduta di materiali dall'alto.</li>
+                <li><strong>Divieto di Accesso:</strong> Per garantire la massima sicurezza, l'accesso a queste aree delimitate è rigorosamente vietato a chiunque non sia un addetto ai lavori.</li>
+            </ul>
+        </section>
+
+        <!-- Piattaforme Elevatrici -->
+        <section class="content-section" id="piattaforme">
+            <h2><i class="fas fa-forklift"></i> 2. Lavoro in Quota: Potare gli Alberi con Piattaforme Elevatrici e Cestelli</h2>
+            <p>
+                Per raggiungere i rami più alti dei nostri alberi, utilizziamo attrezzature specializzate come le <strong>"piattaforme aeree"</strong> e gli <strong>"autocestelli"</strong>. Lavorare a diversi metri di altezza richiede procedure di sicurezza estremamente rigorose per gli operatori.
+            </p>
+
+            <h3><i class="fas fa-clipboard-list"></i> Ecco i passaggi chiave che vengono seguiti:</h3>
+
+            <div class="procedure-card">
+                <h4><i class="fas fa-users"></i> 1. Due Operatori</h4>
+                <p>
+                    Nel cestello sono sempre presenti due persone. Questa divisione dei compiti è un preciso criterio di sicurezza: un operatore si occupa esclusivamente di manovrare la piattaforma, mentre l'altro esegue le operazioni di potatura. In questo modo, ciascuno può concentrarsi sul proprio compito critico, riducendo drasticamente il rischio di errori.
+                </p>
+            </div>
+
+            <div class="procedure-card">
+                <h4><i class="fas fa-link"></i> 2. Ancoraggio Obbligatorio</h4>
+                <p>
+                    Per ogni lavoro svolto a un'altezza superiore ai due metri, gli operatori devono obbligatoriamente indossare un'imbracatura di sicurezza ed essere ancorati a un punto stabile del cestello. Questa misura è fondamentale per prevenire qualsiasi rischio di caduta.
+                </p>
+            </div>
+
+            <div class="procedure-card">
+                <h4><i class="fas fa-cut"></i> 3. Tecnica di Taglio Sicura</h4>
+                <p>
+                    Adottiamo una "buona tecnica" di taglio che prevede due passaggi: prima si esegue un'incisione preliminare nella parte inferiore del ramo e solo dopo si procede con il taglio definitivo dall'alto. Questo metodo previene lo strappo della corteccia, che danneggerebbe la salute dell'albero, e guida la caduta del ramo in modo controllato e prevedibile, aumentando la sicurezza a terra.
+                </p>
+            </div>
+        </section>
+
+        <!-- DPI -->
+        <section class="content-section" id="dpi">
+            <h2><i class="fas fa-vest"></i> 3. L'Armatura del Lavoratore: I Dispositivi di Protezione Individuale (DPI)</h2>
+            <p>
+                I <strong>Dispositivi di Protezione Individuale (DPI)</strong> sono l'equipaggiamento personale che ogni lavoratore deve indossare per proteggersi dai rischi specifici del suo mestiere. Si tratta di una vera e propria "armatura" che garantisce la sua incolumità durante le operazioni.
+            </p>
+
+            <h3><i class="fas fa-hard-hat"></i> Ecco i DPI essenziali per i nostri operatori:</h3>
+
+            <table class="safety-table">
+                <thead>
+                    <tr>
+                        <th>Dispositivo di Protezione</th>
+                        <th>A Cosa Serve</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><i class="fas fa-hard-hat"></i> Casco Protettivo</td>
+                        <td>Protegge la testa dalla caduta di rami o altri oggetti dall'alto, un rischio sempre presente durante le potature.</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-vest"></i> Indumenti ad Alta Visibilità</td>
+                        <td>Rende i lavoratori facilmente visibili a chi guida veicoli, specialmente in condizioni di traffico.</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-hand-rock"></i> Guanti da Lavoro</td>
+                        <td>Proteggono le mani da tagli e abrasioni, ma anche da rischi specifici come vibrazioni degli attrezzi, contatto con sostanze chimiche e rischi elettrici.</td>
+                    </tr>
+                    <tr>
+                        <td><i class="fas fa-shoe-prints"></i> Calzature Antinfortunistiche</td>
+                        <td>Proteggono i piedi da urti e schiacciamenti.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- Gestione Traffico -->
+        <section class="content-section" id="traffico">
+            <h2><i class="fas fa-car"></i> 4. Gestire Traffico e Interferenze: Una Danza Coordinata</h2>
+            <p>
+                Lavorare lungo le strade trafficate di Palermo presenta una doppia sfida: garantire la sicurezza degli operatori dal rischio di investimento e proteggere i passanti dalla possibile caduta di rami o attrezzature. Per questo, la gestione del traffico viene pianificata con la massima attenzione.
+            </p>
+
+            <h3><i class="fas fa-traffic-light"></i> Le principali misure adottate includono:</h3>
+
+            <ul>
+                <li><strong>Presenza di Movieri:</strong> Sono operatori a terra, dotati di una speciale "paletta", che hanno il compito di dirigere il traffico. Durante le fasi più critiche, come il taglio di un ramo di grandi dimensioni, possono effettuare brevi interruzioni della circolazione, fermando temporaneamente i veicoli per pochi istanti per garantire la massima sicurezza con il minimo disagio.</li>
+                <li><strong>Deviazioni e Chiusure Temporanee:</strong> Solo quando strettamente necessario per interventi complessi, può essere disposta la chiusura di una corsia o di un'intera strada per un breve periodo. Queste operazioni sono sempre coordinate con la Polizia Municipale.</li>
+                <li><strong>Orari di Lavoro Intelligenti:</strong> Dove possibile, gli interventi vengono programmati in orari con minore affluenza di traffico, per ridurre al minimo i disagi per i cittadini e i rischi per gli operatori.</li>
+                <li><strong>Coordinamento:</strong> È fondamentale coordinarsi con altre aziende di servizi (ad es. manutenzione strade) per evitare di svolgere lavori contemporaneamente nella stessa area, riducendo così le interferenze.</li>
+            </ul>
+        </section>
+
+        <!-- Piano di Emergenza -->
+        <section class="content-section" id="emergenza">
+            <h2><i class="fas fa-ambulance"></i> 5. Pronti a Tutto: Il Piano di Emergenza</h2>
+            <p>
+                Nonostante un'attenta pianificazione, è essenziale essere pronti a gestire qualsiasi imprevisto. In caso di necessità, ecco come siamo pronti a reagire per proteggere tutti:
+            </p>
+
+            <div class="emergency-box">
+                <h4><i class="fas fa-first-aid"></i> Primo Soccorso</h4>
+                <p>
+                    In ogni sito è presente un <strong>"pacchetto di medicazione o cassetta di pronto soccorso"</strong>. Esistono procedure chiare per assistere un lavoratore infortunato e contattare immediatamente i soccorsi sanitari al numero <strong>118</strong>.
+                </p>
+            </div>
+
+            <div class="emergency-box">
+                <h4><i class="fas fa-fire-extinguisher"></i> Sicurezza Antincendio</h4>
+                <p>
+                    Il cantiere è equipaggiato con estintori. In caso di incendio, una procedura specifica guida le azioni da intraprendere, inclusa la chiamata ai Vigili del Fuoco al numero <strong>115</strong>.
+                </p>
+            </div>
+
+            <div class="emergency-box">
+                <h4><i class="fas fa-running"></i> Evacuazione Sicura</h4>
+                <p>
+                    In caso di un pericolo grave e imminente, è previsto un piano di evacuazione. Tutti i lavoratori vengono guidati ad abbandonare l'area di lavoro e a radunarsi in un punto sicuro prestabilito, chiamato <strong>"PUNTO DI RACCOLTA"</strong>.
+                </p>
+            </div>
+        </section>
+
+        <!-- Conclusione -->
+        <section class="content-section">
+            <h2><i class="fas fa-check-circle"></i> Conclusione: Un Impegno per la Sicurezza di Palermo</h2>
+            <p>
+                Dalla delimitazione delle aree di lavoro all'uso di piattaforme sicure, dall'equipaggiamento protettivo degli operatori alla gestione attenta del traffico e alla pianificazione delle emergenze, ogni dettaglio del progetto di rigenerazione del verde è studiato per mettere <strong>la sicurezza al primo posto</strong>.
+            </p>
+            <p>
+                Siamo consapevoli che questi lavori possano comportare qualche momentaneo disagio, ma sono parte di uno sforzo vitale. Il nostro obiettivo è rendere gli spazi verdi di Palermo non solo più belli e curati, ma soprattutto <strong>più sicuri</strong>, affinché ogni cittadino possa godere del patrimonio verde di Palermo in piena serenità.
+            </p>
+
+            <div class="highlight-box">
+                <h4><i class="fas fa-heart"></i> La Vostra Pazienza</h4>
+                <p>
+                    La vostra pazienza oggi contribuisce alla sicurezza di tutti domani.
+                </p>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <div class="cta-section">
+            <h3><i class="fas fa-chart-bar"></i> Esplora i Dati del Progetto</h3>
+            <p style="margin-bottom: 25px;">Utilizza la dashboard interattiva per visualizzare gli alberi censiti, filtrare per specie e stato di salute, e consultare le statistiche ambientali.</p>
+            <a href="index.html" class="cta-button"><i class="fas fa-map"></i> Vai alla Dashboard</a>
+            <a href="open-data.html" class="cta-button"><i class="fas fa-database"></i> Open Data</a>
+        </div>
+    </div>
+
+    <footer>
+        <h1>Comune di Palermo</h1>
+        <h2>Area delle Politiche Ambientali, Transizione Ecologica e Rigenerazione del Verde</h2>
+        <h3>Ufficio Autonomo Gestione Verde Urbano, Agricoltura Urbana e Rapporti con Re.Se.T.</h3>
+        <h3><i class="fas fa-lightbulb"></i> Natura della Demo</h3>
+        <p>Questa è una <b>DEMO</b> prototipale che mostra i dati di monitoraggio relativi al Progetto di riqualificazione e rigenerazione delle strade e delle aree verdi della città di Palermo, volto al miglioramento della qualità urbana e della sostenibilità ambientale.</p>
+    </footer>
+
+    <!-- Modal Info -->
+    <div class="modal-overlay" id="infoModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2><i class="fas fa-circle-info"></i> Come Funziona</h2>
+                <button class="modal-close" onclick="closeInfoModal()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="modal-body">
+                <div class="modal-section">
+                    <h3><i class="fas fa-location-dot"></i> Che cos'è</h3>
+                    <p>Una mappa interattiva e moderna che monitora lo stato di salute della vegetazione urbana. Pensala come un "medico digitale" per gli alberi della città: raccoglie i dati, analizza le condizioni e supporta l'amministrazione nel prendere decisioni consapevoli e basate su evidenze.<br> La demo attuale si concentra sugli alberi dell'<b>Accordo Quadro CUP D71G23000050001</b>, ma il progetto è stato concepito per espandersi progressivamente a tutta la città.</p>
+                </div>
+                <div class="modal-section">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Disclaimer</h3>
+                    <p style="background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107; border-radius: 6px; color: #856404;">
+                        <strong>Natura della Demo</strong><br>
+                        Questa è una <strong>demo prototipale</strong> che mostra i dati di monitoraggio relativi al Progetto di riqualificazione e rigenerazione delle strade e delle aree verdi della città di Palermo.
+                    </p>
+                    <hr><br>
+                    <p><strong>Elaborazione dati:</strong> <a href="https://www.linkedin.com/in/gbvitrano/" title="@gbvitrano" target="_blank">@gbvitrano</a></p>
+                    <p><strong>Sviluppo tecnico:</strong> <a href="https://www.linkedin.com/in/gbvitrano/" title="@gbvitrano" target="_blank">@gbvitrano</a> - <a href="https://claude.ai" target="_blank">Claude AI (Anthropic)</a> - <a href="https://notebooklm.google/" target="_blank">NotebookLM</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/navigation.js"></script>
+    <script src="js/info-modal.js"></script>
+</body>
+</html>
