@@ -59,10 +59,10 @@ ALB_057,Viale Emilia,057,Acer negundo,8,42,D,decidua,3271,5032,2265,0
 ALB_058,Viale Emilia,058,Robinia pseudoacacia,12,45,B,decidua,11813,16875,8438,0
 ALB_059,Viale Emilia,059,Sophora japonica,12,38,B,decidua,9323,13318,6659,0
 ALB_060,Viale Emilia,060,Sophora japonica,,30,B,decidua,0,0,0,0
-ALB_061,Viale Emilia,061,Robinia pseudoacacia,,15,B,decidua,0,0,0,0
-ALB_062,Viale Emilia,062,Robinia pseudoacacia,,15,B,decidua,0,0,0,0
-ALB_063,Viale Emilia,063,Robinia pseudoacacia,,15,B,decidua,0,0,0,0
-ALB_064,Viale Emilia,064,Robinia pseudoacacia,,15,B,decidua,0,0,0,0
+ALB_061,Viale Emilia,061,Robinia pseudoacacia,,15,Ceppaia,decidua,0,0,0,0
+ALB_062,Viale Emilia,062,Robinia pseudoacacia,,15,Ceppaia,decidua,0,0,0,0
+ALB_063,Viale Emilia,063,Robinia pseudoacacia,,15,Ceppaia,decidua,0,0,0,0
+ALB_064,Viale Emilia,064,Robinia pseudoacacia,,15,Ceppaia,decidua,0,0,0,0
 ALB_065,Viale Emilia,065,Pinus halepensis,16,64,D,sempreverde,2923,2983,2923,2834
 ALB_066,Via Pignatelli Aragona,001,Ficus microcarpa,12,76,B,sempreverde,26107,26640,26107,25308
 ALB_067,Via Pignatelli Aragona,002,Ficus microcarpa,12,52,B,sempreverde,15941,16266,15941,15453
