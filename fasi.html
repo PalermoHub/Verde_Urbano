@@ -317,18 +317,32 @@
                     </ul>
                 </li>
 
-                <li>
+         <!--       <li>
                     <a href="open-data.html">
                         <i class="fas fa-database"></i>
                         <span>Open Data</span>
                     </a>
-                </li>
+                </li> -->
             </ul>
         </div>
     </nav>
 
     <!-- Overlay per mobile menu -->
     <div class="navbar-overlay"></div>
+	
+	    <!-- Include Modale Info da file esterno -->
+    <script>
+        fetch('includes/info-modal.html?v=' + Date.now())
+            .then(response => response.text())
+            .then(data => {
+                document.body.insertAdjacentHTML('beforeend', data);
+                // Reinizializza gli event listener del modale dopo il caricamento
+                if (typeof window.initInfoModal === 'function') {
+                    window.initInfoModal();
+                }
+            })
+            .catch(error => console.error('Errore caricamento modale:', error));
+    </script>
 
     <div class="page-content">
         <div class="page-header">
@@ -503,33 +517,9 @@
         <p>Questa è una <b>DEMO</b> prototipale che mostra i dati di monitoraggio relativi al Progetto di riqualificazione e rigenerazione delle strade e delle aree verdi della città di Palermo.</p>
     </footer>
 
-    <!-- Modal Info -->
-    <div class="modal-overlay" id="infoModal">
-        <div class="modal">
-            <div class="modal-header">
-                <h2><i class="fas fa-circle-info"></i> Come Funziona</h2>
-                <button class="modal-close" onclick="closeInfoModal()"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="modal-body">
-                <div class="modal-section">
-                    <h3><i class="fas fa-location-dot"></i> Che cos'è</h3>
-                    <p>Una mappa interattiva e moderna che monitora lo stato di salute della vegetazione urbana. Pensala come un "medico digitale" per gli alberi della città: raccoglie i dati, analizza le condizioni e supporta l'amministrazione nel prendere decisioni consapevoli e basate su evidenze.<br> La demo attuale si concentra sugli alberi dell'<b>Accordo Quadro CUP D71G23000050001</b>, ma il progetto è stato concepito per espandersi progressivamente a tutta la città.</p>
-                </div>
-                <div class="modal-section">
-                    <h3><i class="fas fa-exclamation-triangle"></i> Disclaimer</h3>
-                    <p style="background: #fff3cd; padding: 15px; border-left: 4px solid #ffc107; border-radius: 6px; color: #856404;">
-                        <strong>Natura della Demo</strong><br>
-                        Questa è una <strong>demo prototipale</strong> che mostra i dati di monitoraggio relativi al Progetto di riqualificazione e rigenerazione delle strade e delle aree verdi della città di Palermo.
-                    </p>
-                    <hr><br>
-                    <p><strong>Elaborazione dati:</strong> <a href="https://www.linkedin.com/in/gbvitrano/" title="@gbvitrano" target="_blank">@gbvitrano</a></p>
-                    <p><strong>Sviluppo tecnico:</strong> <a href="https://www.linkedin.com/in/gbvitrano/" title="@gbvitrano" target="_blank">@gbvitrano</a> - <a href="https://claude.ai" target="_blank">Claude AI (Anthropic)</a> - <a href="https://notebooklm.google/" target="_blank">NotebookLM</a></p>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     <script src="js/navigation.js"></script>
-    <script src="js/info-modal.js"></script>
+<script src="js/01_modal.js"></script>
 </body>
 </html>

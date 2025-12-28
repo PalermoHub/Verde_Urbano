@@ -1,7 +1,7 @@
 // ===== GESTIONE MODALE INFO GLOBALE =====
 // Questo script gestisce il modal "Come Funziona" su tutte le pagine
 
-document.addEventListener('DOMContentLoaded', function() {
+function initInfoModal() {
     // Verifica se il pulsante info esiste nella pagina
     const infoBtn = document.getElementById('infoBtn');
     const infoModal = document.getElementById('infoModal');
@@ -20,7 +20,13 @@ document.addEventListener('DOMContentLoaded', function() {
             if (e.key === 'Escape') closeInfoModal();
         });
     }
-});
+}
+
+// Inizializza quando il DOM è pronto
+document.addEventListener('DOMContentLoaded', initInfoModal);
+
+// Funzione globale per reinizializzare dopo il caricamento del modale
+window.initInfoModal = initInfoModal;
 
 function openInfoModal() {
     const modal = document.getElementById('infoModal');

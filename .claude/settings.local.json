@@ -15,7 +15,9 @@
       "Bash(else echo \"not exists\")",
       "Bash(fi)",
       "Bash(dir:*)",
-      "Bash(node:*)"
+      "Bash(node:*)",
+      "Bash(grep:*)",
+      "Bash(ls:*)"
     ]
   }
 }

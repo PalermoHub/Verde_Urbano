@@ -347,18 +347,32 @@
                     </ul>
                 </li>
 
-                <li>
+         <!--       <li>
                     <a href="open-data.html">
                         <i class="fas fa-database"></i>
                         <span>Open Data</span>
                     </a>
-                </li>
+                </li> -->
             </ul>
         </div>
     </nav>
 
     <!-- Overlay per mobile menu -->
     <div class="navbar-overlay"></div>
+	
+    <!-- Include Modale Info da file esterno -->
+    <script>
+        fetch('includes/info-modal.html?v=' + Date.now())
+            .then(response => response.text())
+            .then(data => {
+                document.body.insertAdjacentHTML('beforeend', data);
+                // Reinizializza gli event listener del modale dopo il caricamento
+                if (typeof window.initInfoModal === 'function') {
+                    window.initInfoModal();
+                }
+            })
+            .catch(error => console.error('Errore caricamento modale:', error));
+    </script>
 
     <div class="page-content">
         <div class="page-header">
@@ -516,5 +530,6 @@
     </footer>
 
     <script src="js/navigation.js"></script>
+    <script src="js/01_modal.js"></script>
 </body>
 </html>

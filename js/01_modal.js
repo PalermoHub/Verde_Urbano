@@ -1,18 +1,45 @@
-// ===== GESTIONE MODALE INFO =====
-document.getElementById('infoBtn').addEventListener('click', openInfoModal);
-document.getElementById('infoModal').addEventListener('click', function(e) {
-    if (e.target === this) closeInfoModal();
-});
-document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') closeInfoModal();
-});
+// ===== GESTIONE MODALE INFO GLOBALE =====
+// Questo script gestisce il modal "Come Funziona" su tutte le pagine
+
+function initInfoModal() {
+    // Verifica se il pulsante info esiste nella pagina
+    const infoBtn = document.getElementById('infoBtn');
+    const infoModal = document.getElementById('infoModal');
+
+    if (infoBtn && infoModal) {
+        // Event listener per aprire il modal
+        infoBtn.addEventListener('click', openInfoModal);
+
+        // Event listener per chiudere cliccando fuori dal modal
+        infoModal.addEventListener('click', function(e) {
+            if (e.target === this) closeInfoModal();
+        });
+
+        // Event listener per chiudere con il tasto ESC
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeInfoModal();
+        });
+    }
+}
+
+// Inizializza quando il DOM è pronto
+document.addEventListener('DOMContentLoaded', initInfoModal);
+
+// Funzione globale per reinizializzare dopo il caricamento del modale
+window.initInfoModal = initInfoModal;
 
 function openInfoModal() {
-    document.getElementById('infoModal').classList.add('active');
-    document.body.style.overflow = 'hidden';
+    const modal = document.getElementById('infoModal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
 }
 
 function closeInfoModal() {
-    document.getElementById('infoModal').classList.remove('active');
-    document.body.style.overflow = 'auto';
+    const modal = document.getElementById('infoModal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
 }
