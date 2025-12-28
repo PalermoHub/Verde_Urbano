@@ -1,7 +1,6 @@
 /* ============================================
-   STICKY HEADER BEHAVIOR - VERSIONE SEMPLIFICATA
-   Nasconde l'header principale allo scroll
-   La navbar rimane SEMPRE visibile (si muove insieme all'header)
+   STICKY HEADER BEHAVIOR - SINCRONIZZAZIONE HEADER E NAVBAR
+   Header e navbar sono sempre sincronizzati durante lo scroll
    ============================================ */
 
 (function() {
@@ -25,12 +24,16 @@
         // Setup iniziale: header e navbar fissi dall'inizio
         header.style.position = 'fixed';
         header.style.top = '0';
+        header.style.left = '0';
+        header.style.right = '0';
         header.style.width = '100%';
-        header.style.zIndex = '10000';
+        header.style.zIndex = '10001';
         header.style.transition = 'transform 0.3s ease';
 
         navbar.style.position = 'fixed';
         navbar.style.top = headerHeight + 'px';
+        navbar.style.left = '0';
+        navbar.style.right = '0';
         navbar.style.width = '100%';
         navbar.style.zIndex = '10000';
         navbar.style.transition = 'top 0.3s ease';
@@ -41,26 +44,24 @@
             container.style.transition = 'padding-top 0.3s ease';
         }
 
-        // Gestisci lo scroll
+        // Gestisci lo scroll - Header e navbar si muovono sempre insieme
+        let lastScroll = 0;
+
         window.addEventListener('scroll', function() {
             const currentScroll = window.pageYOffset;
 
-            if (currentScroll > 80) {
-                // Nascondi l'header e sposta la navbar in alto
+            if (currentScroll > 80 && currentScroll > lastScroll) {
+                // Scrolling down - nascondi header e sposta navbar in alto
                 header.style.transform = 'translateY(-100%)';
-
-                // La navbar sale in cima
                 navbar.style.top = '0';
 
                 // Riduci il padding del contenitore (solo navbar visibile)
                 if (container) {
                     container.style.paddingTop = navbarHeight + 'px';
                 }
-            } else {
-                // Mostra l'header e navbar torna sotto
+            } else if (currentScroll <= 80) {
+                // Tornato all'inizio - mostra header e navbar sotto
                 header.style.transform = 'translateY(0)';
-
-                // La navbar torna sotto l'header
                 navbar.style.top = headerHeight + 'px';
 
                 // Ripristina padding completo
@@ -68,7 +69,27 @@
                     container.style.paddingTop = (headerHeight + navbarHeight) + 'px';
                 }
             }
+
+            lastScroll = currentScroll;
         }, { passive: true });
+
+        // Ricalcola altezze al ridimensionamento della finestra
+        window.addEventListener('resize', function() {
+            const newHeaderHeight = header.offsetHeight;
+            const newNavbarHeight = navbar.offsetHeight;
+
+            if (window.pageYOffset <= 80) {
+                navbar.style.top = newHeaderHeight + 'px';
+                if (container) {
+                    container.style.paddingTop = (newHeaderHeight + newNavbarHeight) + 'px';
+                }
+            } else {
+                navbar.style.top = '0';
+                if (container) {
+                    container.style.paddingTop = newNavbarHeight + 'px';
+                }
+            }
+        });
     }
 
     // Avvia l'inizializzazione

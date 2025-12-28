@@ -23,10 +23,11 @@
 /* Sidebar destra con indice */
 .page-sidebar {
     position: sticky;
-    top: 80px; /* Altezza approssimativa della navbar sticky (60px) + margine (20px) */
+    top: 145px; /* Altezza header + navbar + margine */
     height: fit-content;
-    max-height: calc(100vh - 100px);
+    max-height: calc(100vh - 180px);
     overflow-y: auto;
+    z-index: 999; /* Sotto la navbar (10000) ma sopra il contenuto */
 }
 
 .sidebar-nav {
@@ -35,6 +36,8 @@
     padding: 25px;
     /*box-shadow: 0 4px 16px rgba(0,0,0,0.08);*/
     border-right: 3px solid #27ae60;
+    position: relative;
+    z-index: 999;
 }
 
 .sidebar-nav h3 {

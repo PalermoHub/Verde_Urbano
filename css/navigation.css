@@ -5,7 +5,6 @@
 /* Navbar Container */
 .navbar {
     background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
-   /* box-shadow: 0 2px 10px rgba(0,0,0,0.1);*/
     position: -webkit-sticky; /* Per Safari */
     position: sticky;
     top: 0;
@@ -14,14 +13,54 @@
 }
 
 .navbar-container {
-    max-width: 100%;
-    margin: 0 auto;
+    width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+	    background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
+    /*/box-shadow: 1px 5px 5px 0px rgba(0, 0, 0, 0.35);*/
+}
+
+/* Prima riga: Titolo del progetto */
+.navbar-title-row {
+    max-width: 80rem;
+    width: 100%;
+    text-align: left;
+    padding: 10px 20px;
+    color: white;
+   /* border-bottom: 1px solid rgba(255, 255, 255, 0.2);*/
+}
+
+.navbar-title-row h2 {
+    font-size: 20px;
+    margin-bottom: 5px;
+    font-weight: 700;
+}
+
+.navbar-title-row p {
+    font-size: 13px;
+    opacity: 0.95;
+    margin: 0;
+}
+
+.navbar-title-row a {
+    color: #fff;
+    text-decoration: underline;
+}
+
+.navbar-title-row a:hover {
+    color: #ff9900;
+}
+
+/* Seconda riga: Menu di navigazione */
+.navbar-menu-row {
+    max-width: 80rem;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
     align-items: center;
     padding: 0 20px;
-    border-bottom: 1px solid #1e8449;
-      box-shadow: 1px 5px 5px 0px rgba(0, 0, 0, 0.35);
+    height: 50px;
 }
 
 /* Menu Items */
@@ -47,7 +86,8 @@
     font-size: 13px;
     font-weight: 600;
     transition: all 0.3s;
-    border-bottom: 3px solid transparent;
+    border-bottom: 6px solid transparent;
+	    height: 40px;
 }
 
 .navbar-menu > li > a:hover {
@@ -55,9 +95,10 @@
 }
 
 .navbar-menu > li > a.active {
-    background: rgba(255,255,255,0.2) !important;
-    border-bottom-color: #fff !important;
+   /* background: rgba(255,255,255,0.2) !important;*/
+    border-bottom-color: #ff9900 !important;
     font-weight: 700 !important;
+	    height: 40px;
 }
 
 .navbar-menu > li > a i {
@@ -172,7 +213,7 @@
 	
     .navbar-menu > li > a {
         padding: 15px 6px;
-        font-size: 12px;
+        font-size: 14px;
         gap: 3px;
     }
 

@@ -46,18 +46,33 @@ a:active {
         header {
             background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
             color: white;
-            padding: 5px 10px;
-           /* box-shadow: 0 4px 12px rgba(0,0,0,0.15);*/
+            padding: 10px 0;
             display: flex;
-            justify-content: space-between;
+            justify-content: center;
             align-items: center;
             position: relative;
             z-index: 9998;
             transition: margin-top 0.3s ease, opacity 0.3s ease;
+			height: 80px;
         }
-        header > div:first-child {
-            flex: 1;
+        .header-content {
+            max-width: 80rem;
+            width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
+   .header-logo {
+            height: 60px;
+            width: auto;
+/*            transition: transform 0.3s ease;*/
+}
+
+      /*  .header-logo:hover {
+            transform: scale(1.05);        }*/
+			
         header h1 {
             font-size: 32px;
             margin-bottom: 5px;
@@ -360,6 +375,7 @@ a:active {
             display: flex;
             align-items: center;
             gap: 10px;
+            margin-right: 50px;
         }
         .info-icon {
             width: 40px;
@@ -867,7 +883,7 @@ a:active {
 
         .demo-stamp-header {
             top: 15px;
-            right: 120px;
+            right: 50%;
         }
 
         .demo-stamp-footer {
