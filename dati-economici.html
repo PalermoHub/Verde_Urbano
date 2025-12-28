@@ -264,31 +264,6 @@
             box-shadow: 0 6px 16px rgba(0,0,0,0.3);
         }
 
-        footer {
-            background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
-            color: white;
-            text-align: center;
-            padding: 30px 20px;
-            margin-top: 50px;
-        }
-
-        footer h1, footer h2, footer h3 {
-            margin: 8px 0;
-            font-weight: 400;
-        }
-
-        footer h1 {
-            font-size: 1.5em;
-        }
-
-        footer h2 {
-            font-size: 1.1em;
-        }
-
-        footer h3 {
-            font-size: 0.95em;
-        }
-
         @media (max-width: 768px) {
             .page-header h1 {
                 font-size: 1.6em;
@@ -682,17 +657,22 @@
         </div>
     </div>
 
-    <footer>
-        <h1>Comune di Palermo</h1>
-        <h2>Area delle Politiche Ambientali, Transizione Ecologica e Rigenerazione del Verde</h2>
-        <h3>Ufficio Autonomo Gestione Verde Urbano, Agricoltura Urbana e Rapporti con Re.Se.T.</h3>
-        <h3><i class="fas fa-lightbulb"></i> Natura della Demo</h3>
-        <p>Questa è una <b>DEMO</b> prototipale che mostra i dati di monitoraggio relativi al Progetto di riqualificazione e rigenerazione delle strade e delle aree verdi della città di Palermo, volto al miglioramento della qualità urbana e della sostenibilità ambientale.</p>
-    </footer>
+    <!-- Include Footer da file esterno -->
+    <script>
+        fetch('includes/footer.html?v=' + Date.now())
+            .then(response => response.text())
+            .then(data => {
+                document.body.insertAdjacentHTML('beforeend', data);
+            })
+            .catch(error => console.error('Errore caricamento footer:', error));
+    </script>
 
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Torna su"><i class="fas fa-arrow-up"></i></button>
+    <script>(function(){const a=document.getElementById('backToTop');if(!a)return;function b(){window.pageYOffset>500?a.classList.add('show'):a.classList.remove('show')}window.addEventListener('scroll',b);b();a.addEventListener('click',function(c){c.preventDefault();window.scrollTo({top:0,behavior:'smooth'})})})();</script>
 
 
     <script src="js/navigation.js"></script>
-<script src="js/01_modal.js"></script>
+    <script src="js/01_modal.js"></script>
 </body>
 </html>

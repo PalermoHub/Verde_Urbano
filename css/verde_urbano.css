@@ -41,6 +41,7 @@ a:active {
             font-family: "Titillium Web", sans-serif;
             background: #f5f5f5;
             color: #333;
+			overflow-x: hidden;
         }
         header {
             background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
@@ -70,7 +71,8 @@ a:active {
             gap: 0;
             padding: 0;
             width: 100%;
-            height: calc(100vh - 87px);
+            height: calc(100vh - 150px);
+            margin-bottom: 20px;
         }
         .sidebar {
             background: white;
@@ -855,3 +857,54 @@ a:active {
             display: inline-block;
             margin: 10px 80%;
         }
+		
+		    .back-to-top {
+        position: fixed;
+        bottom: 250px;
+        right: 30px;
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
+        color: white !important;
+        border: none;
+        border-radius: 50%;
+        cursor: pointer;
+        font-size: 20px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .back-to-top.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    .back-to-top:hover {
+        background: #ff9900 !important;
+        transform: translateY(-5px);
+        box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+    }
+
+    .back-to-top:active {
+        transform: translateY(-2px);
+    }
+
+    .back-to-top i {
+        color: white !important;
+    }
+
+    @media (max-width: 768px) {
+        .back-to-top {
+            bottom: 20px;
+            right: 20px;
+            width: 45px;
+            height: 45px;
+            font-size: 18px;
+        }
+    }

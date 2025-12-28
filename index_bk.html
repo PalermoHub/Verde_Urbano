@@ -516,14 +516,19 @@
 <script src="js/13_reports.js"></script>
 <script src="js/14_active_filters.js"></script>
 
-  <!-- Footer -->
-    <footer>
-        
-	<h1>Comune di Palermo</h1>
-	<h2>Area delle Politiche Ambientali, Transizione Ecologica e Rigenerazione del Verde</h2>
-	<h3>Ufficio Autonomo Gestione Verde Urbano, Agricoltura Urbana e Rapporti con Re.Se.T.</h3>
-        <h3><i class="fas fa-lightbulb"></i> Natura della Demo</h3>
-        <p>Questa è una <b>DEMO</b> prototipale che mostra i dati di monitoraggio relativi al  Progetto di riqualificazione e rigenerazione delle strade e delle aree verdi della città di Palermo, volto al miglioramento della qualità urbana e della sostenibilità ambientale.</p>
-    </footer>
+  <!-- Include Footer da file esterno -->
+    <script>
+        fetch('includes/footer.html?v=' + Date.now())
+            .then(response => response.text())
+            .then(data => {
+                document.body.insertAdjacentHTML('beforeend', data);
+            })
+            .catch(error => console.error('Errore caricamento footer:', error));
+    </script>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Torna su"><i class="fas fa-arrow-up"></i></button>
+    <style>.back-to-top{position:fixed;bottom:20px;right:30px;width:50px;height:50px;background:linear-gradient(135deg,#27ae60 0%,#1e8449 100%);color:white!important;border:none;border-radius:50%;cursor:pointer;font-size:20px;box-shadow:0 4px 12px rgba(0,0,0,0.3);opacity:0;visibility:hidden;transition:all .3s ease;z-index:9999;display:flex;align-items:center;justify-content:center}.back-to-top.show{opacity:1;visibility:visible}.back-to-top:hover{background:#ff9900!important;transform:translateY(-5px);box-shadow:0 6px 16px rgba(0,0,0,0.4)}.back-to-top:active{transform:translateY(-2px)}.back-to-top i{color:white!important}@media (max-width:768px){.back-to-top{bottom:20px;right:20px;width:45px;height:45px;font-size:18px}}</style>
+    <script>(function(){const a=document.getElementById('backToTop');if(!a)return;function b(){window.pageYOffset>500?a.classList.add('show'):a.classList.remove('show')}window.addEventListener('scroll',b);b();a.addEventListener('click',function(c){c.preventDefault();window.scrollTo({top:0,behavior:'smooth'})})})();</script>
 </body>
 </html>
