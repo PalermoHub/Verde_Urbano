@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Data - Verde Urbano Palermo</title>
+    <meta name="description" content="Scarica i dati aperti del progetto Verde Urbano Palermo in formato CSV e GeoJSON">
+    <meta name="author" content="Giovan Battista Vitrano">
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link rel="icon" href="favicon.png" type="image/png"/>
+
+    <link rel="stylesheet" href="css/verde_urbano.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/page-layout.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+     <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KHR1GHDRQS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KHR1GHDRQS');
+    </script>
+</head>
+<body>
+    <header>
+        <div class="demo-stamp demo-stamp-header">DEMO!</div>
+        <div>
+            <h2 id="pageTitle"><i class="fas fa-tree"></i> Rigenerazione del Verde Urbano di Palermo: Riqualificazione Stradale e Arredo della Città</h2>
+            <p>Progetto di riqualificazione e rigenerazione delle strade e delle aree verdi della città di Palermo, volto al miglioramento della qualità urbana e della sostenibilità ambientale. Gli interventi prevedono la piantumazione e la sostituzione delle alberature esistenti, l'esecuzione di servizi colturali, il ripristino delle aiuole e dei marciapiedi danneggiati, nonché la fornitura e la posa in opera di arredi urbani funzionali e di sistemi di illuminazione alimentati da energia solare. - <a href=https://www.opencup.gov.it//portale/it/web/opencup/home/progetto/-/cup/D71G23000050001 target="_blank" Title="STRADE E AREE A VERDE DELLA CITTA' DI PALERMO*VIA PALERMO*RIGENERAZIONE DEL VERDE URBANO DELLA CITTA' DI PALERMO- PIANTUMAZIONE E SOSTITUZIONE ALBERATURE, SERVIZI COLTURALI, RIPRISTINO AIUOLE E MARCIAPIEDI DISSESTATI, FORNITURA E POSA IN OPERA DI ARREDO URBANO E SISTEMI DI ILLUMINAZIONE AD ENERGIA SOLARE">Accordo Quadro - CUP D71G23000050001</A>
+			</p>
+        </div>
+        <div class="header-right">
+            <div class="info-icon" id="infoBtn" title="Informazioni su questa app"><i class="fas fa-circle-info"></i></div>
+        </div>
+    </header>
+
+    <!-- Include Navigation da file esterno -->
+    <script>
+        fetch('includes/navigation-simple.html?v=' + Date.now())
+            .then(response => response.text())
+            .then(data => {
+                document.body.insertAdjacentHTML('afterbegin', data);
+                const script = document.createElement('script');
+                script.src = 'js/navigation.js';
+                document.body.appendChild(script);
+            })
+            .catch(error => console.error('Errore caricamento navigation:', error));
+    </script>
+	
+	    <!-- Include Modale Info da file esterno -->
+    <script>
+        fetch('includes/info-modal.html?v=' + Date.now())
+            .then(response => response.text())
+            .then(data => {
+                document.body.insertAdjacentHTML('beforeend', data);
+                // Reinizializza gli event listener del modale dopo il caricamento
+                if (typeof window.initInfoModal === 'function') {
+                    window.initInfoModal();
+                }
+            })
+            .catch(error => console.error('Errore caricamento modale:', error));
+    </script>
+
+    <div class="page-container">
+        <!-- Sidebar con indice delle sezioni -->
+        <aside class="page-sidebar">
+            <div class="sidebar-header">
+                <i class="fas fa-database"></i>
+                <span>Open Data</span>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="#intro" class="sidebar-link">
+                    <i class="fas fa-info-circle"></i>
+                    <span>Cosa Sono gli Open Data</span>
+                </a>
+                <a href="#download" class="sidebar-link">
+                    <i class="fas fa-download"></i>
+                    <span>Scarica i Dataset</span>
+                </a>
+                <a href="#struttura" class="sidebar-link">
+                    <i class="fas fa-table"></i>
+                    <span>Struttura del Dataset</span>
+                </a>
+                <a href="#licenza" class="sidebar-link">
+                    <i class="fa-brands fa-creative-commons"></i>
+                    <span>Licenza e Riutilizzo</span>
+                </a>
+                <a href="#aggiornamenti" class="sidebar-link">
+                    <i class="fas fa-sync-alt"></i>
+                    <span>Aggiornamenti Dataset</span>
+                </a>
+                <a href="#supporto" class="sidebar-link">
+                    <i class="fas fa-envelope"></i>
+                    <span>Supporto e Segnalazioni</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Contenuto principale -->
+        <div class="page-main-content">
+            <div class="page-header">
+                <h1><i class="fas fa-database"></i> Open Data</h1>
+                <p>Dati aperti del patrimonio arboreo di Palermo - Scarica, analizza e riutilizza</p>
+            </div>
+
+            <!-- Introduzione -->
+            <section id="intro" class="content-section">
+                <h2><i class="fas fa-info-circle"></i> Cosa Sono gli Open Data</h2>
+            <p>
+                Gli <strong>Open Data</strong> (Dati Aperti) sono informazioni pubbliche liberamente accessibili, utilizzabili e riutilizzabili da chiunque per qualsiasi scopo. Il Comune di Palermo, in linea con i principi di trasparenza e partecipazione, mette a disposizione i dati relativi al censimento del patrimonio arboreo cittadino.
+            </p>
+            <p>
+                I dataset contengono informazioni dettagliate su ogni albero censito: specie botanica, localizzazione geografica, parametri dendrometrici (altezza, diametro), stato di salute (CPC), interventi programmati e benefici ambientali stimati.
+            </p>
+
+            <div class="info-box">
+                <h4><i class="fas fa-lightbulb"></i> Perché Open Data?</h4>
+                <p>
+                    I dati aperti favoriscono la trasparenza amministrativa, stimolano l'innovazione digitale, supportano la ricerca scientifica e permettono ai cittadini di monitorare in modo attivo le politiche ambientali della città.
+                </p>
+            </div>
+            </section>
+
+            <!-- Download Dataset -->
+            <section id="download" class="content-section">
+                <h2><i class="fas fa-download"></i> Scarica i Dataset</h2>
+            <p>I dati sono disponibili nei formati più diffusi per garantire la massima compatibilità con software GIS, fogli di calcolo e applicazioni di analisi dati.</p>
+
+            <div class="download-grid">
+                <div class="download-card">
+                    <i class="fas fa-file-csv"></i>
+                    <h3>CSV (Comma-Separated Values)</h3>
+                    <p>Formato tabulare semplice, compatibile con Excel, Google Sheets, R, Python e tutti i software di analisi dati.</p>
+                    <a href="data/verde_urbano.csv" class="download-button" download>
+                        <i class="fas fa-download"></i> Scarica CSV
+                    </a>
+                </div>
+
+                <div class="download-card">
+                    <i class="fas fa-map-marked-alt"></i>
+                    <h3>GeoJSON</h3>
+                    <p>Formato geografico standard per dati vettoriali. Compatibile con QGIS, ArcGIS, Leaflet, Mapbox e tutte le librerie cartografiche.</p>
+                    <a href="data/verde_urbano.geojson" class="download-button" download>
+                        <i class="fas fa-download"></i> Scarica GeoJSON
+                    </a>
+                </div>
+            </div>
+
+            <div class="warning-box">
+                <h4><i class="fas fa-exclamation-triangle"></i> Dati Demo</h4>
+                <p>
+                    Questa è una versione <strong>DEMO</strong> del dataset. I dati visualizzati sono esemplificativi e non rappresentano situazioni reali certificate. Per dati ufficiali, consultare i canali istituzionali del Comune di Palermo.
+                </p>
+            </div>
+            </section>
+
+            <!-- Struttura Dataset -->
+            <section id="struttura" class="content-section">
+                <h2><i class="fas fa-table"></i> Struttura del Dataset</h2>
+            <p>Il dataset contiene i seguenti campi per ogni albero censito:</p>
+
+            <table class="metadata-table">
+                <thead>
+                    <tr>
+                        <th>Campo</th>
+                        <th>Descrizione</th>
+                        <th>Tipo</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>id_albero</strong></td>
+                        <td>Codice identificativo univoco dell'albero</td>
+                        <td>Intero</td>
+                    </tr>
+                    <tr>
+                        <td><strong>specie</strong></td>
+                        <td>Nome scientifico della specie botanica</td>
+                        <td>Testo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>nome_comune</strong></td>
+                        <td>Nome comune della specie</td>
+                        <td>Testo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>altezza</strong></td>
+                        <td>Altezza dell'albero in metri</td>
+                        <td>Decimale</td>
+                    </tr>
+                    <tr>
+                        <td><strong>diametro</strong></td>
+                        <td>Diametro a petto d'uomo (dpu) in centimetri</td>
+                        <td>Decimale</td>
+                    </tr>
+                    <tr>
+                        <td><strong>cpc</strong></td>
+                        <td>Classe Propensione al Cedimento (B, C, C/D, D, Ceppaia)</td>
+                        <td>Testo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>dimora</strong></td>
+                        <td>Tipologia di localizzazione (Aiuola, Filare, etc.)</td>
+                        <td>Testo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>odonimo</strong></td>
+                        <td>Nome della via/strada</td>
+                        <td>Testo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>quartiere</strong></td>
+                        <td>Quartiere di localizzazione</td>
+                        <td>Testo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>circoscrizione</strong></td>
+                        <td>Circoscrizione amministrativa</td>
+                        <td>Testo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>upl</strong></td>
+                        <td>Unità di Paesaggio Locale</td>
+                        <td>Testo</td>
+                    </tr>
+                    <tr>
+                        <td><strong>latitudine</strong></td>
+                        <td>Coordinata geografica (WGS84)</td>
+                        <td>Decimale</td>
+                    </tr>
+                    <tr>
+                        <td><strong>longitudine</strong></td>
+                        <td>Coordinata geografica (WGS84)</td>
+                        <td>Decimale</td>
+                    </tr>
+                    <tr>
+                        <td><strong>co2_annua_kg</strong></td>
+                        <td>CO₂ catturata stimata (kg/anno)</td>
+                        <td>Decimale</td>
+                    </tr>
+                    <tr>
+                        <td><strong>o2_annuo_kg</strong></td>
+                        <td>O₂ prodotto stimato (kg/anno)</td>
+                        <td>Decimale</td>
+                    </tr>
+                    <tr>
+                        <td><strong>codice_lavorazione</strong></td>
+                        <td>Codice degli interventi programmati</td>
+                        <td>Testo</td>
+                    </tr>
+                </tbody>
+            </table>
+            </section>
+
+            <!-- Licenza -->
+            <section id="licenza" class="content-section">
+                <h2><i class="fa-brands fa-creative-commons"></i> Licenza e Riutilizzo</h2>
+                <div class="license-box">
+                    <h3>Creative Commons Attribution 4.0 International</h3>
+                <p>
+                    I dati sono rilasciati con licenza <strong>Creative Commons Attribution 4.0 International (CC BY 4.0)</strong>.
+                </p>
+                <p>
+                    <strong>Sei libero di:</strong>
+                </p>
+                <ul>
+                    <li><strong>Condividere</strong> — riprodurre, distribuire, comunicare al pubblico, esporre in pubblico, rappresentare, eseguire e recitare questo materiale con qualsiasi mezzo e formato</li>
+                    <li><strong>Modificare</strong> — remixare, trasformare il materiale e basarti su di esso per le tue opere</li>
+                </ul>
+                <p>
+                    <strong>Alle seguenti condizioni:</strong>
+                </p>
+                <ul>
+                    <li><strong>Attribuzione</strong> — Devi riconoscere una menzione di paternità adeguata, fornire un link alla licenza e indicare se sono state effettuate delle modifiche</li>
+                </ul>
+
+                <div class="license-logo">
+                    <p><strong>Attribuzione suggerita:</strong></p>
+                    <div class="code-block">
+                        <pre>Comune di Palermo - Ufficio Autonomo Gestione Verde Urbano
+Dataset: Rigenerazione del Verde Urbano di Palermo
+Licenza: CC BY 4.0
+URL: https://xxxxx/</pre>
+                    </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Aggiornamenti -->
+            <section id="aggiornamenti" class="content-section">
+                <h2><i class="fas fa-sync-alt"></i> Aggiornamenti Dataset</h2>
+            <p>
+                I dataset vengono aggiornati periodicamente in base all'avanzamento del progetto e ai nuovi censimenti effettuati.
+            </p>
+
+            <div class="info-box">
+                <h4><i class="fas fa-calendar-alt"></i> Ultimo Aggiornamento</h4>
+                <p>
+                    <strong>Data:</strong> 24 Dicembre 2025<br>
+                    <strong>Record:</strong> Dataset completo degli alberi censiti<br>
+                    <strong>Note:</strong> Versione DEMO prototipale
+                </p>
+            </div>
+            </section>
+
+            <!-- Contatti e Supporto -->
+            <section id="supporto" class="content-section">
+                <h2><i class="fas fa-envelope"></i> Supporto e Segnalazioni</h2>
+            <p>
+                Per domande, segnalazioni di errori o richieste di chiarimenti sui dati, contatta:
+            </p>
+            <p>
+                <strong>Ufficio Autonomo Gestione Verde Urbano</strong><br>
+                Comune di Palermo<br>
+                Area delle Politiche Ambientali, Transizione Ecologica e Rigenerazione del Verde
+            </p>
+
+            <div class="info-box">
+                <h4><i class="fas fa-users"></i> Sviluppo</h4>
+                <p>
+                    Questo progetto è stato sviluppato da <a href="https://www.linkedin.com/in/gbvitrano/" target="_blank" style="color: #3498db; font-weight: 600;">@gbvitrano</a> con il supporto tecnico di Claude AI (Anthropic) e Notebooklm. Per contributi e collaborazioni, visita il repository del progetto.
+                </p>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <!-- Script per evidenziare la sezione attiva nella sidebar -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sections = document.querySelectorAll('.content-section[id]');
+            const sidebarLinks = document.querySelectorAll('.sidebar-link');
+
+            function highlightActiveSection() {
+                let currentSection = '';
+                const scrollPosition = window.scrollY + 150;
+
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                        currentSection = section.getAttribute('id');
+                    }
+                });
+
+                sidebarLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === '#' + currentSection) {
+                        link.classList.add('active');
+                    }
+                });
+            }
+
+            window.addEventListener('scroll', highlightActiveSection);
+            highlightActiveSection();
+        });
+    </script>
+
+    <!-- Include Footer da file esterno -->
+    <script>
+        fetch('includes/footer.html?v=' + Date.now())
+            .then(response => response.text())
+            .then(data => {
+                document.body.insertAdjacentHTML('beforeend', data);
+            })
+            .catch(error => console.error('Errore caricamento footer:', error));
+    </script>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Torna su"><i class="fas fa-arrow-up"></i></button>
+    <script>(function(){const a=document.getElementById('backToTop');if(!a)return;function b(){window.pageYOffset>500?a.classList.add('show'):a.classList.remove('show')}window.addEventListener('scroll',b);b();a.addEventListener('click',function(c){c.preventDefault();window.scrollTo({top:0,behavior:'smooth'})})})();</script>
+
+    <script src="js/01_modal.js"></script>
+
+    <!-- Script per sticky header -->
+    <script src="js/sticky-header.js"></script>
+</body>
+</html>

@@ -52,6 +52,8 @@ a:active {
             justify-content: space-between;
             align-items: center;
             position: relative;
+            z-index: 9998;
+            transition: margin-top 0.3s ease, opacity 0.3s ease;
         }
         header > div:first-child {
             flex: 1;
@@ -62,7 +64,7 @@ a:active {
             font-weight: 700;
         }
         header p {
-            font-size: 15px;
+            font-size: 14px;
             opacity: 0.95;
         }
         .container {
@@ -71,7 +73,7 @@ a:active {
             gap: 0;
             padding: 0;
             width: 100%;
-            height: calc(100vh - 130px);
+            height: calc(100vh - 10px);
             margin-bottom: 20px;
         }
         .sidebar {
@@ -566,15 +568,15 @@ a:active {
 		
 @media (min-width: 1920px) and (max-width: 1920px) and (min-height: 1080px) {
 	    /* Stili specifici per risoluzione 1920x1080 */
-            .container {height: calc(100vh - 155px) !important;}
+            .container {height: calc(100vh - 0px) !important;}
 			}
 		
 @media (min-width: 1280px) and (max-width: 1280px) and (min-height: 1024px) {
-            .container { height: calc(100vh - 160px) !important;}
+            .container { height: calc(100vh - 0px) !important;}
 			}
 				
 @media (min-width: 1366px) and (max-width: 1366px) and (min-height: 768px) {
-            .container { height: calc(100vh - 160px) !important;}
+            .container { height: calc(100vh - 0px) !important;}
 			}		
 		
         /* ============================================
@@ -585,7 +587,7 @@ a:active {
         @media (min-width: 1201px) and (max-width: 1400px) {
             .container {
                 grid-template-columns: 280px 1fr 280px;
-				height: calc(100vh - 140px);
+				height: calc(100vh - 0px);
 				            }
             .sidebar, .sidebar-right {
                 padding: 6px;
@@ -627,7 +629,7 @@ a:active {
         @media (min-width: 1025px) and (max-width: 1200px) {
             .container {
                 grid-template-columns: 260px 1fr 260px;
-				height: calc(100vh - 205px);
+				height: calc(100vh - 0px);
             }
             .sidebar, .sidebar-right {
                 padding: 5px;

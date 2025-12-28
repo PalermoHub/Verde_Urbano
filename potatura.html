@@ -14,168 +14,12 @@
 
     <link rel="stylesheet" href="css/verde_urbano.css">
     <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/page-layout.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        body {
-            font-family: 'Titillium Web', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: #f5f5f5;
-        }
-
-        .page-content {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 30px 20px;
-            background: white;
-            min-height: calc(100vh - 200px);
-        }
-
-        .page-header {
-            text-align: center;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
-            color: white;
-            border-radius: 12px;
-            margin-bottom: 40px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
-        }
-
-        .page-header h1 {
-            margin: 0 0 15px 0;
-            font-size: 2.2em;
-            font-weight: 700;
-        }
-
-        .page-header p {
-            margin: 0;
-            font-size: 1.2em;
-            opacity: 0.95;
-        }
-
-        .content-section {
-            margin-bottom: 50px;
-        }
-
-        .content-section h2 {
-            color: #27ae60;
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid #27ae60;
-        }
-
-        .content-section h3 {
-            color: #1e8449;
-            font-size: 1.4em;
-            margin: 30px 0 15px 0;
-        }
-
-        .content-section p {
-            line-height: 1.8;
-            color: #2c3e50;
-            font-size: 1.05em;
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-
-        .content-section ul {
-            margin: 20px 0;
-            padding-left: 25px;
-        }
-
-        .content-section li {
-            line-height: 1.8;
-            color: #2c3e50;
-            margin-bottom: 12px;
-            font-size: 1.05em;
-        }
-
-        .content-section li strong {
-            color: #27ae60;
-        }
-
-        .highlight-box {
-            background: #e8f5e9;
-            border-left: 5px solid #27ae60;
-            padding: 25px;
-            margin: 30px 0;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-        }
-
-        .highlight-box h4 {
-            margin: 0 0 15px 0;
-            color: #1e8449;
-            font-size: 1.3em;
-        }
-
-        .highlight-box p {
-            margin: 0;
-            color: #2c3e50;
-            line-height: 1.7;
-        }
-
-        .cta-section {
-            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
-            color: white;
-            padding: 40px;
-            border-radius: 12px;
-            text-align: center;
-            margin-top: 50px;
-        }
-
-        .cta-section h3 {
-            margin: 0 0 15px 0;
-            font-size: 1.8em;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: white;
-            color: #2980b9;
-            padding: 15px 35px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1em;
-            margin: 10px;
-            transition: all 0.3s;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 16px rgba(0,0,0,0.3);
-        }
-
-        @media (max-width: 768px) {
-            .page-header h1 {
-                font-size: 1.6em;
-            }
-
-            .page-header p {
-                font-size: 1em;
-            }
-
-            .content-section h2 {
-                font-size: 1.4em;
-            }
-
-            .content-section h3 {
-                font-size: 1.2em;
-            }
-
-            .cta-section {
-                padding: 25px 20px;
-            }
-        }
-    </style>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KHR1GHDRQS"></script>
@@ -199,144 +43,32 @@
         </div>
     </header>
 
-    <!-- Navigation Menu -->
-    <nav class="navbar">
-        <div class="navbar-container">
-            <button class="navbar-toggle" aria-label="Toggle menu">
-                <i class="fas fa-bars"></i> Menu
-            </button>
+    <!-- Include Navigation da file esterno -->
+    <div id="navigation-placeholder"></div>
+    <script>
+        fetch('includes/navigation-simple.html?v=' + Date.now())
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navigation-placeholder').innerHTML = data;
 
-            <ul class="navbar-menu">
-                <button class="navbar-close" aria-label="Close menu">
-                    <i class="fas fa-times"></i>
-                </button>
+                // EVIDENZIA LA PAGINA ATTIVA
+                const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+                const navLinks = document.querySelectorAll('.navbar-menu a');
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === currentPage) {
+                        link.classList.add('active');
+                        console.log('✓ Pagina attiva evidenziata:', currentPage);
+                    }
+                });
 
-                <li>
-                    <a href="index.html">
-                        <i class="fas fa-home"></i>
-                        <span>Home</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="il-progetto.html">
-                        <i class="fas fa-book-open"></i>
-                        <span>Il Progetto</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="obiettivi.html">
-                        <i class="fas fa-bullseye"></i>
-                        <span>Obiettivi e Finalità</span>
-                        <i class="fas fa-chevron-down dropdown-arrow"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="obiettivi.html#riqualificazione"><i class="fas fa-seedling"></i> Riqualificazione patrimonio arboreo</a></li>
-                        <li><a href="obiettivi.html#sicurezza"><i class="fas fa-shield-alt"></i> Sicurezza e incolumità pubblica</a></li>
-                        <li><a href="obiettivi.html#barriere"><i class="fas fa-wheelchair"></i> Abbattimento barriere architettoniche</a></li>
-                        <li><a href="obiettivi.html#clima"><i class="fas fa-cloud-sun"></i> Mitigazione cambiamenti climatici</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="fasi.html">
-                        <i class="fas fa-tasks"></i>
-                        <span>Fasi dell'Intervento</span>
-                        <i class="fas fa-chevron-down dropdown-arrow"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="fasi.html#analisi"><i class="fas fa-search"></i> Analisi stato di fatto</a></li>
-                        <li><a href="fasi.html#vta"><i class="fas fa-clipboard-check"></i> Valutazione stabilità VTA</a></li>
-                        <li><a href="fasi.html#abbattimenti"><i class="fas fa-cut"></i> Abbattimenti e potature</a></li>
-                        <li><a href="fasi.html#apparati"><i class="fas fa-project-diagram"></i> Contenimento apparati radicali</a></li>
-                        <li><a href="fasi.html#mitigazione"><i class="fas fa-balance-scale"></i> Misure di mitigazione e compensazione</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="potatura.html">
-                        <i class="fas fa-scissors"></i>
-                        <span>Tipologie di Potatura</span>
-                        <i class="fas fa-chevron-down dropdown-arrow"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="potatura.html#rimonda"><i class="fas fa-broom"></i> Rimonda del secco</a></li>
-                        <li><a href="potatura.html#mantenimento"><i class="fas fa-leaf"></i> Mantenimento e risanamento</a></li>
-                        <li><a href="potatura.html#contenimento"><i class="fas fa-compress"></i> Contenimento e spalcatura</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="radicali.html">
-                        <i class="fas fa-code-branch"></i>
-                        <span>Gestione Apparati Radicali</span>
-                        <i class="fas fa-chevron-down dropdown-arrow"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="radicali.html#airspade"><i class="fas fa-wind"></i> Scavo non invasivo Air-Spade</a></li>
-                        <li><a href="radicali.html#barriere"><i class="fas fa-shield"></i> Installazione barriere anti-radici</a></li>
-                        <li><a href="radicali.html#aerazione"><i class="fas fa-fan"></i> Sistemi di aerazione del terreno</a></li>
-                        <li><a href="radicali.html#pavimentazioni"><i class="fas fa-road"></i> Pavimentazioni drenanti</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="impianti.html">
-                        <i class="fas fa-tree"></i>
-                        <span>Nuovi Impianti</span>
-                        <i class="fas fa-chevron-down dropdown-arrow"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="impianti.html#specie"><i class="fas fa-leaf"></i> Scelta specie autoctone/naturalizzate</a></li>
-                        <li><a href="impianti.html#irrigazione"><i class="fas fa-tint"></i> Sistemi di irrigazione automatizzati</a></li>
-                        <li><a href="impianti.html#arredo"><i class="fas fa-chair"></i> Arredo urbano (panchine, fioriere)</a></li>
-                        <li><a href="impianti.html#illuminazione"><i class="fas fa-lightbulb"></i> Illuminazione a basso consumo</a></li>
-                        <li><a href="impianti.html#ludiche"><i class="fas fa-volleyball-ball"></i> Aree ludiche e inclusive</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="sicurezza.html">
-                        <i class="fas fa-hard-hat"></i>
-                        <span>Sicurezza e Cantiere</span>
-                        <i class="fas fa-chevron-down dropdown-arrow"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="sicurezza.html#delimitazione"><i class="fas fa-traffic-cone"></i> Delimitazione aree e segnaletica</a></li>
-                        <li><a href="sicurezza.html#piattaforme"><i class="fas fa-forklift"></i> Piattaforme elevatrici e cestelli</a></li>
-                        <li><a href="sicurezza.html#dpi"><i class="fas fa-vest"></i> DPI obbligatori</a></li>
-                        <li><a href="sicurezza.html#traffico"><i class="fas fa-car"></i> Gestione interferenze e traffico</a></li>
-                        <li><a href="sicurezza.html#emergenza"><i class="fas fa-ambulance"></i> Piani di emergenza</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="dati-economici.html">
-                        <i class="fas fa-euro-sign"></i>
-                        <span>Dati Economici</span>
-                        <i class="fas fa-chevron-down dropdown-arrow"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="dati-economici.html#accordo"><i class="fas fa-file-contract"></i> Accordo Quadro quadriennale</a></li>
-                        <li><a href="dati-economici.html#importo"><i class="fas fa-coins"></i> Importo totale: 12 milioni €</a></li>
-                        <li><a href="dati-economici.html#stima"><i class="fas fa-tree"></i> Stima: 31.000-50.000 alberature</a></li>
-                        <li><a href="dati-economici.html#oneri"><i class="fas fa-calculator"></i> Oneri sicurezza: 530.449,87 €</a></li>
-                    </ul>
-                </li>
-
-         <!--       <li>
-                    <a href="open-data.html">
-                        <i class="fas fa-database"></i>
-                        <span>Open Data</span>
-                    </a>
-                </li> -->
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Overlay per mobile menu -->
-    <div class="navbar-overlay"></div>
+                // Ricarica lo script di navigazione
+                const script = document.createElement('script');
+                script.src = 'js/navigation.js';
+                document.body.appendChild(script);
+            })
+            .catch(error => console.error('Errore caricamento navigazione:', error));
+    </script>
 	
     <!-- Include Modale Info da file esterno -->
     <script>
@@ -352,11 +84,13 @@
             .catch(error => console.error('Errore caricamento modale:', error));
     </script>
 
-    <div class="page-content">
-        <div class="page-header">
-            <h1><i class="fas fa-scissors"></i> Potatura Urbana: L'Arte di Prendersi Cura degli Alberi della Nostra Città</h1>
-            <p>Una guida semplice e chiara per cittadini e studenti</p>
-        </div>
+    <div class="page-container">
+        <!-- Contenuto Principale -->
+        <div class="page-main-content">
+            <div class="page-header">
+                <h1><i class="fas fa-scissors"></i> Potatura Urbana: L'Arte di Prendersi Cura degli Alberi della Nostra Città</h1>
+                <p>Una guida semplice e chiara per cittadini e studenti</p>
+            </div>
 
         <!-- Introduzione -->
         <section class="content-section">
@@ -446,6 +180,29 @@
             <a href="index.html" class="cta-button"><i class="fas fa-map"></i> Vai alla Dashboard</a>
             <a href="open-data.html" class="cta-button"><i class="fas fa-database"></i> Open Data</a>
         </div>
+        </div>
+        <!-- Fine Contenuto Principale -->
+
+        <!-- Sidebar Destra con Indice -->
+        <aside class="page-sidebar">
+            <nav class="sidebar-nav">
+                <h3><i class="fas fa-list"></i> In questa pagina</h3>
+                <ul>
+                    <li><a href="#rimonda">
+                        <i class="fas fa-broom"></i>
+                        Rimonda del secco
+                    </a></li>
+                    <li><a href="#mantenimento">
+                        <i class="fas fa-leaf"></i>
+                        Mantenimento e risanamento
+                    </a></li>
+                    <li><a href="#contenimento">
+                        <i class="fas fa-compress"></i>
+                        Contenimento e spalcatura
+                    </a></li>
+                </ul>
+            </nav>
+        </aside>
     </div>
 
     <!-- Include Footer da file esterno -->
@@ -463,7 +220,39 @@
     <script>(function(){const a=document.getElementById('backToTop');if(!a)return;function b(){window.pageYOffset>500?a.classList.add('show'):a.classList.remove('show')}window.addEventListener('scroll',b);b();a.addEventListener('click',function(c){c.preventDefault();window.scrollTo({top:0,behavior:'smooth'})})})();</script>
 
 
-    <script src="js/navigation.js"></script>
     <script src="js/01_modal.js"></script>
+
+    <!-- Script per evidenziare la voce attiva nella sidebar -->
+    <script>
+    (function() {
+        const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
+
+        function highlightActiveSection() {
+            let current = '';
+            const sections = document.querySelectorAll('.content-section[id]');
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            sidebarLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', highlightActiveSection);
+        window.addEventListener('load', highlightActiveSection);
+    })();
+    </script>
+
+    <!-- Script per sticky header -->
+    <script src="js/sticky-header.js"></script>
 </body>
 </html>

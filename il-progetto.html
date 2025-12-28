@@ -11,192 +11,11 @@
 
     <link rel="stylesheet" href="css/verde_urbano.css">
     <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/page-layout.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-
-    <style>
-        /* Stili specifici per pagina Il Progetto */
-        .page-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
-
-        .page-header {
-            text-align: center;
-            margin-bottom: 50px;
-            padding: 40px 20px;
-            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
-            color: white;
-            border-radius: 12px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
-        }
-
-        .page-header h1 {
-            font-size: 36px;
-            margin-bottom: 15px;
-            font-weight: 700;
-        }
-
-        .page-header p {
-            font-size: 18px;
-            opacity: 0.95;
-            max-width: 800px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        .content-section {
-            background: white;
-            padding: 40px;
-            margin-bottom: 30px;
-            border-radius: 12px;
-            box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-        }
-
-        .content-section h2 {
-            color: #27ae60;
-            font-size: 28px;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid #27ae60;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .content-section h3 {
-            color: #2c3e50;
-            font-size: 22px;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .content-section p {
-            font-size: 16px;
-            line-height: 1.8;
-            color: #555;
-            margin-bottom: 15px;
-            text-align: justify;
-        }
-
-        .content-section ul, .content-section ol {
-            margin-left: 25px;
-            margin-bottom: 20px;
-        }
-
-        .content-section li {
-            font-size: 16px;
-            line-height: 1.8;
-            color: #555;
-            margin-bottom: 10px;
-        }
-
-        .highlight-box {
-            background: #e8f5e9;
-            border-left: 5px solid #27ae60;
-            padding: 20px;
-            border-radius: 8px;
-            margin: 25px 0;
-        }
-
-        .highlight-box h4 {
-            color: #27ae60;
-            margin-bottom: 10px;
-            font-size: 18px;
-        }
-
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 30px 0;
-        }
-
-        .info-card {
-            background: linear-gradient(135deg, #f8f9fa 0%, #ecf0f1 100%);
-            padding: 25px;
-            border-radius: 10px;
-            text-align: center;
-            border: 2px solid #e0e0e0;
-            transition: all 0.3s;
-        }
-
-        .info-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
-            border-color: #27ae60;
-        }
-
-        .info-card i {
-            font-size: 40px;
-            color: #27ae60;
-            margin-bottom: 15px;
-        }
-
-        .info-card h4 {
-            font-size: 18px;
-            color: #2c3e50;
-            margin-bottom: 10px;
-        }
-
-        .info-card p {
-            font-size: 14px;
-            color: #666;
-            text-align: center;
-        }
-
-        .cta-section {
-            background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
-            color: white;
-            padding: 40px;
-            border-radius: 12px;
-            text-align: center;
-            margin-top: 40px;
-        }
-
-        .cta-section h3 {
-            font-size: 26px;
-            margin-bottom: 20px;
-        }
-
-        .cta-button {
-            display: inline-block;
-            background: white;
-            color: #3498db;
-            padding: 15px 35px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            transition: all 0.3s;
-            margin: 0 10px;
-        }
-
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-        }
-
-        @media (max-width: 768px) {
-            .page-header h1 {
-                font-size: 28px;
-            }
-
-            .content-section {
-                padding: 25px;
-            }
-
-            .info-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-    </style>
 
      <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-KHR1GHDRQS"></script>
@@ -220,147 +39,34 @@
         </div>
     </header>
 
-    <!-- Navigation Menu -->
-    <nav class="navbar">
-        <div class="navbar-container">
-            <button class="navbar-toggle" aria-label="Toggle menu">
-                <i class="fas fa-bars"></i> Menu
-            </button>
+    <!-- Include Navigation da file esterno -->
+    <div id="navigation-placeholder"></div>
+    <script>
+        fetch('includes/navigation-simple.html?v=' + Date.now())
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navigation-placeholder').innerHTML = data;
 
-            <ul class="navbar-menu">
-                <button class="navbar-close" aria-label="Close menu">
-                    <i class="fas fa-times"></i>
-                </button>
+                // EVIDENZIA LA PAGINA ATTIVA
+                const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+                const navLinks = document.querySelectorAll('.navbar-menu a');
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === currentPage) {
+                        link.classList.add('active');
+                        console.log('✓ Pagina attiva evidenziata:', currentPage);
+                    }
+                });
 
-                <li>
-                    <a href="index.html">
-                        <i class="fas fa-home"></i>
-                        <span>Home</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="il-progetto.html">
-                        <i class="fas fa-book-open"></i>
-                        <span>Il Progetto</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="obiettivi.html">
-                        <i class="fas fa-bullseye"></i>
-                        <span>Obiettivi e Finalità</span>
-                        <i class="fas fa-chevron-down dropdown-arrow"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="obiettivi.html#riqualificazione"><i class="fas fa-seedling"></i> Riqualificazione patrimonio arboreo</a></li>
-                        <li><a href="obiettivi.html#sicurezza"><i class="fas fa-shield-alt"></i> Sicurezza e incolumità pubblica</a></li>
-                        <li><a href="obiettivi.html#barriere"><i class="fas fa-wheelchair"></i> Abbattimento barriere architettoniche</a></li>
-                        <li><a href="obiettivi.html#clima"><i class="fas fa-cloud-sun"></i> Mitigazione cambiamenti climatici</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="fasi.html">
-                        <i class="fas fa-tasks"></i>
-                        <span>Fasi dell'Intervento</span>
-                        <i class="fas fa-chevron-down dropdown-arrow"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="fasi.html#analisi"><i class="fas fa-search"></i> Analisi stato di fatto</a></li>
-                        <li><a href="fasi.html#vta"><i class="fas fa-clipboard-check"></i> Valutazione stabilità VTA</a></li>
-                        <li><a href="fasi.html#abbattimenti"><i class="fas fa-cut"></i> Abbattimenti e potature</a></li>
-                        <li><a href="fasi.html#apparati"><i class="fas fa-project-diagram"></i> Contenimento apparati radicali</a></li>
-                        <li><a href="fasi.html#mitigazione"><i class="fas fa-balance-scale"></i> Misure di mitigazione e compensazione</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="potatura.html">
-                        <i class="fas fa-scissors"></i>
-                        <span>Tipologie di Potatura</span>
-                        <i class="fas fa-chevron-down dropdown-arrow"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="potatura.html#formazione"><i class="fas fa-spa"></i> Formazione e allevamento</a></li>
-                        <li><a href="potatura.html#mantenimento"><i class="fas fa-leaf"></i> Mantenimento e risanamento</a></li>
-                        <li><a href="potatura.html#contenimento"><i class="fas fa-compress"></i> Contenimento e spalcatura</a></li>
-                        <li><a href="potatura.html#rimonda"><i class="fas fa-broom"></i> Rimonda del secco</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="radicali.html">
-                        <i class="fas fa-code-branch"></i>
-                        <span>Gestione Apparati Radicali</span>
-                        <i class="fas fa-chevron-down dropdown-arrow"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="radicali.html#airspade"><i class="fas fa-wind"></i> Scavo non invasivo Air-Spade</a></li>
-                        <li><a href="radicali.html#barriere"><i class="fas fa-shield"></i> Installazione barriere anti-radici</a></li>
-                        <li><a href="radicali.html#aerazione"><i class="fas fa-fan"></i> Sistemi di aerazione del terreno</a></li>
-                        <li><a href="radicali.html#pavimentazioni"><i class="fas fa-road"></i> Pavimentazioni drenanti</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="impianti.html">
-                        <i class="fas fa-tree"></i>
-                        <span>Nuovi Impianti</span>
-                        <i class="fas fa-chevron-down dropdown-arrow"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="impianti.html#specie"><i class="fas fa-leaf"></i> Scelta specie autoctone/naturalizzate</a></li>
-                        <li><a href="impianti.html#irrigazione"><i class="fas fa-tint"></i> Sistemi di irrigazione automatizzati</a></li>
-                        <li><a href="impianti.html#arredo"><i class="fas fa-chair"></i> Arredo urbano (panchine, fioriere)</a></li>
-                        <li><a href="impianti.html#illuminazione"><i class="fas fa-lightbulb"></i> Illuminazione a basso consumo</a></li>
-                        <li><a href="impianti.html#ludiche"><i class="fas fa-volleyball-ball"></i> Aree ludiche e inclusive</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="sicurezza.html">
-                        <i class="fas fa-hard-hat"></i>
-                        <span>Sicurezza e Cantiere</span>
-                        <i class="fas fa-chevron-down dropdown-arrow"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="sicurezza.html#delimitazione"><i class="fas fa-traffic-cone"></i> Delimitazione aree e segnaletica</a></li>
-                        <li><a href="sicurezza.html#piattaforme"><i class="fas fa-forklift"></i> Piattaforme elevatrici e cestelli</a></li>
-                        <li><a href="sicurezza.html#dpi"><i class="fas fa-vest"></i> DPI obbligatori</a></li>
-                        <li><a href="sicurezza.html#traffico"><i class="fas fa-car"></i> Gestione interferenze e traffico</a></li>
-                        <li><a href="sicurezza.html#emergenza"><i class="fas fa-ambulance"></i> Piani di emergenza</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    <a href="dati-economici.html">
-                        <i class="fas fa-euro-sign"></i>
-                        <span>Dati Economici</span>
-                        <i class="fas fa-chevron-down dropdown-arrow"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="dati-economici.html#accordo"><i class="fas fa-file-contract"></i> Accordo Quadro quadriennale</a></li>
-                        <li><a href="dati-economici.html#importo"><i class="fas fa-coins"></i> Importo totale: 12 milioni €</a></li>
-                        <li><a href="dati-economici.html#stima"><i class="fas fa-tree"></i> Stima: 31.000-50.000 alberature</a></li>
-                        <li><a href="dati-economici.html#oneri"><i class="fas fa-calculator"></i> Oneri sicurezza: 530.449,87 €</a></li>
-                    </ul>
-                </li>
-
-         <!--       <li>
-                    <a href="open-data.html">
-                        <i class="fas fa-database"></i>
-                        <span>Open Data</span>
-                    </a>
-                </li> -->
-            </ul>
-        </div>
-    </nav>
-
-    <!-- Overlay per mobile menu -->
-    <div class="navbar-overlay"></div>
+                // Ricarica lo script di navigazione
+                const script = document.createElement('script');
+                script.src = 'js/navigation.js';
+                document.body.appendChild(script);
+            })
+            .catch(error => console.error('Errore caricamento navigazione:', error));
+    </script>
 	
-    <!-- Include Modale Info da file esterno -->
+	    <!-- Include Modale Info da file esterno -->
     <script>
         fetch('includes/info-modal.html?v=' + Date.now())
             .then(response => response.text())
@@ -374,8 +80,10 @@
             .catch(error => console.error('Errore caricamento modale:', error));
     </script>
 
-    <div class="page-content">
-        <div class="page-header">
+    <div class="page-container">
+        <!-- Contenuto Principale -->
+        <div class="page-main-content">
+            <div class="page-header">
             <h1><i class="fas fa-leaf"></i> Palermo, Rivoluzione Verde</h1>
             <p>5 Cose che non sapevi sul Progetto da 8 Milioni che sta trasformando la Città</p>
         </div>
@@ -392,7 +100,7 @@
         </section>
 
         <!-- Punto 1 -->
-        <section class="content-section">
+        <section class="content-section" id="potatura-errori">
             <h2><i class="fas fa-cut"></i> 1. La Potatura non è (Sempre) per il Bene dell'Albero, ma per Rimediare ai Nostri Errori</h2>
             <p>
                 Istintivamente, pensiamo alla potatura come a una "spuntatina" benefica per la salute della pianta. In un contesto urbano, la realtà è più complessa. <strong>L'intervento cesorio non nasce quasi mai da un'esigenza fisiologica dell'albero.</strong> In natura, le piante crescono trovando il loro equilibrio. In città, invece, la potatura diventa spesso uno strumento per correggere errori di progettazione umana.
@@ -409,7 +117,7 @@
         </section>
 
         <!-- Punto 2 -->
-        <section class="content-section">
+        <section class="content-section" id="radici-chirurgia">
             <h2><i class="fas fa-wind"></i> 2. Le Radici Ricevono una "Chirurgia" ad Alta Tecnologia per Salvare Alberi e Marciapiedi</h2>
             <p>
                 Il problema delle radici che sollevano marciapiedi e asfalto è una delle sfide più grandi nella gestione del verde urbano. L'approccio del progetto non è quello drastico dell'abbattimento, ma una sorta di <strong>"chirurgia radicale" ad alta tecnologia</strong> che mira a risolvere il conflitto preservando l'albero.
@@ -427,7 +135,7 @@
         </section>
 
         <!-- Punto 3 -->
-        <section class="content-section">
+        <section class="content-section" id="pagella-sicurezza">
             <h2><i class="fas fa-clipboard-check"></i> 3. Ogni Albero Riceve una "Pagella di Sicurezza" Prima di Qualsiasi Intervento</h2>
             <p>
                 Le decisioni su quali alberi potare, mettere in sicurezza o, nei casi più estremi, abbattere, non sono mai arbitrarie. Ogni singolo esemplare viene sottoposto a un'analisi rigorosa chiamata <strong>VTA (Visual Tree Assessment)</strong>, una metodologia scientifica per valutarne la stabilità.
@@ -447,7 +155,7 @@
         </section>
 
         <!-- Punto 4 -->
-        <section class="content-section">
+        <section class="content-section" id="pericolo-traffico">
             <h2><i class="fas fa-car"></i> 4. Il Pericolo Maggiore per gli Operatori non è la Motosega, ma il Traffico</h2>
             <p>
                 Quando pensiamo a un cantiere per la potatura di alberi, immaginiamo rischi come l'uso di motoseghe o la caduta dall'alto. Sebbene questi siano pericoli reali e attentamente gestiti, il Piano di Sicurezza del progetto evidenzia una minaccia ancora più seria.
@@ -471,7 +179,7 @@
         </section>
 
         <!-- Punto 5 -->
-        <section class="content-section">
+        <section class="content-section" id="rigenerare-spazio">
             <h2><i class="fas fa-city"></i> 5. Non Solo Alberi: un Progetto per Rigenerare lo Spazio Pubblico</h2>
             <p>
                 L'obiettivo del progetto "Rigenerazione del Verde Urbano" va ben oltre la semplice cura degli alberi. L'iniziativa ha l'ambizione più ampia di <strong>migliorare la qualità ambientale e la vivibilità degli spazi pubblici</strong> di Palermo.
@@ -518,6 +226,37 @@
             <a href="index.html" class="cta-button"><i class="fas fa-map"></i> Vai alla Dashboard</a>
             <a href="open-data.html" class="cta-button"><i class="fas fa-database"></i> Scarica i Dati</a>
         </div>
+        </div>
+        <!-- Fine Contenuto Principale -->
+
+        <!-- Sidebar Destra con Indice -->
+        <aside class="page-sidebar">
+            <nav class="sidebar-nav">
+                <h3><i class="fas fa-list"></i> In questa pagina</h3>
+                <ul>
+                    <li><a href="#potatura-errori">
+                        <i class="fas fa-cut"></i>
+                        La Potatura: rimedio agli errori
+                    </a></li>
+                    <li><a href="#radici-chirurgia">
+                        <i class="fas fa-wind"></i>
+                        Chirurgia radicale ad alta tecnologia
+                    </a></li>
+                    <li><a href="#pagella-sicurezza">
+                        <i class="fas fa-clipboard-check"></i>
+                        Pagella di Sicurezza (VTA)
+                    </a></li>
+                    <li><a href="#pericolo-traffico">
+                        <i class="fas fa-car"></i>
+                        Il pericolo del traffico
+                    </a></li>
+                    <li><a href="#rigenerare-spazio">
+                        <i class="fas fa-city"></i>
+                        Rigenerare lo spazio pubblico
+                    </a></li>
+                </ul>
+            </nav>
+        </aside>
     </div>
 
     <!-- Include Footer da file esterno -->
@@ -531,41 +270,42 @@
     </script>
 
     <!-- Back to Top Button -->
-    <button id="backToTop" class="back-to-top" aria-label="Torna su">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+    <button id="backToTop" class="back-to-top" aria-label="Torna su"><i class="fas fa-arrow-up"></i></button>
+    <script>(function(){const a=document.getElementById('backToTop');if(!a)return;function b(){window.pageYOffset>500?a.classList.add('show'):a.classList.remove('show')}window.addEventListener('scroll',b);b();a.addEventListener('click',function(c){c.preventDefault();window.scrollTo({top:0,behavior:'smooth'})})})();</script>
 
+    <script src="js/01_modal.js"></script>
 
+    <!-- Script per evidenziare la voce attiva nella sidebar -->
     <script>
     (function() {
-        const backToTopButton = document.getElementById('backToTop');
+        const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
 
-        if (!backToTopButton) return;
+        function highlightActiveSection() {
+            let current = '';
+            const sections = document.querySelectorAll('.content-section[id]');
 
-        // Mostra/nascondi il pulsante in base allo scroll
-        function handleScroll() {
-            if (window.pageYOffset > 500) {
-                backToTopButton.classList.add('show');
-            } else {
-                backToTopButton.classList.remove('show');
-            }
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            sidebarLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
         }
 
-        window.addEventListener('scroll', handleScroll);
-        handleScroll();
-
-        // Scroll smooth verso l'alto al click
-        backToTopButton.addEventListener('click', function(e) {
-            e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        });
+        window.addEventListener('scroll', highlightActiveSection);
+        window.addEventListener('load', highlightActiveSection);
     })();
     </script>
 
-    <script src="js/navigation.js"></script>
-    <script src="js/01_modal.js"></script>
+    <!-- Script per sticky header -->
+    <script src="js/sticky-header.js"></script>
 </body>
 </html>

@@ -64,7 +64,48 @@
         </div>
     </header>
 
-    <!-- Navigation Menu -->
+    <!-- Include Navigation da file esterno -->
+    <div id="navigation-placeholder"></div>
+    <script>
+        fetch('includes/navigation-simple.html?v=' + Date.now())
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('navigation-placeholder').innerHTML = data;
+
+                // EVIDENZIA LA PAGINA ATTIVA
+                const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+                const navLinks = document.querySelectorAll('.navbar-menu a');
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href') === currentPage) {
+                        link.classList.add('active');
+                        console.log('✓ Pagina attiva evidenziata:', currentPage);
+                    }
+                });
+
+                // Ricarica lo script di navigazione
+                const script = document.createElement('script');
+                script.src = 'js/navigation.js';
+                document.body.appendChild(script);
+            })
+            .catch(error => console.error('Errore caricamento navigazione:', error));
+    </script>
+	
+	    <!-- Include Modale Info da file esterno -->
+    <script>
+        fetch('includes/info-modal.html?v=' + Date.now())
+            .then(response => response.text())
+            .then(data => {
+                document.body.insertAdjacentHTML('beforeend', data);
+                // Reinizializza gli event listener del modale dopo il caricamento
+                if (typeof window.initInfoModal === 'function') {
+                    window.initInfoModal();
+                }
+            })
+            .catch(error => console.error('Errore caricamento modale:', error));
+    </script>
+
+    <!-- Navigation Menu 
     <nav class="navbar">
         <div class="navbar-container">
             <button class="navbar-toggle" aria-label="Toggle menu">
@@ -94,129 +135,65 @@
                     <a href="obiettivi.html">
                         <i class="fas fa-bullseye"></i>
                         <span>Obiettivi e Finalità</span>
-                        <i class="fas fa-chevron-down dropdown-arrow"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="obiettivi.html#riqualificazione"><i class="fas fa-seedling"></i> Riqualificazione patrimonio arboreo</a></li>
-                        <li><a href="obiettivi.html#sicurezza"><i class="fas fa-shield-alt"></i> Sicurezza e incolumità pubblica</a></li>
-                        <li><a href="obiettivi.html#barriere"><i class="fas fa-wheelchair"></i> Abbattimento barriere architettoniche</a></li>
-                        <li><a href="obiettivi.html#clima"><i class="fas fa-cloud-sun"></i> Mitigazione cambiamenti climatici</a></li>
-                    </ul>
+                           </a>
                 </li>
 
                 <li>
                     <a href="fasi.html">
                         <i class="fas fa-tasks"></i>
                         <span>Fasi dell'Intervento</span>
-                        <i class="fas fa-chevron-down dropdown-arrow"></i>
                     </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="fasi.html#analisi"><i class="fas fa-search"></i> Analisi stato di fatto</a></li>
-                        <li><a href="fasi.html#vta"><i class="fas fa-clipboard-check"></i> Valutazione stabilità VTA</a></li>
-                        <li><a href="fasi.html#abbattimenti"><i class="fas fa-cut"></i> Abbattimenti e potature</a></li>
-                        <li><a href="fasi.html#apparati"><i class="fas fa-project-diagram"></i> Contenimento apparati radicali</a></li>
-                        <li><a href="fasi.html#mitigazione"><i class="fas fa-balance-scale"></i> Misure di mitigazione e compensazione</a></li>
-                    </ul>
                 </li>
-
                 <li>
                     <a href="potatura.html">
                         <i class="fas fa-scissors"></i>
                         <span>Tipologie di Potatura</span>
-                        <i class="fas fa-chevron-down dropdown-arrow"></i>
                     </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="potatura.html#formazione"><i class="fas fa-spa"></i> Formazione e allevamento</a></li>
-                        <li><a href="potatura.html#mantenimento"><i class="fas fa-leaf"></i> Mantenimento e risanamento</a></li>
-                        <li><a href="potatura.html#contenimento"><i class="fas fa-compress"></i> Contenimento e spalcatura</a></li>
-                        <li><a href="potatura.html#rimonda"><i class="fas fa-broom"></i> Rimonda del secco</a></li>
-                    </ul>
+
                 </li>
 
                 <li>
                     <a href="radicali.html">
                         <i class="fas fa-code-branch"></i>
                         <span>Gestione Apparati Radicali</span>
-                        <i class="fas fa-chevron-down dropdown-arrow"></i>
-                    </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="radicali.html#airspade"><i class="fas fa-wind"></i> Scavo non invasivo Air-Spade</a></li>
-                        <li><a href="radicali.html#barriere"><i class="fas fa-shield"></i> Installazione barriere anti-radici</a></li>
-                        <li><a href="radicali.html#aerazione"><i class="fas fa-fan"></i> Sistemi di aerazione del terreno</a></li>
-                        <li><a href="radicali.html#pavimentazioni"><i class="fas fa-road"></i> Pavimentazioni drenanti</a></li>
-                    </ul>
+                       </a>
                 </li>
 
                 <li>
                     <a href="impianti.html">
                         <i class="fas fa-tree"></i>
                         <span>Nuovi Impianti</span>
-                        <i class="fas fa-chevron-down dropdown-arrow"></i>
                     </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="impianti.html#specie"><i class="fas fa-leaf"></i> Scelta specie autoctone/naturalizzate</a></li>
-                        <li><a href="impianti.html#irrigazione"><i class="fas fa-tint"></i> Sistemi di irrigazione automatizzati</a></li>
-                        <li><a href="impianti.html#arredo"><i class="fas fa-chair"></i> Arredo urbano (panchine, fioriere)</a></li>
-                        <li><a href="impianti.html#illuminazione"><i class="fas fa-lightbulb"></i> Illuminazione a basso consumo</a></li>
-                        <li><a href="impianti.html#ludiche"><i class="fas fa-volleyball-ball"></i> Aree ludiche e inclusive</a></li>
-                    </ul>
                 </li>
 
                 <li>
                     <a href="sicurezza.html">
                         <i class="fas fa-hard-hat"></i>
                         <span>Sicurezza e Cantiere</span>
-                        <i class="fas fa-chevron-down dropdown-arrow"></i>
                     </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="sicurezza.html#delimitazione"><i class="fas fa-traffic-cone"></i> Delimitazione aree e segnaletica</a></li>
-                        <li><a href="sicurezza.html#piattaforme"><i class="fas fa-forklift"></i> Piattaforme elevatrici e cestelli</a></li>
-                        <li><a href="sicurezza.html#dpi"><i class="fas fa-vest"></i> DPI obbligatori</a></li>
-                        <li><a href="sicurezza.html#traffico"><i class="fas fa-car"></i> Gestione interferenze e traffico</a></li>
-                        <li><a href="sicurezza.html#emergenza"><i class="fas fa-ambulance"></i> Piani di emergenza</a></li>
-                    </ul>
                 </li>
 
                 <li>
                     <a href="dati-economici.html">
                         <i class="fas fa-euro-sign"></i>
                         <span>Dati Economici</span>
-                        <i class="fas fa-chevron-down dropdown-arrow"></i>
                     </a>
-                    <ul class="dropdown-menu">
-                        <li><a href="dati-economici.html#accordo"><i class="fas fa-file-contract"></i> Accordo Quadro quadriennale</a></li>
-                        <li><a href="dati-economici.html#importo"><i class="fas fa-coins"></i> Importo totale: 12 milioni €</a></li>
-                        <li><a href="dati-economici.html#stima"><i class="fas fa-tree"></i> Stima: 31.000-50.000 alberature</a></li>
-                        <li><a href="dati-economici.html#oneri"><i class="fas fa-calculator"></i> Oneri sicurezza: 530.449,87 €</a></li>
-                    </ul>
-                </li>
+                </li> -->
 
          <!--       <li>
                     <a href="open-data.html">
                         <i class="fas fa-database"></i>
                         <span>Open Data</span>
                     </a>
-                </li> -->
+                </li> 
             </ul>
         </div>
-    </nav>
+    </nav>-->
 
-    <!-- Overlay per mobile menu -->
-    <div class="navbar-overlay"></div>
+    <!-- Overlay per mobile menu
+    <div class="navbar-overlay"> </div> -->
+	
 
-    <!-- Include Modale Info da file esterno -->
-    <script>
-        fetch('includes/info-modal.html?v=' + Date.now())
-            .then(response => response.text())
-            .then(data => {
-                document.body.insertAdjacentHTML('beforeend', data);
-                // Reinizializza gli event listener del modale dopo il caricamento
-                if (typeof window.initInfoModal === 'function') {
-                    window.initInfoModal();
-                }
-            })
-            .catch(error => console.error('Errore caricamento modale:', error));
-    </script>
 
     <div class="container">
         <!-- Sidebar Sinistra: Filtri -->
@@ -538,7 +515,7 @@
 <script src="js/13_reports.js"></script>
 <script src="js/14_active_filters.js"></script>
 
-  <!-- Include Footer da file esterno -->
+    <!-- Include Footer da file esterno -->
     <script>
         fetch('includes/footer.html?v=' + Date.now())
             .then(response => response.text())
@@ -548,11 +525,38 @@
             .catch(error => console.error('Errore caricamento footer:', error));
     </script>
 
-    <!-- Back to Top Button -->
-    <button id="backToTop" class="back-to-top" aria-label="Torna su">
-        <i class="fas fa-arrow-up"></i>
-    </button>
+    <!-- Script per evidenziare la voce attiva nella sidebar -->
+    <script>
+    (function() {
+        const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
 
+        function highlightActiveSection() {
+            let current = '';
+            const sections = document.querySelectorAll('.content-section[id]');
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            sidebarLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', highlightActiveSection);
+        window.addEventListener('load', highlightActiveSection);
+    })();
+    </script>
+
+    <!-- Script per sticky header -->
+    <script src="js/sticky-header.js"></script>
 
 </body>
 </html>
