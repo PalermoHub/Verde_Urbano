@@ -41,30 +41,7 @@
 
     <!-- Include Navigation da file esterno -->
     <div id="navigation-placeholder"></div>
-    <script>
-        fetch('includes/navigation-simple.html?v=' + Date.now())
-            .then(response => response.text())
-            .then(data => {
-                document.getElementById('navigation-placeholder').innerHTML = data;
-
-                // EVIDENZIA LA PAGINA ATTIVA
-                const currentPage = window.location.pathname.split('/').pop() || 'index.html';
-                const navLinks = document.querySelectorAll('.navbar-menu a');
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === currentPage) {
-                        link.classList.add('active');
-                        console.log('✓ Pagina attiva evidenziata:', currentPage);
-                    }
-                });
-
-                // Ricarica lo script di navigazione
-                const script = document.createElement('script');
-                script.src = 'js/navigation.js';
-                document.body.appendChild(script);
-            })
-            .catch(error => console.error('Errore caricamento navigazione:', error));
-    </script>
+    <script src="js/load-navigation-cached.js"></script>
 	
 	    <!-- Include Modale Info da file esterno -->
     <script>

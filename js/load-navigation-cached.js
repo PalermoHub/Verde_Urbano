@@ -5,7 +5,7 @@
 
 (function() {
     const CACHE_KEY = 'verde-urbano-navbar';
-    const CACHE_VERSION = '1.0'; // Incrementa questo numero quando modifichi la navbar
+    const CACHE_VERSION = '2.4'; // Incrementa questo numero quando modifichi la navbar
 
     function loadNavigation() {
         const placeholder = document.getElementById('navigation-placeholder');
@@ -45,12 +45,23 @@
             }
         });
 
-        // Ricarica lo script di navigazione solo se non è già stato caricato
+        // Carica lo script di navigazione solo se non è già stato caricato
         if (!window.navigationScriptLoaded) {
             const script = document.createElement('script');
             script.src = 'js/navigation.js';
+            script.onload = function() {
+                // Forza l'inizializzazione dopo il caricamento dello script
+                if (typeof initNavigation === 'function') {
+                    initNavigation();
+                }
+            };
             document.body.appendChild(script);
             window.navigationScriptLoaded = true;
+        } else {
+            // Se lo script è già caricato, chiama direttamente initNavigation
+            if (typeof initNavigation === 'function') {
+                initNavigation();
+            }
         }
     }
 
