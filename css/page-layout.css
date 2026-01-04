@@ -98,13 +98,17 @@
 /* Header pagina */
 .page-header {
     text-align: center;
-	/*    margin-top: 50px;*/
-    margin-bottom: 50px;
-    padding: 40px 20px;
-    background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
-    color: white;
-    border-radius: 12px;
+	/*    margin-top: 50px;
+      padding: 40px 20px;*/
+	margin-bottom: 50px;
+	
+  
+    /*/background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
+	 border-radius: 12px;
     box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+	*/
+    color: #1e8449;
+   
 }
 
 .page-header h1 {
@@ -123,11 +127,11 @@
 
 /* Sezioni contenuto */
 .content-section {
-    background: white;
-    padding: 40px;
+  /*  background: white;
+     border-radius: 12px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.08);*/
+	padding: 40px;
     margin-bottom: 30px;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
     scroll-margin-top: 100px; /* Offset per sticky navbar (circa 60px di navbar + 40px di margine) */
 }
 
@@ -210,6 +214,7 @@
     border-radius: 12px;
     text-align: center;
     margin-top: 40px;
+	display: none;
 }
 
 .cta-section h3 {
