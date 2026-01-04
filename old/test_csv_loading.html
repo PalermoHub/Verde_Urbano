@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Caricamento CSV</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .success {
+            color: #2cc15f;
+            font-weight: bold;
+        }
+        .error {
+            color: #e74c3c;
+            font-weight: bold;
+        }
+        .warning {
+            color: #f39c12;
+            font-weight: bold;
+        }
+        pre {
+            background: #f8f8f8;
+            padding: 10px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+        #console-output {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 15px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 12px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        .log-entry {
+            margin: 5px 0;
+            padding: 2px 0;
+        }
+        .log-success { color: #4ec9b0; }
+        .log-error { color: #f48771; }
+        .log-warn { color: #dcdcaa; }
+        .log-info { color: #9cdcfe; }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test Caricamento Dati CSV</h1>
+
+    <div class="test-section">
+        <h2>📊 Risultati Test</h2>
+        <div id="test-results">
+            <p>⏳ Caricamento in corso...</p>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>🖥️ Console Output</h2>
+        <div id="console-output"></div>
+    </div>
+
+    <div class="test-section">
+        <h2>📋 Dettagli Dati Caricati</h2>
+        <div id="data-details"></div>
+    </div>
+
+    <script src="js/02_csv_loader.js"></script>
+    <script src="js/03_global_variables.js"></script>
+
+    <script>
+        // Intercetta console.log
+        const consoleOutput = document.getElementById('console-output');
+        const originalLog = console.log;
+        const originalWarn = console.warn;
+        const originalError = console.error;
+
+        function addLogEntry(message, type = 'info') {
+            const entry = document.createElement('div');
+            entry.className = `log-entry log-${type}`;
+            entry.textContent = message;
+            consoleOutput.appendChild(entry);
+            consoleOutput.scrollTop = consoleOutput.scrollHeight;
+        }
+
+        console.log = function(...args) {
+            originalLog.apply(console, args);
+            addLogEntry(args.join(' '), 'info');
+        };
+
+        console.warn = function(...args) {
+            originalWarn.apply(console, args);
+            addLogEntry(args.join(' '), 'warn');
+        };
+
+        console.error = function(...args) {
+            originalError.apply(console, args);
+            addLogEntry(args.join(' '), 'error');
+        };
+
+        // Test caricamento
+        async function runTests() {
+            const resultsDiv = document.getElementById('test-results');
+            const detailsDiv = document.getElementById('data-details');
+            let html = '';
+
+            try {
+                // Test 1: Caricamento CSV principale
+                html += '<h3>Test 1: Caricamento CSV Principale</h3>';
+                const mainLoaded = await loadCSVData();
+
+                if (mainLoaded && rawGeoJson) {
+                    html += `<p class="success">✅ CSV caricato con successo</p>`;
+                    html += `<p>📊 Numero di alberi: ${rawGeoJson.features.length}</p>`;
+
+                    // Mostra primo albero come esempio
+                    if (rawGeoJson.features.length > 0) {
+                        const firstTree = rawGeoJson.features[0];
+                        html += '<h4>Esempio primo albero:</h4>';
+                        html += `<pre>${JSON.stringify(firstTree, null, 2)}</pre>`;
+                    }
+                } else {
+                    html += '<p class="error">❌ Errore nel caricamento CSV</p>';
+                }
+
+                // Test 2: Caricamento foglie stagionali
+                html += '<h3>Test 2: Caricamento Foglie Stagionali</h3>';
+                const leavesLoaded = await loadSeasonalLeavesData();
+
+                if (leavesLoaded && seasonalLeavesData) {
+                    html += `<p class="success">✅ Dati foglie caricati con successo</p>`;
+                    html += `<p>📊 Numero di vie: ${Object.keys(seasonalLeavesData).length}</p>`;
+
+                    // Mostra prima via come esempio
+                    const firstStreet = Object.keys(seasonalLeavesData)[0];
+                    if (firstStreet) {
+                        html += `<h4>Esempio dati per "${firstStreet}":</h4>`;
+                        html += `<pre>${JSON.stringify(seasonalLeavesData[firstStreet], null, 2)}</pre>`;
+                    }
+                } else {
+                    html += '<p class="warning">⚠️ Dati foglie non caricati</p>';
+                }
+
+                // Test 3: Verifica campi critici
+                html += '<h3>Test 3: Verifica Campi Critici</h3>';
+                if (rawGeoJson && rawGeoJson.features.length > 0) {
+                    const sample = rawGeoJson.features[0].properties;
+                    const criticalFields = ['ID Pianta', 'Specie', 'Lat', 'Log', '# Primavera', '# Estate', '# Autunno', '# Inverno'];
+
+                    let allFieldsPresent = true;
+                    html += '<ul>';
+                    criticalFields.forEach(field => {
+                        const present = sample.hasOwnProperty(field);
+                        allFieldsPresent = allFieldsPresent && present;
+                        html += `<li class="${present ? 'success' : 'error'}">${present ? '✅' : '❌'} ${field}: ${present ? sample[field] : 'MANCANTE'}</li>`;
+                    });
+                    html += '</ul>';
+
+                    if (allFieldsPresent) {
+                        html += '<p class="success">✅ Tutti i campi critici sono presenti</p>';
+                    } else {
+                        html += '<p class="error">❌ Alcuni campi critici sono mancanti</p>';
+                    }
+                }
+
+                resultsDiv.innerHTML = html;
+
+                // Dettagli aggiuntivi
+                let detailsHtml = '<h3>Proprietà disponibili:</h3>';
+                if (rawGeoJson && rawGeoJson.features.length > 0) {
+                    const props = Object.keys(rawGeoJson.features[0].properties);
+                    detailsHtml += `<p>Totale proprietà: ${props.length}</p>`;
+                    detailsHtml += '<pre>' + props.join('\n') + '</pre>';
+                }
+                detailsDiv.innerHTML = detailsHtml;
+
+            } catch (error) {
+                html += `<p class="error">❌ Errore durante i test: ${error.message}</p>`;
+                html += `<pre>${error.stack}</pre>`;
+                resultsDiv.innerHTML = html;
+            }
+        }
+
+        // Avvia i test al caricamento della pagina
+        window.addEventListener('DOMContentLoaded', runTests);
+    </script>
+</body>
+</html>

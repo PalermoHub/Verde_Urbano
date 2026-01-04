@@ -215,6 +215,10 @@ function applyFilters() {
 // Aggiorna il titolo della pagina con l'Odonimo selezionato
 function updatePageTitle(odonimo) {
     const titleElement = document.getElementById('pageTitle');
+    if (!titleElement) {
+        console.warn('⚠️ Elemento pageTitle non trovato');
+        return;
+    }
     if (odonimo) {
         titleElement.innerHTML = `<i class="fas fa-tree"></i> Rigenerazione del Verde Urbano di Palermo: Riqualificazione Stradale e Arredo della Città | ${odonimo}`;
     } else {
@@ -223,34 +227,36 @@ function updatePageTitle(odonimo) {
 }
 
 function updateFilterInfo() {
-    const specieValue = document.getElementById('specieFilter').value;
-    const cpcValue = document.getElementById('cpcFilter').value;
-    const siteValue = document.getElementById('siteFilter').value;
-    const odonimoValue = document.getElementById('odonimoFilter').value;
-    const uplValue = document.getElementById('uplFilter').value;
-    const quartiereValue = document.getElementById('quartiereFilter').value;
-    const circoscrizioneValue = document.getElementById('circoscrizioneFilter').value;
-    const puliziaValue = document.getElementById('puliziaFilter').value;
-    const faseValue = document.getElementById('faseFilter').value;
+    // Helper per accedere in sicurezza agli elementi
+    const safeGetElement = (id) => document.getElementById(id);
+    const safeGetValue = (id) => {
+        const elem = safeGetElement(id);
+        return elem ? elem.value : '';
+    };
+    const safeSetText = (id, text) => {
+        const elem = safeGetElement(id);
+        if (elem) elem.textContent = text;
+    };
 
-    document.getElementById('specieInfo').textContent =
-        specieValue ? `${filteredTrees.filter(t => t.specie === specieValue).length}` : '';
-    document.getElementById('cpcInfo').textContent =
-        cpcValue ? `${filteredTrees.filter(t => t.cpc === cpcValue).length}` : '';
-    document.getElementById('siteInfo').textContent =
-        siteValue ? `${filteredTrees.filter(t => t.sito === siteValue).length}` : '';
-    document.getElementById('odonimoInfo').textContent =
-        odonimoValue ? `${filteredTrees.filter(t => t.odonimo === odonimoValue).length}` : '';
-    document.getElementById('uplInfo').textContent =
-        uplValue ? `${filteredTrees.filter(t => t.upl === uplValue).length}` : '';
-    document.getElementById('quartiereInfo').textContent =
-        quartiereValue ? `${filteredTrees.filter(t => t.quartiere === quartiereValue).length}` : '';
-    document.getElementById('circoscrizioneInfo').textContent =
-        circoscrizioneValue ? `${filteredTrees.filter(t => t.circoscrizione === circoscrizioneValue).length}` : '';
-    document.getElementById('puliziaInfo').textContent =
-        puliziaValue ? `${filteredTrees.length} alberi` : '';
-    document.getElementById('faseInfo').textContent =
-        faseValue ? `${filteredTrees.length} alberi` : '';
+    const specieValue = safeGetValue('specieFilter');
+    const cpcValue = safeGetValue('cpcFilter');
+    const siteValue = safeGetValue('siteFilter');
+    const odonimoValue = safeGetValue('odonimoFilter');
+    const uplValue = safeGetValue('uplFilter');
+    const quartiereValue = safeGetValue('quartiereFilter');
+    const circoscrizioneValue = safeGetValue('circoscrizioneFilter');
+    const puliziaValue = safeGetValue('puliziaFilter');
+    const faseValue = safeGetValue('faseFilter');
+
+    safeSetText('specieInfo', specieValue ? `${filteredTrees.filter(t => t.specie === specieValue).length}` : '');
+    safeSetText('cpcInfo', cpcValue ? `${filteredTrees.filter(t => t.cpc === cpcValue).length}` : '');
+    safeSetText('siteInfo', siteValue ? `${filteredTrees.filter(t => t.sito === siteValue).length}` : '');
+    safeSetText('odonimoInfo', odonimoValue ? `${filteredTrees.filter(t => t.odonimo === odonimoValue).length}` : '');
+    safeSetText('uplInfo', uplValue ? `${filteredTrees.filter(t => t.upl === uplValue).length}` : '');
+    safeSetText('quartiereInfo', quartiereValue ? `${filteredTrees.filter(t => t.quartiere === quartiereValue).length}` : '');
+    safeSetText('circoscrizioneInfo', circoscrizioneValue ? `${filteredTrees.filter(t => t.circoscrizione === circoscrizioneValue).length}` : '');
+    safeSetText('puliziaInfo', puliziaValue ? `${filteredTrees.length} alberi` : '');
+    safeSetText('faseInfo', faseValue ? `${filteredTrees.length} alberi` : '');
 }
 
 function updateFilterCounts() {

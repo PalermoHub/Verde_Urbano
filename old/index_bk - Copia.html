@@ -12,12 +12,14 @@
 	    <link rel="shortcut icon" href="favicon.ico"/> 
     <link rel="icon" href="favicon.png" type="image/png"/> 
 	
-		<link rel="stylesheet" href="css/css_base.css">
+	<link rel="stylesheet" href="css/css_base.css">
     <link rel="stylesheet" href="css/verde_urbano.css">
-	<link rel="stylesheet" href="css/navigation.css">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/page-layout.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 	
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -53,6 +55,7 @@
    
 </head>
 <body>
+    <header>
 <!-- DEMO Stamp -->
     <div class="demo-stamp">DEMO!</div>
 
@@ -83,12 +86,11 @@
 
             </div>
         </div>
-    </header>
-
+  
     <!-- Banner Progetto - SEMPRE VISIBILE -->
     <div class="project-banner" id="projectBanner">
         <div class="banner">  
-<h2><img src="img/trees.svg" alt="" height="36"/></i> Rigenerazione del Verde Urbano di Palermo: Riqualificazione Stradale e Arredo della Città  -
+            <h2 id="pageTitle"><i class="fas fa-tree"></i>  -
                 <a href="https://www.opencup.gov.it//portale/it/web/opencup/home/progetto/-/cup/D71G23000050001"
                    target="_blank" title="Visualizza su OpenCUP">
                     Accordo Quadro - CUP D71G23000050001
@@ -99,8 +101,7 @@
                 </button>
         </div>
     </div>
-
-    <!-- LIVELLO 3: NAVIGAZIONE - SEMPRE VISIBILE -->
+	    <!-- LIVELLO 3: NAVIGAZIONE - SEMPRE VISIBILE -->
     <div class="nav-header" id="navHeader">
         <div class="nav-container">
             <nav>
@@ -118,9 +119,9 @@
             </nav>
         </div>
     </div>
-    
-	
-	    <!-- Include Modale Info da file esterno -->
+	   </header>
+   
+   	    <!-- Include Modale Info da file esterno -->
     <script>
         fetch('includes/info-modal.html?v=' + Date.now())
             .then(response => response.text())
@@ -133,8 +134,7 @@
             })
             .catch(error => console.error('Errore caricamento modale:', error));
     </script>
-
-
+   
     <div class="container">
         <!-- Sidebar Sinistra: Filtri -->
         <div class="sidebar sidebar-left">
@@ -454,7 +454,7 @@
 <script src="js/13_reports.js"></script>
 <script src="js/14_active_filters.js"></script>
 
-    <!-- Include Footer da file esterno -->
+  <!-- Include Footer da file esterno -->
     <script>
         fetch('includes/footer.html?v=' + Date.now())
             .then(response => response.text())
@@ -464,38 +464,12 @@
             .catch(error => console.error('Errore caricamento footer:', error));
     </script>
 
-    <!-- Script per evidenziare la voce attiva nella sidebar -->
-    <script>
-    (function() {
-        const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
-
-        function highlightActiveSection() {
-            let current = '';
-            const sections = document.querySelectorAll('.content-section[id]');
-
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (window.pageYOffset >= sectionTop - 100) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            sidebarLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === '#' + current) {
-                    link.classList.add('active');
-                }
-            });
-        }
-
-        window.addEventListener('scroll', highlightActiveSection);
-        window.addEventListener('load', highlightActiveSection);
-    })();
-    </script>
-
     <!-- Script per sticky header -->
     <script src="js/header.js"></script>
-
+	
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Torna su"><i class="fas fa-arrow-up"></i></button>
+    <style>.back-to-top{position:fixed;bottom:20px;right:30px;width:50px;height:50px;background:linear-gradient(135deg,#27ae60 0%,#1e8449 100%);color:white!important;border:none;border-radius:50%;cursor:pointer;font-size:20px;box-shadow:0 4px 12px rgba(0,0,0,0.3);opacity:0;visibility:hidden;transition:all .3s ease;z-index:9999;display:flex;align-items:center;justify-content:center}.back-to-top.show{opacity:1;visibility:visible}.back-to-top:hover{background:#ff9900!important;transform:translateY(-5px);box-shadow:0 6px 16px rgba(0,0,0,0.4)}.back-to-top:active{transform:translateY(-2px)}.back-to-top i{color:white!important}@media (max-width:768px){.back-to-top{bottom:20px;right:20px;width:45px;height:45px;font-size:18px}}</style>
+    <script>(function(){const a=document.getElementById('backToTop');if(!a)return;function b(){window.pageYOffset>500?a.classList.add('show'):a.classList.remove('show')}window.addEventListener('scroll',b);b();a.addEventListener('click',function(c){c.preventDefault();window.scrollTo({top:0,behavior:'smooth'})})})();</script>
 </body>
 </html>

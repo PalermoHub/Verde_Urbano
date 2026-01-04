@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Header 3 Livelli - Verde Urbano Palermo</title>
+
+    <!-- Font Titillium Web -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <link rel="stylesheet" href="css/css_base.css">
+
+</head>
+<body>
+
+    <!-- DEMO Stamp -->
+    <div class="demo-stamp">DEMO!</div>
+
+    <!-- LIVELLO 1: SLIM HEADER (Blu) -->
+    <div class="slim-header" id="slimHeader">
+        <div class="slim-container">
+            <div class="slim-left">
+                <a href="https://www.comune.palermo.it/" target="_blank"> <img src="img/logo_pa_gb.svg" alt="Logo Comune di Palermo" class="header-logo"></a>
+            </div>
+        <!--    <div class="slim-right">
+                <a href="#">ITA</a>
+                <a href="#"><i class="fas fa-user"></i> Accedi all'area personale</a>
+            </div>  -->
+        </div>
+    </div>
+
+    <!-- LIVELLO 2: HEADER CENTRALE (Verde con Logo) -->
+    <header class="main-header" id="mainHeader">
+        <div class="main-container">
+        <div class="logo-section" id="logoSection">
+             <!--       <img src="img/logo_pa_gb.svg" alt="Logo Comune di Palermo" class="header-logo"> -->
+                <div class="header-text">
+                    <h1>Area Politiche Ambientali, Transizione Ecologica e Rigenerazione del Verde</h1>
+                    <p></p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" title="Cerca"><i class="fas fa-search"></i></a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner Progetto -->
+    <div class="project-banner">
+	 <div class="banner">
+        <h2><i class="fas fa-tree"></i> Rigenerazione del Verde Urbano di Palermo: Riqualificazione Stradale e Arredo della Città - 
+           <a href="https://www.opencup.gov.it//portale/it/web/opencup/home/progetto/-/cup/D71G23000050001"
+               target="_blank" title="Visualizza su OpenCUP">
+                Accordo Quadro - CUP D71G23000050001
+            </a></h2>
+          </div>
+	 </div>
+
+    <!-- LIVELLO 3: NAVIGAZIONE (Bianco) -->
+    <div class="nav-header">
+        <div class="nav-container">
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="index.html" class="active"><i class="fas fa-map-location-dot"></i> Dashboard</a></li>
+                    <li><a href="il-progetto.html"><i class="fas fa-book-open"></i> Il Progetto</a></li>
+                    <li><a href="obiettivi.html"><i class="fas fa-bullseye"></i> Obiettivi e Finalità</a></li>
+                    <li><a href="fasi.html"><i class="fas fa-tasks"></i> Fasi dell'Intervento</a></li>
+                    <li><a href="potatura.html"><i class="fas fa-scissors"></i> Tipologie di Potatura</a></li>
+                    <li><a href="radicali.html"><i class="fas fa-code-branch"></i> Gestione Apparati Radicali</a></li>
+                    <li><a href="impianti.html"><i class="fas fa-tree"></i> Nuovi Impianti</a></li>
+                    <li><a href="sicurezza.html"><i class="fas fa-hard-hat"></i> Sicurezza e Cantiere</a></li>
+                    <li><a href="dati-economici.html"><i class="fas fa-euro-sign"></i> Dati Economici</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <!-- CONTENUTO PRINCIPALE -->
+    <main>
+        <div class="test-box">
+            <h3><i class="fas fa-check-circle"></i> Header a 3 Livelli Funzionante!</h3>
+            <p style="color: #666; font-size: 1.125rem; margin-top: 1rem;">
+                <strong>Scrolla la pagina verso il basso</strong> per vedere il logo scomparire<br>
+                e l'header diventare sticky e compatto.
+            </p>
+        </div>
+
+        <div class="content-placeholder">
+            <h3 style="color: #27ae60; margin-bottom: 1rem;">Area Contenuto</h3>
+            <p style="color: #666; line-height: 1.6;">
+                Questa è l'area bianca dove andrà il contenuto della pagina.<br>
+                L'header rimane fisso in alto quando scrolli.
+            </p>
+        </div>
+
+        <!-- Contenuto di riempimento per testare lo scroll -->
+        <div style="height: 100vh; background: white; padding: 2rem; border-radius: 8px;">
+            <h3 style="color: #27ae60;">Continua a scrollare...</h3>
+            <p style="color: #666; margin-top: 1rem;">
+                Nota come l'header si compatta e il logo scompare quando scrolli verso il basso.
+            </p>
+        </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-container">
+            <div class="footer-grid">
+
+                <!-- Colonna 1: Contatti -->
+                <div class="footer-section">
+                    <h4>Contatti</h4>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> Piazza Pretoria, 1 - 90133 Palermo</li>
+                        <li><i class="fas fa-envelope"></i> protocollo@cert.comune.palermo.it</li>
+                        <li><i class="fas fa-phone"></i> +39 091 740 1111</li>
+                        <li><i class="fas fa-id-card"></i> CF/P.IVA: 00246790488</li>
+                    </ul>
+                </div>
+
+                <!-- Colonna 2: Amministrazione -->
+                <div class="footer-section">
+                    <h4>Amministrazione</h4>
+                    <ul>
+                        <li><a href="#">Amministrazione Trasparente</a></li>
+                        <li><a href="#">Albo Pretorio</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Note Legali</a></li>
+                        <li><a href="#">Dichiarazione Accessibilità</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonna 3: Servizi -->
+                <div class="footer-section">
+                    <h4>Servizi</h4>
+                    <ul>
+                        <li><a href="#">Prenotazione Appuntamento</a></li>
+                        <li><a href="#">Richiesta Assistenza</a></li>
+                        <li><a href="#">Segnalazione Disservizio</a></li>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Mappa del Sito</a></li>
+                    </ul>
+                </div>
+
+                <!-- Colonna 4: Progetto Verde Urbano -->
+                <div class="footer-section">
+                    <h4>Progetto Verde Urbano</h4>
+                    <ul>
+                        <li><a href="il-progetto.html">Il Progetto</a></li>
+                        <li><a href="obiettivi.html">Obiettivi</a></li>
+                        <li><a href="dati-economici.html">Dati Economici</a></li>
+                        <li><a href="https://www.opencup.gov.it//portale/it/web/opencup/home/progetto/-/cup/D71G23000050001" target="_blank">CUP D71G23000050001</a></li>
+                    </ul>
+                    <div class="footer-social">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="Instagram"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Footer Bottom -->
+            <div class="footer-bottom">
+                <p>
+                    <strong>Natura della Demo</strong> - Questa è una DEMO prototipale che mostra i dati di monitoraggio relativi al Progetto di riqualificazione e rigenerazione delle strade e delle aree verdi della città di Palermo, volto al miglioramento della qualità urbana e della sostenibilità ambientale.<br>
+                  <!--  Area delle Politiche Ambientali, Transizione Ecologica e Rigenerazione del Verde -->
+                </p>
+                <p style="margin-top: 1rem; font-size: 0.75rem;">
+                  by  @gbvitrano
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT per lo scroll dinamico e menu mobile -->
+    <script>
+        const slimHeader = document.getElementById('slimHeader');
+        const mainHeader = document.getElementById('mainHeader');
+        const logoSection = document.getElementById('logoSection');
+        const navHeader = document.querySelector('.nav-header');
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        // Scroll handler per header compatto
+        window.addEventListener('scroll', function() {
+            const scrollPosition = window.scrollY;
+
+            if (scrollPosition > 50) {
+                // Nascondi livello 1 (slim header)
+                slimHeader.classList.add('hidden');
+
+                // Nascondi livello 2 (main header) completamente
+                mainHeader.classList.add('hidden');
+
+                // Sposta il livello 3 (navigazione) sotto il banner del progetto
+                navHeader.classList.add('scrolled');
+            } else {
+                // Mostra tutto
+                slimHeader.classList.remove('hidden');
+                mainHeader.classList.remove('hidden');
+                navHeader.classList.remove('scrolled');
+            }
+        });
+
+        // Toggle menu mobile (hamburger)
+        menuToggle.addEventListener('click', function() {
+            navMenu.classList.toggle('open');
+
+            // Cambia icona hamburger/close
+            const icon = this.querySelector('i');
+            if (navMenu.classList.contains('open')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Chiudi menu quando si clicca su un link
+        const navLinks = navMenu.querySelectorAll('a');
+        navLinks.forEach(link => {
+            link.addEventListener('click', function() {
+                if (window.innerWidth <= 768) {
+                    navMenu.classList.remove('open');
+                    const icon = menuToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

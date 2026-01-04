@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Semplice Caricamento</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; background: #f5f5f5; }
+        .result { background: white; padding: 20px; margin: 10px 0; border-radius: 8px; }
+        .success { color: #2cc15f; font-weight: bold; }
+        .error { color: #e74c3c; font-weight: bold; }
+    </style>
+</head>
+<body>
+    <h1>Test Caricamento CSV (Versione Semplificata)</h1>
+    <div id="results"></div>
+
+    <script src="js/02_csv_loader.js"></script>
+    <script src="js/03_global_variables.js"></script>
+    <script src="js/06_data_loader.js"></script>
+
+    <script>
+        async function test() {
+            const resultsDiv = document.getElementById('results');
+            let html = '<div class="result">';
+
+            try {
+                // Passo 1: Carica CSV
+                html += '<h2>Passo 1: Caricamento CSV</h2>';
+                const loaded = await loadCSVData();
+
+                if (loaded && rawGeoJson) {
+                    html += `<p class="success">✅ CSV caricato: ${rawGeoJson.features.length} features</p>`;
+                } else {
+                    html += '<p class="error">❌ Errore nel caricamento CSV</p>';
+                    resultsDiv.innerHTML = html + '</div>';
+                    return;
+                }
+
+                // Passo 2: Carica foglie
+                html += '<h2>Passo 2: Caricamento Foglie Stagionali</h2>';
+                const leavesLoaded = await loadSeasonalLeavesData();
+                if (leavesLoaded) {
+                    html += `<p class="success">✅ Foglie caricate: ${Object.keys(seasonalLeavesData).length} vie</p>`;
+                } else {
+                    html += '<p class="error">⚠️ Foglie non caricate (opzionale)</p>';
+                }
+
+                // Passo 3: Processa dati
+                html += '<h2>Passo 3: Processamento Dati</h2>';
+                loadData();
+
+                if (allTrees.length > 0) {
+                    html += `<p class="success">✅ Alberi processati: ${allTrees.length}</p>`;
+                    html += '<h3>Primo albero:</h3>';
+                    html += '<pre>' + JSON.stringify(allTrees[0], null, 2) + '</pre>';
+                } else {
+                    html += '<p class="error">❌ Nessun albero processato</p>';
+                }
+
+            } catch (error) {
+                html += `<p class="error">❌ Errore: ${error.message}</p>`;
+                html += `<pre>${error.stack}</pre>`;
+            }
+
+            html += '</div>';
+            resultsDiv.innerHTML = html;
+        }
+
+        window.addEventListener('DOMContentLoaded', test);
+    </script>
+</body>
+</html>

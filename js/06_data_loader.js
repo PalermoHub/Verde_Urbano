@@ -1,6 +1,12 @@
 // ===== CARICAMENTO DATI =====
 function loadData() {
     try {
+        // Verifica che rawGeoJson sia stato caricato
+        if (!rawGeoJson || !rawGeoJson.features) {
+            console.error('❌ rawGeoJson non disponibile');
+            return;
+        }
+
         rawGeoJson.features.forEach(feature => {
             const props = feature.properties;
             const coords = feature.geometry.coordinates;

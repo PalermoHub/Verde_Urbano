@@ -282,6 +282,7 @@
 
     .sidebar-nav {
         padding: 20px;
+		        display: none;
     }
 
     .sidebar-nav h3 {

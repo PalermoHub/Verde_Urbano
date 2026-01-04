@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Debug Headers CSV</title>
+    <style>
+        body { font-family: monospace; padding: 20px; }
+        .header { padding: 5px; margin: 2px; background: #f0f0f0; }
+        .empty { background: #ffcccc; }
+    </style>
+</head>
+<body>
+    <h1>Debug Headers CSV</h1>
+    <div id="output"></div>
+
+    <script>
+        fetch('dati/17_query_web.csv')
+            .then(r => r.text())
+            .then(text => {
+                const firstLine = text.split('\n')[0];
+                const headers = firstLine.split(',');
+
+                let html = '<h2>Headers trovati (' + headers.length + '):</h2>';
+                headers.forEach((h, i) => {
+                    const trimmed = h.trim();
+                    const isEmpty = trimmed === '';
+                    html += `<div class="header ${isEmpty ? 'empty' : ''}">`;
+                    html += `[${i}] "${h}" → trimmed: "${trimmed}" → isEmpty: ${isEmpty}`;
+                    html += `</div>`;
+                });
+
+                document.getElementById('output').innerHTML = html;
+
+                // Cerca Lat e Log
+                const latIndex = headers.findIndex(h => h.trim() === 'Lat');
+                const logIndex = headers.findIndex(h => h.trim() === 'Log');
+
+                html += `<h2>Ricerca campi:</h2>`;
+                html += `<p>Lat trovato all'indice: ${latIndex}</p>`;
+                html += `<p>Log trovato all'indice: ${logIndex}</p>`;
+
+                document.getElementById('output').innerHTML = html;
+            });
+    </script>
+</body>
+</html>

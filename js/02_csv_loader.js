@@ -4,7 +4,16 @@ let rawGeoJson = null;
 // Funzione per parsare CSV
 function parseCSV(text) {
     const lines = text.split('\n');
-    const headers = lines[0].split(',').map(h => h.trim());
+    const rawHeaders = lines[0].split(',').map(h => h.trim());
+
+    // Mappa gli indici degli header non vuoti
+    const headerMap = [];
+    rawHeaders.forEach((header, idx) => {
+        if (header !== '') {
+            headerMap.push({ name: header, index: idx });
+        }
+    });
+
     const data = [];
 
     for (let i = 1; i < lines.length; i++) {
@@ -27,8 +36,8 @@ function parseCSV(text) {
         values.push(current.trim());
 
         const row = {};
-        headers.forEach((header, idx) => {
-            row[header] = values[idx] || '';
+        headerMap.forEach(header => {
+            row[header.name] = values[header.index] || '';
         });
         data.push(row);
     }
@@ -41,15 +50,16 @@ async function loadSeasonalLeavesData() {
         console.log('📥 Caricamento dati foglie stagionali...');
 
         let csvText;
+        const cacheBuster = '?t=' + new Date().getTime();
         try {
-            const response = await fetch('dati/16_tot_foglie.csv');
+            const response = await fetch('dati/16_tot_foglie.csv' + cacheBuster);
             if (!response.ok) throw new Error('Fetch fallito');
             csvText = await response.text();
         } catch (fetchError) {
             console.warn('⚠️ Fetch bloccato (CORS), uso XMLHttpRequest...');
             csvText = await new Promise((resolve, reject) => {
                 const xhr = new XMLHttpRequest();
-                xhr.open('GET', 'dati/16_tot_foglie.csv', true);
+                xhr.open('GET', 'dati/16_tot_foglie.csv' + cacheBuster, true);
                 xhr.onload = () => {
                     if (xhr.status === 200 || xhr.status === 0) {
                         resolve(xhr.responseText);
@@ -103,8 +113,9 @@ async function loadCSVData() {
 
         // Prova prima con fetch, poi fallback a XMLHttpRequest
         let csvText;
+        const cacheBuster = '?t=' + new Date().getTime();
         try {
-            const response = await fetch('dati/17_query_web.csv');
+            const response = await fetch('dati/17_query_web.csv' + cacheBuster);
             if (!response.ok) throw new Error('Fetch fallito');
             csvText = await response.text();
         } catch (fetchError) {
@@ -112,7 +123,7 @@ async function loadCSVData() {
             // Fallback per file:// protocol
             csvText = await new Promise((resolve, reject) => {
                 const xhr = new XMLHttpRequest();
-                xhr.open('GET', 'dati/17_query_web.csv', true);
+                xhr.open('GET', 'dati/17_query_web.csv' + cacheBuster, true);
                 xhr.onload = () => {
                     if (xhr.status === 200 || xhr.status === 0) {
                         resolve(xhr.responseText);
@@ -126,6 +137,15 @@ async function loadCSVData() {
         }
 
         const csvData = parseCSV(csvText);
+        console.log(`📊 Righe CSV parsate: ${csvData.length}`);
+
+        // Debug: mostra i campi del primo albero
+        if (csvData.length > 0) {
+            const firstRow = csvData[0];
+            console.log('🔍 Campi primo albero:', Object.keys(firstRow));
+            console.log('🔍 Lat:', firstRow['Lat']);
+            console.log('🔍 Log:', firstRow['Log']);
+        }
 
         const features = [];
         csvData.forEach(row => {
@@ -134,7 +154,10 @@ async function loadCSVData() {
             const lat = parseFloat(row['Lat']);
             const lon = parseFloat(row['Log']);
 
-            if (isNaN(lat) || isNaN(lon)) return;
+            if (isNaN(lat) || isNaN(lon)) {
+                console.warn(`⚠️ Coordinate invalide per albero ${row['ID Pianta']}`);
+                return;
+            }
 
             features.push({
                 type: 'Feature',

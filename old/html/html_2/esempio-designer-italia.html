@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rigenerazione del Verde Urbano - Comune di Palermo</title>
+    <meta name="description" content="Progetto di riqualificazione e rigenerazione delle strade e delle aree verdi della città di Palermo">
+    <meta name="author" content="Giovan Battista Vitrano">
+
+    <!-- Favicons -->
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link rel="icon" href="favicon.png" type="image/png"/>
+
+    <!-- Font Titillium Web (obbligatorio per Designer Italia) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Bootstrap Italia CSS (v2.17.0) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-italia@2.17.0/dist/css/bootstrap-italia.min.css">
+
+    <!-- FontAwesome per le icone (temporaneo) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- CSS Personalizzato Designer Italia -->
+    <link rel="stylesheet" href="css/designer-italia-custom.css">
+
+    <!-- CSS originale del progetto (opzionale) -->
+    <link rel="stylesheet" href="css/verde_urbano.css">
+
+    <style>
+        /* Stili temporanei per il contenuto della pagina di esempio */
+        body {
+            font-family: 'Titillium Web', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .page-content {
+            min-height: 60vh;
+            padding: 3rem 0;
+            background-color: #F5F6F7;
+        }
+
+        .content-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .content-section h1 {
+            color: #17324D;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .content-section h2 {
+            color: #0066CC;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .content-section p {
+            color: #5B6F82;
+            line-height: 1.6;
+            font-size: 1rem;
+        }
+
+        .alert-info {
+            background-color: #E6F2FF;
+            border-left: 4px solid #0066CC;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+        }
+
+        .alert-info h3 {
+            color: #0066CC;
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin: 0 0 0.5rem 0;
+        }
+
+        .alert-info p {
+            margin: 0;
+            color: #17324D;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .feature-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid #D9DADB;
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+        }
+
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+
+        .feature-list i {
+            color: #008055;
+            margin-top: 0.25rem;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Include Header da file esterno -->
+    <div id="header-placeholder"></div>
+    <script>
+        fetch('includes/header.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('header-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Errore caricamento header:', error));
+    </script>
+
+    <!-- Contenuto principale della pagina -->
+    <main class="page-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="content-section">
+                        <h1><i class="fas fa-tree"></i> Esempio di Pagina con Header e Footer Designer Italia</h1>
+
+                        <p>
+                            Questa pagina dimostra l'implementazione di <strong>Header</strong> e <strong>Footer</strong>
+                            conformi alle linee guida di <strong>Designer Italia</strong> per i siti web dei Comuni italiani.
+                        </p>
+
+                        <div class="alert-info">
+                            <h3><i class="fas fa-info-circle"></i> Conformità alle Linee Guida</h3>
+                            <p>
+                                Il design è conforme alle linee guida AgID e ai requisiti previsti dal PNRR
+                                per la digitalizzazione della Pubblica Amministrazione.
+                            </p>
+                        </div>
+
+                        <h2>Caratteristiche dell'Header</h2>
+                        <p>L'header è strutturato in tre livelli come richiesto dalle linee guida:</p>
+
+                        <ul class="feature-list">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span><strong>Slim Header:</strong> Contiene il collegamento alla Regione Siciliana,
+                                selezione lingua e accesso all'area personale</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span><strong>Header Centrale:</strong> Logo del Comune, denominazione dell'ente,
+                                collegamenti social e funzione di ricerca</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span><strong>Header di Navigazione:</strong> Menu principale con le sezioni
+                                del sito, responsive e accessibile</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span><strong>Banner Progetto:</strong> Titolo del progetto con link al CUP OpenCUP</span>
+                            </li>
+                        </ul>
+
+                        <h2>Caratteristiche del Footer</h2>
+                        <p>Il footer include tutte le informazioni obbligatorie richieste dalla normativa:</p>
+
+                        <ul class="feature-list">
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span><strong>Informazioni di contatto:</strong> Indirizzo, PEC, telefono,
+                                codice fiscale e P.IVA</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span><strong>Link normativi obbligatori:</strong> Amministrazione Trasparente,
+                                Privacy, Note Legali, Dichiarazione di Accessibilità</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span><strong>Servizi al cittadino:</strong> Prenotazione appuntamenti,
+                                assistenza, segnalazioni, FAQ</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span><strong>Social network:</strong> Collegamenti ai canali social ufficiali
+                                del Comune</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check-circle"></i>
+                                <span><strong>Credits e riferimenti PNRR:</strong> Informazioni sul progetto,
+                                Designer Italia, Bootstrap Italia</span>
+                            </li>
+                        </ul>
+
+                        <h2>Tecnologie Utilizzate</h2>
+                        <ul class="feature-list">
+                            <li>
+                                <i class="fas fa-code"></i>
+                                <span><strong>Bootstrap Italia:</strong> Framework CSS conforme alle linee guida</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-font"></i>
+                                <span><strong>Titillium Web:</strong> Font ufficiale per i siti della PA</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-universal-access"></i>
+                                <span><strong>Accessibilità WCAG 2.1:</strong> Conforme agli standard di accessibilità</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-mobile-alt"></i>
+                                <span><strong>Design Responsive:</strong> Ottimizzato per tutti i dispositivi</span>
+                            </li>
+                        </ul>
+
+                        <h2>File Creati</h2>
+                        <p>I seguenti file sono stati creati per implementare il design conforme a Designer Italia:</p>
+
+                        <ul class="feature-list">
+                            <li>
+                                <i class="fas fa-file-code"></i>
+                                <span><code>includes/header.html</code> - Header completo a tre livelli</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-file-code"></i>
+                                <span><code>includes/footer-designer-italia.html</code> - Footer conforme alle linee guida</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-file-code"></i>
+                                <span><code>css/designer-italia-custom.css</code> - Stili personalizzati conformi</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-file-code"></i>
+                                <span><code>esempio-designer-italia.html</code> - Questa pagina di esempio</span>
+                            </li>
+                        </ul>
+
+                        <div class="alert-info">
+                            <h3><i class="fas fa-download"></i> Bootstrap Italia</h3>
+                            <p>
+                                Per utilizzare pienamente le funzionalità, è necessario scaricare
+                                <strong>Bootstrap Italia</strong> da
+                                <a href="https://github.com/italia/bootstrap-italia/releases" target="_blank">
+                                    GitHub
+                                </a>
+                                e includere i file CSS e JavaScript nel progetto. Le icone SVG ufficiali
+                                sono incluse nel pacchetto Bootstrap Italia.
+                            </p>
+                        </div>
+
+                        <h2>Prossimi Passi</h2>
+                        <ol class="feature-list">
+                            <li>
+                                <i class="fas fa-download"></i>
+                                <span>Scaricare Bootstrap Italia dal repository ufficiale</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-cog"></i>
+                                <span>Integrare gli sprites SVG per le icone ufficiali</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-link"></i>
+                                <span>Aggiornare i link del footer con quelli effettivi del Comune</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-paint-brush"></i>
+                                <span>Personalizzare i colori mantenendo la conformità alle linee guida</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-check"></i>
+                                <span>Testare l'accessibilità con strumenti di validazione WCAG</span>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Include Footer da file esterno -->
+    <div id="footer-placeholder"></div>
+    <script>
+        fetch('includes/footer-designer-italia.html')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('footer-placeholder').innerHTML = data;
+            })
+            .catch(error => console.error('Errore caricamento footer:', error));
+    </script>
+
+</body>
+</html>
