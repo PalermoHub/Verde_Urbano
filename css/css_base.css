@@ -199,10 +199,13 @@
 
         /* Banner Progetto */
 		
-		.banner {  text-align: left;
+		.banner {  text-align: center;
 		      max-width: 1400px;
             margin: 0 auto;
 			padding: 0 20px;
+			display: flex;
+			align-items: center;
+			justify-content: left;
  			}
 		
         .project-banner {
@@ -221,6 +224,10 @@
             font-size: 1.2rem;
             font-weight: 600;
             margin-bottom: 0.25rem;
+			display: flex;
+			align-items: center;
+			justify-content: left;
+			gap: 0.5rem;
         }
 
         .project-banner p {
