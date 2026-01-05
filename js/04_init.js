@@ -24,6 +24,11 @@ document.addEventListener('DOMContentLoaded', async function() {
     loadData();
     console.log('✅ Step 3 completato - allTrees:', allTrees.length);
 
+    // Aggiorna il contatore del loader
+    if (window.updateTreeCount) {
+        window.updateTreeCount(allTrees.length);
+    }
+
     console.log('📥 Step 4: Popolamento filtri...');
     populateFilterSelects();
     console.log('✅ Step 4 completato');
@@ -37,4 +42,9 @@ document.addEventListener('DOMContentLoaded', async function() {
     console.log('✅ Step 6 completato - filteredTrees:', filteredTrees.length);
 
     console.log('✅ Inizializzazione completata');
+
+    // Segnala al loader che i dati sono completamente caricati
+    if (window.loaderDataLoaded) {
+        window.loaderDataLoaded();
+    }
 });

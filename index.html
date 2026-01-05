@@ -15,6 +15,7 @@
 	<link rel="stylesheet" href="css/css_base.css">
     <link rel="stylesheet" href="css/verde_urbano.css">
 	<link rel="stylesheet" href="css/search.css">
+	<link rel="stylesheet" href="css/image-popup.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -53,6 +54,22 @@
    
 </head>
 <body>
+<!-- Page Loader -->
+<div id="pageLoader" class="page-loader">
+    <div class="loader-spinner"></div>
+  <!--  <div class="loader-text">Ufficio autonomo gestione verde urbano, agricoltura urbana e rapporti con RESET</div>  -->
+    <div class="loader-counter" id="loaderCounter">
+        <i class="fas fa-tree"></i> Caricamento dati in corso...: <span id="treeCount">0</span> alberi
+    </div>
+    <div class="loader-details">
+        <p>
+            <i class="fas fa-file-import"></i> Elaborazione dati territoriali...<br>
+            <i class="fas fa-filter"></i> Inizializzazione controlli di ricerca dinamici...<br>
+            <i class="fas fa-chart-bar"></i> Preparazione sistema grafici dinamici...
+        </p>
+    </div>
+</div>
+
 <!-- DEMO Stamp -->
     <div class="demo-stamp">DEMO!</div>
 
@@ -513,6 +530,9 @@
 
     <!-- Script per sticky header -->
     <script src="js/header.js"></script>
+
+    <!-- Loader Script -->
+    <script src="js/loader.js"></script>
 
 </body>
 </html>
