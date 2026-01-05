@@ -155,7 +155,7 @@
         /* Quando scroll, il nav-header si posiziona sotto il banner del progetto */
         .nav-header.scrolled {
             top: var(--banner-height, 65px); /* Altezza dinamica del banner progetto sticky */
-            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            box-shadow: 5px 2px 5px rgba(0, 0, 0, 0.1);
 			z-index: 10001;
         }
 
