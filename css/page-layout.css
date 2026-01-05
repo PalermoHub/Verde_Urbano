@@ -77,16 +77,17 @@
 .sidebar-nav a:hover {
     background: #f8f9fa;
     color: #27ae60;
-    border-left-color: #27ae60;
-    padding-left: 16px;
-    font-weight: 600;
+font-weight: 600;
+   	/*  border-left-color: #27ae60;
+    padding-left: 16px;*/
+   
 }
 
 .sidebar-nav a.active {
     background: #e8f5e9;
     color: #27ae60;
     font-weight: 600;
-    border-left-color: #27ae60;
+    /*border-left-color: #27ae60;*/
 }
 
 .sidebar-nav a i {
@@ -140,7 +141,7 @@
     font-size: 28px;
     margin-bottom: 20px;
     padding-bottom: 15px;
-    border-bottom: 3px solid #27ae60;
+    border-bottom: 1px solid #27ae60;
     display: flex;
     align-items: center;
     gap: 12px;
@@ -180,7 +181,7 @@
 /* Box evidenziati */
 .highlight-box {
     background: #e8f5e9;
-    border-left: 5px solid #27ae60;
+    border-left: 3px solid #27ae60;
     padding: 20px;
     border-radius: 8px;
     margin: 25px 0;

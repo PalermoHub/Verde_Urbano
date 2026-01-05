@@ -183,7 +183,7 @@
             font-weight: 600;
             font-size: 0.75rem;
             transition: all 0.3s;
-            border-bottom: 6px solid transparent;
+            border-bottom: 5px solid transparent;
         }
 
         nav a:hover {
@@ -194,7 +194,7 @@
 
         nav a.active {
             color:  #ffffff;
-            border-bottom-color: #ff9900 !important;
+            border-bottom-color: #ff9900;
         }
 
         /* Banner Progetto */
@@ -334,6 +334,21 @@
             text-decoration: underline;
         }
 
+        .footer a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            font-size: 0.75rem;
+            transition: color 0.3s;
+        }
+
+        .footer a:hover {
+            color: white;
+            text-decoration: underline;
+        }
+
+        .footer-menu {  font-size: 0.75rem; color: white;
+            text-decoration: underline;
+              }
         .footer-section p {
             color: rgba(255, 255, 255, 0.85);
             font-size: 0.938rem;
@@ -363,6 +378,46 @@
             text-align: center;
             font-size: 0.875rem;
             color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* ===== MENU FOOTER SEMPLIFICATO ===== */
+        .footer-nav ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.5rem;
+            margin: 0 0 1.5rem 0;
+            padding: 0;
+        }
+
+        .footer-nav li {
+            margin: 0;
+        }
+
+        .footer-nav a {
+            display: inline-block;
+            padding: 0.5rem 0.75rem;
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.813rem;
+            transition: color 0.2s ease;
+            border: none;
+            border-bottom: none;
+        }
+
+        .footer-nav a:hover {
+            color: white;
+            background: transparent;
+            border-bottom: none;
+            text-decoration: underline;
+        }
+
+        .footer-nav a.active {
+            color: white;
+            border-bottom: none;
+            font-weight: 600;
         }
 
         /* RESPONSIVE */
@@ -413,4 +468,30 @@
             .footer-grid {
                 grid-template-columns: 1fr;
             }
+
+            /* Menu footer responsive */
+            .footer-nav ul {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.25rem;
+            }
+
+            .footer-nav a {
+                font-size: 0.75rem;
+                padding: 0.4rem 0.5rem;
+            }
         }
+		
+		
+.logo_santar {
+    background-size: contain;
+    width: auto;
+    height: 100px;
+    background-image: url(/img/s_rosalia_white.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    display: block;
+    overflow: hidden;
+    margin: 0 0 0 0;
+    transition: all 0.3s ease;
+}		
