@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Nascondimento Banner - Verde Urbano</title>
+    <link rel="stylesheet" href="css/css_base.css">
+    <link rel="stylesheet" href="css/verde_urbano.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .test-container {
+            padding: 20px;
+            margin-top: 20px;
+        }
+        .test-info {
+            background: #f0f9ff;
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .test-button {
+            display: inline-block;
+            padding: 15px 30px;
+            margin: 10px;
+            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .test-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(39, 174, 96, 0.3);
+        }
+    </style>
+</head>
+<body>
+    <!-- LIVELLO 1: SLIM HEADER -->
+    <div class="slim-header" id="slimHeader">
+        <div class="slim-container">
+            <div class="slim-left">
+                <a href="https://www.comune.palermo.it/" target="_blank">
+                    <img src="img/logo_pa_gb.svg" alt="Logo Comune di Palermo" class="header-logo">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- LIVELLO 2: HEADER CENTRALE -->
+    <header class="main-header" id="mainHeader">
+        <div class="main-container">
+            <div class="logo-section" id="logoSection">
+                <div class="header-text">
+                    <h1>Test Nascondimento Banner</h1>
+                </div>
+            </div>
+            <div class="header-actions">
+                <button class="search-trigger" id="searchBtn" title="Cerca nel progetto (Ctrl+K)">
+                    <i class="fas fa-search"></i>
+                    <span class="search-trigger-text">Cerca</span>
+                    <span class="search-trigger-shortcut">Ctrl+K</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner Progetto - QUESTO DEVE ESSERE NASCOSTO -->
+    <div class="project-banner" id="projectBanner" style="background: #f39c12; padding: 20px; text-align: center;">
+        <div class="banner">
+            <h2 style="color: white; margin: 0;">
+                <img src="img/trees.svg" alt="" height="36" style="vertical-align: middle;"/>
+                QUESTO BANNER DEVE SPARIRE QUANDO APRI LA RICERCA
+            </h2>
+        </div>
+    </div>
+
+    <!-- LIVELLO 3: NAVIGAZIONE -->
+    <div class="nav-header" id="navHeader">
+        <div class="nav-container">
+            <nav>
+                <ul>
+                    <li><a href="#"><i class="fas fa-flask"></i> Pagina di Test</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <div class="test-container">
+        <div class="test-info">
+            <h2><i class="fas fa-info-circle"></i> Test Nascondimento Project Banner</h2>
+            <p>Questa pagina serve per verificare che il banner del progetto venga nascosto correttamente quando apri la ricerca.</p>
+
+            <h3>Come Testare:</h3>
+            <ol>
+                <li><strong>Desktop:</strong> Il banner dovrebbe rimanere visibile quando apri la ricerca</li>
+                <li><strong>Mobile (larghezza &lt; 768px):</strong> Il banner dovrebbe scomparire quando apri la ricerca</li>
+                <li>Clicca il pulsante sotto o premi Ctrl+K per aprire la ricerca</li>
+                <li>Osserva se il banner arancione sopra sparisce (su mobile) o rimane (su desktop)</li>
+                <li>Chiudi la ricerca e verifica che il banner riappaia</li>
+            </ol>
+
+            <h3>Verifica Mobile:</h3>
+            <ul>
+                <li>Riduci la larghezza della finestra del browser sotto 768px</li>
+                <li>Oppure usa gli strumenti di sviluppo (F12) e seleziona la modalità mobile</li>
+                <li>Oppure apri la pagina su uno smartphone reale</li>
+            </ul>
+        </div>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <button class="test-button" onclick="openSearch()">
+                <i class="fas fa-search"></i> Apri Ricerca e Verifica
+            </button>
+            <br>
+            <small style="color: #666;">Oppure premi Ctrl+K / Cmd+K</small>
+        </div>
+
+        <div class="test-info" style="background: #fff3cd; border-left-color: #f39c12;">
+            <h3><i class="fas fa-check-circle"></i> Cosa Dovrebbe Succedere</h3>
+            <table style="width: 100%; border-collapse: collapse;">
+                <tr style="background: #f8f9fa;">
+                    <th style="padding: 10px; text-align: left; border: 1px solid #ddd;">Dispositivo</th>
+                    <th style="padding: 10px; text-align: left; border: 1px solid #ddd;">Comportamento Banner</th>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd;"><strong>Mobile</strong> (&lt; 768px)</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">
+                        ❌ Banner <strong>NASCOSTO</strong> quando ricerca aperta<br>
+                        ✅ Banner <strong>VISIBILE</strong> quando ricerca chiusa
+                    </td>
+                </tr>
+                <tr>
+                    <td style="padding: 10px; border: 1px solid #ddd;"><strong>Tablet/Desktop</strong> (≥ 768px)</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">
+                        ✅ Banner <strong>SEMPRE VISIBILE</strong>
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <div class="test-info" style="background: #d4edda; border-left-color: #27ae60;">
+            <h3><i class="fas fa-code"></i> Dettagli Tecnici</h3>
+            <p><strong>CSS utilizzato (solo mobile &lt; 768px):</strong></p>
+            <pre style="background: #2c3e50; color: #ecf0f1; padding: 15px; border-radius: 8px; overflow-x: auto;">
+body:has(.search-modal.active) .project-banner {
+    display: none !important;
+}</pre>
+
+            <p><strong>JavaScript utilizzato:</strong></p>
+            <pre style="background: #2c3e50; color: #ecf0f1; padding: 15px; border-radius: 8px; overflow-x: auto;">
+// Quando apri la ricerca
+const projectBanner = document.getElementById('projectBanner');
+if (projectBanner) {
+    projectBanner.style.display = 'none';
+}
+
+// Quando chiudi la ricerca
+if (projectBanner) {
+    projectBanner.style.display = '';
+}</pre>
+        </div>
+
+        <div style="text-align: center; margin: 30px 0;">
+            <a href="index.html" class="test-button" style="background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);">
+                <i class="fas fa-arrow-left"></i> Torna alla Dashboard
+            </a>
+            <a href="test-search.html" class="test-button" style="background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);">
+                <i class="fas fa-flask"></i> Test Completo Ricerca
+            </a>
+        </div>
+    </div>
+
+    <!-- Script -->
+    <script src="js/search-engine.js"></script>
+    <script src="js/search-ui.js"></script>
+
+    <script>
+        function openSearch() {
+            if (window.searchUI) {
+                window.searchUI.openSearch();
+            } else {
+                alert('Errore: SearchUI non è stato inizializzato');
+            }
+        }
+    </script>
+</body>
+</html>

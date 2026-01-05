@@ -27,7 +27,12 @@
       "Bash(do echo \"Aggiornando $file...\")",
       "Bash(powershell -ExecutionPolicy Bypass -File update-navigation-all.ps1)",
       "Bash(cat:*)",
-      "Bash(powershell -ExecutionPolicy Bypass -File update-banner.ps1:*)"
+      "Bash(powershell -ExecutionPolicy Bypass -File update-banner.ps1:*)",
+      "Bash(powershell -ExecutionPolicy Bypass -File update-search-integration.ps1)",
+      "Bash(powershell:*)",
+      "Bash(do echo \"Processing $file\")",
+      "Bash(for file in il-progetto.html obiettivi.html fasi.html potatura.html radicali.html impianti.html sicurezza.html dati-economici.html)",
+      "Bash(do grep -n \"Info button spostato nel banner\" \"$file\")"
     ]
   }
 }

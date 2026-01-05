@@ -98,7 +98,7 @@ hr {
 		
 	
         button {
-            flex: 1;
+            flex: 0;
             padding: 11px;
             background: #27ae60;
             color: white;

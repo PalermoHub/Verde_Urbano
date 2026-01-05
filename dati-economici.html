@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="css/verde_urbano.css">
     <link rel="stylesheet" href="css/navigation.css">
     <link rel="stylesheet" href="css/page-layout.css">
+    <link rel="stylesheet" href="css/search.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -61,7 +62,6 @@
                 <div class="info-icon" id="infoBtn" title="Informazioni su questa app">
                     <i class="fas fa-circle-info"></i>
                 </div>
-
             </div>
         </div>
     </header>
@@ -84,10 +84,16 @@
                     </a>
                 </span>
             </h2>
-           
-			 <button class="menu-toggle" id="menuToggle" aria-label="Menu">
-                <i class="fas fa-bars"></i>
+			<div class="banner-actions">
+                <button class="search-trigger" id="searchBtn" title="Cerca nel progetto (Ctrl+K)">
+                    <i class="fas fa-search"></i>
+                    <span class="search-trigger-text">Cerca</span>
+                    <span class="search-trigger-shortcut">Ctrl+K</span>
                 </button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
     </div>
 
@@ -349,6 +355,8 @@
     <button id="backToTop" class="back-to-top" aria-label="Torna su"><i class="fas fa-arrow-up"></i></button>
     <script>(function(){const a=document.getElementById('backToTop');if(!a)return;function b(){window.pageYOffset>500?a.classList.add('show'):a.classList.remove('show')}window.addEventListener('scroll',b);b();a.addEventListener('click',function(c){c.preventDefault();window.scrollTo({top:0,behavior:'smooth'})})})();</script>
 
+    <script src="js/search-engine.js"></script>
+    <script src="js/search-ui.js"></script>
     <script src="js/01_modal.js"></script>
 
     <!-- Script per evidenziare la voce attiva nella sidebar -->

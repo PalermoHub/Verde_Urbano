@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Sistema di Ricerca - Verde Urbano Palermo</title>
+    <link rel="stylesheet" href="css/css_base.css">
+    <link rel="stylesheet" href="css/verde_urbano.css">
+    <link rel="stylesheet" href="css/navigation.css">
+    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .test-container {
+            max-width: 800px;
+            margin: 100px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        .test-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .test-header h1 {
+            color: #27ae60;
+            margin-bottom: 10px;
+        }
+        .test-button {
+            display: block;
+            width: 100%;
+            padding: 20px;
+            margin: 15px 0;
+            background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .test-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(39, 174, 96, 0.3);
+        }
+        .test-button i {
+            margin-right: 10px;
+        }
+        .test-info {
+            background: #f0f9ff;
+            border-left: 4px solid #3498db;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .test-info h3 {
+            margin-top: 0;
+            color: #2c3e50;
+        }
+        .test-info ul {
+            margin: 10px 0;
+        }
+        .test-info li {
+            margin: 8px 0;
+        }
+        .test-status {
+            display: none;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+        }
+        .test-status.success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+            display: block;
+        }
+        .test-status.error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h1><i class="fas fa-flask"></i> Test Sistema di Ricerca Intelligente</h1>
+            <p>Verifica il funzionamento del motore di ricerca</p>
+        </div>
+
+        <div id="testStatus" class="test-status"></div>
+
+        <button class="test-button" onclick="openSearchModal()">
+            <i class="fas fa-search"></i>
+            Apri Ricerca (Click o Ctrl+K)
+        </button>
+
+        <div class="test-info">
+            <h3><i class="fas fa-info-circle"></i> Come Testare</h3>
+            <ul>
+                <li><strong>Clicca il pulsante sopra</strong> o premi <kbd>Ctrl+K</kbd> (o <kbd>Cmd+K</kbd> su Mac)</li>
+                <li><strong>Prova a cercare:</strong> "potatura", "VTA", "radicali", "sicurezza", "abbattimento"</li>
+                <li><strong>Verifica l'autocompletamento:</strong> digita "pot" e guarda i suggerimenti</li>
+                <li><strong>Naviga con la tastiera:</strong> usa frecce su/giù e Invio</li>
+                <li><strong>Testa su mobile:</strong> ridimensiona la finestra o usa un dispositivo mobile</li>
+            </ul>
+        </div>
+
+        <div class="test-info">
+            <h3><i class="fas fa-check-circle"></i> Funzionalità da Verificare</h3>
+            <ul>
+                <li>✓ Indicizzazione automatica delle pagine</li>
+                <li>✓ Ricerca in tempo reale mentre digiti</li>
+                <li>✓ Suggerimenti intelligenti</li>
+                <li>✓ Risultati ordinati per rilevanza</li>
+                <li>✓ Evidenziazione dei termini cercati</li>
+                <li>✓ Link diretti alle sezioni</li>
+                <li>✓ Responsive design (mobile-first)</li>
+                <li>✓ Accessibilità da tastiera</li>
+                <li>✓ Scorciatoia Ctrl+K / Cmd+K</li>
+            </ul>
+        </div>
+
+        <div class="test-info" style="border-left-color: #f39c12; background: #fff9f0;">
+            <h3><i class="fas fa-keyboard"></i> Scorciatoie da Tastiera</h3>
+            <ul>
+                <li><kbd>Ctrl+K</kbd> o <kbd>Cmd+K</kbd> - Apri ricerca</li>
+                <li><kbd>Esc</kbd> - Chiudi ricerca</li>
+                <li><kbd>↑</kbd> <kbd>↓</kbd> - Naviga nei risultati</li>
+                <li><kbd>Enter</kbd> - Apri risultato selezionato</li>
+            </ul>
+        </div>
+
+        <button class="test-button" onclick="runDiagnostics()" style="background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);">
+            <i class="fas fa-stethoscope"></i>
+            Esegui Diagnostica
+        </button>
+    </div>
+
+    <!-- Script -->
+    <script src="js/search-engine.js"></script>
+    <script src="js/search-ui.js"></script>
+
+    <script>
+        function openSearchModal() {
+            if (window.searchUI) {
+                window.searchUI.openSearch();
+            } else {
+                showStatus('error', 'Errore: SearchUI non è stato inizializzato correttamente');
+            }
+        }
+
+        function runDiagnostics() {
+            const status = document.getElementById('testStatus');
+            let errors = [];
+            let warnings = [];
+            let success = [];
+
+            // Controlla SearchEngine
+            if (typeof window.searchEngine !== 'undefined') {
+                success.push('SearchEngine caricato');
+
+                if (window.searchEngine.initialized) {
+                    success.push(`Indice creato con ${window.searchEngine.searchIndex.length} elementi`);
+                } else {
+                    warnings.push('SearchEngine non ancora inizializzato (attendi qualche secondo)');
+                }
+            } else {
+                errors.push('SearchEngine non trovato');
+            }
+
+            // Controlla SearchUI
+            if (typeof window.searchUI !== 'undefined') {
+                success.push('SearchUI caricato');
+            } else {
+                errors.push('SearchUI non trovato');
+            }
+
+            // Controlla elementi DOM
+            const searchBtn = document.getElementById('searchBtn');
+            if (!searchBtn) {
+                warnings.push('Pulsante di ricerca non trovato (normale in questa pagina di test)');
+            }
+
+            // Controlla CSS
+            const searchCSS = Array.from(document.styleSheets).some(sheet =>
+                sheet.href && sheet.href.includes('search.css')
+            );
+            if (searchCSS) {
+                success.push('CSS di ricerca caricato');
+            } else {
+                errors.push('CSS di ricerca non trovato');
+            }
+
+            // Mostra risultati
+            let html = '';
+
+            if (success.length > 0) {
+                html += '<div style="margin-bottom: 10px;"><strong style="color: #27ae60;">✓ Successo:</strong><br>';
+                success.forEach(msg => html += `• ${msg}<br>`);
+                html += '</div>';
+            }
+
+            if (warnings.length > 0) {
+                html += '<div style="margin-bottom: 10px;"><strong style="color: #f39c12;">⚠ Avvisi:</strong><br>';
+                warnings.forEach(msg => html += `• ${msg}<br>`);
+                html += '</div>';
+            }
+
+            if (errors.length > 0) {
+                html += '<div><strong style="color: #e74c3c;">✗ Errori:</strong><br>';
+                errors.forEach(msg => html += `• ${msg}<br>`);
+                html += '</div>';
+            }
+
+            status.className = 'test-status ' + (errors.length > 0 ? 'error' : 'success');
+            status.innerHTML = html;
+        }
+
+        function showStatus(type, message) {
+            const status = document.getElementById('testStatus');
+            status.className = 'test-status ' + type;
+            status.textContent = message;
+        }
+
+        // Esegui diagnostica automatica dopo 2 secondi
+        setTimeout(() => {
+            runDiagnostics();
+        }, 2000);
+    </script>
+</body>
+</html>
