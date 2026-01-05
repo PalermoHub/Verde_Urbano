@@ -23,7 +23,7 @@
 /* Sidebar destra con indice */
 .page-sidebar {
     position: sticky;
-    top: 145px; /* Altezza header + navbar + margine */
+    top: 170px; /* Altezza header + navbar + margine */
     height: fit-content;
     max-height: calc(100vh - 180px);
     overflow-y: auto;
@@ -131,7 +131,7 @@ font-weight: 600;
   /*  background: white;
      border-radius: 12px;
     box-shadow: 0 4px 16px rgba(0,0,0,0.08);*/
-	padding: 40px;
+	padding: 10px;
     margin-bottom: 30px;
     scroll-margin-top: 100px; /* Offset per sticky navbar (circa 60px di navbar + 40px di margine) */
 }

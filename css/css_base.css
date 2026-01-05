@@ -131,6 +131,7 @@
 
         /* Hamburger Menu Button (Mobile) */
         .menu-toggle {
+			 flex: 0!important;
             display: none;
             background: none;
             border: none;
@@ -152,8 +153,8 @@
 
         /* Quando scroll, il nav-header si posiziona sotto il banner del progetto */
         .nav-header.scrolled {
-            top: 65px; /* Altezza del banner progetto sticky */
-			   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            top: var(--banner-height, 65px); /* Altezza dinamica del banner progetto sticky */
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
         }
 
         .nav-container {
@@ -228,6 +229,21 @@
 			align-items: center;
 			justify-content: left;
 			gap: 0.5rem;
+        }
+
+        /* Gestione testo banner con due blocchi */
+        .banner-text-base {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .banner-text-extra {
+            display: inline;
+        }
+
+        .banner-icon {
+            vertical-align: middle;
         }
 
         .project-banner p {
@@ -395,9 +411,11 @@
         }
 
         .footer-social {
-            display: flex;
-            gap: 2.75rem;
-            margin-top: 1rem;
+display: flex;
+    gap: 2.75rem;
+    margin-top: 1rem;
+    flex-direction: row;
+    justify-content: space-between;
         }
 
         .footer-social a {
@@ -460,6 +478,25 @@
         }
 
         /* RESPONSIVE */
+
+        /* Tablet e dispositivi portrait */
+        @media (max-width: 1024px) and (orientation: portrait), (max-width: 900px) {
+            /* Nascondi solo il testo extra, mantieni titolo base */
+            .banner-text-extra {
+                display: none !important;
+            }
+
+            .project-banner h2 {
+                font-size: 1rem;
+            }
+
+            /* Riduci dimensione pulsante menu */
+            .menu-toggle {
+                padding: 0.5rem;
+                font-size: 1rem;
+            }
+        }
+
         @media (max-width: 768px) {
             /* Mostra hamburger button */
             .menu-toggle {
@@ -488,9 +525,73 @@
                 font-size: 1rem;
             }
 	.project-banner h2 {
-    font-size: .8rem; 
-	 }
-	
+        font-size: 1rem;
+    }
+
+    /* Nascondi solo il testo extra in mobile */
+    .banner-text-extra {
+        display: none !important;
+    }
+
+    /* Allineamento banner in mobile */
+    .banner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 1rem;
+    }
+
+    .banner h2 {
+        flex: 1;
+        margin-bottom: 0;
+    }
+
+    /* Allinea pulsante menu - ridotto */
+    .menu-toggle {
+        position: static !important;
+        margin: 0;
+        padding: 0.4rem 0.5rem !important;
+        font-size: 0.9rem !important;
+        min-width: auto;
+        width: auto;
+    }
+
+    /* Sposta header-actions nel banner in mobile */
+    .main-header .header-actions {
+        position: fixed;
+        top: auto;
+        bottom: auto;
+        right: 15px;
+        z-index: 10001;
+        /* Posiziona alla stessa altezza del banner */
+        top: 10px;
+    }
+
+    .info-icon {
+        background: rgba(39, 174, 96, 0.9);
+        padding: 0.4rem 0.5rem;
+        border-radius: 6px;
+        cursor: pointer;
+        color: white;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    /* Assicura che menu toggle sia visibile e allineato */
+    #menuToggle {
+        background: rgba(39, 174, 96, 0.9);
+        padding: 0.4rem 0.5rem;
+        border-radius: 6px;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    #menuToggle i {
+        font-size: 1rem;
+    }
+
             .header-text p {
                 font-size: 0.75rem;
             }

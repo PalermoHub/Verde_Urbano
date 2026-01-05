@@ -26,7 +26,8 @@
       "Bash(for file in obiettivi.html fasi.html potatura.html radicali.html impianti.html sicurezza.html dati-economici.html)",
       "Bash(do echo \"Aggiornando $file...\")",
       "Bash(powershell -ExecutionPolicy Bypass -File update-navigation-all.ps1)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(powershell -ExecutionPolicy Bypass -File update-banner.ps1:*)"
     ]
   }
 }

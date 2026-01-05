@@ -4,8 +4,17 @@
         const mainHeader = document.getElementById('mainHeader');
         const logoSection = document.getElementById('logoSection');
         const navHeader = document.querySelector('.nav-header');
+        const projectBanner = document.getElementById('projectBanner');
         const menuToggle = document.getElementById('menuToggle');
         const navMenu = document.getElementById('navMenu');
+
+        // Funzione per aggiornare l'altezza del banner
+        function updateBannerHeight() {
+            if (projectBanner) {
+                const bannerHeight = projectBanner.offsetHeight;
+                document.documentElement.style.setProperty('--banner-height', `${bannerHeight}px`);
+            }
+        }
 
         // Evidenzia la pagina attiva nella navigazione
         function highlightActivePage() {
@@ -24,6 +33,10 @@
 
         // Esegui all'avvio
         highlightActivePage();
+        updateBannerHeight();
+
+        // Aggiorna altezza banner al resize della finestra
+        window.addEventListener('resize', updateBannerHeight);
 
         // Scroll handler per header compatto
         window.addEventListener('scroll', function() {
@@ -38,6 +51,9 @@
 
                 // Sposta il livello 3 (navigazione) sotto il banner del progetto
                 navHeader.classList.add('scrolled');
+
+                // Aggiorna l'altezza del banner in caso di cambiamenti dinamici
+                updateBannerHeight();
             } else {
                 // Mostra tutto
                 slimHeader.classList.remove('hidden');
