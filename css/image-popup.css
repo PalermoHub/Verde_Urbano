@@ -97,13 +97,14 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: #ffffffe0;
+	background: linear-gradient(135deg, rgba(232, 245, 233, 0.9) 0%, rgba(200, 230, 201, 0.9) 100%);
     z-index: 10010;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     transition: opacity 0.5s ease, visibility 0.5s ease;
+    overflow: hidden;
 }
 
 .page-loader.hidden {
@@ -111,34 +112,200 @@
     visibility: hidden;
 }
 
-.loader-spinner {
-    width: 60px;
-    height: 60px;
-    border: 4px solid #e0e0e0;
-    border-top: 4px solid #27ae60;
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
+/* Cerchi decorativi animati */
+.loader-circles {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
 }
 
-@keyframes spin {
+.circle {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(76, 175, 80, 0.2) 0%, rgba(76, 175, 80, 0) 70%);
+    animation: float linear infinite;
+}
+
+.circle-1 {
+    width: 150px;
+    height: 150px;
+    top: 10%;
+    left: 5%;
+    animation-duration: 15s;
+}
+
+.circle-2 {
+    width: 200px;
+    height: 200px;
+    top: 60%;
+    right: 10%;
+    animation-duration: 20s;
+    animation-delay: 2s;
+}
+
+.circle-3 {
+    width: 120px;
+    height: 120px;
+    bottom: 10%;
+    left: 15%;
+    animation-duration: 18s;
+    animation-delay: 4s;
+}
+
+@keyframes float {
     0% {
-        transform: rotate(0deg);
+        transform: translateY(0) scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translateY(-30px) scale(1.1);
+        opacity: 0.5;
     }
     100% {
-        transform: rotate(360deg);
+        transform: translateY(0) scale(1);
+        opacity: 0.3;
+    }
+}
+
+/* Contenuto centrale */
+.loader-content {
+    z-index: 1;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.95);
+    padding: 40px 60px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+    max-width: 500px;
+}
+
+/* Albero SVG che si colora */
+.loader-tree-container {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.loader-tree-svg {
+    width: 150px;
+    height: 180px;
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1));
+}
+
+.tree-layer {
+    transition: fill 0.5s ease;
+}
+
+/* Stati di colorazione progressiva - 8 strati */
+.tree-layer.layer-1,
+.tree-layer.layer-2,
+.tree-layer.layer-3,
+.tree-layer.layer-4,
+.tree-layer.layer-5,
+.tree-layer.layer-6,
+.tree-layer.layer-7,
+.tree-layer.layer-8 {
+    fill: #d4d4d4;
+}
+
+/* Colorazione progressiva in base al progresso - 8 tonalità di verde dal chiaro allo scuro */
+.tree-layer.active-1 {
+    fill: #c8e6c9; /* verde chiarissimo */
+    animation: leafGlow 1s ease-in-out;
+}
+
+.tree-layer.active-2 {
+    fill: #a5d6a7; /* verde molto chiaro */
+    animation: leafGlow 1s ease-in-out;
+}
+
+.tree-layer.active-3 {
+    fill: #81c784; /* verde chiaro */
+    animation: leafGlow 1s ease-in-out;
+}
+
+.tree-layer.active-4 {
+    fill: #66bb6a; /* verde medio-chiaro */
+    animation: leafGlow 1s ease-in-out;
+}
+
+.tree-layer.active-5 {
+    fill: #4caf50; /* verde medio */
+    animation: leafGlow 1s ease-in-out;
+}
+
+.tree-layer.active-6 {
+    fill: #43a047; /* verde medio-scuro */
+    animation: leafGlow 1s ease-in-out;
+}
+
+.tree-layer.active-7 {
+    fill: #388e3c; /* verde scuro */
+    animation: leafGlow 1s ease-in-out;
+}
+
+.tree-layer.active-8 {
+    fill: #2e7d32; /* verde molto scuro */
+    animation: leafGlow 1s ease-in-out;
+}
+
+.tree-layer.complete {
+    fill: #1b5e20; /* verde scurissimo */
+    animation: leafGlow 1s ease-in-out;
+}
+
+@keyframes leafGlow {
+    0% {
+        filter: brightness(1);
+    }
+    50% {
+        filter: brightness(1.3);
+    }
+    100% {
+        filter: brightness(1);
     }
 }
 
 .loader-text {
     margin-top: 20px;
+    font-size: 20px;
+    color: #1b5e20;
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+/* Progress Bar */
+.loader-progress-container {
+    width: 100%;
+    height: 8px;
+    background: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    margin: 20px 0 10px;
+}
+
+.loader-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #4caf50 0%, #8bc34a 100%);
+    width: 0%;
+    transition: width 0.3s ease;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(76, 175, 80, 0.5);
+}
+
+.loader-percentage {
     font-size: 16px;
-    color: #666;
+    color: #2e7d32;
     font-weight: 600;
+    margin-bottom: 15px;
 }
 
 .loader-counter {
-    margin-top: 25px;
-    font-size: 28px;
+    margin-top: 20px;
+    font-size: 24px;
     color: #27ae60;
     font-weight: 700;
     animation: pulse 1.5s ease-in-out infinite;
@@ -146,11 +313,13 @@
 
 .loader-counter i {
     margin-right: 10px;
+    color: #43a047;
 }
 
 .loader-counter span {
-    font-size: 32px;
+    font-size: 28px;
     color: #2ecc71;
+    font-weight: 800;
 }
 
 @keyframes pulse {
@@ -163,10 +332,15 @@
 }
 
 .loader-details {
-    margin-top: 30px;
-    font-size: 13px;
-    color: #888;
+    margin-top: 25px;
+    font-size: 14px;
+    color: #666;
     line-height: 1.8;
+}
+
+.loader-details i {
+    color: #4caf50;
+    margin-right: 8px;
 }
 
 body.loading-active {

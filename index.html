@@ -56,17 +56,59 @@
 <body>
 <!-- Page Loader -->
 <div id="pageLoader" class="page-loader">
-    <div class="loader-spinner"></div>
-  <!--  <div class="loader-text">Ufficio autonomo gestione verde urbano, agricoltura urbana e rapporti con RESET</div>  -->
-    <div class="loader-counter" id="loaderCounter">
-        <i class="fas fa-tree"></i> Caricamento dati in corso...: <span id="treeCount">0</span> alberi mappati
+    <!-- Cerchi decorativi animati -->
+    <div class="loader-circles">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+        <div class="circle circle-3"></div>
     </div>
-    <div class="loader-details">
-        <p>
-            <i class="fas fa-file-import"></i> Elaborazione dati territoriali...<br>
-            <i class="fas fa-filter"></i> Inizializzazione controlli di ricerca dinamici...<br>
-            <i class="fas fa-chart-bar"></i> Preparazione sistema grafici dinamici...
-        </p>
+
+    <div class="loader-content">
+        <!-- Albero SVG che si colora -->
+        <div class="loader-tree-container">
+            <svg class="loader-tree-svg" viewBox="0 0 200 250" xmlns="http://www.w3.org/2000/svg">
+                <!-- Tronco -->
+                <rect x="85" y="165" width="30" height="85" fill="#8B4513" rx="5"/>
+
+                <!-- Chioma a forma di pino - 8 strati che si colorano progressivamente dal basso verso l'alto -->
+                <g id="treeLayers">
+                    <!-- Strato 8 (base - più largo) -->
+                    <ellipse cx="100" cy="150" rx="80" ry="30" class="tree-layer layer-8" fill="#d4d4d4"/>
+                    <!-- Strato 7 -->
+                    <ellipse cx="100" cy="130" rx="72" ry="28" class="tree-layer layer-7" fill="#d4d4d4"/>
+                    <!-- Strato 6 -->
+                    <ellipse cx="100" cy="112" rx="64" ry="26" class="tree-layer layer-6" fill="#d4d4d4"/>
+                    <!-- Strato 5 -->
+                    <ellipse cx="100" cy="95" rx="56" ry="24" class="tree-layer layer-5" fill="#d4d4d4"/>
+                    <!-- Strato 4 (centrale) -->
+                    <ellipse cx="100" cy="80" rx="48" ry="22" class="tree-layer layer-4" fill="#d4d4d4"/>
+                    <!-- Strato 3 -->
+                    <ellipse cx="100" cy="66" rx="38" ry="20" class="tree-layer layer-3" fill="#d4d4d4"/>
+                    <!-- Strato 2 -->
+                    <ellipse cx="100" cy="54" rx="28" ry="18" class="tree-layer layer-2" fill="#d4d4d4"/>
+                    <!-- Strato 1 (punta - più piccolo) -->
+                    <ellipse cx="100" cy="44" rx="18" ry="15" class="tree-layer layer-1" fill="#d4d4d4"/>
+                </g>
+            </svg>
+        </div>
+
+        <div class="loader-text">Caricamento Dashboard Verde Urbano</div>
+
+        <!-- Progress Bar -->
+        <div class="loader-progress-container">
+            <div class="loader-progress-bar" id="loaderProgressBar"></div>
+        </div>
+        <div class="loader-percentage" id="loaderPercentage">0%</div>
+
+        <div class="loader-counter" id="loaderCounter">
+            <i class="fas fa-seedling"></i> <span id="treeCount">0</span> alberi mappati
+        </div>
+
+        <div class="loader-details">
+            <p id="loaderStatus">
+                <i class="fas fa-spinner fa-spin"></i> <span id="loaderStatusText">Inizializzazione...</span>
+            </p>
+        </div>
     </div>
 </div>
 
