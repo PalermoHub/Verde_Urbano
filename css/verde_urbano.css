@@ -483,15 +483,15 @@ hr {
 		
 @media (min-width: 1920px) and (max-width: 1920px) and (min-height: 1080px) {
 	    /* Stili specifici per risoluzione 1920x1080 */
-            .container {height: calc(100vh - 270px) !important;}
+            .container {height: calc(100vh - 285px) !important;}
 			}
 		
 @media (min-width: 1280px) and (max-width: 1280px) and (min-height: 1024px) {
-            .container { height: calc(100vh - 270px) !important;}
+            .container { height: calc(100vh - 285px) !important;}
 			}
 				
 @media (min-width: 1366px) and (max-width: 1366px) and (min-height: 768px) {
-            .container { height: calc(100vh - 270px) !important;}
+            .container { height: calc(100vh - 285px) !important;}
 			}		
 		
         /* ============================================
@@ -544,7 +544,7 @@ hr {
         @media (min-width: 1025px) and (max-width: 1200px) {
             .container {
                 grid-template-columns: 260px 1fr 260px;
-				height: calc(100vh - 270px);
+				height: calc(100vh - 285px);
             }
             .sidebar, .sidebar-right {
                 padding: 5px;
@@ -610,7 +610,7 @@ hr {
             }
             .container {
                 grid-template-columns: 240px 1fr 240px;
-				height: calc(100vh - 280px);
+				height: calc(100vh - 270px);
             }
             .sidebar, .sidebar-right {
                 padding: 4px;
