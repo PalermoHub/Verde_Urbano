@@ -12,6 +12,7 @@
 	<link rel="stylesheet" href="css/css_base.css">
     <link rel="stylesheet" href="css/verde_urbano.css">
     <link rel="stylesheet" href="css/page-layout.css">
+    <link rel="stylesheet" href="css/dropdown-menu.css">
     <link rel="stylesheet" href="css/search.css">
     <link rel="stylesheet" href="css/image-popup.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -97,7 +98,15 @@
             <nav>
                 <ul id="navMenu">
                     <li><a href="index.html"><i class="fas fa-map-location-dot"></i> Dashboard</a></li>
-                    <li><a href="il-progetto.html"><i class="fas fa-book-open"></i> Il Progetto</a></li>
+                    <li class="has-dropdown">
+                        <a href="il-progetto.html">
+                            <i class="fas fa-book-open"></i> Il Progetto
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="tavole.html"><i class="fa-regular fa-image"></i> Tavole di Progetto</a></li>
+                        </ul>
+                    </li>
                     <li><a href="obiettivi.html"><i class="fas fa-bullseye"></i> Obiettivi e Finalità</a></li>
                     <li><a href="fasi.html"><i class="fas fa-tasks"></i> Fasi dell'Intervento</a></li>
                     <li><a href="potatura.html"><i class="fas fa-scissors"></i> Tipologie di Potatura</a></li>

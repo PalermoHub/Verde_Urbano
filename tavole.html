@@ -1,0 +1,497 @@
+﻿<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tavole di Progetto - Verde Urbano Palermo</title>
+    <meta name="description" content="Rigenerazione del Verde Urbano di Palermo - Presentazione generale del progetto di riqualificazione delle aree verdi cittadine">
+    <meta name="author" content="Giovan Battista Vitrano">
+    <link rel="shortcut icon" href="favicon.ico"/>
+    <link rel="icon" href="favicon.png" type="image/png"/>
+
+    <link rel="stylesheet" href="css/css_base.css">
+    <link rel="stylesheet" href="css/verde_urbano.css">
+    <link rel="stylesheet" href="css/page-layout.css">
+    <link rel="stylesheet" href="css/dropdown-menu.css">
+    <link rel="stylesheet" href="css/search.css">
+    <link rel="stylesheet" href="css/image-popup.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+     <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-KHR1GHDRQS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-KHR1GHDRQS');
+    </script>
+</head>
+<body>
+<!-- DEMO Stamp -->
+    <div class="demo-stamp">DEMO!</div>
+
+    <!-- LIVELLO 1: SLIM HEADER (Blu) -->
+    <div class="slim-header" id="slimHeader">
+        <div class="slim-container">
+            <div class="slim-left">
+                <a href="https://www.comune.palermo.it/" title="Sito Istituzionale  Città di Palermo" target="_blank"> 
+                    <img src="img/logo_pa_gb.svg" alt="Logo Comune di Palermo" class="header-logo">
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- LIVELLO 2: HEADER CENTRALE (Verde con Logo) -->
+    <header class="main-header" id="mainHeader">
+        <div class="main-container">
+            <div class="logo-section" id="logoSection">
+                <div class="header-text">
+                    <h1>Ufficio autonomo gestione verde urbano, agricoltura urbana e rapporti con RESET</h1>
+                    <p></p>
+                </div>
+            </div>
+            <div class="header-actions">
+                <div class="info-icon" id="infoBtn" title="Informazioni su questa app">
+                    <i class="fas fa-circle-info"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Banner Progetto - SEMPRE VISIBILE -->
+    <div class="project-banner" id="projectBanner">
+        <div class="banner">  
+<h2>
+                <!-- BLOCCO 1: Sempre visibile (icona + titolo base) -->
+                <span class="banner-text-base">
+                    <img src="img/trees.svg" alt="" height="36" class="banner-icon"/>
+                    Rigenerazione del Verde Urbano di Palermo
+                </span>
+                <!-- BLOCCO 2: Visibile solo desktop (testo completo + link) -->
+                <span class="banner-text-extra">
+                    : Riqualificazione Stradale e Arredo della Città -
+                    <a href="https://www.opencup.gov.it//portale/it/web/opencup/home/progetto/-/cup/D71G23000050001"
+                       target="_blank" title="Visualizza su OpenCUP">
+                        Accordo Quadro - CUP D71G23000050001
+                    </a>
+                </span>
+            </h2>
+			<div class="banner-actions">
+                <button class="search-trigger" id="searchBtn" title="Cerca nel progetto (Ctrl+K)">
+                    <i class="fas fa-search"></i>
+                    <span class="search-trigger-text">Cerca</span>
+                    <span class="search-trigger-shortcut">Ctrl+K</span>
+                </button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- LIVELLO 3: NAVIGAZIONE - SEMPRE VISIBILE -->
+    <div class="nav-header" id="navHeader">
+        <div class="nav-container">
+            <nav>
+                <ul id="navMenu">
+                    <li><a href="index.html"><i class="fas fa-map-location-dot"></i> Dashboard</a></li>
+                    <li class="has-dropdown">
+                        <a href="il-progetto.html">
+                            <i class="fas fa-book-open"></i> Il Progetto
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="tavole.html"><i class="fa-regular fa-image"></i> Tavole di Progetto</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="obiettivi.html"><i class="fas fa-bullseye"></i> Obiettivi e Finalità</a></li>
+                    <li><a href="fasi.html"><i class="fas fa-tasks"></i> Fasi dell'Intervento</a></li>
+                    <li><a href="potatura.html"><i class="fas fa-scissors"></i> Tipologie di Potatura</a></li>
+                    <li><a href="radicali.html"><i class="fas fa-code-branch"></i> Gestione Apparati Radicali</a></li>
+                    <li><a href="impianti.html"><i class="fas fa-tree"></i> Nuovi Impianti</a></li>
+                    <li><a href="sicurezza.html"><i class="fas fa-hard-hat"></i> Sicurezza e Cantiere</a></li>
+                    <li><a href="dati-economici.html"><i class="fas fa-euro-sign"></i> Dati Economici</a></li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+	    <!-- Include Modale Info da file esterno -->
+    <script>
+        fetch('includes/info-modal.html?v=' + Date.now())
+            .then(response => response.text())
+            .then(data => {
+                document.body.insertAdjacentHTML('beforeend', data);
+                // Reinizializza gli event listener del modale dopo il caricamento
+                if (typeof window.initInfoModal === 'function') {
+                    window.initInfoModal();
+                }
+            })
+            .catch(error => console.error('Errore caricamento modale:', error));
+    </script>
+
+    <div class="page-container page-container-full">
+        <!-- Contenuto Principale -->
+        <div class="page-main-content">
+            <div class="page-header">
+            <h1><i class="fa-regular fa-image"></i> Elaborati tecnici per la manutenzione</h1>
+                <p>Documentazione tecnica per gli interventi di manutenzione e cura del patrimonio arboreo</p>
+            </div>
+			
+        <!-- Introduzione -->
+        <section class="content-section">
+            <h2><i class="fa-regular fa-images"></i> Tavole da cantiere</h2>
+			
+            <p>Le tavole di cantiere rappresentano la documentazione tecnica essenziale per l'esecuzione del progetto di rigenerazione del verde urbano. In ogni tavola sono mappati con precisione gli alberi presenti nelle vie oggetto di intervento, classificati in base al loro stato di salute attraverso l'indicatore CPC (Classe di Propensione al Cedimento). Questo sistema di valutazione permette di individuare le criticità e pianificare gli interventi più appropriati per ciascun esemplare arboreo.</p>
+
+            <p>Ogni tavola è corredata da una tabella dettagliata che riporta i dati identificativi di ciascun albero, la specie botanica, le condizioni fitosanitarie rilevate e la tipologia di lavori da eseguire. La documentazione fornisce quindi un quadro completo e sistematico delle operazioni previste, facilitando la gestione delle attività di cantiere e garantendo la tracciabilità degli interventi.</p>
+       </section>
+	   
+	    <section class="content-section">
+            <div class="tavole-grid">
+                <div class="tavola-card">
+                    <a href="#" class="tavola-image-link" title="Scarica la tavola in formato PDF">
+                        <div class="tavola-image">
+                            <img src="img/tav_tipo.jpg" alt="Tavola 01 - Viale Emilia">
+                            <div class="image-overlay">
+                                <i class="fas fa-download"></i>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="tavola-info">
+                        <p><b>Tavola 01</b></p>
+                        <h3>Viale Emilia</h3>
+                        <a href="#" class="btn-download" title="Scarica PDF">
+                            <i class="fas fa-download"></i> Scarica PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tavola-card">
+                    <a href="#" class="tavola-image-link" title="Scarica la tavola in formato PDF">
+                        <div class="tavola-image">
+                            <img src="img/tav_tipo.jpg" alt="Tavola 02 - Via Pignatelli Aragona">
+                            <div class="image-overlay">
+                                <i class="fas fa-download"></i>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="tavola-info">
+                        <p><b>Tavola 02</b></p>
+                        <h3>Via Pignatelli Aragona</h3>
+                        <a href="#" class="btn-download" title="Scarica PDF">
+                            <i class="fas fa-download"></i> Scarica PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tavola-card">
+                    <a href="#" class="tavola-image-link" title="Scarica la tavola in formato PDF">
+                        <div class="tavola-image">
+                            <img src="img/tav_tipo.jpg" alt="Tavola 03 - Via Delle Croci">
+                            <div class="image-overlay">
+                                <i class="fas fa-download"></i>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="tavola-info">
+                        <p><b>Tavola 03</b></p>
+                        <h3>Via Delle Croci</h3>
+                        <a href="#" class="btn-download" title="Scarica PDF">
+                            <i class="fas fa-download"></i> Scarica PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tavola-card">
+                    <a href="#" class="tavola-image-link" title="Scarica la tavola in formato PDF">
+                        <div class="tavola-image">
+                            <img src="img/tav_tipo.jpg" alt="Tavola 04 - Via Scoto Michele">
+                            <div class="image-overlay">
+                                <i class="fas fa-download"></i>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="tavola-info">
+                        <p><b>Tavola 04</b></p>
+                        <h3>Via Scoto Michele</h3>
+                        <a href="#" class="btn-download" title="Scarica PDF">
+                            <i class="fas fa-download"></i> Scarica PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tavola-card">
+                    <a href="#" class="tavola-image-link" title="Scarica la tavola in formato PDF">
+                        <div class="tavola-image">
+                            <img src="img/tav_tipo.jpg" alt="Tavola 05A - Viale Dei Picciotti - A">
+                            <div class="image-overlay">
+                                <i class="fas fa-download"></i>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="tavola-info">
+                        <p><b>Tavola 05A</b></p>
+                        <h3>Viale Dei Picciotti - A</h3>
+                        <a href="#" class="btn-download" title="Scarica PDF">
+                            <i class="fas fa-download"></i> Scarica PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tavola-card">
+                    <a href="#" class="tavola-image-link" title="Scarica la tavola in formato PDF">
+                        <div class="tavola-image">
+                            <img src="img/tav_tipo.jpg" alt="Tavola 05B - Viale Dei Picciotti - B">
+                            <div class="image-overlay">
+                                <i class="fas fa-download"></i>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="tavola-info">
+                        <p><b>Tavola 05B</b></p>
+                        <h3>Viale Dei Picciotti - B</h3>
+                        <a href="#" class="btn-download" title="Scarica PDF">
+                            <i class="fas fa-download"></i> Scarica PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tavola-card">
+                    <a href="#" class="tavola-image-link" title="Scarica la tavola in formato PDF">
+                        <div class="tavola-image">
+                            <img src="img/tav_tipo.jpg" alt="Tavola 06 - Via Ammiraglio Rizzo">
+                            <div class="image-overlay">
+                                <i class="fas fa-download"></i>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="tavola-info">
+                        <p><b>Tavola 06</b></p>
+                        <h3>Via Ammiraglio Rizzo</h3>
+                        <a href="#" class="btn-download" title="Scarica PDF">
+                            <i class="fas fa-download"></i> Scarica PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tavola-card">
+                    <a href="#" class="tavola-image-link" title="Scarica la tavola in formato PDF">
+                        <div class="tavola-image">
+                            <img src="img/tav_tipo.jpg" alt="Tavola 07 - Via Giusti Giuseppe">
+                            <div class="image-overlay">
+                                <i class="fas fa-download"></i>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="tavola-info">
+                        <p><b>Tavola 07</b></p>
+                        <h3>Via Giusti Giuseppe</h3>
+                        <a href="#" class="btn-download" title="Scarica PDF">
+                            <i class="fas fa-download"></i> Scarica PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tavola-card">
+                    <a href="#" class="tavola-image-link" title="Scarica la tavola in formato PDF">
+                        <div class="tavola-image">
+                            <img src="img/tav_tipo.jpg" alt="Tavola 08 - Via Principe Di Belmonte">
+                            <div class="image-overlay">
+                                <i class="fas fa-download"></i>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="tavola-info">
+                        <p><b>Tavola 08</b></p>
+                        <h3>Via Principe Di Belmonte</h3>
+                        <a href="#" class="btn-download" title="Scarica PDF">
+                            <i class="fas fa-download"></i> Scarica PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tavola-card">
+                    <a href="#" class="tavola-image-link" title="Scarica la tavola in formato PDF">
+                        <div class="tavola-image">
+                            <img src="img/tav_tipo.jpg" alt="Tavola 09 - Viale Michelangelo">
+                            <div class="image-overlay">
+                                <i class="fas fa-download"></i>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="tavola-info">
+                        <p><b>Tavola 09</b></p>
+                        <h3>Viale Michelangelo</h3>
+                        <a href="#" class="btn-download" title="Scarica PDF">
+                            <i class="fas fa-download"></i> Scarica PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tavola-card">
+                    <a href="#" class="tavola-image-link" title="Scarica la tavola in formato PDF">
+                        <div class="tavola-image">
+                            <img src="img/tav_tipo.jpg" alt="Tavola 10 - Viale Regina Margherita">
+                            <div class="image-overlay">
+                                <i class="fas fa-download"></i>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="tavola-info">
+                        <p><b>Tavola 10</b></p>
+                        <h3>Viale Regina Margherita</h3>
+                        <a href="#" class="btn-download" title="Scarica PDF">
+                            <i class="fas fa-download"></i> Scarica PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tavola-card">
+                    <a href="#" class="tavola-image-link" title="Scarica la tavola in formato PDF">
+                        <div class="tavola-image">
+                            <img src="img/tav_tipo.jpg" alt="Tavola 11 - Viale Galatea">
+                            <div class="image-overlay">
+                                <i class="fas fa-download"></i>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="tavola-info">
+                        <p><b>Tavola 11</b></p>
+                        <h3>Viale Galatea</h3>
+                        <a href="#" class="btn-download" title="Scarica PDF">
+                            <i class="fas fa-download"></i> Scarica PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tavola-card">
+                    <a href="#" class="tavola-image-link" title="Scarica la tavola in formato PDF">
+                        <div class="tavola-image">
+                            <img src="img/tav_tipo.jpg" alt="Tavola 12 - Viale Principe Umberto">
+                            <div class="image-overlay">
+                                <i class="fas fa-download"></i>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="tavola-info">
+                        <p><b>Tavola 12</b></p>
+                        <h3>Viale Principe Umberto</h3>
+                        <a href="#" class="btn-download" title="Scarica PDF">
+                            <i class="fas fa-download"></i> Scarica PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tavola-card">
+                    <a href="#" class="tavola-image-link" title="Scarica la tavola in formato PDF">
+                        <div class="tavola-image">
+                            <img src="img/tav_tipo.jpg" alt="Tavola 13 - Via Oreto">
+                            <div class="image-overlay">
+                                <i class="fas fa-download"></i>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="tavola-info">
+                        <p><b>Tavola 13</b></p>
+                        <h3>Via Oreto</h3>
+                        <a href="#" class="btn-download" title="Scarica PDF">
+                            <i class="fas fa-download"></i> Scarica PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tavola-card">
+                    <a href="#" class="tavola-image-link" title="Scarica la tavola in formato PDF">
+                        <div class="tavola-image">
+                            <img src="img/tav_tipo.jpg" alt="Tavola 14 - Via Rapisardi Mario">
+                            <div class="image-overlay">
+                                <i class="fas fa-download"></i>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="tavola-info">
+                        <p><b>Tavola 14</b></p>
+                        <h3>Via Rapisardi Mario</h3>
+                        <a href="#" class="btn-download" title="Scarica PDF">
+                            <i class="fas fa-download"></i> Scarica PDF
+                        </a>
+                    </div>
+                </div>
+
+                <div class="tavola-card">
+                    <a href="#" class="tavola-image-link" title="Scarica la tavola in formato PDF">
+                        <div class="tavola-image">
+                            <img src="img/tav_tipo.jpg" alt="Tavola 15 - Via Corazza Filippo">
+                            <div class="image-overlay">
+                                <i class="fas fa-download"></i>
+                            </div>
+                        </div>
+                    </a>
+                    <div class="tavola-info">
+                        <p><b>Tavola 15</b></p>
+                        <h3>Via Corazza Filippo</h3>
+                        <a href="#" class="btn-download" title="Scarica PDF">
+                            <i class="fas fa-download"></i> Scarica PDF
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+	  </section>
+    <!-- Include Footer da file esterno -->
+    <script>
+        fetch('includes/footer.html?v=' + Date.now())
+            .then(response => response.text())
+            .then(data => {
+                document.body.insertAdjacentHTML('beforeend', data);
+            })
+            .catch(error => console.error('Errore caricamento footer:', error));
+    </script>
+
+    <!-- Back to Top Button -->
+    <button id="backToTop" class="back-to-top" aria-label="Torna su"><i class="fas fa-arrow-up"></i></button>
+    <script>(function(){const a=document.getElementById('backToTop');if(!a)return;function b(){window.pageYOffset>500?a.classList.add('show'):a.classList.remove('show')}window.addEventListener('scroll',b);b();a.addEventListener('click',function(c){c.preventDefault();window.scrollTo({top:0,behavior:'smooth'})})})();</script>
+
+    <script src="js/search-engine.js"></script>
+    <script src="js/search-ui.js"></script>
+    <script src="js/01_modal.js"></script>
+    <script src="js/image-popup.js"></script>
+
+    <!-- Script per evidenziare la voce attiva nella sidebar -->
+    <script>
+    (function() {
+        const sidebarLinks = document.querySelectorAll('.sidebar-nav a');
+
+        function highlightActiveSection() {
+            let current = '';
+            const sections = document.querySelectorAll('.content-section[id]');
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (window.pageYOffset >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            sidebarLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        window.addEventListener('scroll', highlightActiveSection);
+        window.addEventListener('load', highlightActiveSection);
+    })();
+    </script>
+
+    <!-- Script per sticky header -->
+    <script src="js/header.js"></script>
+</body>
+</html>

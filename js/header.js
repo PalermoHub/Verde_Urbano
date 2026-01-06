@@ -89,3 +89,76 @@
                 }
             });
         });
+
+        // Gestione dropdown menu in mobile
+        function setupDropdownMenu() {
+            const dropdownItems = document.querySelectorAll('.has-dropdown');
+
+            dropdownItems.forEach(item => {
+                const mainLink = item.querySelector('a');
+
+                mainLink.addEventListener('click', function(e) {
+                    // In mobile, previeni il click se c'è un dropdown
+                    if (window.innerWidth <= 768) {
+                        e.preventDefault();
+
+                        // Chiudi altri dropdown aperti
+                        dropdownItems.forEach(otherItem => {
+                            if (otherItem !== item) {
+                                otherItem.classList.remove('dropdown-active');
+                            }
+                        });
+
+                        // Toggle del dropdown corrente
+                        item.classList.toggle('dropdown-active');
+                    }
+                });
+            });
+
+            // Chiudi dropdown quando si clicca su una voce del sotto-menu in mobile
+            const dropdownLinks = document.querySelectorAll('.dropdown-menu a');
+            dropdownLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    if (window.innerWidth <= 768) {
+                        // Chiudi il dropdown
+                        const parentDropdown = this.closest('.has-dropdown');
+                        if (parentDropdown) {
+                            parentDropdown.classList.remove('dropdown-active');
+                        }
+
+                        // Chiudi il menu principale
+                        navMenu.classList.remove('open');
+                        const icon = menuToggle.querySelector('i');
+                        icon.classList.remove('fa-times');
+                        icon.classList.add('fa-bars');
+                    }
+                });
+            });
+        }
+
+        // Evidenzia anche le voci del dropdown se attive
+        function highlightActiveDropdownPage() {
+            const currentPage = window.location.pathname.split('/').pop() || 'index.html';
+            const dropdownLinks = document.querySelectorAll('.dropdown-menu a');
+
+            dropdownLinks.forEach(link => {
+                const linkPage = link.getAttribute('href');
+                if (linkPage === currentPage) {
+                    link.classList.add('active');
+                    // Evidenzia anche il link principale del dropdown
+                    const parentDropdown = link.closest('.has-dropdown');
+                    if (parentDropdown) {
+                        const mainLink = parentDropdown.querySelector(':scope > a');
+                        if (mainLink) {
+                            mainLink.classList.add('active');
+                        }
+                    }
+                } else {
+                    link.classList.remove('active');
+                }
+            });
+        }
+
+        // Inizializza il dropdown menu
+        setupDropdownMenu();
+        highlightActiveDropdownPage();

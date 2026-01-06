@@ -1,0 +1,146 @@
+/* ===== DROPDOWN MENU STYLES ===== */
+
+/* Container per voci con dropdown */
+.has-dropdown {
+    position: relative;
+}
+
+/* Freccia dropdown */
+.dropdown-arrow {
+    font-size: 0.7rem;
+    margin-left: 0.25rem;
+    transition: transform 0.3s ease;
+}
+
+.has-dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+/* Menu dropdown */
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    min-width: 220px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    border-radius: 0 0 8px 8px;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    z-index: 1000;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+/* Mostra dropdown on hover (desktop) */
+.has-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Stile voci dropdown */
+.dropdown-menu li {
+    margin: 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.dropdown-menu li:last-child {
+    border-bottom: none;
+}
+
+.dropdown-menu a {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    color: #333;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 0.875rem;
+    border-bottom: none !important;
+    transition: all 0.2s ease;
+}
+
+.dropdown-menu a:hover {
+    background: #f8f9fa;
+    color: #27ae60;
+    padding-left: 1.25rem;
+}
+
+.dropdown-menu a i {
+    font-size: 0.875rem;
+    width: 16px;
+    text-align: center;
+}
+
+/* Stile per pagina attiva nel dropdown */
+.dropdown-menu a.active {
+    color: #27ae60;
+    background: #f0f8f4;
+    border-left: 4px solid #27ae60;
+}
+
+.dropdown-menu a.active:hover {
+    color: #ff9900;
+}
+
+/* ===== RESPONSIVE - MOBILE ===== */
+@media (max-width: 768px) {
+    /* Dropdown mobile: visualizza sotto la voce principale */
+    .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        box-shadow: none;
+        background: #f8f9fa;
+        border-radius: 0;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    /* Quando il menu è aperto */
+    .has-dropdown.dropdown-active .dropdown-menu {
+        max-height: 500px;
+        border-top: 1px solid #dee2e6;
+    }
+
+    /* Rotazione freccia in mobile quando aperto */
+    .has-dropdown.dropdown-active .dropdown-arrow {
+        transform: rotate(180deg);
+    }
+
+    /* Stile voci dropdown in mobile */
+    .dropdown-menu a {
+        padding: 0.75rem 1rem 0.75rem 2.5rem;
+        color: #555;
+        font-size: 0.813rem;
+    }
+
+    .dropdown-menu a:hover {
+        background: #e9ecef;
+        padding-left: 2.75rem;
+    }
+
+    /* Link principale del dropdown in mobile deve essere cliccabile */
+    .has-dropdown > a {
+        cursor: pointer;
+    }
+}
+
+/* ===== TABLET ===== */
+@media (max-width: 1024px) and (orientation: portrait), (max-width: 900px) {
+    .dropdown-menu {
+        min-width: 200px;
+    }
+
+    .dropdown-menu a {
+        font-size: 0.813rem;
+        padding: 0.65rem 0.875rem;
+    }
+}

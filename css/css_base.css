@@ -201,6 +201,10 @@
             border-bottom-color: #ff9900;
         }
 
+        nav a.active:hover {
+            color: #ff9900;
+        }
+
         /* Banner Progetto */
 		
 		.banner {  text-align: center;

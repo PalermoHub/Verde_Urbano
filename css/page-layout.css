@@ -15,6 +15,13 @@
     padding: 0px 20px;
 }
 
+/* Contenitore pagina senza sidebar - utilizza tutto lo spazio */
+.page-container-full {
+    grid-template-columns: 1fr;
+    max-width: 1400px;
+    padding: 0px 40px;
+}
+
 /* Contenuto principale */
 .page-main-content {
     min-width: 0; /* Fix per overflow in grid */
@@ -273,6 +280,10 @@ font-weight: 600;
         grid-template-columns: 1fr;
         gap: 0;
         padding: 20px 10px;
+    }
+
+    .page-container-full {
+        padding: 20px 15px;
     }
 
     .page-sidebar {
