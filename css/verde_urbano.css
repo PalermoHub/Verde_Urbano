@@ -884,7 +884,6 @@ hr {
 
     .tavola-card:hover {
         box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-        transform: translateY(-5px);
     }
 
     .tavola-image-link {
