@@ -1,0 +1,25 @@
+STATISTICHE ALBERI PALERMO
+================================================================================
+
+Numero totale alberi: 20472
+Numero di specie uniche: 211
+Numero di generi: 124
+
+TOP 10 SPECIE:
+Nome scientifico
+Ficus microcarpa            2025
+Platanus × hispanica        1507
+Styphnolobium japonicum     1294
+Pinus pinea                 1240
+Koelreuteria paniculata     1097
+Melia azedarach              977
+Celtis australis             923
+Ligustrum lucidum            839
+Brachychiton populneus       703
+Brachychiton acerifolius     639
+
+BENEFICI AMBIENTALI TOTALI:
+Carbonio sequestrato: 1,699,233.42 kg/anno
+Carbonio stoccato: 7,258,637.30 kg
+Ossigeno prodotto: 4,490,183.05 kg/anno
+Acqua intercettata: 9,733.80 m³/anno

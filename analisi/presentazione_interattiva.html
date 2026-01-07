@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alberi di Palermo - Dashboard Interattiva - DB GreeHill</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #e8f5e9;
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            animation: fadeInDown 1s ease-out;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #2d5016;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .subtitle {
+            font-size: 1.2em;
+            color: #5a7c3e;
+        }
+
+        .section {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            animation: fadeInUp 0.8s ease-out;
+        }
+
+        .section-title {
+            color: #2d5016;
+            font-size: 1.8em;
+            margin-bottom: 15px;
+            border-left: 5px solid #4CAF50;
+            padding-left: 15px;
+        }
+
+        .section-description {
+            color: #666;
+            font-size: 1em;
+            margin-bottom: 25px;
+            line-height: 1.6;
+            font-style: italic;
+        }
+
+        .filter-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .filter-group {
+            position: relative;
+        }
+
+        .filter-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #2d5016;
+            font-size: 0.95em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .filter-select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1em;
+            background: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%234CAF50' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+            background-repeat: no-repeat;
+            background-position: right 15px center;
+            padding-right: 40px;
+        }
+
+        .filter-select:hover {
+            border-color: #4CAF50;
+            box-shadow: 0 2px 8px rgba(76, 175, 80, 0.2);
+        }
+
+        .filter-select:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+        }
+
+        .species-search {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1em;
+            margin-bottom: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .species-search:focus {
+            outline: none;
+            border-color: #4CAF50;
+            box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+        }
+
+        .breadcrumb {
+            background: #f5f5f5;
+            padding: 15px 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            font-size: 0.95em;
+            color: #666;
+        }
+
+        .breadcrumb span {
+            color: #4CAF50;
+            font-weight: 600;
+        }
+
+        .reset-btn {
+            background: #f44336;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(244, 67, 54, 0.3);
+        }
+
+        .reset-btn:hover {
+            background: #d32f2f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(244, 67, 54, 0.4);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, #4CAF50, #8BC34A);
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .stat-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            color: #2d5016;
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: bold;
+            color: #4CAF50;
+            margin: 10px 0;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.95em;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .benefit-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .benefit-card:hover {
+            transform: scale(1.05);
+        }
+
+        .benefit-card .stat-icon {
+            color: white;
+        }
+
+        .benefit-value {
+            font-size: 2.5em;
+            font-weight: bold;
+            margin: 15px 0;
+        }
+
+        .benefit-label {
+            font-size: 1.1em;
+            opacity: 0.95;
+        }
+
+        .age-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .age-card {
+            background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .age-card:hover {
+            transform: scale(1.05);
+        }
+
+        .age-icon {
+            font-size: 3em;
+            margin-bottom: 10px;
+            color: white;
+        }
+
+        .age-number {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        .age-label {
+            font-size: 1.2em;
+            margin-top: 10px;
+        }
+
+        .species-list-container {
+            max-height: 500px;
+            overflow-y: auto;
+            margin-top: 20px;
+			    overflow-x: hidden;
+        }
+
+        footer {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            margin-top: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            color: #2d5016;
+            font-size: 1em;
+        }
+
+        footer p {
+            margin: 5px 0;
+        }
+
+        /* Stili per i link */
+        a {
+            color: #4CAF50;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            border-bottom: 2px solid transparent;
+        }
+
+        a:hover {
+            color: #2d5016;
+            border-bottom-color: #4CAF50;
+        }
+
+        a:active {
+            color: #1b2f0d;
+        }
+
+        a:visited {
+            color: #357a38;
+        }
+
+        /* Link nel header */
+        header a {
+            color: #4CAF50;
+            font-weight: 700;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 2px;
+        }
+
+        header a:hover {
+            color: #2d5016;
+            border-bottom-color: #2d5016;
+            transform: translateY(-1px);
+            display: inline-block;
+        }
+
+        /* Link nel footer */
+        footer a {
+            color: #4CAF50;
+            border-bottom: 1px dotted #4CAF50;
+        }
+
+        footer a:hover {
+            color: #2d5016;
+            border-bottom-style: solid;
+            border-bottom-color: #2d5016;
+        }
+
+        .species-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .species-item {
+            padding: 15px 20px;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .species-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .species-name {
+            font-weight: 600;
+            color: #2d5016;
+        }
+
+        .species-count {
+            background: #4CAF50;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-weight: bold;
+            font-size: 0.9em;
+        }
+
+        .health-distribution {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+        }
+
+        .health-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 12px;
+            margin: 8px 0;
+            background: white;
+            border-radius: 8px;
+            border-left: 4px solid #4CAF50;
+            transition: all 0.3s ease;
+        }
+
+        .health-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .health-label {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .health-count {
+            background: #4CAF50;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-weight: bold;
+        }
+
+        .chart-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .chart-container {
+            text-align: center;
+        }
+
+        .chart-container h3 {
+            color: #2d5016;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .chart-container img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.15);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .chart-container img:hover {
+            transform: scale(1.02);
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            animation: fadeIn 0.3s ease;
+        }
+
+        .modal-content {
+            margin: 2% auto;
+            display: block;
+            max-width: 95%;
+            max-height: 95%;
+        }
+
+        .close {
+            position: absolute;
+            top: 30px;
+            right: 50px;
+            color: white;
+            font-size: 50px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .close:hover {
+            color: #4CAF50;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2em; }
+            .filter-row { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: 1fr; }
+            .species-grid { grid-template-columns: 1fr; }
+            .chart-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-tree"></i> Alberi di Palermo - Dashboard Interattiva su database  <a href="https://www.greehill.com/post/palermo-lidar-tree-scan-21-000-street-trees-mapped" title="Palermo LiDAR Tree Scan: 21,000 Street Trees Mapped" target="_blank">GreeHill</a>  </h1>
+            <p class="subtitle">Esplora il patrimonio arboreo della città con filtri dinamici</p>
+        </header>
+
+        <!-- Filtri -->
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-search"></i> Filtri di Ricerca</h2>
+            <p class="section-description">
+                Usa i filtri per esplorare il database degli alberi. Tutti i filtri sono indipendenti:
+                puoi cercare una specie specifica in tutta la città o filtrare per stato di salute
+                per vedere dove si trovano gli alberi che richiedono attenzione.
+            </p>
+
+            <div class="breadcrumb" id="breadcrumb">
+                Tutti gli alberi di Palermo
+            </div>
+
+            <div class="filter-row">
+                <div class="filter-group">
+                    <label class="filter-label">📍 Circoscrizione</label>
+                    <select class="filter-select" id="circoscrizione">
+                        <option value="">Tutte le circoscrizioni</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label class="filter-label">🏘️ Quartiere</label>
+                    <select class="filter-select" id="quartiere">
+                        <option value="">Tutti i quartieri</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label class="filter-label">🌿 Specie</label>
+                    <input type="text" class="species-search" id="specieSearch" placeholder="Cerca specie...">
+                    <select class="filter-select" id="specie">
+                        <option value="">Tutte le specie</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label class="filter-label">❤️ Stato di Salute</label>
+                    <select class="filter-select" id="salute">
+                        <option value="">Tutti gli stati</option>
+                    </select>
+                </div>
+            </div>
+
+            <div style="text-align: center;">
+                <button class="reset-btn" onclick="resetFilters()">🔄 Ripristina Filtri</button>
+            </div>
+        </div>
+
+        <!-- Statistiche Generali -->
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-chart-pie"></i> Statistiche Generali</h2>
+            <p class="section-description">
+                Panoramica numerica del patrimonio arboreo. I valori si aggiornano automaticamente
+                in base ai filtri selezionati, permettendoti di analizzare sottoinsiemi specifici del database.
+            </p>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-tree"></i></div>
+                    <span class="stat-number" id="totalTrees">20,472</span>
+                    <div class="stat-label">Alberi Totali</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-leaf"></i></div>
+                    <span class="stat-number" id="totalSpecies">211</span>
+                    <div class="stat-label">Specie Diverse</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-map-marker-alt"></i></div>
+                    <span class="stat-number" id="totalCirc">8</span>
+                    <div class="stat-label">Circoscrizioni</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-city"></i></div>
+                    <span class="stat-number" id="totalQuart">25</span>
+                    <div class="stat-label">Quartieri</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon"><i class="fas fa-road"></i></div>
+                    <span class="stat-number" id="totalStreets">0</span>
+                    <div class="stat-label">Vie Rilevate</div>
+                </div>
+            </div>
+
+            <div class="health-distribution" id="healthDistribution">
+                <h3 style="color: #2d5016; margin-bottom: 15px;"><i class="fas fa-heart"></i> Distribuzione per Stato di Salute</h3>
+                <div id="healthItems"></div>
+            </div>
+        </div>
+
+        <!-- Benefici Ambientali -->
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-globe-americas"></i> Benefici Ambientali Annuali</h2>
+            <p class="section-description">
+                I servizi ecosistemici forniti dagli alberi urbani: produzione di ossigeno, sequestro di carbonio,
+                intercettazione delle acque piovane e rimozione degli inquinanti atmosferici. I valori si riferiscono
+                ai contributi annuali stimati per l'insieme degli alberi selezionati.
+            </p>
+            <div class="stats-grid">
+                <div class="benefit-card" style="background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);">
+                    <div class="stat-icon"><i class="fas fa-wind"></i></div>
+                    <div class="benefit-value"><span id="oxygenProd">4,490</span></div>
+                    <div class="benefit-label">Tonnellate O₂ prodotto/anno</div>
+                </div>
+                <div class="benefit-card" style="background: linear-gradient(135deg, #614385 0%, #516395 100%);">
+                    <div class="stat-icon"><i class="fas fa-cloud"></i></div>
+                    <div class="benefit-value"><span id="carbonSeq">1,699</span></div>
+                    <div class="benefit-label">Tonnellate CO₂ sequestrato/anno</div>
+                </div>
+                <div class="benefit-card" style="background: linear-gradient(135deg, #0082c8 0%, #667db6 100%);">
+                    <div class="stat-icon"><i class="fas fa-tint"></i></div>
+                    <div class="benefit-value"><span id="waterInt">9,734</span></div>
+                    <div class="benefit-label">m³ Acqua intercettata/anno</div>
+                </div>
+                <div class="benefit-card" style="background: linear-gradient(135deg, #f2994a 0%, #f2c94c 100%);">
+                    <div class="stat-icon"><i class="fas fa-industry"></i></div>
+                    <div class="benefit-value"><span id="pm25Rem">22.1</span></div>
+                    <div class="benefit-label">kg PM₂.₅ rimosso/anno</div>
+                </div>
+            </div>
+            <div style="margin-top: 30px; padding: 25px; background: #e8f5e9; border-radius: 10px; text-align: center;">
+                <h3 style="color: #2d5016; margin-bottom: 15px;"><i class="fas fa-lightbulb"></i> Impatto Ambientale</h3>
+                <p style="color: #555; font-size: 1.1em; line-height: 1.6;" id="impactText">
+                    Gli alberi di Palermo stoccano complessivamente <strong>7,259 tonnellate di carbonio</strong>,
+                    equivalente alle emissioni annuali di circa <strong>1,570 automobili</strong>!
+                </p>
+            </div>
+        </div>
+
+        <!-- Età degli Alberi -->
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-calendar-alt"></i> Età degli Alberi</h2>
+            <p class="section-description">
+                Distribuzione per classe di età del patrimonio arboreo. Gli alberi maturi forniscono maggiori
+                benefici ambientali, mentre gli alberi giovani rappresentano l'investimento per il futuro del verde urbano.
+            </p>
+            <div class="age-grid">
+                <div class="age-card" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);">
+                    <div class="age-icon"><i class="fas fa-tree"></i></div>
+                    <div class="age-number"><span id="matureCount">14,842</span></div>
+                    <div class="age-label">Alberi Maturi (<span id="maturePerc">73</span>%)</div>
+                </div>
+                <div class="age-card" style="background: linear-gradient(135deg, #56ab2f 0%, #a8e063 100%);">
+                    <div class="age-icon"><i class="fas fa-seedling"></i></div>
+                    <div class="age-number"><span id="youngCount">5,630</span></div>
+                    <div class="age-label">Alberi Giovani (<span id="youngPerc">27</span>%)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lista Specie -->
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-leaf"></i> Specie Presenti (<span id="speciesCount">211</span>)</h2>
+            <p class="section-description">
+                Elenco completo delle specie arboree presenti nella selezione corrente, ordinate per numero di esemplari.
+                La biodiversità urbana è fondamentale per la resilienza dell'ecosistema cittadino.
+            </p>
+            <div class="species-list-container">
+                <div class="species-grid" id="speciesList"></div>
+            </div>
+        </div>
+
+        <!-- Grafici -->
+        <div class="section">
+            <h2 class="section-title"><i class="fas fa-chart-bar"></i> Visualizzazioni e Grafici</h2>
+            <p class="section-description">
+                Rappresentazioni grafiche del patrimonio arboreo di Palermo. Clicca su un'immagine per ingrandirla.
+                Questi grafici mostrano i dati completi dell'intero database cittadino.
+            </p>
+
+            <div class="chart-grid">
+                <div class="chart-container">
+                    <h3>Top 15 Specie più Comuni</h3>
+                    <img src="grafici_analisi/01_top_specie.png" alt="Top Specie" onclick="openModal(this.src)">
+                </div>
+                <div class="chart-container">
+                    <h3>Distribuzione per Circoscrizione</h3>
+                    <img src="grafici_analisi/02_circoscrizioni.png" alt="Circoscrizioni" onclick="openModal(this.src)">
+                </div>
+                <div class="chart-container">
+                    <h3>Stato di Salute degli Alberi</h3>
+                    <img src="grafici_analisi/03_salute.png" alt="Salute" onclick="openModal(this.src)">
+                </div>
+                <div class="chart-container">
+                    <h3>Vitalità degli Alberi</h3>
+                    <img src="grafici_analisi/04_vitalita.png" alt="Vitalità" onclick="openModal(this.src)">
+                </div>
+                <div class="chart-container">
+                    <h3>Distribuzione per Classe d'Età</h3>
+                    <img src="grafici_analisi/05_eta.png" alt="Età" onclick="openModal(this.src)">
+                </div>
+                <div class="chart-container">
+                    <h3>Distribuzione Altezze</h3>
+                    <img src="grafici_analisi/06_altezze.png" alt="Altezze" onclick="openModal(this.src)">
+                </div>
+                <div class="chart-container">
+                    <h3>Distribuzione Diametri Tronco</h3>
+                    <img src="grafici_analisi/07_diametri.png" alt="Diametri" onclick="openModal(this.src)">
+                </div>
+                <div class="chart-container">
+                    <h3>Top 10 Specie per Sequestro Carbonio</h3>
+                    <img src="grafici_analisi/08_carbonio_specie.png" alt="Carbonio" onclick="openModal(this.src)">
+                </div>
+                <div class="chart-container">
+                    <h3>Top 10 Specie per Produzione Ossigeno</h3>
+                    <img src="grafici_analisi/09_ossigeno_specie.png" alt="Ossigeno" onclick="openModal(this.src)">
+                </div>
+                <div class="chart-container">
+                    <h3>Rimozione Inquinanti Atmosferici</h3>
+                    <img src="grafici_analisi/10_inquinanti.png" alt="Inquinanti" onclick="openModal(this.src)">
+                </div>
+                <div class="chart-container">
+                    <h3>Specie per Circoscrizione (Heatmap)</h3>
+                    <img src="grafici_analisi/11_heatmap_specie_circoscrizione.png" alt="Heatmap" onclick="openModal(this.src)">
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p><strong>Dashboard Alberi di Palermo</strong></p>
+            <p>Ufficio Autonomo Gestione del Verde Urbano - Comune di Palermo</p>
+            <p>Dati aggiornati al 31/12/2025 su database  <a href="https://www.greehill.com/post/palermo-lidar-tree-scan-21-000-street-trees-mapped" title="Palermo LiDAR Tree Scan: 21,000 Street Trees Mapped" target="_blank">GreeHill</a> - Patrimonio arboreo urbano</p>
+			<p>Ͻ 2026 | Idea e progetto grafico di Giovan Battista Vitrano</p>
+        </footer>
+    </div>
+
+    <!-- Modal per ingrandire immagini -->
+    <div id="imageModal" class="modal" onclick="closeModal()">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <script src="embedded_data.js"></script>
+    <script>
+        let fullData = DATA;
+        let currentData = null;
+        let currentFilters = {
+            circoscrizione: '',
+            quartiere: '',
+            specie: '',
+            salute: ''
+        };
+
+        // Preprocessa i dati per renderli filtrabili
+        function preprocessData() {
+            // Crea un dataset piatto con tutte le informazioni necessarie
+            currentData = {
+                trees: [],
+                speciesMap: new Map(),
+                healthMap: new Map(),
+                quartMap: new Map(),
+                circMap: new Map()
+            };
+
+            // Aggrega i dati da tutte le circoscrizioni
+            Object.entries(fullData.circoscrizioni).forEach(([circName, circData]) => {
+                Object.entries(circData.quartieri).forEach(([quartName, quartData]) => {
+                    Object.entries(quartData.specie).forEach(([speciesName, speciesData]) => {
+                        Object.entries(speciesData.salute).forEach(([health, count]) => {
+                            for (let i = 0; i < count; i++) {
+                                currentData.trees.push({
+                                    circoscrizione: circName,
+                                    quartiere: quartName,
+                                    specie: speciesName,
+                                    salute: health
+                                });
+                            }
+                        });
+                    });
+                });
+            });
+        }
+
+        function loadData() {
+            preprocessData();
+            populateAllFilters();
+            updateAllStats();
+        }
+
+        function populateAllFilters() {
+            // Popola Circoscrizioni
+            const circSelect = document.getElementById('circoscrizione');
+            // Rimuovi tutte le opzioni tranne la prima
+            while (circSelect.options.length > 1) {
+                circSelect.remove(1);
+            }
+            Object.keys(fullData.circoscrizioni).sort().forEach(circ => {
+                const option = document.createElement('option');
+                option.value = circ;
+                option.textContent = `Circoscrizione ${circ} (${fullData.circoscrizioni[circ].totale} alberi)`;
+                circSelect.appendChild(option);
+            });
+
+            // Popola tutti i Quartieri
+            const quartSelect = document.getElementById('quartiere');
+            while (quartSelect.options.length > 1) {
+                quartSelect.remove(1);
+            }
+            const allQuartieri = new Set();
+            Object.values(fullData.circoscrizioni).forEach(circ => {
+                Object.keys(circ.quartieri).forEach(q => allQuartieri.add(q));
+            });
+            Array.from(allQuartieri).sort().forEach(quart => {
+                const option = document.createElement('option');
+                option.value = quart;
+                option.textContent = quart;
+                quartSelect.appendChild(option);
+            });
+
+            // Popola tutte le Specie
+            const specieSelect = document.getElementById('specie');
+            while (specieSelect.options.length > 1) {
+                specieSelect.remove(1);
+            }
+            const allSpecies = new Set();
+            Object.values(fullData.circoscrizioni).forEach(circ => {
+                if (circ.specie_totali) {
+                    Object.keys(circ.specie_totali).forEach(sp => allSpecies.add(sp));
+                }
+            });
+            Array.from(allSpecies).sort().forEach(sp => {
+                const option = document.createElement('option');
+                option.value = sp;
+                option.textContent = sp;
+                option.setAttribute('data-name', sp.toLowerCase());
+                specieSelect.appendChild(option);
+            });
+
+            // Popola Stati Salute
+            const saluteSelect = document.getElementById('salute');
+            while (saluteSelect.options.length > 1) {
+                saluteSelect.remove(1);
+            }
+            const saluteLabels = {
+                '0': 'Salute 0 - Critico',
+                '1': 'Salute 1 - Buono',
+                '2': 'Salute 2 - Ottimo',
+                '-': 'Non classificato'
+            };
+            ['2', '1', '0', '-'].forEach(sal => {
+                const option = document.createElement('option');
+                option.value = sal;
+                option.textContent = saluteLabels[sal];
+                saluteSelect.appendChild(option);
+            });
+
+            // Event listeners (solo se non già aggiunti)
+            if (!circSelect.dataset.listenerAdded) {
+                circSelect.addEventListener('change', onFilterChange);
+                quartSelect.addEventListener('change', onFilterChange);
+                specieSelect.addEventListener('change', onFilterChange);
+                saluteSelect.addEventListener('change', onFilterChange);
+                document.getElementById('specieSearch').addEventListener('input', onSpecieSearch);
+
+                circSelect.dataset.listenerAdded = 'true';
+                quartSelect.dataset.listenerAdded = 'true';
+                specieSelect.dataset.listenerAdded = 'true';
+                saluteSelect.dataset.listenerAdded = 'true';
+            }
+        }
+
+        function onFilterChange(e) {
+            const filterType = e.target.id;
+            currentFilters[filterType] = e.target.value;
+
+            // Aggiorna i filtri a cascata
+            updateCascadingFilters(filterType);
+
+            updateAllStats();
+            updateBreadcrumb();
+        }
+
+        function updateCascadingFilters(changedFilter) {
+            // Ottieni i dati filtrati fino al momento
+            const filteredTrees = filterTrees();
+
+            // Estrai valori unici disponibili
+            const availableCirc = new Set(filteredTrees.map(t => t.circoscrizione));
+            const availableQuart = new Set(filteredTrees.map(t => t.quartiere));
+            const availableSpecies = new Set(filteredTrees.map(t => t.specie));
+            const availableHealth = new Set(filteredTrees.map(t => t.salute));
+
+            // Aggiorna le opzioni dei select mantenendo i valori selezionati quando possibile
+            if (changedFilter !== 'circoscrizione') {
+                updateSelectOptions('circoscrizione', availableCirc, (circ) => {
+                    const count = fullData.circoscrizioni[circ]?.totale || 0;
+                    return `Circoscrizione ${circ} (${count} alberi)`;
+                });
+            }
+
+            if (changedFilter !== 'quartiere') {
+                updateSelectOptions('quartiere', availableQuart, (q) => q);
+            }
+
+            if (changedFilter !== 'specie') {
+                updateSelectOptions('specie', availableSpecies, (s) => s);
+            }
+
+            if (changedFilter !== 'salute') {
+                const saluteLabels = {
+                    '0': 'Salute 0 - Critico',
+                    '1': 'Salute 1 - Buono',
+                    '2': 'Salute 2 - Ottimo',
+                    '-': 'Non classificato'
+                };
+                updateSelectOptions('salute', availableHealth, (s) => saluteLabels[s], ['2', '1', '0', '-']);
+            }
+        }
+
+        function updateSelectOptions(selectId, availableValues, labelFunc, customOrder = null) {
+            const select = document.getElementById(selectId);
+            const currentValue = select.value;
+
+            // Salva tutte le opzioni originali
+            if (!select.dataset.allOptions) {
+                select.dataset.allOptions = Array.from(select.options)
+                    .filter(opt => opt.value !== '')
+                    .map(opt => ({ value: opt.value, text: opt.textContent }))
+                    .map(opt => JSON.stringify(opt))
+                    .join('|||');
+            }
+
+            // Rimuovi tutte le opzioni tranne la prima (placeholder)
+            while (select.options.length > 1) {
+                select.remove(1);
+            }
+
+            // Determina l'ordine
+            let orderedValues;
+            if (customOrder) {
+                orderedValues = customOrder.filter(v => availableValues.has(v));
+            } else {
+                orderedValues = Array.from(availableValues).sort();
+            }
+
+            // Aggiungi solo le opzioni disponibili
+            orderedValues.forEach(value => {
+                const option = document.createElement('option');
+                option.value = value;
+                option.textContent = labelFunc(value);
+                if (selectId === 'specie') {
+                    option.setAttribute('data-name', value.toLowerCase());
+                }
+                select.appendChild(option);
+            });
+
+            // Ripristina il valore se ancora disponibile
+            if (currentValue && availableValues.has(currentValue)) {
+                select.value = currentValue;
+            } else if (currentValue) {
+                // Il valore non è più disponibile, resettalo
+                select.value = '';
+                currentFilters[selectId] = '';
+            }
+        }
+
+        function onSpecieSearch(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const specieSelect = document.getElementById('specie');
+            const options = specieSelect.querySelectorAll('option');
+
+            options.forEach(option => {
+                if (option.value === '') {
+                    option.style.display = 'block';
+                    return;
+                }
+
+                const name = option.getAttribute('data-name');
+                if (name && name.includes(searchTerm)) {
+                    option.style.display = 'block';
+                } else {
+                    option.style.display = 'none';
+                }
+            });
+        }
+
+        function filterTrees() {
+            return currentData.trees.filter(tree => {
+                if (currentFilters.circoscrizione && tree.circoscrizione !== currentFilters.circoscrizione) return false;
+                if (currentFilters.quartiere && tree.quartiere !== currentFilters.quartiere) return false;
+                if (currentFilters.specie && tree.specie !== currentFilters.specie) return false;
+                if (currentFilters.salute && tree.salute !== currentFilters.salute) return false;
+                return true;
+            });
+        }
+
+        function updateAllStats() {
+            const filteredTrees = filterTrees();
+            const stats = calculateStats(filteredTrees);
+
+            // Aggiorna statistiche generali
+            animateNumber('totalTrees', stats.totalTrees);
+            animateNumber('totalSpecies', stats.speciesCount);
+            animateNumber('totalCirc', stats.circCount);
+            animateNumber('totalQuart', stats.quartCount);
+            animateNumber('totalStreets', stats.streetCount);
+
+            // Aggiorna benefici ambientali
+            animateNumber('oxygenProd', Math.round(stats.oxygenProd / 1000));
+            animateNumber('carbonSeq', Math.round(stats.carbonSeq / 1000));
+            animateNumber('waterInt', Math.round(stats.waterInt));
+            animateNumber('pm25Rem', (stats.pm25Rem / 1000).toFixed(1));
+
+            // Aggiorna età
+            animateNumber('matureCount', stats.matureCount);
+            animateNumber('youngCount', stats.youngCount);
+            document.getElementById('maturePerc').textContent = stats.maturePerc;
+            document.getElementById('youngPerc').textContent = stats.youngPerc;
+
+            // Aggiorna distribuzione salute
+            updateHealthDistribution(stats.healthData);
+
+            // Aggiorna lista specie
+            updateSpeciesList(stats.speciesData);
+
+            document.getElementById('speciesCount').textContent = stats.speciesCount;
+        }
+
+        function calculateStats(trees) {
+            const totalTrees = trees.length;
+            // Usa il totale dichiarato corretto
+            const actualTotal = fullData.totale_alberi;
+            const ratio = totalTrees / actualTotal;
+
+            // Conta specie uniche
+            const speciesSet = new Set(trees.map(t => t.specie));
+            const speciesData = {};
+            trees.forEach(t => {
+                speciesData[t.specie] = (speciesData[t.specie] || 0) + 1;
+            });
+
+            // Conta circoscrizioni e quartieri unici
+            const circSet = new Set(trees.map(t => t.circoscrizione));
+            const quartSet = new Set(trees.map(t => t.quartiere));
+
+            // Calcola il numero di vie basandosi sulla selezione
+            let streetCount = 0;
+            if (!currentFilters.circoscrizione && !currentFilters.quartiere) {
+                // Tutte le vie
+                streetCount = fullData.totale_vie || 0;
+            } else if (currentFilters.circoscrizione && !currentFilters.quartiere) {
+                // Vie della circoscrizione
+                streetCount = fullData.circoscrizioni[currentFilters.circoscrizione]?.vie || 0;
+            } else if (currentFilters.quartiere) {
+                // Vie del quartiere
+                const circData = fullData.circoscrizioni[currentFilters.circoscrizione];
+                streetCount = circData?.quartieri[currentFilters.quartiere]?.vie || 0;
+            }
+
+            // Distribuzione salute
+            const healthData = {};
+            trees.forEach(t => {
+                healthData[t.salute] = (healthData[t.salute] || 0) + 1;
+            });
+
+            // Stima età (basata sui dati originali per 20472 alberi)
+            const originalMatureRatio = 14842 / 20472; // Ratio basato sul totale corretto
+            const matureCount = Math.round(totalTrees * originalMatureRatio);
+            const youngCount = totalTrees - matureCount;
+            const maturePerc = totalTrees > 0 ? Math.round((matureCount / totalTrees) * 100) : 0;
+            const youngPerc = 100 - maturePerc;
+
+            // Stima benefici ambientali (proporzionali al totale corretto di 19861)
+            const oxygenProd = 4490183 * ratio;
+            const carbonSeq = 1699233 * ratio;
+            const waterInt = 9734 * ratio;
+            const pm25Rem = 22128 * ratio;
+
+            return {
+                totalTrees,
+                speciesCount: speciesSet.size,
+                circCount: circSet.size,
+                quartCount: quartSet.size,
+                streetCount,
+                speciesData,
+                healthData,
+                matureCount,
+                youngCount,
+                maturePerc,
+                youngPerc,
+                oxygenProd,
+                carbonSeq,
+                waterInt,
+                pm25Rem
+            };
+        }
+
+        function animateNumber(elementId, target) {
+            const element = document.getElementById(elementId);
+            if (!element) return;
+
+            // Pulisci il testo corrente rimuovendo separatori
+            const currentText = element.textContent.replace(/,/g, '').replace(/\./g, '');
+            const current = parseFloat(currentText) || 0;
+
+            // Gestisci il target per PM2.5 (che è già un numero con decimale)
+            let finalTarget = target;
+            if (elementId === 'pm25Rem') {
+                finalTarget = parseFloat(target);
+            }
+
+            const duration = 800;
+            const steps = 30;
+            const increment = (finalTarget - current) / steps;
+            let step = 0;
+
+            const timer = setInterval(() => {
+                step++;
+                let value = current + (increment * step);
+
+                // Gestisci decimali per PM2.5
+                if (elementId === 'pm25Rem') {
+                    element.textContent = value.toFixed(1);
+                } else {
+                    value = Math.round(value);
+                    element.textContent = value.toLocaleString('it-IT');
+                }
+
+                if (step >= steps) {
+                    if (elementId === 'pm25Rem') {
+                        element.textContent = finalTarget.toFixed(1);
+                    } else {
+                        element.textContent = Math.round(finalTarget).toLocaleString('it-IT');
+                    }
+                    clearInterval(timer);
+                }
+            }, duration / steps);
+        }
+
+        function updateHealthDistribution(healthData) {
+            const container = document.getElementById('healthItems');
+            const section = document.getElementById('healthDistribution');
+
+            const saluteLabels = {
+                '0': '🔴 Salute 0 - Critico',
+                '1': '🟢 Salute 1 - Buono',
+                '2': '🟢 Salute 2 - Ottimo',
+                '-': '⚪ Non classificato'
+            };
+
+            container.innerHTML = '';
+
+            if (Object.keys(healthData).length === 0) {
+                section.style.display = 'none';
+                return;
+            }
+
+            Object.entries(healthData).sort((a, b) => {
+                const order = {'2': 0, '1': 1, '0': 2, '-': 3};
+                return (order[a[0]] || 999) - (order[b[0]] || 999);
+            }).forEach(([sal, count]) => {
+                const item = document.createElement('div');
+                item.className = 'health-item';
+                item.innerHTML = `
+                    <span class="health-label">${saluteLabels[sal] || 'Salute ' + sal}</span>
+                    <span class="health-count">${count.toLocaleString('it-IT')}</span>
+                `;
+                container.appendChild(item);
+            });
+
+            section.style.display = 'block';
+        }
+
+        function updateSpeciesList(speciesData) {
+            const container = document.getElementById('speciesList');
+            container.innerHTML = '';
+
+            if (Object.keys(speciesData).length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #666; padding: 40px;">Nessuna specie trovata</p>';
+                return;
+            }
+
+            const sortedSpecies = Object.entries(speciesData).sort((a, b) => b[1] - a[1]);
+
+            sortedSpecies.forEach(([species, count]) => {
+                const item = document.createElement('div');
+                item.className = 'species-item';
+                item.innerHTML = `
+                    <span class="species-name">🌿 ${species}</span>
+                    <span class="species-count">${count.toLocaleString('it-IT')}</span>
+                `;
+                container.appendChild(item);
+            });
+        }
+
+        function updateBreadcrumb() {
+            const breadcrumb = document.getElementById('breadcrumb');
+            let parts = [];
+
+            if (currentFilters.circoscrizione) {
+                parts.push(`<span>Circoscrizione ${currentFilters.circoscrizione}</span>`);
+            }
+            if (currentFilters.quartiere) {
+                parts.push(`<span>${currentFilters.quartiere}</span>`);
+            }
+            if (currentFilters.specie) {
+                parts.push(`<span>${currentFilters.specie}</span>`);
+            }
+            if (currentFilters.salute) {
+                const labels = {'0': 'Critico', '1': 'Buono', '2': 'Ottimo', '-': 'Non classificato'};
+                parts.push(`<span>Salute: ${labels[currentFilters.salute]}</span>`);
+            }
+
+            breadcrumb.innerHTML = parts.length > 0 ? parts.join(' → ') : 'Tutti gli alberi di Palermo';
+        }
+
+        function resetFilters() {
+            currentFilters = {
+                circoscrizione: '',
+                quartiere: '',
+                specie: '',
+                salute: ''
+            };
+
+            document.getElementById('circoscrizione').value = '';
+            document.getElementById('quartiere').value = '';
+            document.getElementById('specie').value = '';
+            document.getElementById('salute').value = '';
+            document.getElementById('specieSearch').value = '';
+
+            // Ripristina tutti i filtri popolando nuovamente
+            populateAllFilters();
+
+            updateAllStats();
+            updateBreadcrumb();
+        }
+
+        function openModal(src) {
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            modal.style.display = 'block';
+            modalImg.src = src;
+        }
+
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+        }
+
+        window.addEventListener('load', loadData);
+    </script>
+</body>
+</html>
