@@ -70,14 +70,46 @@
                 <div class="footer-section">
                     <h4><i class="fa-solid fa-share-nodes"></i> Seguici  su</h4>
                    <div class="footer-social">
-                        <a href="http://www.facebook.com/ComunediPalermo" title="Facebook"><i class="fab fa-facebook"></i></a>
-                        <a href="http://twitter.com/ComunePalermo" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="http://www.facebook.com/ComunediPalermo" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="http://twitter.com/ComunePalermo" title="Twitter"><i class="fa-brands fa-x-twitter"></i></a>
                         <a href="https://www.instagram.com/comunepalermo/" title="Instagram"><i class="fab fa-instagram"></i></a>
 						<a href="https://www.youtube.com/user/ComunediPalermo1" title="Youtube""><i class="fab fa-youtube""></i></a>
 						<a href="https://www.comune.palermo.it/lista-rss.php" title="Feed RSS Comune di Palermo - Notizie in tempo reale"><i class="fa-solid fa-rss"></i></a>
                     </div>
 					<br>
-					 <a href="https://palermoculture.comune.palermo.it/"  target="_blank" title="Palermo Culture - Home Page" alt="Palermo Culture - Home Page" > <div class="logo_santar"></div> </a>	
+					 <a href="https://palermoculture.comune.palermo.it/"  target="_blank" title="Palermo Culture - Home Page" alt="Palermo Culture - Home Page" > <div class="logo_santar"></div> </a>
+
+                    <!-- Pulsanti Condivisione -->
+                    <div class="share-section">
+                        <h4><i class="fas fa-share-alt"></i> Condividi questa pagina</h4>
+                        <div class="share-buttons">
+                            <button onclick="shareOnWhatsApp()" class="share-btn whatsapp" title="Condividi su WhatsApp - Il link include filtri, posizione mappa e selezioni attive">
+                                <i class="fab fa-whatsapp"></i>
+                            </button>
+                            <button onclick="shareOnTelegram()" class="share-btn telegram" title="Condividi su Telegram - Il link include filtri, posizione mappa e selezioni attive">
+                                <i class="fab fa-telegram"></i>
+                            </button>
+                            <button onclick="shareOnFacebook()" class="share-btn facebook" title="Condividi su Facebook - Il link include filtri, posizione mappa e selezioni attive">
+                                <i class="fab fa-facebook-f"></i>
+                            </button>
+                            <button onclick="shareOnTwitter()" class="share-btn twitter" title="Condividi su X (Twitter) Il link include filtri, posizione mappa e selezioni attive">
+                                <i class="fa-brands fa-x-twitter"></i>
+                            </button>
+                        <!--    <button onclick="shareOnBluesky()" class="share-btn bluesky" title="Condividi su Bluesky - Il link include filtri, posizione mappa e selezioni attive">
+                                <i class="fa-brands fa-bluesky"></i>
+                            </button> -->
+                            <button onclick="shareViaEmail()" class="share-btn email" title="Condividi via Email - Il link include filtri, posizione mappa e selezioni attive">
+                                <i class="fas fa-envelope"></i>
+                            </button>
+                            <button onclick="copyLinkToClipboard()" class="share-btn copy" title="Copia link - Il link include filtri, posizione mappa e selezioni attive">
+                                <i class="fas fa-link"></i>
+                            </button>
+                        </div>
+                       <!--      <p class="share-info">
+                         <i class="fas fa-info-circle"></i>
+                            Il link include filtri, posizione mappa e selezioni attive
+                        </p> -->
+                    </div>
                 </div>
 
             </div>

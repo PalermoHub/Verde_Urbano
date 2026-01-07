@@ -418,12 +418,13 @@
         }
 
         .footer-social {
-display: flex;
-    gap: 2.75rem;
-    margin-top: 1rem;
-    flex-direction: row;
-    justify-content: space-between;
-        }
+			display: flex;
+			gap: 2.75rem;
+			margin-top: 1rem;
+			flex-direction: row;
+			justify-content: space-around;
+		}
+        
 
         .footer-social a {
             font-size: 1.5rem;

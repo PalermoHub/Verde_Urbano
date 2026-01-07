@@ -91,7 +91,7 @@ L'ordine corretto di caricamento dei CSS in tutte le pagine è:
     <link rel="stylesheet" href="css/page-layout.css">
 
     <!-- 5. Font Awesome (temporaneo, fino agli SVG sprites) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 </head>
 ```
 

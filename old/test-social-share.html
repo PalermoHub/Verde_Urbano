@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test Condivisione Social</title>
+    <link rel="stylesheet" href="css/social-share.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #27ae60;
+        }
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #27ae60;
+            padding-bottom: 10px;
+        }
+        .controls {
+            margin: 20px 0;
+        }
+        .controls label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        .controls input, .controls select {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .test-buttons {
+            background: #2c3e50;
+            padding: 30px;
+            border-radius: 8px;
+        }
+
+        /* Override per test page - stesso stile footer */
+        .test-buttons .share-buttons {
+            justify-content: flex-start;
+        }
+        .generated-url {
+            background: #ecf0f1;
+            padding: 15px;
+            border-radius: 4px;
+            word-break: break-all;
+            font-family: monospace;
+            margin: 20px 0;
+        }
+        .info-box {
+            background: #e8f5e9;
+            border-left: 4px solid #27ae60;
+            padding: 15px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <h1>🧪 Test Condivisione Social - Verde Urbano</h1>
+
+    <div class="test-section">
+        <h2>1. Simulazione Filtri</h2>
+        <p>Questi controlli simulano i filtri della dashboard per testare la generazione URL.</p>
+
+        <div class="controls">
+            <label for="odonimoFilter">Strada (Odonimo):</label>
+            <input type="text" id="odonimoFilter" placeholder="es: Viale Emilia">
+
+            <label for="specieFilter">Specie:</label>
+            <input type="text" id="specieFilter" placeholder="es: Ficus retusa">
+
+            <label for="cpcFilter">CPC (Stato Salute):</label>
+            <select id="cpcFilter">
+                <option value="">-- Tutti --</option>
+                <option value="B">B - Bassa</option>
+                <option value="C">C - Moderata</option>
+                <option value="C/D">C/D - Elevata</option>
+                <option value="D">D - Estrema</option>
+            </select>
+
+            <label for="minHeight">Altezza Minima (m):</label>
+            <input type="number" id="minHeight" value="0" min="0" max="16">
+
+            <label for="minDiameter">Diametro Minimo (cm):</label>
+            <input type="number" id="minDiameter" value="0" min="0" max="137">
+        </div>
+
+        <button onclick="testGenerateURL()" style="background: #27ae60; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">
+            🔗 Genera URL Test
+        </button>
+
+        <div id="generatedURL" class="generated-url" style="display: none;">
+            <strong>URL Generato:</strong><br>
+            <span id="urlDisplay"></span>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>2. Pulsanti Condivisione</h2>
+        <p>Testa i pulsanti di condivisione. Ogni pulsante aprirà il rispettivo social network con l'URL corrente.</p>
+
+        <div class="info-box">
+            <strong>ℹ️ Nota:</strong> I pulsanti useranno i filtri impostati sopra per generare l'URL.
+        </div>
+
+        <div class="test-buttons">
+            <h4 style="color: white; margin-bottom: 15px;"><i class="fas fa-share-alt"></i> Condividi questa vista</h4>
+            <div class="share-buttons">
+                <button onclick="shareOnWhatsApp()" class="share-btn whatsapp" title="Condividi su WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </button>
+                <button onclick="shareOnTelegram()" class="share-btn telegram" title="Condividi su Telegram">
+                    <i class="fab fa-telegram"></i>
+                </button>
+                <button onclick="shareOnFacebook()" class="share-btn facebook" title="Condividi su Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </button>
+                <button onclick="shareOnTwitter()" class="share-btn twitter" title="Condividi su X (Twitter)">
+                    <i class="fab fa-x-twitter"></i>
+                </button>
+                <button onclick="shareOnBluesky()" class="share-btn bluesky" title="Condividi su Bluesky">
+                    <i class="fas fa-cloud"></i>
+                </button>
+                <button onclick="shareViaEmail()" class="share-btn email" title="Condividi via Email">
+                    <i class="fas fa-envelope"></i>
+                </button>
+                <button onclick="copyLinkToClipboard()" class="share-btn copy" title="Copia link">
+                    <i class="fas fa-link"></i>
+                </button>
+            </div>
+            <p style="color: rgba(255,255,255,0.8); font-size: 0.85rem; margin-top: 15px;">
+                <i class="fas fa-info-circle"></i>
+                Il link include filtri, posizione mappa e selezioni attive
+            </p>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>3. Test Ripristino Stato</h2>
+        <p>Prova ad aggiungere parametri all'URL manualmente per testare il ripristino:</p>
+
+        <div class="info-box">
+            <strong>Esempi di URL da testare:</strong><br>
+            <code>?odonimo=Viale%20Emilia&cpc=D</code><br>
+            <code>?specie=Ficus%20retusa&minHeight=5</code><br>
+            <code>?treeId=PA-12345</code>
+        </div>
+
+        <button onclick="testRestore()" style="background: #3498db; color: white; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px;">
+            🔄 Test Ripristino Stato
+        </button>
+
+        <div id="restoredState" style="margin-top: 15px; display: none;">
+            <strong>Stato Ripristinato:</strong>
+            <pre id="stateDisplay" style="background: #ecf0f1; padding: 10px; border-radius: 4px; overflow-x: auto;"></pre>
+        </div>
+    </div>
+
+    <div class="test-section">
+        <h2>4. Checklist Test</h2>
+        <ul style="list-style: none; padding: 0;">
+            <li style="margin: 10px 0;">
+                <input type="checkbox" id="check1"> <label for="check1">I pulsanti social sono visibili e stilizzati correttamente</label>
+            </li>
+            <li style="margin: 10px 0;">
+                <input type="checkbox" id="check2"> <label for="check2">Il pulsante "Copia link" mostra una notifica</label>
+            </li>
+            <li style="margin: 10px 0;">
+                <input type="checkbox" id="check3"> <label for="check3">L'URL generato include i parametri dei filtri</label>
+            </li>
+            <li style="margin: 10px 0;">
+                <input type="checkbox" id="check4"> <label for="check4">I tooltip appaiono al hover sui pulsanti</label>
+            </li>
+            <li style="margin: 10px 0;">
+                <input type="checkbox" id="check5"> <label for="check5">I social network si aprono correttamente</label>
+            </li>
+            <li style="margin: 10px 0;">
+                <input type="checkbox" id="check6"> <label for="check6">Il ripristino stato funziona con parametri URL</label>
+            </li>
+        </ul>
+    </div>
+
+    <script src="js/15_social_share.js"></script>
+    <script>
+        // Mock delle variabili globali necessarie per il test
+        let map = {
+            getZoom: () => 14,
+            getCenter: () => ({ lat: 38.1266, lng: 13.3476 })
+        };
+
+        let selectedTree = null;
+        let allTrees = [];
+
+        // Funzione di test per generare URL
+        function testGenerateURL() {
+            const url = generateShareableURL();
+            document.getElementById('urlDisplay').textContent = url;
+            document.getElementById('generatedURL').style.display = 'block';
+        }
+
+        // Funzione di test per ripristino stato
+        function testRestore() {
+            const state = getApplicationState();
+            document.getElementById('stateDisplay').textContent = JSON.stringify(state, null, 2);
+            document.getElementById('restoredState').style.display = 'block';
+        }
+
+        // Controlla se ci sono parametri nell'URL al caricamento
+        window.addEventListener('load', function() {
+            const params = new URLSearchParams(window.location.search);
+            if (params.toString()) {
+                alert('Parametri URL rilevati!\n\nParametri: ' + params.toString() + '\n\nClicca su "Test Ripristino Stato" per vedere i dettagli.');
+            }
+        });
+    </script>
+</body>
+</html>

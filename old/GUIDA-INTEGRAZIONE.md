@@ -295,7 +295,7 @@ https://italia.github.io/bootstrap-italia/docs/utilities/icone/
 Mantenere nel `<head>`:
 
 ```html
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 ```
 
 ---
