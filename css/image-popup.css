@@ -277,6 +277,15 @@
     margin-bottom: 25px;
 }
 
+.loader-avviso {
+    margin-top: 10px;
+    font-size: 12px;
+    color: #1b5e20;
+    /*font-weight: 700;*/
+    margin-bottom: 2px;
+	text-align: left;
+}
+
 /* Progress Bar */
 .loader-progress-container {
     width: 100%;
