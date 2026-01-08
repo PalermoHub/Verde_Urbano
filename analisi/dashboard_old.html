@@ -4,9 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alberi di Palermo - Dashboard Interattiva - DB GreeHill</title>
+	<meta name="author" content="Giovan Battista Vitrano">
+    <meta http-equiv="content-language" content="IT">
+    <meta name="robots" content="index,follow">
+    <meta name="creation_Date" content="07/01/2026">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+	
+	
     <style>
         * {
             margin: 0;
@@ -565,110 +569,6 @@
             transform: translateY(-2px);
         }
 
-        /* Stili per la mappa */
-        #map {
-            width: 100%;
-            height: 600px;
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-            margin-top: 20px;
-        }
-
-        /* Legenda dentro la mappa - stile Leaflet */
-        .leaflet-legend {
-            background: white;
-            padding: 10px 15px;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-            line-height: 1.6;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        .leaflet-legend-title {
-            font-weight: 600;
-            color: #2d5016;
-            margin-bottom: 8px;
-            font-size: 1em;
-        }
-
-        .leaflet-legend-item {
-            display: flex;
-            align-items: center;
-            margin: 5px 0;
-            font-size: 0.9em;
-        }
-
-        .leaflet-legend-color {
-            width: 25px;
-            height: 18px;
-            border-radius: 3px;
-            margin-right: 8px;
-            border: 1px solid #999;
-            display: inline-block;
-        }
-
-        /* Pulsante Home */
-        .leaflet-control-home {
-            background: white;
-            border: 2px solid rgba(0,0,0,0.2);
-            border-radius: 4px;
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 16px;
-            color: #333;
-            transition: all 0.3s ease;
-        }
-
-        .leaflet-control-home:hover {
-            background: #f4f4f4;
-            color: #4CAF50;
-            transform: scale(1.1);
-        }
-
-        .leaflet-control-home:active {
-            transform: scale(0.95);
-        }
-
-        /* Tooltip personalizzato */
-        .custom-tooltip {
-            background: white;
-            border: 2px solid #4CAF50;
-            border-radius: 8px;
-            padding: 8px 12px;
-            box-shadow: 0 3px 14px rgba(0,0,0,0.3);
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        .custom-tooltip::before {
-            border-top-color: #4CAF50 !important;
-        }
-
-        /* Marker con grafico donut */
-        .donut-marker {
-            background: transparent !important;
-            border: none !important;
-            cursor: pointer !important;
-            transition: transform 0.3s ease;
-            z-index: 1000 !important;
-            pointer-events: all !important;
-        }
-
-        .donut-marker:hover {
-            transform: scale(1.15);
-            z-index: 2000 !important;
-        }
-
-        .donut-marker img,
-        .donut-marker canvas {
-            filter: drop-shadow(0 3px 10px rgba(0,0,0,0.4));
-            display: block !important;
-            pointer-events: all !important;
-        }
-
         @media (max-width: 768px) {
             h1 { font-size: 2em; }
             .filter-row { grid-template-columns: 1fr; }
@@ -683,12 +583,19 @@
                 height: 45px;
                 font-size: 1.3em;
             }
-
-            #map {
-                height: 400px;
-            }
         }
     </style>
+	
+	 	 <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KHR1GHDRQS"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KHR1GHDRQS');
+</script>	 
+	
 </head>
 <body>
     <div class="container">
@@ -744,17 +651,6 @@
             <div style="text-align: center;">
                 <button class="reset-btn" onclick="resetFilters()">🔄 Ripristina Filtri</button>
             </div>
-        </div>
-
-        <!-- Mappa Quartieri -->
-        <div class="section">
-            <h2 class="section-title"><i class="fas fa-map-marked-alt"></i> Mappa dei Quartieri</h2>
-            <p class="section-description">
-                Visualizzazione geografica dei quartieri di Palermo. La mappa si aggiorna automaticamente
-                in base ai filtri selezionati, evidenziando le circoscrizioni e i quartieri corrispondenti.
-                Passa il mouse sopra un quartiere per vedere il numero di alberi, clicca per selezionarlo.
-            </p>
-            <div id="map"></div>
         </div>
 
         <!-- Statistiche Generali -->
@@ -927,10 +823,13 @@
         </div>
 
         <footer>
-            <p><strong>Dashboard Alberi di Palermo</strong></p>
+            <p><strong>Dashboard Alberi di Palermo (Step 1)</strong></p>
             <p>Ufficio Autonomo Gestione del Verde Urbano - Comune di Palermo</p>
             <p>Dati aggiornati al 31/12/2025 su database  <a href="https://www.greehill.com/post/palermo-lidar-tree-scan-21-000-street-trees-mapped" title="Palermo LiDAR Tree Scan: 21,000 Street Trees Mapped" target="_blank">GreeHill</a> - Patrimonio arboreo urbano</p>
-			<p>Ͻ 2026 | Idea e progetto grafico di Giovan Battista Vitrano</p>
+			<p>Ͻ 2026 | Idea, progetto grafico e sviluppo tecnico di <a href="https://www.linkedin.com/in/gbvitrano/" title="@gbvitrano" target="_blank">Giovan Battista Vitrano</a> - <a href="https://claude.ai" target="_blank">Claude AI (Anthropic)</a>
+			
+			
+			
         </footer>
     </div>
 
@@ -955,554 +854,6 @@
             specie: '',
             salute: ''
         };
-
-        // Variabili per la mappa
-        let map = null;
-        let geoJsonLayer = null;
-        let quartertiData = null;
-
-        // Inizializza la mappa
-        async function initMap() {
-            try {
-                // Carica il GeoJSON
-                const response = await fetch('quartieri.geojson');
-                quartertiData = await response.json();
-
-                // Crea la mappa centrata su Palermo con limiti
-                const bounds = L.latLngBounds(
-                    L.latLng(38.05, 13.25),  // Sud-Ovest
-                    L.latLng(38.23, 13.45)   // Nord-Est
-                );
-
-                map = L.map('map', {
-                    center: [38.1157, 13.3615],
-                    zoom: 11,
-                    maxBounds: bounds,
-                    maxBoundsViscosity: 0.8,
-                    minZoom: 10,
-                    maxZoom: 18
-                });
-
-                // Layer base: OpenStreetMap
-                const osmLayer = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                    attribution: '© OpenStreetMap contributors',
-                    maxZoom: 19
-                });
-
-                // Layer satellitare: Esri World Imagery
-                const satelliteLayer = L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}', {
-                    attribution: '© Esri, Maxar, Earthstar Geographics',
-                    maxZoom: 19
-                });
-
-                // Layer ibrido (satellitare con etichette)
-                const hybridLayer = L.layerGroup([
-                    satelliteLayer,
-                    L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/Reference/World_Boundaries_and_Places/MapServer/tile/{z}/{y}/{x}', {
-                        maxZoom: 19
-                    })
-                ]);
-
-                // Aggiungi il layer di default (OpenStreetMap)
-                osmLayer.addTo(map);
-
-                // Crea il controllo per cambiare i layer
-                const baseMaps = {
-                    "🗺️ Mappa Stradale": osmLayer,
-                    "🛰️ Vista Satellitare": satelliteLayer,
-                    "🌍 Ibrida": hybridLayer
-                };
-
-                L.control.layers(baseMaps, null, {
-                    position: 'topright'
-                }).addTo(map);
-
-                // Aggiungi pulsante Home
-                const homeControl = L.Control.extend({
-                    options: {
-                        position: 'topleft'
-                    },
-                    onAdd: function(map) {
-                        const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
-                        const button = L.DomUtil.create('a', 'leaflet-control-home', container);
-                        button.innerHTML = '<i class="fas fa-home"></i>';
-                        button.href = '#';
-                        button.title = 'Torna allo zoom iniziale';
-
-                        L.DomEvent.on(button, 'click', function(e) {
-                            L.DomEvent.preventDefault(e);
-                            map.setView([38.1157, 13.3615], 11);
-                        });
-
-                        return container;
-                    }
-                });
-                map.addControl(new homeControl());
-
-                // Aggiungi legenda personalizzata
-                const legend = L.control({ position: 'bottomright' });
-
-                legend.onAdd = function(map) {
-                    const div = L.DomUtil.create('div', 'leaflet-legend');
-                    div.innerHTML = `
-                        <div class="leaflet-legend-title">Legenda</div>
-                        <div class="leaflet-legend-item">
-                            <span class="leaflet-legend-color" style="background: #4CAF50; opacity: 0.6;"></span>
-                            <span>Quartiere selezionato</span>
-                        </div>
-                        <div class="leaflet-legend-item">
-                            <span class="leaflet-legend-color" style="background: #2196F3; opacity: 0.4;"></span>
-                            <span>Circoscrizione selezionata</span>
-                        </div>
-                        <div class="leaflet-legend-item">
-                            <span class="leaflet-legend-color" style="background: #9E9E9E; opacity: 0.2;"></span>
-                            <span>Altri quartieri</span>
-                        </div>
-                    `;
-                    return div;
-                };
-
-                legend.addTo(map);
-
-                // Crea un pane dedicato per i marker donut sopra tutto
-                map.createPane('donutPane');
-                map.getPane('donutPane').style.zIndex = 650;
-
-                // Aggiungi listener per zoom - ridimensiona i grafici quando cambia lo zoom
-                map.on('zoomend', function() {
-                    addDonutMarkers();
-                });
-
-                // Aggiungi il layer GeoJSON
-                updateMapLayer();
-
-            } catch (error) {
-                console.error('Errore nel caricamento della mappa:', error);
-            }
-        }
-
-        // Funzione per determinare il colore di un quartiere
-        function getFeatureColor(feature) {
-            const circoscrizione = feature.properties.Circoscrizione;
-            const quartiere = feature.properties.Quartiere;
-
-            // Quartiere selezionato
-            if (currentFilters.quartiere && quartiere === currentFilters.quartiere) {
-                return '#4CAF50';
-            }
-
-            // Circoscrizione selezionata (ma non quartiere specifico)
-            if (currentFilters.circoscrizione && circoscrizione === currentFilters.circoscrizione && !currentFilters.quartiere) {
-                return '#2196F3';
-            }
-
-            // Default
-            return '#9E9E9E';
-        }
-
-        // Funzione per determinare l'opacità
-        function getFeatureOpacity(feature) {
-            const circoscrizione = feature.properties.Circoscrizione;
-            const quartiere = feature.properties.Quartiere;
-
-            // Quartiere selezionato
-            if (currentFilters.quartiere && quartiere === currentFilters.quartiere) {
-                return 0.6;
-            }
-
-            // Circoscrizione selezionata
-            if (currentFilters.circoscrizione && circoscrizione === currentFilters.circoscrizione && !currentFilters.quartiere) {
-                return 0.4;
-            }
-
-            // Nessun filtro attivo - mostra tutti
-            if (!currentFilters.circoscrizione && !currentFilters.quartiere) {
-                return 0.2;
-            }
-
-            // Altri quartieri quando c'è un filtro attivo
-            return 0.1;
-        }
-
-        // Funzione per lo stile delle feature
-        function styleFeature(feature) {
-            return {
-                fillColor: getFeatureColor(feature),
-                weight: 2,
-                opacity: 1,
-                color: '#666',
-                fillOpacity: getFeatureOpacity(feature)
-            };
-        }
-
-        // Funzione per evidenziare al passaggio del mouse
-        function highlightFeature(e) {
-            const layer = e.target;
-            layer.setStyle({
-                weight: 3,
-                color: '#333',
-                fillOpacity: 0.7
-            });
-            layer.bringToFront();
-        }
-
-        // Funzione per ripristinare lo stile
-        function resetHighlight(e) {
-            geoJsonLayer.resetStyle(e.target);
-        }
-
-        // Funzione per gestire il click su un quartiere
-        function onFeatureClick(e) {
-            const feature = e.target.feature;
-            const circoscrizione = feature.properties.Circoscrizione;
-            const quartiere = feature.properties.Quartiere;
-
-            // Aggiorna i filtri
-            document.getElementById('circoscrizione').value = circoscrizione;
-            document.getElementById('quartiere').value = quartiere;
-
-            currentFilters.circoscrizione = circoscrizione;
-            currentFilters.quartiere = quartiere;
-
-            // Aggiorna cascading filters
-            updateCascadingFilters('quartiere');
-
-            // Aggiorna le statistiche
-            updateAllStats();
-            updateBreadcrumb();
-
-            // Aggiorna la mappa
-            updateMapLayer();
-        }
-
-        // Funzione per calcolare il numero di alberi per quartiere
-        function getTreeCountForQuartiere(quartiereNome) {
-            if (!currentData || !currentData.trees) return 0;
-            return currentData.trees.filter(tree => tree.quartiere === quartiereNome).length;
-        }
-
-        // Funzione per calcolare la distribuzione dello stato di salute per quartiere
-        function getHealthDistributionForQuartiere(quartiereNome) {
-            if (!currentData || !currentData.trees) return {};
-
-            const trees = currentData.trees.filter(tree => tree.quartiere === quartiereNome);
-            const distribution = {};
-
-            trees.forEach(tree => {
-                const health = tree.salute || '-';
-                distribution[health] = (distribution[health] || 0) + 1;
-            });
-
-            return distribution;
-        }
-
-        // Funzione per creare un grafico donut su canvas
-        function createDonutChart(healthDistribution, totalTrees, size = 80) {
-            const canvas = document.createElement('canvas');
-            canvas.width = size;
-            canvas.height = size;
-            canvas.style.display = 'block';
-            const ctx = canvas.getContext('2d');
-
-            // Colori per ogni stato di salute
-            const healthColors = {
-                '2': '#4CAF50',  // Ottimo - verde
-                '1': '#8BC34A',  // Buono - verde chiaro
-                '0': '#FF5252',  // Critico - rosso
-                '-': '#9E9E9E'   // Non classificato - grigio
-            };
-
-            // Ordine di priorità per visualizzazione
-            const healthOrder = ['2', '1', '0', '-'];
-
-            // Calcola angoli per ogni segmento
-            const centerX = size / 2;
-            const centerY = size / 2;
-            const outerRadius = size / 2 - 4;
-            const innerRadius = outerRadius * 0.55; // Spessore dell'anello
-
-            let currentAngle = -Math.PI / 2; // Inizia dall'alto
-
-            // Disegna ogni segmento
-            healthOrder.forEach(health => {
-                const count = healthDistribution[health] || 0;
-                if (count === 0) return;
-
-                const percentage = count / totalTrees;
-                const angle = percentage * 2 * Math.PI;
-
-                // Disegna l'arco
-                ctx.beginPath();
-                ctx.arc(centerX, centerY, outerRadius, currentAngle, currentAngle + angle);
-                ctx.arc(centerX, centerY, innerRadius, currentAngle + angle, currentAngle, true);
-                ctx.closePath();
-
-                ctx.fillStyle = healthColors[health];
-                ctx.fill();
-
-                // Bordo bianco per separare i segmenti
-                ctx.strokeStyle = 'white';
-                ctx.lineWidth = 2;
-                ctx.stroke();
-
-                currentAngle += angle;
-            });
-
-            // Cerchio centrale
-            ctx.beginPath();
-            ctx.arc(centerX, centerY, innerRadius, 0, 2 * Math.PI);
-            ctx.fillStyle = 'white';
-            ctx.fill();
-
-            // Testo con il numero totale al centro
-            ctx.fillStyle = '#2d5016';
-            ctx.font = 'bold ' + Math.floor(size * 0.22) + 'px Arial';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillText(totalTrees, centerX, centerY);
-
-            // Bordo esterno del grafico
-            ctx.beginPath();
-            ctx.arc(centerX, centerY, outerRadius, 0, 2 * Math.PI);
-            ctx.strokeStyle = '#666';
-            ctx.lineWidth = 2;
-            ctx.stroke();
-
-            return canvas;
-        }
-
-        // Funzione per creare l'icona HTML per il marker con il grafico
-        function createDonutMarkerIcon(quartiereNome, size = 80) {
-            const totalTrees = getTreeCountForQuartiere(quartiereNome);
-
-            if (totalTrees === 0) {
-                return null;
-            }
-
-            const healthDistribution = getHealthDistributionForQuartiere(quartiereNome);
-
-            // Verifica che ci siano dati di salute
-            const hasHealthData = Object.keys(healthDistribution).length > 0;
-            if (!hasHealthData) {
-                return null;
-            }
-
-            const canvas = createDonutChart(healthDistribution, totalTrees, size);
-
-            // Converti il canvas in data URL per visualizzazione affidabile
-            const dataUrl = canvas.toDataURL('image/png');
-
-            // Crea un'icona Leaflet con un'immagine
-            const html = `<img src="${dataUrl}" style="width: ${size}px; height: ${size}px; display: block; border-radius: 50%; pointer-events: all; position: relative; z-index: 1000;" />`;
-
-            const icon = L.divIcon({
-                html: html,
-                className: 'donut-marker',
-                iconSize: [size, size],
-                iconAnchor: [size / 2, size / 2],
-                popupAnchor: [0, -size / 2]
-            });
-
-            return icon;
-        }
-
-        // Variabile per memorizzare i marker dei grafici
-        let donutMarkers = [];
-        let lastOpenedPopupQuartiere = null;
-
-        // Funzione per calcolare la dimensione dei grafici in base allo zoom
-        function getDonutSizeForZoom(zoomLevel) {
-            // Zoom 10: 40px, Zoom 11: 50px, Zoom 12: 65px, Zoom 13: 80px, Zoom 14+: 100px
-            const baseSize = 25;
-            const sizeIncrement = 15;
-            const minZoom = 10;
-
-            const size = baseSize + (Math.max(0, zoomLevel - minZoom) * sizeIncrement);
-            return Math.min(size, 100); // Max 100px
-        }
-
-        // Funzione per aggiungere i marker con grafici donut alla mappa
-        function addDonutMarkers() {
-            // Rimuovi marker esistenti
-            donutMarkers.forEach(marker => map.removeLayer(marker));
-            donutMarkers = [];
-
-            if (!quartertiData || !currentData || !currentData.trees) {
-                return;
-            }
-
-            // Calcola la dimensione in base allo zoom corrente
-            const currentZoom = map.getZoom();
-            const donutSize = getDonutSizeForZoom(currentZoom);
-
-            // Per ogni quartiere, calcola il centroide e aggiungi il marker
-            quartertiData.features.forEach(feature => {
-                const quartiere = feature.properties.Quartiere;
-                const circoscrizione = feature.properties.Circoscrizione;
-
-                // Calcola il centroide del poligono
-                const geoJsonLayer = L.geoJSON(feature);
-                const bounds = geoJsonLayer.getBounds();
-                const center = bounds.getCenter();
-
-                // Crea l'icona con il grafico donut (dimensione basata sullo zoom)
-                const icon = createDonutMarkerIcon(quartiere, donutSize);
-
-                if (icon) {
-                    const marker = L.marker(center, {
-                        icon: icon,
-                        zIndexOffset: 1000,
-                        interactive: true,
-                        pane: 'donutPane'
-                    });
-
-                    // Aggiungi tooltip
-                    const totalTrees = getTreeCountForQuartiere(quartiere);
-                    const healthDist = getHealthDistributionForQuartiere(quartiere);
-
-                    let tooltipContent = `
-                        <div style="font-family: 'Segoe UI', sans-serif;">
-                            <strong style="color: #2d5016; font-size: 1em;">${quartiere}</strong><br>
-                            <span style="color: #666; font-size: 0.9em;">Tot: <strong>${totalTrees}</strong> alberi</span><br>
-                    `;
-
-                    if (healthDist['2']) tooltipContent += `<span style="color: #4CAF50;">● Ottimo: ${healthDist['2']}</span><br>`;
-                    if (healthDist['1']) tooltipContent += `<span style="color: #8BC34A;">● Buono: ${healthDist['1']}</span><br>`;
-                    if (healthDist['0']) tooltipContent += `<span style="color: #FF5252;">● Critico: ${healthDist['0']}</span><br>`;
-                    if (healthDist['-']) tooltipContent += `<span style="color: #9E9E9E;">● N/D: ${healthDist['-']}</span><br>`;
-
-                    tooltipContent += `</div>`;
-
-                    marker.bindTooltip(tooltipContent, {
-                        permanent: false,
-                        direction: 'top',
-                        className: 'custom-tooltip',
-                        opacity: 0.95
-                    });
-
-                    // Aggiungi popup con click
-                    marker.bindPopup(`
-                        <div style="font-family: 'Segoe UI', sans-serif;">
-                            <h3 style="color: #2d5016; margin: 0 0 10px 0; font-size: 1.2em;">
-                                ${quartiere}
-                            </h3>
-                            <p style="margin: 5px 0; color: #666;">
-                                <strong>Circoscrizione:</strong> ${circoscrizione}
-                            </p>
-                            <p style="margin: 10px 0; color: #4CAF50; font-size: 1.1em;">
-                                <strong>🌳 ${totalTrees}</strong> alberi rilevati
-                            </p>
-                            <div style="margin: 10px 0; padding: 10px; background: #f5f5f5; border-radius: 5px;">
-                                <strong>Distribuzione salute:</strong><br>
-                                ${healthDist['2'] ? `<span style="color: #4CAF50;">● Ottimo: ${healthDist['2']} (${Math.round(healthDist['2']/totalTrees*100)}%)</span><br>` : ''}
-                                ${healthDist['1'] ? `<span style="color: #8BC34A;">● Buono: ${healthDist['1']} (${Math.round(healthDist['1']/totalTrees*100)}%)</span><br>` : ''}
-                                ${healthDist['0'] ? `<span style="color: #FF5252;">● Critico: ${healthDist['0']} (${Math.round(healthDist['0']/totalTrees*100)}%)</span><br>` : ''}
-                                ${healthDist['-'] ? `<span style="color: #9E9E9E;">● Non classificato: ${healthDist['-']} (${Math.round(healthDist['-']/totalTrees*100)}%)</span>` : ''}
-                            </div>
-                            <p style="margin: 10px 0 0 0; font-size: 0.9em; color: #2196F3; font-style: italic;">
-                                <i class="fas fa-filter"></i> Clicca sul grafico per applicare il filtro
-                            </p>
-                        </div>
-                    `);
-
-                    // Aggiungi evento click al marker per applicare i filtri
-                    marker.on('click', function(e) {
-                        // Salva quale popup era aperto
-                        lastOpenedPopupQuartiere = quartiere;
-
-                        // Aggiorna i filtri
-                        document.getElementById('circoscrizione').value = circoscrizione;
-                        document.getElementById('quartiere').value = quartiere;
-
-                        currentFilters.circoscrizione = circoscrizione;
-                        currentFilters.quartiere = quartiere;
-
-                        // Aggiorna cascading filters
-                        updateCascadingFilters('quartiere');
-
-                        // Aggiorna le statistiche
-                        updateAllStats();
-                        updateBreadcrumb();
-
-                        // Aggiorna la mappa
-                        updateMapLayer();
-                    });
-
-                    marker.addTo(map);
-                    donutMarkers.push(marker);
-
-                    // Riapri il popup se questo era il quartiere con popup aperto
-                    if (lastOpenedPopupQuartiere === quartiere) {
-                        marker.openPopup();
-                    }
-                }
-            });
-        }
-
-        // Funzione per associare eventi a ogni feature
-        function onEachFeature(feature, layer) {
-            const quartiere = feature.properties.Quartiere;
-            const circoscrizione = feature.properties.Circoscrizione;
-
-            // Solo eventi mouse, NO tooltip sui poligoni (il tooltip è sui marker donut)
-            layer.on({
-                mouseover: highlightFeature,
-                mouseout: resetHighlight,
-                click: onFeatureClick
-            });
-        }
-
-        // Aggiorna il layer della mappa
-        function updateMapLayer() {
-            if (!map || !quartertiData) return;
-
-            // Rimuovi il layer esistente
-            if (geoJsonLayer) {
-                map.removeLayer(geoJsonLayer);
-            }
-
-            // Filtra le feature se necessario per lo zoom
-            let filteredData = quartertiData;
-            let shouldZoom = false;
-
-            if (currentFilters.quartiere) {
-                // Filtra solo il quartiere selezionato per lo zoom
-                filteredData = {
-                    ...quartertiData,
-                    features: quartertiData.features.filter(
-                        f => f.properties.Quartiere === currentFilters.quartiere
-                    )
-                };
-                shouldZoom = true;
-            } else if (currentFilters.circoscrizione) {
-                // Filtra solo la circoscrizione selezionata per lo zoom
-                filteredData = {
-                    ...quartertiData,
-                    features: quartertiData.features.filter(
-                        f => f.properties.Circoscrizione === currentFilters.circoscrizione
-                    )
-                };
-                shouldZoom = true;
-            }
-
-            // Crea un nuovo layer con lo stile aggiornato (mostra sempre tutti i quartieri)
-            geoJsonLayer = L.geoJSON(quartertiData, {
-                style: styleFeature,
-                onEachFeature: onEachFeature
-            }).addTo(map);
-
-            // Zoom sul quartiere/circoscrizione selezionata
-            if (shouldZoom && filteredData.features.length > 0) {
-                const tempLayer = L.geoJSON(filteredData);
-                const bounds = tempLayer.getBounds();
-                map.fitBounds(bounds, { padding: [50, 50] });
-            }
-
-            // Aggiungi i grafici donut dopo aver aggiornato i layer
-            setTimeout(() => {
-                addDonutMarkers();
-            }, 300);
-        }
 
         // Preprocessa i dati per renderli filtrabili
         function preprocessData() {
@@ -1534,18 +885,10 @@
             });
         }
 
-        async function loadData() {
+        function loadData() {
             preprocessData();
             populateAllFilters();
             updateAllStats();
-            await initMap();
-
-            // Aggiungi i grafici donut dopo che tutto è stato caricato
-            setTimeout(() => {
-                if (map && quartertiData && currentData && currentData.trees) {
-                    addDonutMarkers();
-                }
-            }, 1000);
         }
 
         function populateAllFilters() {
@@ -1639,7 +982,6 @@
 
             updateAllStats();
             updateBreadcrumb();
-            updateMapLayer();
         }
 
         function updateCascadingFilters(changedFilter) {
@@ -1995,12 +1337,6 @@
 
             updateAllStats();
             updateBreadcrumb();
-
-            // Ripristina la mappa allo zoom iniziale
-            if (map) {
-                map.setView([38.1157, 13.3615], 11);
-                updateMapLayer();
-            }
         }
 
         function openModal(src) {
