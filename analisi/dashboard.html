@@ -694,7 +694,7 @@
     <div class="container">
         <header>
             <h1><i class="fas fa-tree"></i> Alberi di Palermo - Dashboard Interattiva su database  <a href="https://www.greehill.com/post/palermo-lidar-tree-scan-21-000-street-trees-mapped" title="Palermo LiDAR Tree Scan: 21,000 Street Trees Mapped" target="_blank">GreeHill</a>  </h1>
-            <p class="subtitle">Esplora il patrimonio arboreo della città con filtri dinamici</p>
+            <p class="subtitle">Esplora il patrimonio arboreo (Rilievo fase 1) della città con filtri dinamici</p>
         </header>
 
         <!-- Filtri -->
@@ -761,7 +761,7 @@
         <div class="section">
             <h2 class="section-title"><i class="fas fa-chart-pie"></i> Statistiche Generali</h2>
             <p class="section-description">
-                Panoramica numerica del patrimonio arboreo. I valori si aggiornano automaticamente
+                Panoramica numerica del patrimonio arboreo (Rilievo fase 1). I valori si aggiornano automaticamente
                 in base ai filtri selezionati, permettendoti di analizzare sottoinsiemi specifici del database.
             </p>
             <div class="stats-grid">
@@ -831,7 +831,7 @@
             <div style="margin-top: 30px; padding: 25px; background: #e8f5e9; border-radius: 10px; text-align: center;">
                 <h3 style="color: #2d5016; margin-bottom: 15px;"><i class="fas fa-lightbulb"></i> Impatto Ambientale</h3>
                 <p style="color: #555; font-size: 1.1em; line-height: 1.6;" id="impactText">
-                    Gli alberi di Palermo stoccano complessivamente <strong>7,259 tonnellate di carbonio</strong>,
+                    Gli alberi (Rilievo fase 1) di Palermo stoccano complessivamente <strong>7,259 tonnellate di carbonio</strong>,
                     equivalente alle emissioni annuali di circa <strong>1,570 automobili</strong>!
                 </p>
             </div>
@@ -841,7 +841,7 @@
         <div class="section">
             <h2 class="section-title"><i class="fas fa-calendar-alt"></i> Età degli Alberi</h2>
             <p class="section-description">
-                Distribuzione per classe di età del patrimonio arboreo. Gli alberi maturi forniscono maggiori
+                Distribuzione per classe di età del patrimonio arboreo (Rilievo fase 1). Gli alberi maturi forniscono maggiori
                 benefici ambientali, mentre gli alberi giovani rappresentano l'investimento per il futuro del verde urbano.
             </p>
             <div class="age-grid">
@@ -874,7 +874,7 @@
         <div class="section">
             <h2 class="section-title"><i class="fas fa-chart-bar"></i> Visualizzazioni e Grafici</h2>
             <p class="section-description">
-                Rappresentazioni grafiche del patrimonio arboreo di Palermo. Clicca su un'immagine per ingrandirla.
+                Rappresentazioni grafiche del patrimonio arboreo (Rilievo fase 1) di Palermo. Clicca su un'immagine per ingrandirla.
                 Questi grafici mostrano i dati completi dell'intero database cittadino.
             </p>
 
@@ -929,8 +929,8 @@
         <footer>
             <p><strong>Dashboard Alberi di Palermo</strong></p>
             <p>Ufficio Autonomo Gestione del Verde Urbano - Comune di Palermo</p>
-            <p>Dati aggiornati al 31/12/2025 su database  <a href="https://www.greehill.com/post/palermo-lidar-tree-scan-21-000-street-trees-mapped" title="Palermo LiDAR Tree Scan: 21,000 Street Trees Mapped" target="_blank">GreeHill</a> - Patrimonio arboreo urbano</p>
-			<p>Ͻ 2026 | Idea e progetto grafico di Giovan Battista Vitrano</p>
+            <p>Dati aggiornati al 31/12/2025 su database  <a href="https://www.greehill.com/post/palermo-lidar-tree-scan-21-000-street-trees-mapped" title="Palermo LiDAR Tree Scan: 21,000 Street Trees Mapped" target="_blank">GreeHill</a> - Patrimonio arboreo (Rilievo fase 1) urbano</p>
+			<p>Ͻ 2026 | Idea, progetto grafico e sviluppo tecnico: Giovan Battista Vitrano - Claude AI (Anthropic)</p>
         </footer>
     </div>
 
@@ -1872,13 +1872,13 @@
             }
 
             const duration = 800;
-            const steps = 30;
-            const increment = (finalTarget - current) / steps;
-            let step = 0;
+            const fases = 30;
+            const increment = (finalTarget - current) / fases;
+            let fase = 0;
 
             const timer = setInterval(() => {
-                step++;
-                let value = current + (increment * step);
+                fase++;
+                let value = current + (increment * fase);
 
                 // Gestisci decimali per PM2.5
                 if (elementId === 'pm25Rem') {
@@ -1888,7 +1888,7 @@
                     element.textContent = value.toLocaleString('it-IT');
                 }
 
-                if (step >= steps) {
+                if (fase >= fases) {
                     if (elementId === 'pm25Rem') {
                         element.textContent = finalTarget.toFixed(1);
                     } else {
@@ -1896,7 +1896,7 @@
                     }
                     clearInterval(timer);
                 }
-            }, duration / steps);
+            }, duration / fases);
         }
 
         function updateHealthDistribution(healthData) {
