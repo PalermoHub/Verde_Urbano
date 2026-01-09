@@ -373,3 +373,516 @@ AD070AD,ALB_371,Via Rizzo Ammiraglio,41870,930,01/01/1025,Dott. Roberto Marceddu
 AD071AD,ALB_372,Via Rizzo Ammiraglio,41870,930,01/01/1025,Dott. Roberto Marceddu,114,Ficus magnoloides,Cercine,38.143232,13.357037,15,300,3,1,C,APL.025S,,,,,,,,,,,,,,,Abbattimento chioma piramidale h.23-30m,cad,€762.97,Acquasanta,Montepellegrino,VIII,96.25,70.25
 AD072AD,ALB_373,Via Rizzo Ammiraglio,41870,930,01/01/1025,Dott. Roberto Marceddu,115,Ficus magnoloides,Cercine,38.143208,13.356983,15,300,3,1,C,APL.025S,,,,,,,,,,,,,,,Abbattimento chioma piramidale h.23-30m,cad,€762.97,Acquasanta,Montepellegrino,VIII,96.25,70.25
 AD073AD,ALB_374,Via Rizzo Ammiraglio,41870,930,01/01/1025,Dott. Roberto Marceddu,116,Ficus magnoloides,Cercine,38.143180,13.356937,15,300,3,1,C/D,APL.025S,,,,,,,,,,,,,,,Abbattimento chioma piramidale h.23-30m,cad,€762.97,Acquasanta,Montepellegrino,VIII,96.25,70.25
+AD074AD,ALB_375,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8268,Platanus × hispanica,,38.13716919,13.31925113,15.72,0.54,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,149.87,396.03
+AD075AD,ALB_376,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8296,Platanus × hispanica,,38.13724881,13.31958125,7.06,0.19,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,33.41,88.28
+AD076AD,ALB_377,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8302,Platanus × hispanica,,38.13728007,13.3197017,10.01,0.29,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,27.18,71.8
+AD077AD,ALB_378,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8282,Platanus × hispanica,,38.13738109,13.32015148,12.51,0.18,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,25.74,68.02
+AD078AD,ALB_379,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8272,Platanus × hispanica,,38.13762279,13.32117158,9.77,0.22,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,41.33,109.21
+AD079AD,ALB_380,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8276,Celtis australis,,38.13764308,13.3212624,11.86,0.4,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,28.51,75.33
+AD080AD,ALB_381,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8252,Platanus × hispanica,,38.13766155,13.32134419,16.35,0.56,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,156.7,414.08
+AD081AD,ALB_382,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8243,Celtis australis,,38.13730577,13.31981535,8.99,0.33,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,25.05,66.19
+AD082AD,ALB_383,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8247,Celtis australis,,38.1373292,13.31992269,9.43,0.28,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,23.8,62.88
+AD083AD,ALB_384,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8241,Celtis australis,,38.13735769,13.320038,9.53,0.29,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,24.11,63.71
+AD084AD,ALB_385,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8269,Celtis australis,,38.13740764,13.32025578,9,0.25,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,20.87,55.14
+AD085AD,ALB_386,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8274,Platanus × hispanica,,38.13743275,13.32036555,14.46,0.45,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,114.98,303.84
+AD086AD,ALB_387,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8244,Platanus × hispanica,,38.13745759,13.32047085,17.94,0.48,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,127.61,337.21
+AD087AD,ALB_388,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8246,Platanus × hispanica,,38.13750924,13.32069155,18.78,0.49,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,113.01,298.63
+AD088AD,ALB_389,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8255,Platanus × hispanica,,38.13768265,13.32143152,17.94,0.57,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,162.02,428.14
+AD089AD,ALB_390,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8420,Platanus × hispanica,,38.13772741,13.32162419,11.67,0.35,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,79.7,210.59
+AD090AD,ALB_391,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8415,Platanus × hispanica,,38.13775227,13.32173153,12.31,0.36,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,70.82,187.13
+AD091AD,ALB_392,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8408,Platanus × hispanica,,38.13777917,13.32184067,11.29,0.3,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,64.35,170.04
+AD092AD,ALB_393,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8424,Platanus × hispanica,,38.13785193,13.32215204,17.56,0.54,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,150.68,398.18
+AD093AD,ALB_394,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8399,Platanus × hispanica,,38.13787631,13.32226066,19.92,0.58,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,145.01,383.18
+AD094AD,ALB_395,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8412,Platanus × hispanica,,38.13790308,13.32236998,15.04,0.35,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,81.19,214.53
+AD095AD,ALB_396,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8387,Platanus × hispanica,,38.13792766,13.3224796,14.55,0.44,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,97.04,256.44
+AD096AD,ALB_397,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8411,Platanus × hispanica,,38.13795261,13.32259024,15.59,0.5,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,133.34,352.35
+AD097AD,ALB_398,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8395,Platanus × hispanica,,38.13800065,13.32279257,10.64,0.26,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,52.63,139.07
+AD098AD,ALB_399,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8382,Platanus × hispanica,,38.13810681,13.32323979,12.4,0.33,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,61.6,162.76
+AD099AD,ALB_400,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8388,Platanus × hispanica,,38.13816025,13.32347405,14.93,0.35,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,68.4,180.76
+AE000AE,ALB_401,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8383,Platanus × hispanica,,38.13818063,13.32355992,14.86,0.46,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,120.24,317.73
+AE001AE,ALB_402,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8429,Platanus × hispanica,,38.13783094,13.32206669,15.89,0.38,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,89.67,236.95
+AE002AE,ALB_403,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8431,Platanus × hispanica,,38.13780361,13.32195005,15.17,0.53,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,125.85,332.56
+AE003AE,ALB_404,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8447,Platanus × hispanica,,38.13820561,13.32366363,2.06,-,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AE004AE,ALB_405,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8437,Platanus × hispanica,,38.13825837,13.32388956,14.2,0.37,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,87.47,231.14
+AE005AE,ALB_406,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8433,Platanus × hispanica,,38.13830579,13.32409544,14.37,0.4,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,95.86,253.3
+AE006AE,ALB_407,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8423,Platanus × hispanica,,38.13840874,13.32453284,17.3,0.48,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,128.13,338.59
+AE007AE,ALB_408,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8413,Platanus × hispanica,,38.13846022,13.32475139,13.9,0.48,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,110.08,290.89
+AE008AE,ALB_409,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8394,Platanus × hispanica,,38.13848435,13.32485923,15.65,0.44,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,95.43,252.18
+AE009AE,ALB_410,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8389,Platanus × hispanica,,38.13851032,13.32496892,14.31,0.4,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,96.18,254.16
+AE010AE,ALB_411,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8398,Platanus × hispanica,,38.13853589,13.32507735,15.91,0.46,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,118.1,312.08
+AE011AE,ALB_412,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8418,Platanus orientalis,,38.1385603,13.32518683,17.03,0.46,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,153.06,404.47
+AE012AE,ALB_413,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8385,Platanus × hispanica,,38.13858573,13.32529598,14.17,0.35,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,68.63,181.34
+AE013AE,ALB_414,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8400,Platanus × hispanica,,38.13860928,13.3253922,10.11,0.33,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,63.45,167.66
+AE014AE,ALB_415,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8403,Platanus × hispanica,,38.13864938,13.32556571,8.54,0.31,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,56.6,149.56
+AE015AE,ALB_416,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8466,Platanus × hispanica,,38.13833401,13.3242036,4.79,0.06,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,2.59,6.85
+AE016AE,ALB_417,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8381,Platycladus orientalis,,38.13878275,13.32623771,2.43,-,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AE017AE,ALB_418,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8410,Celtis australis,,38.13881246,13.32625,7.79,0.34,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,25.69,67.88
+AE018AE,ALB_419,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8457,Celtis australis,,38.13883722,13.326357,5.75,0.16,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,14.97,39.55
+AE019AE,ALB_420,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8417,Platanus × hispanica,,38.13886115,13.32645846,7.54,0.17,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,29.07,76.81
+AE020AE,ALB_421,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8442,Platanus × hispanica,,38.13888569,13.32656874,7.86,0.21,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,33.34,88.11
+AE021AE,ALB_422,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8414,Robinia pseudoacacia,,38.13893677,13.32677169,11.14,0.42,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,211.3,558.37
+AE022AE,ALB_423,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8421,Platanus × hispanica,,38.13896141,13.32688673,8.8,0.24,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,29.26,77.32
+AE023AE,ALB_424,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8678,Platanus × hispanica,,38.13898652,13.32699722,11.2,0.44,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,113.11,298.9
+AE024AE,ALB_425,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8676,Platanus × hispanica,,38.13902418,13.32715731,10.57,0.31,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,56.15,148.36
+AE025AE,ALB_426,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8691,Celtis australis,,38.13907685,13.32737495,7.91,0.24,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,19.98,52.8
+AE026AE,ALB_427,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8690,Platanus × hispanica,,38.139102,13.32748555,8.8,0.27,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,55.31,146.15
+AE027AE,ALB_428,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8680,Platanus × hispanica,,38.1391267,13.32759144,11.71,0.2,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,36.65,96.85
+AE028AE,ALB_429,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8663,Platanus × hispanica,,38.13915132,13.32770186,10.55,0.31,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,57.56,152.09
+AE029AE,ALB_430,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8698,Ficus benjamina,,38.13922872,13.32802408,8.36,0.19,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,83.29,220.08
+AE030AE,ALB_431,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8741,Platanus × hispanica,,38.13925306,13.3281331,10.6,0.2,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,31.41,82.99
+AE031AE,ALB_432,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8682,Platanus × hispanica,,38.13927963,13.32824615,8.52,0.17,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,24.66,65.16
+AE032AE,ALB_433,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8665,Celtis australis,,38.13938745,13.32871561,9.34,0.32,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,25.62,67.71
+AE033AE,ALB_434,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8700,Platanus × hispanica,,38.13943969,13.32892997,11.74,0.38,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,89.9,237.57
+AE034AE,ALB_435,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8644,Platanus × hispanica,,38.13978432,13.33023943,10.37,0.29,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,39.2,103.59
+AE035AE,ALB_436,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8667,Schinus molle,,38.13984014,13.33035537,10.8,-,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AE036AE,ALB_437,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8650,Schinus molle,,38.13994846,13.33046917,10.2,0.64,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,5.49,14.49
+AE037AE,ALB_438,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8656,Schinus molle,,38.1400714,13.33057463,11,0.62,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,7.02,18.54
+AE038AE,ALB_439,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8669,Schinus molle,,38.13973785,13.3301743,11.27,0.76,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,10.45,27.6
+AE039AE,ALB_440,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8679,Celtis australis,,38.1396524,13.32983757,9.15,0.35,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,27.51,72.69
+AE040AE,ALB_441,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8685,Schinus molle,,38.13988732,13.3304216,9.16,0.32,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,96.81,255.82
+AE041AE,ALB_442,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8687,Schinus molle,,38.14000503,13.33052337,8.72,0.58,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,4.88,12.9
+AE042AE,ALB_443,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8699,Platanus × hispanica,,38.13962691,13.32972981,8.69,0.23,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,37.23,98.38
+AE043AE,ALB_444,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8720,Celtis australis,,38.139591,13.3301154,3.19,0.06,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,7.63,20.15
+AE044AE,ALB_445,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8737,,,38.13960786,13.33017332,3.83,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AE045AE,ALB_446,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8689,Platanus × hispanica,,38.13945897,13.32901816,10.26,0.29,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,50.78,134.19
+AE046AE,ALB_447,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8655,Celtis australis,,38.13948022,13.32910454,8.72,0.37,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,28.39,75
+AE047AE,ALB_448,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8686,Platanus × hispanica,,38.13952469,13.32929698,14.57,0.37,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,86.24,227.89
+AE048AE,ALB_449,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8693,Platanus × hispanica,,38.13954952,13.32940284,12.28,0.29,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,50.79,134.2
+AE049AE,ALB_450,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8701,Platanus × hispanica,,38.13957548,13.32951368,8.24,0.19,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,33.41,88.27
+AE050AE,ALB_451,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8696,Platanus × hispanica,,38.13960054,13.3296224,11.63,0.22,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,34.63,91.52
+AE051AE,ALB_452,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8487,Platanus × hispanica,,38.13536987,13.31429433,12.86,0.39,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,94.69,250.22
+AE052AE,ALB_453,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8494,Platanus × hispanica,,38.13546281,13.31451601,7.67,0.13,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,11.65,30.78
+AE053AE,ALB_454,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8504,Platanus × hispanica,,38.13552659,13.31465956,12.57,0.26,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,53.13,140.4
+AE054AE,ALB_455,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8533,Platanus × hispanica,,38.1356036,13.31483882,7.57,0.24,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,46.31,122.38
+AE055AE,ALB_456,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8499,Platanus × hispanica,,38.13564337,13.31493736,15.35,0.31,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,67.86,179.32
+AE056AE,ALB_457,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8501,Platanus × hispanica,,38.13576377,13.31521968,14.6,0.43,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,107.05,282.88
+AE057AE,ALB_458,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8488,Platanus × hispanica,,38.13581962,13.31534765,11.1,0.31,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,67.38,178.04
+AE058AE,ALB_459,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8519,Celtis australis,,38.13589952,13.31553411,10.08,0.3,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,23.26,61.46
+AE059AE,ALB_460,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8495,Platanus × hispanica,,38.13594994,13.31565098,16.08,0.53,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,145.17,383.6
+AE060AE,ALB_461,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8491,Platanus × hispanica,,38.13602594,13.31582915,15.3,0.44,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,110.85,292.92
+AE061AE,ALB_462,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8502,Platanus × hispanica,,38.13609913,13.31600294,15,0.38,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,90.81,239.97
+AE062AE,ALB_463,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8506,Platanus × hispanica,,38.13618734,13.31620963,12.8,0.39,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,94.3,249.2
+AE063AE,ALB_464,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8493,Platanus × hispanica,,38.13635303,13.31659661,18.58,0.61,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,180.23,476.25
+AE064AE,ALB_465,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8271,Platanus × hispanica,,38.13647921,13.3168915,17.49,0.52,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,142.21,375.8
+AE065AE,ALB_466,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8299,Platanus × hispanica,,38.13653056,13.31701135,6.75,0.16,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,26.05,68.82
+AE066AE,ALB_467,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8267,Platanus × hispanica,,38.13665034,13.31729536,15.48,0.48,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,126.06,333.1
+AE067AE,ALB_468,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8280,Platanus × hispanica,,38.13668931,13.31739429,12.23,0.39,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,94.64,250.09
+AE068AE,ALB_469,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8284,Platanus × hispanica,,38.13676507,13.31761092,12.05,0.36,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,84.93,224.43
+AE069AE,ALB_470,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8245,Celtis australis,,38.13685052,13.317897,10.04,0.32,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,24.39,64.46
+AE070AE,ALB_471,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8275,Platanus × hispanica,,38.13690036,13.31809617,14.15,0.38,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,88.75,234.51
+AE071AE,ALB_472,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8242,Platanus × hispanica,,38.13692196,13.31818316,16.69,0.45,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,98.44,260.12
+AE072AE,ALB_473,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8589,Nerium oleander,,38.13469935,13.31303628,3.35,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,10.57,27.93
+AE073AE,ALB_474,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8509,Celtis australis,,38.13457635,13.31306191,5.68,0.18,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,17.05,45.04
+AE074AE,ALB_475,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8574,Handroanthus heptaphyllus,,38.13473072,13.31311169,3.55,0.08,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,49.18,129.96
+AE075AE,ALB_476,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8489,Platanus × hispanica,,38.134614,13.31314827,14.4,0.43,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,109.67,289.8
+AE076AE,ALB_477,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8583,Handroanthus heptaphyllus,,38.13477185,13.31320706,2.92,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,26,68.7
+AE077AE,ALB_478,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8539,Handroanthus heptaphyllus,,38.13480573,13.31328588,3.34,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,24.88,65.75
+AE078AE,ALB_479,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8537,Tabebuia rosea,,38.13484906,13.31338907,3.91,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,9.32,24.62
+AE079AE,ALB_480,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8526,,,38.13488298,13.31346883,3.85,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,19.82,52.36
+AE080AE,ALB_481,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8555,Tabebuia rosea,,38.13491923,13.31354983,3.85,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,8.45,22.33
+AE081AE,ALB_482,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8505,Platanus × hispanica,,38.13481646,13.3136224,13.91,0.48,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,128.57,339.74
+AE082AE,ALB_483,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8546,Handroanthus heptaphyllus,,38.13496383,13.31366024,3.84,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,28.89,76.32
+AE083AE,ALB_484,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7944,Platanus × hispanica,,38.13046273,13.30349448,14.52,0.37,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,73.32,193.75
+AE084AE,ALB_485,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7945,Celtis australis,,38.13050771,13.30356687,8.55,0.19,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,17.12,45.24
+AE085AE,ALB_486,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7939,Platanus × hispanica,,38.1305512,13.30364798,13.04,0.3,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,54.93,145.15
+AE086AE,ALB_487,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7942,Celtis australis,,38.13058789,13.30373446,8.19,0.24,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,20.09,53.09
+AE087AE,ALB_488,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7952,Platanus × hispanica,,38.13062357,13.30381891,9.94,0.19,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,27.14,71.7
+AE088AE,ALB_489,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7935,Platanus × hispanica,,38.13075499,13.30412859,10.04,0.26,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,44.99,118.87
+AE089AE,ALB_490,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7870,Platanus × hispanica,,38.13089241,13.3044588,17.87,0.54,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,130.74,345.47
+AE090AE,ALB_491,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7862,Celtis australis,,38.13093466,13.30455294,8.67,0.26,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,21.1,55.76
+AE091AE,ALB_492,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7856,Platanus × hispanica,,38.13101121,13.30473233,19.87,0.88,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,302.46,799.27
+AE092AE,ALB_493,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7874,Celtis australis,,38.13109038,13.30491924,7.53,0.23,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,19.39,51.24
+AE093AE,ALB_494,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7885,Celtis australis,,38.13113459,13.30501629,8.1,0.24,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,19.79,52.3
+AE094AE,ALB_495,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7833,Platanus × hispanica,,38.13117605,13.30511901,13.35,0.46,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,101.08,267.11
+AE095AE,ALB_496,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7852,Platanus × hispanica,,38.13128292,13.30536858,12.2,0.33,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,44.05,116.4
+AE096AE,ALB_497,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7894,Celtis australis,,38.13132773,13.30547165,5.88,0.18,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,14.06,37.14
+AE097AE,ALB_498,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7876,Platanus × hispanica,,38.13150189,13.30587585,11.39,0.37,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,75.81,200.32
+AE098AE,ALB_499,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7910,Platanus × hispanica,,38.13154316,13.30597307,6.73,0.19,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,31.9,84.28
+AE099AE,ALB_500,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7866,Celtis australis,,38.13158469,13.30607256,7.89,0.28,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,22.25,58.8
+AF000AF,ALB_501,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7895,Platanus × hispanica,,38.13222968,13.30758073,13.55,0.38,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,90.48,239.08
+AF001AF,ALB_502,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7871,Platanus × hispanica,,38.13234659,13.30785081,18.13,0.53,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,146.61,387.43
+AF002AF,ALB_503,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8069,Platanus × hispanica,,38.13238949,13.30794692,10.1,0.17,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,27.39,72.38
+AF003AF,ALB_504,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8054,Platanus × hispanica,,38.13245395,13.3080979,9.08,0.17,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,28.33,74.85
+AF004AF,ALB_505,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7858,Platanus × hispanica,,38.13167105,13.30627406,12.19,0.41,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,100.96,266.78
+AF005AF,ALB_506,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7853,Platanus × hispanica,,38.13171314,13.30637334,11.51,0.31,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,58.04,153.37
+AF006AF,ALB_507,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7888,Celtis australis,,38.13192816,13.30687286,5.95,0.2,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,17.41,45.99
+AF007AF,ALB_508,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7868,Celtis australis,,38.13196885,13.3069715,4.6,0.16,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,15.7,41.48
+AF008AF,ALB_509,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7879,Platanus × hispanica,,38.1320166,13.30707583,9.47,0.3,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,40.21,106.26
+AF009AF,ALB_510,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7880,Platanus × hispanica,,38.13205566,13.30716934,7.19,0.22,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,40.01,105.73
+AF010AF,ALB_511,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7898,Celtis australis,,38.1320982,13.30726857,4.6,0.12,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,13.02,34.4
+AF011AF,ALB_512,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7855,Platanus × hispanica,,38.1321412,13.30737026,11.53,0.37,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,85.35,225.53
+AF012AF,ALB_513,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7851,Platanus × hispanica,,38.132184,13.30747148,14.51,0.42,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,88.73,234.47
+AF013AF,ALB_514,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8063,Celtis australis,,38.13264355,13.30854668,11.96,0.4,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,28.38,74.98
+AF014AF,ALB_515,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8065,Platanus × hispanica,,38.13268733,13.30864854,16.25,0.45,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,100.66,265.99
+AF015AF,ALB_516,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8040,Celtis australis,,38.13277348,13.30884669,11.53,0.4,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,28.54,75.41
+AF016AF,ALB_517,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8049,Platanus × hispanica,,38.13281711,13.30894872,17.73,0.64,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,166.51,440
+AF017AF,ALB_518,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8066,Celtis australis,,38.13285961,13.30905027,8.57,0.19,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,17.11,45.22
+AF018AF,ALB_519,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8062,Platanus × hispanica,,38.133127,13.30967441,7.64,0.19,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,32.77,86.58
+AF019AF,ALB_520,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8051,Celtis australis,,38.13321371,13.30987348,10.4,0.34,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,25.43,67.2
+AF020AF,ALB_521,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8070,Platanus × hispanica,,38.13325576,13.30997289,11.52,0.23,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,44.37,117.25
+AF021AF,ALB_522,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8058,Platanus × hispanica,,38.13329727,13.31007378,10.15,0.3,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,53.47,141.28
+AF022AF,ALB_523,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8082,Platanus × hispanica,,38.13334141,13.31017354,5.4,0.1,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,12.55,33.15
+AF023AF,ALB_524,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8071,Platanus × hispanica,,38.13342692,13.31037593,13.38,0.5,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,143.18,378.34
+AF024AF,ALB_525,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8064,Celtis australis,,38.13346939,13.31047496,10.77,0.43,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,31.58,83.45
+AF025AF,ALB_526,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8042,Celtis australis,,38.13351205,13.31057482,9.6,0.3,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,23.36,61.73
+AF026AF,ALB_527,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8038,Platanus × hispanica,,38.13355511,13.3106753,11.92,0.37,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,88.09,232.77
+AF027AF,ALB_528,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8492,Platanus × hispanica,,38.13381227,13.31127616,12.88,0.28,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,48.55,128.28
+AF028AF,ALB_529,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8485,Celtis australis,,38.13385626,13.31138132,11.5,0.36,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,19.28,50.93
+AF029AF,ALB_530,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8507,Platanus × hispanica,,38.1338973,13.31147806,14,0.32,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,69.66,184.08
+AF030AF,ALB_531,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8497,Platanus × hispanica,,38.13394124,13.31157733,15.31,0.29,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,41.12,108.66
+AF031AF,ALB_532,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8503,Platanus × hispanica,,38.13398445,13.31167671,15.64,0.34,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,50.23,132.74
+AF032AF,ALB_533,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8511,Platanus × hispanica,,38.13402659,13.31177685,16.11,0.3,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,54.62,144.33
+AF033AF,ALB_534,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8500,Platanus × hispanica,,38.13407141,13.31187597,16.75,0.42,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,89.09,235.42
+AF034AF,ALB_535,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8508,Platanus × hispanica,,38.13411267,13.31197803,20.31,0.52,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,140.66,371.7
+AF035AF,ALB_536,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8515,Platanus × hispanica,,38.13415306,13.3120799,5.98,0.08,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,6.04,15.96
+AF036AF,ALB_537,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8486,Platanus × hispanica,,38.13419704,13.31217681,16.28,0.35,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,54.14,143.05
+AF037AF,ALB_538,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8530,Platanus × hispanica,,38.13424056,13.31227695,12.6,0.28,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,49.17,129.93
+AF038AF,ALB_539,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8518,Platanus × hispanica,,38.13428325,13.31237795,7.3,0.1,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,8.71,23.01
+AF039AF,ALB_540,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8484,Platanus × hispanica,,38.13432581,13.31247602,12.73,0.26,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,29.7,78.49
+AF040AF,ALB_541,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8514,Celtis australis,,38.13436808,13.31258,6.8,0.22,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,20.22,53.44
+AF041AF,ALB_542,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8498,Platanus × hispanica,,38.1344112,13.31268059,15.14,0.5,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,133.88,353.77
+AF042AF,ALB_543,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8588,Platanus × hispanica,,38.13445477,13.31277853,4.8,0.07,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,3.23,8.53
+AF043AF,ALB_544,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8516,Platanus × hispanica,,38.13449798,13.31287876,14.54,0.45,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,113.55,300.06
+AF044AF,ALB_545,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8353,Platanus orientalis,,38.13499355,13.31404049,9.43,0.39,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,131.18,346.65
+AF045AF,ALB_546,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8365,Platanus × hispanica,,38.13505412,13.3141845,14.6,0.37,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,86.65,228.98
+AF046AF,ALB_547,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8560,Handroanthus heptaphyllus,,38.13506431,13.31389337,2.95,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,22.71,59.99
+AF047AF,ALB_548,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8524,Handroanthus heptaphyllus,,38.13510854,13.31399561,3.1,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,19.15,50.6
+AF048AF,ALB_549,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8566,Fraxinus ornus,,38.13513696,13.31406266,3.53,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,3.52,9.3
+AF049AF,ALB_550,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8576,Fraxinus ornus,,38.13517538,13.31415076,2.98,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,2.38,6.27
+AF050AF,ALB_551,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8582,,,38.13521238,13.31423581,3.12,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AF051AF,ALB_552,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8521,Handroanthus heptaphyllus,,38.13524301,13.31430971,3.15,-,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AF052AF,ALB_553,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8341,Platanus × hispanica,,38.13513587,13.31437583,10.44,0.21,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,24.33,64.3
+AF053AF,ALB_554,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8346,Platanus × hispanica,,38.13516666,13.31444553,13.8,0.39,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,94,248.38
+AF054AF,ALB_555,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8591,Fraxinus ornus,,38.13531695,13.31448187,3.17,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,4.19,11.07
+AF055AF,ALB_556,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8536,Celtis australis,,38.13534476,13.31454791,3.95,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,1.9,5.02
+AF056AF,ALB_557,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8349,Platanus × hispanica,,38.13521899,13.31456776,15.8,0.49,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,78.38,207.11
+AF057AF,ALB_558,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8577,Handroanthus heptaphyllus,,38.13537566,13.31461823,3.26,0.06,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,33.69,89.01
+AF058AF,ALB_559,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8370,Celtis australis,,38.13526578,13.31467796,4.51,0.09,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,5.62,14.84
+AF059AF,ALB_560,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8558,,,38.13540104,13.31468116,3.93,0.07,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AF060AF,ALB_561,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8538,Handroanthus heptaphyllus,,38.13543137,13.31475153,3.81,0.07,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,34.13,90.2
+AF061AF,ALB_562,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8553,Handroanthus heptaphyllus,,38.135456,13.31481038,3.68,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,24.29,64.18
+AF062AF,ALB_563,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8367,Celtis australis,,38.13535058,13.31487617,4.25,0.11,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,8.17,21.57
+AF063AF,ALB_564,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8567,,,38.1355055,13.31492641,3.34,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,11.97,31.61
+AF064AF,ALB_565,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8557,,,38.13554704,13.31502173,3.57,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AF065AF,ALB_566,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8374,Platanus × hispanica,,38.13543698,13.31507467,4,0.07,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,4.73,12.5
+AF066AF,ALB_567,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8522,Prunus serrulata,,38.1355883,13.31511535,3.54,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,0.59,1.54
+AF067AF,ALB_568,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8343,Platanus × hispanica,,38.13548029,13.31517727,9.43,0.24,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,20.95,55.35
+AF068AF,ALB_569,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8532,Tabebuia rosea,,38.13561622,13.31518155,3.79,0.06,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,12.54,33.14
+AF069AF,ALB_570,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8547,Tabebuia rosea,,38.13564915,13.31526084,3.74,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,10.76,28.41
+AF070AF,ALB_571,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8350,Platanus × hispanica,,38.13552445,13.31528217,7.18,0.12,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,7.68,20.29
+AF071AF,ALB_572,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8348,Platanus × hispanica,,38.13556654,13.31537842,12.58,0.24,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,32.42,85.67
+AF072AF,ALB_573,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8372,Platanus × hispanica,,38.1356073,13.31547704,4.74,0.07,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,5,13.21
+AF073AF,ALB_574,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8572,Tabebuia rosea,,38.13575083,13.31549665,4.15,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,7.99,21.11
+AF074AF,ALB_575,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8587,Tabebuia rosea,,38.13578068,13.3155657,3.46,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,4.42,11.67
+AF075AF,ALB_576,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8342,Platanus × hispanica,,38.13565063,13.31557774,15.51,0.46,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,118.98,314.4
+AF076AF,ALB_577,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8357,Platanus × hispanica,,38.13573744,13.31577626,14.59,0.43,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,106.37,281.07
+AF077AF,ALB_578,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8368,Platanus × hispanica,,38.13578008,13.31587475,13.64,0.28,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,49.81,131.61
+AF078AF,ALB_579,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8360,Platanus × hispanica,,38.13580731,13.31594848,11.87,0.27,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,55.25,145.99
+AF079AF,ALB_580,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8517,Celtis australis,,38.13581104,13.31563689,3.19,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,6.14,16.21
+AF080AF,ALB_581,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8354,Platanus × hispanica,,38.1358399,13.31601917,13.99,0.39,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,93.74,247.72
+AF081AF,ALB_582,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8523,Tabebuia rosea,,38.13583721,13.31569971,3.87,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,10.98,29.02
+AF082AF,ALB_583,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8578,Acer negundo,,38.13586457,13.31576122,3.8,0.07,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,15.94,42.13
+AF083AF,ALB_584,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8361,Platanus × hispanica,,38.13587593,13.3161031,15.68,0.46,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,118.07,311.99
+AF084AF,ALB_585,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8559,Brachychiton populneus,,38.13590173,13.31584934,3.6,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,6.26,16.53
+AF085AF,ALB_586,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8584,Tabebuia rosea,,38.1359356,13.3159321,3.5,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,7.88,20.82
+AF086AF,ALB_587,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8358,Platanus × hispanica,,38.13595074,13.31628574,17.38,0.47,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,123.21,325.59
+AF087AF,ALB_588,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8540,Tabebuia rosea,,38.13597868,13.31603266,4.13,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,8.81,23.28
+AF088AF,ALB_589,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8340,Platanus orientalis,,38.13599528,13.31638514,17.32,0.52,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,186.87,493.82
+AF089AF,ALB_590,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8534,Tabebuia rosea,,38.13601362,13.31611032,3.88,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,12.11,31.99
+AF090AF,ALB_591,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8362,Platanus × hispanica,,38.1360391,13.31648403,13.2,0.33,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,73.43,194.03
+AF091AF,ALB_592,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8528,Handroanthus heptaphyllus,,38.13604437,13.31618212,2.78,0.07,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,13.68,36.15
+AF092AF,ALB_593,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8551,Handroanthus heptaphyllus,,38.13606944,13.31624452,3.35,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,24.78,65.48
+AF093AF,ALB_594,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8345,Platanus × hispanica,,38.13608071,13.31658006,14.87,0.62,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,185.57,490.38
+AF094AF,ALB_595,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8529,,,38.13609688,13.31631067,3.4,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AF095AF,ALB_596,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8581,Tabebuia rosea,,38.1361282,13.31638142,3.41,0.06,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,16.3,43.08
+AF096AF,ALB_597,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8351,Platanus × hispanica,,38.13616256,13.31677366,20,0.65,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,196.41,519.02
+AF097AF,ALB_598,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8545,Tabebuia rosea,,38.13616323,13.3164624,3.71,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,8.73,23.07
+AF098AF,ALB_599,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8571,Tabebuia rosea,,38.13619744,13.31654709,3.26,0.17,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,47.34,125.1
+AF099AF,ALB_600,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8364,Platanus × hispanica,,38.13620688,13.31687146,13.19,0.36,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,72.06,190.42
+AG000AG,ALB_601,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8541,Tabebuia rosea,,38.13623555,13.31663294,3.6,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,1.37,3.6
+AG001AG,ALB_602,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8249,Celtis australis,,38.13628476,13.31706138,11.71,0.42,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,31.09,82.15
+AG002AG,ALB_603,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8585,Tabebuia rosea,,38.13629276,13.31677664,3.76,0.08,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,19.13,50.54
+AG003AG,ALB_604,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8554,Tabebuia rosea,,38.13635076,13.31690209,3.54,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,11.77,31.1
+AG004AG,ALB_605,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8332,Handroanthus heptaphyllus,,38.13637994,13.31696939,3.1,0.1,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,52.42,138.53
+AG005AG,ALB_606,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8310,Tabebuia rosea,,38.13641296,13.31705043,3.38,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,11.3,29.86
+AG006AG,ALB_607,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7872,Cercis siliquastrum,,38.13194871,13.30597436,6.14,0.15,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,32.92,86.97
+AG007AG,ALB_608,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7896,Citrus × aurantium,,38.13254891,13.30758235,2.54,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,15.64,41.33
+AG008AG,ALB_609,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7897,Olea europaea,,38.13263343,13.30761307,3.38,0.08,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,23.28,61.51
+AG009AG,ALB_610,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7881,Citrus × aurantium,,38.1325721,13.30764005,2.02,-,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AG010AG,ALB_611,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7899,Citrus × aurantium,,38.13259819,13.30769679,2.2,0.1,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,39.86,105.32
+AG011AG,ALB_612,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8061,Citrus × aurantium,,38.13262267,13.30775513,2.6,0.09,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,31.03,82
+AG012AG,ALB_613,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7860,Platanus × hispanica,,38.13197757,13.30636676,17.4,0.49,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,130.8,345.65
+AG013AG,ALB_614,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7864,Ligustrum lucidum,,38.13199515,13.30627662,2.59,0.1,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,24.08,63.64
+AG014AG,ALB_615,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7883,Citrus × aurantium,,38.13201538,13.30621748,2.32,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,13.39,35.37
+AG015AG,ALB_616,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7912,,,38.13205071,13.30620981,2.25,0.07,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,28.66,75.73
+AG016AG,ALB_617,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7884,Citrus × aurantium,,38.13208611,13.30620482,2.64,0.06,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,20.07,53.04
+AG017AG,ALB_618,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7875,Schinus molle,,38.1320924,13.30628198,2.8,0.06,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,21.52,56.85
+AG018AG,ALB_619,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7904,Syzygium myrtifolium,,38.13210951,13.30656201,2.26,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,5.07,13.38
+AG019AG,ALB_620,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7873,Cupressus sempervirens,,38.13218216,13.30631748,6.08,-,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AG020AG,ALB_621,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7921,,,38.13220957,13.30650414,2.54,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AG021AG,ALB_622,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7848,Washingtonia filifera,,38.13222539,13.30675167,2.76,0.32,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,12.36,32.65
+AG022AG,ALB_623,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7854,Olea europaea,,38.13227294,13.30675187,3.14,0.2,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,42.46,112.19
+AG023AG,ALB_624,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7919,,,38.13229149,13.30698043,2.17,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,18.8,49.68
+AG024AG,ALB_625,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7863,Platanus × hispanica,,38.13230583,13.30713419,13.29,0.4,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,96.42,254.8
+AG025AG,ALB_626,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7832,Cercis siliquastrum,,38.13230135,13.30690826,4.54,0.15,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,31.98,84.49
+AG026AG,ALB_627,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7889,Citrus × aurantium,,38.13233081,13.30707541,1.99,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,5.39,14.25
+AG027AG,ALB_628,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7907,,,38.13235467,13.30712535,2.26,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,6.26,16.53
+AG028AG,ALB_629,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7891,,,38.13237499,13.30718011,2.33,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,11.9,31.43
+AG029AG,ALB_630,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7892,Cercis siliquastrum,,38.13237406,13.3069837,4.11,0.11,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,28.09,74.22
+AG030AG,ALB_631,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7841,Platanus × hispanica,,38.13243647,13.30743406,20.39,0.61,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,177.69,469.56
+AG031AG,ALB_632,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7877,Citrus × aurantium,,38.13244595,13.30734659,3,0.07,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,16.88,44.6
+AG032AG,ALB_633,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7867,Citrus × aurantium,,38.13247068,13.30740453,2.09,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,8.21,21.69
+AG033AG,ALB_634,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7916,,,38.13249629,13.30746482,2.33,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AG034AG,ALB_635,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7849,Citrus × aurantium,,38.13250684,13.30730205,3.18,0.08,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,17.98,47.51
+AG035AG,ALB_636,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7903,Citrus × aurantium,,38.13252161,13.30752379,1.93,0.06,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,19.51,51.56
+AG036AG,ALB_637,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7887,Ginkgo biloba,,38.13253342,13.30744218,2.16,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,1.28,3.38
+AG037AG,ALB_638,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7869,Schinus molle,,38.13254402,13.30737047,7.78,0.32,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,150.76,398.4
+AG038AG,ALB_639,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8086,,,38.13266115,13.30770727,3.33,0.07,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,0,0
+AG039AG,ALB_640,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8068,Tamarix gallica,,38.13266888,13.30775458,4.8,-,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AG040AG,ALB_641,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8085,Citrus × aurantium,,38.13264976,13.30781412,2.63,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,14.95,39.49
+AG041AG,ALB_642,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8037,Tamarix gallica,,38.13281895,13.30781871,8.2,0.24,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,75.21,198.73
+AG042AG,ALB_643,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8039,Schinus molle,,38.13289996,13.30804259,5.48,0.17,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,45.29,119.67
+AG043AG,ALB_644,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8059,Schinus molle,,38.13282725,13.30806582,4.09,0.11,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,43.5,114.93
+AG044AG,ALB_645,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8043,Schinus molle,,38.13292035,13.3081078,3.79,0.12,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,38.61,102.01
+AG045AG,ALB_646,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8078,Syzygium myrtifolium,,38.13281344,13.30816341,2.19,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,5.75,15.2
+AG046AG,ALB_647,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8052,Schinus molle,,38.13285666,13.30816861,5.15,0.15,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,61.67,162.95
+AG047AG,ALB_648,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8053,Schinus molle,,38.13293935,13.30817553,2.79,0.06,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,17.66,46.67
+AG048AG,ALB_649,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8045,Schinus molle,,38.13289145,13.30820572,4.69,0.16,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,66.2,174.93
+AG049AG,ALB_650,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8090,,,38.13293223,13.30843456,2.29,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,14.95,39.5
+AG050AG,ALB_651,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8080,,,38.13340736,13.31001423,3.44,0.07,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AG051AG,ALB_652,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8083,,,38.13343611,13.31008544,3.14,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,13.35,35.26
+AG052AG,ALB_653,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8091,,,38.13348499,13.31019967,3.45,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,12.02,31.75
+AG053AG,ALB_654,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8088,Tabebuia rosea,,38.13351285,13.31026145,2.72,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,10.5,27.75
+AG054AG,ALB_655,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8041,Platanus × hispanica,,38.13351447,13.3096867,12.16,0.26,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,51.36,135.73
+AG055AG,ALB_656,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8089,,,38.13358834,13.31044129,3.62,0.06,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AG056AG,ALB_657,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8094,,,38.1336401,13.31056142,3.19,-,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AG057AG,ALB_658,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8093,,,38.1336674,13.31062673,3.67,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AG058AG,ALB_659,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8084,,,38.13372392,13.31075928,3.08,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AG059AG,ALB_660,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8096,,,38.1337171,13.31031544,4.03,0.11,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AG060AG,ALB_661,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8092,,,38.13374844,13.31082302,3.33,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AG061AG,ALB_662,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8097,,,38.13378171,13.31089259,2.79,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,0.01,0.01
+AG062AG,ALB_663,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8036,Ficus benjamina,,38.13384875,13.31033847,9.6,0.65,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,404.82,1069.77
+AG063AG,ALB_664,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8525,Fraxinus ornus,,38.13386381,13.31108767,2.4,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,4.35,11.5
+AG064AG,ALB_665,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8575,,,38.13389178,13.31115007,3.26,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AG065AG,ALB_666,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8055,Platanus × hispanica,,38.13389961,13.31080527,8.98,0.38,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,91.42,241.59
+AG066AG,ALB_667,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8548,,,38.13392286,13.31121963,3.71,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AG067AG,ALB_668,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8561,Tabebuia rosea,,38.13404424,13.31150652,2.99,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,1.15,3.03
+AG068AG,ALB_669,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8513,Platanus × hispanica,,38.13409644,13.31126154,21.59,0.5,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,81.41,215.12
+AG069AG,ALB_670,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8512,Platanus × hispanica,,38.13414535,13.31138271,12.19,0.56,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,159.27,420.86
+AG070AG,ALB_671,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8562,Tabebuia rosea,,38.13407123,13.31156954,3.8,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,1.01,2.66
+AG071AG,ALB_672,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8544,Ailanthus altissima,,38.13411642,13.31167558,3.62,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,12.39,32.73
+AG072AG,ALB_673,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8563,Tabebuia rosea,,38.13415596,13.31176965,3.93,0.07,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,17.75,46.9
+AG073AG,ALB_674,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8542,,,38.13418456,13.31183481,3.86,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AG074AG,ALB_675,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8573,,,38.13421288,13.31190232,3.4,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,14.07,37.17
+AG075AG,ALB_676,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8520,,,38.13423735,13.31195738,3.18,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AG076AG,ALB_677,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8549,Tabebuia rosea,,38.13428023,13.31205944,3.51,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,11.28,29.8
+AG077AG,ALB_678,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8527,Handroanthus heptaphyllus,,38.13430913,13.31212494,3.4,0.02,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,15.37,40.6
+AG078AG,ALB_679,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8510,Platanus × hispanica,,38.13449011,13.31218662,22.65,0.64,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,193.43,511.13
+AG079AG,ALB_680,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8579,,,38.13434388,13.31220422,3.07,0.09,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,42.68,112.77
+AG080AG,ALB_681,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8535,Handroanthus heptaphyllus,,38.13439225,13.31232131,3.32,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,19.7,52.05
+AG081AG,ALB_682,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8552,Handroanthus heptaphyllus,,38.13442419,13.31239653,3.57,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,21.63,57.14
+AG082AG,ALB_683,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8531,,,38.13445149,13.31246119,3.96,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AG083AG,ALB_684,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8564,Tabebuia rosea,,38.13447649,13.31251817,3.82,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,6.96,18.4
+AG084AG,ALB_685,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8496,Platanus × hispanica,,38.13466077,13.31258654,22.76,0.64,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,166.92,441.1
+AG085AG,ALB_686,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8556,Tabebuia rosea,,38.134511,13.31259795,3.65,0.06,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,15.66,41.39
+AG086AG,ALB_687,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8550,Tabebuia rosea,,38.13453581,13.31265622,3.89,0.06,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,14.41,38.06
+AG087AG,ALB_688,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8565,Handroanthus heptaphyllus,,38.13456593,13.31272724,3.19,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,5.48,14.47
+AG088AG,ALB_689,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8570,Tabebuia rosea,,38.13459394,13.31279044,3.79,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,6.51,17.2
+AG089AG,ALB_690,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8568,,,38.13463897,13.3128959,3.6,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AG090AG,ALB_691,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8569,Handroanthus heptaphyllus,,38.13467112,13.31296871,3.49,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,31.32,82.77
+AG091AG,ALB_692,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7940,Celtis australis,,38.13033369,13.30307747,9.06,0.28,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,22.49,59.42
+AG092AG,ALB_693,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7932,Platanus × hispanica,,38.13040216,13.30310357,13.39,0.38,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,91.38,241.48
+AG093AG,ALB_694,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7946,Celtis australis,,38.13047084,13.30314392,4.51,0.16,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,9.88,26.11
+AG094AG,ALB_695,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7934,Platanus × hispanica,,38.13053529,13.30319062,13.8,0.5,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,114.66,303
+AG095AG,ALB_696,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7928,Platanus × hispanica,,38.13060027,13.30325764,14.6,0.52,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,120.77,319.13
+AG096AG,ALB_697,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7936,Platanus × hispanica,,38.13076615,13.3035337,13.6,0.51,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,119.67,316.23
+AG097AG,ALB_698,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7930,Robinia pseudoacacia,,38.13085453,13.30380864,7.35,0.22,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,96.48,254.95
+AG098AG,ALB_699,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7847,Platanus × hispanica,,38.13102308,13.30413452,16.55,0.49,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,112.55,297.42
+AG099AG,ALB_700,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7886,Platanus × hispanica,,38.13110581,13.30433037,13.05,0.38,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,89.8,237.28
+AH000AH,ALB_701,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7861,Platanus × hispanica,,38.13125685,13.30468067,17.84,0.58,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,106.8,282.21
+AH001AH,ALB_702,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7827,Platanus × hispanica,,38.13133345,13.30485896,16.19,0.52,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,144.21,381.09
+AH002AH,ALB_703,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7924,Washingtonia filifera,,38.13142934,13.30492818,10.36,0.71,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,37,97.76
+AH003AH,ALB_704,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7920,Strelitzia nicolai,,38.13144254,13.3049906,4.34,0.13,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,38.79,102.49
+AH004AH,ALB_705,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7902,Hesperocyparis arizonica,,38.13183567,13.30593269,3.3,0.09,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,12.56,33.19
+AH005AH,ALB_706,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7830,Cupressus sempervirens,,38.13185155,13.30594684,14.38,0.37,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,54.03,142.76
+AH006AH,ALB_707,Viale Michelangelo,28160,2917,17/11/2025,Greehill,7918,Gleditsia triacanthos,,38.13187494,13.30612381,9.32,0.2,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,0,0
+AH007AH,ALB_708,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8291,Tabebuia rosea,,38.13702008,13.31912665,3.74,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,8.17,21.58
+AH008AH,ALB_709,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8334,Tabebuia rosea,,38.13704396,13.31922802,3.6,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,6.3,16.63
+AH009AH,ALB_710,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8251,Platanus × hispanica,,38.13692273,13.3192312,18.38,0.56,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,159.69,421.98
+AH010AH,ALB_711,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8325,Tabebuia rosea,,38.13706798,13.31932873,3.23,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,11.3,29.85
+AH011AH,ALB_712,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8264,Platanus × hispanica,,38.13694733,13.31933997,14.52,0.4,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,95.99,253.65
+AH012AH,ALB_713,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8294,Handroanthus heptaphyllus,,38.13708781,13.31941546,3.72,0.08,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,41.57,109.83
+AH013AH,ALB_714,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8297,Tabebuia rosea,,38.13711575,13.31953457,4.62,0.07,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,13.98,36.94
+AH014AH,ALB_715,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8285,Platanus × hispanica,,38.13702194,13.31966015,20.57,0.86,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,250.16,661.07
+AH015AH,ALB_716,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8318,,,38.13716972,13.31976387,3.52,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AH016AH,ALB_717,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8301,,,38.13719398,13.31987288,3.39,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AH017AH,ALB_718,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8293,,,38.13724362,13.32008328,4.3,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AH018AH,ALB_719,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8331,,,38.13732504,13.32042519,3.17,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,0,0
+AH019AH,ALB_720,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8292,Handroanthus impetiginosus,,38.13734307,13.32050451,3.67,0.08,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,48.94,129.31
+AH020AH,ALB_721,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8309,Tabebuia rosea,,38.13736638,13.32060643,3.25,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,10.28,27.15
+AH021AH,ALB_722,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8304,Tabebuia rosea,,38.13738657,13.32068878,3.42,0.07,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,17.33,45.8
+AH022AH,ALB_723,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8305,Handroanthus heptaphyllus,,38.13741463,13.32081117,3.99,0.06,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,30.11,79.56
+AH023AH,ALB_724,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8324,Tabebuia rosea,,38.13743773,13.32090964,3.44,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,6.81,18
+AH024AH,ALB_725,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8257,Platanus × hispanica,,38.13732713,13.32096285,13.26,0.36,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,81.82,216.22
+AH025AH,ALB_726,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8306,Handroanthus heptaphyllus,,38.13746472,13.32102316,3.6,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,31.24,82.54
+AH026AH,ALB_727,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8260,Platanus × hispanica,,38.13735373,13.32107284,14.78,0.45,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,98.52,260.33
+AH027AH,ALB_728,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8303,Tabebuia rosea,,38.13748587,13.32111999,4.03,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,12.68,33.49
+AH028AH,ALB_729,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8286,Platanus × hispanica,,38.13737807,13.32118012,9.15,0.34,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,66.11,174.69
+AH029AH,ALB_730,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8317,Handroanthus heptaphyllus,,38.13751735,13.32124722,3.61,0.06,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,35.86,94.75
+AH030AH,ALB_731,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8265,Platanus × hispanica,,38.13740449,13.32128782,17.74,0.54,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,127.79,337.68
+AH031AH,ALB_732,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8335,,,38.13754299,13.32135925,3.5,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,9.62,25.4
+AH032AH,ALB_733,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8253,Platanus × hispanica,,38.13742989,13.32139684,17.89,0.55,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,156.03,412.3
+AH033AH,ALB_734,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8250,Platanus × hispanica,,38.13697462,13.31945093,19.2,0.66,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,200.42,529.63
+AH034AH,ALB_735,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8279,Platanus × hispanica,,38.13707421,13.31987703,15.5,0.45,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,114.73,303.19
+AH035AH,ALB_736,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8263,Platanus × hispanica,,38.13710058,13.31999309,16.1,0.37,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,86.74,229.21
+AH036AH,ALB_737,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8256,Ulmus minor,,38.13712557,13.32009382,9.65,0.63,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,246.41,651.14
+AH037AH,ALB_738,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8261,Pinus pinea,,38.13714831,13.3202007,11.72,0.64,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,174.83,461.99
+AH038AH,ALB_739,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8270,Platanus × hispanica,,38.13717543,13.32030925,13.34,0.35,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,81.54,215.48
+AH039AH,ALB_740,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8254,Platanus × hispanica,,38.13720019,13.32042104,18.04,0.8,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,226.9,599.59
+AH040AH,ALB_741,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8277,Pinus pinea,,38.13722587,13.32053026,12.4,0.65,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,171.7,453.73
+AH041AH,ALB_742,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8258,Platanus × hispanica,,38.13725286,13.32063991,11.92,0.29,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,50.97,134.69
+AH042AH,ALB_743,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8248,Platanus × hispanica,,38.13727458,13.32073723,13.2,0.38,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,89.39,236.21
+AH043AH,ALB_744,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8337,Brachychiton acerifolius,,38.13756651,13.32146121,2.66,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,5.35,14.14
+AH044AH,ALB_745,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8327,Handroanthus heptaphyllus,,38.1375942,13.32157563,4,0.06,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,38.21,100.96
+AH045AH,ALB_746,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8409,Nerium oleander,,38.13757711,13.32214723,4.52,-,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AH046AH,ALB_747,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8401,Platanus × hispanica,,38.13772333,13.322653,14.74,0.42,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,102.73,271.46
+AH047AH,ALB_748,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8406,Platanus × hispanica,,38.1377583,13.32279901,15.5,0.43,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,92.39,244.15
+AH048AH,ALB_749,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8416,Platanus × hispanica,,38.13778284,13.32290956,8.35,0.24,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,45.69,120.72
+AH049AH,ALB_750,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8397,Platanus × hispanica,,38.13790378,13.32342295,16,0.41,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,100.56,265.72
+AH050AH,ALB_751,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8390,Platanus × hispanica,,38.13804269,13.3240199,13,0.42,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,104.44,275.99
+AH051AH,ALB_752,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8405,Platanus × hispanica,,38.1380921,13.32423047,15.88,0.66,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,173.66,458.91
+AH052AH,ALB_753,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8384,Platanus × hispanica,,38.13811244,13.32431359,16.51,0.4,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,58.12,153.57
+AH053AH,ALB_754,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8407,Platanus × hispanica,,38.13813268,13.32439485,17.32,0.64,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,166.67,440.43
+AH054AH,ALB_755,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8419,Celtis australis,,38.13815766,13.32450311,8.47,0.21,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,13.41,35.42
+AH055AH,ALB_756,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8430,Tabebuia rosea,,38.13794939,13.32309456,3.84,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,8.96,23.68
+AH056AH,ALB_757,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8438,Tabebuia rosea,,38.13773282,13.32216807,3.47,0.02,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,6.32,16.7
+AH057AH,ALB_758,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8443,,,38.1378118,13.32250454,3.4,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AH058AH,ALB_759,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8444,,,38.13762251,13.32169378,3.73,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AH059AH,ALB_760,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8449,Tabebuia rosea,,38.1379248,13.3229883,2.88,-,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AH060AH,ALB_761,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8452,,,38.13815841,13.32398415,3.6,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AH061AH,ALB_762,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8455,,,38.13775995,13.32228409,3.47,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AH062AH,ALB_763,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8459,Tabebuia rosea,,38.13785976,13.32271018,3.93,-,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AH063AH,ALB_764,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8462,Tabebuia rosea,,38.13813181,13.32387414,3.1,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,8.54,22.55
+AH064AH,ALB_765,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8469,Tabebuia rosea,,38.1380836,13.32367267,3.57,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,12.1,31.95
+AH065AH,ALB_766,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8471,Tabebuia rosea,,38.13767728,13.32193139,3.58,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,8.3,21.92
+AH066AH,ALB_767,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8472,Handroanthus heptaphyllus,,38.13787891,13.32279276,3.54,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,19.55,51.65
+AH067AH,ALB_768,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8473,,,38.13797768,13.3232196,2.82,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AH068AH,ALB_769,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8476,,,38.13779038,13.32241626,3.04,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AH069AH,ALB_770,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8478,Tabebuia rosea,,38.13806839,13.32360212,2.99,0.02,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,5.69,15.02
+AH070AH,ALB_771,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8480,Tabebuia rosea,,38.13783651,13.32261283,3.22,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,7.28,19.24
+AH071AH,ALB_772,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8450,,,38.13827348,13.32447464,3.62,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AH072AH,ALB_773,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8451,Tabebuia rosea,,38.13829912,13.32458545,3.82,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,8.48,22.41
+AH073AH,ALB_774,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8404,Platanus × hispanica,,38.13818261,13.32461186,18.75,0.79,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,258.36,682.73
+AH074AH,ALB_775,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8434,Handroanthus heptaphyllus,,38.13834702,13.32479232,3.55,0.06,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,33.58,88.72
+AH075AH,ALB_776,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8393,Platanus × hispanica,,38.13823298,13.32482941,12.39,0.46,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,77.8,205.58
+AH076AH,ALB_777,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8435,Handroanthus heptaphyllus,,38.13837156,13.32489465,3.3,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,25.4,67.12
+AH077AH,ALB_778,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8461,,,38.13842459,13.32512182,3.09,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AH078AH,ALB_779,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8386,Celtis australis,,38.13830837,13.32515078,9.29,0.32,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,26.06,68.85
+AH079AH,ALB_780,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8453,Tabebuia rosea,,38.1384492,13.32522758,3.96,0.06,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,14,36.98
+AH080AH,ALB_781,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8402,Celtis australis,,38.13833423,13.32525917,7.66,0.24,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,20.91,55.26
+AH081AH,ALB_782,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8440,Tabebuia rosea,,38.13847404,13.32533185,4.09,0.06,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,14.89,39.35
+AH082AH,ALB_783,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8379,Platanus × hispanica,,38.13835974,13.32536994,13,0.39,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,78.97,208.67
+AH083AH,ALB_784,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8463,Tabebuia rosea,,38.13850385,13.32546093,4.24,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,12.03,31.78
+AH084AH,ALB_785,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8445,Tabebuia rosea,,38.13855262,13.32566817,3.48,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,2.83,7.46
+AH085AH,ALB_786,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8428,Tabebuia rosea,,38.13857639,13.32577315,4.31,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,10.64,28.11
+AH086AH,ALB_787,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8448,Tabebuia rosea,,38.13859892,13.32586895,3.79,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,10.05,26.54
+AH087AH,ALB_788,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8396,Celtis australis,,38.1384893,13.32592155,10.51,0.34,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,26.77,70.73
+AH088AH,ALB_789,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8464,Tabebuia rosea,,38.13822703,13.32427828,3.84,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,9.86,26.04
+AH089AH,ALB_790,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8465,Tabebuia rosea,,38.1381797,13.32407332,3.64,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,9.65,25.5
+AH090AH,ALB_791,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8467,Fraxinus ornus,,38.13825088,13.32437894,3.4,0.06,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,6.88,18.16
+AH091AH,ALB_792,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8468,,,38.13862558,13.32598181,3.43,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AH092AH,ALB_793,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8475,Fraxinus ornus,,38.1382069,13.32418807,2.8,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,4.8,12.67
+AH093AH,ALB_794,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8479,Tabebuia rosea,,38.1383961,13.32499919,3.87,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,13.71,36.22
+AH094AH,ALB_795,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8481,Tabebuia rosea,,38.13832162,13.32468872,3.68,0.06,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,14.45,38.17
+AH095AH,ALB_796,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8482,Fraxinus ornus,,38.13852833,13.32556788,3.54,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,3.3,8.72
+AH096AH,ALB_797,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8458,Tabebuia rosea,,38.13865043,13.32608899,3.47,0.06,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,14.48,38.26
+AH097AH,ALB_798,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8456,,,38.13854998,13.32617501,3.18,0.06,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,0,0
+AH098AH,ALB_799,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8446,Tabebuia rosea,,38.13869725,13.32628365,3,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,9.9,26.14
+AH099AH,ALB_800,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8427,Tabebuia rosea,,38.13871808,13.32637979,3.47,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,9.2,24.31
+AI000AI,ALB_801,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8454,,,38.13874853,13.32650734,3.43,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AI001AI,ALB_802,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8477,Tabebuia rosea,,38.13879081,13.32668404,3.38,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,9.17,24.22
+AI002AI,ALB_803,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8436,Celtis australis,,38.13867835,13.3267302,10.13,0.46,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,31.35,82.83
+AI003AI,ALB_804,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8460,Tabebuia rosea,,38.13881481,13.32678559,3.9,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,7.57,19.99
+AI004AI,ALB_805,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8432,Platanus × hispanica,,38.13870585,13.32684987,8.94,0.26,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,52.51,138.76
+AI005AI,ALB_806,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8470,Tabebuia rosea,,38.1388411,13.32689844,4.41,0.06,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,14.08,37.2
+AI006AI,ALB_807,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8441,Platanus × hispanica,,38.138736,13.32696894,9.62,0.18,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,19.84,52.42
+AI007AI,ALB_808,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8677,Platanus × hispanica,,38.13875718,13.32706407,13.1,0.3,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,65.06,171.91
+AI008AI,ALB_809,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8668,Platanus × hispanica,,38.13878358,13.32717187,14.36,0.42,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,104.56,276.3
+AI009AI,ALB_810,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8661,Platanus × hispanica,,38.1388063,13.32726851,10.59,0.24,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,38.99,103.04
+AI010AI,ALB_811,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8675,Platanus × hispanica,,38.13883415,13.3273899,11.97,0.28,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,50.29,132.88
+AI011AI,ALB_812,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8672,Celtis australis,,38.13888433,13.32760673,9.79,0.35,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,27.7,73.19
+AI012AI,ALB_813,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8681,Platanus × hispanica,,38.13891212,13.32771899,14.79,0.39,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,79.31,209.57
+AI013AI,ALB_814,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8702,Tabebuia rosea,,38.13886732,13.32701216,3.79,0.07,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,15.86,41.89
+AI014AI,ALB_815,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8705,Platanus × hispanica,,38.13893529,13.32781783,7.46,0.17,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,3.71,9.79
+AI015AI,ALB_816,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8721,Tabebuia rosea,,38.13891795,13.32722721,4.13,-,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AI016AI,ALB_817,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8724,Handroanthus heptaphyllus,,38.13894688,13.32735033,3.91,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,29.41,77.71
+AI017AI,ALB_818,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8725,Tabebuia rosea,,38.13897089,13.32744449,4.38,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,8.74,23.08
+AI018AI,ALB_819,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8729,,,38.13899118,13.32753639,3.51,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AI019AI,ALB_820,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8730,,,38.1388939,13.32712155,3.53,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AI020AI,ALB_821,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8653,Celtis australis,,38.13896167,13.32793364,10.5,0.33,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,26.49,69.99
+AI021AI,ALB_822,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8671,Platanus × hispanica,,38.13898568,13.32804209,8.58,0.25,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,30.94,81.76
+AI022AI,ALB_823,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8688,Platanus × hispanica,,38.13901417,13.32815696,14.87,0.3,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,65.15,172.16
+AI023AI,ALB_824,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8666,Celtis australis,,38.13904016,13.32827375,9.97,0.29,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,23.06,60.94
+AI024AI,ALB_825,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8708,,,38.13907185,13.32788469,3.73,-,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AI025AI,ALB_826,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8734,Melia azedarach,,38.13907716,13.32790839,3.62,0.02,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,0,0
+AI026AI,ALB_827,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8733,,,38.13908206,13.32792508,3.49,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,10.86,28.7
+AI027AI,ALB_828,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8674,Platanus × hispanica,,38.13908893,13.32847343,12.59,0.42,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,103.32,273.01
+AI028AI,ALB_829,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8746,Lagerstroemia indica,,38.13908663,13.32795311,3.17,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,0,0
+AI029AI,ALB_830,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8711,Tabebuia rosea,,38.13909141,13.3279705,3.61,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,6.97,18.41
+AI030AI,ALB_831,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8706,Handroanthus heptaphyllus,,38.13910322,13.32801787,3.94,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,22.73,60.05
+AI031AI,ALB_832,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8715,Platanus × hispanica,,38.13919463,13.32892208,8.13,0.13,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,18.51,48.91
+AI032AI,ALB_833,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8713,Platanus × hispanica,,38.13921952,13.32902882,6.73,0.11,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,15.72,41.52
+AI033AI,ALB_834,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8664,Platanus × hispanica,,38.13924282,13.32913868,14.84,0.38,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,77.72,205.38
+AI034AI,ALB_835,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8654,Platanus × hispanica,,38.13927094,13.32926009,16.04,0.33,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,73.31,193.72
+AI035AI,ALB_836,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8726,Platanus × hispanica,,38.13929521,13.32936365,6.13,0.15,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,8.39,22.15
+AI036AI,ALB_837,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8731,,,38.13928572,13.3287964,3.59,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AI037AI,ALB_838,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8710,Brachychiton populneus,,38.13929562,13.32883392,3.83,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,7.79,20.58
+AI038AI,ALB_839,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8649,Platanus × hispanica,,38.13931434,13.32944426,14.44,0.3,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,63.83,168.66
+AI039AI,ALB_840,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8728,Handroanthus heptaphyllus,,38.13931548,13.32892319,3.67,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,20.99,55.46
+AI040AI,ALB_841,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8736,Tabebuia rosea,,38.13933524,13.32900908,3.48,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,9.8,25.89
+AI041AI,ALB_842,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8703,Platanus × hispanica,,38.13934791,13.329593,17.4,0.48,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,110.29,291.45
+AI042AI,ALB_843,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8739,Tabebuia rosea,,38.1393567,13.32910419,3.34,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,6.56,17.33
+AI043AI,ALB_844,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8722,,,38.13937732,13.3291872,3.49,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AI044AI,ALB_845,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8717,Tabebuia rosea,,38.13939716,13.32927768,3.94,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,10.98,29
+AI045AI,ALB_846,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8709,Tabebuia rosea,,38.1394235,13.32938528,3.62,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,10.57,27.92
+AI046AI,ALB_847,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8716,,,38.13944286,13.32946697,3.35,0.06,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,2.53,6.69
+AI047AI,ALB_848,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8648,Pinus pinea,,38.1396169,13.33035647,9.37,0.51,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,128.69,340.06
+AI048AI,ALB_849,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8659,Brachychiton populneus,,38.13944737,13.33038355,6.71,0.38,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,138.59,366.23
+AI049AI,ALB_850,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8651,Brachychiton populneus,,38.1394096,13.33048574,9.16,0.52,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,229.23,605.75
+AI050AI,ALB_851,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8652,Brachychiton acerifolius,,38.13935718,13.33057768,7.42,0.49,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,182.45,482.13
+AI051AI,ALB_852,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8695,Platanus × hispanica,,38.13939985,13.32981334,14.93,0.38,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,91.04,240.56
+AI052AI,ALB_853,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8732,Handroanthus heptaphyllus,,38.13956783,13.33000805,3.59,0.07,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,42.8,113.09
+AI053AI,ALB_854,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8735,Celtis australis,,38.13952389,13.32981686,3.29,0.07,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,5.55,14.66
+AI054AI,ALB_855,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8740,,,38.13954539,13.32991022,3.78,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AI055AI,ALB_856,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8744,Handroanthus heptaphyllus,,38.13949986,13.32971018,3.32,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,18.71,49.45
+AI056AI,ALB_857,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8723,Tabebuia rosea,,38.13945855,13.32953719,3.45,-,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AI057AI,ALB_858,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8259,Platanus × hispanica,,38.13641865,13.31737015,22.72,0.71,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,193.43,511.15
+AI058AI,ALB_859,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8330,Tabebuia rosea,,38.13647588,13.31719376,3.79,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,8.65,22.85
+AI059AI,ALB_860,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8307,Tabebuia rosea,,38.13650895,13.31727142,3.69,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,10.23,27.02
+AI060AI,ALB_861,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8298,Tabebuia rosea,,38.13654593,13.31736255,3.92,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,9.48,25.03
+AI061AI,ALB_862,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8311,Tabebuia rosea,,38.13658286,13.3174581,3.08,0.06,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,13.93,36.8
+AI062AI,ALB_863,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8313,Handroanthus heptaphyllus,,38.13661358,13.31753699,3.75,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,24.08,63.63
+AI063AI,ALB_864,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8326,Tabebuia rosea,,38.13663536,13.31760349,4.07,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,8.21,21.67
+AI064AI,ALB_865,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8287,Celtis australis,,38.13652355,13.31765192,7.73,0.32,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,25.97,68.63
+AI065AI,ALB_866,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8314,,,38.1366603,13.31767485,2.99,-,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AI066AI,ALB_867,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8308,Handroanthus heptaphyllus,,38.13669002,13.31776976,3.32,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,22.84,60.36
+AI067AI,ALB_868,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8323,Handroanthus heptaphyllus,,38.13671676,13.31785545,4.19,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,23.31,61.6
+AI068AI,ALB_869,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8320,,,38.13674043,13.31794208,3.59,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AI069AI,ALB_870,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8295,Ficus microcarpa,,38.1367609,13.31802309,3.8,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,10.77,28.46
+AI070AI,ALB_871,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8289,Platanus × hispanica,,38.13663919,13.31803504,17.62,0.48,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,125.05,330.43
+AI071AI,ALB_872,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8338,Juglans regia,,38.13678211,13.31811388,3.04,-,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AI072AI,ALB_873,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8329,,,38.13680224,13.31819622,3.53,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AI073AI,ALB_874,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8278,Platanus × hispanica,,38.1366877,13.31823333,15.76,0.5,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,134.58,355.64
+AI074AI,ALB_875,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8312,Celtis australis,,38.13682047,13.31828008,3.71,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,7.39,19.51
+AI075AI,ALB_876,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8281,Platanus × hispanica,,38.13671344,13.31834065,16.26,0.37,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,86.23,227.85
+AI076AI,ALB_877,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8288,Handroanthus impetiginosus,,38.13684334,13.31837488,3.69,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,32.38,85.57
+AI077AI,ALB_878,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8321,Tabebuia rosea,,38.13686474,13.31846803,3.8,0.06,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,13.3,35.13
+AI078AI,ALB_879,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8333,Tabebuia rosea,,38.13688448,13.31854695,3.69,0.06,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,15.7,41.47
+AI079AI,ALB_880,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8316,Handroanthus heptaphyllus,,38.13690606,13.31863827,3.87,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,27.8,73.45
+AI080AI,ALB_881,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8266,Platanus × hispanica,,38.13679644,13.31869058,21.51,0.72,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,226.9,599.59
+AI081AI,ALB_882,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8300,,,38.13692859,13.31873301,3.63,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AI082AI,ALB_883,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8283,Platanus × hispanica,,38.13682031,13.31879995,14.04,0.44,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,111.29,294.08
+AI083AI,ALB_884,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8315,,,38.13694862,13.31881922,4.54,0.04,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,12.84,33.92
+AI084AI,ALB_885,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8322,,,38.13697395,13.31893117,1.45,0.05,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,-,-
+AI085AI,ALB_886,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8262,Platanus × hispanica,,38.1368727,13.31901461,21.09,0.81,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,269.41,711.91
+AI086AI,ALB_887,Viale Michelangelo,28160,2917,17/11/2025,Greehill,8328,Tabebuia rosea,,38.13699516,13.31902226,3.32,0.03,,,,,,,,,,,,,,,,,,,,,,Cruillas,Cruillas - S.Giovanni Apostolo,VI,4.28,11.29
