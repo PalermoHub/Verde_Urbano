@@ -1,0 +1,1697 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verde Urbano Palermo - Analisi Manutenzione</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+Pro:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+    <style>
+        :root {
+            --forest-dark: #1a3a2a;
+            --forest-primary: #2d5a3d;
+            --forest-secondary: #4a7c59;
+            --forest-tertiary: #6b9b7a;
+            --forest-light: #8fbc8f;
+            --forest-pale: #c8e6c9;
+            --forest-bg: #f1f8f2;
+            --cream: #fefdfb;
+            --gold: #c9a227;
+            --gold-light: #f5e6a3;
+            --text-dark: #1a2e1a;
+            --text-muted: #5a6b5a;
+            --shadow-soft: 0 4px 20px rgba(26, 58, 42, 0.08);
+            --shadow-medium: 0 8px 40px rgba(26, 58, 42, 0.12);
+            --shadow-strong: 0 16px 60px rgba(26, 58, 42, 0.18);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+            background: var(--forest-bg);
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        /* Animated Background */
+        .bg-pattern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+            opacity: 0.4;
+            background-image: 
+                radial-gradient(ellipse at 20% 30%, rgba(107, 155, 122, 0.15) 0%, transparent 50%),
+                radial-gradient(ellipse at 80% 70%, rgba(74, 124, 89, 0.1) 0%, transparent 50%),
+                radial-gradient(ellipse at 50% 50%, rgba(200, 230, 201, 0.2) 0%, transparent 70%);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(254, 253, 251, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            padding: 0.8rem 2rem;
+            box-shadow: var(--shadow-soft);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 0.5rem 2rem;
+            background: rgba(254, 253, 251, 0.98);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--forest-primary);
+        }
+
+        .nav-logo svg {
+            width: 32px;
+            height: 32px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            padding: 0.6rem 1rem;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--forest-primary);
+            background: var(--forest-pale);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 0.5rem;
+        }
+
+        .mobile-menu-btn span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--forest-primary);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 8rem 2rem 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 80%;
+            height: 150%;
+            background: radial-gradient(ellipse, rgba(107, 155, 122, 0.15) 0%, transparent 70%);
+            animation: float 20s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            50% { transform: translate(-30px, 30px) rotate(5deg); }
+        }
+
+        .hero-content {
+            text-align: center;
+            max-width: 900px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--cream);
+            border: 1px solid var(--forest-pale);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            color: var(--forest-secondary);
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.8s ease;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 700;
+            color: var(--forest-dark);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            animation: fadeInUp 0.8s ease 0.2s both;
+        }
+
+        .hero h1 span {
+            color: var(--forest-secondary);
+            position: relative;
+        }
+
+        .hero h1 span::after {
+            content: '';
+            position: absolute;
+            bottom: 5px;
+            left: 0;
+            width: 100%;
+            height: 8px;
+            background: var(--gold-light);
+            z-index: -1;
+            border-radius: 4px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            animation: fadeInUp 0.8s ease 0.4s both;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1.5rem;
+            animation: fadeInUp 0.8s ease 0.6s both;
+        }
+
+        .hero-stat {
+            background: var(--cream);
+            padding: 1.5rem;
+            border-radius: 16px;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(107, 155, 122, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .hero-stat:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-medium);
+        }
+
+        .hero-stat-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--forest-primary);
+        }
+
+        .hero-stat-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.3rem;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 0.9rem;
+            color: var(--gold);
+            letter-spacing: 3px;
+            margin-bottom: 0.5rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--forest-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Summary Cards */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .summary-card {
+            background: var(--cream);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-soft);
+            border: 1px solid rgba(107, 155, 122, 0.1);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .summary-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--forest-primary), var(--forest-tertiary));
+            border-radius: 4px 0 0 4px;
+        }
+
+        .summary-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .summary-card-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--forest-pale), var(--forest-bg));
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .summary-card-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--forest-primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .summary-card-label {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Total Box */
+        .total-box {
+            background: linear-gradient(135deg, var(--forest-primary), var(--forest-dark));
+            border-radius: 24px;
+            padding: 3rem;
+            color: white;
+            text-align: center;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .total-box::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -30%;
+            width: 60%;
+            height: 200%;
+            background: radial-gradient(ellipse, rgba(255,255,255,0.1) 0%, transparent 70%);
+        }
+
+        .total-box-label {
+            font-size: 1rem;
+            opacity: 0.9;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .total-box-value {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 700;
+        }
+
+        .total-box-detail {
+            font-size: 1.1rem;
+            opacity: 0.85;
+            margin-top: 1rem;
+        }
+
+        /* Phase Cards */
+        .phase-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .phase-card {
+            background: var(--cream);
+            border-radius: 16px;
+            padding: 1.8rem;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .phase-card:hover {
+            border-color: var(--forest-tertiary);
+        }
+
+        .phase-card.phase-1 { border-top: 4px solid var(--forest-primary); }
+        .phase-card.phase-2 { border-top: 4px solid var(--forest-secondary); }
+        .phase-card.phase-3 { border-top: 4px solid var(--forest-tertiary); }
+
+        .phase-label {
+            font-weight: 600;
+            color: var(--forest-secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .phase-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--forest-dark);
+        }
+
+        .phase-percent {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin-top: 0.3rem;
+        }
+
+        /* Charts */
+        .chart-container {
+            background: var(--cream);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 2rem;
+        }
+
+        .chart-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--forest-dark);
+            margin-bottom: 0.5rem;
+        }
+
+        .chart-subtitle {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .chart-wrapper {
+            position: relative;
+            height: 350px;
+        }
+
+        .chart-row {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Tables */
+        .table-container {
+            background: var(--cream);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: var(--shadow-soft);
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+        .table-scroll {
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+
+        th {
+            background: var(--forest-primary);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        th:first-child { border-radius: 10px 0 0 0; }
+        th:last-child { border-radius: 0 10px 0 0; }
+
+        td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--forest-pale);
+            font-size: 0.95rem;
+        }
+
+        tr:hover td {
+            background: var(--forest-bg);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        .text-right { text-align: right; }
+        .text-center { text-align: center; }
+
+        .table-total {
+            background: var(--forest-bg);
+            font-weight: 700;
+        }
+
+        .table-total td {
+            border-top: 2px solid var(--forest-primary);
+        }
+
+        /* Progress Bars */
+        .progress-item {
+            margin-bottom: 1.5rem;
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-label {
+            font-weight: 600;
+            color: var(--forest-dark);
+        }
+
+        .progress-value {
+            color: var(--forest-secondary);
+            font-weight: 600;
+        }
+
+        .progress-bar {
+            height: 12px;
+            background: var(--forest-pale);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--forest-primary), var(--forest-secondary));
+            border-radius: 6px;
+            transition: width 1s ease;
+        }
+
+        /* Environment Section */
+        .env-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+        }
+
+        .env-card {
+            background: var(--cream);
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .env-card::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+        }
+
+        .env-card.o2::after { background: linear-gradient(90deg, #4CAF50, #8BC34A); }
+        .env-card.co2::after { background: linear-gradient(90deg, #2196F3, #03A9F4); }
+
+        .env-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .env-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--forest-primary);
+        }
+
+        .env-unit {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+        }
+
+        .env-label {
+            font-size: 1.1rem;
+            color: var(--forest-secondary);
+            margin-top: 0.5rem;
+            font-weight: 600;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--forest-dark);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-text {
+            opacity: 0.8;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .animate-on-scroll.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .phase-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .env-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--cream);
+                flex-direction: column;
+                padding: 1rem;
+                box-shadow: var(--shadow-medium);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero {
+                padding: 7rem 1.5rem 3rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            section {
+                padding: 3rem 1.5rem;
+            }
+
+            .phase-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .chart-row {
+                grid-template-columns: 1fr;
+            }
+
+            .chart-wrapper {
+                height: 280px;
+            }
+
+            .total-box {
+                padding: 2rem;
+            }
+
+            table {
+                font-size: 0.85rem;
+            }
+
+            th, td {
+                padding: 0.7rem 0.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Print styles */
+        @media print {
+            nav, .bg-pattern { display: none; }
+            section { page-break-inside: avoid; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-pattern"></div>
+
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M20 5C20 5 8 15 8 25C8 31.627 13.373 37 20 37C26.627 37 32 31.627 32 25C32 15 20 5 20 5Z" fill="#4a7c59"/>
+                    <path d="M20 12C20 12 13 18 13 24C13 27.866 16.134 31 20 31C23.866 31 27 27.866 27 24C27 18 20 12 20 12Z" fill="#6b9b7a"/>
+                    <circle cx="20" cy="22" r="4" fill="#8fbc8f"/>
+                </svg>
+                Verde Urbano Palermo
+            </div>
+            <button class="mobile-menu-btn" onclick="toggleMenu()">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#panoramica" class="active">Panoramica</a></li>
+                <li><a href="#importi">Importi</a></li>
+                <li><a href="#circoscrizioni">Circoscrizioni</a></li>
+                <li><a href="#quartieri">Quartieri</a></li>
+                <li><a href="#vie">Vie</a></li>
+                <li><a href="#ambiente">Ambiente</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero" id="panoramica">
+        <div class="hero-content">
+            <div class="hero-badge">
+                🌿 Comune di Palermo • Analisi 2026
+            </div>
+            <h1>Manutenzione del <span>Verde Urbano</span></h1>
+            <p class="hero-subtitle">
+                Analisi completa degli interventi di manutenzione delle alberature stradali: 
+                dati, costi e impatto ambientale
+            
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-value">17</div>
+                    <div class="hero-stat-label">Vie interessate</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">6</div>
+                    <div class="hero-stat-label">Circoscrizioni</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">8</div>
+                    <div class="hero-stat-label">Quartieri</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-value">99</div>
+                    <div class="hero-stat-label">Specie diverse</div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Importi Section -->
+    <section id="importi">
+        <div class="section-header animate-on-scroll">
+            <div class="section-number">01</div>
+            <h2 class="section-title">Riepilogo Importi</h2>
+            <p class="section-subtitle">Investimento complessivo per la manutenzione del patrimonio arboreo</p>
+        </div>
+
+        <div class="total-box animate-on-scroll">
+            <div class="total-box-label">IMPORTO TOTALE INTERVENTO</div>
+            <div class="total-box-value">€563.101</div>
+            <div class="total-box-detail">17 vie • 6 circoscrizioni • 8 quartieri</div>
+        </div>
+
+        <div class="phase-grid animate-on-scroll">
+            <div class="phase-card phase-1">
+                <div class="phase-label">Fase 1</div>
+                <div class="phase-value">€552.074</div>
+                <div class="phase-percent">98,0% del totale</div>
+            </div>
+            <div class="phase-card phase-2">
+                <div class="phase-label">Fase 2</div>
+                <div class="phase-value">€10.951</div>
+                <div class="phase-percent">1,9% del totale</div>
+            </div>
+            <div class="phase-card phase-3">
+                <div class="phase-label">Fase 3</div>
+                <div class="phase-value">€76</div>
+                <div class="phase-percent">0,01% del totale</div>
+            </div>
+        </div>
+
+        <div class="chart-container animate-on-scroll">
+            <h3 class="chart-title">Distribuzione per Fase</h3>
+            <p class="chart-subtitle">La quasi totalità dell'investimento è concentrata nella Fase 1</p>
+            <div class="chart-wrapper" style="height: 300px;">
+                <canvas id="chartFasi"></canvas>
+            </div>
+        </div>
+    </section>
+
+    <!-- Circoscrizioni Section -->
+    <section id="circoscrizioni">
+        <div class="section-header animate-on-scroll">
+            <div class="section-number">02</div>
+            <h2 class="section-title">Analisi per Circoscrizione</h2>
+            <p class="section-subtitle">Distribuzione territoriale degli interventi nelle 6 circoscrizioni</p>
+        </div>
+
+        <div class="summary-grid animate-on-scroll">
+            <div class="summary-card">
+                <div class="summary-card-icon">🏆</div>
+                <div class="summary-card-value">€224.228</div>
+                <div class="summary-card-label">Circoscrizione VIII • 39,8% del totale</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-card-icon">🥈</div>
+                <div class="summary-card-value">€173.759</div>
+                <div class="summary-card-label">Circoscrizione VI • 30,9% del totale</div>
+            </div>
+            <div class="summary-card">
+                <div class="summary-card-icon">🥉</div>
+                <div class="summary-card-value">€56.340</div>
+                <div class="summary-card-label">Circoscrizione VII • 10,0% del totale</div>
+            </div>
+        </div>
+
+        <div class="chart-row">
+            <div class="chart-container animate-on-scroll">
+                <h3 class="chart-title">Importi per Circoscrizione</h3>
+                <p class="chart-subtitle">Suddivisione per fase di intervento</p>
+                <div class="chart-wrapper">
+                    <canvas id="chartCircImporti"></canvas>
+                </div>
+            </div>
+            <div class="chart-container animate-on-scroll">
+                <h3 class="chart-title">Distribuzione Percentuale</h3>
+                <p class="chart-subtitle">Quota di investimento per circoscrizione</p>
+                <div class="chart-wrapper">
+                    <canvas id="chartCircTorta"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-container animate-on-scroll">
+            <h3 class="chart-title">Dettaglio Circoscrizioni</h3>
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Circoscrizione</th>
+                            <th class="text-center">Vie</th>
+                            <th class="text-center">Quartieri</th>
+                            <th class="text-right">Fase 1</th>
+                            <th class="text-right">Fase 2</th>
+                            <th class="text-right">Fase 3</th>
+                            <th class="text-right">Totale</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>VIII</strong></td>
+                            <td class="text-center">8</td>
+                            <td class="text-center">3</td>
+                            <td class="text-right">€220.274</td>
+                            <td class="text-right">€3.879</td>
+                            <td class="text-right">€76</td>
+                            <td class="text-right"><strong>€224.228</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>VI</strong></td>
+                            <td class="text-center">1</td>
+                            <td class="text-center">1</td>
+                            <td class="text-right">€170.565</td>
+                            <td class="text-right">€3.194</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right"><strong>€173.759</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>VII</strong></td>
+                            <td class="text-center">2</td>
+                            <td class="text-center">1</td>
+                            <td class="text-right">€55.200</td>
+                            <td class="text-right">€1.141</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right"><strong>€56.340</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>III</strong></td>
+                            <td class="text-center">2</td>
+                            <td class="text-center">1</td>
+                            <td class="text-right">€47.657</td>
+                            <td class="text-right">€2.510</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right"><strong>€50.167</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>II</strong></td>
+                            <td class="text-center">2</td>
+                            <td class="text-center">1</td>
+                            <td class="text-right">€29.910</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right"><strong>€29.910</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>V</strong></td>
+                            <td class="text-center">2</td>
+                            <td class="text-center">1</td>
+                            <td class="text-right">€28.467</td>
+                            <td class="text-right">€228</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right"><strong>€28.696</strong></td>
+                        </tr>
+                        <tr class="table-total">
+                            <td><strong>TOTALE</strong></td>
+                            <td class="text-center"><strong>17</strong></td>
+                            <td class="text-center"><strong>8</strong></td>
+                            <td class="text-right"><strong>€552.074</strong></td>
+                            <td class="text-right"><strong>€10.951</strong></td>
+                            <td class="text-right"><strong>€76</strong></td>
+                            <td class="text-right"><strong>€563.101</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quartieri Section -->
+    <section id="quartieri">
+        <div class="section-header animate-on-scroll">
+            <div class="section-number">03</div>
+            <h2 class="section-title">Analisi per Quartiere</h2>
+            <p class="section-subtitle">Dettaglio degli 8 quartieri coinvolti nella manutenzione</p>
+        </div>
+
+        <div class="chart-container animate-on-scroll">
+            <h3 class="chart-title">Importi per Quartiere</h3>
+            <p class="chart-subtitle">Ordinati per valore decrescente</p>
+            <div class="chart-wrapper" style="height: 400px;">
+                <canvas id="chartQuartieri"></canvas>
+            </div>
+        </div>
+
+        <div class="chart-container animate-on-scroll">
+            <h3 class="chart-title">Distribuzione degli Importi</h3>
+            <p class="chart-subtitle">Percentuale sul totale per ciascun quartiere</p>
+            <div style="max-width: 700px; margin: 0 auto;">
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span class="progress-label">Cruillas - S.Giovanni Apostolo</span>
+                        <span class="progress-value">€173.759 (30,9%)</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 30.9%"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span class="progress-label">Libertà</span>
+                        <span class="progress-value">€111.302 (19,8%)</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 19.8%"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span class="progress-label">Montepellegrino</span>
+                        <span class="progress-value">€73.607 (13,1%)</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 13.1%"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span class="progress-label">Partanna Mondello</span>
+                        <span class="progress-value">€56.340 (10,0%)</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 10%"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span class="progress-label">Oreto - Stazione</span>
+                        <span class="progress-value">€50.167 (8,9%)</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 8.9%"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span class="progress-label">Politeama</span>
+                        <span class="progress-value">€39.319 (7,0%)</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 7%"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span class="progress-label">Settecannoli</span>
+                        <span class="progress-value">€29.910 (5,3%)</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 5.3%"></div>
+                    </div>
+                </div>
+                <div class="progress-item">
+                    <div class="progress-header">
+                        <span class="progress-label">Zisa</span>
+                        <span class="progress-value">€28.696 (5,1%)</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 5.1%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="table-container animate-on-scroll">
+            <h3 class="chart-title">Dettaglio Quartieri</h3>
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Quartiere</th>
+                            <th class="text-center">Circ.</th>
+                            <th class="text-right">Fase 1</th>
+                            <th class="text-right">Fase 2</th>
+                            <th class="text-right">Fase 3</th>
+                            <th class="text-right">Totale</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cruillas - S.Giovanni Apostolo</td>
+                            <td class="text-center">VI</td>
+                            <td class="text-right">€170.565</td>
+                            <td class="text-right">€3.194</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right"><strong>€173.759</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Libertà</td>
+                            <td class="text-center">VIII</td>
+                            <td class="text-right">€109.630</td>
+                            <td class="text-right">€1.597</td>
+                            <td class="text-right">€76</td>
+                            <td class="text-right"><strong>€111.302</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Montepellegrino</td>
+                            <td class="text-center">VIII</td>
+                            <td class="text-right">€72.695</td>
+                            <td class="text-right">€913</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right"><strong>€73.607</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Partanna Mondello</td>
+                            <td class="text-center">VII</td>
+                            <td class="text-right">€55.200</td>
+                            <td class="text-right">€1.141</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right"><strong>€56.340</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Oreto - Stazione</td>
+                            <td class="text-center">III</td>
+                            <td class="text-right">€47.657</td>
+                            <td class="text-right">€2.510</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right"><strong>€50.167</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Politeama</td>
+                            <td class="text-center">VIII</td>
+                            <td class="text-right">€37.950</td>
+                            <td class="text-right">€1.369</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right"><strong>€39.319</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Settecannoli</td>
+                            <td class="text-center">II</td>
+                            <td class="text-right">€29.910</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right"><strong>€29.910</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Zisa</td>
+                            <td class="text-center">V</td>
+                            <td class="text-right">€28.467</td>
+                            <td class="text-right">€228</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right"><strong>€28.696</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Vie Section -->
+    <section id="vie">
+        <div class="section-header animate-on-scroll">
+            <div class="section-number">04</div>
+            <h2 class="section-title">Dettaglio per Via</h2>
+            <p class="section-subtitle">Tutte le 17 vie oggetto di intervento ordinate per importo</p>
+        </div>
+
+        <div class="chart-container animate-on-scroll">
+            <h3 class="chart-title">Top 5 Vie per Importo</h3>
+            <p class="chart-subtitle">Le vie con i maggiori interventi di manutenzione</p>
+            <div class="chart-wrapper">
+                <canvas id="chartTop5"></canvas>
+            </div>
+        </div>
+
+        <div class="table-container animate-on-scroll">
+            <h3 class="chart-title">Elenco Completo delle Vie</h3>
+            <div class="table-scroll">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Via</th>
+                            <th>Quartiere</th>
+                            <th class="text-right">Fase 1</th>
+                            <th class="text-right">Fase 2</th>
+                            <th class="text-right">Fase 3</th>
+                            <th class="text-right">Totale</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><strong>Viale Michelangelo</strong></td>
+                            <td>Cruillas</td>
+                            <td class="text-right">€170.565</td>
+                            <td class="text-right">€3.194</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right"><strong>€173.759</strong></td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td><strong>Via Oreto</strong></td>
+                            <td>Oreto-Stazione</td>
+                            <td class="text-right">€41.569</td>
+                            <td class="text-right">€2.510</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right"><strong>€44.078</strong></td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td><strong>Via Rizzo Ammiraglio - A</strong></td>
+                            <td>Montepellegrino</td>
+                            <td class="text-right">€36.952</td>
+                            <td class="text-right">€456</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right"><strong>€37.408</strong></td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td><strong>Via Giusti Giuseppe</strong></td>
+                            <td>Libertà</td>
+                            <td class="text-right">€37.276</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right"><strong>€37.276</strong></td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td><strong>Via Rizzo Ammiraglio - B</strong></td>
+                            <td>Montepellegrino</td>
+                            <td class="text-right">€35.743</td>
+                            <td class="text-right">€456</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right"><strong>€36.199</strong></td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>Viale Emilia</td>
+                            <td>Libertà</td>
+                            <td class="text-right">€33.226</td>
+                            <td class="text-right">€684</td>
+                            <td class="text-right">€76</td>
+                            <td class="text-right"><strong>€33.986</strong></td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>Viale Principe Umberto</td>
+                            <td>P. Mondello</td>
+                            <td class="text-right">€30.243</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right"><strong>€30.243</strong></td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>Via Delle Croci</td>
+                            <td>Libertà</td>
+                            <td class="text-right">€28.877</td>
+                            <td class="text-right">€913</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right"><strong>€29.790</strong></td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>Via Pignatelli Aragona</td>
+                            <td>Politeama</td>
+                            <td class="text-right">€26.318</td>
+                            <td class="text-right">€1.141</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right"><strong>€27.459</strong></td>
+                        </tr>
+                        <tr>
+                            <td>10</td>
+                            <td>Viale Galatea</td>
+                            <td>P. Mondello</td>
+                            <td class="text-right">€24.957</td>
+                            <td class="text-right">€1.141</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right"><strong>€26.097</strong></td>
+                        </tr>
+                        <tr>
+                            <td>11</td>
+                            <td>Viale Dei Picciotti - A</td>
+                            <td>Settecannoli</td>
+                            <td class="text-right">€17.831</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right"><strong>€17.831</strong></td>
+                        </tr>
+                        <tr>
+                            <td>12</td>
+                            <td>Via Scoto Michele</td>
+                            <td>Zisa</td>
+                            <td class="text-right">€15.847</td>
+                            <td class="text-right">€228</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right"><strong>€16.075</strong></td>
+                        </tr>
+                        <tr>
+                            <td>13</td>
+                            <td>Viale Regina Margherita</td>
+                            <td>Zisa</td>
+                            <td class="text-right">€12.620</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right"><strong>€12.620</strong></td>
+                        </tr>
+                        <tr>
+                            <td>14</td>
+                            <td>Viale Dei Picciotti - B</td>
+                            <td>Settecannoli</td>
+                            <td class="text-right">€12.079</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right"><strong>€12.079</strong></td>
+                        </tr>
+                        <tr>
+                            <td>15</td>
+                            <td>Via Principe Di Belmonte</td>
+                            <td>Politeama</td>
+                            <td class="text-right">€11.632</td>
+                            <td class="text-right">€228</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right"><strong>€11.860</strong></td>
+                        </tr>
+                        <tr>
+                            <td>16</td>
+                            <td>Via Rapisardi Mario</td>
+                            <td>Libertà</td>
+                            <td class="text-right">€10.251</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right"><strong>€10.251</strong></td>
+                        </tr>
+                        <tr>
+                            <td>17</td>
+                            <td>Via Corazza Filippo</td>
+                            <td>Oreto-Stazione</td>
+                            <td class="text-right">€6.089</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right">€0</td>
+                            <td class="text-right"><strong>€6.089</strong></td>
+                        </tr>
+                        <tr class="table-total">
+                            <td></td>
+                            <td><strong>TOTALE</strong></td>
+                            <td></td>
+                            <td class="text-right"><strong>€552.074</strong></td>
+                            <td class="text-right"><strong>€10.951</strong></td>
+                            <td class="text-right"><strong>€76</strong></td>
+                            <td class="text-right"><strong>€563.101</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <!-- Ambiente Section -->
+    <section id="ambiente">
+        <div class="section-header animate-on-scroll">
+            <div class="section-number">05</div>
+            <h2 class="section-title">Impatto Ambientale</h2>
+            <p class="section-subtitle">Benefici ecologici del patrimonio arboreo oggetto di manutenzione</p>
+        </div>
+
+        <div class="env-grid animate-on-scroll">
+            <div class="env-card o2">
+                <div class="env-icon">🌬️</div>
+                <div class="env-value">204<span class="env-unit"> tonnellate</span></div>
+                <div class="env-label">Ossigeno prodotto all'anno</div>
+            </div>
+            <div class="env-card co2">
+                <div class="env-icon">🌍</div>
+                <div class="env-value">85<span class="env-unit"> tonnellate</span></div>
+                <div class="env-label">CO₂ catturata all'anno</div>
+            </div>
+        </div>
+
+        <div class="chart-row animate-on-scroll" style="margin-top: 2rem;">
+            <div class="chart-container">
+                <h3 class="chart-title">O₂ prodotto per Circoscrizione</h3>
+                <p class="chart-subtitle">Tonnellate di ossigeno all'anno</p>
+                <div class="chart-wrapper">
+                    <canvas id="chartO2"></canvas>
+                </div>
+            </div>
+            <div class="chart-container">
+                <h3 class="chart-title">CO₂ catturata per Circoscrizione</h3>
+                <p class="chart-subtitle">Tonnellate di anidride carbonica all'anno</p>
+                <div class="chart-wrapper">
+                    <canvas id="chartCO2"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">🌳 Verde Urbano Palermo</div>
+            <p class="footer-text">
+                Analisi della manutenzione delle alberature stradali<br>
+                Comune di Palermo • Dati 2024<br><br>
+                <em>17 vie • 6 circoscrizioni • 8 quartieri • €563.101 di investimento</em><br>
+				 Ͻ 2026 | Idea e progetto grafico e sviluppo tecnico di Giovan Battista Vitrano - Claude AI (Anthropic)
+            </p>
+			<h3>Nota importante sulla classificazione degli alberi</h3>
+<p>La Classificazione CPC (Classe di Propensione al Cedimento) e il Codice di Lavorazione riportati per gli alberi estratti dal database GreeHill sono stati generati mediante l&apos;utilizzo di Claude AI.</p>
+<p><strong>&Egrave; OBBLIGATORIA</strong> una verifica sul campo condotta da personale tecnico specializzato per:</p>
+<ul type="disc">
+    <li>confermare la classificazione CPC definitiva</li>
+    <li>assegnare il codice di lavorazione appropriato</li>
+</ul>
+<p>I dati forniti dall&apos;intelligenza artificiale sono stati elaborati sulla base di un addestramento effettuato con dati reali e con le voci dell&apos;elenco prezzi vigente. Tuttavia, tali indicazioni hanno <strong>carattere esclusivamente preliminare</strong> e devono essere validate attraverso un sopralluogo tecnico qualificato prima di qualsiasi intervento.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        function toggleMenu() {
+            document.getElementById('navLinks').classList.toggle('open');
+        }
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('scrolled');
+            } else {
+                nav.classList.remove('scrolled');
+            }
+        });
+
+        // Scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Active nav link
+        const sections = document.querySelectorAll('section, header');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Chart.js Configuration
+        Chart.defaults.font.family = "'Source Sans Pro', sans-serif";
+        Chart.defaults.color = '#5a6b5a';
+
+        const chartColors = {
+            primary: '#2d5a3d',
+            secondary: '#4a7c59',
+            tertiary: '#6b9b7a',
+            light: '#8fbc8f',
+            pale: '#a8d5ba',
+            lighter: '#c8e6c9',
+            lightest: '#e8f5e9',
+            gold: '#c9a227'
+        };
+
+        // Chart: Fasi (Doughnut)
+        new Chart(document.getElementById('chartFasi'), {
+            type: 'doughnut',
+            data: {
+                labels: ['Fase 1 (€552.074)', 'Fase 2 (€10.951)', 'Fase 3 (€76)'],
+                datasets: [{
+                    data: [552074, 10951, 76],
+                    backgroundColor: [chartColors.primary, chartColors.tertiary, chartColors.pale],
+                    borderWidth: 3,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom',
+                        labels: { padding: 20, usePointStyle: true }
+                    }
+                },
+                cutout: '60%'
+            }
+        });
+
+        // Chart: Circoscrizioni Importi (Stacked Bar)
+        new Chart(document.getElementById('chartCircImporti'), {
+            type: 'bar',
+            data: {
+                labels: ['VIII', 'VI', 'VII', 'III', 'II', 'V'],
+                datasets: [
+                    {
+                        label: 'Fase 1',
+                        data: [220274, 170565, 55200, 47657, 29910, 28467],
+                        backgroundColor: chartColors.primary
+                    },
+                    {
+                        label: 'Fase 2',
+                        data: [3879, 3194, 1141, 2510, 0, 228],
+                        backgroundColor: chartColors.tertiary
+                    },
+                    {
+                        label: 'Fase 3',
+                        data: [76, 0, 0, 0, 0, 0],
+                        backgroundColor: chartColors.pale
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { position: 'top' }
+                },
+                scales: {
+                    x: { stacked: true, grid: { display: false } },
+                    y: { 
+                        stacked: true,
+                        ticks: {
+                            callback: value => '€' + (value/1000).toFixed(0) + 'k'
+                        }
+                    }
+                }
+            }
+        });
+
+        // Chart: Circoscrizioni Torta
+        new Chart(document.getElementById('chartCircTorta'), {
+            type: 'pie',
+            data: {
+                labels: ['Circ. VIII (39,8%)', 'Circ. VI (30,9%)', 'Circ. VII (10,0%)', 'Circ. III (8,9%)', 'Circ. II (5,3%)', 'Circ. V (5,1%)'],
+                datasets: [{
+                    data: [224228, 173759, 56340, 50167, 29910, 28696],
+                    backgroundColor: [
+                        chartColors.primary, chartColors.secondary, chartColors.tertiary,
+                        chartColors.light, chartColors.pale, chartColors.lighter
+                    ],
+                    borderWidth: 2,
+                    borderColor: '#fff'
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: { padding: 15, usePointStyle: true }
+                    }
+                }
+            }
+        });
+
+        // Chart: Quartieri
+        new Chart(document.getElementById('chartQuartieri'), {
+            type: 'bar',
+            data: {
+                labels: ['Cruillas', 'Libertà', 'Montepellegrino', 'P. Mondello', 'Oreto-Staz.', 'Politeama', 'Settecannoli', 'Zisa'],
+                datasets: [{
+                    label: 'Importo totale',
+                    data: [173759, 111302, 73607, 56340, 50167, 39319, 29910, 28696],
+                    backgroundColor: [
+                        chartColors.primary, chartColors.secondary, chartColors.tertiary,
+                        chartColors.light, chartColors.pale, chartColors.lighter,
+                        chartColors.lightest, '#d4edda'
+                    ],
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            callback: value => '€' + (value/1000).toFixed(0) + 'k'
+                        }
+                    },
+                    y: { grid: { display: false } }
+                }
+            }
+        });
+
+        // Chart: Top 5 Vie
+        new Chart(document.getElementById('chartTop5'), {
+            type: 'bar',
+            data: {
+                labels: ['V.le Michelangelo', 'Via Oreto', 'Via Rizzo A. - A', 'Via Giusti G.', 'Via Rizzo A. - B'],
+                datasets: [{
+                    label: 'Importo',
+                    data: [173759, 44078, 37408, 37276, 36199],
+                    backgroundColor: [chartColors.gold, chartColors.primary, chartColors.secondary, chartColors.tertiary, chartColors.light],
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: { display: false }
+                },
+                scales: {
+                    x: {
+                        ticks: {
+                            callback: value => '€' + (value/1000).toFixed(0) + 'k'
+                        }
+                    },
+                    y: { grid: { display: false } }
+                }
+            }
+        });
+
+        // Chart: O2
+        new Chart(document.getElementById('chartO2'), {
+            type: 'bar',
+            data: {
+                labels: ['VI', 'VIII', 'III', 'VII', 'V', 'II'],
+                datasets: [{
+                    label: 'O₂ (tonnellate/anno)',
+                    data: [66.2, 59.8, 38.2, 37.9, 0.9, 1.2],
+                    backgroundColor: '#4CAF50',
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { beginAtZero: true },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+
+        // Chart: CO2
+        new Chart(document.getElementById('chartCO2'), {
+            type: 'bar',
+            data: {
+                labels: ['VIII', 'VI', 'III', 'VII', 'II', 'V'],
+                datasets: [{
+                    label: 'CO₂ (tonnellate/anno)',
+                    data: [28.3, 25.1, 14.5, 14.3, 1.7, 0.9],
+                    backgroundColor: '#2196F3',
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: { legend: { display: false } },
+                scales: {
+                    y: { beginAtZero: true },
+                    x: { grid: { display: false } }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
