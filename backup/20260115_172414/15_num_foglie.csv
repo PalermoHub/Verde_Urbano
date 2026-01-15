@@ -1,0 +1,1445 @@
+Id,Odonimo,ID Pianta,Specie,h (m),Diametro (cm),CPC,tipo_foglia,# Primavera, # Estate,# Autunno,# Inverno
+ALB_001,Viale Emilia,,Ficus microcarpa,12,47,B,sempreverde,13977,14263,13977,13550
+ALB_002,Viale Emilia,,Ficus microcarpa,12,49,B,sempreverde,14756,15057,14756,14304
+ALB_003,Viale Emilia,,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+ALB_004,Viale Emilia,,Ficus microcarpa,12,32,B,sempreverde,8480,8653,8480,8220
+ALB_005,Viale Emilia,,Ficus microcarpa,12,52,B,sempreverde,15941,16266,15941,15453
+ALB_006,Viale Emilia,,Ficus microcarpa,12,34,B,sempreverde,9175,9363,9175,8894
+ALB_007,Viale Emilia,,Ficus microcarpa,12,39,B,sempreverde,10967,11191,10967,10631
+ALB_008,Viale Emilia,,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+ALB_009,Viale Emilia,,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+ALB_010,Viale Emilia,,Ficus microcarpa,12,39,B,sempreverde,10967,11191,10967,10631
+ALB_011,Viale Emilia,,Ficus microcarpa,12,36,B,sempreverde,9883,10085,9883,9581
+ALB_012,Viale Emilia,,Ficus microcarpa,12,48,B,sempreverde,14365,14658,14365,13925
+ALB_013,Viale Emilia,,Ficus microcarpa,12,55,B,sempreverde,17146,17496,17146,16621
+ALB_014,Viale Emilia,,Ficus microcarpa,15,36,B,sempreverde,12081,12328,12081,11711
+ALB_015,Viale Emilia,,Ficus microcarpa,15,42,B,sempreverde,14762,15063,14762,14310
+ALB_016,Viale Emilia,,Ficus microcarpa,15,38,B,sempreverde,12961,13225,12961,12564
+ALB_017,Viale Emilia,,Ficus microcarpa,15,47,B,sempreverde,17086,17435,17086,16563
+ALB_018,Viale Emilia,,Ficus microcarpa,15,32,C,sempreverde,8537,8711,8537,8275
+ALB_019,Viale Emilia,,Ficus microcarpa,12,70,B,sempreverde,23460,23939,23460,22742
+ALB_020,Viale Emilia,,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+ALB_021,Viale Emilia,,Ficus microcarpa,12,62,B,sempreverde,20036,20445,20036,19423
+ALB_022,Viale Emilia,,Ficus microcarpa,12,68,B,sempreverde,22592,23053,22592,21901
+ALB_023,Viale Emilia,,Ficus microcarpa,12,77,B,sempreverde,26554,27096,26554,25742
+ALB_024,Viale Emilia,,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+ALB_025,Viale Emilia,,Ficus microcarpa,12,50,B,sempreverde,15148,15457,15148,14684
+ALB_026,Viale Emilia,,Ficus microcarpa,12,49,B,sempreverde,14756,15057,14756,14304
+ALB_027,Viale Emilia,,Ficus microcarpa,12,38,B,sempreverde,10603,10819,10603,10278
+ALB_028,Viale Emilia,,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+ALB_029,Viale Emilia,,Ficus microcarpa,12,62,B,sempreverde,20036,20445,20036,19423
+ALB_030,Viale Emilia,,Ficus microcarpa,12,79,B,sempreverde,27455,28015,27455,26614
+ALB_031,Viale Emilia,,Ficus microcarpa,12,77,B,sempreverde,26554,27096,26554,25742
+ALB_032,Viale Emilia,,Ficus microcarpa,15,45,B,sempreverde,16147,16477,16147,15653
+ALB_033,Viale Emilia,,Ficus microcarpa,15,42,B,sempreverde,14762,15063,14762,14310
+ALB_034,Viale Emilia,,Ficus microcarpa,15,38,B,sempreverde,12961,13225,12961,12564
+ALB_035,Viale Emilia,,Ficus microcarpa,15,52,C,sempreverde,16047,16375,16047,15556
+ALB_036,Viale Emilia,,Ficus microcarpa,12,48,B,sempreverde,14365,14658,14365,13925
+ALB_037,Viale Emilia,,Ficus microcarpa,12,43,B,sempreverde,12451,12705,12451,12070
+ALB_038,Viale Emilia,,Ficus microcarpa,12,43,B,sempreverde,12451,12705,12451,12070
+ALB_039,Viale Emilia,,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+ALB_040,Viale Emilia,,Ficus microcarpa,12,50,B,sempreverde,15148,15457,15148,14684
+ALB_041,Viale Emilia,,Ficus microcarpa,12,55,B,sempreverde,17146,17496,17146,16621
+ALB_042,Viale Emilia,,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+ALB_043,Viale Emilia,,Ficus microcarpa,12,48,C,sempreverde,11830,12072,11830,11468
+ALB_044,Viale Emilia,,Ficus microcarpa,12,55,B,sempreverde,17146,17496,17146,16621
+ALB_045,Viale Emilia,,Ficus microcarpa,12,41,B,sempreverde,11704,11942,11704,11345
+ALB_046,Viale Emilia,,Ficus microcarpa,12,39,B,sempreverde,10967,11191,10967,10631
+ALB_047,Viale Emilia,,Ficus microcarpa,12,38,D,sempreverde,6237,6364,6237,6046
+ALB_048,Viale Emilia,,Ficus microcarpa,12,37,C,sempreverde,8434,8606,8434,8176
+ALB_049,Viale Emilia,,Ficus microcarpa,12,39,B,sempreverde,10967,11191,10967,10631
+ALB_050,Viale Emilia,,Ficus microcarpa,12,38,B,sempreverde,10603,10819,10603,10278
+ALB_051,Viale Emilia,,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+ALB_052,Viale Emilia,,Brachychiton acerifolius ,10,27,C,semi-decidua,3231,4308,3662,2585
+ALB_053,Viale Emilia,,Brachychiton acerifolius ,10,32,B,semi-decidua,4893,6524,5545,3914
+ALB_054,Viale Emilia,,Brachychiton acerifolius ,12,32,B,semi-decidua,5765,7687,6534,4612
+ALB_055,Viale Emilia,,Ficus benjamina,10,18,C,sempreverde,2639,2693,2639,2558
+ALB_056,Viale Emilia,,Celtis australis,15,137,C,decidua,56533,80761,44419,0
+ALB_057,Viale Emilia,,Acer negundo,8,42,D,decidua,3271,5032,2265,0
+ALB_058,Viale Emilia,,Robinia pseudoacacia,12,45,B,decidua,11813,16875,8438,0
+ALB_059,Viale Emilia,,Sophora japonica,12,38,B,decidua,9323,13318,6659,0
+ALB_060,Viale Emilia,,Sophora japonica,,30,B,decidua,0,0,0,0
+ALB_061,Viale Emilia,,Robinia pseudoacacia,,15,Ceppaia,decidua,0,0,0,0
+ALB_062,Viale Emilia,,Robinia pseudoacacia,,15,Ceppaia,decidua,0,0,0,0
+ALB_063,Viale Emilia,,Robinia pseudoacacia,,15,Ceppaia,decidua,0,0,0,0
+ALB_064,Viale Emilia,,Robinia pseudoacacia,,15,Ceppaia,decidua,0,0,0,0
+ALB_065,Viale Emilia,,Pinus halepensis,16,64,D,sempreverde,2923,2983,2923,2834
+ALB_066,Via Pignatelli Aragona,,Ficus microcarpa,12,76,B,sempreverde,26107,26640,26107,25308
+ALB_067,Via Pignatelli Aragona,,Ficus microcarpa,12,52,B,sempreverde,15941,16266,15941,15453
+ALB_068,Via Pignatelli Aragona,,Ficus microcarpa,12,79,B,sempreverde,27455,28015,27455,26614
+ALB_069,Via Pignatelli Aragona,,Ficus microcarpa,12,53,D,sempreverde,9612,9808,9612,9318
+ALB_070,Via Pignatelli Aragona,,Ficus microcarpa,12,59,B,sempreverde,18785,19168,18785,18210
+ALB_071,Via Pignatelli Aragona,,Ficus microcarpa,12,65,B,sempreverde,21305,21740,21305,20653
+ALB_072,Via Pignatelli Aragona,,Ficus microcarpa,12,65,B,sempreverde,21305,21740,21305,20653
+ALB_073,Via Pignatelli Aragona,,Ficus microcarpa,12,63,C,sempreverde,16847,17191,16847,16331
+ALB_074,Via Pignatelli Aragona,,Ficus microcarpa,12,82,C,sempreverde,23732,24216,23732,23006
+ALB_075,Via Pignatelli Aragona,,Ficus microcarpa,12,77,B,sempreverde,26554,27096,26554,25742
+ALB_076,Via Pignatelli Aragona,,Ficus microcarpa,12,62,B,sempreverde,20036,20445,20036,19423
+ALB_077,Via Pignatelli Aragona,,Ficus microcarpa,12,49,C,sempreverde,12152,12400,12152,11780
+ALB_078,Via Pignatelli Aragona,,Ficus microcarpa,12,41,B,sempreverde,11704,11942,11704,11345
+ALB_079,Via Pignatelli Aragona,,Ficus microcarpa,12,38,C/D,sempreverde,3742,3819,3742,3628
+ALB_080,Via Pignatelli Aragona,,Ficus microcarpa,12,50,C/D,sempreverde,5346,5456,5346,5183
+ALB_081,Via Pignatelli Aragona,,Ficus microcarpa,12,48,C,sempreverde,11830,12072,11830,11468
+ALB_082,Via Pignatelli Aragona,,Ficus microcarpa,10,37,D,sempreverde,5113,5217,5113,4956
+ALB_083,Via Pignatelli Aragona,,Ficus microcarpa,12,45,D,sempreverde,7770,7929,7770,7532
+ALB_084,Via Pignatelli Aragona,,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+ALB_085,Via Pignatelli Aragona,,Ficus microcarpa,12,35,B,sempreverde,9528,9722,9528,9236
+ALB_086,Via Pignatelli Aragona,,Ficus microcarpa,12,47,B,sempreverde,13977,14263,13977,13550
+ALB_087,Via Pignatelli Aragona,,Ficus microcarpa,12,65,B,sempreverde,21305,21740,21305,20653
+ALB_088,Via Pignatelli Aragona,,Ficus microcarpa,12,40,B,sempreverde,11334,11565,11334,10987
+ALB_089,Via Pignatelli Aragona,,Ficus microcarpa,12,49,B,sempreverde,14756,15057,14756,14304
+ALB_090,Via Pignatelli Aragona,,Ficus microcarpa,12,47,B,sempreverde,13977,14263,13977,13550
+ALB_091,Via Pignatelli Aragona,,Ficus microcarpa,12,50,C,sempreverde,12475,12730,12475,12093
+ALB_092,Via Pignatelli Aragona,,Ficus microcarpa,12,46,C/D,sempreverde,4797,4895,4797,4650
+ALB_093,Via Pignatelli Aragona,,Ficus microcarpa,12,65,B,sempreverde,21305,21740,21305,20653
+ALB_094,Via Pignatelli Aragona,,Ficus microcarpa,12,62,B,sempreverde,20036,20445,20036,19423
+ALB_095,Via Pignatelli Aragona,,Ficus microcarpa,12,68,B,sempreverde,22592,23053,22592,21901
+ALB_096,Via Pignatelli Aragona,,Ficus microcarpa,12,38,B,sempreverde,10603,10819,10603,10278
+ALB_097,Via Pignatelli Aragona,,Ficus microcarpa,12,58,D,sempreverde,10807,11028,10807,10476
+ALB_098,Via Pignatelli Aragona,,Ficus microcarpa,12,38,D,sempreverde,6237,6364,6237,6046
+ALB_099,Via Pignatelli Aragona,,Ficus microcarpa,12,41,B,sempreverde,11704,11942,11704,11345
+ALB_100,Via Pignatelli Aragona,,Ficus microcarpa,12,43,B,sempreverde,12451,12705,12451,12070
+ALB_101,Via Pignatelli Aragona,,Ficus microcarpa,12,52,B,sempreverde,15941,16266,15941,15453
+ALB_102,Via Pignatelli Aragona,,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+ALB_103,Via Pignatelli Aragona,,Ficus microcarpa,12,55,B,sempreverde,17146,17496,17146,16621
+ALB_104,Via Pignatelli Aragona,,Ficus microcarpa,12,48,B,sempreverde,14365,14658,14365,13925
+ALB_105,Via Pignatelli Aragona,,Ficus microcarpa,12,36,B,sempreverde,9883,10085,9883,9581
+ALB_106,Via Pignatelli Aragona,,Ficus microcarpa,12,48,C,sempreverde,11830,12072,11830,11468
+ALB_107,Via Pignatelli Aragona,,Ficus microcarpa,12,52,C,sempreverde,13128,13395,13128,12726
+ALB_108,Via Pignatelli Aragona,,Ficus microcarpa,12,52,C,sempreverde,13128,13395,13128,12726
+ALB_109,Via Pignatelli Aragona,,Ficus microcarpa,12,78,B,sempreverde,27004,27555,27004,26177
+ALB_110,Via Pignatelli Aragona,,Ficus microcarpa,12,59,B,sempreverde,18785,19168,18785,18210
+ALB_111,Via Pignatelli Aragona,,Ficus microcarpa,12,65,B,sempreverde,21305,21740,21305,20653
+ALB_112,Via Pignatelli Aragona,,Ficus microcarpa,12,65,B,sempreverde,21305,21740,21305,20653
+ALB_113,Via Pignatelli Aragona,,Ficus microcarpa,12,103,B,sempreverde,38760,39551,38760,37574
+ALB_114,Via Delle Croci,,Ficus microcarpa,12,48,B,sempreverde,14365,14658,14365,13925
+ALB_115,Via Delle Croci,,Ficus microcarpa,12,48,B,sempreverde,14365,14658,14365,13925
+ALB_116,Via Delle Croci,,Ficus microcarpa,12,46,B,sempreverde,13592,13869,13592,13176
+ALB_117,Via Delle Croci,,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+ALB_118,Via Delle Croci,,Ficus microcarpa,12,47,B,sempreverde,13977,14263,13977,13550
+ALB_119,Via Delle Croci,,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+ALB_120,Via Delle Croci,,Ficus microcarpa,12,39,B,sempreverde,10967,11191,10967,10631
+ALB_121,Via Delle Croci,,Ficus microcarpa,12,49,B,sempreverde,14756,15057,14756,14304
+ALB_122,Via Delle Croci,,Ficus microcarpa,12,46,B,sempreverde,13592,13869,13592,13176
+ALB_123,Via Delle Croci,,Ficus microcarpa,12,39,C,sempreverde,9032,9216,9032,8755
+ALB_124,Via Delle Croci,,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+ALB_125,Via Delle Croci,,Ficus microcarpa,12,48,C,sempreverde,11830,12072,11830,11468
+ALB_126,Via Delle Croci,,Ficus microcarpa,12,50,B,sempreverde,15148,15457,15148,14684
+ALB_127,Via Delle Croci,,Ficus microcarpa,12,48,B,sempreverde,14365,14658,14365,13925
+ALB_128,Via Delle Croci,,Ficus microcarpa,12,56,B,sempreverde,17553,17911,17553,17015
+ALB_129,Via Delle Croci,,Ficus microcarpa,12,49,C,sempreverde,12152,12400,12152,11780
+ALB_130,Via Delle Croci,,Ficus microcarpa,12,38,C/D,sempreverde,3742,3819,3742,3628
+ALB_131,Via Delle Croci,,Ficus microcarpa,12,49,B,sempreverde,14756,15057,14756,14304
+ALB_132,Via Delle Croci,,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+ALB_133,Via Delle Croci,,Ficus microcarpa,12,42,C,sempreverde,9945,10148,9945,9641
+ALB_134,Via Delle Croci,,Ficus microcarpa,12,65,C,sempreverde,17546,17904,17546,17008
+ALB_135,Via Delle Croci,,Ficus microcarpa,12,72,B,sempreverde,24335,24832,24335,23590
+ALB_136,Via Delle Croci,,Ficus microcarpa,12,58,C,sempreverde,15130,15439,15130,14667
+ALB_137,Via Delle Croci,,Ficus microcarpa,12,47,B,sempreverde,13977,14263,13977,13550
+ALB_138,Via Delle Croci,,Ficus microcarpa,12,37,B,sempreverde,10241,10450,10241,9928
+ALB_139,Via Delle Croci,,Ficus microcarpa,12,49,B,sempreverde,14756,15057,14756,14304
+ALB_140,Via Delle Croci,,Ficus microcarpa,12,45,C/D,sempreverde,4662,4757,4662,4519
+ALB_141,Via Delle Croci,,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+ALB_142,Via Delle Croci,,Ficus microcarpa,12,42,C/D,sempreverde,4262,4349,4262,4132
+ALB_143,Via Delle Croci,,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+ALB_144,Via Delle Croci,,Ficus microcarpa,12,39,B,sempreverde,10967,11191,10967,10631
+ALB_145,Via Delle Croci,,Ficus microcarpa,12,43,B,sempreverde,12451,12705,12451,12070
+ALB_146,Via Delle Croci,,Ficus microcarpa,10,45,D,sempreverde,6594,6729,6594,6392
+ALB_147,Via Delle Croci,,Ficus microcarpa,12,45,C,sempreverde,10878,11100,10878,10545
+ALB_148,Via Delle Croci,,Ficus microcarpa,12,41,C,sempreverde,9638,9835,9638,9343
+ALB_149,Via Delle Croci,,Ficus microcarpa,12,42,D,sempreverde,7104,7249,7104,6886
+ALB_150,Via Delle Croci,,Ficus microcarpa,12,35,D,sempreverde,5605,5719,5605,5433
+ALB_151,Via Delle Croci,,Ficus microcarpa,12,38,B,sempreverde,10603,10819,10603,10278
+ALB_152,Via Delle Croci,,Ficus microcarpa,12,40,D,sempreverde,6667,6803,6667,6463
+ALB_153,Via Delle Croci,,Ficus microcarpa,12,40,C,sempreverde,9334,9524,9334,9048
+ALB_154,Via Delle Croci,,Ficus microcarpa,12,48,C/D,sempreverde,5070,5174,5070,4915
+ALB_155,Via Delle Croci,,Ficus microcarpa,12,39,C,sempreverde,9032,9216,9032,8755
+ALB_156,Via Delle Croci,,Ficus microcarpa,12,43,C,sempreverde,10254,10463,10254,9940
+ALB_157,Via Delle Croci,,Ficus microcarpa,12,47,C,sempreverde,11511,11746,11511,11158
+ALB_158,Via Delle Croci,,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+ALB_159,Via Delle Croci,,Ficus microcarpa,12,41,C,sempreverde,9638,9835,9638,9343
+ALB_160,Via Delle Croci,,Ficus microcarpa,12,35,B,sempreverde,9528,9722,9528,9236
+ALB_161,Via Delle Croci,,Ficus microcarpa,12,59,B,sempreverde,18785,19168,18785,18210
+ALB_162,Via Delle Croci,,Ficus microcarpa,12,35,B,sempreverde,9528,9722,9528,9236
+ALB_163,Via Delle Croci,,Ficus microcarpa,12,38,B,sempreverde,10603,10819,10603,10278
+ALB_164,Via Delle Croci,,Ficus microcarpa,12,37,B,sempreverde,10241,10450,10241,9928
+ALB_165,Via Delle Croci,,Ficus microcarpa,12,35,B,sempreverde,9528,9722,9528,9236
+ALB_166,Via Scoto Michele,,Ficus microcarpa,12,69,B,sempreverde,23025,23495,23025,22320
+ALB_167,Via Scoto Michele,,Ficus microcarpa,12,64,B,sempreverde,20880,21306,20880,20241
+ALB_168,Via Scoto Michele,,Ficus microcarpa,12,62,B,sempreverde,20036,20445,20036,19423
+ALB_169,Via Scoto Michele,,Ficus microcarpa,12,58,B,sempreverde,18372,18747,18372,17810
+ALB_170,Via Scoto Michele,,Ficus microcarpa,12,62,B,sempreverde,20036,20445,20036,19423
+ALB_171,Via Scoto Michele,,Ficus microcarpa,12,65,B,sempreverde,21305,21740,21305,20653
+ALB_172,Via Scoto Michele,,Ficus microcarpa,12,58,B,sempreverde,18372,18747,18372,17810
+ALB_173,Via Scoto Michele,,Ficus microcarpa,12,72,B,sempreverde,24335,24832,24335,23590
+ALB_174,Via Scoto Michele,,Ficus microcarpa,12,65,B,sempreverde,21305,21740,21305,20653
+ALB_175,Via Scoto Michele,,Ficus microcarpa,12,70,B,sempreverde,23460,23939,23460,22742
+ALB_176,Via Scoto Michele,,Ficus microcarpa,12,49,B,sempreverde,14756,15057,14756,14304
+ALB_177,Via Scoto Michele,,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+ALB_178,Via Scoto Michele,,Ficus microcarpa,12,51,B,sempreverde,15543,15860,15543,15067
+ALB_179,Via Scoto Michele,,Ficus microcarpa,12,54,B,sempreverde,16742,17084,16742,16230
+ALB_180,Via Scoto Michele,,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+ALB_181,Via Scoto Michele,,Ficus microcarpa,12,56,B,sempreverde,17553,17911,17553,17015
+ALB_182,Via Scoto Michele,,Ficus microcarpa,12,58,B,sempreverde,18372,18747,18372,17810
+ALB_183,Via Scoto Michele,,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+ALB_184,Via Scoto Michele,,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+ALB_185,Via Scoto Michele,,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+ALB_186,Via Scoto Michele,,Ficus microcarpa,12,47,D,sempreverde,8222,8390,8222,7970
+ALB_187,Via Scoto Michele,,Ficus microcarpa,12,58,C,sempreverde,15130,15439,15130,14667
+ALB_188,Via Scoto Michele,,Ficus microcarpa,12,58,B,sempreverde,18372,18747,18372,17810
+ALB_189,Via Scoto Michele,,Ficus microcarpa,12,50,B,sempreverde,15148,15457,15148,14684
+ALB_190,Via Scoto Michele,,Ficus microcarpa,12,61,B,sempreverde,19617,20017,19617,19016
+ALB_191,Via Scoto Michele,,Ficus microcarpa,12,43,B,sempreverde,12451,12705,12451,12070
+ALB_192,Via Scoto Michele,,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+ALB_193,Via Scoto Michele,,Ficus microcarpa,12,43,B,sempreverde,12451,12705,12451,12070
+ALB_194,Viale Dei Picciotti - A,,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+ALB_195,Viale Dei Picciotti - A,,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+ALB_196,Viale Dei Picciotti - A,,Ficus microcarpa,12,47,C,sempreverde,11511,11746,11511,11158
+ALB_197,Viale Dei Picciotti - A,,Ficus microcarpa,12,53,B,sempreverde,16340,16674,16340,15840
+ALB_198,Viale Dei Picciotti - A,,Ficus microcarpa,12,50,B,sempreverde,15148,15457,15148,14684
+ALB_199,Viale Dei Picciotti - A,,Ficus microcarpa,12,56,B,sempreverde,17553,17911,17553,17015
+ALB_200,Viale Dei Picciotti - A,,Ficus microcarpa,12,52,C,sempreverde,13128,13395,13128,12726
+ALB_201,Viale Dei Picciotti - A,,Ficus microcarpa,12,48,C,sempreverde,11830,12072,11830,11468
+ALB_202,Viale Dei Picciotti - A,,Ficus microcarpa,12,60,B,sempreverde,19200,19592,19200,18612
+ALB_203,Viale Dei Picciotti - A,,Ficus microcarpa,12,58,B,sempreverde,18372,18747,18372,17810
+ALB_204,Viale Dei Picciotti - A,,Ficus microcarpa,12,63,B,sempreverde,20457,20874,20457,19831
+ALB_205,Viale Dei Picciotti - A,,Ficus microcarpa,12,71,C,sempreverde,19680,20081,19680,19077
+ALB_206,Viale Dei Picciotti - A,,Ficus microcarpa,12,66,B,sempreverde,21732,22176,21732,21067
+ALB_207,Viale Dei Picciotti - A,,Ficus microcarpa,12,60,B,sempreverde,19200,19592,19200,18612
+ALB_208,Viale Dei Picciotti - A,,Ficus microcarpa,12,39,B,sempreverde,10967,11191,10967,10631
+ALB_209,Viale Dei Picciotti - A,,Ficus microcarpa,12,41,B,sempreverde,11704,11942,11704,11345
+ALB_210,Viale Dei Picciotti - A,,Ficus microcarpa,12,44,B,sempreverde,12829,13091,12829,12436
+ALB_211,Viale Dei Picciotti - A,,Ficus microcarpa,12,37,B,sempreverde,10241,10450,10241,9928
+ALB_212,Viale Dei Picciotti - A,,Ficus microcarpa,12,38,B,sempreverde,10603,10819,10603,10278
+ALB_213,Viale Dei Picciotti - A,,Ficus microcarpa,12,47,B,sempreverde,13977,14263,13977,13550
+ALB_214,Viale Dei Picciotti - A,,Ficus microcarpa,12,35,B,sempreverde,9528,9722,9528,9236
+ALB_215,Viale Dei Picciotti - A,,Ficus microcarpa,12,47,B,sempreverde,13977,14263,13977,13550
+ALB_216,Viale Dei Picciotti - A,,Ficus microcarpa,12,36,C/D,sempreverde,3488,3559,3488,3381
+ALB_217,Viale Dei Picciotti - A,,Ficus microcarpa,12,40,C/D,sempreverde,4000,4082,4000,3878
+ALB_218,Viale Dei Picciotti - A,,Ficus microcarpa,12,47,C,sempreverde,11511,11746,11511,11158
+ALB_219,Viale Dei Picciotti - A,,Ficus microcarpa,12,38,B,sempreverde,10603,10819,10603,10278
+ALB_220,Viale Dei Picciotti - A,,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+ALB_221,Viale Dei Picciotti - A,,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+ALB_222,Viale Dei Picciotti - A,,Ficus microcarpa,12,35,B,sempreverde,9528,9722,9528,9236
+ALB_223,Viale Dei Picciotti - A,,Ficus microcarpa,12,48,B,sempreverde,14365,14658,14365,13925
+ALB_224,Viale Dei Picciotti - A,,Ficus microcarpa,12,39,B,sempreverde,10967,11191,10967,10631
+ALB_225,Viale Dei Picciotti - B,,Ficus microcarpa,12,47,B,sempreverde,13977,14263,13977,13550
+ALB_226,Viale Dei Picciotti - B,,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+ALB_227,Viale Dei Picciotti - B,,Ficus microcarpa,12,47,C/D,sempreverde,4933,5034,4933,4782
+ALB_228,Viale Dei Picciotti - B,,Ficus microcarpa,12,52,B,sempreverde,15941,16266,15941,15453
+ALB_229,Viale Dei Picciotti - B,,Ficus rubiginosa,12,32,B,sempreverde,7977,8139,7977,7732
+ALB_230,Viale Dei Picciotti - B,,Ficus microcarpa,12,40,B,sempreverde,11334,11565,11334,10987
+ALB_231,Viale Dei Picciotti - B,,Ficus microcarpa,12,39,B,sempreverde,10967,11191,10967,10631
+ALB_232,Viale Dei Picciotti - B,,Ficus microcarpa,12,43,C,sempreverde,10254,10463,10254,9940
+ALB_233,Viale Dei Picciotti - B,,Ficus microcarpa,12,55,B,sempreverde,17146,17496,17146,16621
+ALB_234,Viale Dei Picciotti - B,,Ficus microcarpa,12,54,C,sempreverde,13788,14069,13788,13366
+ALB_235,Viale Dei Picciotti - B,,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+ALB_236,Viale Dei Picciotti - B,,Ficus microcarpa,12,49,B,sempreverde,14756,15057,14756,14304
+ALB_237,Viale Dei Picciotti - B,,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+ALB_238,Viale Dei Picciotti - B,,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+ALB_239,Viale Dei Picciotti - B,,Ficus microcarpa,12,43,B,sempreverde,12451,12705,12451,12070
+ALB_240,Viale Dei Picciotti - B,,Ficus microcarpa,12,35,B,sempreverde,9528,9722,9528,9236
+ALB_241,Viale Dei Picciotti - B,,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+ALB_242,Viale Dei Picciotti - B,,Ficus microcarpa,12,42,C,sempreverde,9945,10148,9945,9641
+ALB_243,Viale Dei Picciotti - B,,Ficus microcarpa,12,46,C,sempreverde,11193,11422,11193,10851
+ALB_244,Viale Dei Picciotti - B,,Ficus microcarpa,12,53,B,sempreverde,16340,16674,16340,15840
+ALB_245,Viale Dei Picciotti - B,,Ficus microcarpa,12,53,B,sempreverde,16340,16674,16340,15840
+ALB_246,Viale Dei Picciotti - B,,Ficus microcarpa,12,48,B,sempreverde,14365,14658,14365,13925
+ALB_247,Viale Dei Picciotti - B,,Ficus microcarpa,12,50,C,sempreverde,12475,12730,12475,12093
+ALB_248,Viale Dei Picciotti - B,,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+ALB_249,Viale Dei Picciotti - B,,Ficus microcarpa,12,40,B,sempreverde,11334,11565,11334,10987
+ALB_250,Viale Dei Picciotti - B,,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+ALB_251,Viale Dei Picciotti - B,,Ficus microcarpa,12,78,B,sempreverde,27004,27555,27004,26177
+ALB_252,Viale Dei Picciotti - B,,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+ALB_253,Viale Dei Picciotti - B,,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+ALB_254,Viale Dei Picciotti - B,,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+ALB_255,Viale Dei Picciotti - B,,Ficus microcarpa,12,52,B,sempreverde,15941,16266,15941,15453
+ALB_256,Viale Dei Picciotti - B,,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+ALB_257,Viale Dei Picciotti - B,,Ficus microcarpa,12,50,B,sempreverde,15148,15457,15148,14684
+ALB_258,Viale Dei Picciotti - B,,Ficus microcarpa,12,54,B,sempreverde,16742,17084,16742,16230
+ALB_259,Via Rizzo Ammiraglio - A,001,Ficus microcarpa,12,65,B,sempreverde,21305,21740,21305,20653
+ALB_260,Via Rizzo Ammiraglio - A,002,Ficus microcarpa,12,65,B,sempreverde,21305,21740,21305,20653
+ALB_261,Via Rizzo Ammiraglio - A,003,Ficus microcarpa,12,66,B,sempreverde,21732,22176,21732,21067
+ALB_262,Via Rizzo Ammiraglio - A,004,Ficus microcarpa,12,58,B,sempreverde,18372,18747,18372,17810
+ALB_263,Via Rizzo Ammiraglio - A,005,Ficus microcarpa,12,46,B,sempreverde,13592,13869,13592,13176
+ALB_264,Via Rizzo Ammiraglio - A,006,Ficus microcarpa,12,50,B,sempreverde,15148,15457,15148,14684
+ALB_265,Via Rizzo Ammiraglio - A,007,Ficus microcarpa,12,43,D,sempreverde,7324,7474,7324,7100
+ALB_266,Via Rizzo Ammiraglio - A,008,Ficus microcarpa,12,47,B,sempreverde,13977,14263,13977,13550
+ALB_267,Via Rizzo Ammiraglio - A,009,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+ALB_268,Via Rizzo Ammiraglio - A,010,Ficus microcarpa,12,39,B,sempreverde,10967,11191,10967,10631
+ALB_269,Via Rizzo Ammiraglio - A,011,Ficus microcarpa,12,37,B,sempreverde,10241,10450,10241,9928
+ALB_270,Via Rizzo Ammiraglio - A,012,Ficus microcarpa,12,34,B,sempreverde,9175,9363,9175,8894
+ALB_271,Via Rizzo Ammiraglio - A,013,Ficus microcarpa,12,53,B,sempreverde,16340,16674,16340,15840
+ALB_272,Via Rizzo Ammiraglio - A,014,Ficus microcarpa,12,35,C/D,sempreverde,3363,3431,3363,3260
+ALB_273,Via Rizzo Ammiraglio - A,015,Ficus microcarpa,12,50,B,sempreverde,15148,15457,15148,14684
+ALB_274,Via Rizzo Ammiraglio - A,016,Ficus microcarpa,12,62,C,sempreverde,16500,16837,16500,15995
+ALB_275,Via Rizzo Ammiraglio - A,017,Ficus microcarpa,12,55,B,sempreverde,17146,17496,17146,16621
+ALB_276,Via Rizzo Ammiraglio - A,018,Ficus microcarpa,12,65,B,sempreverde,21305,21740,21305,20653
+ALB_277,Via Rizzo Ammiraglio - A,019,Ficus microcarpa,12,60,B,sempreverde,19200,19592,19200,18612
+ALB_278,Via Rizzo Ammiraglio - A,020,Ficus microcarpa,12,65,B,sempreverde,21305,21740,21305,20653
+ALB_279,Via Rizzo Ammiraglio - A,021,Ficus microcarpa,12,55,C/D,sempreverde,6052,6175,6052,5866
+ALB_280,Via Rizzo Ammiraglio - A,022,Ficus microcarpa,12,57,B,sempreverde,17961,18328,17961,17411
+ALB_281,Via Rizzo Ammiraglio - A,023,Ficus microcarpa,12,42,D,sempreverde,7104,7249,7104,6886
+ALB_282,Via Rizzo Ammiraglio - A,024,Ficus microcarpa,12,55,C/D,sempreverde,6052,6175,6052,5866
+ALB_283,Via Rizzo Ammiraglio - A,025,Ficus microcarpa,12,60,B,sempreverde,19200,19592,19200,18612
+ALB_284,Via Rizzo Ammiraglio - A,026,Ficus microcarpa,12,55,B,sempreverde,17146,17496,17146,16621
+ALB_285,Via Rizzo Ammiraglio - A,027,Ficus microcarpa,12,48,B,sempreverde,14365,14658,14365,13925
+ALB_286,Via Rizzo Ammiraglio - A,028,Ficus microcarpa,12,55,B,sempreverde,17146,17496,17146,16621
+ALB_287,Via Rizzo Ammiraglio - B,029,Ficus microcarpa,12,62,B,sempreverde,20036,20445,20036,19423
+ALB_288,Via Rizzo Ammiraglio - B,030,Ficus microcarpa,12,75,B,sempreverde,25661,26185,25661,24876
+ALB_289,Via Rizzo Ammiraglio - B,031,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+ALB_290,Via Rizzo Ammiraglio - B,032,Ficus microcarpa,12,48,B,sempreverde,14365,14658,14365,13925
+ALB_291,Via Rizzo Ammiraglio - B,033,Ficus microcarpa,12,46,C,sempreverde,11193,11422,11193,10851
+ALB_292,Via Rizzo Ammiraglio - B,034,Ficus microcarpa,12,62,B,sempreverde,20036,20445,20036,19423
+ALB_293,Via Rizzo Ammiraglio - B,035,Ficus microcarpa,12,50,B,sempreverde,15148,15457,15148,14684
+ALB_294,Via Rizzo Ammiraglio - B,036,Ficus microcarpa,12,52,C/D,sempreverde,5626,5741,5626,5454
+ALB_295,Via Rizzo Ammiraglio - B,037,Ficus microcarpa,12,48,B,sempreverde,14365,14658,14365,13925
+ALB_296,Via Rizzo Ammiraglio - B,038,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+ALB_297,Via Rizzo Ammiraglio - B,039,Ficus microcarpa,12,46,C,sempreverde,11193,11422,11193,10851
+ALB_298,Via Rizzo Ammiraglio - B,040,Celtis australis,12,51,B,decidua,13769,19670,10818,0
+ALB_299,Via Rizzo Ammiraglio - B,041,Celtis australis,12,48,B,decidua,12649,18069,9938,0
+ALB_300,Via Rizzo Ammiraglio - B,042,Ficus microcarpa,12,52,B,sempreverde,15941,16266,15941,15453
+ALB_301,Via Rizzo Ammiraglio - B,043,Ficus microcarpa,12,60,B,sempreverde,19200,19592,19200,18612
+ALB_302,Via Rizzo Ammiraglio - B,044,Ficus microcarpa,12,62,B,sempreverde,20036,20445,20036,19423
+ALB_303,Via Rizzo Ammiraglio - B,045,Ficus rubiginosa,7,32,B,sempreverde,4911,5011,4911,4760
+ALB_304,Via Rizzo Ammiraglio - B,046,Ficus rubiginosa,10,35,B,sempreverde,7606,7761,7606,7373
+ALB_305,Via Rizzo Ammiraglio - B,047,Ficus microcarpa,12,42,B,sempreverde,12076,12322,12076,11706
+ALB_306,Via Rizzo Ammiraglio - B,048,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+ALB_307,Via Rizzo Ammiraglio - B,049,Ficus microcarpa,12,52,B,sempreverde,15941,16266,15941,15453
+ALB_308,Via Rizzo Ammiraglio - B,050,Ficus microcarpa,12,65,B,sempreverde,21305,21740,21305,20653
+ALB_309,Via Rizzo Ammiraglio - B,051,Ficus microcarpa,12,55,B,sempreverde,17146,17496,17146,16621
+ALB_310,Via Rizzo Ammiraglio - B,052,Ficus microcarpa,12,50,B,sempreverde,15148,15457,15148,14684
+ALB_311,Via Rizzo Ammiraglio - B,053,Ficus microcarpa,12,68,B,sempreverde,22592,23053,22592,21901
+ALB_312,Via Rizzo Ammiraglio - B,054,Ficus microcarpa,12,60,B,sempreverde,19200,19592,19200,18612
+ALB_313,Via Rizzo Ammiraglio - B,055,Schinus molle,12,75,B,sempreverde,19747,20787,19747,18708
+ALB_314,Via Rizzo Ammiraglio - B,056,Schinus molle,10,70,D,sempreverde,9075,9552,9075,8597
+ALB_315,Via Rizzo Ammiraglio - B,057,Schinus molle,12,38,B,sempreverde,8733,9193,8733,8274
+ALB_316,Via Rizzo Ammiraglio - B,058,Schinus molle,12,75,C,sempreverde,16262,17118,16262,15406
+ALB_317,Via Rizzo Ammiraglio - B,059,Schinus molle,12,67,C,sempreverde,14204,14951,14204,13456
+ALB_318,Via Rizzo Ammiraglio - B,060,Schinus molle,12,47,C,sempreverde,9282,9770,9282,8793
+ALB_319,Via Rizzo Ammiraglio - B,061,Schinus molle,12,35,C,sempreverde,6516,6859,6516,6173
+ALB_320,Via Rizzo Ammiraglio - B,062,Schinus molle,12,65,C,sempreverde,13696,14417,13696,12976
+ALB_321,Via Rizzo Ammiraglio - B,063,Ficus microcarpa,12,69,D,sempreverde,13544,13821,13544,13130
+ALB_322,Via Rizzo Ammiraglio - B,064,Ficus microcarpa,12,66,B,sempreverde,21732,22176,21732,21067
+ALB_323,Via Rizzo Ammiraglio - B,065,Ficus microcarpa,12,71,C,sempreverde,19680,20081,19680,19077
+ALB_324,Via Rizzo Ammiraglio - B,066,Ficus microcarpa,12,70,B,sempreverde,23460,23939,23460,22742
+ALB_325,Via Rizzo Ammiraglio - B,067,Ficus microcarpa,12,72,B,sempreverde,24335,24832,24335,23590
+ALB_326,Via Rizzo Ammiraglio - B,068,Ficus microcarpa,12,69,B,sempreverde,23025,23495,23025,22320
+ALB_327,Via Rizzo Ammiraglio - B,069,Ficus rubiginosa,12,65,B,sempreverde,20040,20449,20040,19427
+ALB_328,Via Rizzo Ammiraglio - B,070,Ficus microcarpa,12,64,B,sempreverde,20880,21306,20880,20241
+ALB_329,Via Rizzo Ammiraglio - B,071,Ficus microcarpa,12,77,B,sempreverde,26554,27096,26554,25742
+ALB_330,Via Rizzo Ammiraglio - B,072,Ficus microcarpa,12,65,B,sempreverde,21305,21740,21305,20653
+ALB_331,Via Rizzo Ammiraglio - B,073,Ficus microcarpa,12,62,B,sempreverde,20036,20445,20036,19423
+ALB_332,Via Rizzo Ammiraglio - B,074,Ficus microcarpa,12,66,B,sempreverde,21732,22176,21732,21067
+ALB_333,Via Rizzo Ammiraglio - B,075,Ficus microcarpa,12,68,B,sempreverde,22592,23053,22592,21901
+ALB_334,Via Rizzo Ammiraglio - B,076,Ficus microcarpa,12,70,B,sempreverde,23460,23939,23460,22742
+ALB_335,Via Rizzo Ammiraglio - B,077,Melia azadirach,12,53,D,decidu,5881,7842,4313,0
+ALB_336,Via Rizzo Ammiraglio - B,078,Melia azadirach,12,60,B,decidu,11748,15664,8615,0
+ALB_337,Via Rizzo Ammiraglio - B,079,Ficus microcarpa,12,60,B,sempreverde,19200,19592,19200,18612
+ALB_338,Via Rizzo Ammiraglio - B,080,Ficus microcarpa,12,61,B,sempreverde,19617,20017,19617,19016
+ALB_339,Via Rizzo Ammiraglio - B,081,Ficus microcarpa,12,59,B,sempreverde,18785,19168,18785,18210
+ALB_340,Via Rizzo Ammiraglio - B,082,Ficus microcarpa,12,48,B,sempreverde,14365,14658,14365,13925
+ALB_341,Via Rizzo Ammiraglio - B,083,Ficus microcarpa,12,51,B,sempreverde,15543,15860,15543,15067
+ALB_342,Via Rizzo Ammiraglio - B,084,Ficus microcarpa,12,49,B,sempreverde,14756,15057,14756,14304
+ALB_343,Via Rizzo Ammiraglio - B,085,Ficus microcarpa,12,50,B,sempreverde,15148,15457,15148,14684
+ALB_344,Via Rizzo Ammiraglio - B,086,Ficus microcarpa,12,45,B,sempreverde,13209,13479,13209,12805
+ALB_345,Via Rizzo Ammiraglio - B,087,Ficus microcarpa,12,65,B,sempreverde,21305,21740,21305,20653
+ALB_346,Via Rizzo Ammiraglio - B,088,Ficus microcarpa,12,69,B,sempreverde,23025,23495,23025,22320
+ALB_347,Via Rizzo Ammiraglio - A,089,Ficus microcarpa,12,62,B,sempreverde,20036,20445,20036,19423
+ALB_348,Via Rizzo Ammiraglio - A,090,Ficus microcarpa,12,55,B,sempreverde,17146,17496,17146,16621
+ALB_349,Via Rizzo Ammiraglio - A,091,Ficus microcarpa,12,55,B,sempreverde,17146,17496,17146,16621
+ALB_350,Via Rizzo Ammiraglio - A,092,Ficus microcarpa,12,70,B,sempreverde,23460,23939,23460,22742
+ALB_351,Via Rizzo Ammiraglio - A,093,Ficus microcarpa,12,77,B,sempreverde,26554,27096,26554,25742
+ALB_352,Via Rizzo Ammiraglio - A,094,Ficus microcarpa,12,50,B,sempreverde,15148,15457,15148,14684
+ALB_353,Via Rizzo Ammiraglio - A,095,Ficus microcarpa,12,67,B,sempreverde,22161,22614,22161,21483
+ALB_354,Via Rizzo Ammiraglio - A,096,Ficus microcarpa,12,55,B,sempreverde,17146,17496,17146,16621
+ALB_355,Via Rizzo Ammiraglio - A,097,Ficus microcarpa,12,55,B,sempreverde,17146,17496,17146,16621
+ALB_356,Via Rizzo Ammiraglio - A,098,Ficus microcarpa,12,61,B,sempreverde,19617,20017,19617,19016
+ALB_357,Via Rizzo Ammiraglio - A,099,Ficus microcarpa,12,60,B,sempreverde,19200,19592,19200,18612
+ALB_358,Via Rizzo Ammiraglio - A,100,Ficus microcarpa,12,59,B,sempreverde,18785,19168,18785,18210
+ALB_359,Via Rizzo Ammiraglio - A,101,Ficus microcarpa,12,73,B,sempreverde,24775,25281,24775,24017
+ALB_360,Via Rizzo Ammiraglio - A,102,Ficus microcarpa,12,58,B,sempreverde,18372,18747,18372,17810
+ALB_361,Via Rizzo Ammiraglio - A,103,Ficus microcarpa,12,53,B,sempreverde,16340,16674,16340,15840
+ALB_362,Via Rizzo Ammiraglio - A,104,Ficus microcarpa,12,52,B,sempreverde,15941,16266,15941,15453
+ALB_363,Via Rizzo Ammiraglio - A,105,Ficus microcarpa,12,50,B,sempreverde,15148,15457,15148,14684
+ALB_364,Via Rizzo Ammiraglio - A,106,Ficus microcarpa,12,48,B,sempreverde,14365,14658,14365,13925
+ALB_365,Via Rizzo Ammiraglio - A,107,Ficus microcarpa,12,48,B,sempreverde,14365,14658,14365,13925
+ALB_366,Via Rizzo Ammiraglio - A,108,Ficus microcarpa,12,50,C/D,sempreverde,5346,5456,5346,5183
+ALB_367,Via Rizzo Ammiraglio - A,109,Ficus microcarpa,12,58,B,sempreverde,18372,18747,18372,17810
+ALB_368,Via Rizzo Ammiraglio - A,110,Ficus microcarpa,12,50,B,sempreverde,15148,15457,15148,14684
+ALB_369,Via Rizzo Ammiraglio - A,111,Ficus microcarpa,12,49,B,sempreverde,14756,15057,14756,14304
+ALB_370,Via Rizzo Ammiraglio - A,112,Ficus microcarpa,12,50,B,sempreverde,15148,15457,15148,14684
+ALB_371,Via Rizzo Ammiraglio - A,113,Ficus magnoloides,15,300,C,sempreverde,706181,743348,728481,706181
+ALB_372,Via Rizzo Ammiraglio - A,114,Ficus magnoloides,15,300,C,sempreverde,706181,743348,728481,706181
+ALB_373,Via Rizzo Ammiraglio - A,115,Ficus magnoloides,15,300,C,sempreverde,706181,743348,728481,706181
+ALB_374,Via Rizzo Ammiraglio - A,116,Ficus magnoloides,15,300,C/D,sempreverde,302649,318578,312206,302649
+ALB_375,Via Principe Di Belmonte,,Acer negundo,12,40,C,decidua,6191,9524,4286,0
+ALB_376,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
+ALB_377,Via Principe Di Belmonte,,Citrus × aurantium,6,12,B,sempreverde,1150,1211,1187,1090
+ALB_378,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
+ALB_379,Via Principe Di Belmonte,,Citrus × aurantium,6,14,B,sempreverde,1363,1435,1406,1291
+ALB_380,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
+ALB_381,Via Principe Di Belmonte,,Acer negundo,12,32,C,decidua,4632,7126,3207,0
+ALB_382,Via Principe Di Belmonte,,Acer negundo,12,31,C,decidua,4445,6838,3077,0
+ALB_383,Via Principe Di Belmonte,,Acer negundo,12,28,C/D,decidua,1669,2567,1155,0
+ALB_384,Via Principe Di Belmonte,,Acer negundo,12,23,C/D,decidua,1292,1988,895,0
+ALB_385,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
+ALB_386,Via Principe Di Belmonte,,Acer negundo,12,23,D,decidua,2154,3313,1491,0
+ALB_387,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
+ALB_388,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
+ALB_389,Via Principe Di Belmonte,,Acer negundo,12,30,C,decidua,4259,6553,2949,0
+ALB_390,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
+ALB_391,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
+ALB_392,Via Principe Di Belmonte,,Acer negundo,12,26,C/D,decidua,1515,2332,1049,0
+ALB_393,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
+ALB_394,Via Principe Di Belmonte,,Citrus × aurantium,6,14,B,sempreverde,1363,1435,1406,1291
+ALB_395,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
+ALB_396,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
+ALB_397,Via Principe Di Belmonte,,Citrus × aurantium,6,12,B,sempreverde,1150,1211,1187,1090
+ALB_398,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
+ALB_399,Via Principe Di Belmonte,,Acer negundo,12,32,C,decidua,4632,7126,3207,0
+ALB_400,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
+ALB_401,Via Principe Di Belmonte,,Acer negundo,12,40,C/D,decidua,2653,4082,1837,0
+ALB_402,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
+ALB_403,Via Principe Di Belmonte,,Acer negundo,12,32,D,decidua,3309,5090,2291,0
+ALB_404,Via Principe Di Belmonte,,Acer negundo,12,38,C/D,decidua,2482,3819,1718,0
+ALB_405,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
+ALB_406,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
+ALB_407,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
+ALB_408,Via Principe Di Belmonte,,Acer negundo,12,33,B,decidua,5854,9006,4053,0
+ALB_409,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
+ALB_410,Via Principe Di Belmonte,,Acer negundo,12,22,D,decidua,2033,3127,1407,0
+ALB_411,Via Principe Di Belmonte,,Citrus × aurantium,6,40,B,sempreverde,4325,4553,4462,4097
+ALB_412,Via Principe Di Belmonte,,Acer negundo,12,53,D,decidua,6375,9808,4414,0
+ALB_413,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
+ALB_414,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
+ALB_415,Via Principe Di Belmonte,,Acer negundo,12,48,C/D,decidua,3363,5174,2328,0
+ALB_416,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
+ALB_417,Via Principe Di Belmonte,,Citrus × aurantium,6,14,B,sempreverde,1363,1435,1406,1291
+ALB_418,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
+ALB_419,Via Principe Di Belmonte,,Acer negundo,12,32,C,decidua,4632,7126,3207,0
+ALB_420,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
+ALB_421,Via Principe Di Belmonte,,Citrus × aurantium,6,12,D,sempreverde,677,712,698,641
+ALB_422,Via Principe Di Belmonte,,Citrus × aurantium,6,14,B,sempreverde,1363,1435,1406,1291
+ALB_423,Via Principe Di Belmonte,,Acer negundo,12,56,C,decidua,9588,14750,6638,0
+ALB_424,Via Principe Di Belmonte,,Citrus × aurantium,6,12,B,sempreverde,1150,1211,1187,1090
+ALB_425,Via Principe Di Belmonte,,Acer negundo,12,25,D,decidua,2400,3693,1662,0
+ALB_426,Via Principe Di Belmonte,,Acer negundo,12,24,C,decidua,3187,4903,2206,0
+ALB_427,Via Principe Di Belmonte,,Citrus × aurantium,6,14,B,sempreverde,1363,1435,1406,1291
+ALB_428,Via Principe Di Belmonte,,Citrus × aurantium,6,14,B,sempreverde,1363,1435,1406,1291
+ALB_429,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
+ALB_430,Via Principe Di Belmonte,,Acer negundo,12,35,C/D,decidua,2230,3431,1544,0
+ALB_431,Via Principe Di Belmonte,,Acer negundo,12,33,D,decidua,3444,5298,2384,0
+ALB_432,Via Principe Di Belmonte,,Citrus × aurantium,6,14,B,sempreverde,1363,1435,1406,1291
+ALB_433,Via Principe Di Belmonte,,Citrus × aurantium,6,14,B,sempreverde,1363,1435,1406,1291
+ALB_434,Via Principe Di Belmonte,,Citrus × aurantium,6,13,B,sempreverde,1256,1322,1296,1190
+ALB_435,Via Principe Di Belmonte,,Acer negundo,12,35,C/D,decidua,2230,3431,1544,0
+ALB_436,Via Principe Di Belmonte,,Citrus × aurantium,6,14,B,sempreverde,1363,1435,1406,1291
+ALB_437,Via Principe Di Belmonte,,Citrus × aurantium,6,13,B,sempreverde,1256,1322,1296,1190
+ALB_438,Via Principe Di Belmonte,,Citrus × aurantium,6,12,B,sempreverde,1150,1211,1187,1090
+ALB_439,Via Principe Di Belmonte,,Acer negundo,12,37,C/D,decidua,2397,3688,1660,0
+ALB_440,Via Principe Di Belmonte,,Acer negundo,12,35,C,decidua,5204,8006,3603,0
+ALB_441,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
+ALB_442,Via Principe Di Belmonte,,Acer negundo,12,37,D,decidua,3996,6147,2766,0
+ALB_443,Via Principe Di Belmonte,,Acer negundo,12,50,D,decidua,5910,9093,4092,0
+ALB_444,Via Principe Di Belmonte,,Acer negundo,12,30,C,decidua,4259,6553,2949,0
+ALB_445,Via Principe Di Belmonte,,Citrus × aurantium,6,12,B,sempreverde,1150,1211,1187,1090
+ALB_446,Via Principe Di Belmonte,,Acer negundo,12,28,C,decidua,3894,5990,2696,0
+ALB_447,Via Principe Di Belmonte,,Acer negundo,12,26,C/D,decidua,1515,2332,1049,0
+ALB_448,Via Principe Di Belmonte,,Acer negundo,12,15,C,decidua,1730,2661,1198,0
+ALB_449,Via Principe Di Belmonte,,Acer negundo,12,38,D,decidua,4137,6364,2864,0
+ALB_450,Via Principe Di Belmonte,,Citrus × aurantium,6,14,B,sempreverde,1363,1435,1406,1291
+ALB_451,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
+ALB_452,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
+ALB_453,Via Principe Di Belmonte,,Acer negundo,12,29,B,decidua,4949,7614,3426,0
+ALB_454,Via Principe Di Belmonte,,Acer negundo,12,15,C/D,decidua,741,1140,513,0
+ALB_455,Via Principe Di Belmonte,,Acer negundo,12,22,D,decidua,2033,3127,1407,0
+ALB_456,Via Principe Di Belmonte,,Acer negundo,12,25,C,decidua,3360,5170,2326,0
+ALB_457,Via Principe Di Belmonte,,Acer negundo,12,20,C,decidua,2514,3868,1741,0
+ALB_458,Via Principe Di Belmonte,,Citrus × aurantium,6,19,B,sempreverde,1907,2007,1967,1807
+ALB_459,Via Principe Di Belmonte,,Citrus × aurantium,6,14,B,sempreverde,1363,1435,1406,1291
+ALB_460,Via Principe Di Belmonte,,Acer negundo,12,22,C,decidua,2846,4378,1970,0
+ALB_461,Via Principe Di Belmonte,,Acer negundo,12,20,D,decidua,1796,2763,1243,0
+ALB_462,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
+ALB_463,Via Principe Di Belmonte,,Acer negundo,12,33,C/D,decidua,2066,3179,1430,0
+ALB_464,Via Principe Di Belmonte,,Acer negundo,12,28,C,decidua,3894,5990,2696,0
+ALB_465,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
+ALB_466,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
+ALB_467,Via Principe Di Belmonte,,Acer negundo,12,20,C,decidua,2514,3868,1741,0
+ALB_468,Via Principe Di Belmonte,,Acer negundo,12,21,C,decidua,2679,4121,1855,0
+ALB_469,Via Principe Di Belmonte,,Acer negundo,12,20,C,decidua,2514,3868,1741,0
+ALB_470,Via Principe Di Belmonte,,Acer negundo,12,22,D,decidua,2033,3127,1407,0
+ALB_471,Via Principe Di Belmonte,,Citrus × aurantium,6,12,B,sempreverde,1150,1211,1187,1090
+ALB_472,Via Principe Di Belmonte,098,Citrus × aurantium,6,12,B,sempreverde,1150,1211,1187,1090
+ALB_473,Viale Michelangelo,8268,Platanus × hispanica,15.72,0.54,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_474,Viale Michelangelo,8296,Platanus × hispanica,7.06,0.19,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_475,Viale Michelangelo,8302,Platanus × hispanica,10.01,0.29,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_476,Viale Michelangelo,8282,Platanus × hispanica,12.51,0.18,D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_477,Viale Michelangelo,8272,Platanus × hispanica,9.77,0.22,D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_478,Viale Michelangelo,8276,Celtis australis,11.86,0.4,A,decidua,18,26,14,0
+ALB_479,Viale Michelangelo,8252,Platanus × hispanica,16.35,0.56,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_480,Viale Michelangelo,8243,Celtis australis,8.99,0.33,A,decidua,10,15,8,0
+ALB_481,Viale Michelangelo,8247,Celtis australis,9.43,0.28,A,decidua,9,12,7,0
+ALB_482,Viale Michelangelo,8241,Celtis australis,9.53,0.29,B,decidua,8,11,6,0
+ALB_483,Viale Michelangelo,8269,Celtis australis,9,0.25,C,decidua,5,7,4,0
+ALB_484,Viale Michelangelo,8274,Platanus × hispanica,14.46,0.45,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_485,Viale Michelangelo,8244,Platanus × hispanica,17.94,0.48,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_486,Viale Michelangelo,8246,Platanus × hispanica,18.78,0.49,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_487,Viale Michelangelo,8255,Platanus × hispanica,17.94,0.57,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_488,Viale Michelangelo,8420,Platanus × hispanica,11.67,0.35,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_489,Viale Michelangelo,8415,Platanus × hispanica,12.31,0.36,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_490,Viale Michelangelo,8408,Platanus × hispanica,11.29,0.3,C/D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_491,Viale Michelangelo,8424,Platanus × hispanica,17.56,0.54,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_492,Viale Michelangelo,8399,Platanus × hispanica,19.92,0.58,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_493,Viale Michelangelo,8412,Platanus × hispanica,15.04,0.35,C/D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_494,Viale Michelangelo,8387,Platanus × hispanica,14.55,0.44,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_495,Viale Michelangelo,8411,Platanus × hispanica,15.59,0.5,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_496,Viale Michelangelo,8395,Platanus × hispanica,10.64,0.26,C/D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_497,Viale Michelangelo,8382,Platanus × hispanica,12.4,0.33,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_498,Viale Michelangelo,8388,Platanus × hispanica,14.93,0.35,C/D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_499,Viale Michelangelo,8383,Platanus × hispanica,14.86,0.46,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_500,Viale Michelangelo,8429,Platanus × hispanica,15.89,0.38,C/D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_501,Viale Michelangelo,8431,Platanus × hispanica,15.17,0.53,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_502,Viale Michelangelo,8447,Platanus × hispanica,2.06,,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_503,Viale Michelangelo,8437,Platanus × hispanica,14.2,0.37,C/D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_504,Viale Michelangelo,8433,Platanus × hispanica,14.37,0.4,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_505,Viale Michelangelo,8423,Platanus × hispanica,17.3,0.48,C/D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_506,Viale Michelangelo,8413,Platanus × hispanica,13.9,0.48,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_507,Viale Michelangelo,8394,Platanus × hispanica,15.65,0.44,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_508,Viale Michelangelo,8389,Platanus × hispanica,14.31,0.4,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_509,Viale Michelangelo,8398,Platanus × hispanica,15.91,0.46,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_510,Viale Michelangelo,8418,Platanus orientalis,17.03,0.46,C,decidua,20,26,14,0
+ALB_511,Viale Michelangelo,8385,Platanus × hispanica,14.17,0.35,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_512,Viale Michelangelo,8400,Platanus × hispanica,10.11,0.33,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_513,Viale Michelangelo,8403,Platanus × hispanica,8.54,0.31,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_514,Viale Michelangelo,8466,Platanus × hispanica,4.79,0.06,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_515,Viale Michelangelo,8381,Platycladus orientalis,2.43,,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_516,Viale Michelangelo,8410,Celtis australis,7.79,0.34,A,decidua,9,13,7,0
+ALB_517,Viale Michelangelo,8457,Celtis australis,5.75,0.16,A,decidua,2,3,2,0
+ALB_518,Viale Michelangelo,8417,Platanus × hispanica,7.54,0.17,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_519,Viale Michelangelo,8442,Platanus × hispanica,7.86,0.21,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_520,Viale Michelangelo,8414,Robinia pseudoacacia,11.14,0.42,A,decidua,19,27,13,0
+ALB_521,Viale Michelangelo,8421,Platanus × hispanica,8.8,0.24,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_522,Viale Michelangelo,8678,Platanus × hispanica,11.2,0.44,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_523,Viale Michelangelo,8676,Platanus × hispanica,10.57,0.31,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_524,Viale Michelangelo,8691,Celtis australis,7.91,0.24,A,decidua,6,8,5,0
+ALB_525,Viale Michelangelo,8690,Platanus × hispanica,8.8,0.27,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_526,Viale Michelangelo,8680,Platanus × hispanica,11.71,0.2,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_527,Viale Michelangelo,8663,Platanus × hispanica,10.55,0.31,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_528,Viale Michelangelo,8698,Ficus benjamina,8.36,0.19,A,sempreverde,9,9,9,8
+ALB_529,Viale Michelangelo,8741,Platanus × hispanica,10.6,0.2,D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_530,Viale Michelangelo,8682,Platanus × hispanica,8.52,0.17,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_531,Viale Michelangelo,8665,Celtis australis,9.34,0.32,A,decidua,10,15,8,0
+ALB_532,Viale Michelangelo,8700,Platanus × hispanica,11.74,0.38,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_533,Viale Michelangelo,8644,Platanus × hispanica,10.37,0.29,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_534,Viale Michelangelo,8667,Schinus molle,10.8,,B,sempreverde,0,0,0,0
+ALB_535,Viale Michelangelo,8650,Schinus molle,10.2,0.64,A,sempreverde,66,70,66,63
+ALB_536,Viale Michelangelo,8656,Schinus molle,11,0.62,A,sempreverde,68,72,68,64
+ALB_537,Viale Michelangelo,8669,Schinus molle,11.27,0.76,A,sempreverde,89,93,89,84
+ALB_538,Viale Michelangelo,8679,Celtis australis,9.15,0.35,A,decidua,12,17,9,0
+ALB_539,Viale Michelangelo,8685,Schinus molle,9.16,0.32,C,sempreverde,18,19,18,17
+ALB_540,Viale Michelangelo,8687,Schinus molle,8.72,0.58,A,sempreverde,51,54,51,48
+ALB_541,Viale Michelangelo,8699,Platanus × hispanica,8.69,0.23,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_542,Viale Michelangelo,8720,Celtis australis,3.19,0.06,C,decidua,0,0,0,0
+ALB_543,Viale Michelangelo,8737,,3.83,0.04,B,,,,,
+ALB_544,Viale Michelangelo,8689,Platanus × hispanica,10.26,0.29,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_545,Viale Michelangelo,8655,Celtis australis,8.72,0.37,A,decidua,12,17,9,0
+ALB_546,Viale Michelangelo,8686,Platanus × hispanica,14.57,0.37,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_547,Viale Michelangelo,8693,Platanus × hispanica,12.28,0.29,C/D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_548,Viale Michelangelo,8701,Platanus × hispanica,8.24,0.19,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_549,Viale Michelangelo,8696,Platanus × hispanica,11.63,0.22,D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_550,Viale Michelangelo,8487,Platanus × hispanica,12.86,0.39,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_551,Viale Michelangelo,8494,Platanus × hispanica,7.67,0.13,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_552,Viale Michelangelo,8504,Platanus × hispanica,12.57,0.26,D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_553,Viale Michelangelo,8533,Platanus × hispanica,7.57,0.24,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_554,Viale Michelangelo,8499,Platanus × hispanica,15.35,0.31,D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_555,Viale Michelangelo,8501,Platanus × hispanica,14.6,0.43,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_556,Viale Michelangelo,8488,Platanus × hispanica,11.1,0.31,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_557,Viale Michelangelo,8519,Celtis australis,10.08,0.3,B,decidua,9,12,7,0
+ALB_558,Viale Michelangelo,8495,Platanus × hispanica,16.08,0.53,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_559,Viale Michelangelo,8491,Platanus × hispanica,15.3,0.44,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_560,Viale Michelangelo,8502,Platanus × hispanica,15,0.38,C/D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_561,Viale Michelangelo,8506,Platanus × hispanica,12.8,0.39,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_562,Viale Michelangelo,8493,Platanus × hispanica,18.58,0.61,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_563,Viale Michelangelo,8271,Platanus × hispanica,17.49,0.52,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_564,Viale Michelangelo,8299,Platanus × hispanica,6.75,0.16,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_565,Viale Michelangelo,8267,Platanus × hispanica,15.48,0.48,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_566,Viale Michelangelo,8280,Platanus × hispanica,12.23,0.39,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_567,Viale Michelangelo,8284,Platanus × hispanica,12.05,0.36,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_568,Viale Michelangelo,8245,Celtis australis,10.04,0.32,A,decidua,11,16,9,0
+ALB_569,Viale Michelangelo,8275,Platanus × hispanica,14.15,0.38,C/D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_570,Viale Michelangelo,8242,Platanus × hispanica,16.69,0.45,C/D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_571,Viale Michelangelo,8589,Nerium oleander,3.35,0.04,B,sempreverde,1,1,1,1
+ALB_572,Viale Michelangelo,8509,Celtis australis,5.68,0.18,A,decidua,3,4,2,0
+ALB_573,Viale Michelangelo,8574,Handroanthus heptaphyllus,3.55,0.08,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_574,Viale Michelangelo,8489,Platanus × hispanica,14.4,0.43,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_575,Viale Michelangelo,8583,Handroanthus heptaphyllus,2.92,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_576,Viale Michelangelo,8539,Handroanthus heptaphyllus,3.34,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_577,Viale Michelangelo,8537,Tabebuia rosea,3.91,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_578,Viale Michelangelo,8526,,3.85,0.05,A,,,,,
+ALB_579,Viale Michelangelo,8555,Tabebuia rosea,3.85,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_580,Viale Michelangelo,8505,Platanus × hispanica,13.91,0.48,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_581,Viale Michelangelo,8546,Handroanthus heptaphyllus,3.84,0.05,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_582,Viale Michelangelo,7944,Platanus × hispanica,14.52,0.37,C/D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_583,Viale Michelangelo,7945,Celtis australis,8.55,0.19,A,decidua,5,7,4,0
+ALB_584,Viale Michelangelo,7939,Platanus × hispanica,13.04,0.3,C/D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_585,Viale Michelangelo,7942,Celtis australis,8.19,0.24,A,decidua,6,9,5,0
+ALB_586,Viale Michelangelo,7952,Platanus × hispanica,9.94,0.19,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_587,Viale Michelangelo,7935,Platanus × hispanica,10.04,0.26,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_588,Viale Michelangelo,7870,Platanus × hispanica,17.87,0.54,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_589,Viale Michelangelo,7862,Celtis australis,8.67,0.26,B,decidua,6,9,5,0
+ALB_590,Viale Michelangelo,7856,Platanus × hispanica,19.87,0.88,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_591,Viale Michelangelo,7874,Celtis australis,7.53,0.23,A,decidua,5,8,4,0
+ALB_592,Viale Michelangelo,7885,Celtis australis,8.1,0.24,A,decidua,6,9,5,0
+ALB_593,Viale Michelangelo,7833,Platanus × hispanica,13.35,0.46,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_594,Viale Michelangelo,7852,Platanus × hispanica,12.2,0.33,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_595,Viale Michelangelo,7894,Celtis australis,5.88,0.18,A,decidua,3,4,2,0
+ALB_596,Viale Michelangelo,7876,Platanus × hispanica,11.39,0.37,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_597,Viale Michelangelo,7910,Platanus × hispanica,6.73,0.19,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_598,Viale Michelangelo,7866,Celtis australis,7.89,0.28,A,decidua,7,10,6,0
+ALB_599,Viale Michelangelo,7895,Platanus × hispanica,13.55,0.38,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_600,Viale Michelangelo,7871,Platanus × hispanica,18.13,0.53,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_601,Viale Michelangelo,8069,Platanus × hispanica,10.1,0.17,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_602,Viale Michelangelo,8054,Platanus × hispanica,9.08,0.17,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_603,Viale Michelangelo,7858,Platanus × hispanica,12.19,0.41,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_604,Viale Michelangelo,7853,Platanus × hispanica,11.51,0.31,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_605,Viale Michelangelo,7888,Celtis australis,5.95,0.2,A,decidua,3,5,3,0
+ALB_606,Viale Michelangelo,7868,Celtis australis,4.6,0.16,A,decidua,2,3,2,0
+ALB_607,Viale Michelangelo,7879,Platanus × hispanica,9.47,0.3,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_608,Viale Michelangelo,7880,Platanus × hispanica,7.19,0.22,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_609,Viale Michelangelo,7898,Celtis australis,4.6,0.12,A,decidua,1,2,1,0
+ALB_610,Viale Michelangelo,7855,Platanus × hispanica,11.53,0.37,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_611,Viale Michelangelo,7851,Platanus × hispanica,14.51,0.42,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_612,Viale Michelangelo,8063,Celtis australis,11.96,0.4,A,decidua,18,26,14,0
+ALB_613,Viale Michelangelo,8065,Platanus × hispanica,16.25,0.45,C/D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_614,Viale Michelangelo,8040,Celtis australis,11.53,0.4,A,decidua,18,25,14,0
+ALB_615,Viale Michelangelo,8049,Platanus × hispanica,17.73,0.64,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_616,Viale Michelangelo,8066,Celtis australis,8.57,0.19,A,decidua,5,7,4,0
+ALB_617,Viale Michelangelo,8062,Platanus × hispanica,7.64,0.19,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_618,Viale Michelangelo,8051,Celtis australis,10.4,0.34,A,decidua,13,18,10,0
+ALB_619,Viale Michelangelo,8070,Platanus × hispanica,11.52,0.23,D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_620,Viale Michelangelo,8058,Platanus × hispanica,10.15,0.3,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_621,Viale Michelangelo,8082,Platanus × hispanica,5.4,0.1,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_622,Viale Michelangelo,8071,Platanus × hispanica,13.38,0.5,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_623,Viale Michelangelo,8064,Celtis australis,10.77,0.43,A,decidua,18,26,14,0
+ALB_624,Viale Michelangelo,8042,Celtis australis,9.6,0.3,A,decidua,10,14,8,0
+ALB_625,Viale Michelangelo,8038,Platanus × hispanica,11.92,0.37,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_626,Viale Michelangelo,8492,Platanus × hispanica,12.88,0.28,D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_627,Viale Michelangelo,8485,Celtis australis,11.5,0.36,A,decidua,15,22,12,0
+ALB_628,Viale Michelangelo,8507,Platanus × hispanica,14,0.32,D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_629,Viale Michelangelo,8497,Platanus × hispanica,15.31,0.29,D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_630,Viale Michelangelo,8503,Platanus × hispanica,15.64,0.34,D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_631,Viale Michelangelo,8511,Platanus × hispanica,16.11,0.3,D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_632,Viale Michelangelo,8500,Platanus × hispanica,16.75,0.42,C/D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_633,Viale Michelangelo,8508,Platanus × hispanica,20.31,0.52,C/D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_634,Viale Michelangelo,8515,Platanus × hispanica,5.98,0.08,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_635,Viale Michelangelo,8486,Platanus × hispanica,16.28,0.35,D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_636,Viale Michelangelo,8530,Platanus × hispanica,12.6,0.28,C/D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_637,Viale Michelangelo,8518,Platanus × hispanica,7.3,0.1,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_638,Viale Michelangelo,8484,Platanus × hispanica,12.73,0.26,D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_639,Viale Michelangelo,8514,Celtis australis,6.8,0.22,A,decidua,4,6,4,0
+ALB_640,Viale Michelangelo,8498,Platanus × hispanica,15.14,0.5,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_641,Viale Michelangelo,8588,Platanus × hispanica,4.8,0.07,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_642,Viale Michelangelo,8516,Platanus × hispanica,14.54,0.45,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_643,Viale Michelangelo,8353,Platanus orientalis,9.43,0.39,B,decidua,9,12,7,0
+ALB_644,Viale Michelangelo,8365,Platanus × hispanica,14.6,0.37,C/D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_645,Viale Michelangelo,8560,Handroanthus heptaphyllus,2.95,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_646,Viale Michelangelo,8524,Handroanthus heptaphyllus,3.1,0.03,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_647,Viale Michelangelo,8566,Fraxinus ornus,3.53,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_648,Viale Michelangelo,8576,Fraxinus ornus,2.98,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_649,Viale Michelangelo,8582,,3.12,0.05,B,,,,,
+ALB_650,Viale Michelangelo,8521,Handroanthus heptaphyllus,3.15,,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_651,Viale Michelangelo,8341,Platanus × hispanica,10.44,0.21,D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_652,Viale Michelangelo,8346,Platanus × hispanica,13.8,0.39,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_653,Viale Michelangelo,8591,Fraxinus ornus,3.17,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_654,Viale Michelangelo,8536,Celtis australis,3.95,0.03,B,decidua,0,0,0,0
+ALB_655,Viale Michelangelo,8349,Platanus × hispanica,15.8,0.49,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_656,Viale Michelangelo,8577,Handroanthus heptaphyllus,3.26,0.06,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_657,Viale Michelangelo,8370,Celtis australis,4.51,0.09,A,decidua,1,1,1,0
+ALB_658,Viale Michelangelo,8558,,3.93,0.07,B,,,,,
+ALB_659,Viale Michelangelo,8538,Handroanthus heptaphyllus,3.81,0.07,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_660,Viale Michelangelo,8553,Handroanthus heptaphyllus,3.68,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_661,Viale Michelangelo,8367,Celtis australis,4.25,0.11,B,decidua,1,1,1,0
+ALB_662,Viale Michelangelo,8567,,3.34,0.03,B,,,,,
+ALB_663,Viale Michelangelo,8557,,3.57,0.05,B,,,,,
+ALB_664,Viale Michelangelo,8374,Platanus × hispanica,4,0.07,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_665,Viale Michelangelo,8522,Prunus serrulata,3.54,0.03,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_666,Viale Michelangelo,8343,Platanus × hispanica,9.43,0.24,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_667,Viale Michelangelo,8532,Tabebuia rosea,3.79,0.06,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_668,Viale Michelangelo,8547,Tabebuia rosea,3.74,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_669,Viale Michelangelo,8350,Platanus × hispanica,7.18,0.12,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_670,Viale Michelangelo,8348,Platanus × hispanica,12.58,0.24,D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_671,Viale Michelangelo,8372,Platanus × hispanica,4.74,0.07,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_672,Viale Michelangelo,8572,Tabebuia rosea,4.15,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_673,Viale Michelangelo,8587,Tabebuia rosea,3.46,0.05,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_674,Viale Michelangelo,8342,Platanus × hispanica,15.51,0.46,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_675,Viale Michelangelo,8357,Platanus × hispanica,14.59,0.43,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_676,Viale Michelangelo,8368,Platanus × hispanica,13.64,0.28,D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_677,Viale Michelangelo,8360,Platanus × hispanica,11.87,0.27,C/D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_678,Viale Michelangelo,8517,Celtis australis,3.19,0.04,B,decidua,0,0,0,0
+ALB_679,Viale Michelangelo,8354,Platanus × hispanica,13.99,0.39,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_680,Viale Michelangelo,8523,Tabebuia rosea,3.87,0.05,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_681,Viale Michelangelo,8578,Acer negundo,3.8,0.07,B,decidua,1,1,0,0
+ALB_682,Viale Michelangelo,8361,Platanus × hispanica,15.68,0.46,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_683,Viale Michelangelo,8559,Brachychiton populneus,3.6,0.03,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_684,Viale Michelangelo,8584,Tabebuia rosea,3.5,0.03,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_685,Viale Michelangelo,8358,Platanus × hispanica,17.38,0.47,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_686,Viale Michelangelo,8540,Tabebuia rosea,4.13,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_687,Viale Michelangelo,8340,Platanus orientalis,17.32,0.52,C,decidua,24,32,18,0
+ALB_688,Viale Michelangelo,8534,Tabebuia rosea,3.88,0.05,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_689,Viale Michelangelo,8362,Platanus × hispanica,13.2,0.33,C/D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_690,Viale Michelangelo,8528,Handroanthus heptaphyllus,2.78,0.07,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_691,Viale Michelangelo,8551,Handroanthus heptaphyllus,3.35,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_692,Viale Michelangelo,8345,Platanus × hispanica,14.87,0.62,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_693,Viale Michelangelo,8529,,3.4,0.05,B,,,,,
+ALB_694,Viale Michelangelo,8581,Tabebuia rosea,3.41,0.06,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_695,Viale Michelangelo,8351,Platanus × hispanica,20,0.65,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_696,Viale Michelangelo,8545,Tabebuia rosea,3.71,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_697,Viale Michelangelo,8571,Tabebuia rosea,3.26,0.17,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_698,Viale Michelangelo,8364,Platanus × hispanica,13.19,0.36,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_699,Viale Michelangelo,8541,Tabebuia rosea,3.6,0.05,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_700,Viale Michelangelo,8249,Celtis australis,11.71,0.42,A,decidua,19,27,15,0
+ALB_701,Viale Michelangelo,8585,Tabebuia rosea,3.76,0.08,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_702,Viale Michelangelo,8554,Tabebuia rosea,3.54,0.05,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_703,Viale Michelangelo,8332,Handroanthus heptaphyllus,3.1,0.1,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_704,Viale Michelangelo,8310,Tabebuia rosea,3.38,0.05,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_705,Viale Michelangelo,7872,Cercis siliquastrum,6.14,0.15,A,decidua,6,9,5,0
+ALB_706,Viale Michelangelo,7896,Citrus × aurantium,2.54,0.05,A,sempreverde,2,2,2,1
+ALB_707,Viale Michelangelo,7897,Olea europaea,3.38,0.08,A,sempreverde,4,4,4,4
+ALB_708,Viale Michelangelo,7881,Citrus × aurantium,2.02,,B,sempreverde,0,0,0,0
+ALB_709,Viale Michelangelo,7899,Citrus × aurantium,2.2,0.1,C,sempreverde,2,2,2,2
+ALB_710,Viale Michelangelo,8061,Citrus × aurantium,2.6,0.09,A,sempreverde,3,3,3,3
+ALB_711,Viale Michelangelo,7860,Platanus × hispanica,17.4,0.49,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_712,Viale Michelangelo,7864,Ligustrum lucidum,2.59,0.1,B,sempreverde,2,2,2,2
+ALB_713,Viale Michelangelo,7883,Citrus × aurantium,2.32,0.05,A,sempreverde,1,2,1,1
+ALB_714,Viale Michelangelo,7912,,2.25,0.07,A,,,,,
+ALB_715,Viale Michelangelo,7884,Citrus × aurantium,2.64,0.06,A,sempreverde,2,2,2,2
+ALB_716,Viale Michelangelo,7875,Schinus molle,2.8,0.06,A,sempreverde,1,1,1,1
+ALB_717,Viale Michelangelo,7904,Syzygium myrtifolium,2.26,0.03,C/D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_718,Viale Michelangelo,7873,Cupressus sempervirens,6.08,,B,sempreverde,0,0,0,0
+ALB_719,Viale Michelangelo,7921,,2.54,0.03,D,,,,,
+ALB_720,Viale Michelangelo,7848,Washingtonia filifera,2.76,0.32,A,sempreverde,17,18,17,17
+ALB_721,Viale Michelangelo,7854,Olea europaea,3.14,0.2,A,sempreverde,10,10,10,9
+ALB_722,Viale Michelangelo,7919,,2.17,0.05,C/D,,,,,
+ALB_723,Viale Michelangelo,7863,Platanus × hispanica,13.29,0.4,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_724,Viale Michelangelo,7832,Cercis siliquastrum,4.54,0.15,A,decidua,5,7,4,0
+ALB_725,Viale Michelangelo,7889,Citrus × aurantium,1.99,0.03,B,sempreverde,1,1,1,1
+ALB_726,Viale Michelangelo,7907,,2.26,0.03,B,,,,,
+ALB_727,Viale Michelangelo,7891,,2.33,0.03,B,,,,,
+ALB_728,Viale Michelangelo,7892,Cercis siliquastrum,4.11,0.11,A,decidua,3,4,2,0
+ALB_729,Viale Michelangelo,7841,Platanus × hispanica,20.39,0.61,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_730,Viale Michelangelo,7877,Citrus × aurantium,3,0.07,A,sempreverde,3,3,3,2
+ALB_731,Viale Michelangelo,7867,Citrus × aurantium,2.09,0.05,C,sempreverde,1,1,1,1
+ALB_732,Viale Michelangelo,7916,,2.33,0.03,B,,,,,
+ALB_733,Viale Michelangelo,7849,Citrus × aurantium,3.18,0.08,B,sempreverde,3,3,3,3
+ALB_734,Viale Michelangelo,7903,Citrus × aurantium,1.93,0.06,A,sempreverde,2,2,2,1
+ALB_735,Viale Michelangelo,7887,Ginkgo biloba,2.16,0.04,B,decidua,0,0,0,0
+ALB_736,Viale Michelangelo,7869,Schinus molle,7.78,0.32,C,sempreverde,16,17,16,15
+ALB_737,Viale Michelangelo,8086,,3.33,0.07,D,,,,,
+ALB_738,Viale Michelangelo,8068,Tamarix gallica,4.8,,B,semi-decidua,0,0,0,0
+ALB_739,Viale Michelangelo,8085,Citrus × aurantium,2.63,0.05,A,sempreverde,2,2,2,2
+ALB_740,Viale Michelangelo,8037,Tamarix gallica,8.2,0.24,D,semi-decidua,10,12,11,9
+ALB_741,Viale Michelangelo,8039,Schinus molle,5.48,0.17,A,sempreverde,8,8,8,7
+ALB_742,Viale Michelangelo,8059,Schinus molle,4.09,0.11,A,sempreverde,4,4,4,3
+ALB_743,Viale Michelangelo,8043,Schinus molle,3.79,0.12,A,sempreverde,4,4,4,3
+ALB_744,Viale Michelangelo,8078,Syzygium myrtifolium,2.19,0.03,D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_745,Viale Michelangelo,8052,Schinus molle,5.15,0.15,A,sempreverde,6,7,6,6
+ALB_746,Viale Michelangelo,8053,Schinus molle,2.79,0.06,A,sempreverde,1,1,1,1
+ALB_747,Viale Michelangelo,8045,Schinus molle,4.69,0.16,A,sempreverde,6,7,6,6
+ALB_748,Viale Michelangelo,8090,,2.29,0.04,A,,,,,
+ALB_749,Viale Michelangelo,8080,,3.44,0.07,B,,,,,
+ALB_750,Viale Michelangelo,8083,,3.14,0.04,B,,,,,
+ALB_751,Viale Michelangelo,8091,,3.45,0.03,B,,,,,
+ALB_752,Viale Michelangelo,8088,Tabebuia rosea,2.72,0.04,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_753,Viale Michelangelo,8041,Platanus × hispanica,12.16,0.26,D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_754,Viale Michelangelo,8089,,3.62,0.06,B,,,,,
+ALB_755,Viale Michelangelo,8094,,3.19,,B,,,,,
+ALB_756,Viale Michelangelo,8093,,3.67,0.03,B,,,,,
+ALB_757,Viale Michelangelo,8084,,3.08,0.04,B,,,,,
+ALB_758,Viale Michelangelo,8096,,4.03,0.11,B,,,,,
+ALB_759,Viale Michelangelo,8092,,3.33,0.05,B,,,,,
+ALB_760,Viale Michelangelo,8097,,2.79,0.04,D,,,,,
+ALB_761,Viale Michelangelo,8036,Ficus benjamina,9.6,0.65,A,sempreverde,48,49,48,47
+ALB_762,Viale Michelangelo,8525,Fraxinus ornus,2.4,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_763,Viale Michelangelo,8575,,3.26,0.04,B,,,,,
+ALB_764,Viale Michelangelo,8055,Platanus × hispanica,8.98,0.38,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_765,Viale Michelangelo,8548,,3.71,0.03,B,,,,,
+ALB_766,Viale Michelangelo,8561,Tabebuia rosea,2.99,0.04,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_767,Viale Michelangelo,8513,Platanus × hispanica,21.59,0.5,C/D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_768,Viale Michelangelo,8512,Platanus × hispanica,12.19,0.56,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_769,Viale Michelangelo,8562,Tabebuia rosea,3.8,0.04,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_770,Viale Michelangelo,8544,Ailanthus altissima,3.62,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_771,Viale Michelangelo,8563,Tabebuia rosea,3.93,0.07,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_772,Viale Michelangelo,8542,,3.86,0.05,B,,,,,
+ALB_773,Viale Michelangelo,8573,,3.4,0.04,A,,,,,
+ALB_774,Viale Michelangelo,8520,,3.18,0.04,B,,,,,
+ALB_775,Viale Michelangelo,8549,Tabebuia rosea,3.51,0.05,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_776,Viale Michelangelo,8527,Handroanthus heptaphyllus,3.4,0.02,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_777,Viale Michelangelo,8510,Platanus × hispanica,22.65,0.64,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_778,Viale Michelangelo,8579,,3.07,0.09,A,,,,,
+ALB_779,Viale Michelangelo,8535,Handroanthus heptaphyllus,3.32,0.03,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_780,Viale Michelangelo,8552,Handroanthus heptaphyllus,3.57,0.03,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_781,Viale Michelangelo,8531,,3.96,0.04,B,,,,,
+ALB_782,Viale Michelangelo,8564,Tabebuia rosea,3.82,0.03,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_783,Viale Michelangelo,8496,Platanus × hispanica,22.76,0.64,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_784,Viale Michelangelo,8556,Tabebuia rosea,3.65,0.06,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_785,Viale Michelangelo,8550,Tabebuia rosea,3.89,0.06,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_786,Viale Michelangelo,8565,Handroanthus heptaphyllus,3.19,0.03,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_787,Viale Michelangelo,8570,Tabebuia rosea,3.79,0.03,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_788,Viale Michelangelo,8568,,3.6,0.03,B,,,,,
+ALB_789,Viale Michelangelo,8569,Handroanthus heptaphyllus,3.49,0.05,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_790,Viale Michelangelo,7940,Celtis australis,9.06,0.28,A,decidua,8,12,7,0
+ALB_791,Viale Michelangelo,7932,Platanus × hispanica,13.39,0.38,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_792,Viale Michelangelo,7946,Celtis australis,4.51,0.16,C/D,decidua,1,1,0,0
+ALB_793,Viale Michelangelo,7934,Platanus × hispanica,13.8,0.5,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_794,Viale Michelangelo,7928,Platanus × hispanica,14.6,0.52,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_795,Viale Michelangelo,7936,Platanus × hispanica,13.6,0.51,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_796,Viale Michelangelo,7930,Robinia pseudoacacia,7.35,0.22,C,decidua,3,5,2,0
+ALB_797,Viale Michelangelo,7847,Platanus × hispanica,16.55,0.49,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_798,Viale Michelangelo,7886,Platanus × hispanica,13.05,0.38,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_799,Viale Michelangelo,7861,Platanus × hispanica,17.84,0.58,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_800,Viale Michelangelo,7827,Platanus × hispanica,16.19,0.52,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_801,Viale Michelangelo,7924,Washingtonia filifera,10.36,0.71,A,sempreverde,90,92,90,87
+ALB_802,Viale Michelangelo,7920,Strelitzia nicolai,4.34,0.13,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_803,Viale Michelangelo,7902,Hesperocyparis arizonica,3.3,0.09,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_804,Viale Michelangelo,7830,Cupressus sempervirens,14.38,0.37,C/D,sempreverde,10,11,10,10
+ALB_805,Viale Michelangelo,7918,Gleditsia triacanthos,9.32,0.2,D,decidua,3,4,2,0
+ALB_806,Viale Michelangelo,8291,Tabebuia rosea,3.74,0.03,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_807,Viale Michelangelo,8334,Tabebuia rosea,3.6,0.03,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_808,Viale Michelangelo,8251,Platanus × hispanica,18.38,0.56,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_809,Viale Michelangelo,8325,Tabebuia rosea,3.23,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_810,Viale Michelangelo,8264,Platanus × hispanica,14.52,0.4,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_811,Viale Michelangelo,8294,Handroanthus heptaphyllus,3.72,0.08,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_812,Viale Michelangelo,8297,Tabebuia rosea,4.62,0.07,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_813,Viale Michelangelo,8285,Platanus × hispanica,20.57,0.86,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_814,Viale Michelangelo,8318,,3.52,0.04,B,,,,,
+ALB_815,Viale Michelangelo,8301,,3.39,0.05,B,,,,,
+ALB_816,Viale Michelangelo,8293,,4.3,0.05,B,,,,,
+ALB_817,Viale Michelangelo,8331,,3.17,0.03,D,,,,,
+ALB_818,Viale Michelangelo,8292,Handroanthus impetiginosus,3.67,0.08,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_819,Viale Michelangelo,8309,Tabebuia rosea,3.25,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_820,Viale Michelangelo,8304,Tabebuia rosea,3.42,0.07,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_821,Viale Michelangelo,8305,Handroanthus heptaphyllus,3.99,0.06,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_822,Viale Michelangelo,8324,Tabebuia rosea,3.44,0.03,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_823,Viale Michelangelo,8257,Platanus × hispanica,13.26,0.36,C/D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_824,Viale Michelangelo,8306,Handroanthus heptaphyllus,3.6,0.05,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_825,Viale Michelangelo,8260,Platanus × hispanica,14.78,0.45,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_826,Viale Michelangelo,8303,Tabebuia rosea,4.03,0.05,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_827,Viale Michelangelo,8286,Platanus × hispanica,9.15,0.34,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_828,Viale Michelangelo,8317,Handroanthus heptaphyllus,3.61,0.06,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_829,Viale Michelangelo,8265,Platanus × hispanica,17.74,0.54,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_830,Viale Michelangelo,8335,,3.5,0.03,B,,,,,
+ALB_831,Viale Michelangelo,8253,Platanus × hispanica,17.89,0.55,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_832,Viale Michelangelo,8250,Platanus × hispanica,19.2,0.66,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_833,Viale Michelangelo,8279,Platanus × hispanica,15.5,0.45,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_834,Viale Michelangelo,8263,Platanus × hispanica,16.1,0.37,C/D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_835,Viale Michelangelo,8256,Ulmus minor,9.65,0.63,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_836,Viale Michelangelo,8261,Pinus pinea,11.72,0.64,A,sempreverde,66,68,66,64
+ALB_837,Viale Michelangelo,8270,Platanus × hispanica,13.34,0.35,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_838,Viale Michelangelo,8254,Platanus × hispanica,18.04,0.8,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_839,Viale Michelangelo,8277,Pinus pinea,12.4,0.65,A,sempreverde,70,71,70,68
+ALB_840,Viale Michelangelo,8258,Platanus × hispanica,11.92,0.29,C/D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_841,Viale Michelangelo,8248,Platanus × hispanica,13.2,0.38,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_842,Viale Michelangelo,8337,Brachychiton acerifolius,2.66,0.03,C/D,semi-decidua,0,0,0,0
+ALB_843,Viale Michelangelo,8327,Handroanthus heptaphyllus,4,0.06,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_844,Viale Michelangelo,8409,Nerium oleander,4.52,,B,sempreverde,0,0,0,0
+ALB_845,Viale Michelangelo,8401,Platanus × hispanica,14.74,0.42,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_846,Viale Michelangelo,8406,Platanus × hispanica,15.5,0.43,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_847,Viale Michelangelo,8416,Platanus × hispanica,8.35,0.24,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_848,Viale Michelangelo,8397,Platanus × hispanica,16,0.41,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_849,Viale Michelangelo,8390,Platanus × hispanica,13,0.42,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_850,Viale Michelangelo,8405,Platanus × hispanica,15.88,0.66,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_851,Viale Michelangelo,8384,Platanus × hispanica,16.51,0.4,C/D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_852,Viale Michelangelo,8407,Platanus × hispanica,17.32,0.64,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_853,Viale Michelangelo,8419,Celtis australis,8.47,0.21,C,decidua,4,5,3,0
+ALB_854,Viale Michelangelo,8430,Tabebuia rosea,3.84,0.03,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_855,Viale Michelangelo,8438,Tabebuia rosea,3.47,0.02,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_856,Viale Michelangelo,8443,,3.4,0.05,B,,,,,
+ALB_857,Viale Michelangelo,8444,,3.73,0.05,B,,,,,
+ALB_858,Viale Michelangelo,8449,Tabebuia rosea,2.88,,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_859,Viale Michelangelo,8452,,3.6,0.03,B,,,,,
+ALB_860,Viale Michelangelo,8455,,3.47,0.04,B,,,,,
+ALB_861,Viale Michelangelo,8459,Tabebuia rosea,3.93,,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_862,Viale Michelangelo,8462,Tabebuia rosea,3.1,0.03,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_863,Viale Michelangelo,8469,Tabebuia rosea,3.57,0.05,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_864,Viale Michelangelo,8471,Tabebuia rosea,3.58,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_865,Viale Michelangelo,8472,Handroanthus heptaphyllus,3.54,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_866,Viale Michelangelo,8473,,2.82,0.04,B,,,,,
+ALB_867,Viale Michelangelo,8476,,3.04,0.04,B,,,,,
+ALB_868,Viale Michelangelo,8478,Tabebuia rosea,2.99,0.02,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_869,Viale Michelangelo,8480,Tabebuia rosea,3.22,0.03,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_870,Viale Michelangelo,8450,,3.62,0.04,B,,,,,
+ALB_871,Viale Michelangelo,8451,Tabebuia rosea,3.82,0.03,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_872,Viale Michelangelo,8404,Platanus × hispanica,18.75,0.79,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_873,Viale Michelangelo,8434,Handroanthus heptaphyllus,3.55,0.06,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_874,Viale Michelangelo,8393,Platanus × hispanica,12.39,0.46,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_875,Viale Michelangelo,8435,Handroanthus heptaphyllus,3.3,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_876,Viale Michelangelo,8461,,3.09,0.05,C/D,,,,,
+ALB_877,Viale Michelangelo,8386,Celtis australis,9.29,0.32,A,decidua,10,15,8,0
+ALB_878,Viale Michelangelo,8453,Tabebuia rosea,3.96,0.06,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_879,Viale Michelangelo,8402,Celtis australis,7.66,0.24,A,decidua,6,8,4,0
+ALB_880,Viale Michelangelo,8440,Tabebuia rosea,4.09,0.06,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_881,Viale Michelangelo,8379,Platanus × hispanica,13,0.39,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_882,Viale Michelangelo,8463,Tabebuia rosea,4.24,0.05,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_883,Viale Michelangelo,8445,Tabebuia rosea,3.48,0.04,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_884,Viale Michelangelo,8428,Tabebuia rosea,4.31,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_885,Viale Michelangelo,8448,Tabebuia rosea,3.79,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_886,Viale Michelangelo,8396,Celtis australis,10.51,0.34,A,decidua,13,18,10,0
+ALB_887,Viale Michelangelo,8464,Tabebuia rosea,3.84,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_888,Viale Michelangelo,8465,Tabebuia rosea,3.64,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_889,Viale Michelangelo,8467,Fraxinus ornus,3.4,0.06,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_890,Viale Michelangelo,8468,,3.43,0.04,B,,,,,
+ALB_891,Viale Michelangelo,8475,Fraxinus ornus,2.8,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_892,Viale Michelangelo,8479,Tabebuia rosea,3.87,0.05,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_893,Viale Michelangelo,8481,Tabebuia rosea,3.68,0.06,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_894,Viale Michelangelo,8482,Fraxinus ornus,3.54,0.03,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_895,Viale Michelangelo,8458,Tabebuia rosea,3.47,0.06,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_896,Viale Michelangelo,8456,,3.18,0.06,D,,,,,
+ALB_897,Viale Michelangelo,8446,Tabebuia rosea,3,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_898,Viale Michelangelo,8427,Tabebuia rosea,3.47,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_899,Viale Michelangelo,8454,,3.43,0.04,B,,,,,
+ALB_900,Viale Michelangelo,8477,Tabebuia rosea,3.38,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_901,Viale Michelangelo,8436,Celtis australis,10.13,0.46,A,decidua,19,27,15,0
+ALB_902,Viale Michelangelo,8460,Tabebuia rosea,3.9,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_903,Viale Michelangelo,8432,Platanus × hispanica,8.94,0.26,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_904,Viale Michelangelo,8470,Tabebuia rosea,4.41,0.06,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_905,Viale Michelangelo,8441,Platanus × hispanica,9.62,0.18,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_906,Viale Michelangelo,8677,Platanus × hispanica,13.1,0.3,C/D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_907,Viale Michelangelo,8668,Platanus × hispanica,14.36,0.42,C/D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_908,Viale Michelangelo,8661,Platanus × hispanica,10.59,0.24,D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_909,Viale Michelangelo,8675,Platanus × hispanica,11.97,0.28,C/D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_910,Viale Michelangelo,8672,Celtis australis,9.79,0.35,A,decidua,12,18,10,0
+ALB_911,Viale Michelangelo,8681,Platanus × hispanica,14.79,0.39,C/D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_912,Viale Michelangelo,8702,Tabebuia rosea,3.79,0.07,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_913,Viale Michelangelo,8705,Platanus × hispanica,7.46,0.17,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_914,Viale Michelangelo,8721,Tabebuia rosea,4.13,,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_915,Viale Michelangelo,8724,Handroanthus heptaphyllus,3.91,0.05,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_916,Viale Michelangelo,8725,Tabebuia rosea,4.38,0.03,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_917,Viale Michelangelo,8729,,3.51,0.03,C,,,,,
+ALB_918,Viale Michelangelo,8730,,3.53,0.04,B,,,,,
+ALB_919,Viale Michelangelo,8653,Celtis australis,10.5,0.33,A,decidua,12,17,10,0
+ALB_920,Viale Michelangelo,8671,Platanus × hispanica,8.58,0.25,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_921,Viale Michelangelo,8688,Platanus × hispanica,14.87,0.3,D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_922,Viale Michelangelo,8666,Celtis australis,9.97,0.29,A,decidua,10,14,8,0
+ALB_923,Viale Michelangelo,8708,,3.73,,B,,,,,
+ALB_924,Viale Michelangelo,8734,Melia azedarach,3.62,0.02,D,semi-decidua,0,0,0,0
+ALB_925,Viale Michelangelo,8733,,3.49,0.03,B,,,,,
+ALB_926,Viale Michelangelo,8674,Platanus × hispanica,12.59,0.42,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_927,Viale Michelangelo,8746,Lagerstroemia indica,3.17,0.04,D,decidua,0,0,0,0
+ALB_928,Viale Michelangelo,8711,Tabebuia rosea,3.61,0.03,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_929,Viale Michelangelo,8706,Handroanthus heptaphyllus,3.94,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_930,Viale Michelangelo,8715,Platanus × hispanica,8.13,0.13,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_931,Viale Michelangelo,8713,Platanus × hispanica,6.73,0.11,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_932,Viale Michelangelo,8664,Platanus × hispanica,14.84,0.38,C/D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_933,Viale Michelangelo,8654,Platanus × hispanica,16.04,0.33,D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_934,Viale Michelangelo,8726,Platanus × hispanica,6.13,0.15,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_935,Viale Michelangelo,8731,,3.59,0.03,C,,,,,
+ALB_936,Viale Michelangelo,8710,Brachychiton populneus,3.83,0.05,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_937,Viale Michelangelo,8649,Platanus × hispanica,14.44,0.3,D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_938,Viale Michelangelo,8728,Handroanthus heptaphyllus,3.67,0.03,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_939,Viale Michelangelo,8736,Tabebuia rosea,3.48,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_940,Viale Michelangelo,8703,Platanus × hispanica,17.4,0.48,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_941,Viale Michelangelo,8739,Tabebuia rosea,3.34,0.05,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_942,Viale Michelangelo,8722,,3.49,0.04,B,,,,,
+ALB_943,Viale Michelangelo,8717,Tabebuia rosea,3.94,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_944,Viale Michelangelo,8709,Tabebuia rosea,3.62,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_945,Viale Michelangelo,8716,,3.35,0.06,B,,,,,
+ALB_946,Viale Michelangelo,8648,Pinus pinea,9.37,0.51,A,sempreverde,46,47,46,45
+ALB_947,Viale Michelangelo,8659,Brachychiton populneus,6.71,0.38,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_948,Viale Michelangelo,8651,Brachychiton populneus,9.16,0.52,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_949,Viale Michelangelo,8652,Brachychiton acerifolius,7.42,0.49,A,semi-decidua,19,26,22,15
+ALB_950,Viale Michelangelo,8695,Platanus × hispanica,14.93,0.38,D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_951,Viale Michelangelo,8732,Handroanthus heptaphyllus,3.59,0.07,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_952,Viale Michelangelo,8735,Celtis australis,3.29,0.07,C,decidua,0,0,0,0
+ALB_953,Viale Michelangelo,8740,,3.78,0.04,B,,,,,
+ALB_954,Viale Michelangelo,8744,Handroanthus heptaphyllus,3.32,0.05,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_955,Viale Michelangelo,8723,Tabebuia rosea,3.45,,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_956,Viale Michelangelo,8259,Platanus × hispanica,22.72,0.71,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_957,Viale Michelangelo,8330,Tabebuia rosea,3.79,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_958,Viale Michelangelo,8307,Tabebuia rosea,3.69,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_959,Viale Michelangelo,8298,Tabebuia rosea,3.92,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_960,Viale Michelangelo,8311,Tabebuia rosea,3.08,0.06,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_961,Viale Michelangelo,8313,Handroanthus heptaphyllus,3.75,0.05,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_962,Viale Michelangelo,8326,Tabebuia rosea,4.07,0.03,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_963,Viale Michelangelo,8287,Celtis australis,7.73,0.32,A,decidua,9,12,7,0
+ALB_964,Viale Michelangelo,8314,,2.99,,D,,,,,
+ALB_965,Viale Michelangelo,8308,Handroanthus heptaphyllus,3.32,0.05,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_966,Viale Michelangelo,8323,Handroanthus heptaphyllus,4.19,0.03,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_967,Viale Michelangelo,8320,,3.59,0.04,B,,,,,
+ALB_968,Viale Michelangelo,8295,Ficus microcarpa,3.8,0.04,C,sempreverde,0,0,0,0
+ALB_969,Viale Michelangelo,8289,Platanus × hispanica,17.62,0.48,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_970,Viale Michelangelo,8338,Juglans regia,3.04,,B,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_971,Viale Michelangelo,8329,,3.53,0.04,B,,,,,
+ALB_972,Viale Michelangelo,8278,Platanus × hispanica,15.76,0.5,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_973,Viale Michelangelo,8312,Celtis australis,3.71,0.05,B,decidua,0,0,0,0
+ALB_974,Viale Michelangelo,8281,Platanus × hispanica,16.26,0.37,C/D,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_975,Viale Michelangelo,8288,Handroanthus impetiginosus,3.69,0.05,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_976,Viale Michelangelo,8321,Tabebuia rosea,3.8,0.06,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_977,Viale Michelangelo,8333,Tabebuia rosea,3.69,0.06,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_978,Viale Michelangelo,8316,Handroanthus heptaphyllus,3.87,0.04,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_979,Viale Michelangelo,8266,Platanus × hispanica,21.51,0.72,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_980,Viale Michelangelo,8300,,3.63,0.04,B,,,,,
+ALB_981,Viale Michelangelo,8283,Platanus × hispanica,14.04,0.44,C,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_982,Viale Michelangelo,8315,,4.54,0.04,B,,,,,
+ALB_983,Viale Michelangelo,8322,,1.45,0.05,B,,,,,
+ALB_984,Viale Michelangelo,8262,Platanus × hispanica,21.09,0.81,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_985,Viale Michelangelo,8328,Tabebuia rosea,3.32,0.03,A,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_986,Viale Regina Margherita,20651,Phoenix dactylifera,5.46,0.51,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_987,Viale Regina Margherita,20595,Phoenix dactylifera,20.08,0.35,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_988,Viale Regina Margherita,20617,Phoenix dactylifera,6.99,0.4,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_989,Viale Regina Margherita,20566,Phoenix dactylifera,6.35,0.46,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_990,Viale Regina Margherita,20560,Phoenix dactylifera,6.19,0.57,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_991,Viale Regina Margherita,20600,Phoenix dactylifera,7.68,0.46,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_992,Viale Regina Margherita,20587,Phoenix dactylifera,11.39,0.42,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_993,Viale Regina Margherita,20545,Phoenix canariensis,5.97,0.52,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_994,Viale Regina Margherita,20592,Phoenix dactylifera,7.79,0.44,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_995,Viale Regina Margherita,20551,Phoenix dactylifera,12.76,0.37,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_996,Viale Regina Margherita,20574,Phoenix canariensis,6,0.59,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_997,Viale Regina Margherita,20578,Phoenix dactylifera,17.19,0.52,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_998,Viale Regina Margherita,20580,Phoenix canariensis,5.78,0.54,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_999,Viale Regina Margherita,20634,Phoenix dactylifera,6.71,0.41,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1000,Viale Regina Margherita,20585,Phoenix canariensis,13.52,0.4,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1001,Viale Regina Margherita,20627,Phoenix canariensis,6.6,,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1002,Viale Regina Margherita,20604,Phoenix dactylifera,6.6,0.49,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1003,Viale Regina Margherita,20590,Phoenix dactylifera,14.17,0.46,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1004,Viale Regina Margherita,20564,Phoenix dactylifera,9.28,0.27,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1005,Viale Regina Margherita,20639,Phoenix canariensis,4.05,,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1006,Viale Regina Margherita,20621,Phoenix dactylifera,5.05,0.38,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1007,Viale Regina Margherita,20565,Phoenix dactylifera,10.3,0.39,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1008,Viale Regina Margherita,20656,Phoenix dactylifera,5.4,0.58,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1009,Viale Regina Margherita,20571,Phoenix dactylifera,5.8,0.51,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1010,Viale Regina Margherita,20588,Phoenix dactylifera,5.43,0.42,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1011,Viale Regina Margherita,20586,Phoenix dactylifera,6.08,0.57,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1012,Viale Regina Margherita,20561,Phoenix dactylifera,9.12,0.38,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1013,Viale Regina Margherita,20611,Phoenix dactylifera,4.37,0.45,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1014,Viale Regina Margherita,20625,Phoenix dactylifera,5.39,0.43,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1015,Viale Regina Margherita,20563,Phoenix dactylifera,7.19,0.47,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1016,Viale Regina Margherita,20549,Phoenix dactylifera,11.92,0.27,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1017,Viale Regina Margherita,20579,Phoenix dactylifera,7.25,0.59,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1018,Viale Regina Margherita,20638,Phoenix dactylifera,6.48,0.39,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1019,Viale Regina Margherita,20603,Phoenix dactylifera,5.37,0.38,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1020,Viale Regina Margherita,20622,Phoenix dactylifera,5.31,0.43,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1021,Viale Regina Margherita,20558,Phoenix dactylifera,7.9,0.53,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1022,Viale Regina Margherita,20591,Phoenix dactylifera,7.38,0.6,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1023,Viale Regina Margherita,20598,Phoenix dactylifera,6.31,0.49,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1024,Viale Regina Margherita,20646,Phoenix dactylifera,5.97,0.26,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1025,Viale Regina Margherita,20628,Phoenix dactylifera,5,0.57,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1026,Viale Regina Margherita,20658,Phoenix dactylifera,4.91,0.36,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1027,Viale Regina Margherita,20599,Phoenix dactylifera,6.72,0.55,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1028,Viale Regina Margherita,20576,Phoenix dactylifera,7.52,0.44,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1029,Viale Regina Margherita,20605,Phoenix dactylifera,5.5,0.36,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1030,Viale Regina Margherita,20612,Phoenix dactylifera,7.49,0.53,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1031,Viale Regina Margherita,20589,Phoenix dactylifera,10.78,0.4,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1032,Viale Regina Margherita,20601,Phoenix dactylifera,15.18,0.58,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1033,Viale Regina Margherita,20602,Phoenix dactylifera,6.09,0.42,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1034,Viale Regina Margherita,20569,Phoenix dactylifera,5.74,0.36,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1035,Viale Regina Margherita,20554,Phoenix dactylifera,6.78,0.46,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1036,Viale Regina Margherita,20550,Phoenix dactylifera,6.93,0.45,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1037,Viale Regina Margherita,20572,Phoenix dactylifera,6.27,0.54,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1038,Viale Regina Margherita,20584,Phoenix canariensis,5.71,0.42,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1039,Viale Regina Margherita,20575,Phoenix canariensis,4.35,0.33,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1040,Viale Galatea,3178,Platanus × hispanica,9.98,0.15,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1041,Viale Galatea,3131,Populus nigra,20.59,0.57,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1042,Viale Galatea,3121,Populus nigra,22.06,0.41,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1043,Viale Galatea,3154,Populus nigra,21.99,0.7,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1044,Viale Galatea,3799,Populus nigra,22.58,0.59,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1045,Viale Galatea,3800,Populus nigra,21.46,0.71,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1046,Viale Galatea,3791,Populus nigra,23.29,0.73,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1047,Viale Galatea,3815,Populus nigra,22.37,0.67,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1048,Viale Galatea,3817,Populus nigra,23,0.67,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1049,Viale Galatea,3866,Nerium oleander,6.6,0.26,,sempreverde,6,6,6,5
+ALB_1050,Viale Galatea,3819,Populus nigra,10.7,0.2,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1051,Viale Galatea,3808,Populus nigra,21.6,0.73,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1052,Viale Galatea,3771,Populus nigra,15.9,0.45,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1053,Viale Galatea,3790,Populus nigra,18.28,0.57,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1054,Viale Galatea,3803,Populus nigra,18.19,0.58,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1055,Viale Galatea,3792,Populus nigra,19.19,0.65,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1056,Viale Galatea,3772,Populus nigra,15.02,0.44,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1057,Viale Galatea,3802,Populus nigra,9.1,0.09,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1058,Viale Galatea,3741,Populus nigra,13,0.24,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1059,Viale Galatea,3804,Platanus × hispanica,13.8,0.68,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1060,Viale Galatea,3842,Platanus × hispanica,7.12,0.11,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1061,Viale Galatea,3849,Populus nigra,12.43,0.19,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1062,Viale Galatea,3850,Platanus × hispanica,22.97,1.06,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1063,Viale Galatea,3856,Populus nigra,14.03,0.26,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1064,Viale Galatea,3868,Platanus × hispanica,6.73,0.11,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1065,Viale Galatea,3872,Populus nigra,12.5,0.2,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1066,Viale Galatea,3876,Populus nigra,6.2,0.1,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1067,Viale Galatea,3823,Populus nigra,19.15,0.67,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1068,Viale Galatea,3810,Platanus × hispanica,9.94,0.2,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1069,Viale Galatea,3795,Populus nigra,15.55,0.49,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1070,Viale Galatea,3785,Platanus × hispanica,14.97,0.59,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1071,Viale Galatea,3552,Platanus × hispanica,13.89,0.48,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1072,Viale Galatea,3160,Platanus × hispanica,24.78,0.95,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1073,Viale Galatea,3177,Platanus × hispanica,24.8,0.99,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1074,Viale Galatea,3145,Platanus × hispanica,22.37,0.69,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1075,Viale Galatea,3148,Populus nigra,17.8,0.58,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1076,Viale Galatea,3159,Platanus × hispanica,21.2,0.69,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1077,Viale Galatea,3158,Platanus × hispanica,7.6,0.12,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1078,Viale Galatea,3172,Platanus × hispanica,6.22,0.13,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1079,Viale Galatea,3124,Populus nigra,15.33,0.36,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1080,Viale Galatea,3141,Populus nigra,13.51,0.37,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1081,Viale Galatea,3128,Populus nigra,18.07,0.45,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1082,Viale Galatea,3129,Populus nigra,18.91,0.45,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1083,Viale Galatea,3127,Populus nigra,19.58,0.42,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1084,Viale Galatea,3150,Populus nigra,20.33,0.53,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1085,Viale Galatea,3135,Populus nigra,20.64,0.59,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1086,Viale Galatea,3176,Platanus × hispanica,6.35,0.09,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1087,Viale Galatea,3132,Populus nigra,10.99,,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1088,Viale Galatea,3155,Populus nigra,20,0.65,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1089,Viale Galatea,3144,Populus nigra,18.13,0.58,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1090,Viale Principe Umberto,4548,Pinus pinea,14.6,0.8,,sempreverde,28,29,28,28
+ALB_1091,Viale Principe Umberto,4560,Pinus pinea,5.05,0.11,,sempreverde,2,2,2,2
+ALB_1092,Viale Principe Umberto,4512,Populus alba,9.1,0.22,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1093,Viale Principe Umberto,4522,Pinus pinea,15.49,0.58,,sempreverde,22,23,22,21
+ALB_1094,Viale Principe Umberto,4486,Pinus halepensis,16.38,0.48,,sempreverde,22,22,22,21
+ALB_1095,Viale Principe Umberto,4499,Pinus halepensis,19.11,0.56,,sempreverde,28,28,28,27
+ALB_1096,Viale Principe Umberto,4519,Pinus halepensis,20.2,0.58,,sempreverde,30,31,30,29
+ALB_1097,Viale Principe Umberto,4611,Pinus sp.,4.22,0.09,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1098,Viale Principe Umberto,4500,Pinus pinea,22.18,0.55,,sempreverde,27,28,27,26
+ALB_1099,Viale Principe Umberto,4503,Pinus canariensis,18.83,0.53,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1100,Viale Principe Umberto,4516,Pinus halepensis,17.6,0.76,,sempreverde,35,35,35,34
+ALB_1101,Viale Principe Umberto,4556,Pinus pinea,3.65,0.09,,sempreverde,2,2,2,1
+ALB_1102,Viale Principe Umberto,4515,Pinus pinea,6.02,0.16,,sempreverde,4,4,4,3
+ALB_1103,Viale Principe Umberto,4518,Pinus pinea,4.62,0.12,,sempreverde,2,2,2,2
+ALB_1104,Viale Principe Umberto,4553,Pinus pinea,5.43,0.14,,sempreverde,3,3,3,3
+ALB_1105,Viale Principe Umberto,4578,Pinus pinea,5.03,0.13,,sempreverde,3,3,3,3
+ALB_1106,Viale Principe Umberto,4598,Pinus pinea,5.51,0.12,,sempreverde,3,3,3,3
+ALB_1107,Viale Principe Umberto,4599,Pinus pinea,6.58,0.2,,sempreverde,5,5,5,5
+ALB_1108,Viale Principe Umberto,4601,,5.6,0.15,,,,,,
+ALB_1109,Viale Principe Umberto,4949,Cercis siliquastrum,5.77,0.29,,decidua,4,5,3,0
+ALB_1110,Viale Principe Umberto,4990,Prunus cerasifera,6.03,0.11,,decidua,1,1,0,0
+ALB_1111,Viale Principe Umberto,5003,Prunus cerasifera,6.08,0.1,,decidua,1,1,0,0
+ALB_1112,Viale Principe Umberto,5031,Cercis siliquastrum,6.04,0.28,,decidua,4,5,3,0
+ALB_1113,Viale Principe Umberto,4989,Pinus pinea,17.96,1.01,,sempreverde,40,41,40,39
+ALB_1114,Viale Principe Umberto,4978,Pinus pinea,13.48,0.69,,sempreverde,23,24,23,23
+ALB_1115,Viale Principe Umberto,4974,Cercis siliquastrum,7.13,0.27,,decidua,4,6,4,0
+ALB_1116,Viale Principe Umberto,4996,Cercis siliquastrum,4.19,0.09,,decidua,1,1,1,0
+ALB_1117,Viale Principe Umberto,4906,Pinus halepensis,14.4,0.44,,sempreverde,18,19,18,18
+ALB_1118,Viale Principe Umberto,4908,Pinus pinea,15.51,0.68,,sempreverde,26,26,26,25
+ALB_1119,Viale Principe Umberto,4925,Pinus halepensis,13.2,0.64,,sempreverde,24,25,24,24
+ALB_1120,Viale Principe Umberto,4926,Pinus pinea,15.74,0.61,,sempreverde,23,24,23,23
+ALB_1121,Viale Principe Umberto,4931,Pinus halepensis,17.3,0.69,,sempreverde,31,32,31,30
+ALB_1122,Viale Principe Umberto,4932,Pinus pinea,15.68,0.75,,sempreverde,28,29,28,27
+ALB_1123,Viale Principe Umberto,4984,Pinus pinea,6.94,0.15,,sempreverde,4,4,4,4
+ALB_1124,Viale Principe Umberto,4994,Pinus halepensis,18.12,0.93,,sempreverde,42,43,42,41
+ALB_1125,Viale Principe Umberto,4896,Pinus halepensis,14.2,0.63,,sempreverde,25,26,25,24
+ALB_1126,Viale Principe Umberto,4887,Pinus halepensis,14.24,0.64,,sempreverde,26,26,26,25
+ALB_1127,Viale Principe Umberto,4942,Pinus halepensis,15.37,0.75,,sempreverde,31,32,31,30
+ALB_1128,Viale Principe Umberto,4930,Pinus pinea,19.8,0.72,,sempreverde,32,33,32,31
+ALB_1129,Viale Principe Umberto,4895,Pinus halepensis,18.2,0.61,,sempreverde,29,30,29,28
+ALB_1130,Viale Principe Umberto,4889,Pinus pinea,15.39,0.57,,sempreverde,22,22,22,21
+ALB_1131,Viale Principe Umberto,4886,Pinus pinea,16.37,0.69,,sempreverde,27,27,27,26
+ALB_1132,Viale Principe Umberto,4905,Pinus halepensis,17.3,0.51,,sempreverde,24,24,24,23
+ALB_1133,Viale Principe Umberto,4904,Pinus pinea,16.76,0.64,,sempreverde,26,26,26,25
+ALB_1134,Viale Principe Umberto,4941,Pinus halepensis,18.4,0.71,,sempreverde,34,34,34,33
+ALB_1135,Viale Principe Umberto,4935,Pinus pinea,19.95,0.77,,sempreverde,34,35,34,33
+ALB_1136,Viale Principe Umberto,4927,Pinus pinea,19.48,0.7,,sempreverde,31,31,31,30
+ALB_1137,Viale Principe Umberto,4948,Pinus halepensis,19.17,0.81,,sempreverde,39,40,39,38
+ALB_1138,Viale Principe Umberto,4951,Pinus pinea,19.6,0.88,,sempreverde,38,39,38,37
+ALB_1139,Viale Principe Umberto,4954,Pinus halepensis,17.76,0.83,,sempreverde,38,39,38,37
+ALB_1140,Viale Principe Umberto,4955,Pinus pinea,18.31,0.79,,sempreverde,33,34,33,32
+ALB_1141,Viale Principe Umberto,4957,Pinus halepensis,18.96,0.78,,sempreverde,37,38,37,36
+ALB_1142,Viale Principe Umberto,4985,Pinus pinea,16.93,0.91,,sempreverde,35,36,35,34
+ALB_1143,Viale Principe Umberto,5007,Pinus pinea,18.29,0.78,,sempreverde,32,33,32,31
+ALB_1144,Viale Principe Umberto,4371,Pinus halepensis,17.52,0.59,,sempreverde,28,28,28,27
+ALB_1145,Viale Principe Umberto,4379,Pinus halepensis,19.98,0.59,,sempreverde,30,31,30,29
+ALB_1146,Viale Principe Umberto,4388,Pinus halepensis,22.75,0.68,,sempreverde,38,38,38,36
+ALB_1147,Viale Principe Umberto,4384,Pinus halepensis,17.8,0.5,,sempreverde,24,24,24,23
+ALB_1148,Viale Principe Umberto,4376,Pinus halepensis,14.2,0.41,,sempreverde,17,17,17,17
+ALB_1149,Viale Principe Umberto,4372,Pinus pinea,13.98,0.52,,sempreverde,19,19,19,18
+ALB_1150,Viale Principe Umberto,4377,Pinus halepensis,15.55,0.62,,sempreverde,26,27,26,26
+ALB_1151,Viale Principe Umberto,4391,Pinus halepensis,15.38,0.51,,sempreverde,22,22,22,21
+ALB_1152,Viale Principe Umberto,4418,Pinus halepensis,10.46,0.44,,sempreverde,15,15,15,14
+ALB_1153,Viale Principe Umberto,4982,Pinus halepensis,22.2,0.8,,sempreverde,43,44,43,41
+ALB_1154,Via Oreto,18488,Brachychiton acerifolius,13.45,0.79,,semi-decidua,18,24,21,15
+ALB_1155,Via Oreto,18486,Ficus microcarpa,9.11,0.55,,sempreverde,12,12,12,11
+ALB_1156,Via Oreto,18948,Ficus microcarpa,9.2,0.51,,sempreverde,11,11,11,11
+ALB_1157,Via Oreto,10998,Brachychiton acerifolius,6.44,0.46,,semi-decidua,5,6,5,4
+ALB_1158,Via Oreto,11031,Brachychiton acerifolius,6.95,0.49,,semi-decidua,5,7,6,4
+ALB_1159,Via Oreto,11021,Brachychiton acerifolius,7.63,0.3,,semi-decidua,3,4,4,3
+ALB_1160,Via Oreto,11016,Brachychiton acerifolius,7.51,0.48,,semi-decidua,6,8,6,5
+ALB_1161,Via Oreto,11000,Brachychiton discolor,7.45,0.38,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1162,Via Oreto,11027,Brachychiton acerifolius,9.4,0.45,,semi-decidua,6,9,7,5
+ALB_1163,Via Oreto,11061,Yucca gigantea,1.7,0.09,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1164,Via Oreto,11064,Yucca gigantea,2.27,0.11,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1165,Via Oreto,11068,Ficus elastica,8.44,,,sempreverde,0,0,0,0
+ALB_1166,Via Oreto,10436,Ligustrum lucidum,4.49,0.18,,sempreverde,2,2,2,2
+ALB_1167,Via Oreto,10435,Ligustrum lucidum,4.54,0.19,,sempreverde,3,3,3,2
+ALB_1168,Via Oreto,10434,Ligustrum lucidum,4.7,0.16,,sempreverde,2,2,2,2
+ALB_1169,Via Oreto,11012,Brachychiton acerifolius,8.38,0.48,,semi-decidua,6,8,7,5
+ALB_1170,Via Oreto,10323,,4.42,0.06,,,,,,
+ALB_1171,Via Oreto,10259,Populus nigra,11.75,0.32,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1172,Via Oreto,10272,Populus nigra,14.39,0.37,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1173,Via Oreto,10290,Populus nigra,11.93,0.26,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1174,Via Oreto,10310,Populus nigra,6.93,0.14,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1175,Via Oreto,10264,Populus nigra,12.51,0.33,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1176,Via Oreto,10276,Populus nigra,14.48,0.4,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1177,Via Oreto,10263,Populus nigra,12.17,0.25,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1178,Via Oreto,10174,Populus nigra,10.84,0.24,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1179,Via Oreto,10184,Populus nigra,12.34,0.43,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1180,Via Oreto,10173,Populus nigra,13.06,0.28,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1181,Via Oreto,10185,Populus nigra,9.96,0.31,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1182,Via Oreto,10189,Populus nigra,6.23,0.13,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1183,Via Oreto,10177,Jacaranda mimosifolia,5.03,0.14,,semi-decidua,1,1,1,1
+ALB_1184,Via Oreto,10179,Populus nigra,11.75,0.29,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1185,Via Oreto,10172,Populus nigra,7.51,0.29,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1186,Via Oreto,10180,Populus nigra,14.64,0.42,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1187,Via Oreto,10176,Populus nigra,8.77,0.2,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1188,Via Oreto,10191,Populus nigra,13.5,0.31,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1189,Via Oreto,10175,Populus nigra,12.73,0.37,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1190,Via Oreto,10187,Populus nigra,10.95,0.44,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1191,Via Oreto,10440,Populus nigra,4,0.14,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1192,Via Oreto,10281,Populus nigra,15.98,0.55,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1193,Via Oreto,10292,Populus nigra,16.79,0.44,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1194,Via Oreto,10258,Populus nigra,9.79,0.2,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1195,Via Oreto,10262,Populus nigra,10.95,0.26,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1196,Via Oreto,10256,Populus nigra,12.46,0.3,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1197,Via Oreto,10274,Populus nigra,13.57,0.34,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1198,Via Oreto,10257,Populus nigra,14.68,0.37,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1199,Via Oreto,10261,Populus nigra,12.37,0.33,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1200,Via Oreto,10270,Populus nigra,10.49,0.29,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1201,Via Oreto,10269,Populus nigra,8.25,0.21,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1202,Via Oreto,10280,Populus nigra,11.32,0.23,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1203,Via Oreto,10266,Populus nigra,11.52,0.25,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1204,Via Oreto,10255,Populus nigra,8.74,0.24,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1205,Via Oreto,10268,Populus nigra,14.66,0.34,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1206,Via Oreto,10253,Populus nigra,12.64,0.36,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1207,Via Oreto,10265,Populus nigra,12.03,0.3,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1208,Via Oreto,10254,Populus nigra,9.16,0.26,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1209,Via Oreto,10275,Populus nigra,15.95,0.45,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1210,Via Oreto,10288,Populus nigra,19.85,0.56,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1211,Via Oreto,10287,Populus nigra,19.71,0.49,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1212,Via Oreto,10295,Populus nigra,6.62,0.13,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1213,Via Oreto,10299,Populus nigra,14.05,0.65,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1214,Via Oreto,10300,Populus nigra,20.9,0.65,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1215,Via Oreto,10307,Populus nigra,5.28,0.13,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1216,Via Oreto,10318,Pittosporum tobira,4,0.17,,sempreverde,3,3,3,3
+ALB_1217,Via Oreto,10308,Populus nigra,4.67,0.11,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1218,Via Oreto,10297,Populus nigra,21.4,0.54,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1219,Via Oreto,10252,Populus nigra,13.14,0.27,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1220,Via Oreto,10271,Populus nigra,11.54,0.41,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1221,Via Oreto,10309,Populus nigra,4.89,0.09,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1222,Via Oreto,10312,,4.14,0.23,,,,,,
+ALB_1223,Via Oreto,10303,Morus alba,8.15,0.45,,decidua,5,7,3,0
+ALB_1224,Via Oreto,10343,Populus nigra,15.1,0.4,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1225,Via Oreto,10337,Populus nigra,12.76,0.26,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1226,Via Oreto,10344,Populus nigra,11.48,0.25,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1227,Via Oreto,10342,Populus nigra,18.3,0.49,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1228,Via Oreto,10333,Populus nigra,14.5,0.28,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1229,Via Oreto,10335,Populus nigra,12.26,0.28,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1230,Via Oreto,10341,Populus nigra,9.09,0.18,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1231,Via Oreto,10331,Populus nigra,8.92,0.25,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1232,Via Oreto,10339,Populus nigra,10.94,0.23,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1233,Via Oreto,10338,Populus nigra,11.63,0.24,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1234,Via Oreto,10336,Populus nigra,9.24,0.16,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1235,Via Oreto,10332,Populus nigra,12.19,0.31,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1236,Via Oreto,10340,Populus nigra,6,0.23,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1237,Via Oreto,10330,Populus nigra,12.2,0.28,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1238,Via Oreto,10325,Pittosporum tobira,3.6,,,sempreverde,0,0,0,0
+ALB_1239,Via Oreto,10322,Pittosporum tobira,3.57,,,sempreverde,0,0,0,0
+ALB_1240,Via Oreto,10306,Populus nigra,7.04,0.1,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1241,Via Oreto,10334,Populus nigra,8.7,0.23,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1242,Via Oreto,10345,Populus nigra,12.38,0.22,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1243,Via Oreto,10346,Populus nigra,12.74,0.35,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1244,Via Oreto,10347,Populus nigra,17.2,0.33,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1245,Via Oreto,10349,Populus nigra,8.74,0.19,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1246,Via Oreto,10350,Populus nigra,9,0.2,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1247,Via Oreto,10351,Populus nigra,11.4,0.23,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1248,Via Oreto,10352,Populus nigra,11.85,0.28,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1249,Via Oreto,10353,Populus nigra,19.54,0.48,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1250,Via Oreto,10354,Ficus benjamina,7,0.29,,sempreverde,4,4,4,4
+ALB_1251,Via Oreto,10355,Populus nigra,12.18,0.27,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1252,Via Oreto,10356,Populus nigra,17.2,0.45,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1253,Via Oreto,10357,Ficus religiosa,10.8,0.24,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1254,Via Oreto,10358,Populus nigra,17.89,0.41,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1255,Via Oreto,10359,Populus nigra,21.4,0.83,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1256,Via Oreto,10360,Populus nigra,20.2,0.41,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1257,Via Oreto,10362,Populus nigra,19.91,0.55,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1258,Via Oreto,10363,Populus nigra,6.97,0.69,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1259,Via Oreto,10364,Populus nigra,6.04,0.61,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1260,Via Oreto,10365,Populus nigra,18.2,0.62,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1261,Via Oreto,10366,Populus nigra,18.74,0.52,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1262,Via Oreto,10367,Populus nigra,9.74,0.23,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1263,Via Oreto,10369,Brachychiton acerifolius,5.67,0.37,,semi-decidua,3,4,4,3
+ALB_1264,Via Oreto,10370,Ficus benjamina,4.51,0.1,,sempreverde,1,1,1,1
+ALB_1265,Via Oreto,10371,Populus nigra,5.4,0.09,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1266,Via Oreto,10372,,3.91,0.13,,,,,,
+ALB_1267,Via Oreto,10373,Populus nigra,8.78,0.14,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1268,Via Oreto,10374,Brachychiton acerifolius,5.24,0.28,,semi-decidua,2,3,2,2
+ALB_1269,Via Oreto,10376,Platycladus orientalis,5.66,0.2,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1270,Via Rapisardi Mario,16192,Styphnolobium japonicum,8.59,0.25,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1271,Via Rapisardi Mario,16167,Styphnolobium japonicum,9.72,0.47,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1272,Via Rapisardi Mario,16201,Styphnolobium japonicum,8.29,0.46,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1273,Via Rapisardi Mario,16162,Styphnolobium japonicum,9.17,0.43,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1274,Via Rapisardi Mario,16149,Styphnolobium japonicum,6.4,0.29,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1275,Via Rapisardi Mario,16205,Styphnolobium japonicum,8.79,0.35,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1276,Via Rapisardi Mario,16206,Styphnolobium japonicum,10.39,0.43,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1277,Via Rapisardi Mario,16144,Styphnolobium japonicum,9.94,0.43,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1278,Via Rapisardi Mario,16141,Styphnolobium japonicum,9.31,0.38,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1279,Via Rapisardi Mario,16143,Styphnolobium japonicum,7.48,0.14,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1280,Via Rapisardi Mario,16137,Styphnolobium japonicum,8.92,0.42,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1281,Via Rapisardi Mario,16139,Styphnolobium japonicum,9.31,0.39,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1282,Via Rapisardi Mario,16191,Styphnolobium japonicum,8.14,0.12,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1283,Via Rapisardi Mario,16169,Styphnolobium japonicum,8.72,0.26,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1284,Via Rapisardi Mario,16135,Styphnolobium japonicum,8.47,0.32,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1285,Via Rapisardi Mario,17037,Styphnolobium japonicum,9.78,0.53,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1286,Via Rapisardi Mario,17040,Styphnolobium japonicum,8.8,0.34,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1287,Via Rapisardi Mario,17045,Styphnolobium japonicum,7.99,0.25,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1288,Via Rapisardi Mario,17050,Styphnolobium japonicum,9.26,0.48,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1289,Via Rapisardi Mario,17068,Styphnolobium japonicum,8.79,0.42,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1290,Via Rapisardi Mario,17075,Styphnolobium japonicum,8.65,0.33,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1291,Via Rapisardi Mario,17083,Styphnolobium japonicum,8.8,0.31,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1292,Via Rapisardi Mario,17070,Styphnolobium japonicum,9.68,0.29,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1293,Via Rapisardi Mario,17041,Styphnolobium japonicum,8.16,0.31,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1294,Via Rapisardi Mario,17055,Styphnolobium japonicum,8.2,0.35,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1295,Via Rapisardi Mario,17066,Styphnolobium japonicum,7.88,0.34,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1296,Via Rapisardi Mario,17080,Styphnolobium japonicum,8.28,0.33,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1297,Via Rapisardi Mario,17078,Styphnolobium japonicum,5.6,0.11,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1298,Via Rapisardi Mario,17073,Styphnolobium japonicum,7.48,0.26,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1299,Via Rapisardi Mario,17059,Styphnolobium japonicum,9.13,0.26,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1300,Via Rapisardi Mario,17079,Styphnolobium japonicum,5.31,0.07,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1301,Via Rapisardi Mario,17082,Styphnolobium japonicum,4.47,0.07,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1302,Via Rapisardi Mario,17085,Melia azedarach,3.26,0.07,,semi-decidua,0,0,0,0
+ALB_1303,Via Giusti Giuseppe,16851,Styphnolobium japonicum,9,0.31,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1304,Via Giusti Giuseppe,16858,Styphnolobium japonicum,9.8,0.39,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1305,Via Giusti Giuseppe,16859,Styphnolobium japonicum,9.4,0.35,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1306,Via Giusti Giuseppe,16876,Styphnolobium japonicum,8.7,0.25,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1307,Via Giusti Giuseppe,16877,Styphnolobium japonicum,9.4,0.41,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1308,Via Giusti Giuseppe,16888,,1.62,0.03,,,,,,
+ALB_1309,Via Giusti Giuseppe,16889,Styphnolobium japonicum,9.6,0.45,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1310,Via Giusti Giuseppe,16891,Styphnolobium japonicum,9.55,0.46,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1311,Via Giusti Giuseppe,16869,Styphnolobium japonicum,8.76,0.21,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1312,Via Giusti Giuseppe,16855,Styphnolobium japonicum,8.97,0.41,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1313,Via Giusti Giuseppe,16849,Styphnolobium japonicum,10,0.55,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1314,Via Giusti Giuseppe,16862,Styphnolobium japonicum,8.03,0.34,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1315,Via Giusti Giuseppe,16874,Acer negundo,7.05,0.48,,decidua,5,8,4,0
+ALB_1316,Via Giusti Giuseppe,16848,Styphnolobium japonicum,9.99,0.44,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1317,Via Giusti Giuseppe,16880,Styphnolobium japonicum,9.2,0.18,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1318,Via Giusti Giuseppe,16846,Styphnolobium japonicum,8.67,0.44,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1319,Via Giusti Giuseppe,16850,Styphnolobium japonicum,7.57,0.26,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1320,Via Giusti Giuseppe,16872,Styphnolobium japonicum,6.79,0.17,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1321,Via Giusti Giuseppe,16887,Styphnolobium japonicum,9,0.39,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1322,Via Giusti Giuseppe,16861,Styphnolobium japonicum,7.18,0.34,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1323,Via Giusti Giuseppe,16875,Styphnolobium japonicum,8.52,0.36,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1324,Via Giusti Giuseppe,16892,Styphnolobium japonicum,8.6,0.34,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1325,Via Giusti Giuseppe,16883,Styphnolobium japonicum,9.05,0.33,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1326,Via Giusti Giuseppe,16879,Styphnolobium japonicum,6.8,0.35,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1327,Via Giusti Giuseppe,16885,Styphnolobium japonicum,8.99,0.42,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1328,Via Giusti Giuseppe,16896,Styphnolobium japonicum,9.32,0.41,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1329,Via Giusti Giuseppe,16898,Styphnolobium japonicum,7.19,0.15,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1330,Via Giusti Giuseppe,16899,Styphnolobium japonicum,9.58,0.23,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1331,Via Giusti Giuseppe,16900,Styphnolobium japonicum,8.97,0.45,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1332,Via Giusti Giuseppe,16902,Styphnolobium japonicum,6.31,0.26,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1333,Via Giusti Giuseppe,16904,Styphnolobium japonicum,9.59,0.48,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1334,Via Giusti Giuseppe,16907,Styphnolobium japonicum,7.02,0.3,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1335,Via Giusti Giuseppe,16909,Styphnolobium japonicum,7.37,0.34,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1336,Via Giusti Giuseppe,16910,Melia azedarach,4.12,0.06,,semi-decidua,0,0,0,0
+ALB_1337,Via Giusti Giuseppe,16394,Styphnolobium japonicum,7.8,0.11,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1338,Via Giusti Giuseppe,16305,Styphnolobium japonicum,10.84,0.32,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1339,Via Giusti Giuseppe,16284,Koelreuteria paniculata,8.03,0.32,,decidua,3,5,3,0
+ALB_1340,Via Giusti Giuseppe,16266,Styphnolobium japonicum,11.8,0.36,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1341,Via Giusti Giuseppe,16343,Cercis siliquastrum,3.09,0.06,,decidua,0,0,0,0
+ALB_1342,Via Giusti Giuseppe,16259,Styphnolobium japonicum,11.27,0.46,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1343,Via Giusti Giuseppe,16320,Styphnolobium japonicum,8.88,0.21,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1344,Via Giusti Giuseppe,16290,Styphnolobium japonicum,9.05,0.33,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1345,Via Giusti Giuseppe,16312,Robinia pseudoacacia,8.97,0.16,,decidua,1,2,1,0
+ALB_1346,Via Giusti Giuseppe,16342,Cercis siliquastrum,3.72,0.08,,decidua,1,1,0,0
+ALB_1347,Via Giusti Giuseppe,16282,Robinia pseudoacacia,9.79,0.21,,decidua,2,3,1,0
+ALB_1348,Via Giusti Giuseppe,16363,Styphnolobium japonicum,9.09,0.35,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1349,Via Giusti Giuseppe,16278,Styphnolobium japonicum,8.96,0.16,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1350,Via Giusti Giuseppe,16272,Styphnolobium japonicum,7.69,0.23,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1351,Via Giusti Giuseppe,16371,Styphnolobium japonicum,10.6,0.41,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1352,Via Giusti Giuseppe,16308,Styphnolobium japonicum,9.36,0.25,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1353,Via Giusti Giuseppe,16265,Styphnolobium japonicum,10.47,0.25,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1354,Via Giusti Giuseppe,16338,Styphnolobium japonicum,9.51,0.34,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1355,Via Giusti Giuseppe,16293,Robinia pseudoacacia,8.34,0.19,,decidua,1,2,1,0
+ALB_1356,Via Giusti Giuseppe,16466,Styphnolobium japonicum,8.55,0.37,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1357,Via Giusti Giuseppe,16472,Styphnolobium japonicum,6.79,0.32,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1358,Via Giusti Giuseppe,16469,Styphnolobium japonicum,8.39,0.28,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1359,Via Giusti Giuseppe,16268,Styphnolobium japonicum,9.86,0.3,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1360,Via Giusti Giuseppe,16470,Styphnolobium japonicum,8.84,0.36,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1361,Via Giusti Giuseppe,16288,Styphnolobium japonicum,9.38,0.21,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1362,Via Giusti Giuseppe,16298,Styphnolobium japonicum,8.14,0.11,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1363,Via Giusti Giuseppe,16358,Yucca gigantea,9.31,,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1364,Via Giusti Giuseppe,16402,Chamaerops humilis,3.05,0.27,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1365,Via Giusti Giuseppe,16317,Styphnolobium japonicum,7.8,0.1,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1366,Via Giusti Giuseppe,16254,Styphnolobium japonicum,9.39,0.24,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1367,Via Giusti Giuseppe,16334,Styphnolobium japonicum,11.27,0.24,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1368,Via Giusti Giuseppe,16485,Styphnolobium japonicum,10.96,0.31,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1369,Via Giusti Giuseppe,16489,Styphnolobium japonicum,4.8,0.14,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1370,Via Giusti Giuseppe,16347,Styphnolobium japonicum,6.92,0.1,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1371,Via Giusti Giuseppe,16314,Styphnolobium japonicum,9.08,0.35,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1372,Via Giusti Giuseppe,16339,Styphnolobium japonicum,7.76,0.14,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1373,Via Giusti Giuseppe,16385,Styphnolobium japonicum,10.48,0.25,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1374,Via Giusti Giuseppe,16319,Robinia pseudoacacia,5.79,0.09,,decidua,0,0,0,0
+ALB_1375,Via Giusti Giuseppe,16301,Styphnolobium japonicum,8.95,0.21,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1376,Via Giusti Giuseppe,16345,Styphnolobium japonicum,9.33,0.33,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1377,Via Giusti Giuseppe,16329,Styphnolobium japonicum,11.18,0.31,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1378,Via Giusti Giuseppe,16351,Robinia pseudoacacia,7.65,0.19,,decidua,1,2,1,0
+ALB_1379,Via Giusti Giuseppe,16378,Robinia pseudoacacia,9.43,0.21,,decidua,2,3,1,0
+ALB_1380,Via Giusti Giuseppe,16352,Robinia pseudoacacia,5.5,0.12,,decidua,0,1,0,0
+ALB_1381,Via Giusti Giuseppe,16270,Styphnolobium japonicum,11,0.25,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1382,Via Giusti Giuseppe,16331,Styphnolobium japonicum,7.32,0.07,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1383,Via Giusti Giuseppe,16246,Styphnolobium japonicum,8.79,0.3,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1384,Via Giusti Giuseppe,16375,Robinia pseudoacacia,6.87,0.16,,decidua,1,1,1,0
+ALB_1385,Via Giusti Giuseppe,16361,Styphnolobium japonicum,6.47,0.08,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1386,Via Giusti Giuseppe,16368,Styphnolobium japonicum,6.91,0.13,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1387,Via Giusti Giuseppe,16860,Styphnolobium japonicum,8.23,0.24,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1388,Via Giusti Giuseppe,16868,Styphnolobium japonicum,9.35,0.24,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1389,Via Giusti Giuseppe,16847,Styphnolobium japonicum,9.49,0.37,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1390,Via Giusti Giuseppe,16867,Styphnolobium japonicum,8.46,0.3,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1391,Via Giusti Giuseppe,16853,Styphnolobium japonicum,8.8,0.44,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1392,Via Giusti Giuseppe,16857,Styphnolobium japonicum,8.91,0.36,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1393,Via Giusti Giuseppe,16844,Styphnolobium japonicum,9,0.31,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1394,Via Giusti Giuseppe,16852,Styphnolobium japonicum,9.2,0.42,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1395,Via Giusti Giuseppe,16864,Styphnolobium japonicum,8.74,0.4,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1396,Via Giusti Giuseppe,16854,Styphnolobium japonicum,8.36,0.34,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1397,Via Giusti Giuseppe,16870,Styphnolobium japonicum,9.29,0.31,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1398,Via Giusti Giuseppe,16866,Styphnolobium japonicum,8.51,0.31,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1399,Via Giusti Giuseppe,16856,Styphnolobium japonicum,9.4,0.37,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1400,Via Giusti Giuseppe,16863,Styphnolobium japonicum,7.48,0.28,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1401,Via Giusti Giuseppe,16865,Styphnolobium japonicum,8.06,0.12,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1402,Via Giusti Giuseppe,16845,Styphnolobium japonicum,8.9,0.26,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1403,Via Giusti Giuseppe,16871,Styphnolobium japonicum,6.33,0.37,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1404,Via Giusti Giuseppe,16873,Styphnolobium japonicum,8.34,0.2,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1405,Via Giusti Giuseppe,16878,Styphnolobium japonicum,9.59,0.36,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1406,Via Giusti Giuseppe,16881,Styphnolobium japonicum,9.52,0.2,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1407,Via Giusti Giuseppe,16882,Styphnolobium japonicum,9.59,0.52,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1408,Via Giusti Giuseppe,16884,Styphnolobium japonicum,9.97,0.43,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1409,Via Giusti Giuseppe,16886,Styphnolobium japonicum,9.58,0.45,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1410,Via Giusti Giuseppe,16890,Styphnolobium japonicum,9.75,0.47,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1411,Via Giusti Giuseppe,16893,Styphnolobium japonicum,8.92,0.27,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1412,Via Giusti Giuseppe,16894,Styphnolobium japonicum,9.26,0.33,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1413,Via Giusti Giuseppe,16895,Styphnolobium japonicum,10.46,0.38,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1414,Via Giusti Giuseppe,16897,Cercis siliquastrum,3.1,0.04,,decidua,0,0,0,0
+ALB_1415,Via Giusti Giuseppe,16901,Styphnolobium japonicum,8.38,0.24,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1416,Via Giusti Giuseppe,16903,Styphnolobium japonicum,7.76,0.14,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1417,Via Giusti Giuseppe,16905,Styphnolobium japonicum,7.53,0.41,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1418,Via Giusti Giuseppe,16387,Robinia pseudoacacia,6.92,0.25,,decidua,2,2,1,0
+ALB_1419,Via Giusti Giuseppe,16355,Robinia pseudoacacia,4.46,0.13,,decidua,0,1,0,0
+ALB_1420,Via Giusti Giuseppe,16316,Styphnolobium japonicum,5.38,0.21,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1421,Via Giusti Giuseppe,16350,Styphnolobium japonicum,6.06,0.14,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1422,Via Giusti Giuseppe,16313,Styphnolobium japonicum,6.11,0.15,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1423,Via Giusti Giuseppe,16300,Styphnolobium japonicum,7.82,0.2,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1424,Via Giusti Giuseppe,16309,Styphnolobium japonicum,7.28,0.16,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1425,Via Giusti Giuseppe,16392,Styphnolobium japonicum,6.84,0.21,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1426,Via Giusti Giuseppe,16321,Robinia pseudoacacia,5.9,0.13,,decidua,1,1,0,0
+ALB_1427,Via Giusti Giuseppe,16257,Styphnolobium japonicum,7.54,0.22,,#N/A,#N/A,#N/A,#N/A,#N/A
+ALB_1428,Via Corazza Filippo,19773,Melia azedarach,11.18,0.53,,semi-decidua,10,13,11,8
+ALB_1429,Via Corazza Filippo,19774,Melia azedarach,11.17,0.38,,semi-decidua,6,9,7,5
+ALB_1430,Via Corazza Filippo,19783,Melia azedarach,11.8,0.43,,semi-decidua,8,11,9,6
+ALB_1431,Via Corazza Filippo,19776,Melia azedarach,11.86,0.39,,semi-decidua,7,9,8,6
+ALB_1432,Via Corazza Filippo,19781,Melia azedarach,11,0.43,,semi-decidua,7,10,8,6
+ALB_1433,Via Corazza Filippo,19780,Melia azedarach,10.35,0.34,,semi-decidua,5,7,6,4
+ALB_1434,Via Corazza Filippo,19775,Melia azedarach,9.8,0.52,,semi-decidua,9,11,10,7
+ALB_1435,Via Corazza Filippo,19784,Melia azedarach,9.42,0.43,,semi-decidua,6,9,7,5
+ALB_1436,Via Corazza Filippo,19785,Melia azedarach,11.99,0.34,,semi-decidua,6,8,7,5
+ALB_1437,Via Corazza Filippo,19786,Melia azedarach,10.24,0.37,,semi-decidua,6,8,7,5
+ALB_1438,Via Corazza Filippo,19787,Melia azedarach,10.07,0.43,,semi-decidua,7,9,8,6
+ALB_1439,Via Corazza Filippo,19792,Melia azedarach,11.28,0.37,,semi-decidua,6,8,7,5
+ALB_1440,Via Corazza Filippo,19796,Melia azedarach,8.44,0.44,,semi-decidua,6,8,7,5
+ALB_1441,Via Corazza Filippo,19803,Melia azedarach,10.93,0.35,,semi-decidua,6,8,6,5
+ALB_1442,Via Corazza Filippo,19811,Melia azedarach,10.02,0.38,,semi-decidua,6,8,7,5
+ALB_1443,Via Corazza Filippo,19817,Melia azedarach,10.87,0.39,,semi-decidua,7,9,7,5
+ALB_1444,Via Corazza Filippo,19818,Melia azedarach,9.4,0.32,,semi-decidua,4,6,5,4

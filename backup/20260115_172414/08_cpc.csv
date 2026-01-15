@@ -7,10 +7,18 @@ Via Pignatelli Aragona,B,32,67%,B (bassa),#2cc15f
 Via Pignatelli Aragona,C,8,17%,C (moderata),#f39c12
 Via Pignatelli Aragona,D,5,10%,D (estrema),#e74c3c
 Via Pignatelli Aragona,C/D,3,6%,C/D (elevata),#c164a1
-Via Rizzo Ammiraglio,B,93,80%,B (bassa),#2cc15f
-Via Rizzo Ammiraglio,C,12,10%,C (moderata),#f39c12
-Via Rizzo Ammiraglio,C/D,6,5%,C/D (elevata),#c164a1
-Via Rizzo Ammiraglio,D,5,4%,D (estrema),#e74c3c
+Via Principe Di Belmonte,B,54,55%,B (bassa),#2cc15f
+Via Principe Di Belmonte,C,19,19%,C (moderata),#f39c12
+Via Principe Di Belmonte,D,13,13%,D (estrema),#e74c3c
+Via Principe Di Belmonte,C/D,12,12%,C/D (elevata),#c164a1
+Via Rizzo Ammiraglio - A,B,45,80%,B (bassa),#2cc15f
+Via Rizzo Ammiraglio - A,C/D,5,9%,C/D (elevata),#c164a1
+Via Rizzo Ammiraglio - A,C,4,7%,C (moderata),#f39c12
+Via Rizzo Ammiraglio - A,D,2,4%,D (estrema),#e74c3c
+Via Rizzo Ammiraglio - B,B,48,80%,B (bassa),#2cc15f
+Via Rizzo Ammiraglio - B,C,8,13%,C (moderata),#f39c12
+Via Rizzo Ammiraglio - B,D,3,5%,D (estrema),#e74c3c
+Via Rizzo Ammiraglio - B,C/D,1,2%,C/D (elevata),#c164a1
 Via Scoto Michele,B,26,93%,B (bassa),#2cc15f
 Via Scoto Michele,D,1,4%,D (estrema),#e74c3c
 Via Scoto Michele,C,1,4%,C (moderata),#f39c12
@@ -24,4 +32,9 @@ Viale Emilia,B,51,78%,B (bassa),#2cc15f
 Viale Emilia,C,7,11%,C (moderata),#f39c12
 Viale Emilia,Ceppaia,4,6%,Ceppaia,#434343
 Viale Emilia,D,3,5%,D (estrema),#e74c3c
-Viale Michelangelo,,0,#DIV/0!,,
+Viale Michelangelo,A,227,44%,,
+Viale Michelangelo,B,114,22%,B (bassa),#2cc15f
+Viale Michelangelo,C,101,20%,C (moderata),#f39c12
+Viale Michelangelo,C/D,37,7%,C/D (elevata),#c164a1
+Viale Michelangelo,D,34,7%,D (estrema),#e74c3c
+Viale Regina Margherita,,14,100%,,
