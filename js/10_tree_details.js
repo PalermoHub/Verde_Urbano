@@ -29,6 +29,7 @@ function showTreeDetails(tree) {
             <div class="detail-label" style="margin-bottom: 10px;"><i class="fa fa-map-marker-alt"></i> LOCALIZZAZIONE TERRITORIALE</div>
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
                 <div class="detail-item" style="margin: 0;"><div class="detail-label">Strada (Odonimo)</div><div class="detail-value">${tree.odonimo || '-'}</div></div>
+                <div class="detail-item" style="margin: 0;"><div class="detail-label">Civico</div><div class="detail-value">${tree.civico || '-'}</div></div>
                 <div class="detail-item" style="margin: 0;"><div class="detail-label">UPL</div><div class="detail-value">${tree.upl || '-'}</div></div>
                 <div class="detail-item" style="margin: 0;"><div class="detail-label">Quartiere</div><div class="detail-value">${tree.quartiere || '-'}</div></div>
                 <div class="detail-item" style="margin: 0;"><div class="detail-label">Circoscrizione</div><div class="detail-value">${tree.circoscrizione || '-'}</div></div>

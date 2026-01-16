@@ -252,6 +252,10 @@ function updateMap() {
                             <td style="padding: 3px;">${tree.odonimo || '-'}</td>
                         </tr>
                         <tr>
+                            <td style="padding: 3px; font-weight: bold;">Civico:</td>
+                            <td style="padding: 3px;">${tree.civico || '-'}</td>
+                        </tr>
+                        <tr>
                             <td style="padding: 3px; font-weight: bold;">UPL:</td>
                             <td style="padding: 3px;">${tree.upl || '-'}</td>
                         </tr>
@@ -279,8 +283,8 @@ function updateMap() {
         `;
         marker.bindPopup(popupContent, {maxWidth: 400, className: 'custom-popup'});
 
-        // Aggiungi tooltip con ID Pianta e Odonimo
-        const tooltipContent = `${tree.id} - ${tree.odonimo || 'n/a'}`;
+        // Aggiungi tooltip con ID Pianta, Odonimo e Civico
+        const tooltipContent = `${tree.id} - ${tree.odonimo || 'n/a'}${tree.civico && tree.civico !== '-' ? ', ' + tree.civico : ''}`;
         marker.bindTooltip(tooltipContent, {
             permanent: false,
             direction: 'top',

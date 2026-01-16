@@ -46,6 +46,7 @@ function loadData() {
                 foglie_autunno: parseInt(props['# Autunno']) || 0,
                 foglie_inverno: parseInt(props['# Inverno']) || 0,
                 odonimo: props['Odonimo'] || '-',
+                civico: props['Civico'] || '-',
                 upl: props['UPL'] || '-',
                 quartiere: props['Quartiere'] || '-',
                 circoscrizione: props['Circoscrizione'] || '-',

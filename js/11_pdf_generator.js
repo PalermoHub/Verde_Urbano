@@ -97,6 +97,7 @@ function generateTreePDF() {
             <h2>Localizzazione Territoriale</h2>
             <table>
                 <tr><td>Strada (Odonimo):</td><td>${tree.odonimo || '-'}</td></tr>
+                <tr><td>Civico:</td><td>${tree.civico || '-'}</td></tr>
                 <tr><td>UPL:</td><td>${tree.upl || '-'}</td></tr>
                 <tr><td>Quartiere:</td><td>${tree.quartiere || '-'}</td></tr>
                 <tr><td>Circoscrizione:</td><td>${tree.circoscrizione || '-'}</td></tr>

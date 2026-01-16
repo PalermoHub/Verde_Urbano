@@ -188,6 +188,7 @@ async function loadCSVData() {
                     'Descrizione': row['Descrizione'],
                     'Prezzo Unitario': row['Prezzo Unitario'],
                     'Odonimo': row['Odonimo'],
+                    'Civico': row['Civico'],
                     'UPL': row['UPL'],
                     'Quartiere': row['Quartiere'],
                     'Circoscrizione': row['Circoscrizione'],

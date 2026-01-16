@@ -31,6 +31,9 @@ function populateFilterSelects() {
         odonimoSelect.appendChild(opt);
     });
 
+    // I civici verranno popolati dinamicamente in base all'Odonimo selezionato
+    // Inizialmente lasciamo solo l'opzione di default
+
     const upls = [...new Set(allTrees.map(t => t.upl).filter(u => u && u !== '-'))].sort();
     const uplSelect = document.getElementById('uplFilter');
     upls.forEach(upl => {
@@ -60,6 +63,65 @@ function populateFilterSelects() {
         opt.textContent = `${cir} (${count})`;
         circoscrizioneSelect.appendChild(opt);
     });
+
+    // Inizializza i civici (mostra tutti inizialmente)
+    updateCiviciByOdonimo();
+}
+
+// Funzione per aggiornare dinamicamente i civici in base all'Odonimo selezionato
+function updateCiviciByOdonimo() {
+    const odonimoValue = document.getElementById('odonimoFilter').value;
+    const civicoSelect = document.getElementById('civicoFilter');
+    const currentCivicoValue = civicoSelect.value;
+
+    // Rimuovi tutte le opzioni tranne la prima (placeholder)
+    while (civicoSelect.options.length > 1) {
+        civicoSelect.remove(1);
+    }
+
+    if (!odonimoValue) {
+        // Se non c'è un Odonimo selezionato, mostra tutti i civici
+        const allCivici = [...new Set(allTrees.map(t => t.civico).filter(c => c && c !== '-'))].sort((a, b) => {
+            const numA = parseInt(a) || 0;
+            const numB = parseInt(b) || 0;
+            return numA - numB;
+        });
+
+        allCivici.forEach(civ => {
+            const opt = document.createElement('option');
+            opt.value = civ;
+            const count = allTrees.filter(t => t.civico === civ).length;
+            opt.textContent = `${civ} (${count})`;
+            civicoSelect.appendChild(opt);
+        });
+    } else {
+        // Filtra i civici solo per l'Odonimo selezionato
+        const civiciForOdonimo = [...new Set(
+            allTrees
+                .filter(t => t.odonimo === odonimoValue)
+                .map(t => t.civico)
+                .filter(c => c && c !== '-')
+        )].sort((a, b) => {
+            const numA = parseInt(a) || 0;
+            const numB = parseInt(b) || 0;
+            return numA - numB;
+        });
+
+        civiciForOdonimo.forEach(civ => {
+            const opt = document.createElement('option');
+            opt.value = civ;
+            const count = allTrees.filter(t => t.odonimo === odonimoValue && t.civico === civ).length;
+            opt.textContent = `${civ} (${count})`;
+            civicoSelect.appendChild(opt);
+        });
+    }
+
+    // Ripristina il valore del civico se ancora disponibile
+    if (currentCivicoValue && Array.from(civicoSelect.options).some(opt => opt.value === currentCivicoValue)) {
+        civicoSelect.value = currentCivicoValue;
+    } else {
+        civicoSelect.value = '';
+    }
 }
 
 function updateHeightLabel() {
@@ -88,6 +150,7 @@ function getCountForFilter(filterType, filterValue) {
     const minHeight = parseFloat(document.getElementById('minHeight').value);
     const minDiameter = parseFloat(document.getElementById('minDiameter').value);
     const odonimo = document.getElementById('odonimoFilter').value;
+    const civico = document.getElementById('civicoFilter').value;
     const upl = document.getElementById('uplFilter').value;
     const quartiere = document.getElementById('quartiereFilter').value;
     const circoscrizione = document.getElementById('circoscrizioneFilter').value;
@@ -111,6 +174,9 @@ function getCountForFilter(filterType, filterValue) {
 
         if (filterType === 'odonimo') match = match && tree.odonimo === testValue;
         else if (odonimo) match = match && tree.odonimo === odonimo;
+
+        if (filterType === 'civico') match = match && tree.civico === testValue;
+        else if (civico) match = match && tree.civico === civico;
 
         if (filterType === 'upl') match = match && tree.upl === testValue;
         else if (upl) match = match && tree.upl === upl;
@@ -161,12 +227,16 @@ function applyFilters() {
     selectedTree = null;
     selectedMarker = null;
 
+    // Aggiorna i civici in base all'Odonimo selezionato
+    updateCiviciByOdonimo();
+
     const specie = document.getElementById('specieFilter').value;
     const cpc = document.getElementById('cpcFilter').value;
     const site = document.getElementById('siteFilter').value;
     const minHeight = parseFloat(document.getElementById('minHeight').value);
     const minDiameter = parseFloat(document.getElementById('minDiameter').value);
     const odonimo = document.getElementById('odonimoFilter').value;
+    const civico = document.getElementById('civicoFilter').value;
     const upl = document.getElementById('uplFilter').value;
     const quartiere = document.getElementById('quartiereFilter').value;
     const circoscrizione = document.getElementById('circoscrizioneFilter').value;
@@ -180,6 +250,7 @@ function applyFilters() {
                (tree.altezza === null || tree.altezza >= minHeight) &&
                (tree.diametro === null || tree.diametro >= minDiameter) &&
                (!odonimo || tree.odonimo === odonimo) &&
+               (!civico || tree.civico === civico) &&
                (!upl || tree.upl === upl) &&
                (!quartiere || tree.quartiere === quartiere) &&
                (!circoscrizione || tree.circoscrizione === circoscrizione);
@@ -242,6 +313,7 @@ function updateFilterInfo() {
     const cpcValue = safeGetValue('cpcFilter');
     const siteValue = safeGetValue('siteFilter');
     const odonimoValue = safeGetValue('odonimoFilter');
+    const civicoValue = safeGetValue('civicoFilter');
     const uplValue = safeGetValue('uplFilter');
     const quartiereValue = safeGetValue('quartiereFilter');
     const circoscrizioneValue = safeGetValue('circoscrizioneFilter');
@@ -252,6 +324,7 @@ function updateFilterInfo() {
     safeSetText('cpcInfo', cpcValue ? `${filteredTrees.filter(t => t.cpc === cpcValue).length}` : '');
     safeSetText('siteInfo', siteValue ? `${filteredTrees.filter(t => t.sito === siteValue).length}` : '');
     safeSetText('odonimoInfo', odonimoValue ? `${filteredTrees.filter(t => t.odonimo === odonimoValue).length}` : '');
+    safeSetText('civicoInfo', civicoValue ? `${filteredTrees.filter(t => t.civico === civicoValue).length}` : '');
     safeSetText('uplInfo', uplValue ? `${filteredTrees.filter(t => t.upl === uplValue).length}` : '');
     safeSetText('quartiereInfo', quartiereValue ? `${filteredTrees.filter(t => t.quartiere === quartiereValue).length}` : '');
     safeSetText('circoscrizioneInfo', circoscrizioneValue ? `${filteredTrees.filter(t => t.circoscrizione === circoscrizioneValue).length}` : '');
@@ -305,6 +378,15 @@ function updateFilterCounts() {
     Array.from(odonimoSelect.options).forEach((opt, idx) => {
         if (idx > 0) {
             const count = getCountForFilter('odonimo', opt.value);
+            opt.textContent = `${opt.value} (${count})`;
+            opt.disabled = count === 0;
+        }
+    });
+
+    const civicoSelect = document.getElementById('civicoFilter');
+    Array.from(civicoSelect.options).forEach((opt, idx) => {
+        if (idx > 0) {
+            const count = getCountForFilter('civico', opt.value);
             opt.textContent = `${opt.value} (${count})`;
             opt.disabled = count === 0;
         }
@@ -364,6 +446,7 @@ function resetFilters() {
     document.getElementById('minHeight').value = '0';
     document.getElementById('minDiameter').value = '0';
     document.getElementById('odonimoFilter').value = '';
+    document.getElementById('civicoFilter').value = '';
     document.getElementById('uplFilter').value = '';
     document.getElementById('quartiereFilter').value = '';
     document.getElementById('circoscrizioneFilter').value = '';
@@ -371,5 +454,9 @@ function resetFilters() {
     document.getElementById('faseFilter').value = '';
     updateHeightLabel();
     updateDiameterLabel();
+
+    // Ripristina tutti i civici quando si resetta
+    updateCiviciByOdonimo();
+
     applyFilters();
 }
