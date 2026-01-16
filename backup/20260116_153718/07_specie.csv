@@ -1,50 +1,52 @@
 Odonimo,Specie,count,%,colore,larg
 Via Delle Croci,Ficus microcarpa,52,100%,#194d30,0.2
 Via Pignatelli Aragona,Ficus microcarpa,48,100%,#194d30,0.2
-Via Rizzo Ammiraglio,Ficus microcarpa,97,84%,#194d30,0.8
-Via Rizzo Ammiraglio,Schinus molle,8,7%,#2b5f41,0.8
-Via Rizzo Ammiraglio,Ficus magnoloides,4,3%,#98cba7,0.8
-Via Rizzo Ammiraglio,Ficus rubiginosa,3,3%,#508363,0.8
-Via Rizzo Ammiraglio,Melia azadirach,2,2%,#86b996,0.8
-Via Rizzo Ammiraglio,Celtis australis,2,2%,#86b996,0.8
-Via Scoto Michele,Ficus microcarpa,28,100%,#86b996,0.8
-Viale Dei Picciotti - A,Ficus microcarpa,31,100%,#86b996,0.8
+Via Principe Di Belmonte,Citrus × aurantium,53,54%,#194d30,0.8
+Via Principe Di Belmonte,Acer negundo,45,46%,#2b5f41,0.8
+Via Rizzo Ammiraglio - A,Ficus microcarpa,52,93%,#98cba7,0.8
+Via Rizzo Ammiraglio - A,Ficus magnoloides,4,7%,#508363,0.8
+Via Rizzo Ammiraglio - B,Ficus microcarpa,45,75%,#86b996,0.8
+Via Rizzo Ammiraglio - B,Schinus molle,8,13%,#86b996,0.8
+Via Rizzo Ammiraglio - B,Ficus rubiginosa,3,5%,#86b996,0.8
+Via Rizzo Ammiraglio - B,Melia azadirach,2,3%,#86b996,0.8
+Via Rizzo Ammiraglio - B,Celtis australis,2,3%,,0.8
+Via Scoto Michele,Ficus microcarpa,28,100%,,0.8
+Viale Dei Picciotti - A,Ficus microcarpa,31,100%,,0.8
 Viale Dei Picciotti - B,Ficus microcarpa,33,97%,,0.8
-Viale Dei Picciotti - B,Ficus rubiginosa,1,3%,,0.8
-Viale Emilia,Ficus microcarpa,51,78%,,0.8
-Viale Emilia,Robinia pseudoacacia,5,8%,,0.8
+Viale Dei Picciotti - B,Ficus rubiginosa,1,3%,,
+Viale Emilia,Ficus microcarpa,51,78%,,
+Viale Emilia,Robinia pseudoacacia,5,8%,,
 Viale Emilia,Brachychiton acerifolius ,3,5%,,
 Viale Emilia,Sophora japonica,2,3%,,
 Viale Emilia,Pinus halepensis,1,2%,,
 Viale Emilia,Ficus benjamina,1,2%,,
 Viale Emilia,Celtis australis,1,2%,,
 Viale Emilia,Acer negundo,1,2%,,
-Viale Michelangelo,Platanus × hispanica,207,40%,,
-Viale Michelangelo,Tabebuia rosea,77,15%,,
-Viale Michelangelo,,63,12%,,
-Viale Michelangelo,Celtis australis,51,10%,,
-Viale Michelangelo,Handroanthus heptaphyllus,35,7%,,
+Viale Michelangelo,Platanus Hybrida,171,33%,,
+Viale Michelangelo,Tabebuia rosea,72,14%,,
+Viale Michelangelo,- -,61,12%,,
+Viale Michelangelo,Platanus hispanica,57,11%,,
+Viale Michelangelo,Celtis australis,50,10%,,
+Viale Michelangelo,Handroanthus heptaphyllus,34,7%,,
 Viale Michelangelo,Schinus molle,14,3%,,
-Viale Michelangelo,Citrus × aurantium,12,2%,,
-Viale Michelangelo,Fraxinus ornus,7,1%,,
+Viale Michelangelo,Citrus aurantium,12,2%,,
+Viale Michelangelo,Fraxinus ornus,5,1%,,
 Viale Michelangelo,Brachychiton populneus,4,1%,,
-Viale Michelangelo,Platanus orientalis,3,1%,,
-Viale Michelangelo,Pinus pinea,3,1%,,
 Viale Michelangelo,Cercis siliquastrum,3,1%,,
 Viale Michelangelo,Washingtonia filifera,2,0%,,
 Viale Michelangelo,Tamarix gallica,2,0%,,
 Viale Michelangelo,Syzygium myrtifolium,2,0%,,
 Viale Michelangelo,Robinia pseudoacacia,2,0%,,
+Viale Michelangelo,Pinus pinea,2,0%,,
 Viale Michelangelo,Olea europaea,2,0%,,
 Viale Michelangelo,Nerium oleander,2,0%,,
 Viale Michelangelo,Handroanthus impetiginosus,2,0%,,
-Viale Michelangelo,Ficus benjamina,2,0%,,
 Viale Michelangelo,Cupressus sempervirens,2,0%,,
 Viale Michelangelo,Brachychiton acerifolius,2,0%,,
-Viale Michelangelo,Ulmus minor,1,0%,,
 Viale Michelangelo,Strelitzia nicolai,1,0%,,
 Viale Michelangelo,Prunus serrulata,1,0%,,
 Viale Michelangelo,Platycladus orientalis,1,0%,,
+Viale Michelangelo,Pinus halepensis,1,0%,,
 Viale Michelangelo,Melia azedarach,1,0%,,
 Viale Michelangelo,Ligustrum lucidum,1,0%,,
 Viale Michelangelo,Lagerstroemia indica,1,0%,,
@@ -53,5 +55,8 @@ Viale Michelangelo,Hesperocyparis arizonica,1,0%,,
 Viale Michelangelo,Gleditsia triacanthos,1,0%,,
 Viale Michelangelo,Ginkgo biloba,1,0%,,
 Viale Michelangelo,Ficus microcarpa,1,0%,,
+Viale Michelangelo,Ficus benjamina,1,0%,,
+Viale Michelangelo,Ceiba speciosa,1,0%,,
 Viale Michelangelo,Ailanthus altissima,1,0%,,
 Viale Michelangelo,Acer negundo,1,0%,,
+Viale Regina Margherita,Platanus Hybrida,8,100%,,
