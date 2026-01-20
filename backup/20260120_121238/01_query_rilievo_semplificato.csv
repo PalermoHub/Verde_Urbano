@@ -1419,210 +1419,178 @@ AO016AO,ALB_1417,Via Oreto,32350,2357,17/11/2025,Greehill,10372,,,38.09257352,13
 AO017AO,ALB_1418,Via Oreto,32350,2357,17/11/2025,Greehill,10373,Populus nigra,,38.09378233,13.37555668,8.78,0.14,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,37,97.76,57
 AO018AO,ALB_1419,Via Oreto,32350,2357,17/11/2025,Greehill,10374,Brachychiton acerifolius,,38.09405182,13.37568418,5.24,0.28,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,85.4,225.66,51
 AO019AO,ALB_1420,Via Oreto,32350,2357,17/11/2025,Greehill,10376,Platycladus orientalis,,38.09278554,13.37606311,5.66,0.2,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,68.19,180.2,42
-AO020AO,ALB_1421,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,001,Sophora japonica,Cercine,38.13384333,13.34270054,,,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,134.08,354.31,42
-AO021AO,ALB_1422,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,002,Sophora japonica,Cercine,38.13387498,13.34277968,7,,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,335.12,885.57,9
-AO022AO,ALB_1423,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,003,Sophora japonica,Cercine,38.13384296,13.34269322,,,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,218.89,578.43,15
-AO023AO,ALB_1424,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,004,Sophora japonica,Cercine,38.13387961,13.34278115,8,,,,,,Tumore Cavità Branchiali,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,290.71,768.21,9
-AO024AO,ALB_1425,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,005,Sophora japonica,Cercine,38.13403226,13.34319759,8,,,,,,Grosso Tumore Cavità Branchiali,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,21.83,57.69,7 D
-AO025AO,ALB_1426,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,006,Sophora japonica,Cercine,38.13407328,13.34329337,6,,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,212.54,561.65,7 C
-AO026AO,ALB_1427,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,007,Pittosphorum,Cercine,38.1341567,13.3434722,2,,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,171.52,453.25,40
-AO027AO,ALB_1428,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,008,Sophora japonica,Cercine,38.13420263,13.34358163,8,,,,,,Cavità Branchiali,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,200.35,529.42,40
-AO028AO,ALB_1429,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,009,Sophora japonica,Cercine,38.13422798,13.34366017,8,,,,,,Grossa Cavità Branchiali,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,166.74,440.62,38
-AO029AO,ALB_1430,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,010,Sophora japonica,Cercine,38.13425544,13.34372528,8,,,,,,Cavità Branchiali,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,26.15,69.09,38
-AO030AO,ALB_1431,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,011,Sophora japonica,Cercine,38.13524677,13.34616189,8,,,,,,Cavità Branchiali,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,165.22,436.59,7 B
-AO031AO,ALB_1432,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,012,Sophora japonica,Cercine,38.13535542,13.34648308,7,,,,,,Seccume,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,150.71,398.25,38
-AO032AO,ALB_1433,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,013,Sophora japonica,Cercine,38.1353839,13.34652667,7,,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,19.37,51.18,7 A
-AO033AO,ALB_1434,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,014,Sophora japonica,Cercine,38.13545141,13.3465783,0,,,,Ceppaia,,Ceppo,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,84.37,222.94,38
-AO034AO,ALB_1435,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,015,Sophora japonica,Cercine,38.13552472,13.3467104,0,,,,Ceppaia,,Ceppo,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,127.32,336.45,7 A
-AO035AO,ALB_1436,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,016,Sophora japonica,Cercine,38.13550257,13.34682439,7,,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,276.11,729.63,38
-AO036AO,ALB_1437,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,017,Sophora japonica,Cercine,38.13539867,13.3468834,8,,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,119.41,315.54,9
-AO037AO,ALB_1438,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,018,Sophora japonica,Cercine,38.13525055,13.34669715,,,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,78.42,207.22,7 A
-AO038AO,ALB_1439,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,019,Sophora japonica,Cercine,38.13527689,13.34658551,0,,,,Ceppaia,,Ceppo,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,201.82,533.31,7 E
-AO039AO,ALB_1440,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,020,Sophora japonica,Cercine,38.13527313,13.34654484,7,,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,196.16,518.36,13
-AO040AO,ALB_1441,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,021,Sophora japonica,Cercine,38.13551586,13.34689571,8,,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,135.85,358.98,7
-AO041AO,ALB_1442,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,022,Sophora japonica,Cercine,38.13553907,13.34697625,0,,,,Ceppaia,,Ceppo,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,125.23,330.93,7 E
-AO042AO,ALB_1443,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,023,Sophora japonica,Cercine,38.13556507,13.34703149,0,,,,Ceppaia,,Ceppo,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,94.13,248.73,7
-AO043AO,ALB_1444,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,024,Sophora japonica,Cercine,38.13564946,13.34724674,7,,,,,,Seccume,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,157.01,414.89,38
-AO044AO,ALB_1445,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,025,Sophora japonica,Cercine,38.1354435,13.34655818,7,,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,129.57,342.39,7 C
-AO045AO,ALB_1446,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,026,Sophora japonica,Cercine,38.13577234,13.347523,7,,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,123.55,326.49,5
-AO046AO,ALB_1447,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,027,Sophora japonica,Cercine,38.13580083,13.34763297,0,,,,Ceppaia,,Ceppo,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,133.44,352.61,5
-AO047AO,ALB_1448,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,028,Sophora japonica,Cercine,38.13587994,13.3477872,5,,,,,,Giovane,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,24.36,64.36,1 H
-AO048AO,ALB_1449,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,029,Sophora japonica,Cercine,38.13591053,13.34787974,7,,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,80.74,213.36,34 A
-AO049AO,ALB_1450,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,030,Sophora japonica,Cercine,38.13594165,13.3479535,4,,,,,,Giovane,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,63.21,167.03,32
-AO050AO,ALB_1451,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,031,Sophora japonica,Cercine,38.13597698,13.34806749,2,,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,14.37,37.96,34 A
-AO051AO,ALB_1452,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,032,Sophora japonica,Cercine,38.13601179,13.34814528,0,,,,Ceppaia,,Ceppo,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,13.76,36.36,32
-AO052AO,ALB_1453,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,033,Sophora japonica,Cercine,38.13587898,13.3480599,3,,,,,,Giovane,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,10.1,26.68,32
-AO053AO,ALB_1454,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,034,Sophora japonica,Cercine,38.13585138,13.34800329,0,,,,Ceppaia,,Ceppo,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,,,32
-AO054AO,ALB_1455,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,035,Sophora japonica,Cercine,38.13581563,13.34792992,0,,,,Ceppaia,,Ceppo,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,,,32
-AO055AO,ALB_1456,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,036,Sophora japonica,Cercine,38.13580016,13.34785779,7,,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,,,30
-AO056AO,ALB_1457,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,037,Sophora japonica,Cercine,38.13576219,13.34777532,0,,,,Ceppaia,,Ceppo,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,,,32
-AO057AO,ALB_1458,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,038,Sophora japonica,Cercine,38.13573002,13.34768278,8,,,,,,Branche Cave,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,,,28
-AO058AO,ALB_1459,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,039,Sophora japonica,Cercine,38.13569046,13.34758287,0,,,,Ceppaia,,Ceppo,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,,,26
-AO059AO,ALB_1460,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,040,Sophora japonica,Cercine,38.13563508,13.3474729,0,,,,Ceppaia,,Ceppo,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,,,3
-AO060AO,ALB_1461,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,041,Sophora japonica,Cercine,38.13558867,13.34729654,0,,,,Ceppaia,,Ceppo,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,,,24
-AO061AO,ALB_1462,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,042,Sophora japonica,Cercine,38.13556335,13.34720468,0,,,,Ceppaia,,Ceppo,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,,,3
-AO062AO,ALB_1463,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,043,Sophora japonica,Cercine,38.13548054,13.34703369,0,,,,Ceppaia,,Ceppo,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,,,22
-AO063AO,ALB_1464,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,044,Sophora japonica,Cercine,38.13528171,13.34652407,0,,,,Ceppaia,,Ceppo,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,,,3
-AO064AO,ALB_1465,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,045,Sophora japonica,Cercine,38.13524584,13.34641074,0,,,,Ceppaia,,Ceppo,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,,,36
-AO065AO,ALB_1466,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,046,Sophora japonica,Cercine,38.13518888,13.34632625,0,,,,Ceppaia,,Ceppo,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,,,36
-AO066AO,ALB_1467,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,047,Sophora japonica,Cercine,38.13514563,13.34621561,8,,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,,,34 L
-AO067AO,ALB_1468,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,048,Sophora japonica,Cercine,38.13512295,13.34615392,9,,,,,,Branche Cave,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,,,34 G
-AO068AO,ALB_1469,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,049,Sophora japonica,Cercine,38.13507706,13.34601512,8,,,,,,Branche Cave,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,,,34 M
-AO069AO,ALB_1470,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,050,Sophora japonica,Cercine,38.13504542,13.3459199,8,,,,,,Branche Cave,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,,,5
-AO070AO,ALB_1471,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,051,Sophora japonica,Cercine,38.13499689,13.34585754,8,,,,,,Branche Cave,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,,,34 B
-AO071AO,ALB_1472,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,052,Sophora japonica,Cercine,38.13414647,13.34370361,8,,,,,,Branche Cave,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,,,34
-AO072AO,ALB_1473,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,053,Sophora japonica,Cercine,38.13411141,13.34361637,7,,,,,,Giovane,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,,,34
-AO073AO,ALB_1474,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,054,Sophora japonica,Cercine,38.13407039,13.34351964,8,,,,,,"Funghi, Branche Cave",,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,,,5
-AO074AO,ALB_1475,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,055,Sophora japonica,Cercine,38.13395999,13.34324084,7,,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,,,34 A
-AO075AO,ALB_1476,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,056,Sophora japonica,Cercine,38.13393463,13.34316592,8,,,,,,"MarciumeRadricale, Branche Cave",,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,,,5
-AO076AO,ALB_1477,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,057,Sophora japonica,Cercine,38.1338869,13.34306066,8,,,,,,Branche Cave,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,,,34 G
-AO077AO,ALB_1478,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,058,Sophora japonica,Cercine,38.1338675,13.34296583,8,,,,,,Grosse Branche Cave,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,,,36
-AO078AO,ALB_1479,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,059,Sophora japonica,Cercine,38.13377874,13.34274393,8,,,,,,Grosse Branche Cave,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,,,24
-AO079AO,ALB_1480,Via Rapisardi Marioa,41130,635,12/01/2026,Ufficio,060,Sophora japonica,Cercine,38.13373995,13.34267281,0,,,,Ceppaia,,Ceppo,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,,,20
-AO080AO,ALB_1481,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16851,Styphnolobium japonicum,,38.13619006,13.34147923,9,0.31,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,150.97,398.94,22
-AO081AO,ALB_1482,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16858,Styphnolobium japonicum,,38.13615843,13.34140594,9.8,0.39,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,214.38,566.51,18
-AO082AO,ALB_1483,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16859,Styphnolobium japonicum,,38.13607283,13.34145787,9.4,0.35,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,137.36,362.99,14
-AO083AO,ALB_1484,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16876,Styphnolobium japonicum,,38.13610435,13.34126947,8.7,0.25,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,76.01,200.84,12
-AO084AO,ALB_1485,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16877,Styphnolobium japonicum,,38.13604587,13.34139137,9.4,0.41,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,274.22,724.64,20
-AO085AO,ALB_1486,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16888,,,38.13608062,13.34120639,1.62,0.03,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,-,-,20
-AO086AO,ALB_1487,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16889,Styphnolobium japonicum,,38.13599384,13.34126127,9.6,0.45,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,216.81,572.94,8
-AO087AO,ALB_1488,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16891,Styphnolobium japonicum,,38.13613086,13.34133671,9.55,0.46,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,271.02,716.18,16
-AO088AO,ALB_1489,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16869,Styphnolobium japonicum,,38.13662011,13.3428171,8.76,0.21,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,88.89,234.88,6
-AO089AO,ALB_1490,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16855,Styphnolobium japonicum,,38.13664216,13.3428723,8.97,0.41,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,187.1,494.41,14
-AO090AO,ALB_1491,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16849,Styphnolobium japonicum,,38.13668733,13.34298464,10,0.55,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,415.01,1096.69,1
-AO091AO,ALB_1492,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16862,Styphnolobium japonicum,,38.13670429,13.342759,8.03,0.34,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,180.08,475.86,1
-AO092AO,ALB_1493,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16874,Acer negundo,,38.13677446,13.34293725,7.05,0.48,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,19.12,50.51,1
-AO093AO,ALB_1494,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16848,Styphnolobium japonicum,,38.13679547,13.34325459,9.99,0.44,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,209.03,552.37,1
-AO094AO,ALB_1495,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16880,Styphnolobium japonicum,,38.13684845,13.34338896,9.2,0.18,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,56.44,149.15,2 A
-AO095AO,ALB_1496,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16846,Styphnolobium japonicum,,38.1368765,13.34345607,8.67,0.44,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,179.05,473.15,49 A
-AO096AO,ALB_1497,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16850,Styphnolobium japonicum,,38.1369022,13.34352049,7.57,0.26,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,136.11,359.68,49
-AO097AO,ALB_1498,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16872,Styphnolobium japonicum,,38.13693483,13.34360181,6.79,0.17,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,66.99,177.02,47
-AO098AO,ALB_1499,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16887,Styphnolobium japonicum,,38.13696079,13.3436621,9,0.39,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,214.08,565.7,47
-AO099AO,ALB_1500,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16861,Styphnolobium japonicum,,38.13696212,13.34340181,7.18,0.34,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,203.98,539.02,49
-AP000AP,ALB_1501,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16875,Styphnolobium japonicum,,38.13698898,13.34373322,8.52,0.36,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,153.31,405.13,44
-AP001AP,ALB_1502,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16892,Styphnolobium japonicum,,38.13698901,13.34346765,8.6,0.34,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,173.46,458.38,44
-AP002AP,ALB_1503,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16883,Styphnolobium japonicum,,38.13701707,13.34380162,9.05,0.33,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,168.98,446.54,44
-AP003AP,ALB_1504,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16879,Styphnolobium japonicum,,38.13702057,13.34354827,6.8,0.35,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,183.74,485.53,44
-AP004AP,ALB_1505,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16885,Styphnolobium japonicum,,38.1370432,13.34387418,8.99,0.42,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,291.69,770.8,33
-AP005AP,ALB_1506,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16896,Styphnolobium japonicum,,38.13680382,13.34301038,9.32,0.41,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,161.43,426.59,33
-AP006AP,ALB_1507,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16898,Styphnolobium japonicum,,38.13704508,13.3436067,7.19,0.15,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,41.01,108.35,35
-AP007AP,ALB_1508,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16899,Styphnolobium japonicum,,38.1368607,13.34314378,9.58,0.23,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,97.66,258.07,33
-AP008AP,ALB_1509,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16900,Styphnolobium japonicum,,38.13672644,13.3428186,8.97,0.45,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,305.9,808.35,33
-AP009AP,ALB_1510,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16902,Styphnolobium japonicum,,38.13710053,13.34374863,6.31,0.26,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,118.35,312.74,33
-AP010AP,ALB_1511,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16904,Styphnolobium japonicum,,38.13683276,13.34307647,9.59,0.48,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,204.11,539.37,23
-AP011AP,ALB_1512,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16907,Styphnolobium japonicum,,38.1371299,13.34381928,7.02,0.3,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,102,269.55,42
-AP012AP,ALB_1513,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16909,Styphnolobium japonicum,,38.13707588,13.34367873,7.37,0.34,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,178.45,471.55,23
-AP013AP,ALB_1514,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16910,Melia azedarach,,38.1368242,13.34332007,4.12,0.06,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,9.02,23.82,47
-AP014AP,ALB_1515,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16394,Styphnolobium japonicum,,38.13757839,13.34492674,7.8,0.11,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,25.56,67.55,27
-AP015AP,ALB_1516,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16305,Styphnolobium japonicum,,38.1376006,13.34498347,10.84,0.32,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,111.51,294.65,19
-AP016AP,ALB_1517,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16284,Koelreuteria paniculata,,38.13760591,13.34534544,8.03,0.32,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,77.08,203.68,23
-AP017AP,ALB_1518,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16266,Styphnolobium japonicum,,38.13762481,13.34504386,11.8,0.36,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,130.1,343.8,43
-AP018AP,ALB_1519,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16343,Cercis siliquastrum,,38.13764507,13.34536311,3.09,0.06,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,11.32,29.91,47
-AP019AP,ALB_1520,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16259,Styphnolobium japonicum,,38.13764708,13.3450994,11.27,0.46,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,220.8,583.47,37
-AP020AP,ALB_1521,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16320,Styphnolobium japonicum,,38.13766966,13.34542434,8.88,0.21,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,59.83,158.1,27
-AP021AP,ALB_1522,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16290,Styphnolobium japonicum,,38.13769506,13.34548628,9.05,0.33,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,134.2,354.63,44
-AP022AP,ALB_1523,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16312,Robinia pseudoacacia,,38.13772171,13.3455499,8.97,0.16,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,27.35,72.27,42
-AP023AP,ALB_1524,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16342,Cercis siliquastrum,,38.13773064,13.3453096,3.72,0.08,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,15.2,40.15,35
-AP024AP,ALB_1525,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16282,Robinia pseudoacacia,,38.13774323,13.34560149,9.79,0.21,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,53.12,140.36,19
-AP025AP,ALB_1526,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16363,Styphnolobium japonicum,,38.1377562,13.34537079,9.09,0.35,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,126.45,334.16,23
-AP026AP,ALB_1527,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16278,Styphnolobium japonicum,,38.13776473,13.34566003,8.96,0.16,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,42.18,111.46,2 A
-AP027AP,ALB_1528,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16272,Styphnolobium japonicum,,38.13778725,13.34571679,7.69,0.23,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,67.36,178.01,2
-AP028AP,ALB_1529,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16371,Styphnolobium japonicum,,38.13778398,13.34544113,10.6,0.41,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,119.34,315.36,2
-AP029AP,ALB_1530,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16308,Styphnolobium japonicum,,38.13781095,13.34577397,9.36,0.25,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,77.96,206,2
-AP030AP,ALB_1531,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16265,Styphnolobium japonicum,,38.13781436,13.34551343,10.47,0.25,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,79.54,210.18,2
-AP031AP,ALB_1532,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16338,Styphnolobium japonicum,,38.13783187,13.34582807,9.51,0.34,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,122.45,323.58,2 A
-AP032AP,ALB_1533,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16293,Robinia pseudoacacia,,38.13784391,13.34559089,8.34,0.19,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,46.82,123.71,2 A
-AP033AP,ALB_1534,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16466,Styphnolobium japonicum,,38.13717415,13.34419579,8.55,0.37,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,230.83,609.97,2
-AP034AP,ALB_1535,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16472,Styphnolobium japonicum,,38.13720033,13.3442584,6.79,0.32,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,157.86,417.15,74 B
-AP035AP,ALB_1536,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16462,Styphnolobium japonicum,,38.13724624,13.34437349,6.98,0.4,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,255.95,676.35,74 B
-AP036AP,ALB_1537,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16467,Styphnolobium japonicum,,38.13728387,13.34420068,8.32,0.4,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,255.93,676.3,1
-AP037AP,ALB_1538,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16463,Styphnolobium japonicum,,38.13730809,13.34426253,7.2,0.4,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,263.72,696.9,1
-AP038AP,ALB_1539,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16465,Styphnolobium japonicum,,38.13733316,13.34432397,8.12,0.33,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,196.52,519.32,3
-AP039AP,ALB_1540,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16471,Styphnolobium japonicum,,38.13735838,13.34438129,8.52,0.54,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,406.57,1074.39,5
-AP040AP,ALB_1541,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16469,Styphnolobium japonicum,,38.13738479,13.34471877,8.39,0.28,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,91.6,242.05,7
-AP041AP,ALB_1542,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16268,Styphnolobium japonicum,,38.13741613,13.34479048,9.86,0.3,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,100.52,265.62,31
-AP042AP,ALB_1543,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16470,Styphnolobium japonicum,,38.13744209,13.34459246,8.84,0.36,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,155.14,409.95,33
-AP043AP,ALB_1544,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16288,Styphnolobium japonicum,,38.13750128,13.34473459,9.38,0.21,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,61.82,163.37,1 A
-AP044AP,ALB_1545,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16298,Styphnolobium japonicum,,38.13751273,13.34503364,8.14,0.11,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,24.8,65.52,3
-AP045AP,ALB_1546,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16358,Yucca gigantea,,38.13751917,13.34516013,9.31,-,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,-,-,13
-AP046AP,ALB_1547,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16402,Chamaerops humilis,,38.13751746,13.34517937,3.05,0.27,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,7.92,20.91,33
-AP047AP,ALB_1548,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16317,Styphnolobium japonicum,,38.13752702,13.34479978,7.8,0.1,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,21.57,56.99,29
-AP048AP,ALB_1549,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16254,Styphnolobium japonicum,,38.13753846,13.34509682,9.39,0.24,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,84.42,223.07,35
-AP049AP,ALB_1550,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16334,Styphnolobium japonicum,,38.13755627,13.34487639,11.27,0.24,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,71.57,189.12,1 A
-AP050AP,ALB_1551,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16485,Styphnolobium japonicum,,38.1374731,13.34466855,10.96,0.31,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,108.9,287.77,33
-AP051AP,ALB_1552,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16489,Styphnolobium japonicum,,38.13722314,13.34431803,4.8,0.14,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,52.15,137.81,23
-AP052AP,ALB_1553,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16347,Styphnolobium japonicum,,38.13789473,13.34571491,6.92,0.1,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,20.27,53.55,3
-AP053AP,ALB_1554,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16314,Styphnolobium japonicum,,38.13790397,13.34600682,9.08,0.35,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,125.14,330.68,
-AP054AP,ALB_1555,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16339,Styphnolobium japonicum,,38.13791957,13.34577484,7.76,0.14,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,34.23,90.43,
-AP055AP,ALB_1556,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16385,Styphnolobium japonicum,,38.13793363,13.34607713,10.48,0.25,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,78,206.1,
-AP056AP,ALB_1557,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16319,Robinia pseudoacacia,,38.13795694,13.34613525,5.79,0.09,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,15.6,41.21,
-AP057AP,ALB_1558,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16301,Styphnolobium japonicum,,38.13797913,13.34619013,8.95,0.21,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,59.66,157.66,
-AP058AP,ALB_1559,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16345,Styphnolobium japonicum,,38.13798837,13.3459447,9.33,0.33,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,88.49,233.84,
-AP059AP,ALB_1560,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16329,Styphnolobium japonicum,,38.13800859,13.34600003,11.18,0.31,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,80.86,213.66,
-AP060AP,ALB_1561,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16351,Robinia pseudoacacia,,38.13802112,13.34629745,7.65,0.19,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,47.48,125.45,
-AP061AP,ALB_1562,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16378,Robinia pseudoacacia,,38.13803382,13.34605746,9.43,0.21,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,39.61,104.66,
-AP062AP,ALB_1563,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16352,Robinia pseudoacacia,,38.13804567,13.346359,5.5,0.12,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,22.86,60.41,
-AP063AP,ALB_1564,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16270,Styphnolobium japonicum,,38.13805611,13.34611357,11,0.25,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,57.48,151.88,
-AP064AP,ALB_1565,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16331,Styphnolobium japonicum,,38.1380783,13.34616898,7.32,0.07,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,9.27,24.5,
-AP065AP,ALB_1566,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16246,Styphnolobium japonicum,,38.13810182,13.34622533,8.79,0.3,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,99.77,263.64,
-AP066AP,ALB_1567,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16375,Robinia pseudoacacia,,38.13812387,13.34628079,6.87,0.16,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,27.9,73.72,
-AP067AP,ALB_1568,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16361,Styphnolobium japonicum,,38.13814443,13.34633108,6.47,0.08,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,11.52,30.42,
-AP068AP,ALB_1569,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16368,Styphnolobium japonicum,,38.13816647,13.34638801,6.91,0.13,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,31.8,84.02,
-AP069AP,ALB_1570,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16860,Styphnolobium japonicum,,38.13609877,13.34152574,8.23,0.24,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,108.2,285.92,
-AP070AP,ALB_1571,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16868,Styphnolobium japonicum,,38.13612535,13.34158812,9.35,0.24,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,107.08,282.95,
-AP071AP,ALB_1572,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16847,Styphnolobium japonicum,,38.13615249,13.34165561,9.49,0.37,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,136.74,361.33,
-AP072AP,ALB_1573,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16867,Styphnolobium japonicum,,38.13620353,13.3417841,8.46,0.3,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,150.18,396.87,
-AP073AP,ALB_1574,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16853,Styphnolobium japonicum,,38.13621146,13.34153623,8.8,0.44,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,295.44,780.71,
-AP074AP,ALB_1575,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16857,Styphnolobium japonicum,,38.13622983,13.34184994,8.91,0.36,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,191.76,506.73,
-AP075AP,ALB_1576,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16844,Styphnolobium japonicum,,38.13625772,13.34191731,9,0.31,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,154.16,407.36,
-AP076AP,ALB_1577,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16852,Styphnolobium japonicum,,38.13629323,13.34200601,9.2,0.42,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,238.49,630.22,
-AP077AP,ALB_1578,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16864,Styphnolobium japonicum,,38.13634416,13.34213291,8.74,0.4,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,152.33,402.52,
-AP078AP,ALB_1579,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16854,Styphnolobium japonicum,,38.13636979,13.34219527,8.36,0.34,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,205.57,543.22,
-AP079AP,ALB_1580,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16870,Styphnolobium japonicum,,38.13639593,13.34225749,9.29,0.31,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,104.42,275.94,
-AP080AP,ALB_1581,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16866,Styphnolobium japonicum,,38.13640445,13.34201392,8.51,0.31,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,153.89,406.67,
-AP081AP,ALB_1582,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16856,Styphnolobium japonicum,,38.13642001,13.34232026,9.4,0.37,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,195.94,517.79,
-AP082AP,ALB_1583,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16863,Styphnolobium japonicum,,38.13645381,13.34213962,7.48,0.28,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,92.36,244.06,
-AP083AP,ALB_1584,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16865,Styphnolobium japonicum,,38.1365067,13.34226681,8.06,0.12,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,39.12,103.38,
-AP084AP,ALB_1585,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16845,Styphnolobium japonicum,,38.1365169,13.34256587,8.9,0.26,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,62.27,164.55,
-AP085AP,ALB_1586,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16871,Styphnolobium japonicum,,38.13654313,13.34262476,6.33,0.37,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,151.6,400.59,
-AP086AP,ALB_1587,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16873,Styphnolobium japonicum,,38.13649381,13.3425062,8.34,0.2,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,42.98,113.57,
-AP087AP,ALB_1588,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16878,Styphnolobium japonicum,,38.13617792,13.34171861,9.59,0.36,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,132.83,351.01,
-AP088AP,ALB_1589,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16881,Styphnolobium japonicum,,38.13644515,13.34238492,9.52,0.2,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,81.68,215.83,
-AP089AP,ALB_1590,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16882,Styphnolobium japonicum,,38.13665031,13.3426302,9.59,0.52,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,229.52,606.51,
-AP090AP,ALB_1591,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16884,Styphnolobium japonicum,,38.13647055,13.34244421,9.97,0.43,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,173.03,457.23,
-AP091AP,ALB_1592,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16886,Styphnolobium japonicum,,38.13634234,13.34186187,9.58,0.45,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,268.2,708.72,
-AP092AP,ALB_1593,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16890,Styphnolobium japonicum,,38.13626368,13.34166451,9.75,0.47,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,231.44,611.6,
-AP093AP,ALB_1594,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16893,Styphnolobium japonicum,,38.13637972,13.34195311,8.92,0.27,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,129.14,341.24,
-AP094AP,ALB_1595,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16894,Styphnolobium japonicum,,38.13653021,13.3423287,9.26,0.33,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,194.66,514.39,
-AP095AP,ALB_1596,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16895,Styphnolobium japonicum,,38.13631768,13.34206594,10.46,0.38,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,145.42,384.29,
-AP096AP,ALB_1597,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16897,Cercis siliquastrum,,38.13656679,13.34268417,3.1,0.04,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,11.12,29.38,
-AP097AP,ALB_1598,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16901,Styphnolobium japonicum,,38.13642851,13.34207445,8.38,0.24,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,72.5,191.57,
-AP098AP,ALB_1599,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16903,Styphnolobium japonicum,,38.13667838,13.34270017,7.76,0.14,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,48.63,128.51,
-AP099AP,ALB_1600,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16905,Styphnolobium japonicum,,38.13660397,13.3425108,7.53,0.41,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,160.48,424.07,
-AQ000AQ,ALB_1601,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16387,Robinia pseudoacacia,,38.13808081,13.34644128,6.92,0.25,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,66.76,176.42,
-AQ001AQ,ALB_1602,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16355,Robinia pseudoacacia,,38.13812461,13.34654967,4.46,0.13,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,30.04,79.37,
-AQ002AQ,ALB_1603,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16316,Styphnolobium japonicum,,38.13814769,13.34660786,5.38,0.21,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,71.91,190.02,
-AQ003AQ,ALB_1604,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16350,Styphnolobium japonicum,,38.13816983,13.34666282,6.06,0.14,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,51.04,134.87,
-AQ004AQ,ALB_1605,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16313,Styphnolobium japonicum,,38.13819085,13.34671724,6.11,0.15,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,63.92,168.91,
-AQ005AQ,ALB_1606,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16300,Styphnolobium japonicum,,38.13818854,13.3464441,7.82,0.2,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,57.76,152.62,
-AQ006AQ,ALB_1607,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16309,Styphnolobium japonicum,,38.13821244,13.34650052,7.28,0.16,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,30.71,81.15,
-AQ007AQ,ALB_1608,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16392,Styphnolobium japonicum,,38.13823393,13.34655508,6.84,0.21,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,71.74,189.58,
-AQ008AQ,ALB_1609,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16321,Robinia pseudoacacia,,38.13825767,13.34661176,5.9,0.13,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,26.72,70.59,
-AQ009AQ,ALB_1610,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16257,Styphnolobium japonicum,,38.13828018,13.34666707,7.54,0.22,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,64.48,170.38,
-AQ010AQ,ALB_1611,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19773,Melia azedarach,,38.1086557,13.36243351,11.18,0.53,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,319.57,844.49,
-AQ011AQ,ALB_1612,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19774,Melia azedarach,,38.10872278,13.36252653,11.17,0.38,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,211.05,557.7,
-AQ012AQ,ALB_1613,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19783,Melia azedarach,,38.1084475,13.36270494,11.8,0.43,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,161.38,426.44,
-AQ013AQ,ALB_1614,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19776,Melia azedarach,,38.10837736,13.36274952,11.86,0.39,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,140.09,370.2,
-AQ014AQ,ALB_1615,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19781,Melia azedarach,,38.1082355,13.36284138,11,0.43,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,237.16,626.7,
-AQ015AQ,ALB_1616,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19780,Melia azedarach,,38.10761841,13.36310649,10.35,0.34,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,112.92,298.39,
-AQ016AQ,ALB_1617,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19775,Melia azedarach,,38.10762385,13.36323939,9.8,0.52,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,209.23,552.89,
-AQ017AQ,ALB_1618,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19784,Melia azedarach,,38.10858828,13.36261342,9.42,0.43,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,158.27,418.23,
-AQ018AQ,ALB_1619,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19785,Melia azedarach,,38.10851765,13.36265858,11.99,0.34,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,125.3,331.1,
-AQ019AQ,ALB_1620,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19786,Melia azedarach,,38.10809213,13.36293406,10.24,0.37,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,136.32,360.24,
-AQ020AQ,ALB_1621,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19787,Melia azedarach,,38.10754374,13.36328966,10.07,0.43,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,161.65,427.15,
-AQ021AQ,ALB_1622,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19792,Melia azedarach,,38.10777592,13.36313976,11.28,0.37,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,128.6,339.82,
-AQ022AQ,ALB_1623,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19796,Melia azedarach,,38.10736247,13.36327424,8.44,0.44,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,162.87,430.4,
-AQ023AQ,ALB_1624,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19803,Melia azedarach,,38.10858297,13.36248246,10.93,0.35,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,121.92,322.17,
-AQ024AQ,ALB_1625,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19811,Melia azedarach,,38.10754562,13.3631534,10.02,0.38,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,132.61,350.43,
-AQ025AQ,ALB_1626,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19817,Melia azedarach,,38.1077751,13.36300562,10.87,0.39,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,140.6,371.52,
-AQ026AQ,ALB_1627,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19818,Melia azedarach,,38.10843823,13.36257624,9.4,0.32,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,111.26,294.01,
+AO020AO,ALB_1421,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,16192,Styphnolobium japonicum,,38.13387058,13.34276824,8.59,0.25,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,134.08,354.31,42
+AO021AO,ALB_1422,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,16167,Styphnolobium japonicum,,38.13386174,13.34306046,9.72,0.47,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,335.12,885.57,9
+AO022AO,ALB_1423,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,16201,Styphnolobium japonicum,,38.13399868,13.34309583,8.29,0.46,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,218.89,578.43,15
+AO023AO,ALB_1424,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,16162,Styphnolobium japonicum,,38.13402789,13.34317497,9.17,0.43,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,290.71,768.21,9
+AO024AO,ALB_1425,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,16149,Styphnolobium japonicum,,38.13393133,13.3432419,6.4,0.29,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,21.83,57.69,7 D
+AO025AO,ALB_1426,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,16205,Styphnolobium japonicum,,38.13389941,13.3431587,8.79,0.35,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,212.54,561.65,7 C
+AO026AO,ALB_1427,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,16206,Styphnolobium japonicum,,38.13382998,13.34298236,10.39,0.43,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,171.52,453.25,40
+AO027AO,ALB_1428,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,16144,Styphnolobium japonicum,,38.1337392,13.34275105,9.94,0.43,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,200.35,529.42,40
+AO028AO,ALB_1429,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,16141,Styphnolobium japonicum,,38.1340455,13.34352571,9.31,0.38,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,166.74,440.62,38
+AO029AO,ALB_1430,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,16143,Styphnolobium japonicum,,38.13408669,13.34363248,7.48,0.14,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,26.15,69.09,38
+AO030AO,ALB_1431,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,16137,Styphnolobium japonicum,,38.13421305,13.34364011,8.92,0.42,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,165.22,436.59,7 B
+AO031AO,ALB_1432,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,16139,Styphnolobium japonicum,,38.13411465,13.34370159,9.31,0.39,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,150.71,398.25,38
+AO032AO,ALB_1433,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,16191,Styphnolobium japonicum,,38.13406737,13.34326471,8.14,0.12,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,19.37,51.18,7 A
+AO033AO,ALB_1434,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,16169,Styphnolobium japonicum,,38.13418659,13.34356966,8.72,0.26,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,84.37,222.94,38
+AO034AO,ALB_1435,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,16135,Styphnolobium japonicum,,38.13423727,13.3437016,8.47,0.32,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,127.32,336.45,7 A
+AO035AO,ALB_1436,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,17037,Styphnolobium japonicum,,38.13508589,13.34614749,9.78,0.53,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,276.11,729.63,38
+AO036AO,ALB_1437,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,17040,Styphnolobium japonicum,,38.1351164,13.34622288,8.8,0.34,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,119.41,315.54,9
+AO037AO,ALB_1438,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,17045,Styphnolobium japonicum,,38.1353357,13.34646738,7.99,0.25,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,78.42,207.22,7 A
+AO038AO,ALB_1439,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,17050,Styphnolobium japonicum,,38.13521437,13.34615835,9.26,0.48,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,201.82,533.31,7 E
+AO039AO,ALB_1440,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,17068,Styphnolobium japonicum,,38.13497326,13.34586525,8.79,0.42,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,196.16,518.36,13
+AO040AO,ALB_1441,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,17075,Styphnolobium japonicum,,38.13500675,13.34594927,8.65,0.33,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,135.85,358.98,7
+AO041AO,ALB_1442,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,17083,Styphnolobium japonicum,,38.1350398,13.3460344,8.8,0.31,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,125.23,330.93,7 E
+AO042AO,ALB_1443,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,17070,Styphnolobium japonicum,,38.13550133,13.34688418,9.68,0.29,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,94.13,248.73,7
+AO043AO,ALB_1444,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,17041,Styphnolobium japonicum,,38.13564829,13.34724682,8.16,0.31,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,157.01,414.89,38
+AO044AO,ALB_1445,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,17055,Styphnolobium japonicum,,38.13571723,13.34741885,8.2,0.35,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,129.57,342.39,7 C
+AO045AO,ALB_1446,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,17066,Styphnolobium japonicum,,38.13575531,13.34751398,7.88,0.34,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,123.55,326.49,5
+AO046AO,ALB_1447,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,17080,Styphnolobium japonicum,,38.13569517,13.34767713,8.28,0.33,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,133.44,352.61,5
+AO047AO,ALB_1448,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,17078,Styphnolobium japonicum,,38.13586868,13.34779745,5.6,0.11,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,24.36,64.36,1 H
+AO048AO,ALB_1449,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,17073,Styphnolobium japonicum,,38.13576867,13.34786067,7.48,0.26,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,80.74,213.36,34 A
+AO049AO,ALB_1450,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,17059,Styphnolobium japonicum,,38.13590089,13.3478777,9.13,0.26,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,63.21,167.03,32
+AO050AO,ALB_1451,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,17079,Styphnolobium japonicum,,38.13593439,13.34796158,5.31,0.07,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,14.37,37.96,34 A
+AO051AO,ALB_1452,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,17082,Styphnolobium japonicum,,38.13586822,13.3481082,4.47,0.07,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,13.76,36.36,32
+AO052AO,ALB_1453,Via Rapisardi Mario,41130,635,17/11/2025,Greehill,17085,Melia azedarach,,38.13596156,13.34804005,3.26,0.07,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,10.1,26.68,32
+AO053AO,ALB_1454,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16851,Styphnolobium japonicum,,38.13619006,13.34147923,9,0.31,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,150.97,398.94,32
+AO054AO,ALB_1455,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16858,Styphnolobium japonicum,,38.13615843,13.34140594,9.8,0.39,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,214.38,566.51,32
+AO055AO,ALB_1456,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16859,Styphnolobium japonicum,,38.13607283,13.34145787,9.4,0.35,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,137.36,362.99,30
+AO056AO,ALB_1457,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16876,Styphnolobium japonicum,,38.13610435,13.34126947,8.7,0.25,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,76.01,200.84,32
+AO057AO,ALB_1458,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16877,Styphnolobium japonicum,,38.13604587,13.34139137,9.4,0.41,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,274.22,724.64,28
+AO058AO,ALB_1459,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16888,,,38.13608062,13.34120639,1.62,0.03,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,-,-,26
+AO059AO,ALB_1460,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16889,Styphnolobium japonicum,,38.13599384,13.34126127,9.6,0.45,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,216.81,572.94,3
+AO060AO,ALB_1461,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16891,Styphnolobium japonicum,,38.13613086,13.34133671,9.55,0.46,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,271.02,716.18,24
+AO061AO,ALB_1462,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16869,Styphnolobium japonicum,,38.13662011,13.3428171,8.76,0.21,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,88.89,234.88,3
+AO062AO,ALB_1463,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16855,Styphnolobium japonicum,,38.13664216,13.3428723,8.97,0.41,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,187.1,494.41,22
+AO063AO,ALB_1464,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16849,Styphnolobium japonicum,,38.13668733,13.34298464,10,0.55,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,415.01,1096.69,3
+AO064AO,ALB_1465,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16862,Styphnolobium japonicum,,38.13670429,13.342759,8.03,0.34,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,180.08,475.86,36
+AO065AO,ALB_1466,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16874,Acer negundo,,38.13677446,13.34293725,7.05,0.48,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,19.12,50.51,36
+AO066AO,ALB_1467,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16848,Styphnolobium japonicum,,38.13679547,13.34325459,9.99,0.44,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,209.03,552.37,34 L
+AO067AO,ALB_1468,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16880,Styphnolobium japonicum,,38.13684845,13.34338896,9.2,0.18,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,56.44,149.15,34 G
+AO068AO,ALB_1469,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16846,Styphnolobium japonicum,,38.1368765,13.34345607,8.67,0.44,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,179.05,473.15,34 M
+AO069AO,ALB_1470,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16850,Styphnolobium japonicum,,38.1369022,13.34352049,7.57,0.26,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,136.11,359.68,5
+AO070AO,ALB_1471,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16872,Styphnolobium japonicum,,38.13693483,13.34360181,6.79,0.17,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,66.99,177.02,34 B
+AO071AO,ALB_1472,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16887,Styphnolobium japonicum,,38.13696079,13.3436621,9,0.39,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,214.08,565.7,34
+AO072AO,ALB_1473,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16861,Styphnolobium japonicum,,38.13696212,13.34340181,7.18,0.34,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,203.98,539.02,34
+AO073AO,ALB_1474,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16875,Styphnolobium japonicum,,38.13698898,13.34373322,8.52,0.36,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,153.31,405.13,5
+AO074AO,ALB_1475,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16892,Styphnolobium japonicum,,38.13698901,13.34346765,8.6,0.34,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,173.46,458.38,34 A
+AO075AO,ALB_1476,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16883,Styphnolobium japonicum,,38.13701707,13.34380162,9.05,0.33,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,168.98,446.54,5
+AO076AO,ALB_1477,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16879,Styphnolobium japonicum,,38.13702057,13.34354827,6.8,0.35,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,183.74,485.53,34 G
+AO077AO,ALB_1478,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16885,Styphnolobium japonicum,,38.1370432,13.34387418,8.99,0.42,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,291.69,770.8,36
+AO078AO,ALB_1479,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16896,Styphnolobium japonicum,,38.13680382,13.34301038,9.32,0.41,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,161.43,426.59,24
+AO079AO,ALB_1480,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16898,Styphnolobium japonicum,,38.13704508,13.3436067,7.19,0.15,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,41.01,108.35,20
+AO080AO,ALB_1481,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16899,Styphnolobium japonicum,,38.1368607,13.34314378,9.58,0.23,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,97.66,258.07,22
+AO081AO,ALB_1482,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16900,Styphnolobium japonicum,,38.13672644,13.3428186,8.97,0.45,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,305.9,808.35,18
+AO082AO,ALB_1483,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16902,Styphnolobium japonicum,,38.13710053,13.34374863,6.31,0.26,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,118.35,312.74,14
+AO083AO,ALB_1484,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16904,Styphnolobium japonicum,,38.13683276,13.34307647,9.59,0.48,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,204.11,539.37,12
+AO084AO,ALB_1485,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16907,Styphnolobium japonicum,,38.1371299,13.34381928,7.02,0.3,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,102,269.55,20
+AO085AO,ALB_1486,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16909,Styphnolobium japonicum,,38.13707588,13.34367873,7.37,0.34,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,178.45,471.55,20
+AO086AO,ALB_1487,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16910,Melia azedarach,,38.1368242,13.34332007,4.12,0.06,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,9.02,23.82,8
+AO087AO,ALB_1488,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16394,Styphnolobium japonicum,,38.13757839,13.34492674,7.8,0.11,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,25.56,67.55,16
+AO088AO,ALB_1489,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16305,Styphnolobium japonicum,,38.1376006,13.34498347,10.84,0.32,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,111.51,294.65,6
+AO089AO,ALB_1490,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16284,Koelreuteria paniculata,,38.13760591,13.34534544,8.03,0.32,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,77.08,203.68,14
+AO090AO,ALB_1491,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16266,Styphnolobium japonicum,,38.13762481,13.34504386,11.8,0.36,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,130.1,343.8,1
+AO091AO,ALB_1492,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16343,Cercis siliquastrum,,38.13764507,13.34536311,3.09,0.06,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,11.32,29.91,1
+AO092AO,ALB_1493,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16259,Styphnolobium japonicum,,38.13764708,13.3450994,11.27,0.46,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,220.8,583.47,1
+AO093AO,ALB_1494,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16320,Styphnolobium japonicum,,38.13766966,13.34542434,8.88,0.21,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,59.83,158.1,1
+AO094AO,ALB_1495,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16290,Styphnolobium japonicum,,38.13769506,13.34548628,9.05,0.33,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,134.2,354.63,2 A
+AO095AO,ALB_1496,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16312,Robinia pseudoacacia,,38.13772171,13.3455499,8.97,0.16,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,27.35,72.27,49 A
+AO096AO,ALB_1497,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16342,Cercis siliquastrum,,38.13773064,13.3453096,3.72,0.08,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,15.2,40.15,49
+AO097AO,ALB_1498,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16282,Robinia pseudoacacia,,38.13774323,13.34560149,9.79,0.21,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,53.12,140.36,47
+AO098AO,ALB_1499,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16363,Styphnolobium japonicum,,38.1377562,13.34537079,9.09,0.35,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,126.45,334.16,47
+AO099AO,ALB_1500,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16278,Styphnolobium japonicum,,38.13776473,13.34566003,8.96,0.16,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,42.18,111.46,49
+AP000AP,ALB_1501,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16272,Styphnolobium japonicum,,38.13778725,13.34571679,7.69,0.23,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,67.36,178.01,44
+AP001AP,ALB_1502,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16371,Styphnolobium japonicum,,38.13778398,13.34544113,10.6,0.41,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,119.34,315.36,44
+AP002AP,ALB_1503,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16308,Styphnolobium japonicum,,38.13781095,13.34577397,9.36,0.25,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,77.96,206,44
+AP003AP,ALB_1504,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16265,Styphnolobium japonicum,,38.13781436,13.34551343,10.47,0.25,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,79.54,210.18,44
+AP004AP,ALB_1505,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16338,Styphnolobium japonicum,,38.13783187,13.34582807,9.51,0.34,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,122.45,323.58,33
+AP005AP,ALB_1506,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16293,Robinia pseudoacacia,,38.13784391,13.34559089,8.34,0.19,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,46.82,123.71,33
+AP006AP,ALB_1507,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16466,Styphnolobium japonicum,,38.13717415,13.34419579,8.55,0.37,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,230.83,609.97,35
+AP007AP,ALB_1508,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16472,Styphnolobium japonicum,,38.13720033,13.3442584,6.79,0.32,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,157.86,417.15,33
+AP008AP,ALB_1509,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16469,Styphnolobium japonicum,,38.13738479,13.34471877,8.39,0.28,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,91.6,242.05,33
+AP009AP,ALB_1510,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16268,Styphnolobium japonicum,,38.13741613,13.34479048,9.86,0.3,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,100.52,265.62,33
+AP010AP,ALB_1511,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16470,Styphnolobium japonicum,,38.13744209,13.34459246,8.84,0.36,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,155.14,409.95,23
+AP011AP,ALB_1512,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16288,Styphnolobium japonicum,,38.13750128,13.34473459,9.38,0.21,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,61.82,163.37,42
+AP012AP,ALB_1513,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16298,Styphnolobium japonicum,,38.13751273,13.34503364,8.14,0.11,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,24.8,65.52,23
+AP013AP,ALB_1514,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16358,Yucca gigantea,,38.13751917,13.34516013,9.31,-,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,-,-,47
+AP014AP,ALB_1515,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16402,Chamaerops humilis,,38.13751746,13.34517937,3.05,0.27,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,7.92,20.91,27
+AP015AP,ALB_1516,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16317,Styphnolobium japonicum,,38.13752702,13.34479978,7.8,0.1,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,21.57,56.99,19
+AP016AP,ALB_1517,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16254,Styphnolobium japonicum,,38.13753846,13.34509682,9.39,0.24,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,84.42,223.07,23
+AP017AP,ALB_1518,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16334,Styphnolobium japonicum,,38.13755627,13.34487639,11.27,0.24,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,71.57,189.12,43
+AP018AP,ALB_1519,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16485,Styphnolobium japonicum,,38.1374731,13.34466855,10.96,0.31,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,108.9,287.77,47
+AP019AP,ALB_1520,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16489,Styphnolobium japonicum,,38.13722314,13.34431803,4.8,0.14,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,52.15,137.81,37
+AP020AP,ALB_1521,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16347,Styphnolobium japonicum,,38.13789473,13.34571491,6.92,0.1,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,20.27,53.55,27
+AP021AP,ALB_1522,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16314,Styphnolobium japonicum,,38.13790397,13.34600682,9.08,0.35,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,125.14,330.68,44
+AP022AP,ALB_1523,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16339,Styphnolobium japonicum,,38.13791957,13.34577484,7.76,0.14,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,34.23,90.43,42
+AP023AP,ALB_1524,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16385,Styphnolobium japonicum,,38.13793363,13.34607713,10.48,0.25,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,78,206.1,35
+AP024AP,ALB_1525,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16319,Robinia pseudoacacia,,38.13795694,13.34613525,5.79,0.09,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,15.6,41.21,19
+AP025AP,ALB_1526,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16301,Styphnolobium japonicum,,38.13797913,13.34619013,8.95,0.21,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,59.66,157.66,23
+AP026AP,ALB_1527,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16345,Styphnolobium japonicum,,38.13798837,13.3459447,9.33,0.33,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,88.49,233.84,2 A
+AP027AP,ALB_1528,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16329,Styphnolobium japonicum,,38.13800859,13.34600003,11.18,0.31,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,80.86,213.66,2
+AP028AP,ALB_1529,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16351,Robinia pseudoacacia,,38.13802112,13.34629745,7.65,0.19,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,47.48,125.45,2
+AP029AP,ALB_1530,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16378,Robinia pseudoacacia,,38.13803382,13.34605746,9.43,0.21,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,39.61,104.66,2
+AP030AP,ALB_1531,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16352,Robinia pseudoacacia,,38.13804567,13.346359,5.5,0.12,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,22.86,60.41,2
+AP031AP,ALB_1532,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16270,Styphnolobium japonicum,,38.13805611,13.34611357,11,0.25,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,57.48,151.88,2 A
+AP032AP,ALB_1533,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16331,Styphnolobium japonicum,,38.1380783,13.34616898,7.32,0.07,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,9.27,24.5,2 A
+AP033AP,ALB_1534,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16246,Styphnolobium japonicum,,38.13810182,13.34622533,8.79,0.3,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,99.77,263.64,2
+AP034AP,ALB_1535,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16375,Robinia pseudoacacia,,38.13812387,13.34628079,6.87,0.16,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,27.9,73.72,74 B
+AP035AP,ALB_1536,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16361,Styphnolobium japonicum,,38.13814443,13.34633108,6.47,0.08,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,11.52,30.42,74 B
+AP036AP,ALB_1537,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16368,Styphnolobium japonicum,,38.13816647,13.34638801,6.91,0.13,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,31.8,84.02,1
+AP037AP,ALB_1538,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16860,Styphnolobium japonicum,,38.13609877,13.34152574,8.23,0.24,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,108.2,285.92,1
+AP038AP,ALB_1539,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16868,Styphnolobium japonicum,,38.13612535,13.34158812,9.35,0.24,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,107.08,282.95,3
+AP039AP,ALB_1540,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16847,Styphnolobium japonicum,,38.13615249,13.34165561,9.49,0.37,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,136.74,361.33,5
+AP040AP,ALB_1541,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16867,Styphnolobium japonicum,,38.13620353,13.3417841,8.46,0.3,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,150.18,396.87,7
+AP041AP,ALB_1542,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16853,Styphnolobium japonicum,,38.13621146,13.34153623,8.8,0.44,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,295.44,780.71,31
+AP042AP,ALB_1543,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16857,Styphnolobium japonicum,,38.13622983,13.34184994,8.91,0.36,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,191.76,506.73,33
+AP043AP,ALB_1544,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16844,Styphnolobium japonicum,,38.13625772,13.34191731,9,0.31,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,154.16,407.36,1 A
+AP044AP,ALB_1545,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16852,Styphnolobium japonicum,,38.13629323,13.34200601,9.2,0.42,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,238.49,630.22,3
+AP045AP,ALB_1546,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16864,Styphnolobium japonicum,,38.13634416,13.34213291,8.74,0.4,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,152.33,402.52,13
+AP046AP,ALB_1547,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16854,Styphnolobium japonicum,,38.13636979,13.34219527,8.36,0.34,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,205.57,543.22,33
+AP047AP,ALB_1548,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16870,Styphnolobium japonicum,,38.13639593,13.34225749,9.29,0.31,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,104.42,275.94,29
+AP048AP,ALB_1549,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16866,Styphnolobium japonicum,,38.13640445,13.34201392,8.51,0.31,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,153.89,406.67,35
+AP049AP,ALB_1550,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16856,Styphnolobium japonicum,,38.13642001,13.34232026,9.4,0.37,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,195.94,517.79,1 A
+AP050AP,ALB_1551,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16863,Styphnolobium japonicum,,38.13645381,13.34213962,7.48,0.28,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,92.36,244.06,33
+AP051AP,ALB_1552,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16865,Styphnolobium japonicum,,38.1365067,13.34226681,8.06,0.12,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,39.12,103.38,23
+AP052AP,ALB_1553,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16845,Styphnolobium japonicum,,38.1365169,13.34256587,8.9,0.26,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,62.27,164.55,3
+AP053AP,ALB_1554,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16871,Styphnolobium japonicum,,38.13654313,13.34262476,6.33,0.37,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,151.6,400.59,
+AP054AP,ALB_1555,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16873,Styphnolobium japonicum,,38.13649381,13.3425062,8.34,0.2,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,42.98,113.57,
+AP055AP,ALB_1556,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16878,Styphnolobium japonicum,,38.13617792,13.34171861,9.59,0.36,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,132.83,351.01,
+AP056AP,ALB_1557,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16881,Styphnolobium japonicum,,38.13644515,13.34238492,9.52,0.2,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,81.68,215.83,
+AP057AP,ALB_1558,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16882,Styphnolobium japonicum,,38.13665031,13.3426302,9.59,0.52,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,229.52,606.51,
+AP058AP,ALB_1559,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16884,Styphnolobium japonicum,,38.13647055,13.34244421,9.97,0.43,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,173.03,457.23,
+AP059AP,ALB_1560,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16886,Styphnolobium japonicum,,38.13634234,13.34186187,9.58,0.45,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,268.2,708.72,
+AP060AP,ALB_1561,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16890,Styphnolobium japonicum,,38.13626368,13.34166451,9.75,0.47,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,231.44,611.6,
+AP061AP,ALB_1562,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16893,Styphnolobium japonicum,,38.13637972,13.34195311,8.92,0.27,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,129.14,341.24,
+AP062AP,ALB_1563,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16894,Styphnolobium japonicum,,38.13653021,13.3423287,9.26,0.33,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,194.66,514.39,
+AP063AP,ALB_1564,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16895,Styphnolobium japonicum,,38.13631768,13.34206594,10.46,0.38,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,145.42,384.29,
+AP064AP,ALB_1565,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16897,Cercis siliquastrum,,38.13656679,13.34268417,3.1,0.04,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,11.12,29.38,
+AP065AP,ALB_1566,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16901,Styphnolobium japonicum,,38.13642851,13.34207445,8.38,0.24,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,72.5,191.57,
+AP066AP,ALB_1567,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16903,Styphnolobium japonicum,,38.13667838,13.34270017,7.76,0.14,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,48.63,128.51,
+AP067AP,ALB_1568,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16905,Styphnolobium japonicum,,38.13660397,13.3425108,7.53,0.41,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,160.48,424.07,
+AP068AP,ALB_1569,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16387,Robinia pseudoacacia,,38.13808081,13.34644128,6.92,0.25,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,66.76,176.42,
+AP069AP,ALB_1570,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16355,Robinia pseudoacacia,,38.13812461,13.34654967,4.46,0.13,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,30.04,79.37,
+AP070AP,ALB_1571,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16316,Styphnolobium japonicum,,38.13814769,13.34660786,5.38,0.21,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,71.91,190.02,
+AP071AP,ALB_1572,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16350,Styphnolobium japonicum,,38.13816983,13.34666282,6.06,0.14,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,51.04,134.87,
+AP072AP,ALB_1573,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16313,Styphnolobium japonicum,,38.13819085,13.34671724,6.11,0.15,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,63.92,168.91,
+AP073AP,ALB_1574,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16300,Styphnolobium japonicum,,38.13818854,13.3464441,7.82,0.2,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,57.76,152.62,
+AP074AP,ALB_1575,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16309,Styphnolobium japonicum,,38.13821244,13.34650052,7.28,0.16,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,30.71,81.15,
+AP075AP,ALB_1576,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16392,Styphnolobium japonicum,,38.13823393,13.34655508,6.84,0.21,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,71.74,189.58,
+AP076AP,ALB_1577,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16321,Robinia pseudoacacia,,38.13825767,13.34661176,5.9,0.13,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,26.72,70.59,
+AP077AP,ALB_1578,Via Giusti Giuseppe,21540,563,17/11/2025,Greehill,16257,Styphnolobium japonicum,,38.13828018,13.34666707,7.54,0.22,,,,,,,,,,,,,,,,,,,,,,Villa Sperlinga,Libertà,VIII,64.48,170.38,
+AP078AP,ALB_1579,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19773,Melia azedarach,,38.1086557,13.36243351,11.18,0.53,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,319.57,844.49,
+AP079AP,ALB_1580,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19774,Melia azedarach,,38.10872278,13.36252653,11.17,0.38,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,211.05,557.7,
+AP080AP,ALB_1581,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19783,Melia azedarach,,38.1084475,13.36270494,11.8,0.43,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,161.38,426.44,
+AP081AP,ALB_1582,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19776,Melia azedarach,,38.10837736,13.36274952,11.86,0.39,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,140.09,370.2,
+AP082AP,ALB_1583,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19781,Melia azedarach,,38.1082355,13.36284138,11,0.43,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,237.16,626.7,
+AP083AP,ALB_1584,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19780,Melia azedarach,,38.10761841,13.36310649,10.35,0.34,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,112.92,298.39,
+AP084AP,ALB_1585,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19775,Melia azedarach,,38.10762385,13.36323939,9.8,0.52,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,209.23,552.89,
+AP085AP,ALB_1586,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19784,Melia azedarach,,38.10858828,13.36261342,9.42,0.43,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,158.27,418.23,
+AP086AP,ALB_1587,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19785,Melia azedarach,,38.10851765,13.36265858,11.99,0.34,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,125.3,331.1,
+AP087AP,ALB_1588,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19786,Melia azedarach,,38.10809213,13.36293406,10.24,0.37,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,136.32,360.24,
+AP088AP,ALB_1589,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19787,Melia azedarach,,38.10754374,13.36328966,10.07,0.43,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,161.65,427.15,
+AP089AP,ALB_1590,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19792,Melia azedarach,,38.10777592,13.36313976,11.28,0.37,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,128.6,339.82,
+AP090AP,ALB_1591,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19796,Melia azedarach,,38.10736247,13.36327424,8.44,0.44,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,162.87,430.4,
+AP091AP,ALB_1592,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19803,Melia azedarach,,38.10858297,13.36248246,10.93,0.35,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,121.92,322.17,
+AP092AP,ALB_1593,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19811,Melia azedarach,,38.10754562,13.3631534,10.02,0.38,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,132.61,350.43,
+AP093AP,ALB_1594,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19817,Melia azedarach,,38.1077751,13.36300562,10.87,0.39,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,140.6,371.52,
+AP094AP,ALB_1595,Via Corazza Filippo,13740,725,17/11/2025,Greehill,19818,Melia azedarach,,38.10843823,13.36257624,9.4,0.32,,,,,,,,,,,,,,,,,,,,,,Oreto Perez,Oreto - Stazione,III,111.26,294.01,

@@ -3,14 +3,16 @@ Via Delle Croci,APL.026S,48,"€27,609.60",0.2
 Via Delle Croci,APL.018S,4,"€1,267.60",0.2
 Via Pignatelli Aragona,APL.026S,43,"€24,733.60",0.2
 Via Pignatelli Aragona,APL.018S,5,"€1,584.50",0.2
-Via Principe Di Belmonte,,45,€0.00,0.8
-Via Rizzo Ammiraglio - A,APL.025S,28,"€21,363.16",0.8
-Via Rizzo Ammiraglio - A,APL.026S,26,"€14,955.20",0.8
+Via Principe Di Belmonte,APL.001S,52,"€5,699.97",0.8
+Via Principe Di Belmonte,APL.005S,33,"€2,791.05",0.8
+Via Principe Di Belmonte,APL.017S,12,"€1,284.30",0.8
+Via Principe Di Belmonte,APL.016S,1,€165.88,0.8
+Via Rizzo Ammiraglio - A,APL.026S,53,"€30,485.60",0.8
 Via Rizzo Ammiraglio - A,APL.018S,2,€633.80,0.8
-Via Rizzo Ammiraglio - B,APL.026S,46,"€26,459.20",0.8
-Via Rizzo Ammiraglio - B,APL.025S,11,"€8,392.67",0.8
-Via Rizzo Ammiraglio - B,APL.018S,2,€633.80,0.8
-Via Rizzo Ammiraglio - B,APL.017S,1,€256.86,0.8
+Via Rizzo Ammiraglio - A,APL.025S,1,€762.97,0.8
+Via Rizzo Ammiraglio - B,APL.026S,57,"€32,786.40",0.8
+Via Rizzo Ammiraglio - B,APL.018S,2,€633.80,
+Via Rizzo Ammiraglio - B,APL.017S,1,€256.86,
 Via Scoto Michele,APL.026S,27,"€15,530.40",
 Via Scoto Michele,APL.018S,1,€316.90,
 Viale Dei Picciotti - A,APL.026S,31,"€17,831.20",
@@ -23,6 +25,5 @@ Viale Emilia,APL.024S,1,€521.24,
 Viale Emilia,APL.018S,1,€316.90,
 Viale Emilia,APL.017S,1,€256.86,
 Viale Emilia,APL.006S,1,€250.87,
-Viale Galatea,,13,€0.00,
-Viale Michelangelo,,513,€0.00,
-Viale Regina Margherita,,54,€0.00,
+Viale Michelangelo,,519,€0.00,
+Viale Regina Margherita di Savoia,,6,€0.00,
