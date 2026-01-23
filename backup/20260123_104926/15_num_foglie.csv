@@ -1213,14 +1213,14 @@ ALB_1211,Via Galatea,018,Populus Nigra,13,42,C,decidua,9906,13208,7265,0
 ALB_1212,Via Galatea,019,Populus Nigra,11,43,C,decidua,8560,11413,6277,0
 ALB_1213,Via Galatea,020,Populus Nigra,13,38,C,decidua,8440,11254,6190,0
 ALB_1214,Via Galatea,021,Populus Nigra,11,37,C,decidua,6730,8974,4935,0
-ALB_1215,Via Galatea,022,Platanus Hybrida,,,,decidua,0,0,0,0
+ALB_1215,Via Galatea,022,Platanus Hybrida,,,D,decidua,0,0,0,0
 ALB_1216,Via Galatea,023,Platanus Hybrida,18,87,C/D,decidua,218487,31212,18727,0
 ALB_1217,Via Galatea,024,Platanus Hybrida,17,91,C/D,decidua,223833,31976,19186,0
 ALB_1218,Via Galatea,025,Platanus Hybrida,19,88,C/D,decidua,237879,33983,20390,0
 ALB_1219,Via Galatea,026,Platanus Hybrida,17,93,C/D,decidua,233780,33397,20038,0
 ALB_1220,Via Galatea,027,Platanus Hybrida,18,90,C/D,decidua,233815,33402,20041,0
 ALB_1221,Via Galatea,028,Populus Nigra,13,47,C/D,decidua,5083,6777,3727,0
-ALB_1222,Via Galatea,029,Platanus Hybrida,5,10,,decidua,662,95,57,0
+ALB_1222,Via Galatea,029,Platanus Hybrida,5,10,D,decidua,1103,158,95,0
 ALB_1223,Via Galatea,030,Populus Nigra,,,Ceppaia,decidua,0,0,0,0
 ALB_1224,Via Galatea,031,Populus Nigra,,,Ceppaia,decidua,0,0,0,0
 ALB_1225,Via Galatea,032,Populus Nigra,13,37,C,decidua,8088,10784,5931,0
@@ -1230,7 +1230,7 @@ ALB_1228,Via Galatea,035,Populus Nigra,13,66,C/D,decidua,8750,11667,6417,0
 ALB_1229,Via Galatea,036,Populus Nigra,17,66,C/D,decidua,11753,15671,8619,0
 ALB_1230,Via Galatea,037,Populus Nigra,11,57,C,decidua,13437,17916,9854,0
 ALB_1231,Via Galatea,038,Populus Nigra,,,Ceppaia,decidua,0,0,0,0
-ALB_1232,Via Galatea,039,Populus Nigra,9,12,,decidua,382,509,280,0
+ALB_1232,Via Galatea,039,Populus Nigra,9,12,D,decidua,636,848,467,0
 ALB_1233,Via Galatea,040,Platanus Hybrida,,,Ceppaia,decidua,0,0,0,0
 ALB_1234,Via Galatea,041,Platanus Hybrida,,,Ceppaia,decidua,0,0,0,0
 ALB_1235,Via Galatea,042,Platanus Hybrida,18,112,C/D,decidua,362096,51728,31037,0
@@ -1238,7 +1238,7 @@ ALB_1236,Via Galatea,043,Platanus Hybrida,13,91,C/D,decidua,164415,23488,14093,0
 ALB_1237,Via Galatea,044,Platanus Hybrida,,,Ceppaia,decidua,0,0,0,0
 ALB_1238,Via Galatea,045,Platanus Hybrida,,,Ceppaia,decidua,0,0,0,0
 ALB_1239,Via Galatea,046,Populus Nigra,,,Ceppaia,decidua,0,0,0,0
-ALB_1240,Via Galatea,047,Platanus Hybrida,,,,decidua,0,0,0,0
+ALB_1240,Via Galatea,047,Platanus Hybrida,,,D,decidua,0,0,0,0
 ALB_1241,Via Galatea,048,Populus Nigra,13,43,C,decidua,10286,13715,7543,0
 ALB_1242,Viale Principe Umberto,001,Pinus halepensis,,,Ceppaia,sempreverde,0,0,0,0
 ALB_1243,Viale Principe Umberto,002,Pinus halepensis,,,Ceppaia,sempreverde,0,0,0,0
@@ -1259,7 +1259,7 @@ ALB_1257,Viale Principe Umberto,016,Pinus halepensis,15,62,C/D,sempreverde,1629,
 ALB_1258,Viale Principe Umberto,017,Pinus halepensis,18,78,D,sempreverde,3793,3870,3793,3677
 ALB_1259,Viale Principe Umberto,018,Pinus halepensis,18,77,C,sempreverde,5249,5356,5249,5088
 ALB_1260,Viale Principe Umberto,019,NON ESISTE,,,D,#N/A,#N/A,#N/A,#N/A,#N/A
-ALB_1261,Viale Principe Umberto,020,Pinus halepensis,5,10,A,sempreverde,487,497,487,472
+ALB_1261,Viale Principe Umberto,020,Pinus halepensis,5,10,D,sempreverde,244,249,244,236
 ALB_1262,Viale Principe Umberto,021,Pinus halepensis,14,38,C,sempreverde,2331,2379,2331,2260
 ALB_1263,Viale Principe Umberto,022,Pinus halepensis,18,100,C/D,sempreverde,2846,2904,2846,2759
 ALB_1264,Viale Principe Umberto,023,Pinus halepensis,,,Ceppaia,sempreverde,0,0,0,0
@@ -1280,7 +1280,7 @@ ALB_1278,Viale Principe Umberto,037,Pinus halepensis,14,56,C,sempreverde,3305,33
 ALB_1279,Viale Principe Umberto,038,Pinus halepensis,,,Ceppaia,sempreverde,0,0,0,0
 ALB_1280,Viale Principe Umberto,039,Pinus halepensis,18,60,C/D,sempreverde,1797,1834,1797,1742
 ALB_1281,Viale Principe Umberto,040,Pinus halepensis,18,71,C,sempreverde,4879,4979,4879,4730
-ALB_1282,Viale Principe Umberto,041,Pinus halepensis,5,10,A,sempreverde,487,497,487,472
+ALB_1282,Viale Principe Umberto,041,Pinus halepensis,5,10,D,sempreverde,244,249,244,236
 ALB_1283,Viale Principe Umberto,042,Pinus halepensis,,,Ceppaia,sempreverde,0,0,0,0
 ALB_1284,Viale Principe Umberto,043,Pinus halepensis,16,53,C,sempreverde,3454,3524,3454,3348
 ALB_1285,Viale Principe Umberto,044,Pinus halepensis,14,49,C,sempreverde,2931,2991,2931,2841
@@ -1295,11 +1295,11 @@ ALB_1293,Viale Principe Umberto,053,Pinus halepensis,16,59,C/D,sempreverde,1630,
 ALB_1294,Viale Principe Umberto,054,Pinus halepensis,,,Ceppaia,sempreverde,0,0,0,0
 ALB_1295,Viale Principe Umberto,055,Pinus halepensis,13,63,C/D,sempreverde,1495,1526,1495,1450
 ALB_1296,Viale Principe Umberto,056,Pinus halepensis,14,71,C,sempreverde,4092,4176,4092,3967
-ALB_1297,Viale Principe Umberto,057,Pinus halepensis,4,9,A,sempreverde,379,387,379,367
+ALB_1297,Viale Principe Umberto,057,Pinus halepensis,4,9,C,sempreverde,265,271,265,257
 ALB_1298,Viale Principe Umberto,058,Pinus halepensis,14,39,C,sempreverde,2387,2435,2387,2314
 ALB_1299,Viale Principe Umberto,059,Pinus halepensis,15,60,C,sempreverde,3691,3766,3691,3578
 ALB_1300,Viale Principe Umberto,060,Pinus halepensis,15,61,c,sempreverde,3746,3823,3746,3632
-ALB_1301,Viale Principe Umberto,061,Pinus halepensis,5,10,A,sempreverde,487,497,487,472
+ALB_1301,Viale Principe Umberto,061,Pinus halepensis,5,10,D,sempreverde,244,249,244,236
 ALB_1302,Viale Principe Umberto,062,Pinus halepensis,18,76,C,sempreverde,5187,5293,5187,5029
 ALB_1303,Viale Principe Umberto,063,Pinus halepensis,16,65,C/D,sempreverde,1779,1815,1779,1724
 ALB_1304,Viale Principe Umberto,064,Pinus halepensis,18,104,C/D,sempreverde,2948,3009,2948,2858
