@@ -1213,14 +1213,14 @@ ALB_1211,Via Galatea,018,Populus Nigra,13,42,C,decidua,9906,13208,7265,0
 ALB_1212,Via Galatea,019,Populus Nigra,11,43,C,decidua,8560,11413,6277,0
 ALB_1213,Via Galatea,020,Populus Nigra,13,38,C,decidua,8440,11254,6190,0
 ALB_1214,Via Galatea,021,Populus Nigra,11,37,C,decidua,6730,8974,4935,0
-ALB_1215,Via Galatea,022,Platanus Hybrida,,,A,decidua,0,0,0,0
+ALB_1215,Via Galatea,022,Platanus Hybrida,,,,decidua,0,0,0,0
 ALB_1216,Via Galatea,023,Platanus Hybrida,18,87,C/D,decidua,218487,31212,18727,0
 ALB_1217,Via Galatea,024,Platanus Hybrida,17,91,C/D,decidua,223833,31976,19186,0
 ALB_1218,Via Galatea,025,Platanus Hybrida,19,88,C/D,decidua,237879,33983,20390,0
 ALB_1219,Via Galatea,026,Platanus Hybrida,17,93,C/D,decidua,233780,33397,20038,0
 ALB_1220,Via Galatea,027,Platanus Hybrida,18,90,C/D,decidua,233815,33402,20041,0
 ALB_1221,Via Galatea,028,Populus Nigra,13,47,C/D,decidua,5083,6777,3727,0
-ALB_1222,Via Galatea,029,Platanus Hybrida,5,10,A,decidua,2206,315,189,0
+ALB_1222,Via Galatea,029,Platanus Hybrida,5,10,,decidua,662,95,57,0
 ALB_1223,Via Galatea,030,Populus Nigra,,,Ceppaia,decidua,0,0,0,0
 ALB_1224,Via Galatea,031,Populus Nigra,,,Ceppaia,decidua,0,0,0,0
 ALB_1225,Via Galatea,032,Populus Nigra,13,37,C,decidua,8088,10784,5931,0
@@ -1230,7 +1230,7 @@ ALB_1228,Via Galatea,035,Populus Nigra,13,66,C/D,decidua,8750,11667,6417,0
 ALB_1229,Via Galatea,036,Populus Nigra,17,66,C/D,decidua,11753,15671,8619,0
 ALB_1230,Via Galatea,037,Populus Nigra,11,57,C,decidua,13437,17916,9854,0
 ALB_1231,Via Galatea,038,Populus Nigra,,,Ceppaia,decidua,0,0,0,0
-ALB_1232,Via Galatea,039,Populus Nigra,9,12,A,decidua,1272,1697,933,0
+ALB_1232,Via Galatea,039,Populus Nigra,9,12,,decidua,382,509,280,0
 ALB_1233,Via Galatea,040,Platanus Hybrida,,,Ceppaia,decidua,0,0,0,0
 ALB_1234,Via Galatea,041,Platanus Hybrida,,,Ceppaia,decidua,0,0,0,0
 ALB_1235,Via Galatea,042,Platanus Hybrida,18,112,C/D,decidua,362096,51728,31037,0
@@ -1238,7 +1238,7 @@ ALB_1236,Via Galatea,043,Platanus Hybrida,13,91,C/D,decidua,164415,23488,14093,0
 ALB_1237,Via Galatea,044,Platanus Hybrida,,,Ceppaia,decidua,0,0,0,0
 ALB_1238,Via Galatea,045,Platanus Hybrida,,,Ceppaia,decidua,0,0,0,0
 ALB_1239,Via Galatea,046,Populus Nigra,,,Ceppaia,decidua,0,0,0,0
-ALB_1240,Via Galatea,047,Platanus Hybrida,,,A,decidua,0,0,0,0
+ALB_1240,Via Galatea,047,Platanus Hybrida,,,,decidua,0,0,0,0
 ALB_1241,Via Galatea,048,Populus Nigra,13,43,C,decidua,10286,13715,7543,0
 ALB_1242,Viale Principe Umberto,001,Pinus halepensis,,,Ceppaia,sempreverde,0,0,0,0
 ALB_1243,Viale Principe Umberto,002,Pinus halepensis,,,Ceppaia,sempreverde,0,0,0,0
