@@ -377,7 +377,7 @@ ALB_375,Via Principe Di Belmonte,,Acer negundo,12,40,C,decidua,6191,9524,4286,0
 ALB_376,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
 ALB_377,Via Principe Di Belmonte,,Citrus × aurantium,6,12,B,sempreverde,1150,1211,1187,1090
 ALB_378,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
-ALB_379,Via Principe Di Belmonte,,,6,14,Vuoto,,,,,
+ALB_379,Via Principe Di Belmonte,,,6,14,vuoto,,,,,
 ALB_380,Via Principe Di Belmonte,,Citrus × aurantium,6,15,B,sempreverde,1470,1548,1517,1393
 ALB_381,Via Principe Di Belmonte,,Acer negundo,12,32,C,decidua,4632,7126,3207,0
 ALB_382,Via Principe Di Belmonte,,Acer negundo,12,31,C,decidua,4445,6838,3077,0
@@ -612,46 +612,46 @@ ALB_610,Viale Michelangelo,224,Platanus Hybrida,14,50,C,decidua,126121,18017,108
 ALB_611,Viale Michelangelo,225,Platanus Hybrida,16,60,C/D,decidua,90754,12965,7779,0
 ALB_612,Viale Michelangelo,226,Platanus Hybrida,13,44,C,decidua,89689,12813,7688,0
 ALB_613,Viale Michelangelo,227,Platanus Hybrida,15,48,C/D,decidua,53928,7704,4622,0
-ALB_614,Viale Michelangelo,228,Platanus Hybrida,,,Non Class,decidua,0,0,0,0
+ALB_614,Viale Michelangelo,228,Platanus Hybrida,,,,decidua,0,0,0,0
 ALB_615,Viale Michelangelo,229,Platanus Hybrida,10,48,C,decidua,78938,11277,6766,0
 ALB_616,Viale Michelangelo,230,Platanus Hybrida,14,42,C,decidua,88991,12713,7628,0
 ALB_617,Viale Michelangelo,231,Platanus Hybrida,13,83,D,decidua,227963,32566,19540,0
 ALB_618,Viale Michelangelo,232,Platanus Hybrida,11,40,C,decidua,61168,8738,5243,0
 ALB_619,Viale Michelangelo,233,Platanus Hybrida,15,70,C,decidua,267610,38230,22938,0
-ALB_620,Viale Michelangelo,234,Celtis australis,,,Non Class,decidua,0,0,0,0
+ALB_620,Viale Michelangelo,234,Celtis australis,,,,decidua,0,0,0,0
 ALB_621,Viale Michelangelo,235,Platanus Hybrida,16,90,C,decidua,476458,68065,40839,0
 ALB_622,Viale Michelangelo,236,Platanus Hybrida,9,48,D,decidua,49950,7136,4281,0
-ALB_623,Viale Michelangelo,237,Celtis australis,,,Non Class,decidua,0,0,0,0
-ALB_624,Viale Michelangelo,238,Celtis australis,,,Non Class,decidua,0,0,0,0
+ALB_623,Viale Michelangelo,237,Celtis australis,,,,decidua,0,0,0,0
+ALB_624,Viale Michelangelo,238,Celtis australis,,,,decidua,0,0,0,0
 ALB_625,Viale Michelangelo,239,Platanus Hybrida,14,54,C,decidua,147108,21015,12609,0
 ALB_626,Viale Michelangelo,240,Platanus Hybrida,12,44,D,decidua,58430,8347,5008,0
 ALB_627,Viale Michelangelo,241,Platanus Hybrida,13,40,C/D,decidua,31767,4538,2723,0
 ALB_628,Viale Michelangelo,242,Platanus Hybrida,,,C,decidua,0,0,0,0
 ALB_629,Viale Michelangelo,243,Platanus Hybrida,,,Ceppaia,decidua,0,0,0,0
-ALB_630,Viale Michelangelo,244,Celtis australis,,,Non Class,decidua,0,0,0,0
+ALB_630,Viale Michelangelo,244,Celtis australis,,,,decidua,0,0,0,0
 ALB_631,Viale Michelangelo,245,Platanus Hybrida,8,32,C,decidua,27143,3878,2327,0
-ALB_632,Viale Michelangelo,246,Celtis australis,,,Non Class,decidua,0,0,0,0
+ALB_632,Viale Michelangelo,246,Celtis australis,,,,decidua,0,0,0,0
 ALB_633,Viale Michelangelo,247,Platanus Hybrida,9,30,C,decidua,27316,3902,2341,0
-ALB_634,Viale Michelangelo,248,Platanus Hybrida,,,Non Class,decidua,0,0,0,0
-ALB_635,Viale Michelangelo,249,Platanus Hybrida,,,Non Class,decidua,0,0,0,0
+ALB_634,Viale Michelangelo,248,Platanus Hybrida,,,,decidua,0,0,0,0
+ALB_635,Viale Michelangelo,249,Platanus Hybrida,,,,decidua,0,0,0,0
 ALB_636,Viale Michelangelo,250,Platanus Hybrida,12,40,C,decidua,67605,9658,5795,0
-ALB_637,Viale Michelangelo,251,Platanus Hybrida,,,Non Class,decidua,0,0,0,0
-ALB_638,Viale Michelangelo,252,Platanus Hybrida,,,Non Class,decidua,0,0,0,0
-ALB_639,Viale Michelangelo,253,Celtis australis,,,Non Class,decidua,0,0,0,0
+ALB_637,Viale Michelangelo,251,Platanus Hybrida,,,,decidua,0,0,0,0
+ALB_638,Viale Michelangelo,252,Platanus Hybrida,,,,decidua,0,0,0,0
+ALB_639,Viale Michelangelo,253,Celtis australis,,,,decidua,0,0,0,0
 ALB_640,Viale Michelangelo,254,Platanus Hybrida,15,40,C,decidua,87383,12483,7490,0
-ALB_641,Viale Michelangelo,255,Platanus Hybrida,,,Non Class,decidua,0,0,0,0
-ALB_642,Viale Michelangelo,256,Celtis australis,,,Non Class,decidua,0,0,0,0
-ALB_643,Viale Michelangelo,257,Platanus Hybrida,,,Non Class,decidua,0,0,0,0
+ALB_641,Viale Michelangelo,255,Platanus Hybrida,,,,decidua,0,0,0,0
+ALB_642,Viale Michelangelo,256,Celtis australis,,,,decidua,0,0,0,0
+ALB_643,Viale Michelangelo,257,Platanus Hybrida,,,,decidua,0,0,0,0
 ALB_644,Viale Michelangelo,258,Platanus Hybrida,12,34,C/D,decidua,20933,2990,1794,0
-ALB_645,Viale Michelangelo,259,Celtis australis,,,Non Class,decidua,0,0,0,0
+ALB_645,Viale Michelangelo,259,Celtis australis,,,,decidua,0,0,0,0
 ALB_646,Viale Michelangelo,260,Platanus Hybrida,11,49,C,decidua,91790,13113,7868,0
 ALB_647,Viale Michelangelo,261,Platanus Hybrida,13,38,C,decidua,66896,9557,5734,0
 ALB_648,Viale Michelangelo,263,Platanus Hybrida,10,33,C,decidua,37310,5330,3198,0
-ALB_649,Viale Michelangelo,264,Platanus Hybrida,,,Non Class,decidua,0,0,0,0
-ALB_650,Viale Michelangelo,265,Platanus Hybrida,,,Non Class,decidua,0,0,0,0
+ALB_649,Viale Michelangelo,264,Platanus Hybrida,,,,decidua,0,0,0,0
+ALB_650,Viale Michelangelo,265,Platanus Hybrida,,,,decidua,0,0,0,0
 ALB_651,Viale Michelangelo,266,Platanus Hybrida,14,63,C,decidua,200230,28604,17163,0
 ALB_652,Viale Michelangelo,267,Platanus Hybrida,12,46,C,decidua,89408,12773,7664,0
-ALB_653,Viale Michelangelo,268,Platanus Hybrida,,,Non Class,decidua,0,0,0,0
+ALB_653,Viale Michelangelo,268,Platanus Hybrida,,,,decidua,0,0,0,0
 ALB_654,Viale Michelangelo,269,Platanus Hybrida,12,39,C,decidua,64267,9181,5509,0
 ALB_655,Viale Michelangelo,270,Platanus Hybrida,14,60,C,decidua,181615,25945,15567,0
 ALB_656,Viale Michelangelo,271,Platanus Hybrida,12,55,C,decidua,127816,18259,10956,0
@@ -996,17 +996,17 @@ ALB_994,Viale Michelangelo,,Tabebuia rosea,,,D,decidua,0,0,0,0
 ALB_995,Viale Regina Margherita di Savoia,001,Platanus Hybrida,,,C/D,decidua,0,0,0,0
 ALB_996,Viale Regina Margherita di Savoia,002,Platanus Hybrida,,,C/D,decidua,0,0,0,0
 ALB_997,Viale Regina Margherita di Savoia,003,Platanus Hybrida,,,C/D,decidua,0,0,0,0
-ALB_998,Viale Regina Margherita di Savoia,004,Platanus Hybrida,,,Non Class,decidua,0,0,0,0
-ALB_999,Viale Regina Margherita di Savoia,005,Platanus Hybrida,,,Non Class,decidua,0,0,0,0
+ALB_998,Viale Regina Margherita di Savoia,004,Platanus Hybrida,,,,decidua,0,0,0,0
+ALB_999,Viale Regina Margherita di Savoia,005,Platanus Hybrida,,,,decidua,0,0,0,0
 ALB_1000,Viale Regina Margherita di Savoia,006,Platanus Hybrida,,,C/D,decidua,0,0,0,0
 ALB_1001,Viale Regina Margherita di Savoia,007,Platanus Hybrida,,,C/D,decidua,0,0,0,0
-ALB_1002,Viale Regina Margherita di Savoia,008,Platanus Hybrida,,,Non Class,decidua,0,0,0,0
+ALB_1002,Viale Regina Margherita di Savoia,008,Platanus Hybrida,,,,decidua,0,0,0,0
 ALB_1003,Viale Regina Margherita di Savoia,009,Platanus X Acerifolia,,,C,decidua,0,0,0,0
 ALB_1004,Viale Regina Margherita di Savoia,010,Platanus X Acerifolia,,,C,decidua,0,0,0,0
 ALB_1005,Viale Regina Margherita di Savoia,011,Platanus Hybrida,,,C/D,decidua,0,0,0,0
 ALB_1006,Viale Regina Margherita di Savoia,012,Platanus Hybrida,,,D,decidua,0,0,0,0
 ALB_1007,Viale Regina Margherita di Savoia,013,Platanus Hybrida,,,C,decidua,0,0,0,0
-ALB_1008,Viale Regina Margherita di Savoia,014,Platanus Hybrida,,,Non Class,decidua,0,0,0,0
+ALB_1008,Viale Regina Margherita di Savoia,014,Platanus Hybrida,,,,decidua,0,0,0,0
 ALB_1009,Viale Regina Margherita di Savoia,015,Platanus Hybrida,,,D,decidua,0,0,0,0
 ALB_1010,Viale Regina Margherita di Savoia,016,Platanus X Acerifolia,,,C/D,decidua,0,0,0,0
 ALB_1011,Viale Regina Margherita di Savoia,017,Platanus X Acerifolia,,,C,decidua,0,0,0,0
@@ -1298,7 +1298,7 @@ ALB_1296,Viale Principe Umberto,056,Pinus halepensis,14,71,C,sempreverde,4092,41
 ALB_1297,Viale Principe Umberto,057,Pinus halepensis,4,9,A,sempreverde,379,387,379,367
 ALB_1298,Viale Principe Umberto,058,Pinus halepensis,14,39,C,sempreverde,2387,2435,2387,2314
 ALB_1299,Viale Principe Umberto,059,Pinus halepensis,15,60,C,sempreverde,3691,3766,3691,3578
-ALB_1300,Viale Principe Umberto,060,Pinus halepensis,15,61,C,sempreverde,3746,3823,3746,3632
+ALB_1300,Viale Principe Umberto,060,Pinus halepensis,15,61,c,sempreverde,3746,3823,3746,3632
 ALB_1301,Viale Principe Umberto,061,Pinus halepensis,5,10,A,sempreverde,487,497,487,472
 ALB_1302,Viale Principe Umberto,062,Pinus halepensis,18,76,C,sempreverde,5187,5293,5187,5029
 ALB_1303,Viale Principe Umberto,063,Pinus halepensis,16,65,C/D,sempreverde,1779,1815,1779,1724
@@ -1420,44 +1420,44 @@ ALB_1418,Via Oreto,10372,,3.91,0,,,,,,
 ALB_1419,Via Oreto,10373,Populus nigra,8.78,0,,decidua,0,0,0,0
 ALB_1420,Via Oreto,10374,Brachychiton acerifolius,5.24,0,,semi-decidua,2,3,2,2
 ALB_1421,Via Oreto,10376,Platycladus orientalis,5.66,0,,sempreverde,9,10,10,9
-ALB_1422,Via Rapisardi Marioa,001,Sophora japonica,,,No Interv,decidua,0,0,0,0
-ALB_1423,Via Rapisardi Marioa,002,Sophora japonica,7,,No Interv,decidua,0,0,0,0
-ALB_1424,Via Rapisardi Marioa,003,Sophora japonica,,,No Interv,decidua,0,0,0,0
-ALB_1425,Via Rapisardi Marioa,004,Sophora japonica,8,,Non Class,decidua,0,0,0,0
-ALB_1426,Via Rapisardi Marioa,005,Sophora japonica,8,,Non Class,decidua,0,0,0,0
-ALB_1427,Via Rapisardi Marioa,006,Sophora japonica,6,,No Interv,decidua,0,0,0,0
-ALB_1428,Via Rapisardi Marioa,007,Pittosphorum,2,,No Interv,sempreverde,0,0,0,0
-ALB_1429,Via Rapisardi Marioa,008,Sophora japonica,8,,Verifica,decidua,0,0,0,0
-ALB_1430,Via Rapisardi Marioa,009,Sophora japonica,8,,Non Class,decidua,0,0,0,0
-ALB_1431,Via Rapisardi Marioa,010,Sophora japonica,8,,Verifica,decidua,0,0,0,0
-ALB_1432,Via Rapisardi Marioa,011,Sophora japonica,8,,Verifica,decidua,0,0,0,0
-ALB_1433,Via Rapisardi Marioa,012,Sophora japonica,7,,Verifica,decidua,0,0,0,0
-ALB_1434,Via Rapisardi Marioa,013,Sophora japonica,7,,No Interv,decidua,0,0,0,0
+ALB_1422,Via Rapisardi Marioa,001,Sophora japonica,,,,decidua,0,0,0,0
+ALB_1423,Via Rapisardi Marioa,002,Sophora japonica,7,,,decidua,0,0,0,0
+ALB_1424,Via Rapisardi Marioa,003,Sophora japonica,,,,decidua,0,0,0,0
+ALB_1425,Via Rapisardi Marioa,004,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1426,Via Rapisardi Marioa,005,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1427,Via Rapisardi Marioa,006,Sophora japonica,6,,,decidua,0,0,0,0
+ALB_1428,Via Rapisardi Marioa,007,Pittosphorum,2,,,sempreverde,0,0,0,0
+ALB_1429,Via Rapisardi Marioa,008,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1430,Via Rapisardi Marioa,009,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1431,Via Rapisardi Marioa,010,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1432,Via Rapisardi Marioa,011,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1433,Via Rapisardi Marioa,012,Sophora japonica,7,,,decidua,0,0,0,0
+ALB_1434,Via Rapisardi Marioa,013,Sophora japonica,7,,,decidua,0,0,0,0
 ALB_1435,Via Rapisardi Marioa,014,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
 ALB_1436,Via Rapisardi Marioa,015,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
-ALB_1437,Via Rapisardi Marioa,016,Sophora japonica,7,,No Interv,decidua,0,0,0,0
-ALB_1438,Via Rapisardi Marioa,017,Sophora japonica,8,,No Interv,decidua,0,0,0,0
-ALB_1439,Via Rapisardi Marioa,018,Sophora japonica,,,No Interv,decidua,0,0,0,0
+ALB_1437,Via Rapisardi Marioa,016,Sophora japonica,7,,,decidua,0,0,0,0
+ALB_1438,Via Rapisardi Marioa,017,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1439,Via Rapisardi Marioa,018,Sophora japonica,,,,decidua,0,0,0,0
 ALB_1440,Via Rapisardi Marioa,019,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
-ALB_1441,Via Rapisardi Marioa,020,Sophora japonica,7,,No Interv,decidua,0,0,0,0
-ALB_1442,Via Rapisardi Marioa,021,Sophora japonica,8,,No Interv,decidua,0,0,0,0
+ALB_1441,Via Rapisardi Marioa,020,Sophora japonica,7,,,decidua,0,0,0,0
+ALB_1442,Via Rapisardi Marioa,021,Sophora japonica,8,,,decidua,0,0,0,0
 ALB_1443,Via Rapisardi Marioa,022,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
 ALB_1444,Via Rapisardi Marioa,023,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
-ALB_1445,Via Rapisardi Marioa,024,Sophora japonica,7,,Verifica,decidua,0,0,0,0
-ALB_1446,Via Rapisardi Marioa,025,Sophora japonica,7,,No Interv,decidua,0,0,0,0
-ALB_1447,Via Rapisardi Marioa,026,Sophora japonica,7,,No Interv,decidua,0,0,0,0
+ALB_1445,Via Rapisardi Marioa,024,Sophora japonica,7,,,decidua,0,0,0,0
+ALB_1446,Via Rapisardi Marioa,025,Sophora japonica,7,,,decidua,0,0,0,0
+ALB_1447,Via Rapisardi Marioa,026,Sophora japonica,7,,,decidua,0,0,0,0
 ALB_1448,Via Rapisardi Marioa,027,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
-ALB_1449,Via Rapisardi Marioa,028,Sophora japonica,5,,Verifica,decidua,0,0,0,0
-ALB_1450,Via Rapisardi Marioa,029,Sophora japonica,7,,No Interv,decidua,0,0,0,0
-ALB_1451,Via Rapisardi Marioa,030,Sophora japonica,4,,Verifica,decidua,0,0,0,0
-ALB_1452,Via Rapisardi Marioa,031,Sophora japonica,2,,No Interv,decidua,0,0,0,0
+ALB_1449,Via Rapisardi Marioa,028,Sophora japonica,5,,,decidua,0,0,0,0
+ALB_1450,Via Rapisardi Marioa,029,Sophora japonica,7,,,decidua,0,0,0,0
+ALB_1451,Via Rapisardi Marioa,030,Sophora japonica,4,,,decidua,0,0,0,0
+ALB_1452,Via Rapisardi Marioa,031,Sophora japonica,2,,,decidua,0,0,0,0
 ALB_1453,Via Rapisardi Marioa,032,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
-ALB_1454,Via Rapisardi Marioa,033,Sophora japonica,3,,Verifica,decidua,0,0,0,0
+ALB_1454,Via Rapisardi Marioa,033,Sophora japonica,3,,,decidua,0,0,0,0
 ALB_1455,Via Rapisardi Marioa,034,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
 ALB_1456,Via Rapisardi Marioa,035,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
-ALB_1457,Via Rapisardi Marioa,036,Sophora japonica,7,,No Interv,decidua,0,0,0,0
+ALB_1457,Via Rapisardi Marioa,036,Sophora japonica,7,,,decidua,0,0,0,0
 ALB_1458,Via Rapisardi Marioa,037,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
-ALB_1459,Via Rapisardi Marioa,038,Sophora japonica,8,,Verifica,decidua,0,0,0,0
+ALB_1459,Via Rapisardi Marioa,038,Sophora japonica,8,,,decidua,0,0,0,0
 ALB_1460,Via Rapisardi Marioa,039,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
 ALB_1461,Via Rapisardi Marioa,040,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
 ALB_1462,Via Rapisardi Marioa,041,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
@@ -1466,179 +1466,179 @@ ALB_1464,Via Rapisardi Marioa,043,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
 ALB_1465,Via Rapisardi Marioa,044,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
 ALB_1466,Via Rapisardi Marioa,045,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
 ALB_1467,Via Rapisardi Marioa,046,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
-ALB_1468,Via Rapisardi Marioa,047,Sophora japonica,8,,No Interv,decidua,0,0,0,0
-ALB_1469,Via Rapisardi Marioa,048,Sophora japonica,9,,Verifica,decidua,0,0,0,0
-ALB_1470,Via Rapisardi Marioa,049,Sophora japonica,8,,Verifica,decidua,0,0,0,0
-ALB_1471,Via Rapisardi Marioa,050,Sophora japonica,8,,Verifica,decidua,0,0,0,0
-ALB_1472,Via Rapisardi Marioa,051,Sophora japonica,8,,Verifica,decidua,0,0,0,0
-ALB_1473,Via Rapisardi Marioa,052,Sophora japonica,8,,Verifica,decidua,0,0,0,0
-ALB_1474,Via Rapisardi Marioa,053,Sophora japonica,7,,Verifica,decidua,0,0,0,0
-ALB_1475,Via Rapisardi Marioa,054,Sophora japonica,8,,Verifica,decidua,0,0,0,0
-ALB_1476,Via Rapisardi Marioa,055,Sophora japonica,7,,No Interv,decidua,0,0,0,0
-ALB_1477,Via Rapisardi Marioa,056,Sophora japonica,8,,Non Class,decidua,0,0,0,0
-ALB_1478,Via Rapisardi Marioa,057,Sophora japonica,8,,Verifica,decidua,0,0,0,0
-ALB_1479,Via Rapisardi Marioa,058,Sophora japonica,8,,Non Class,decidua,0,0,0,0
-ALB_1480,Via Rapisardi Marioa,059,Sophora japonica,8,,Non Class,decidua,0,0,0,0
+ALB_1468,Via Rapisardi Marioa,047,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1469,Via Rapisardi Marioa,048,Sophora japonica,9,,,decidua,0,0,0,0
+ALB_1470,Via Rapisardi Marioa,049,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1471,Via Rapisardi Marioa,050,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1472,Via Rapisardi Marioa,051,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1473,Via Rapisardi Marioa,052,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1474,Via Rapisardi Marioa,053,Sophora japonica,7,,,decidua,0,0,0,0
+ALB_1475,Via Rapisardi Marioa,054,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1476,Via Rapisardi Marioa,055,Sophora japonica,7,,,decidua,0,0,0,0
+ALB_1477,Via Rapisardi Marioa,056,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1478,Via Rapisardi Marioa,057,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1479,Via Rapisardi Marioa,058,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1480,Via Rapisardi Marioa,059,Sophora japonica,8,,,decidua,0,0,0,0
 ALB_1481,Via Rapisardi Marioa,060,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
-ALB_1482,Via Giusti Giuseppe,001,Citrus limon,1,,No Interv,sempreverde,0,0,0,0
-ALB_1483,Via Giusti Giuseppe,002,Sophora japonica,7,,No Interv,decidua,0,0,0,0
-ALB_1484,Via Giusti Giuseppe,003,Sophora japonica,8,,Non Class,decidua,0,0,0,0
-ALB_1485,Via Giusti Giuseppe,004,Sophora japonica,9,,No Interv,decidua,0,0,0,0
-ALB_1486,Via Giusti Giuseppe,005,Sophora japonica,8,,No Interv,decidua,0,0,0,0
-ALB_1487,Via Giusti Giuseppe,006,Sophora japonica,7,,No Interv,decidua,0,0,0,0
-ALB_1488,Via Giusti Giuseppe,007,Sophora japonica,9,,No Interv,decidua,0,0,0,0
+ALB_1482,Via Giusti Giuseppe,001,Citrus limon,1,,,sempreverde,0,0,0,0
+ALB_1483,Via Giusti Giuseppe,002,Sophora japonica,7,,,decidua,0,0,0,0
+ALB_1484,Via Giusti Giuseppe,003,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1485,Via Giusti Giuseppe,004,Sophora japonica,9,,,decidua,0,0,0,0
+ALB_1486,Via Giusti Giuseppe,005,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1487,Via Giusti Giuseppe,006,Sophora japonica,7,,,decidua,0,0,0,0
+ALB_1488,Via Giusti Giuseppe,007,Sophora japonica,9,,,decidua,0,0,0,0
 ALB_1489,Via Giusti Giuseppe,008,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
 ALB_1490,Via Giusti Giuseppe,009,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
-ALB_1491,Via Giusti Giuseppe,010,Sophora japonica,8,,Non Class,decidua,0,0,0,0
-ALB_1492,Via Giusti Giuseppe,011,Sophora japonica,7,,No Interv,decidua,0,0,0,0
-ALB_1493,Via Giusti Giuseppe,012,Sophora japonica,7,,Non Class,decidua,0,0,0,0
-ALB_1494,Via Giusti Giuseppe,013,Sophora japonica,7,,No Interv,decidua,0,0,0,0
-ALB_1495,Via Giusti Giuseppe,014,Sophora japonica,7,,No Interv,decidua,0,0,0,0
-ALB_1496,Via Giusti Giuseppe,015,Sophora japonica,,,No Interv,decidua,0,0,0,0
-ALB_1497,Via Giusti Giuseppe,016,Sophora japonica,6,,No Interv,decidua,0,0,0,0
-ALB_1498,Via Giusti Giuseppe,017,Sophora japonica,7,,Verifica,decidua,0,0,0,0
-ALB_1499,Via Giusti Giuseppe,018,Sophora japonica,,,No Interv,decidua,0,0,0,0
-ALB_1500,Via Giusti Giuseppe,019,Sophora japonica,7,,Non Class,decidua,0,0,0,0
-ALB_1501,Via Giusti Giuseppe,020,Sophora japonica,,,No Interv,decidua,0,0,0,0
-ALB_1502,Via Giusti Giuseppe,021,Sophora japonica,9,,No Interv,decidua,0,0,0,0
-ALB_1503,Via Giusti Giuseppe,022,Sophora japonica,7,,No Interv,decidua,0,0,0,0
-ALB_1504,Via Giusti Giuseppe,023,Sophora japonica,7,,No Interv,decidua,0,0,0,0
-ALB_1505,Via Giusti Giuseppe,024,Sophora japonica,8,,Verifica,decidua,0,0,0,0
-ALB_1506,Via Giusti Giuseppe,025,Sophora japonica,6,,Non Class,decidua,0,0,0,0
-ALB_1507,Via Giusti Giuseppe,026,Sophora japonica,8,,Verifica,decidua,0,0,0,0
-ALB_1508,Via Giusti Giuseppe,027,Sophora japonica,10,,No Interv,decidua,0,0,0,0
-ALB_1509,Via Giusti Giuseppe,028,Sophora japonica,10,,No Interv,decidua,0,0,0,0
-ALB_1510,Via Giusti Giuseppe,029,Sophora japonica,5,,No Interv,decidua,0,0,0,0
-ALB_1511,Via Giusti Giuseppe,030,Sophora japonica,6,,No Interv,decidua,0,0,0,0
-ALB_1512,Via Giusti Giuseppe,031,Sophora japonica,5,,No Interv,decidua,0,0,0,0
-ALB_1513,Via Giusti Giuseppe,032,Sophora japonica,5,,Non Class,decidua,0,0,0,0
-ALB_1514,Via Giusti Giuseppe,033,Sophora japonica,5,,No Interv,decidua,0,0,0,0
-ALB_1515,Via Giusti Giuseppe,034,Sophora japonica,5,,No Interv,decidua,0,0,0,0
-ALB_1516,Via Giusti Giuseppe,035,Sophora japonica,4,,No Interv,decidua,0,0,0,0
-ALB_1517,Via Giusti Giuseppe,036,Sophora japonica,6,,Verifica,decidua,0,0,0,0
-ALB_1518,Via Giusti Giuseppe,037,Sophora japonica,4,,No Interv,decidua,0,0,0,0
-ALB_1519,Via Giusti Giuseppe,038,Sophora japonica,5,,No Interv,decidua,0,0,0,0
-ALB_1520,Via Giusti Giuseppe,039,Sophora japonica,5,,No Interv,decidua,0,0,0,0
-ALB_1521,Via Giusti Giuseppe,040,Sophora japonica,5,,No Interv,decidua,0,0,0,0
-ALB_1522,Via Giusti Giuseppe,041,Sophora japonica,6,,No Interv,decidua,0,0,0,0
-ALB_1523,Via Giusti Giuseppe,042,Sophora japonica,7,,Verifica,decidua,0,0,0,0
-ALB_1524,Via Giusti Giuseppe,043,Sophora japonica,8,,No Interv,decidua,0,0,0,0
-ALB_1525,Via Giusti Giuseppe,044,Sophora japonica,7,,No Interv,decidua,0,0,0,0
-ALB_1526,Via Giusti Giuseppe,045,Sophora japonica,6,,No Interv,decidua,0,0,0,0
-ALB_1527,Via Giusti Giuseppe,046,Sophora japonica,9,,No Interv,decidua,0,0,0,0
-ALB_1528,Via Giusti Giuseppe,047,Sophora japonica,6,,No Interv,decidua,0,0,0,0
-ALB_1529,Via Giusti Giuseppe,048,Sophora japonica,9,,No Interv,decidua,0,0,0,0
-ALB_1530,Via Giusti Giuseppe,049,Sophora japonica,10,,Verifica,decidua,0,0,0,0
-ALB_1531,Via Giusti Giuseppe,050,Sophora japonica,10,,Verifica,decidua,0,0,0,0
-ALB_1532,Via Giusti Giuseppe,051,Cercis siliquastrum,3,,No Interv,decidua,0,0,0,0
-ALB_1533,Via Giusti Giuseppe,052,Sophora japonica,8,,No Interv,decidua,0,0,0,0
-ALB_1534,Via Giusti Giuseppe,053,Sophora japonica,9,,No Interv,decidua,0,0,0,0
-ALB_1535,Via Giusti Giuseppe,054,Sophora japonica,9,,No Interv,decidua,0,0,0,0
-ALB_1536,Via Giusti Giuseppe,055,Sophora japonica,8,,No Interv,decidua,0,0,0,0
+ALB_1491,Via Giusti Giuseppe,010,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1492,Via Giusti Giuseppe,011,Sophora japonica,7,,,decidua,0,0,0,0
+ALB_1493,Via Giusti Giuseppe,012,Sophora japonica,7,,,decidua,0,0,0,0
+ALB_1494,Via Giusti Giuseppe,013,Sophora japonica,7,,,decidua,0,0,0,0
+ALB_1495,Via Giusti Giuseppe,014,Sophora japonica,7,,,decidua,0,0,0,0
+ALB_1496,Via Giusti Giuseppe,015,Sophora japonica,,,,decidua,0,0,0,0
+ALB_1497,Via Giusti Giuseppe,016,Sophora japonica,6,,,decidua,0,0,0,0
+ALB_1498,Via Giusti Giuseppe,017,Sophora japonica,7,,,decidua,0,0,0,0
+ALB_1499,Via Giusti Giuseppe,018,Sophora japonica,,,,decidua,0,0,0,0
+ALB_1500,Via Giusti Giuseppe,019,Sophora japonica,7,,,decidua,0,0,0,0
+ALB_1501,Via Giusti Giuseppe,020,Sophora japonica,,,,decidua,0,0,0,0
+ALB_1502,Via Giusti Giuseppe,021,Sophora japonica,9,,,decidua,0,0,0,0
+ALB_1503,Via Giusti Giuseppe,022,Sophora japonica,7,,,decidua,0,0,0,0
+ALB_1504,Via Giusti Giuseppe,023,Sophora japonica,7,,,decidua,0,0,0,0
+ALB_1505,Via Giusti Giuseppe,024,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1506,Via Giusti Giuseppe,025,Sophora japonica,6,,,decidua,0,0,0,0
+ALB_1507,Via Giusti Giuseppe,026,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1508,Via Giusti Giuseppe,027,Sophora japonica,10,,,decidua,0,0,0,0
+ALB_1509,Via Giusti Giuseppe,028,Sophora japonica,10,,,decidua,0,0,0,0
+ALB_1510,Via Giusti Giuseppe,029,Sophora japonica,5,,,decidua,0,0,0,0
+ALB_1511,Via Giusti Giuseppe,030,Sophora japonica,6,,,decidua,0,0,0,0
+ALB_1512,Via Giusti Giuseppe,031,Sophora japonica,5,,,decidua,0,0,0,0
+ALB_1513,Via Giusti Giuseppe,032,Sophora japonica,5,,,decidua,0,0,0,0
+ALB_1514,Via Giusti Giuseppe,033,Sophora japonica,5,,,decidua,0,0,0,0
+ALB_1515,Via Giusti Giuseppe,034,Sophora japonica,5,,,decidua,0,0,0,0
+ALB_1516,Via Giusti Giuseppe,035,Sophora japonica,4,,,decidua,0,0,0,0
+ALB_1517,Via Giusti Giuseppe,036,Sophora japonica,6,,,decidua,0,0,0,0
+ALB_1518,Via Giusti Giuseppe,037,Sophora japonica,4,,,decidua,0,0,0,0
+ALB_1519,Via Giusti Giuseppe,038,Sophora japonica,5,,,decidua,0,0,0,0
+ALB_1520,Via Giusti Giuseppe,039,Sophora japonica,5,,,decidua,0,0,0,0
+ALB_1521,Via Giusti Giuseppe,040,Sophora japonica,5,,,decidua,0,0,0,0
+ALB_1522,Via Giusti Giuseppe,041,Sophora japonica,6,,,decidua,0,0,0,0
+ALB_1523,Via Giusti Giuseppe,042,Sophora japonica,7,,,decidua,0,0,0,0
+ALB_1524,Via Giusti Giuseppe,043,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1525,Via Giusti Giuseppe,044,Sophora japonica,7,,,decidua,0,0,0,0
+ALB_1526,Via Giusti Giuseppe,045,Sophora japonica,6,,,decidua,0,0,0,0
+ALB_1527,Via Giusti Giuseppe,046,Sophora japonica,9,,,decidua,0,0,0,0
+ALB_1528,Via Giusti Giuseppe,047,Sophora japonica,6,,,decidua,0,0,0,0
+ALB_1529,Via Giusti Giuseppe,048,Sophora japonica,9,,,decidua,0,0,0,0
+ALB_1530,Via Giusti Giuseppe,049,Sophora japonica,10,,,decidua,0,0,0,0
+ALB_1531,Via Giusti Giuseppe,050,Sophora japonica,10,,,decidua,0,0,0,0
+ALB_1532,Via Giusti Giuseppe,051,Cercis siliquastrum,3,,,decidua,0,0,0,0
+ALB_1533,Via Giusti Giuseppe,052,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1534,Via Giusti Giuseppe,053,Sophora japonica,9,,,decidua,0,0,0,0
+ALB_1535,Via Giusti Giuseppe,054,Sophora japonica,9,,,decidua,0,0,0,0
+ALB_1536,Via Giusti Giuseppe,055,Sophora japonica,8,,,decidua,0,0,0,0
 ALB_1537,Via Giusti Giuseppe,056,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
-ALB_1538,Via Giusti Giuseppe,057,Sophora japonica,6,,No Interv,decidua,0,0,0,0
-ALB_1539,Via Giusti Giuseppe,058,Sophora japonica,6,,No Interv,decidua,0,0,0,0
-ALB_1540,Via Giusti Giuseppe,059,Sophora japonica,8,,No Interv,decidua,0,0,0,0
-ALB_1541,Via Giusti Giuseppe,060,Sophora japonica,9,,No Interv,decidua,0,0,0,0
-ALB_1542,Via Giusti Giuseppe,061,Sophora japonica,8,,No Interv,decidua,0,0,0,0
-ALB_1543,Via Giusti Giuseppe,062,Sophora japonica,9,,No Interv,decidua,0,0,0,0
-ALB_1544,Via Giusti Giuseppe,063,Sophora japonica,6,,No Interv,decidua,0,0,0,0
-ALB_1545,Via Giusti Giuseppe,064,Sophora japonica,7,,Verifica,decidua,0,0,0,0
-ALB_1546,Via Giusti Giuseppe,065,Sophora japonica,6,,No Interv,decidua,0,0,0,0
-ALB_1547,Via Giusti Giuseppe,066,Sophora japonica,6,,No Interv,decidua,0,0,0,0
-ALB_1548,Via Giusti Giuseppe,067,Sophora japonica,6,,No Interv,decidua,0,0,0,0
-ALB_1549,Via Giusti Giuseppe,068,Sophora japonica,6,,No Interv,decidua,0,0,0,0
-ALB_1550,Via Giusti Giuseppe,069,Sophora japonica,5,,No Interv,decidua,0,0,0,0
-ALB_1551,Via Giusti Giuseppe,070,Sophora japonica,4,,No Interv,decidua,0,0,0,0
-ALB_1552,Via Giusti Giuseppe,071,Sophora japonica,4,,No Interv,decidua,0,0,0,0
-ALB_1553,Via Giusti Giuseppe,072,Sophora japonica,4,,No Interv,decidua,0,0,0,0
-ALB_1554,Via Giusti Giuseppe,073,Sophora japonica,6,,No Interv,decidua,0,0,0,0
-ALB_1555,Via Giusti Giuseppe,074,Sophora japonica,5,,No Interv,decidua,0,0,0,0
-ALB_1556,Via Giusti Giuseppe,075,Sophora japonica,8,,No Interv,decidua,0,0,0,0
-ALB_1557,Via Giusti Giuseppe,076,Sophora japonica,8,,No Interv,decidua,0,0,0,0
-ALB_1558,Via Giusti Giuseppe,077,Sophora japonica,6,,No Interv,decidua,0,0,0,0
-ALB_1559,Via Giusti Giuseppe,078,Sophora japonica,10,,Verifica,decidua,0,0,0,0
-ALB_1560,Via Giusti Giuseppe,079,Sophora japonica,9,,Verifica,decidua,0,0,0,0
-ALB_1561,Via Giusti Giuseppe,080,Sophora japonica,9,,No Interv,decidua,0,0,0,0
-ALB_1562,Via Giusti Giuseppe,081,Sophora japonica,8,,No Interv,decidua,0,0,0,0
-ALB_1563,Via Giusti Giuseppe,082,Sophora japonica,7,,Verifica,decidua,0,0,0,0
-ALB_1564,Via Giusti Giuseppe,083,Sophora japonica,8,,No Interv,decidua,0,0,0,0
-ALB_1565,Via Giusti Giuseppe,084,Sophora japonica,8,,No Interv,decidua,0,0,0,0
-ALB_1566,Via Giusti Giuseppe,085,Sophora japonica,8,,No Interv,decidua,0,0,0,0
-ALB_1567,Via Giusti Giuseppe,086,Sophora japonica,8,,No Interv,decidua,0,0,0,0
-ALB_1568,Via Giusti Giuseppe,087,Sophora japonica,8,,No Interv,decidua,0,0,0,0
-ALB_1569,Via Giusti Giuseppe,088,Cercis siliquastrum,2,,No Interv,decidua,0,0,0,0
-ALB_1570,Via Giusti Giuseppe,089,Sophora japonica,8,,No Interv,decidua,0,0,0,0
-ALB_1571,Via Giusti Giuseppe,090,Sophora japonica,6,,No Interv,decidua,0,0,0,0
-ALB_1572,Via Giusti Giuseppe,091,Sophora japonica,10,,No Interv,decidua,0,0,0,0
-ALB_1573,Via Giusti Giuseppe,092,Sophora japonica,8,,No Interv,decidua,0,0,0,0
-ALB_1574,Via Giusti Giuseppe,093,Sophora japonica,,,No Interv,decidua,0,0,0,0
-ALB_1575,Via Giusti Giuseppe,094,Sophora japonica,6,,Verifica,decidua,0,0,0,0
-ALB_1576,Via Giusti Giuseppe,095,Sophora japonica,6,,Verifica,decidua,0,0,0,0
-ALB_1577,Via Giusti Giuseppe,096,Sophora japonica,4,,No Interv,decidua,0,0,0,0
-ALB_1578,Via Giusti Giuseppe,097,Sophora japonica,5,,No Interv,decidua,0,0,0,0
-ALB_1579,Via Giusti Giuseppe,098,Sophora japonica,7,,Verifica,decidua,0,0,0,0
-ALB_1580,Via Giusti Giuseppe,099,Sophora japonica,8,,Verifica,decidua,0,0,0,0
-ALB_1581,Via Giusti Giuseppe,100,,,,No Interv,,,,,
-ALB_1582,Via Giusti Giuseppe,101,Sophora japonica,8,,Verifica,decidua,0,0,0,0
-ALB_1583,Via Giusti Giuseppe,102,Sophora japonica,8,,Verifica,decidua,0,0,0,0
-ALB_1584,Via Giusti Giuseppe,103,Sophora japonica,8,,Verifica,decidua,0,0,0,0
-ALB_1585,Via Giusti Giuseppe,104,Sophora japonica,8,,Verifica,decidua,0,0,0,0
-ALB_1586,Via Giusti Giuseppe,105,Sophora japonica,6,,No Interv,decidua,0,0,0,0
-ALB_1587,Via Giusti Giuseppe,106,Sophora japonica,6,,No Interv,decidua,0,0,0,0
-ALB_1588,Via Giusti Giuseppe,107,Sophora japonica,8,,Verifica,decidua,0,0,0,0
-ALB_1589,Via Giusti Giuseppe,108,Sophora japonica,7,,No Interv,decidua,0,0,0,0
-ALB_1590,Via Giusti Giuseppe,109,Sophora japonica,4,,No Interv,decidua,0,0,0,0
-ALB_1591,Via Giusti Giuseppe,110,Sophora japonica,9,,No Interv,decidua,0,0,0,0
-ALB_1592,Via Giusti Giuseppe,111,Sophora japonica,8,,Non Class,decidua,0,0,0,0
-ALB_1593,Via Giusti Giuseppe,112,Sophora japonica,,,No Interv,decidua,0,0,0,0
-ALB_1594,Via Giusti Giuseppe,113,Sophora japonica,8,,Verifica,decidua,0,0,0,0
-ALB_1595,Via Giusti Giuseppe,114,Sophora japonica,8,,No Interv,decidua,0,0,0,0
-ALB_1596,Via Giusti Giuseppe,115,Sophora japonica,,,No Interv,decidua,0,0,0,0
-ALB_1597,Via Giusti Giuseppe,116,Cercis siliquastrum,2,,No Interv,decidua,0,0,0,0
-ALB_1598,Via Giusti Giuseppe,117,Sophora japonica,6,,No Interv,decidua,0,0,0,0
-ALB_1599,Via Giusti Giuseppe,118,Sophora japonica,7,,No Interv,decidua,0,0,0,0
-ALB_1600,Via Giusti Giuseppe,119,Sophora japonica,7,,No Interv,decidua,0,0,0,0
-ALB_1601,Via Giusti Giuseppe,120,Sophora japonica,9,,Verifica,decidua,0,0,0,0
-ALB_1602,Via Giusti Giuseppe,121,Sophora japonica,8,,No Interv,decidua,0,0,0,0
-ALB_1603,Via Giusti Giuseppe,122,Sophora japonica,8,,Verifica,decidua,0,0,0,0
-ALB_1604,Via Giusti Giuseppe,123,Sophora japonica,8,,Verifica,decidua,0,0,0,0
-ALB_1605,Via Giusti Giuseppe,124,Sophora japonica,7,,Verifica,decidua,0,0,0,0
-ALB_1606,Via Giusti Giuseppe,125,Sophora japonica,8,,Verifica,decidua,0,0,0,0
-ALB_1607,Via Giusti Giuseppe,126,Sophora japonica,9,,Verifica,decidua,0,0,0,0
-ALB_1608,Via Giusti Giuseppe,127,Sophora japonica,9,,No Interv,decidua,0,0,0,0
-ALB_1609,Via Giusti Giuseppe,128,Sophora japonica,8,,No Interv,decidua,0,0,0,0
-ALB_1610,Via Giusti Giuseppe,129,Sophora japonica,8,,No Interv,decidua,0,0,0,0
-ALB_1611,Via Giusti Giuseppe,130,Sophora japonica,8,,No Interv,decidua,0,0,0,0
-ALB_1612,Via Giusti Giuseppe,131,Sophora japonica,9,,Verifica,decidua,0,0,0,0
-ALB_1613,Via Giusti Giuseppe,132,Sophora japonica,9,,Verifica,decidua,0,0,0,0
-ALB_1614,Via Corazza Filippo,001,Melia azedarach,10,,Verifica,semi-decidua,0,0,0,0
-ALB_1615,Via Corazza Filippo,002,Melia azedarach,9,,No Interv,semi-decidua,0,0,0,0
-ALB_1616,Via Corazza Filippo,003,Melia azedarach,,,No Interv,semi-decidua,0,0,0,0
-ALB_1617,Via Corazza Filippo,004,Melia azedarach,8,,No Interv,semi-decidua,0,0,0,0
+ALB_1538,Via Giusti Giuseppe,057,Sophora japonica,6,,,decidua,0,0,0,0
+ALB_1539,Via Giusti Giuseppe,058,Sophora japonica,6,,,decidua,0,0,0,0
+ALB_1540,Via Giusti Giuseppe,059,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1541,Via Giusti Giuseppe,060,Sophora japonica,9,,,decidua,0,0,0,0
+ALB_1542,Via Giusti Giuseppe,061,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1543,Via Giusti Giuseppe,062,Sophora japonica,9,,,decidua,0,0,0,0
+ALB_1544,Via Giusti Giuseppe,063,Sophora japonica,6,,,decidua,0,0,0,0
+ALB_1545,Via Giusti Giuseppe,064,Sophora japonica,7,,,decidua,0,0,0,0
+ALB_1546,Via Giusti Giuseppe,065,Sophora japonica,6,,,decidua,0,0,0,0
+ALB_1547,Via Giusti Giuseppe,066,Sophora japonica,6,,,decidua,0,0,0,0
+ALB_1548,Via Giusti Giuseppe,067,Sophora japonica,6,,,decidua,0,0,0,0
+ALB_1549,Via Giusti Giuseppe,068,Sophora japonica,6,,,decidua,0,0,0,0
+ALB_1550,Via Giusti Giuseppe,069,Sophora japonica,5,,,decidua,0,0,0,0
+ALB_1551,Via Giusti Giuseppe,070,Sophora japonica,4,,,decidua,0,0,0,0
+ALB_1552,Via Giusti Giuseppe,071,Sophora japonica,4,,,decidua,0,0,0,0
+ALB_1553,Via Giusti Giuseppe,072,Sophora japonica,4,,,decidua,0,0,0,0
+ALB_1554,Via Giusti Giuseppe,073,Sophora japonica,6,,,decidua,0,0,0,0
+ALB_1555,Via Giusti Giuseppe,074,Sophora japonica,5,,,decidua,0,0,0,0
+ALB_1556,Via Giusti Giuseppe,075,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1557,Via Giusti Giuseppe,076,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1558,Via Giusti Giuseppe,077,Sophora japonica,6,,,decidua,0,0,0,0
+ALB_1559,Via Giusti Giuseppe,078,Sophora japonica,10,,,decidua,0,0,0,0
+ALB_1560,Via Giusti Giuseppe,079,Sophora japonica,9,,,decidua,0,0,0,0
+ALB_1561,Via Giusti Giuseppe,080,Sophora japonica,9,,,decidua,0,0,0,0
+ALB_1562,Via Giusti Giuseppe,081,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1563,Via Giusti Giuseppe,082,Sophora japonica,7,,,decidua,0,0,0,0
+ALB_1564,Via Giusti Giuseppe,083,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1565,Via Giusti Giuseppe,084,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1566,Via Giusti Giuseppe,085,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1567,Via Giusti Giuseppe,086,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1568,Via Giusti Giuseppe,087,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1569,Via Giusti Giuseppe,088,Cercis siliquastrum,2,,,decidua,0,0,0,0
+ALB_1570,Via Giusti Giuseppe,089,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1571,Via Giusti Giuseppe,090,Sophora japonica,6,,,decidua,0,0,0,0
+ALB_1572,Via Giusti Giuseppe,091,Sophora japonica,10,,,decidua,0,0,0,0
+ALB_1573,Via Giusti Giuseppe,092,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1574,Via Giusti Giuseppe,093,Sophora japonica,,,,decidua,0,0,0,0
+ALB_1575,Via Giusti Giuseppe,094,Sophora japonica,6,,,decidua,0,0,0,0
+ALB_1576,Via Giusti Giuseppe,095,Sophora japonica,6,,,decidua,0,0,0,0
+ALB_1577,Via Giusti Giuseppe,096,Sophora japonica,4,,,decidua,0,0,0,0
+ALB_1578,Via Giusti Giuseppe,097,Sophora japonica,5,,,decidua,0,0,0,0
+ALB_1579,Via Giusti Giuseppe,098,Sophora japonica,7,,,decidua,0,0,0,0
+ALB_1580,Via Giusti Giuseppe,099,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1581,Via Giusti Giuseppe,100,,,,,,,,,
+ALB_1582,Via Giusti Giuseppe,101,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1583,Via Giusti Giuseppe,102,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1584,Via Giusti Giuseppe,103,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1585,Via Giusti Giuseppe,104,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1586,Via Giusti Giuseppe,105,Sophora japonica,6,,,decidua,0,0,0,0
+ALB_1587,Via Giusti Giuseppe,106,Sophora japonica,6,,,decidua,0,0,0,0
+ALB_1588,Via Giusti Giuseppe,107,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1589,Via Giusti Giuseppe,108,Sophora japonica,7,,,decidua,0,0,0,0
+ALB_1590,Via Giusti Giuseppe,109,Sophora japonica,4,,,decidua,0,0,0,0
+ALB_1591,Via Giusti Giuseppe,110,Sophora japonica,9,,,decidua,0,0,0,0
+ALB_1592,Via Giusti Giuseppe,111,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1593,Via Giusti Giuseppe,112,Sophora japonica,,,,decidua,0,0,0,0
+ALB_1594,Via Giusti Giuseppe,113,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1595,Via Giusti Giuseppe,114,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1596,Via Giusti Giuseppe,115,Sophora japonica,,,,decidua,0,0,0,0
+ALB_1597,Via Giusti Giuseppe,116,Cercis siliquastrum,2,,,decidua,0,0,0,0
+ALB_1598,Via Giusti Giuseppe,117,Sophora japonica,6,,,decidua,0,0,0,0
+ALB_1599,Via Giusti Giuseppe,118,Sophora japonica,7,,,decidua,0,0,0,0
+ALB_1600,Via Giusti Giuseppe,119,Sophora japonica,7,,,decidua,0,0,0,0
+ALB_1601,Via Giusti Giuseppe,120,Sophora japonica,9,,,decidua,0,0,0,0
+ALB_1602,Via Giusti Giuseppe,121,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1603,Via Giusti Giuseppe,122,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1604,Via Giusti Giuseppe,123,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1605,Via Giusti Giuseppe,124,Sophora japonica,7,,,decidua,0,0,0,0
+ALB_1606,Via Giusti Giuseppe,125,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1607,Via Giusti Giuseppe,126,Sophora japonica,9,,,decidua,0,0,0,0
+ALB_1608,Via Giusti Giuseppe,127,Sophora japonica,9,,,decidua,0,0,0,0
+ALB_1609,Via Giusti Giuseppe,128,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1610,Via Giusti Giuseppe,129,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1611,Via Giusti Giuseppe,130,Sophora japonica,8,,,decidua,0,0,0,0
+ALB_1612,Via Giusti Giuseppe,131,Sophora japonica,9,,,decidua,0,0,0,0
+ALB_1613,Via Giusti Giuseppe,132,Sophora japonica,9,,,decidua,0,0,0,0
+ALB_1614,Via Corazza Filippo,001,Melia azedarach,10,,,semi-decidua,0,0,0,0
+ALB_1615,Via Corazza Filippo,002,Melia azedarach,9,,,semi-decidua,0,0,0,0
+ALB_1616,Via Corazza Filippo,003,Melia azedarach,,,,semi-decidua,0,0,0,0
+ALB_1617,Via Corazza Filippo,004,Melia azedarach,8,,,semi-decidua,0,0,0,0
 ALB_1618,Via Corazza Filippo,005,Melia azedarach,0,,Ceppaia,semi-decidua,0,0,0,0
 ALB_1619,Via Corazza Filippo,006,Melia azedarach,0,,Ceppaia,semi-decidua,0,0,0,0
 ALB_1620,Via Corazza Filippo,007,Melia azedarach,0,,Ceppaia,semi-decidua,0,0,0,0
 ALB_1621,Via Corazza Filippo,008,Melia azedarach,0,,Ceppaia,semi-decidua,0,0,0,0
-ALB_1622,Via Corazza Filippo,009,Melia azedarach,10,,No Interv,semi-decidua,0,0,0,0
+ALB_1622,Via Corazza Filippo,009,Melia azedarach,10,,,semi-decidua,0,0,0,0
 ALB_1623,Via Corazza Filippo,010,Melia azedarach,0,,Ceppaia,semi-decidua,0,0,0,0
-ALB_1624,Via Corazza Filippo,011,Melia azedarach,9,,No Interv,semi-decidua,0,0,0,0
-ALB_1625,Via Corazza Filippo,012,Melia azedarach,8,,No Interv,semi-decidua,0,0,0,0
+ALB_1624,Via Corazza Filippo,011,Melia azedarach,9,,,semi-decidua,0,0,0,0
+ALB_1625,Via Corazza Filippo,012,Melia azedarach,8,,,semi-decidua,0,0,0,0
 ALB_1626,Via Corazza Filippo,013,Melia azedarach,0,,Ceppaia,semi-decidua,0,0,0,0
-ALB_1627,Via Corazza Filippo,014,Melia azedarach,7,,No Interv,semi-decidua,0,0,0,0
-ALB_1628,Via Corazza Filippo,015,Melia azedarach,8,,No Interv,semi-decidua,0,0,0,0
-ALB_1629,Via Corazza Filippo,016,Melia azedarach,7,,Verifica,semi-decidua,0,0,0,0
-ALB_1630,Via Corazza Filippo,017,Melia azedarach,,,Verifica,semi-decidua,0,0,0,0
-ALB_1631,Via Corazza Filippo,018,Melia azedarach,10,,No Interv,semi-decidua,0,0,0,0
+ALB_1627,Via Corazza Filippo,014,Melia azedarach,7,,,semi-decidua,0,0,0,0
+ALB_1628,Via Corazza Filippo,015,Melia azedarach,8,,,semi-decidua,0,0,0,0
+ALB_1629,Via Corazza Filippo,016,Melia azedarach,7,,,semi-decidua,0,0,0,0
+ALB_1630,Via Corazza Filippo,017,Melia azedarach,,,,semi-decidua,0,0,0,0
+ALB_1631,Via Corazza Filippo,018,Melia azedarach,10,,,semi-decidua,0,0,0,0
 ALB_1632,Via Corazza Filippo,019,Melia azedarach,0,,Ceppaia,semi-decidua,0,0,0,0
 ALB_1633,Via Corazza Filippo,020,Melia azedarach,0,,Ceppaia,semi-decidua,0,0,0,0
-ALB_1634,Via Corazza Filippo,021,Melia azedarach,9,,No Interv,semi-decidua,0,0,0,0
+ALB_1634,Via Corazza Filippo,021,Melia azedarach,9,,,semi-decidua,0,0,0,0
 ALB_1635,Via Corazza Filippo,022,Melia azedarach,0,,Ceppaia,semi-decidua,0,0,0,0
-ALB_1636,Via Corazza Filippo,023,Melia azedarach,9,,No Interv,semi-decidua,0,0,0,0
+ALB_1636,Via Corazza Filippo,023,Melia azedarach,9,,,semi-decidua,0,0,0,0
 ALB_1637,Via Corazza Filippo,024,Melia azedarach,0,,Ceppaia,semi-decidua,0,0,0,0
-ALB_1638,Via Corazza Filippo,025,Melia azedarach,9,,No Interv,semi-decidua,0,0,0,0
-ALB_1639,Via Corazza Filippo,026,Melia azedarach,10,,No Interv,semi-decidua,0,0,0,0
-ALB_1640,Via Corazza Filippo,027,Melia azedarach,9,,No Interv,semi-decidua,0,0,0,0
-ALB_1641,Via Corazza Filippo,028,Melia azedarach,7,,No Interv,semi-decidua,0,0,0,0
+ALB_1638,Via Corazza Filippo,025,Melia azedarach,9,,,semi-decidua,0,0,0,0
+ALB_1639,Via Corazza Filippo,026,Melia azedarach,10,,,semi-decidua,0,0,0,0
+ALB_1640,Via Corazza Filippo,027,Melia azedarach,9,,,semi-decidua,0,0,0,0
+ALB_1641,Via Corazza Filippo,028,Melia azedarach,7,,,semi-decidua,0,0,0,0
 ALB_1642,Via Corazza Filippo,029,Melia azedarach,0,,Ceppaia,semi-decidua,0,0,0,0
-ALB_1643,Via Corazza Filippo,030,Melia azedarach,9,,No Interv,semi-decidua,0,0,0,0
+ALB_1643,Via Corazza Filippo,030,Melia azedarach,9,,,semi-decidua,0,0,0,0
