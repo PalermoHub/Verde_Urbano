@@ -474,8 +474,8 @@ ALB_472,Via Principe Di Belmonte,,Citrus × aurantium,6,12,B,sempreverde,1150,12
 ALB_473,Via Principe Di Belmonte,098,Citrus × aurantium,6,12,B,sempreverde,1150,1211,1187,1090
 ALB_474,Viale Michelangelo,006,Platanus Hybrida,7,41,C,decidua,38215,5459,3276,0
 ALB_475,Viale Michelangelo,009,Platanus Hybrida,8,35,C,decidua,32471,4639,2783,0
-ALB_476,Viale Michelangelo,011,Platanus Hybrida,12,34,Ceppaia,decidua,20933,2990,1794,0
-ALB_477,Viale Michelangelo,015,Platanus Hybrida,13,50,Ceppaia,decidua,49636,7091,4255,0
+ALB_476,Viale Michelangelo,011,Platanus Hybrida,0,34,Ceppaia,decidua,0,0,0,0
+ALB_477,Viale Michelangelo,015,Platanus Hybrida,0,50,Ceppaia,decidua,0,0,0,0
 ALB_478,Viale Michelangelo,016,Platanus Hybrida,8,31,C,decidua,25473,3639,2183,0
 ALB_479,Viale Michelangelo,024,Robinia pseudoacacia,14,35,C,decidua,7983,11404,5702,0
 ALB_480,Viale Michelangelo,033,Platanus Hybrida,8,30,C,decidua,23856,3408,2045,0
@@ -515,7 +515,7 @@ ALB_513,Viale Michelangelo,080,Platanus Hybrida,12,52,C,decidua,114253,16322,979
 ALB_514,Viale Michelangelo,082,Platanus Hybrida,13,58,C,decidua,155845,22264,13358,0
 ALB_515,Viale Michelangelo,083,Platanus Hybrida,,,C,decidua,0,0,0,0
 ALB_516,Viale Michelangelo,084,Platanus Hybrida,,,C,decidua,0,0,0,0
-ALB_517,Viale Michelangelo,085,Platanus Hybrida,6,38,Ceppaia,decidua,11783,1683,1010,0
+ALB_517,Viale Michelangelo,085,Platanus Hybrida,0,38,Ceppaia,decidua,0,0,0,0
 ALB_518,Viale Michelangelo,086,Platanus Hybrida,11,40,C,decidua,61168,8738,5243,0
 ALB_519,Viale Michelangelo,087,Platanus Hybrida,13,42,D,decidua,58372,8339,5003,0
 ALB_520,Viale Michelangelo,088,Platanus Hybrida,13,51,C,decidua,120497,17214,10328,0
@@ -604,7 +604,7 @@ ALB_602,Viale Michelangelo,216,Platanus Hybrida,9,40,C,decidua,48562,6937,4162,0
 ALB_603,Viale Michelangelo,217,Platanus Hybrida,13,73,C,decidua,246878,35268,21161,0
 ALB_604,Viale Michelangelo,218,Pinus halepensis,17,60,C,sempreverde,4029,4111,4029,3906
 ALB_605,Viale Michelangelo,219,Platanus Hybrida,11,32,C,decidua,39147,5592,3355,0
-ALB_606,Viale Michelangelo,220,Platanus Hybrida,8,39,Ceppaia,decidua,17279,2468,1481,0
+ALB_606,Viale Michelangelo,220,Platanus Hybrida,0,39,Ceppaia,decidua,0,0,0,0
 ALB_607,Viale Michelangelo,221,Platanus Hybrida,12,40,C,decidua,67605,9658,5795,0
 ALB_608,Viale Michelangelo,222,Platanus Hybrida,11,42,C/D,decidua,28902,4129,2477,0
 ALB_609,Viale Michelangelo,223,Platanus Hybrida,7,37,D,decidua,22230,3176,1905,0
@@ -627,7 +627,7 @@ ALB_625,Viale Michelangelo,239,Platanus Hybrida,14,54,C,decidua,147108,21015,126
 ALB_626,Viale Michelangelo,240,Platanus Hybrida,12,44,D,decidua,58430,8347,5008,0
 ALB_627,Viale Michelangelo,241,Platanus Hybrida,13,40,C/D,decidua,31767,4538,2723,0
 ALB_628,Viale Michelangelo,242,Platanus Hybrida,,,C,decidua,0,0,0,0
-ALB_629,Viale Michelangelo,243,Platanus Hybrida,,,Ceppaia,decidua,0,0,0,0
+ALB_629,Viale Michelangelo,243,Platanus Hybrida,0,,Ceppaia,decidua,0,0,0,0
 ALB_630,Viale Michelangelo,244,Celtis australis,,,Non Class,decidua,0,0,0,0
 ALB_631,Viale Michelangelo,245,Platanus Hybrida,8,32,C,decidua,27143,3878,2327,0
 ALB_632,Viale Michelangelo,246,Celtis australis,,,Non Class,decidua,0,0,0,0
@@ -991,8 +991,8 @@ ALB_989,Viale Michelangelo,8300,Tabebuia rosea,3.63,0,A,decidua,0,0,0,0
 ALB_990,Viale Michelangelo,8315,Tabebuia rosea,4.54,0,D,decidua,0,0,0,0
 ALB_991,Viale Michelangelo,8322,Tabebuia rosea,1.45,0,A,decidua,0,0,0,0
 ALB_992,Viale Michelangelo,8328,Tabebuia rosea,3.32,0,A,decidua,0,0,0,0
-ALB_993,Viale Michelangelo,,Tabebuia rosea,,,A,decidua,0,0,0,0
-ALB_994,Viale Michelangelo,,Tabebuia rosea,,,D,decidua,0,0,0,0
+ALB_993,Viale Michelangelo,272,Tabebuia rosea,,,A,decidua,0,0,0,0
+ALB_994,Viale Michelangelo,273,Tabebuia rosea,,,D,decidua,0,0,0,0
 ALB_995,Viale Regina Margherita di Savoia,001,Platanus Hybrida,,,C/D,decidua,0,0,0,0
 ALB_996,Viale Regina Margherita di Savoia,002,Platanus Hybrida,,,C/D,decidua,0,0,0,0
 ALB_997,Viale Regina Margherita di Savoia,003,Platanus Hybrida,,,C/D,decidua,0,0,0,0
@@ -1194,7 +1194,7 @@ ALB_1192,Viale Regina Margherita di Savoia,136,Ficus Microcarpa,,136,C,semprever
 ALB_1193,Viale Regina Margherita di Savoia,137,Ficus Microcarpa,,137,C/D,sempreverde,0,0,0,0
 ALB_1194,Via Galatea,001,Platanus hybrida,11,38,C/D,decidua,23659,3380,2028,0
 ALB_1195,Via Galatea,002,Platanus hybrida,11,48,C/D,decidua,37749,5393,3236,0
-ALB_1196,Via Galatea,003,Populus Nigra,,,Ceppaia,decidua,0,0,0,0
+ALB_1196,Via Galatea,003,Populus Nigra,0,,Ceppaia,decidua,0,0,0,0
 ALB_1197,Via Galatea,004,Populus Nigra,11,63,C/D,decidua,6759,9012,4956,0
 ALB_1198,Via Galatea,005,Populus Nigra,11,37,D,decidua,4807,6410,3525,0
 ALB_1199,Via Galatea,006,Populus Nigra,11,36,C,decidua,6442,8589,4724,0
@@ -1221,29 +1221,29 @@ ALB_1219,Via Galatea,026,Platanus Hybrida,17,93,C/D,decidua,233780,33397,20038,0
 ALB_1220,Via Galatea,027,Platanus Hybrida,18,90,C/D,decidua,233815,33402,20041,0
 ALB_1221,Via Galatea,028,Populus Nigra,13,47,C/D,decidua,5083,6777,3727,0
 ALB_1222,Via Galatea,029,Platanus Hybrida,5,10,A,decidua,2206,315,189,0
-ALB_1223,Via Galatea,030,Populus Nigra,,,Ceppaia,decidua,0,0,0,0
-ALB_1224,Via Galatea,031,Populus Nigra,,,Ceppaia,decidua,0,0,0,0
+ALB_1223,Via Galatea,030,Populus Nigra,0,,Ceppaia,decidua,0,0,0,0
+ALB_1224,Via Galatea,031,Populus Nigra,0,,Ceppaia,decidua,0,0,0,0
 ALB_1225,Via Galatea,032,Populus Nigra,13,37,C,decidua,8088,10784,5931,0
 ALB_1226,Via Galatea,033,Populus Nigra,14,57,C,decidua,17519,23359,12847,0
 ALB_1227,Via Galatea,034,Populus Nigra,17,73,C/D,decidua,13810,18414,10128,0
 ALB_1228,Via Galatea,035,Populus Nigra,13,66,C/D,decidua,8750,11667,6417,0
 ALB_1229,Via Galatea,036,Populus Nigra,17,66,C/D,decidua,11753,15671,8619,0
 ALB_1230,Via Galatea,037,Populus Nigra,11,57,C,decidua,13437,17916,9854,0
-ALB_1231,Via Galatea,038,Populus Nigra,,,Ceppaia,decidua,0,0,0,0
+ALB_1231,Via Galatea,038,Populus Nigra,0,,Ceppaia,decidua,0,0,0,0
 ALB_1232,Via Galatea,039,Populus Nigra,9,12,A,decidua,1272,1697,933,0
-ALB_1233,Via Galatea,040,Platanus Hybrida,,,Ceppaia,decidua,0,0,0,0
-ALB_1234,Via Galatea,041,Platanus Hybrida,,,Ceppaia,decidua,0,0,0,0
+ALB_1233,Via Galatea,040,Platanus Hybrida,0,,Ceppaia,decidua,0,0,0,0
+ALB_1234,Via Galatea,041,Platanus Hybrida,0,,Ceppaia,decidua,0,0,0,0
 ALB_1235,Via Galatea,042,Platanus Hybrida,18,112,C/D,decidua,362096,51728,31037,0
 ALB_1236,Via Galatea,043,Platanus Hybrida,13,91,C/D,decidua,164415,23488,14093,0
-ALB_1237,Via Galatea,044,Platanus Hybrida,,,Ceppaia,decidua,0,0,0,0
-ALB_1238,Via Galatea,045,Platanus Hybrida,,,Ceppaia,decidua,0,0,0,0
-ALB_1239,Via Galatea,046,Populus Nigra,,,Ceppaia,decidua,0,0,0,0
+ALB_1237,Via Galatea,044,Platanus Hybrida,0,,Ceppaia,decidua,0,0,0,0
+ALB_1238,Via Galatea,045,Platanus Hybrida,0,,Ceppaia,decidua,0,0,0,0
+ALB_1239,Via Galatea,046,Populus Nigra,0,,Ceppaia,decidua,0,0,0,0
 ALB_1240,Via Galatea,047,Platanus Hybrida,,,A,decidua,0,0,0,0
 ALB_1241,Via Galatea,048,Populus Nigra,13,43,C,decidua,10286,13715,7543,0
-ALB_1242,Viale Principe Umberto,001,Pinus halepensis,,,Ceppaia,sempreverde,0,0,0,0
-ALB_1243,Viale Principe Umberto,002,Pinus halepensis,,,Ceppaia,sempreverde,0,0,0,0
-ALB_1244,Viale Principe Umberto,003,Pinus halepensis,,,Ceppaia,sempreverde,0,0,0,0
-ALB_1245,Viale Principe Umberto,004,Pinus halepensis,,,C/D,sempreverde,0,0,0,0
+ALB_1242,Viale Principe Umberto,001,Pinus halepensis,0,,Ceppaia,sempreverde,0,0,0,0
+ALB_1243,Viale Principe Umberto,002,Pinus halepensis,0,,Ceppaia,sempreverde,0,0,0,0
+ALB_1244,Viale Principe Umberto,003,Pinus halepensis,0,,Ceppaia,sempreverde,0,0,0,0
+ALB_1245,Viale Principe Umberto,004,Pinus halepensis,0,,C/D,sempreverde,0,0,0,0
 ALB_1246,Viale Principe Umberto,005,Pinus halepensis,11,38,D,sempreverde,1407,1435,1407,1364
 ALB_1247,Viale Principe Umberto,006,Pinus halepensis,18,71,C,sempreverde,4879,4979,4879,4730
 ALB_1248,Viale Principe Umberto,007,Pinus halepensis,16,69,D,sempreverde,3128,3192,3128,3032
@@ -1262,12 +1262,12 @@ ALB_1260,Viale Principe Umberto,019,NON ESISTE,,,D,#N/A,#N/A,#N/A,#N/A,#N/A
 ALB_1261,Viale Principe Umberto,020,Pinus halepensis,5,10,A,sempreverde,487,497,487,472
 ALB_1262,Viale Principe Umberto,021,Pinus halepensis,14,38,C,sempreverde,2331,2379,2331,2260
 ALB_1263,Viale Principe Umberto,022,Pinus halepensis,18,100,C/D,sempreverde,2846,2904,2846,2759
-ALB_1264,Viale Principe Umberto,023,Pinus halepensis,,,Ceppaia,sempreverde,0,0,0,0
-ALB_1265,Viale Principe Umberto,024,Pinus halepensis,,,Ceppaia,sempreverde,0,0,0,0
+ALB_1264,Viale Principe Umberto,023,Pinus halepensis,0,,Ceppaia,sempreverde,0,0,0,0
+ALB_1265,Viale Principe Umberto,024,Pinus halepensis,0,,Ceppaia,sempreverde,0,0,0,0
 ALB_1266,Viale Principe Umberto,025,Pinus halepensis,15,70,D,sempreverde,3029,3091,3029,2936
 ALB_1267,Viale Principe Umberto,026,Pinus halepensis,16,78,C,sempreverde,4890,4990,4890,4740
 ALB_1268,Viale Principe Umberto,027,Pinus halepensis,13,60,C/D,sempreverde,1431,1460,1431,1387
-ALB_1269,Viale Principe Umberto,028,Pinus halepensis,13,70,Ceppaia,sempreverde,1644,1678,1644,1594
+ALB_1269,Viale Principe Umberto,028,Pinus halepensis,0,70,Ceppaia,sempreverde,0,0,0,0
 ALB_1270,Viale Principe Umberto,029,Pinus halepensis,16,73,D,sempreverde,3291,3358,3291,3190
 ALB_1271,Viale Principe Umberto,030,Pinus halepensis,13,70,C/D,sempreverde,1644,1678,1644,1594
 ALB_1272,Viale Principe Umberto,031,Pinus halepensis,15,65,C/D,sempreverde,1700,1735,1700,1648
@@ -1277,22 +1277,22 @@ ALB_1275,Viale Principe Umberto,034,Pinus halepensis,16,75,C/D,sempreverde,2023,
 ALB_1276,Viale Principe Umberto,035,Pinus halepensis,14,74,C,sempreverde,4247,4334,4247,4117
 ALB_1277,Viale Principe Umberto,036,Pinus halepensis,15,57,C,sempreverde,3524,3596,3524,3417
 ALB_1278,Viale Principe Umberto,037,Pinus halepensis,14,56,C,sempreverde,3305,3373,3305,3204
-ALB_1279,Viale Principe Umberto,038,Pinus halepensis,,,Ceppaia,sempreverde,0,0,0,0
+ALB_1279,Viale Principe Umberto,038,Pinus halepensis,0,,Ceppaia,sempreverde,0,0,0,0
 ALB_1280,Viale Principe Umberto,039,Pinus halepensis,18,60,C/D,sempreverde,1797,1834,1797,1742
 ALB_1281,Viale Principe Umberto,040,Pinus halepensis,18,71,C,sempreverde,4879,4979,4879,4730
 ALB_1282,Viale Principe Umberto,041,Pinus halepensis,5,10,A,sempreverde,487,497,487,472
-ALB_1283,Viale Principe Umberto,042,Pinus halepensis,,,Ceppaia,sempreverde,0,0,0,0
+ALB_1283,Viale Principe Umberto,042,Pinus halepensis,0,,Ceppaia,sempreverde,0,0,0,0
 ALB_1284,Viale Principe Umberto,043,Pinus halepensis,16,53,C,sempreverde,3454,3524,3454,3348
 ALB_1285,Viale Principe Umberto,044,Pinus halepensis,14,49,C,sempreverde,2931,2991,2931,2841
-ALB_1286,Viale Principe Umberto,045,Pinus halepensis,,,Ceppaia,sempreverde,0,0,0,0
+ALB_1286,Viale Principe Umberto,045,Pinus halepensis,0,,Ceppaia,sempreverde,0,0,0,0
 ALB_1287,Viale Principe Umberto,046,Pinus halepensis,15,50,C,sempreverde,3132,3196,3132,3036
 ALB_1288,Viale Principe Umberto,047,Pinus halepensis,14,58,C,sempreverde,3411,3481,3411,3307
 ALB_1289,Viale Principe Umberto,048,Pinus halepensis,14,53,C,sempreverde,3145,3210,3145,3049
 ALB_1290,Viale Principe Umberto,050,Pinus halepensis,8,47,D,sempreverde,1363,1391,1363,1321
-ALB_1291,Viale Principe Umberto,051,Pinus halepensis,,,Ceppaia,sempreverde,0,0,0,0
+ALB_1291,Viale Principe Umberto,051,Pinus halepensis,0,,Ceppaia,sempreverde,0,0,0,0
 ALB_1292,Viale Principe Umberto,052,Pinus canariensis,14,56,C,sempreverde,8181,8611,8439,8181
 ALB_1293,Viale Principe Umberto,053,Pinus halepensis,16,59,C/D,sempreverde,1630,1663,1630,1580
-ALB_1294,Viale Principe Umberto,054,Pinus halepensis,,,Ceppaia,sempreverde,0,0,0,0
+ALB_1294,Viale Principe Umberto,054,Pinus halepensis,0,,Ceppaia,sempreverde,0,0,0,0
 ALB_1295,Viale Principe Umberto,055,Pinus halepensis,13,63,C/D,sempreverde,1495,1526,1495,1450
 ALB_1296,Viale Principe Umberto,056,Pinus halepensis,14,71,C,sempreverde,4092,4176,4092,3967
 ALB_1297,Viale Principe Umberto,057,Pinus halepensis,4,9,A,sempreverde,379,387,379,367
@@ -1303,7 +1303,7 @@ ALB_1301,Viale Principe Umberto,061,Pinus halepensis,5,10,A,sempreverde,487,497,
 ALB_1302,Viale Principe Umberto,062,Pinus halepensis,18,76,C,sempreverde,5187,5293,5187,5029
 ALB_1303,Viale Principe Umberto,063,Pinus halepensis,16,65,C/D,sempreverde,1779,1815,1779,1724
 ALB_1304,Viale Principe Umberto,064,Pinus halepensis,18,104,C/D,sempreverde,2948,3009,2948,2858
-ALB_1305,Viale Principe Umberto,065,Pinus halepensis,,,Ceppaia,sempreverde,0,0,0,0
+ALB_1305,Viale Principe Umberto,065,Pinus halepensis,0,,Ceppaia,sempreverde,0,0,0,0
 ALB_1306,Via Oreto,18488,Brachychiton acerifolius,13.45,1,,semi-decidua,18,24,21,15
 ALB_1307,Via Oreto,18486,Ficus microcarpa,9.11,1,,sempreverde,12,12,12,11
 ALB_1308,Via Oreto,18948,Ficus microcarpa,9.2,1,,sempreverde,11,11,11,11
@@ -1420,66 +1420,66 @@ ALB_1418,Via Oreto,10372,,3.91,0,,,,,,
 ALB_1419,Via Oreto,10373,Populus nigra,8.78,0,,decidua,0,0,0,0
 ALB_1420,Via Oreto,10374,Brachychiton acerifolius,5.24,0,,semi-decidua,2,3,2,2
 ALB_1421,Via Oreto,10376,Platycladus orientalis,5.66,0,,sempreverde,9,10,10,9
-ALB_1422,Via Rapisardi Marioa,001,Sophora japonica,,,No Interv,decidua,0,0,0,0
-ALB_1423,Via Rapisardi Marioa,002,Sophora japonica,7,,No Interv,decidua,0,0,0,0
-ALB_1424,Via Rapisardi Marioa,003,Sophora japonica,,,No Interv,decidua,0,0,0,0
-ALB_1425,Via Rapisardi Marioa,004,Sophora japonica,8,,Non Class,decidua,0,0,0,0
-ALB_1426,Via Rapisardi Marioa,005,Sophora japonica,8,,Non Class,decidua,0,0,0,0
-ALB_1427,Via Rapisardi Marioa,006,Sophora japonica,6,,No Interv,decidua,0,0,0,0
-ALB_1428,Via Rapisardi Marioa,007,Pittosphorum,2,,No Interv,sempreverde,0,0,0,0
-ALB_1429,Via Rapisardi Marioa,008,Sophora japonica,8,,Verifica,decidua,0,0,0,0
-ALB_1430,Via Rapisardi Marioa,009,Sophora japonica,8,,Non Class,decidua,0,0,0,0
-ALB_1431,Via Rapisardi Marioa,010,Sophora japonica,8,,Verifica,decidua,0,0,0,0
-ALB_1432,Via Rapisardi Marioa,011,Sophora japonica,8,,Verifica,decidua,0,0,0,0
-ALB_1433,Via Rapisardi Marioa,012,Sophora japonica,7,,Verifica,decidua,0,0,0,0
-ALB_1434,Via Rapisardi Marioa,013,Sophora japonica,7,,No Interv,decidua,0,0,0,0
-ALB_1435,Via Rapisardi Marioa,014,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
-ALB_1436,Via Rapisardi Marioa,015,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
-ALB_1437,Via Rapisardi Marioa,016,Sophora japonica,7,,No Interv,decidua,0,0,0,0
-ALB_1438,Via Rapisardi Marioa,017,Sophora japonica,8,,No Interv,decidua,0,0,0,0
-ALB_1439,Via Rapisardi Marioa,018,Sophora japonica,,,No Interv,decidua,0,0,0,0
-ALB_1440,Via Rapisardi Marioa,019,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
-ALB_1441,Via Rapisardi Marioa,020,Sophora japonica,7,,No Interv,decidua,0,0,0,0
-ALB_1442,Via Rapisardi Marioa,021,Sophora japonica,8,,No Interv,decidua,0,0,0,0
-ALB_1443,Via Rapisardi Marioa,022,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
-ALB_1444,Via Rapisardi Marioa,023,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
-ALB_1445,Via Rapisardi Marioa,024,Sophora japonica,7,,Verifica,decidua,0,0,0,0
-ALB_1446,Via Rapisardi Marioa,025,Sophora japonica,7,,No Interv,decidua,0,0,0,0
-ALB_1447,Via Rapisardi Marioa,026,Sophora japonica,7,,No Interv,decidua,0,0,0,0
-ALB_1448,Via Rapisardi Marioa,027,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
-ALB_1449,Via Rapisardi Marioa,028,Sophora japonica,5,,Verifica,decidua,0,0,0,0
-ALB_1450,Via Rapisardi Marioa,029,Sophora japonica,7,,No Interv,decidua,0,0,0,0
-ALB_1451,Via Rapisardi Marioa,030,Sophora japonica,4,,Verifica,decidua,0,0,0,0
-ALB_1452,Via Rapisardi Marioa,031,Sophora japonica,2,,No Interv,decidua,0,0,0,0
-ALB_1453,Via Rapisardi Marioa,032,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
-ALB_1454,Via Rapisardi Marioa,033,Sophora japonica,3,,Verifica,decidua,0,0,0,0
-ALB_1455,Via Rapisardi Marioa,034,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
-ALB_1456,Via Rapisardi Marioa,035,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
-ALB_1457,Via Rapisardi Marioa,036,Sophora japonica,7,,No Interv,decidua,0,0,0,0
-ALB_1458,Via Rapisardi Marioa,037,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
-ALB_1459,Via Rapisardi Marioa,038,Sophora japonica,8,,Verifica,decidua,0,0,0,0
-ALB_1460,Via Rapisardi Marioa,039,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
-ALB_1461,Via Rapisardi Marioa,040,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
-ALB_1462,Via Rapisardi Marioa,041,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
-ALB_1463,Via Rapisardi Marioa,042,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
-ALB_1464,Via Rapisardi Marioa,043,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
-ALB_1465,Via Rapisardi Marioa,044,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
-ALB_1466,Via Rapisardi Marioa,045,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
-ALB_1467,Via Rapisardi Marioa,046,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
-ALB_1468,Via Rapisardi Marioa,047,Sophora japonica,8,,No Interv,decidua,0,0,0,0
-ALB_1469,Via Rapisardi Marioa,048,Sophora japonica,9,,Verifica,decidua,0,0,0,0
-ALB_1470,Via Rapisardi Marioa,049,Sophora japonica,8,,Verifica,decidua,0,0,0,0
-ALB_1471,Via Rapisardi Marioa,050,Sophora japonica,8,,Verifica,decidua,0,0,0,0
-ALB_1472,Via Rapisardi Marioa,051,Sophora japonica,8,,Verifica,decidua,0,0,0,0
-ALB_1473,Via Rapisardi Marioa,052,Sophora japonica,8,,Verifica,decidua,0,0,0,0
-ALB_1474,Via Rapisardi Marioa,053,Sophora japonica,7,,Verifica,decidua,0,0,0,0
-ALB_1475,Via Rapisardi Marioa,054,Sophora japonica,8,,Verifica,decidua,0,0,0,0
-ALB_1476,Via Rapisardi Marioa,055,Sophora japonica,7,,No Interv,decidua,0,0,0,0
-ALB_1477,Via Rapisardi Marioa,056,Sophora japonica,8,,Non Class,decidua,0,0,0,0
-ALB_1478,Via Rapisardi Marioa,057,Sophora japonica,8,,Verifica,decidua,0,0,0,0
-ALB_1479,Via Rapisardi Marioa,058,Sophora japonica,8,,Non Class,decidua,0,0,0,0
-ALB_1480,Via Rapisardi Marioa,059,Sophora japonica,8,,Non Class,decidua,0,0,0,0
-ALB_1481,Via Rapisardi Marioa,060,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
+ALB_1422,Via Rapisardi Mario,001,Sophora japonica,,,No Interv,decidua,0,0,0,0
+ALB_1423,Via Rapisardi Mario,002,Sophora japonica,7,,No Interv,decidua,0,0,0,0
+ALB_1424,Via Rapisardi Mario,003,Sophora japonica,,,No Interv,decidua,0,0,0,0
+ALB_1425,Via Rapisardi Mario,004,Sophora japonica,8,,Non Class,decidua,0,0,0,0
+ALB_1426,Via Rapisardi Mario,005,Sophora japonica,8,,Non Class,decidua,0,0,0,0
+ALB_1427,Via Rapisardi Mario,006,Sophora japonica,6,,No Interv,decidua,0,0,0,0
+ALB_1428,Via Rapisardi Mario,007,Pittosphorum,2,,No Interv,sempreverde,0,0,0,0
+ALB_1429,Via Rapisardi Mario,008,Sophora japonica,8,,Verifica,decidua,0,0,0,0
+ALB_1430,Via Rapisardi Mario,009,Sophora japonica,8,,Non Class,decidua,0,0,0,0
+ALB_1431,Via Rapisardi Mario,010,Sophora japonica,8,,Verifica,decidua,0,0,0,0
+ALB_1432,Via Rapisardi Mario,011,Sophora japonica,8,,Verifica,decidua,0,0,0,0
+ALB_1433,Via Rapisardi Mario,012,Sophora japonica,7,,Verifica,decidua,0,0,0,0
+ALB_1434,Via Rapisardi Mario,013,Sophora japonica,7,,No Interv,decidua,0,0,0,0
+ALB_1435,Via Rapisardi Mario,014,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
+ALB_1436,Via Rapisardi Mario,015,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
+ALB_1437,Via Rapisardi Mario,016,Sophora japonica,7,,No Interv,decidua,0,0,0,0
+ALB_1438,Via Rapisardi Mario,017,Sophora japonica,8,,No Interv,decidua,0,0,0,0
+ALB_1439,Via Rapisardi Mario,018,Sophora japonica,,,No Interv,decidua,0,0,0,0
+ALB_1440,Via Rapisardi Mario,019,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
+ALB_1441,Via Rapisardi Mario,020,Sophora japonica,7,,No Interv,decidua,0,0,0,0
+ALB_1442,Via Rapisardi Mario,021,Sophora japonica,8,,No Interv,decidua,0,0,0,0
+ALB_1443,Via Rapisardi Mario,022,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
+ALB_1444,Via Rapisardi Mario,023,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
+ALB_1445,Via Rapisardi Mario,024,Sophora japonica,7,,Verifica,decidua,0,0,0,0
+ALB_1446,Via Rapisardi Mario,025,Sophora japonica,7,,No Interv,decidua,0,0,0,0
+ALB_1447,Via Rapisardi Mario,026,Sophora japonica,7,,No Interv,decidua,0,0,0,0
+ALB_1448,Via Rapisardi Mario,027,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
+ALB_1449,Via Rapisardi Mario,028,Sophora japonica,5,,Verifica,decidua,0,0,0,0
+ALB_1450,Via Rapisardi Mario,029,Sophora japonica,7,,No Interv,decidua,0,0,0,0
+ALB_1451,Via Rapisardi Mario,030,Sophora japonica,4,,Verifica,decidua,0,0,0,0
+ALB_1452,Via Rapisardi Mario,031,Sophora japonica,2,,No Interv,decidua,0,0,0,0
+ALB_1453,Via Rapisardi Mario,032,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
+ALB_1454,Via Rapisardi Mario,033,Sophora japonica,3,,Verifica,decidua,0,0,0,0
+ALB_1455,Via Rapisardi Mario,034,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
+ALB_1456,Via Rapisardi Mario,035,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
+ALB_1457,Via Rapisardi Mario,036,Sophora japonica,7,,No Interv,decidua,0,0,0,0
+ALB_1458,Via Rapisardi Mario,037,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
+ALB_1459,Via Rapisardi Mario,038,Sophora japonica,8,,Verifica,decidua,0,0,0,0
+ALB_1460,Via Rapisardi Mario,039,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
+ALB_1461,Via Rapisardi Mario,040,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
+ALB_1462,Via Rapisardi Mario,041,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
+ALB_1463,Via Rapisardi Mario,042,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
+ALB_1464,Via Rapisardi Mario,043,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
+ALB_1465,Via Rapisardi Mario,044,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
+ALB_1466,Via Rapisardi Mario,045,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
+ALB_1467,Via Rapisardi Mario,046,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
+ALB_1468,Via Rapisardi Mario,047,Sophora japonica,8,,No Interv,decidua,0,0,0,0
+ALB_1469,Via Rapisardi Mario,048,Sophora japonica,9,,Verifica,decidua,0,0,0,0
+ALB_1470,Via Rapisardi Mario,049,Sophora japonica,8,,Verifica,decidua,0,0,0,0
+ALB_1471,Via Rapisardi Mario,050,Sophora japonica,8,,Verifica,decidua,0,0,0,0
+ALB_1472,Via Rapisardi Mario,051,Sophora japonica,8,,Verifica,decidua,0,0,0,0
+ALB_1473,Via Rapisardi Mario,052,Sophora japonica,8,,Verifica,decidua,0,0,0,0
+ALB_1474,Via Rapisardi Mario,053,Sophora japonica,7,,Verifica,decidua,0,0,0,0
+ALB_1475,Via Rapisardi Mario,054,Sophora japonica,8,,Verifica,decidua,0,0,0,0
+ALB_1476,Via Rapisardi Mario,055,Sophora japonica,7,,No Interv,decidua,0,0,0,0
+ALB_1477,Via Rapisardi Mario,056,Sophora japonica,8,,Non Class,decidua,0,0,0,0
+ALB_1478,Via Rapisardi Mario,057,Sophora japonica,8,,Verifica,decidua,0,0,0,0
+ALB_1479,Via Rapisardi Mario,058,Sophora japonica,8,,Non Class,decidua,0,0,0,0
+ALB_1480,Via Rapisardi Mario,059,Sophora japonica,8,,Non Class,decidua,0,0,0,0
+ALB_1481,Via Rapisardi Mario,060,Sophora japonica,0,,Ceppaia,decidua,0,0,0,0
 ALB_1482,Via Giusti Giuseppe,001,Citrus limon,1,,No Interv,sempreverde,0,0,0,0
 ALB_1483,Via Giusti Giuseppe,002,Sophora japonica,7,,No Interv,decidua,0,0,0,0
 ALB_1484,Via Giusti Giuseppe,003,Sophora japonica,8,,Non Class,decidua,0,0,0,0
