@@ -1,18 +1,20 @@
 Odonimo,Specie,count,%,colore,larg
 Via Corazza Filippo,Melia azedarach,30,100%,#194d30,0.2
 Via Delle Croci,Ficus microcarpa,52,100%,#194d30,0.2
-Via Giusti Giuseppe,Sophora japonica,127,96%,#194d30,0.8
-Via Giusti Giuseppe,Cercis siliquastrum,3,2%,#2b5f41,0.8
-Via Giusti Giuseppe,Citrus limon,1,1%,#98cba7,0.8
-Via Giusti Giuseppe,,1,1%,#508363,0.8
+Via Galatea,Populus Nigra,32,67%,#194d30,0.8
+Via Galatea,Platanus hybrida,16,33%,#2b5f41,0.8
+Via Giusti Giuseppe,Sophora japonica,127,96%,#98cba7,0.8
+Via Giusti Giuseppe,Cercis siliquastrum,3,2%,#508363,0.8
+Via Giusti Giuseppe,Citrus limon,1,1%,#86b996,0.8
+Via Giusti Giuseppe,,1,1%,#86b996,0.8
 Via Oreto,Populus nigra,86,74%,#86b996,0.8
 Via Oreto,Brachychiton acerifolius,9,8%,#86b996,0.8
-Via Oreto,Pittosporum tobira,3,3%,#86b996,0.8
-Via Oreto,Ligustrum lucidum,3,3%,#86b996,0.8
+Via Oreto,Pittosporum tobira,3,3%,,0.8
+Via Oreto,Ligustrum lucidum,3,3%,,0.8
 Via Oreto,,3,3%,,0.8
 Via Oreto,Yucca gigantea,2,2%,,0.8
-Via Oreto,Ficus microcarpa,2,2%,,0.8
-Via Oreto,Ficus benjamina,2,2%,,0.8
+Via Oreto,Ficus microcarpa,2,2%,,
+Via Oreto,Ficus benjamina,2,2%,,
 Via Oreto,Platycladus orientalis,1,1%,,
 Via Oreto,Morus alba,1,1%,,
 Via Oreto,Jacaranda mimosifolia,1,1%,,
@@ -44,11 +46,6 @@ Viale Emilia,Pinus halepensis,1,2%,,
 Viale Emilia,Ficus benjamina,1,2%,,
 Viale Emilia,Celtis australis,1,2%,,
 Viale Emilia,Acer negundo,1,2%,,
-Viale Galatea,Populus Nigra,32,67%,,
-Viale Galatea,Platanus hybrida,16,33%,,
-Viale Margherita di Savoia,Ficus Microcarpa,124,62%,,
-Viale Margherita di Savoia,Platanus X Acerifolia,49,25%,,
-Viale Margherita di Savoia,Platanus Hybrida,26,13%,,
 Viale Michelangelo,Tabebuia rosea,183,35%,,
 Viale Michelangelo,Platanus Hybrida,171,33%,,
 Viale Michelangelo,Platanus hispanica,57,11%,,
@@ -79,3 +76,6 @@ Viale Michelangelo,Brachychiton acerifolius,1,0%,,
 Viale Principe Umberto,Pinus halepensis,62,97%,,
 Viale Principe Umberto,Pinus canariensis,1,2%,,
 Viale Principe Umberto,NON ESISTE,1,2%,,
+Viale Regina Margherita di Savoia,Ficus Microcarpa,124,62%,,
+Viale Regina Margherita di Savoia,Platanus X Acerifolia,49,25%,,
+Viale Regina Margherita di Savoia,Platanus Hybrida,26,13%,,
