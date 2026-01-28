@@ -1,18 +1,19 @@
 Odonimo,Specie,count,%,colore,larg
 Via Corazza Filippo,Melia azedarach,30,100%,#194d30,0.2
 Via Delle Croci,Ficus microcarpa,52,100%,#194d30,0.2
-Via Giusti Giuseppe,Sophora japonica,134,97%,#194d30,0.8
+Via Giusti Giuseppe,Sophora japonica,127,96%,#194d30,0.8
 Via Giusti Giuseppe,Cercis siliquastrum,3,2%,#2b5f41,0.8
 Via Giusti Giuseppe,Citrus limon,1,1%,#98cba7,0.8
-Via Pignatelli Aragona,Ficus microcarpa,48,100%,#508363,0.8
+Via Giusti Giuseppe,,1,1%,#508363,0.8
+Via Pignatelli Aragona,Ficus microcarpa,48,100%,#86b996,0.8
 Via Principe Di Belmonte,Citrus × aurantium,52,53%,#86b996,0.8
 Via Principe Di Belmonte,Acer negundo,45,45%,#86b996,0.8
 Via Principe Di Belmonte,Vuoto,2,2%,#86b996,0.8
-Via Rapisardi Mario,Sophora japonica,59,98%,#86b996,0.8
+Via Rapisardi Mario,Sophora japonica,59,98%,,0.8
 Via Rapisardi Mario,Pittosphorum,1,2%,,0.8
 Via Rizzo Ammiraglio - A,Ficus microcarpa,52,93%,,0.8
 Via Rizzo Ammiraglio - A,Ficus magnoloides,4,7%,,0.8
-Via Rizzo Ammiraglio - B,Ficus microcarpa,45,75%,,0.8
+Via Rizzo Ammiraglio - B,Ficus microcarpa,45,75%,,
 Via Rizzo Ammiraglio - B,Schinus molle,8,13%,,
 Via Rizzo Ammiraglio - B,Ficus rubiginosa,3,5%,,
 Via Rizzo Ammiraglio - B,Melia azadirach,2,3%,,
@@ -33,8 +34,7 @@ Viale Galatea,Populus Nigra,32,67%,,
 Viale Galatea,Platanus hybrida,16,33%,,
 Viale Margherita di Savoia - A,Platanus X Acerifolia,49,65%,,
 Viale Margherita di Savoia - A,Platanus Hybrida,26,35%,,
-Viale Margherita di Savoia - B,Ficus Microcarpa,123,100%,,
-Viale Margherita di Savoia - C,Ficus Microcarpa,64,100%,,
+Viale Margherita di Savoia - B,Ficus Microcarpa,187,100%,,
 Viale Michelangelo,Platanus Hybrida,171,90%,,
 Viale Michelangelo,Celtis australis,8,4%,,
 Viale Michelangelo,Tabebuia rosea,6,3%,,

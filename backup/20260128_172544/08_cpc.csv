@@ -6,8 +6,8 @@ Via Delle Croci,B,31,60%,B (bassa),#2cc15f
 Via Delle Croci,C,13,25%,C (moderata),#f39c12
 Via Delle Croci,D,4,8%,D (estrema),#e74c3c
 Via Delle Croci,C/D,4,8%,C/D (elevata),#c164a1
-Via Giusti Giuseppe,No Interv,98,71%,Nessun itervento,#f4cccc
-Via Giusti Giuseppe,Verifica,30,22%,Da verficare,#9fc5e8
+Via Giusti Giuseppe,No Interv,93,70%,Nessun itervento,#f4cccc
+Via Giusti Giuseppe,Verifica,29,22%,Da verficare,#9fc5e8
 Via Giusti Giuseppe,Non Class,7,5%,Non Classificato,#990000
 Via Giusti Giuseppe,Ceppaia,3,2%,Ceppaia,#434343
 Via Pignatelli Aragona,B,32,67%,B (bassa),#2cc15f
@@ -53,15 +53,11 @@ Viale Margherita di Savoia - A,C,48,64%,C (moderata),#f39c12
 Viale Margherita di Savoia - A,C/D,17,23%,C/D (elevata),#c164a1
 Viale Margherita di Savoia - A,D,6,8%,D (estrema),#e74c3c
 Viale Margherita di Savoia - A,Non Class,4,5%,Non Classificato,#990000
-Viale Margherita di Savoia - B,C/D,60,49%,C/D (elevata),#c164a1
-Viale Margherita di Savoia - B,C,51,41%,C (moderata),#f39c12
-Viale Margherita di Savoia - B,D,7,6%,D (estrema),#e74c3c
-Viale Margherita di Savoia - B,B,4,3%,B (bassa),#2cc15f
+Viale Margherita di Savoia - B,C/D,92,49%,C/D (elevata),#c164a1
+Viale Margherita di Savoia - B,C,72,39%,C (moderata),#f39c12
+Viale Margherita di Savoia - B,D,17,9%,D (estrema),#e74c3c
+Viale Margherita di Savoia - B,B,5,3%,B (bassa),#2cc15f
 Viale Margherita di Savoia - B,Non Class,1,1%,Non Classificato,#990000
-Viale Margherita di Savoia - C,C/D,32,50%,C/D (elevata),#c164a1
-Viale Margherita di Savoia - C,C,21,33%,C (moderata),#f39c12
-Viale Margherita di Savoia - C,D,10,16%,D (estrema),#e74c3c
-Viale Margherita di Savoia - C,B,1,2%,B (bassa),#2cc15f
 Viale Michelangelo,C,111,59%,C (moderata),#f39c12
 Viale Michelangelo,C/D,30,16%,C/D (elevata),#c164a1
 Viale Michelangelo,D,23,12%,D (estrema),#e74c3c
