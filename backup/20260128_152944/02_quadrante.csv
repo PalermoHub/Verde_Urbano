@@ -1,0 +1,2001 @@
+Id,Odonimo,ID Pianta,Quadrante,offset_x,offset_y
+ALB_001,Viale Emilia,001,8,0,10
+ALB_002,Viale Emilia,002,8,0,10
+ALB_003,Viale Emilia,003,8,0,10
+ALB_004,Viale Emilia,004,8,0,10
+ALB_005,Viale Emilia,005,8,0,10
+ALB_006,Viale Emilia,006,8,0,10
+ALB_007,Viale Emilia,007,8,0,10
+ALB_008,Viale Emilia,008,8,0,10
+ALB_009,Viale Emilia,009,8,0,10
+ALB_010,Viale Emilia,010,8,0,10
+ALB_011,Viale Emilia,011,8,0,10
+ALB_012,Viale Emilia,012,8,0,10
+ALB_013,Viale Emilia,013,8,0,10
+ALB_014,Viale Emilia,014,0,0,-10
+ALB_015,Viale Emilia,015,0,0,-10
+ALB_016,Viale Emilia,016,0,0,-10
+ALB_017,Viale Emilia,017,0,0,-10
+ALB_018,Viale Emilia,018,0,0,-10
+ALB_019,Viale Emilia,019,8,0,10
+ALB_020,Viale Emilia,020,8,0,10
+ALB_021,Viale Emilia,021,8,0,10
+ALB_022,Viale Emilia,022,8,0,10
+ALB_023,Viale Emilia,023,8,0,10
+ALB_024,Viale Emilia,024,8,0,10
+ALB_025,Viale Emilia,025,8,0,10
+ALB_026,Viale Emilia,026,8,0,10
+ALB_027,Viale Emilia,027,8,0,10
+ALB_028,Viale Emilia,028,8,0,10
+ALB_029,Viale Emilia,029,8,0,10
+ALB_030,Viale Emilia,030,8,0,10
+ALB_031,Viale Emilia,031,8,0,10
+ALB_032,Viale Emilia,032,8,0,10
+ALB_033,Viale Emilia,033,8,0,10
+ALB_034,Viale Emilia,034,8,0,10
+ALB_035,Viale Emilia,035,8,0,10
+ALB_036,Viale Emilia,036,0,0,-10
+ALB_037,Viale Emilia,037,0,0,-10
+ALB_038,Viale Emilia,038,0,0,-10
+ALB_039,Viale Emilia,039,0,0,-10
+ALB_040,Viale Emilia,040,0,0,-10
+ALB_041,Viale Emilia,041,0,0,-10
+ALB_042,Viale Emilia,042,0,0,-10
+ALB_043,Viale Emilia,043,0,0,-10
+ALB_044,Viale Emilia,044,8,0,10
+ALB_045,Viale Emilia,045,8,0,10
+ALB_046,Viale Emilia,046,8,0,10
+ALB_047,Viale Emilia,047,8,0,10
+ALB_048,Viale Emilia,048,8,0,10
+ALB_049,Viale Emilia,049,8,0,10
+ALB_050,Viale Emilia,050,8,0,10
+ALB_051,Viale Emilia,051,8,0,10
+ALB_052,Viale Emilia,052,8,0,10
+ALB_053,Viale Emilia,053,8,0,10
+ALB_054,Viale Emilia,054,8,0,10
+ALB_055,Viale Emilia,055,8,0,10
+ALB_056,Viale Emilia,056,8,0,10
+ALB_057,Viale Emilia,057,8,0,10
+ALB_058,Viale Emilia,058,8,0,10
+ALB_059,Viale Emilia,059,8,0,10
+ALB_060,Viale Emilia,060,8,0,10
+ALB_061,Viale Emilia,061,8,0,10
+ALB_062,Viale Emilia,062,8,0,10
+ALB_063,Viale Emilia,063,8,0,10
+ALB_064,Viale Emilia,064,8,0,10
+ALB_065,Viale Emilia,065,8,0,10
+ALB_066,Via Pignatelli Aragona,001,0,5,-10
+ALB_067,Via Pignatelli Aragona,002,0,5,-10
+ALB_068,Via Pignatelli Aragona,003,0,5,-10
+ALB_069,Via Pignatelli Aragona,004,0,5,-10
+ALB_070,Via Pignatelli Aragona,005,0,5,-10
+ALB_071,Via Pignatelli Aragona,006,0,5,-10
+ALB_072,Via Pignatelli Aragona,007,0,5,-10
+ALB_073,Via Pignatelli Aragona,008,0,5,-10
+ALB_074,Via Pignatelli Aragona,009,0,5,-10
+ALB_075,Via Pignatelli Aragona,010,0,5,-10
+ALB_076,Via Pignatelli Aragona,011,0,5,-10
+ALB_077,Via Pignatelli Aragona,012,0,5,-10
+ALB_078,Via Pignatelli Aragona,013,0,5,-10
+ALB_079,Via Pignatelli Aragona,014,0,5,-10
+ALB_080,Via Pignatelli Aragona,015,0,5,-10
+ALB_081,Via Pignatelli Aragona,016,8,-5,10
+ALB_082,Via Pignatelli Aragona,017,8,-5,10
+ALB_083,Via Pignatelli Aragona,018,8,-5,10
+ALB_084,Via Pignatelli Aragona,019,8,-5,10
+ALB_085,Via Pignatelli Aragona,020,8,-5,10
+ALB_086,Via Pignatelli Aragona,021,8,-5,10
+ALB_087,Via Pignatelli Aragona,022,8,-5,10
+ALB_088,Via Pignatelli Aragona,023,8,-5,10
+ALB_089,Via Pignatelli Aragona,024,8,-5,10
+ALB_090,Via Pignatelli Aragona,025,8,-5,10
+ALB_091,Via Pignatelli Aragona,026,8,-5,10
+ALB_092,Via Pignatelli Aragona,027,8,-5,10
+ALB_093,Via Pignatelli Aragona,028,8,-5,10
+ALB_094,Via Pignatelli Aragona,029,8,-5,10
+ALB_095,Via Pignatelli Aragona,030,8,-5,10
+ALB_096,Via Pignatelli Aragona,031,8,-5,10
+ALB_097,Via Pignatelli Aragona,032,8,-5,10
+ALB_098,Via Pignatelli Aragona,033,8,-5,10
+ALB_099,Via Pignatelli Aragona,034,8,-5,10
+ALB_100,Via Pignatelli Aragona,035,8,-5,10
+ALB_101,Via Pignatelli Aragona,036,8,-5,10
+ALB_102,Via Pignatelli Aragona,037,8,-5,10
+ALB_103,Via Pignatelli Aragona,038,8,-5,10
+ALB_104,Via Pignatelli Aragona,039,8,-5,10
+ALB_105,Via Pignatelli Aragona,040,8,-5,10
+ALB_106,Via Pignatelli Aragona,041,8,-5,10
+ALB_107,Via Pignatelli Aragona,042,8,-5,10
+ALB_108,Via Pignatelli Aragona,043,8,-5,10
+ALB_109,Via Pignatelli Aragona,044,8,-5,10
+ALB_110,Via Pignatelli Aragona,045,8,-5,10
+ALB_111,Via Pignatelli Aragona,046,8,-5,10
+ALB_112,Via Pignatelli Aragona,047,8,-5,10
+ALB_113,Via Pignatelli Aragona,048,8,-5,10
+ALB_114,Via Delle Croci,001,0,0,-10
+ALB_115,Via Delle Croci,002,0,0,-10
+ALB_116,Via Delle Croci,003,0,0,-10
+ALB_117,Via Delle Croci,004,0,0,-10
+ALB_118,Via Delle Croci,005,0,0,-10
+ALB_119,Via Delle Croci,006,0,0,-10
+ALB_120,Via Delle Croci,007,0,0,-10
+ALB_121,Via Delle Croci,008,0,0,-10
+ALB_122,Via Delle Croci,009,0,0,-10
+ALB_123,Via Delle Croci,010,0,0,-10
+ALB_124,Via Delle Croci,011,0,0,-10
+ALB_125,Via Delle Croci,012,0,0,-10
+ALB_126,Via Delle Croci,013,0,0,-10
+ALB_127,Via Delle Croci,014,0,0,-10
+ALB_128,Via Delle Croci,015,0,0,-10
+ALB_129,Via Delle Croci,016,0,0,-10
+ALB_130,Via Delle Croci,017,0,0,-10
+ALB_131,Via Delle Croci,018,0,0,-10
+ALB_132,Via Delle Croci,019,0,0,-10
+ALB_133,Via Delle Croci,020,0,0,-10
+ALB_134,Via Delle Croci,021,0,0,-10
+ALB_135,Via Delle Croci,022,0,0,-10
+ALB_136,Via Delle Croci,023,0,0,-10
+ALB_137,Via Delle Croci,024,8,0,10
+ALB_138,Via Delle Croci,025,8,0,10
+ALB_139,Via Delle Croci,026,8,0,10
+ALB_140,Via Delle Croci,027,8,0,10
+ALB_141,Via Delle Croci,028,8,0,10
+ALB_142,Via Delle Croci,029,8,0,10
+ALB_143,Via Delle Croci,030,8,0,10
+ALB_144,Via Delle Croci,031,8,0,10
+ALB_145,Via Delle Croci,032,8,0,10
+ALB_146,Via Delle Croci,033,8,0,10
+ALB_147,Via Delle Croci,034,8,0,10
+ALB_148,Via Delle Croci,035,8,0,10
+ALB_149,Via Delle Croci,036,8,0,10
+ALB_150,Via Delle Croci,037,8,0,10
+ALB_151,Via Delle Croci,038,8,0,10
+ALB_152,Via Delle Croci,039,8,0,10
+ALB_153,Via Delle Croci,040,8,0,10
+ALB_154,Via Delle Croci,041,8,0,10
+ALB_155,Via Delle Croci,042,8,0,10
+ALB_156,Via Delle Croci,043,8,0,10
+ALB_157,Via Delle Croci,044,8,0,10
+ALB_158,Via Delle Croci,045,8,0,10
+ALB_159,Via Delle Croci,046,8,0,10
+ALB_160,Via Delle Croci,047,8,0,10
+ALB_161,Via Delle Croci,048,8,0,10
+ALB_162,Via Delle Croci,049,8,0,10
+ALB_163,Via Delle Croci,050,8,0,10
+ALB_164,Via Delle Croci,051,8,0,10
+ALB_165,Via Delle Croci,052,8,0,10
+ALB_166,Via Scoto Michele,001,3,-10,4
+ALB_167,Via Scoto Michele,002,3,-10,4
+ALB_168,Via Scoto Michele,003,3,-10,4
+ALB_169,Via Scoto Michele,004,3,-10,4
+ALB_170,Via Scoto Michele,005,3,-10,4
+ALB_171,Via Scoto Michele,006,3,-10,4
+ALB_172,Via Scoto Michele,007,3,-10,4
+ALB_173,Via Scoto Michele,008,3,-10,4
+ALB_174,Via Scoto Michele,009,3,-10,4
+ALB_175,Via Scoto Michele,010,3,-10,4
+ALB_176,Via Scoto Michele,011,3,-10,4
+ALB_177,Via Scoto Michele,012,3,-10,4
+ALB_178,Via Scoto Michele,013,3,-10,4
+ALB_179,Via Scoto Michele,014,3,-10,4
+ALB_180,Via Scoto Michele,015,3,-10,4
+ALB_181,Via Scoto Michele,016,3,-10,4
+ALB_182,Via Scoto Michele,017,3,-10,4
+ALB_183,Via Scoto Michele,018,3,-10,4
+ALB_184,Via Scoto Michele,019,3,-10,4
+ALB_185,Via Scoto Michele,020,3,-10,4
+ALB_186,Via Scoto Michele,021,3,-10,4
+ALB_187,Via Scoto Michele,022,3,-10,4
+ALB_188,Via Scoto Michele,023,3,-10,4
+ALB_189,Via Scoto Michele,024,3,-10,4
+ALB_190,Via Scoto Michele,025,3,-10,4
+ALB_191,Via Scoto Michele,026,3,-10,4
+ALB_192,Via Scoto Michele,027,3,-10,4
+ALB_193,Via Scoto Michele,028,3,-10,4
+ALB_194,Viale Dei Picciotti - A,001,0,7,-10
+ALB_195,Viale Dei Picciotti - A,002,0,7,-10
+ALB_196,Viale Dei Picciotti - A,003,0,7,-10
+ALB_197,Viale Dei Picciotti - A,004,0,7,-10
+ALB_198,Viale Dei Picciotti - A,005,0,7,-10
+ALB_199,Viale Dei Picciotti - A,006,0,7,-10
+ALB_200,Viale Dei Picciotti - A,007,8,-7,10
+ALB_201,Viale Dei Picciotti - A,008,8,-7,10
+ALB_202,Viale Dei Picciotti - A,009,8,-7,10
+ALB_203,Viale Dei Picciotti - A,010,8,-7,10
+ALB_204,Viale Dei Picciotti - A,011,8,-7,10
+ALB_205,Viale Dei Picciotti - A,012,8,-7,10
+ALB_206,Viale Dei Picciotti - A,013,8,-7,10
+ALB_207,Viale Dei Picciotti - A,014,8,-7,10
+ALB_208,Viale Dei Picciotti - A,015,8,-7,10
+ALB_209,Viale Dei Picciotti - A,016,8,-7,10
+ALB_210,Viale Dei Picciotti - A,017,8,-7,10
+ALB_211,Viale Dei Picciotti - A,018,8,-7,10
+ALB_212,Viale Dei Picciotti - A,019,8,-7,10
+ALB_213,Viale Dei Picciotti - A,020,8,-7,10
+ALB_214,Viale Dei Picciotti - A,021,8,-7,10
+ALB_215,Viale Dei Picciotti - A,022,8,-7,10
+ALB_216,Viale Dei Picciotti - A,023,8,-7,10
+ALB_217,Viale Dei Picciotti - A,024,8,-7,10
+ALB_218,Viale Dei Picciotti - A,025,8,-7,10
+ALB_219,Viale Dei Picciotti - A,026,8,-7,10
+ALB_220,Viale Dei Picciotti - A,027,8,-7,10
+ALB_221,Viale Dei Picciotti - A,028,8,-7,10
+ALB_222,Viale Dei Picciotti - A,029,8,-7,10
+ALB_223,Viale Dei Picciotti - A,030,8,-7,10
+ALB_224,Viale Dei Picciotti - A,031,8,-7,10
+ALB_225,Viale Dei Picciotti - B,032,8,-7,10
+ALB_226,Viale Dei Picciotti - B,033,8,-7,10
+ALB_227,Viale Dei Picciotti - B,034,8,-7,10
+ALB_228,Viale Dei Picciotti - B,035,8,-7,10
+ALB_229,Viale Dei Picciotti - B,036,8,-7,10
+ALB_230,Viale Dei Picciotti - B,037,8,-7,10
+ALB_231,Viale Dei Picciotti - B,038,8,-7,10
+ALB_232,Viale Dei Picciotti - B,039,8,-7,10
+ALB_233,Viale Dei Picciotti - B,040,8,-7,10
+ALB_234,Viale Dei Picciotti - B,041,8,-7,10
+ALB_235,Viale Dei Picciotti - B,042,8,-7,10
+ALB_236,Viale Dei Picciotti - B,043,8,-7,10
+ALB_237,Viale Dei Picciotti - B,044,8,-7,10
+ALB_238,Viale Dei Picciotti - B,045,8,-7,10
+ALB_239,Viale Dei Picciotti - B,046,8,-7,10
+ALB_240,Viale Dei Picciotti - B,047,8,-7,10
+ALB_241,Viale Dei Picciotti - B,048,8,-7,10
+ALB_242,Viale Dei Picciotti - B,049,8,-7,10
+ALB_243,Viale Dei Picciotti - B,050,8,-7,10
+ALB_244,Viale Dei Picciotti - B,051,8,-7,10
+ALB_245,Viale Dei Picciotti - B,052,8,-7,10
+ALB_246,Viale Dei Picciotti - B,053,8,-7,10
+ALB_247,Viale Dei Picciotti - B,054,8,-7,10
+ALB_248,Viale Dei Picciotti - B,055,8,-7,10
+ALB_249,Viale Dei Picciotti - B,056,8,-7,10
+ALB_250,Viale Dei Picciotti - B,057,8,-7,10
+ALB_251,Viale Dei Picciotti - B,058,8,-7,10
+ALB_252,Viale Dei Picciotti - B,059,8,-7,10
+ALB_253,Viale Dei Picciotti - B,060,8,-7,10
+ALB_254,Viale Dei Picciotti - B,061,8,-7,10
+ALB_255,Viale Dei Picciotti - B,062,8,-7,10
+ALB_256,Viale Dei Picciotti - B,063,8,-7,10
+ALB_257,Viale Dei Picciotti - B,064,8,-7,10
+ALB_258,Viale Dei Picciotti - B,065,8,-7,10
+ALB_259,Via Rizzo Ammiraglio - A,1,8,0,10
+ALB_260,Via Rizzo Ammiraglio - A,2,8,0,10
+ALB_261,Via Rizzo Ammiraglio - A,3,8,0,10
+ALB_262,Via Rizzo Ammiraglio - A,4,8,0,10
+ALB_263,Via Rizzo Ammiraglio - A,5,8,0,10
+ALB_264,Via Rizzo Ammiraglio - A,6,8,0,10
+ALB_265,Via Rizzo Ammiraglio - A,7,8,0,10
+ALB_266,Via Rizzo Ammiraglio - A,8,8,0,10
+ALB_267,Via Rizzo Ammiraglio - A,9,8,0,10
+ALB_268,Via Rizzo Ammiraglio - A,10,8,0,10
+ALB_269,Via Rizzo Ammiraglio - A,11,8,0,10
+ALB_270,Via Rizzo Ammiraglio - A,12,8,0,10
+ALB_271,Via Rizzo Ammiraglio - A,13,8,0,10
+ALB_272,Via Rizzo Ammiraglio - A,14,8,0,10
+ALB_273,Via Rizzo Ammiraglio - A,15,8,0,10
+ALB_274,Via Rizzo Ammiraglio - A,16,8,0,10
+ALB_275,Via Rizzo Ammiraglio - A,17,8,0,10
+ALB_276,Via Rizzo Ammiraglio - A,18,8,0,10
+ALB_277,Via Rizzo Ammiraglio - A,19,8,0,10
+ALB_278,Via Rizzo Ammiraglio - A,20,8,0,10
+ALB_279,Via Rizzo Ammiraglio - A,21,8,0,10
+ALB_280,Via Rizzo Ammiraglio - A,22,8,0,10
+ALB_281,Via Rizzo Ammiraglio - A,23,8,0,10
+ALB_282,Via Rizzo Ammiraglio - A,24,8,0,10
+ALB_283,Via Rizzo Ammiraglio - A,25,8,0,10
+ALB_284,Via Rizzo Ammiraglio - A,26,8,0,10
+ALB_285,Via Rizzo Ammiraglio - A,27,8,0,10
+ALB_286,Via Rizzo Ammiraglio - A,28,8,0,10
+ALB_287,Via Rizzo Ammiraglio - B,29,8,0,10
+ALB_288,Via Rizzo Ammiraglio - B,30,8,0,10
+ALB_289,Via Rizzo Ammiraglio - B,31,8,0,10
+ALB_290,Via Rizzo Ammiraglio - B,32,8,0,10
+ALB_291,Via Rizzo Ammiraglio - B,33,8,0,10
+ALB_292,Via Rizzo Ammiraglio - B,34,8,0,10
+ALB_293,Via Rizzo Ammiraglio - B,35,8,0,10
+ALB_294,Via Rizzo Ammiraglio - B,36,8,0,10
+ALB_295,Via Rizzo Ammiraglio - B,37,8,0,10
+ALB_296,Via Rizzo Ammiraglio - B,38,8,0,10
+ALB_297,Via Rizzo Ammiraglio - B,39,8,0,10
+ALB_298,Via Rizzo Ammiraglio - B,40,8,0,10
+ALB_299,Via Rizzo Ammiraglio - B,41,8,0,10
+ALB_300,Via Rizzo Ammiraglio - B,42,8,0,10
+ALB_301,Via Rizzo Ammiraglio - B,43,8,0,10
+ALB_302,Via Rizzo Ammiraglio - B,44,8,0,10
+ALB_303,Via Rizzo Ammiraglio - B,45,8,0,10
+ALB_304,Via Rizzo Ammiraglio - B,46,8,0,10
+ALB_305,Via Rizzo Ammiraglio - B,47,8,0,10
+ALB_306,Via Rizzo Ammiraglio - B,48,8,0,10
+ALB_307,Via Rizzo Ammiraglio - B,49,8,0,10
+ALB_308,Via Rizzo Ammiraglio - B,50,8,0,10
+ALB_309,Via Rizzo Ammiraglio - B,51,8,0,10
+ALB_310,Via Rizzo Ammiraglio - B,52,8,0,10
+ALB_311,Via Rizzo Ammiraglio - B,53,8,0,10
+ALB_312,Via Rizzo Ammiraglio - B,54,8,0,10
+ALB_313,Via Rizzo Ammiraglio - B,55,8,-3,-10
+ALB_314,Via Rizzo Ammiraglio - B,56,8,-3,-10
+ALB_315,Via Rizzo Ammiraglio - B,57,8,-3,-10
+ALB_316,Via Rizzo Ammiraglio - B,58,8,-3,-10
+ALB_317,Via Rizzo Ammiraglio - B,59,8,-3,-10
+ALB_318,Via Rizzo Ammiraglio - B,60,8,-3,-10
+ALB_319,Via Rizzo Ammiraglio - B,61,8,-3,-10
+ALB_320,Via Rizzo Ammiraglio - B,62,8,-3,-10
+ALB_321,Via Rizzo Ammiraglio - B,63,8,-3,-10
+ALB_322,Via Rizzo Ammiraglio - B,64,8,-3,-10
+ALB_323,Via Rizzo Ammiraglio - B,65,8,-3,-10
+ALB_324,Via Rizzo Ammiraglio - B,66,8,-3,-10
+ALB_325,Via Rizzo Ammiraglio - B,67,8,-3,-10
+ALB_326,Via Rizzo Ammiraglio - B,68,8,-3,-10
+ALB_327,Via Rizzo Ammiraglio - B,69,8,-3,-10
+ALB_328,Via Rizzo Ammiraglio - B,70,8,-3,-10
+ALB_329,Via Rizzo Ammiraglio - B,71,8,-3,-10
+ALB_330,Via Rizzo Ammiraglio - B,72,8,-3,-10
+ALB_331,Via Rizzo Ammiraglio - B,73,8,-3,-10
+ALB_332,Via Rizzo Ammiraglio - B,74,8,-3,-10
+ALB_333,Via Rizzo Ammiraglio - B,75,8,-3,-10
+ALB_334,Via Rizzo Ammiraglio - B,76,8,-3,-10
+ALB_335,Via Rizzo Ammiraglio - B,77,8,-3,-10
+ALB_336,Via Rizzo Ammiraglio - B,78,8,-3,-10
+ALB_337,Via Rizzo Ammiraglio - B,79,8,-3,-10
+ALB_338,Via Rizzo Ammiraglio - B,80,8,-3,-10
+ALB_339,Via Rizzo Ammiraglio - B,81,8,-3,-10
+ALB_340,Via Rizzo Ammiraglio - B,82,8,-3,-10
+ALB_341,Via Rizzo Ammiraglio - B,83,8,-3,-10
+ALB_342,Via Rizzo Ammiraglio - B,84,8,-3,-10
+ALB_343,Via Rizzo Ammiraglio - B,85,8,-3,-10
+ALB_344,Via Rizzo Ammiraglio - B,86,8,-3,-10
+ALB_345,Via Rizzo Ammiraglio - B,87,8,-3,-10
+ALB_346,Via Rizzo Ammiraglio - B,88,8,-3,-10
+ALB_347,Via Rizzo Ammiraglio - A,89,8,-3,-10
+ALB_348,Via Rizzo Ammiraglio - A,90,8,-3,-10
+ALB_349,Via Rizzo Ammiraglio - A,91,8,-3,-10
+ALB_350,Via Rizzo Ammiraglio - A,92,8,-3,-10
+ALB_351,Via Rizzo Ammiraglio - A,93,8,-3,-10
+ALB_352,Via Rizzo Ammiraglio - A,94,8,-3,-10
+ALB_353,Via Rizzo Ammiraglio - A,95,8,-3,-10
+ALB_354,Via Rizzo Ammiraglio - A,96,8,-3,-10
+ALB_355,Via Rizzo Ammiraglio - A,97,8,-3,-10
+ALB_356,Via Rizzo Ammiraglio - A,98,8,-3,-10
+ALB_357,Via Rizzo Ammiraglio - A,99,8,-3,-10
+ALB_358,Via Rizzo Ammiraglio - A,100,8,-3,-10
+ALB_359,Via Rizzo Ammiraglio - A,101,8,-3,-10
+ALB_360,Via Rizzo Ammiraglio - A,102,8,-3,-10
+ALB_361,Via Rizzo Ammiraglio - A,103,8,-3,-10
+ALB_362,Via Rizzo Ammiraglio - A,104,8,-3,-10
+ALB_363,Via Rizzo Ammiraglio - A,105,8,-3,-10
+ALB_364,Via Rizzo Ammiraglio - A,106,8,-3,-10
+ALB_365,Via Rizzo Ammiraglio - A,107,8,-3,-10
+ALB_366,Via Rizzo Ammiraglio - A,108,8,-3,-10
+ALB_367,Via Rizzo Ammiraglio - A,109,8,-3,-10
+ALB_368,Via Rizzo Ammiraglio - A,110,8,-3,-10
+ALB_369,Via Rizzo Ammiraglio - A,111,8,-3,-10
+ALB_370,Via Rizzo Ammiraglio - A,112,8,-3,-10
+ALB_371,Via Rizzo Ammiraglio - A,113,8,-3,-10
+ALB_372,Via Rizzo Ammiraglio - A,114,8,-3,-10
+ALB_373,Via Rizzo Ammiraglio - A,115,8,-3,-10
+ALB_374,Via Rizzo Ammiraglio - A,116,8,-3,-10
+ALB_375,Via Principe Di Belmonte,001,8,-2,-10
+ALB_376,Via Principe Di Belmonte,002,8,-2,-10
+ALB_377,Via Principe Di Belmonte,003,8,-2,-10
+ALB_378,Via Principe Di Belmonte,004,8,-2,-10
+ALB_379,Via Principe Di Belmonte,005,8,-2,-10
+ALB_380,Via Principe Di Belmonte,006,8,-2,-10
+ALB_381,Via Principe Di Belmonte,007,8,-2,-10
+ALB_382,Via Principe Di Belmonte,008,8,-2,-10
+ALB_383,Via Principe Di Belmonte,009,8,-2,-10
+ALB_384,Via Principe Di Belmonte,010,8,-2,-10
+ALB_385,Via Principe Di Belmonte,011,8,-2,-10
+ALB_386,Via Principe Di Belmonte,012,8,-2,-10
+ALB_387,Via Principe Di Belmonte,013,8,-2,-10
+ALB_388,Via Principe Di Belmonte,014,8,-2,-10
+ALB_389,Via Principe Di Belmonte,015,8,-2,-10
+ALB_390,Via Principe Di Belmonte,016,8,-2,-10
+ALB_391,Via Principe Di Belmonte,017,8,-2,-10
+ALB_392,Via Principe Di Belmonte,018,8,-2,-10
+ALB_393,Via Principe Di Belmonte,019,8,-2,-10
+ALB_394,Via Principe Di Belmonte,020,8,-2,-10
+ALB_395,Via Principe Di Belmonte,021,8,-2,-10
+ALB_396,Via Principe Di Belmonte,022,8,-2,-10
+ALB_397,Via Principe Di Belmonte,023,8,-2,-10
+ALB_398,Via Principe Di Belmonte,024,8,-2,-10
+ALB_399,Via Principe Di Belmonte,025,8,-2,-10
+ALB_400,Via Principe Di Belmonte,026,8,-2,-10
+ALB_401,Via Principe Di Belmonte,027,8,-2,-10
+ALB_402,Via Principe Di Belmonte,028,8,-2,-10
+ALB_403,Via Principe Di Belmonte,029,8,-2,-10
+ALB_404,Via Principe Di Belmonte,030,8,-2,-10
+ALB_405,Via Principe Di Belmonte,031,8,-2,-10
+ALB_406,Via Principe Di Belmonte,032,8,-2,-10
+ALB_407,Via Principe Di Belmonte,033,8,-2,-10
+ALB_408,Via Principe Di Belmonte,034,8,-2,-10
+ALB_409,Via Principe Di Belmonte,034-2,8,-2,-10
+ALB_410,Via Principe Di Belmonte,035,8,-2,-10
+ALB_411,Via Principe Di Belmonte,036,8,-2,-10
+ALB_412,Via Principe Di Belmonte,037,8,-2,-10
+ALB_413,Via Principe Di Belmonte,038,8,-2,-10
+ALB_414,Via Principe Di Belmonte,039,8,-2,-10
+ALB_415,Via Principe Di Belmonte,040,8,-2,-10
+ALB_416,Via Principe Di Belmonte,041,8,-2,-10
+ALB_417,Via Principe Di Belmonte,042,8,-2,-10
+ALB_418,Via Principe Di Belmonte,043,8,-2,-10
+ALB_419,Via Principe Di Belmonte,044,8,-2,-10
+ALB_420,Via Principe Di Belmonte,045,8,-2,-10
+ALB_421,Via Principe Di Belmonte,046,8,-2,-10
+ALB_422,Via Principe Di Belmonte,047,8,-2,-10
+ALB_423,Via Principe Di Belmonte,048,8,0,10
+ALB_424,Via Principe Di Belmonte,049,8,0,10
+ALB_425,Via Principe Di Belmonte,050,8,0,10
+ALB_426,Via Principe Di Belmonte,051,8,0,10
+ALB_427,Via Principe Di Belmonte,052,8,0,10
+ALB_428,Via Principe Di Belmonte,053,8,0,10
+ALB_429,Via Principe Di Belmonte,054,8,0,10
+ALB_430,Via Principe Di Belmonte,055,8,0,10
+ALB_431,Via Principe Di Belmonte,056,8,0,10
+ALB_432,Via Principe Di Belmonte,057,8,0,10
+ALB_433,Via Principe Di Belmonte,058,8,0,10
+ALB_434,Via Principe Di Belmonte,059,8,0,10
+ALB_435,Via Principe Di Belmonte,060,8,0,10
+ALB_436,Via Principe Di Belmonte,061,8,0,10
+ALB_437,Via Principe Di Belmonte,062,8,0,10
+ALB_438,Via Principe Di Belmonte,063,8,0,10
+ALB_439,Via Principe Di Belmonte,064,8,0,10
+ALB_440,Via Principe Di Belmonte,065,8,0,10
+ALB_441,Via Principe Di Belmonte,066,8,0,10
+ALB_442,Via Principe Di Belmonte,067,8,0,10
+ALB_443,Via Principe Di Belmonte,068,8,0,10
+ALB_444,Via Principe Di Belmonte,069,8,0,10
+ALB_445,Via Principe Di Belmonte,070,8,0,10
+ALB_446,Via Principe Di Belmonte,071,8,0,10
+ALB_447,Via Principe Di Belmonte,072,8,0,10
+ALB_448,Via Principe Di Belmonte,073,8,0,10
+ALB_449,Via Principe Di Belmonte,074,8,0,10
+ALB_450,Via Principe Di Belmonte,075,8,0,10
+ALB_451,Via Principe Di Belmonte,076,8,0,10
+ALB_452,Via Principe Di Belmonte,077,8,0,10
+ALB_453,Via Principe Di Belmonte,078,8,0,10
+ALB_454,Via Principe Di Belmonte,079,8,0,10
+ALB_455,Via Principe Di Belmonte,080,8,0,10
+ALB_456,Via Principe Di Belmonte,081,8,0,10
+ALB_457,Via Principe Di Belmonte,082,8,0,10
+ALB_458,Via Principe Di Belmonte,083,8,0,10
+ALB_459,Via Principe Di Belmonte,084,8,0,10
+ALB_460,Via Principe Di Belmonte,085,8,0,10
+ALB_461,Via Principe Di Belmonte,086,8,0,10
+ALB_462,Via Principe Di Belmonte,087,8,0,10
+ALB_463,Via Principe Di Belmonte,088,8,0,10
+ALB_464,Via Principe Di Belmonte,089,8,0,10
+ALB_465,Via Principe Di Belmonte,090,8,0,10
+ALB_466,Via Principe Di Belmonte,091,8,0,10
+ALB_467,Via Principe Di Belmonte,092,8,0,10
+ALB_468,Via Principe Di Belmonte,093,8,0,10
+ALB_469,Via Principe Di Belmonte,094,8,0,10
+ALB_470,Via Principe Di Belmonte,095,8,0,10
+ALB_471,Via Principe Di Belmonte,096,8,0,10
+ALB_472,Via Principe Di Belmonte,097,8,0,10
+ALB_473,Via Principe Di Belmonte,98,8,0,10
+ALB_474,Viale Michelangelo,6,8,0,10
+ALB_475,Viale Michelangelo,9,8,0,10
+ALB_476,Viale Michelangelo,11,8,0,10
+ALB_477,Viale Michelangelo,15,8,0,10
+ALB_478,Viale Michelangelo,16,8,0,10
+ALB_479,Viale Michelangelo,24,8,0,10
+ALB_480,Viale Michelangelo,33,8,0,10
+ALB_481,Viale Michelangelo,34,8,0,10
+ALB_482,Viale Michelangelo,35,8,0,10
+ALB_483,Viale Michelangelo,36,8,0,10
+ALB_484,Viale Michelangelo,38,8,0,10
+ALB_485,Viale Michelangelo,39,8,0,10
+ALB_486,Viale Michelangelo,40,8,0,10
+ALB_487,Viale Michelangelo,42,8,0,10
+ALB_488,Viale Michelangelo,43,8,0,10
+ALB_489,Viale Michelangelo,44,8,0,10
+ALB_490,Viale Michelangelo,45,8,0,10
+ALB_491,Viale Michelangelo,46,8,0,10
+ALB_492,Viale Michelangelo,48,8,0,10
+ALB_493,Viale Michelangelo,49,8,0,10
+ALB_494,Viale Michelangelo,51,8,0,10
+ALB_495,Viale Michelangelo,52,8,0,10
+ALB_496,Viale Michelangelo,53,8,0,10
+ALB_497,Viale Michelangelo,54,8,0,10
+ALB_498,Viale Michelangelo,55,8,0,10
+ALB_499,Viale Michelangelo,56,8,0,10
+ALB_500,Viale Michelangelo,57,8,0,10
+ALB_501,Viale Michelangelo,58,8,0,10
+ALB_502,Viale Michelangelo,59,8,0,10
+ALB_503,Viale Michelangelo,62,8,0,10
+ALB_504,Viale Michelangelo,63,8,0,10
+ALB_505,Viale Michelangelo,64,8,0,10
+ALB_506,Viale Michelangelo,65,8,0,10
+ALB_507,Viale Michelangelo,71,8,0,10
+ALB_508,Viale Michelangelo,73,8,0,10
+ALB_509,Viale Michelangelo,75,8,0,10
+ALB_510,Viale Michelangelo,76,8,0,10
+ALB_511,Viale Michelangelo,78,8,0,10
+ALB_512,Viale Michelangelo,79,8,0,10
+ALB_513,Viale Michelangelo,80,8,0,10
+ALB_514,Viale Michelangelo,82,8,0,10
+ALB_515,Viale Michelangelo,83,8,0,10
+ALB_516,Viale Michelangelo,84,8,0,10
+ALB_517,Viale Michelangelo,85,8,0,10
+ALB_518,Viale Michelangelo,86,8,0,10
+ALB_519,Viale Michelangelo,87,8,0,10
+ALB_520,Viale Michelangelo,88,8,0,10
+ALB_521,Viale Michelangelo,91,8,0,10
+ALB_522,Viale Michelangelo,92,8,0,10
+ALB_523,Viale Michelangelo,93,8,0,10
+ALB_524,Viale Michelangelo,96,8,0,10
+ALB_525,Viale Michelangelo,97,8,0,10
+ALB_526,Viale Michelangelo,98,8,0,10
+ALB_527,Viale Michelangelo,99,8,0,10
+ALB_528,Viale Michelangelo,100,8,0,10
+ALB_529,Viale Michelangelo,101,8,0,10
+ALB_530,Viale Michelangelo,102,8,0,10
+ALB_531,Viale Michelangelo,103,8,0,10
+ALB_532,Viale Michelangelo,104,8,0,10
+ALB_533,Viale Michelangelo,105,8,0,10
+ALB_534,Viale Michelangelo,108,8,0,10
+ALB_535,Viale Michelangelo,106,8,0,10
+ALB_536,Viale Michelangelo,109,8,0,10
+ALB_537,Viale Michelangelo,110,8,0,10
+ALB_538,Viale Michelangelo,111,8,0,10
+ALB_539,Viale Michelangelo,112,8,0,10
+ALB_540,Viale Michelangelo,114,8,0,10
+ALB_541,Viale Michelangelo,116,8,0,10
+ALB_542,Viale Michelangelo,119,8,0,10
+ALB_543,Viale Michelangelo,120,8,0,10
+ALB_544,Viale Michelangelo,122,8,0,10
+ALB_545,Viale Michelangelo,125,8,0,10
+ALB_546,Viale Michelangelo,132,8,0,10
+ALB_547,Viale Michelangelo,133,8,0,10
+ALB_548,Viale Michelangelo,134,8,0,10
+ALB_549,Viale Michelangelo,135,8,0,10
+ALB_550,Viale Michelangelo,139,8,0,10
+ALB_551,Viale Michelangelo,141,8,0,10
+ALB_552,Viale Michelangelo,143,8,0,10
+ALB_553,Viale Michelangelo,146,8,0,10
+ALB_554,Viale Michelangelo,152,8,0,10
+ALB_555,Viale Michelangelo,155,8,0,10
+ALB_556,Viale Michelangelo,156,8,0,10
+ALB_557,Viale Michelangelo,157,8,0,10
+ALB_558,Viale Michelangelo,160,8,0,10
+ALB_559,Viale Michelangelo,161,8,0,10
+ALB_560,Viale Michelangelo,162,8,0,10
+ALB_561,Viale Michelangelo,163,8,0,10
+ALB_562,Viale Michelangelo,164,8,0,10
+ALB_563,Viale Michelangelo,165,8,0,10
+ALB_564,Viale Michelangelo,167,8,0,10
+ALB_565,Viale Michelangelo,170,8,0,10
+ALB_566,Viale Michelangelo,172,8,0,10
+ALB_567,Viale Michelangelo,173,8,0,10
+ALB_568,Viale Michelangelo,175,8,0,10
+ALB_569,Viale Michelangelo,176,8,0,10
+ALB_570,Viale Michelangelo,177,8,0,10
+ALB_571,Viale Michelangelo,178,8,0,10
+ALB_572,Viale Michelangelo,179,8,0,10
+ALB_573,Viale Michelangelo,181,8,0,10
+ALB_574,Viale Michelangelo,182,8,0,10
+ALB_575,Viale Michelangelo,183,8,0,10
+ALB_576,Viale Michelangelo,186,8,0,10
+ALB_577,Viale Michelangelo,187,8,0,10
+ALB_578,Viale Michelangelo,190,8,0,10
+ALB_579,Viale Michelangelo,191,8,0,10
+ALB_580,Viale Michelangelo,192,8,0,10
+ALB_581,Viale Michelangelo,193,8,0,10
+ALB_582,Viale Michelangelo,194,8,0,10
+ALB_583,Viale Michelangelo,195,8,0,10
+ALB_584,Viale Michelangelo,196,8,0,10
+ALB_585,Viale Michelangelo,197,8,0,10
+ALB_586,Viale Michelangelo,199,8,0,10
+ALB_587,Viale Michelangelo,201,8,0,10
+ALB_588,Viale Michelangelo,202,8,0,10
+ALB_589,Viale Michelangelo,203,8,0,10
+ALB_590,Viale Michelangelo,204,8,0,10
+ALB_591,Viale Michelangelo,205,8,0,10
+ALB_592,Viale Michelangelo,206,8,0,10
+ALB_593,Viale Michelangelo,207,8,0,10
+ALB_594,Viale Michelangelo,208,8,0,10
+ALB_595,Viale Michelangelo,209,8,0,10
+ALB_596,Viale Michelangelo,210,8,0,10
+ALB_597,Viale Michelangelo,211,8,0,10
+ALB_598,Viale Michelangelo,212,8,0,10
+ALB_599,Viale Michelangelo,213,8,0,10
+ALB_600,Viale Michelangelo,214,8,0,10
+ALB_601,Viale Michelangelo,215,8,0,10
+ALB_602,Viale Michelangelo,216,8,0,10
+ALB_603,Viale Michelangelo,217,8,0,10
+ALB_604,Viale Michelangelo,218,8,0,10
+ALB_605,Viale Michelangelo,219,8,0,10
+ALB_606,Viale Michelangelo,220,8,0,10
+ALB_607,Viale Michelangelo,221,8,0,10
+ALB_608,Viale Michelangelo,222,8,0,10
+ALB_609,Viale Michelangelo,223,8,0,10
+ALB_610,Viale Michelangelo,224,8,0,10
+ALB_611,Viale Michelangelo,225,8,0,10
+ALB_612,Viale Michelangelo,226,8,0,10
+ALB_613,Viale Michelangelo,227,8,0,10
+ALB_614,Viale Michelangelo,228,8,0,10
+ALB_615,Viale Michelangelo,229,8,0,10
+ALB_616,Viale Michelangelo,230,8,0,10
+ALB_617,Viale Michelangelo,231,8,0,10
+ALB_618,Viale Michelangelo,232,8,0,10
+ALB_619,Viale Michelangelo,233,8,0,10
+ALB_620,Viale Michelangelo,234,8,0,10
+ALB_621,Viale Michelangelo,235,8,0,10
+ALB_622,Viale Michelangelo,236,8,0,10
+ALB_623,Viale Michelangelo,237,8,0,10
+ALB_624,Viale Michelangelo,238,8,0,10
+ALB_625,Viale Michelangelo,239,8,0,10
+ALB_626,Viale Michelangelo,240,8,0,10
+ALB_627,Viale Michelangelo,241,8,0,10
+ALB_628,Viale Michelangelo,242,8,0,10
+ALB_629,Viale Michelangelo,243,8,0,10
+ALB_630,Viale Michelangelo,244,8,0,10
+ALB_631,Viale Michelangelo,245,8,0,10
+ALB_632,Viale Michelangelo,246,8,0,10
+ALB_633,Viale Michelangelo,247,8,0,10
+ALB_634,Viale Michelangelo,248,8,0,10
+ALB_635,Viale Michelangelo,249,8,0,10
+ALB_636,Viale Michelangelo,250,8,0,10
+ALB_637,Viale Michelangelo,251,8,0,10
+ALB_638,Viale Michelangelo,252,8,0,10
+ALB_639,Viale Michelangelo,253,8,0,10
+ALB_640,Viale Michelangelo,254,8,0,10
+ALB_641,Viale Michelangelo,255,8,0,10
+ALB_642,Viale Michelangelo,256,8,0,10
+ALB_643,Viale Michelangelo,257,8,0,10
+ALB_644,Viale Michelangelo,258,8,0,10
+ALB_645,Viale Michelangelo,259,8,0,10
+ALB_646,Viale Michelangelo,260,8,0,10
+ALB_647,Viale Michelangelo,261,8,0,10
+ALB_648,Viale Michelangelo,263,8,0,10
+ALB_649,Viale Michelangelo,264,8,0,10
+ALB_650,Viale Michelangelo,265,8,0,10
+ALB_651,Viale Michelangelo,266,8,0,10
+ALB_652,Viale Michelangelo,267,8,0,10
+ALB_653,Viale Michelangelo,268,8,0,10
+ALB_654,Viale Michelangelo,269,8,0,10
+ALB_655,Viale Michelangelo,270,8,0,10
+ALB_656,Viale Michelangelo,271,8,0,10
+ALB_657,Viale Michelangelo,8539,8,0,10
+ALB_658,Viale Michelangelo,8566,8,0,10
+ALB_659,Viale Michelangelo,8562,8,0,10
+ALB_660,Viale Michelangelo,8315,8,0,10
+ALB_661,Viale Michelangelo,272,8,0,10
+ALB_662,Viale Michelangelo,273,8,0,10
+ALB_663,Viale Margherita di Savoia - A,1,8,0,10
+ALB_664,Viale Margherita di Savoia - A,2,8,0,10
+ALB_665,Viale Margherita di Savoia - A,3,8,0,10
+ALB_666,Viale Margherita di Savoia - A,4,8,0,10
+ALB_667,Viale Margherita di Savoia - A,5,8,0,10
+ALB_668,Viale Margherita di Savoia - A,6,8,0,10
+ALB_669,Viale Margherita di Savoia - A,7,8,0,10
+ALB_670,Viale Margherita di Savoia - A,8,8,0,10
+ALB_671,Viale Margherita di Savoia - A,9,8,0,10
+ALB_672,Viale Margherita di Savoia - A,10,8,0,10
+ALB_673,Viale Margherita di Savoia - A,11,8,0,10
+ALB_674,Viale Margherita di Savoia - A,12,8,0,10
+ALB_675,Viale Margherita di Savoia - A,13,8,0,10
+ALB_676,Viale Margherita di Savoia - A,14,8,0,10
+ALB_677,Viale Margherita di Savoia - A,15,8,0,10
+ALB_678,Viale Margherita di Savoia - A,16,8,0,10
+ALB_679,Viale Margherita di Savoia - A,17,8,0,10
+ALB_680,Viale Margherita di Savoia - A,18,8,0,10
+ALB_681,Viale Margherita di Savoia - A,19,8,0,10
+ALB_682,Viale Margherita di Savoia - A,20,8,0,10
+ALB_683,Viale Margherita di Savoia - A,21,8,0,10
+ALB_684,Viale Margherita di Savoia - A,22,8,0,10
+ALB_685,Viale Margherita di Savoia - A,23,8,0,10
+ALB_686,Viale Margherita di Savoia - A,24,8,0,10
+ALB_687,Viale Margherita di Savoia - A,25,8,0,10
+ALB_688,Viale Margherita di Savoia - A,26,8,0,10
+ALB_689,Viale Margherita di Savoia - A,27,8,0,10
+ALB_690,Viale Margherita di Savoia - A,28,8,0,10
+ALB_691,Viale Margherita di Savoia - A,29,8,0,10
+ALB_692,Viale Margherita di Savoia - A,30,8,0,10
+ALB_693,Viale Margherita di Savoia - A,31,8,0,10
+ALB_694,Viale Margherita di Savoia - A,32,8,0,10
+ALB_695,Viale Margherita di Savoia - A,33,8,0,10
+ALB_696,Viale Margherita di Savoia - A,34,8,0,10
+ALB_697,Viale Margherita di Savoia - A,35,8,0,10
+ALB_698,Viale Margherita di Savoia - A,36,8,0,10
+ALB_699,Viale Margherita di Savoia - A,37,8,0,10
+ALB_700,Viale Margherita di Savoia - A,39,8,0,10
+ALB_701,Viale Margherita di Savoia - A,41,8,0,10
+ALB_702,Viale Margherita di Savoia - A,42,8,0,10
+ALB_703,Viale Margherita di Savoia - A,44,8,0,10
+ALB_704,Viale Margherita di Savoia - A,46,8,0,10
+ALB_705,Viale Margherita di Savoia - A,47,8,0,10
+ALB_706,Viale Margherita di Savoia - A,48,8,0,10
+ALB_707,Viale Margherita di Savoia - A,49,8,0,10
+ALB_708,Viale Margherita di Savoia - A,51,8,0,10
+ALB_709,Viale Margherita di Savoia - A,52,8,0,10
+ALB_710,Viale Margherita di Savoia - A,53,8,0,10
+ALB_711,Viale Margherita di Savoia - A,54,8,0,10
+ALB_712,Viale Margherita di Savoia - A,56,8,0,10
+ALB_713,Viale Margherita di Savoia - A,57,8,0,10
+ALB_714,Viale Margherita di Savoia - A,58,8,0,10
+ALB_715,Viale Margherita di Savoia - A,61,8,0,10
+ALB_716,Viale Margherita di Savoia - A,62,8,0,10
+ALB_717,Viale Margherita di Savoia - A,63,8,0,10
+ALB_718,Viale Margherita di Savoia - A,64,8,0,10
+ALB_719,Viale Margherita di Savoia - A,65,8,0,10
+ALB_720,Viale Margherita di Savoia - A,66,8,0,10
+ALB_721,Viale Margherita di Savoia - A,67,8,0,10
+ALB_722,Viale Margherita di Savoia - A,68,8,0,10
+ALB_723,Viale Margherita di Savoia - A,69,8,0,10
+ALB_724,Viale Margherita di Savoia - A,70,8,0,10
+ALB_725,Viale Margherita di Savoia - A,71,8,0,10
+ALB_726,Viale Margherita di Savoia - A,72,8,0,10
+ALB_727,Viale Margherita di Savoia - A,75,8,0,10
+ALB_728,Viale Margherita di Savoia - A,76,8,0,10
+ALB_729,Viale Margherita di Savoia - A,77,8,0,10
+ALB_730,Viale Margherita di Savoia - A,78,8,0,10
+ALB_731,Viale Margherita di Savoia - A,79,8,0,10
+ALB_732,Viale Margherita di Savoia - A,80,8,0,10
+ALB_733,Viale Margherita di Savoia - A,82,8,0,10
+ALB_734,Viale Margherita di Savoia - A,83,8,0,10
+ALB_735,Viale Margherita di Savoia - A,84,8,0,10
+ALB_736,Viale Margherita di Savoia - A,85,8,0,10
+ALB_737,Viale Margherita di Savoia - A,86,8,0,10
+ALB_738,Viale Margherita di Savoia - B,1,8,0,10
+ALB_739,Viale Margherita di Savoia - B,2,8,0,10
+ALB_740,Viale Margherita di Savoia - B,3,8,0,10
+ALB_741,Viale Margherita di Savoia - B,4,8,0,10
+ALB_742,Viale Margherita di Savoia - B,5,8,0,10
+ALB_743,Viale Margherita di Savoia - B,6,8,0,10
+ALB_744,Viale Margherita di Savoia - B,7,8,0,10
+ALB_745,Viale Margherita di Savoia - B,9,8,0,10
+ALB_746,Viale Margherita di Savoia - B,10,8,0,10
+ALB_747,Viale Margherita di Savoia - B,11,8,0,10
+ALB_748,Viale Margherita di Savoia - B,13,8,0,10
+ALB_749,Viale Margherita di Savoia - B,14,8,0,10
+ALB_750,Viale Margherita di Savoia - B,15,8,0,10
+ALB_751,Viale Margherita di Savoia - B,16,8,0,10
+ALB_752,Viale Margherita di Savoia - B,17,8,0,10
+ALB_753,Viale Margherita di Savoia - B,18,8,0,10
+ALB_754,Viale Margherita di Savoia - B,19,8,0,10
+ALB_755,Viale Margherita di Savoia - B,20,8,0,10
+ALB_756,Viale Margherita di Savoia - B,21,8,0,10
+ALB_757,Viale Margherita di Savoia - B,22,8,0,10
+ALB_758,Viale Margherita di Savoia - B,23,8,0,10
+ALB_759,Viale Margherita di Savoia - B,24,8,0,10
+ALB_760,Viale Margherita di Savoia - B,25,8,0,10
+ALB_761,Viale Margherita di Savoia - B,26,8,0,10
+ALB_762,Viale Margherita di Savoia - B,27,8,0,10
+ALB_763,Viale Margherita di Savoia - B,28,8,0,10
+ALB_764,Viale Margherita di Savoia - B,29,8,0,10
+ALB_765,Viale Margherita di Savoia - B,30,8,0,10
+ALB_766,Viale Margherita di Savoia - B,31,8,0,10
+ALB_767,Viale Margherita di Savoia - B,32,8,0,10
+ALB_768,Viale Margherita di Savoia - B,33,8,0,10
+ALB_769,Viale Margherita di Savoia - B,34,8,0,10
+ALB_770,Viale Margherita di Savoia - B,35,8,0,10
+ALB_771,Viale Margherita di Savoia - B,37,8,0,10
+ALB_772,Viale Margherita di Savoia - B,38,8,0,10
+ALB_773,Viale Margherita di Savoia - B,39,8,0,10
+ALB_774,Viale Margherita di Savoia - B,40,8,0,10
+ALB_775,Viale Margherita di Savoia - B,41,8,0,10
+ALB_776,Viale Margherita di Savoia - B,42,8,0,10
+ALB_777,Viale Margherita di Savoia - B,44,8,0,10
+ALB_778,Viale Margherita di Savoia - B,45,8,0,10
+ALB_779,Viale Margherita di Savoia - B,46,8,0,10
+ALB_780,Viale Margherita di Savoia - B,47,8,0,10
+ALB_781,Viale Margherita di Savoia - B,48,8,0,10
+ALB_782,Viale Margherita di Savoia - B,49,8,0,10
+ALB_783,Viale Margherita di Savoia - B,50,8,0,10
+ALB_784,Viale Margherita di Savoia - B,51,8,0,10
+ALB_785,Viale Margherita di Savoia - B,52,8,0,10
+ALB_786,Viale Margherita di Savoia - B,54,8,0,10
+ALB_787,Viale Margherita di Savoia - B,55,8,0,10
+ALB_788,Viale Margherita di Savoia - B,56,8,0,10
+ALB_789,Viale Margherita di Savoia - B,57,8,0,10
+ALB_790,Viale Margherita di Savoia - B,58,8,0,10
+ALB_791,Viale Margherita di Savoia - B,60,8,0,10
+ALB_792,Viale Margherita di Savoia - B,61,8,0,10
+ALB_793,Viale Margherita di Savoia - B,62,8,0,10
+ALB_794,Viale Margherita di Savoia - B,63,8,0,10
+ALB_795,Viale Margherita di Savoia - B,64,8,0,10
+ALB_796,Viale Margherita di Savoia - B,65,8,0,10
+ALB_797,Viale Margherita di Savoia - B,66,8,0,10
+ALB_798,Viale Margherita di Savoia - B,67,8,0,10
+ALB_799,Viale Margherita di Savoia - B,68,8,0,10
+ALB_800,Viale Margherita di Savoia - B,69,8,0,10
+ALB_801,Viale Margherita di Savoia - B,70,8,0,10
+ALB_802,Viale Margherita di Savoia - B,71,8,0,10
+ALB_803,Viale Margherita di Savoia - B,72,8,0,10
+ALB_804,Viale Margherita di Savoia - B,73,8,0,10
+ALB_805,Viale Margherita di Savoia - B,74,8,0,10
+ALB_806,Viale Margherita di Savoia - B,75,8,0,10
+ALB_807,Viale Margherita di Savoia - B,76,8,0,10
+ALB_808,Viale Margherita di Savoia - B,77,8,0,10
+ALB_809,Viale Margherita di Savoia - B,78,8,0,10
+ALB_810,Viale Margherita di Savoia - B,79,8,0,10
+ALB_811,Viale Margherita di Savoia - B,80,8,0,10
+ALB_812,Viale Margherita di Savoia - B,81,8,0,10
+ALB_813,Viale Margherita di Savoia - B,82,8,0,10
+ALB_814,Viale Margherita di Savoia - B,83,8,0,10
+ALB_815,Viale Margherita di Savoia - B,84,8,0,10
+ALB_816,Viale Margherita di Savoia - B,85,8,0,10
+ALB_817,Viale Margherita di Savoia - B,86,8,0,10
+ALB_818,Viale Margherita di Savoia - B,88,8,0,10
+ALB_819,Viale Margherita di Savoia - B,89,8,0,10
+ALB_820,Viale Margherita di Savoia - B,90,8,0,10
+ALB_821,Viale Margherita di Savoia - B,91,8,0,10
+ALB_822,Viale Margherita di Savoia - B,92,8,0,10
+ALB_823,Viale Margherita di Savoia - B,93,8,0,10
+ALB_824,Viale Margherita di Savoia - B,94,8,0,10
+ALB_825,Viale Margherita di Savoia - B,95,8,0,10
+ALB_826,Viale Margherita di Savoia - B,96,8,0,10
+ALB_827,Viale Margherita di Savoia - B,97,8,0,10
+ALB_828,Viale Margherita di Savoia - B,98,8,0,10
+ALB_829,Viale Margherita di Savoia - B,100,8,0,10
+ALB_830,Viale Margherita di Savoia - B,101,8,0,10
+ALB_831,Viale Margherita di Savoia - B,103,8,0,10
+ALB_832,Viale Margherita di Savoia - B,105,8,0,10
+ALB_833,Viale Margherita di Savoia - B,106,8,0,10
+ALB_834,Viale Margherita di Savoia - B,107,8,0,10
+ALB_835,Viale Margherita di Savoia - B,109,8,0,10
+ALB_836,Viale Margherita di Savoia - B,110,8,0,10
+ALB_837,Viale Margherita di Savoia - B,111,8,0,10
+ALB_838,Viale Margherita di Savoia - B,112,8,0,10
+ALB_839,Viale Margherita di Savoia - B,113,8,0,10
+ALB_840,Viale Margherita di Savoia - B,114,8,0,10
+ALB_841,Viale Margherita di Savoia - B,115,8,0,10
+ALB_842,Viale Margherita di Savoia - B,116,8,0,10
+ALB_843,Viale Margherita di Savoia - B,117,8,0,10
+ALB_844,Viale Margherita di Savoia - B,118,8,0,10
+ALB_845,Viale Margherita di Savoia - B,119,8,0,10
+ALB_846,Viale Margherita di Savoia - B,120,8,0,10
+ALB_847,Viale Margherita di Savoia - B,121,8,0,10
+ALB_848,Viale Margherita di Savoia - B,122,8,0,10
+ALB_849,Viale Margherita di Savoia - B,123,8,0,10
+ALB_850,Viale Margherita di Savoia - B,124,8,0,10
+ALB_851,Viale Margherita di Savoia - B,125,8,0,10
+ALB_852,Viale Margherita di Savoia - B,126,8,0,10
+ALB_853,Viale Margherita di Savoia - B,127,8,0,10
+ALB_854,Viale Margherita di Savoia - B,128,8,0,10
+ALB_855,Viale Margherita di Savoia - B,129,8,0,10
+ALB_856,Viale Margherita di Savoia - B,132,8,0,10
+ALB_857,Viale Margherita di Savoia - B,133,8,0,10
+ALB_858,Viale Margherita di Savoia - B,134,8,0,10
+ALB_859,Viale Margherita di Savoia - B,135,8,0,10
+ALB_860,Viale Margherita di Savoia - B,136,8,0,10
+ALB_861,Viale Margherita di Savoia - B,137,8,0,10
+ALB_862,Viale Margherita di Savoia - B,138,8,0,10
+ALB_863,Viale Margherita di Savoia - B,139,8,0,10
+ALB_864,Viale Margherita di Savoia - B,140,8,0,10
+ALB_865,Viale Margherita di Savoia - B,142,8,0,10
+ALB_866,Viale Margherita di Savoia - B,143,8,0,10
+ALB_867,Viale Margherita di Savoia - B,145,8,0,10
+ALB_868,Viale Margherita di Savoia - B,146,8,0,10
+ALB_869,Viale Margherita di Savoia - B,147,8,0,10
+ALB_870,Viale Margherita di Savoia - B,148,8,0,10
+ALB_871,Viale Margherita di Savoia - B,149,8,0,10
+ALB_872,Viale Margherita di Savoia - B,150,8,0,10
+ALB_873,Viale Margherita di Savoia - B,151,8,0,10
+ALB_874,Viale Margherita di Savoia - B,152,8,0,10
+ALB_875,Viale Margherita di Savoia - B,153,8,0,10
+ALB_876,Viale Margherita di Savoia - B,154,8,0,10
+ALB_877,Viale Margherita di Savoia - B,155,8,0,10
+ALB_878,Viale Margherita di Savoia - B,156,8,0,10
+ALB_879,Viale Margherita di Savoia - B,157,8,0,10
+ALB_880,Viale Margherita di Savoia - B,158,8,0,10
+ALB_881,Viale Margherita di Savoia - B,159,8,0,10
+ALB_882,Viale Margherita di Savoia - B,160,8,0,10
+ALB_883,Viale Margherita di Savoia - B,161,8,0,10
+ALB_884,Viale Margherita di Savoia - B,162,8,0,10
+ALB_885,Viale Margherita di Savoia - B,163,8,0,10
+ALB_886,Viale Margherita di Savoia - B,164,8,0,10
+ALB_887,Viale Margherita di Savoia - B,165,8,0,10
+ALB_888,Viale Margherita di Savoia - B,166,8,0,10
+ALB_889,Viale Margherita di Savoia - B,167,8,0,10
+ALB_890,Viale Margherita di Savoia - B,168,8,0,10
+ALB_891,Viale Margherita di Savoia - B,169,8,0,10
+ALB_892,Viale Margherita di Savoia - B,170,8,0,10
+ALB_893,Viale Margherita di Savoia - B,171,8,0,10
+ALB_894,Viale Margherita di Savoia - B,172,8,0,10
+ALB_895,Viale Margherita di Savoia - B,173,8,0,10
+ALB_896,Viale Margherita di Savoia - B,174,8,0,10
+ALB_897,Viale Margherita di Savoia - B,175,8,0,10
+ALB_898,Viale Margherita di Savoia - B,176,8,0,10
+ALB_899,Viale Margherita di Savoia - B,177,8,0,10
+ALB_900,Viale Margherita di Savoia - B,178,8,0,10
+ALB_901,Viale Margherita di Savoia - B,179,8,0,10
+ALB_902,Viale Margherita di Savoia - B,180,8,0,10
+ALB_903,Viale Margherita di Savoia - B,181,8,0,10
+ALB_904,Viale Margherita di Savoia - B,182,8,0,10
+ALB_905,Viale Margherita di Savoia - B,183,8,0,10
+ALB_906,Viale Margherita di Savoia - B,184,8,0,10
+ALB_907,Viale Margherita di Savoia - B,185,8,0,10
+ALB_908,Viale Margherita di Savoia - B,186,8,0,10
+ALB_909,Viale Margherita di Savoia - B,187,8,0,10
+ALB_910,Viale Margherita di Savoia - B,188,8,0,10
+ALB_911,Viale Margherita di Savoia - B,189,8,0,10
+ALB_912,Viale Margherita di Savoia - B,190,8,0,10
+ALB_913,Viale Margherita di Savoia - B,191,8,0,10
+ALB_914,Viale Margherita di Savoia - B,193,8,0,10
+ALB_915,Viale Margherita di Savoia - B,194,8,0,10
+ALB_916,Viale Margherita di Savoia - B,195,8,0,10
+ALB_917,Viale Margherita di Savoia - B,196,8,0,10
+ALB_918,Viale Margherita di Savoia - B,197,8,0,10
+ALB_919,Viale Margherita di Savoia - B,198,8,0,10
+ALB_920,Viale Margherita di Savoia - B,199,8,0,10
+ALB_921,Viale Margherita di Savoia - B,200,8,0,10
+ALB_922,Viale Margherita di Savoia - B,201,8,0,10
+ALB_923,Viale Margherita di Savoia - B,202,8,0,10
+ALB_924,Viale Margherita di Savoia - B,203,8,0,10
+ALB_925,Viale Galatea,1,8,0,10
+ALB_926,Viale Galatea,2,8,0,10
+ALB_927,Viale Galatea,3,8,0,10
+ALB_928,Viale Galatea,4,8,0,10
+ALB_929,Viale Galatea,5,8,0,10
+ALB_930,Viale Galatea,6,8,0,10
+ALB_931,Viale Galatea,7,8,0,10
+ALB_932,Viale Galatea,8,8,0,10
+ALB_933,Viale Galatea,9,8,0,10
+ALB_934,Viale Galatea,10,8,0,10
+ALB_935,Viale Galatea,11,8,0,10
+ALB_936,Viale Galatea,12,8,0,10
+ALB_937,Viale Galatea,13,8,0,10
+ALB_938,Viale Galatea,14,8,0,10
+ALB_939,Viale Galatea,15,8,0,10
+ALB_940,Viale Galatea,16,8,0,10
+ALB_941,Viale Galatea,17,8,0,10
+ALB_942,Viale Galatea,18,8,0,10
+ALB_943,Viale Galatea,19,8,0,10
+ALB_944,Viale Galatea,20,8,0,10
+ALB_945,Viale Galatea,21,8,0,10
+ALB_946,Viale Galatea,22,8,0,10
+ALB_947,Viale Galatea,23,8,0,10
+ALB_948,Viale Galatea,24,8,0,10
+ALB_949,Viale Galatea,25,8,0,10
+ALB_950,Viale Galatea,26,8,0,10
+ALB_951,Viale Galatea,27,8,0,10
+ALB_952,Viale Galatea,28,8,0,10
+ALB_953,Viale Galatea,29,8,0,10
+ALB_954,Viale Galatea,30,8,0,10
+ALB_955,Viale Galatea,31,8,0,10
+ALB_956,Viale Galatea,32,8,0,10
+ALB_957,Viale Galatea,33,8,0,10
+ALB_958,Viale Galatea,34,8,0,10
+ALB_959,Viale Galatea,35,8,0,10
+ALB_960,Viale Galatea,36,8,0,10
+ALB_961,Viale Galatea,37,8,0,10
+ALB_962,Viale Galatea,38,8,0,10
+ALB_963,Viale Galatea,39,8,0,10
+ALB_964,Viale Galatea,40,8,0,10
+ALB_965,Viale Galatea,41,8,0,10
+ALB_966,Viale Galatea,42,8,0,10
+ALB_967,Viale Galatea,43,8,0,10
+ALB_968,Viale Galatea,44,8,0,10
+ALB_969,Viale Galatea,45,8,0,10
+ALB_970,Viale Galatea,46,8,0,10
+ALB_971,Viale Galatea,47,8,0,10
+ALB_972,Viale Galatea,48,8,0,10
+ALB_973,Viale Principe Umberto,1,8,0,10
+ALB_974,Viale Principe Umberto,2,8,0,10
+ALB_975,Viale Principe Umberto,3,8,0,10
+ALB_976,Viale Principe Umberto,4,8,0,10
+ALB_977,Viale Principe Umberto,5,8,0,10
+ALB_978,Viale Principe Umberto,6,8,0,10
+ALB_979,Viale Principe Umberto,7,8,0,10
+ALB_980,Viale Principe Umberto,8,8,0,10
+ALB_981,Viale Principe Umberto,9,8,0,10
+ALB_982,Viale Principe Umberto,10,8,0,10
+ALB_983,Viale Principe Umberto,11,8,0,10
+ALB_984,Viale Principe Umberto,12,8,0,10
+ALB_985,Viale Principe Umberto,13,8,0,10
+ALB_986,Viale Principe Umberto,14,8,0,10
+ALB_987,Viale Principe Umberto,15,8,0,10
+ALB_988,Viale Principe Umberto,16,8,0,10
+ALB_989,Viale Principe Umberto,17,8,0,10
+ALB_990,Viale Principe Umberto,18,8,0,10
+ALB_991,Viale Principe Umberto,19,8,0,10
+ALB_992,Viale Principe Umberto,20,8,0,10
+ALB_993,Viale Principe Umberto,21,8,0,10
+ALB_994,Viale Principe Umberto,22,8,0,10
+ALB_995,Viale Principe Umberto,23,8,-1,-10
+ALB_996,Viale Principe Umberto,24,8,-1,-10
+ALB_997,Viale Principe Umberto,25,8,-1,-10
+ALB_998,Viale Principe Umberto,26,8,-1,-10
+ALB_999,Viale Principe Umberto,27,8,-1,-10
+ALB_1000,Viale Principe Umberto,28,8,-1,-10
+ALB_1001,Viale Principe Umberto,29,8,-1,-10
+ALB_1002,Viale Principe Umberto,30,8,-1,-10
+ALB_1003,Viale Principe Umberto,31,8,-1,-10
+ALB_1004,Viale Principe Umberto,32,8,-1,-10
+ALB_1005,Viale Principe Umberto,33,8,-1,-10
+ALB_1006,Viale Principe Umberto,34,8,-1,-10
+ALB_1007,Viale Principe Umberto,35,8,-1,-10
+ALB_1008,Viale Principe Umberto,36,8,-1,-10
+ALB_1009,Viale Principe Umberto,37,8,-1,-10
+ALB_1010,Viale Principe Umberto,38,8,-1,-10
+ALB_1011,Viale Principe Umberto,39,8,-1,-10
+ALB_1012,Viale Principe Umberto,40,8,-1,-10
+ALB_1013,Viale Principe Umberto,41,8,-1,-10
+ALB_1014,Viale Principe Umberto,42,8,-1,-10
+ALB_1015,Viale Principe Umberto,43,8,-1,-10
+ALB_1016,Viale Principe Umberto,44,8,-1,-10
+ALB_1017,Viale Principe Umberto,45,8,-1,-10
+ALB_1018,Viale Principe Umberto,46,8,-1,-10
+ALB_1019,Viale Principe Umberto,47,8,-1,-10
+ALB_1020,Viale Principe Umberto,48,8,-1,-10
+ALB_1021,Viale Principe Umberto,50,8,-1,-10
+ALB_1022,Viale Principe Umberto,51,8,-1,-10
+ALB_1023,Viale Principe Umberto,52,8,-1,-10
+ALB_1024,Viale Principe Umberto,53,8,-1,-10
+ALB_1025,Viale Principe Umberto,54,8,-1,-10
+ALB_1026,Viale Principe Umberto,55,8,-1,-10
+ALB_1027,Viale Principe Umberto,56,8,-1,-10
+ALB_1028,Viale Principe Umberto,57,8,-1,-10
+ALB_1029,Viale Principe Umberto,58,8,-1,-10
+ALB_1030,Viale Principe Umberto,59,8,-1,-10
+ALB_1031,Viale Principe Umberto,60,8,-1,-10
+ALB_1032,Viale Principe Umberto,61,8,-1,-10
+ALB_1033,Viale Principe Umberto,62,8,-1,-10
+ALB_1034,Viale Principe Umberto,63,8,-1,-10
+ALB_1035,Viale Principe Umberto,64,8,-1,-10
+ALB_1036,Viale Principe Umberto,65,8,-1,-10
+ALB_1037,Via Rapisardi Mario,1,8,-1,-10
+ALB_1038,Via Rapisardi Mario,2,8,-1,-10
+ALB_1039,Via Rapisardi Mario,3,8,-1,-10
+ALB_1040,Via Rapisardi Mario,4,8,-1,-10
+ALB_1041,Via Rapisardi Mario,5,8,-1,-10
+ALB_1042,Via Rapisardi Mario,6,8,-1,-10
+ALB_1043,Via Rapisardi Mario,7,8,-1,-10
+ALB_1044,Via Rapisardi Mario,8,8,-1,-10
+ALB_1045,Via Rapisardi Mario,9,8,-1,-10
+ALB_1046,Via Rapisardi Mario,10,8,-1,-10
+ALB_1047,Via Rapisardi Mario,11,8,-1,-10
+ALB_1048,Via Rapisardi Mario,12,8,-1,-10
+ALB_1049,Via Rapisardi Mario,13,8,-1,-10
+ALB_1050,Via Rapisardi Mario,14,8,-1,-10
+ALB_1051,Via Rapisardi Mario,15,8,-1,-10
+ALB_1052,Via Rapisardi Mario,16,8,-1,-10
+ALB_1053,Via Rapisardi Mario,17,8,-1,-10
+ALB_1054,Via Rapisardi Mario,18,8,-1,-10
+ALB_1055,Via Rapisardi Mario,19,8,-1,-10
+ALB_1056,Via Rapisardi Mario,20,8,-1,-10
+ALB_1057,Via Rapisardi Mario,21,8,-1,-10
+ALB_1058,Via Rapisardi Mario,22,8,-1,-10
+ALB_1059,Via Rapisardi Mario,23,8,-1,-10
+ALB_1060,Via Rapisardi Mario,24,8,-1,-10
+ALB_1061,Via Rapisardi Mario,25,8,-1,-10
+ALB_1062,Via Rapisardi Mario,26,8,-1,-10
+ALB_1063,Via Rapisardi Mario,27,8,-1,-10
+ALB_1064,Via Rapisardi Mario,28,8,-1,-10
+ALB_1065,Via Rapisardi Mario,29,8,-1,-10
+ALB_1066,Via Rapisardi Mario,30,8,-1,-10
+ALB_1067,Via Rapisardi Mario,31,8,-1,-10
+ALB_1068,Via Rapisardi Mario,32,8,-1,-10
+ALB_1069,Via Rapisardi Mario,33,8,-1,-10
+ALB_1070,Via Rapisardi Mario,34,8,-1,10
+ALB_1071,Via Rapisardi Mario,35,8,-1,10
+ALB_1072,Via Rapisardi Mario,36,8,-1,10
+ALB_1073,Via Rapisardi Mario,37,8,-1,10
+ALB_1074,Via Rapisardi Mario,38,8,-1,10
+ALB_1075,Via Rapisardi Mario,39,8,-1,10
+ALB_1076,Via Rapisardi Mario,40,8,-1,10
+ALB_1077,Via Rapisardi Mario,41,8,-1,10
+ALB_1078,Via Rapisardi Mario,42,8,-1,10
+ALB_1079,Via Rapisardi Mario,43,8,-1,10
+ALB_1080,Via Rapisardi Mario,44,8,-1,10
+ALB_1081,Via Rapisardi Mario,45,8,-1,10
+ALB_1082,Via Rapisardi Mario,46,8,-1,10
+ALB_1083,Via Rapisardi Mario,47,8,-1,10
+ALB_1084,Via Rapisardi Mario,48,8,-1,10
+ALB_1085,Via Rapisardi Mario,49,8,-1,10
+ALB_1086,Via Rapisardi Mario,50,8,-1,10
+ALB_1087,Via Rapisardi Mario,51,8,-1,10
+ALB_1088,Via Rapisardi Mario,52,8,-1,10
+ALB_1089,Via Rapisardi Mario,53,8,-1,10
+ALB_1090,Via Rapisardi Mario,54,8,-1,10
+ALB_1091,Via Rapisardi Mario,55,8,-1,10
+ALB_1092,Via Rapisardi Mario,56,8,-1,10
+ALB_1093,Via Rapisardi Mario,57,8,-1,10
+ALB_1094,Via Rapisardi Mario,58,8,-1,10
+ALB_1095,Via Rapisardi Mario,59,8,-1,10
+ALB_1096,Via Rapisardi Mario,60,8,-1,10
+ALB_1097,Via Giusti Giuseppe,1,8,-1,10
+ALB_1098,Via Giusti Giuseppe,2,8,-1,10
+ALB_1099,Via Giusti Giuseppe,3,8,-1,10
+ALB_1100,Via Giusti Giuseppe,4,8,-1,10
+ALB_1101,Via Giusti Giuseppe,5,8,-1,10
+ALB_1102,Via Giusti Giuseppe,6,8,-1,10
+ALB_1103,Via Giusti Giuseppe,7,8,-1,10
+ALB_1104,Via Giusti Giuseppe,8,8,-1,10
+ALB_1105,Via Giusti Giuseppe,9,8,-1,10
+ALB_1106,Via Giusti Giuseppe,10,8,-1,10
+ALB_1107,Via Giusti Giuseppe,11,8,-1,10
+ALB_1108,Via Giusti Giuseppe,12,8,-1,10
+ALB_1109,Via Giusti Giuseppe,13,8,-1,10
+ALB_1110,Via Giusti Giuseppe,14,8,-1,10
+ALB_1111,Via Giusti Giuseppe,15,8,-1,10
+ALB_1112,Via Giusti Giuseppe,16,8,-1,10
+ALB_1113,Via Giusti Giuseppe,17,8,-1,10
+ALB_1114,Via Giusti Giuseppe,18,8,-1,10
+ALB_1115,Via Giusti Giuseppe,19,8,-1,10
+ALB_1116,Via Giusti Giuseppe,20,8,-1,10
+ALB_1117,Via Giusti Giuseppe,21,8,-1,10
+ALB_1118,Via Giusti Giuseppe,22,8,-1,10
+ALB_1119,Via Giusti Giuseppe,23,8,-1,10
+ALB_1120,Via Giusti Giuseppe,24,8,-1,10
+ALB_1121,Via Giusti Giuseppe,25,8,-1,10
+ALB_1122,Via Giusti Giuseppe,26,8,-1,10
+ALB_1123,Via Giusti Giuseppe,27,8,-1,10
+ALB_1124,Via Giusti Giuseppe,28,8,-1,10
+ALB_1125,Via Giusti Giuseppe,29,8,-1,10
+ALB_1126,Via Giusti Giuseppe,30,8,-1,10
+ALB_1127,Via Giusti Giuseppe,31,8,-1,10
+ALB_1128,Via Giusti Giuseppe,32,8,-1,10
+ALB_1129,Via Giusti Giuseppe,33,8,-1,10
+ALB_1130,Via Giusti Giuseppe,34,8,-1,10
+ALB_1131,Via Giusti Giuseppe,35,8,-1,10
+ALB_1132,Via Giusti Giuseppe,36,8,-1,10
+ALB_1133,Via Giusti Giuseppe,37,8,-1,10
+ALB_1134,Via Giusti Giuseppe,38,8,-1,10
+ALB_1135,Via Giusti Giuseppe,39,8,-1,10
+ALB_1136,Via Giusti Giuseppe,40,8,-1,10
+ALB_1137,Via Giusti Giuseppe,41,8,-1,10
+ALB_1138,Via Giusti Giuseppe,42,8,-1,10
+ALB_1139,Via Giusti Giuseppe,43,8,-1,10
+ALB_1140,Via Giusti Giuseppe,44,8,-1,10
+ALB_1141,Via Giusti Giuseppe,45,8,-1,10
+ALB_1142,Via Giusti Giuseppe,46,8,-1,10
+ALB_1143,Via Giusti Giuseppe,47,8,-1,10
+ALB_1144,Via Giusti Giuseppe,48,8,-1,10
+ALB_1145,Via Giusti Giuseppe,49,8,-1,10
+ALB_1146,Via Giusti Giuseppe,50,8,-1,10
+ALB_1147,Via Giusti Giuseppe,51,8,-1,10
+ALB_1148,Via Giusti Giuseppe,52,8,-1,10
+ALB_1149,Via Giusti Giuseppe,53,8,-1,10
+ALB_1150,Via Giusti Giuseppe,54,8,-1,10
+ALB_1151,Via Giusti Giuseppe,55,8,-1,10
+ALB_1152,Via Giusti Giuseppe,56,8,-1,10
+ALB_1153,Via Giusti Giuseppe,57,8,-1,10
+ALB_1154,Via Giusti Giuseppe,58,8,-1,10
+ALB_1155,Via Giusti Giuseppe,59,8,-1,10
+ALB_1156,Via Giusti Giuseppe,60,8,-1,10
+ALB_1157,Via Giusti Giuseppe,61,8,-1,10
+ALB_1158,Via Giusti Giuseppe,62,8,-1,10
+ALB_1159,Via Giusti Giuseppe,63,8,-1,10
+ALB_1160,Via Giusti Giuseppe,64,8,-1,-10
+ALB_1161,Via Giusti Giuseppe,65,8,-1,-10
+ALB_1162,Via Giusti Giuseppe,66,8,-1,-10
+ALB_1163,Via Giusti Giuseppe,67,8,-1,-10
+ALB_1164,Via Giusti Giuseppe,68,8,-1,-10
+ALB_1165,Via Giusti Giuseppe,69,8,-1,-10
+ALB_1166,Via Giusti Giuseppe,70,8,-1,-10
+ALB_1167,Via Giusti Giuseppe,71,8,-1,-10
+ALB_1168,Via Giusti Giuseppe,72,8,-1,-10
+ALB_1169,Via Giusti Giuseppe,73,8,-1,-10
+ALB_1170,Via Giusti Giuseppe,74,8,-1,-10
+ALB_1171,Via Giusti Giuseppe,75,8,-1,-10
+ALB_1172,Via Giusti Giuseppe,76,8,-1,-10
+ALB_1173,Via Giusti Giuseppe,77,8,-1,-10
+ALB_1174,Via Giusti Giuseppe,78,8,-1,-10
+ALB_1175,Via Giusti Giuseppe,79,8,-1,-10
+ALB_1176,Via Giusti Giuseppe,80,8,-1,-10
+ALB_1177,Via Giusti Giuseppe,81,8,-1,-10
+ALB_1178,Via Giusti Giuseppe,82,8,-1,-10
+ALB_1179,Via Giusti Giuseppe,83,8,-1,-10
+ALB_1180,Via Giusti Giuseppe,84,8,-1,-10
+ALB_1181,Via Giusti Giuseppe,85,8,-1,-10
+ALB_1182,Via Giusti Giuseppe,86,8,-1,-10
+ALB_1183,Via Giusti Giuseppe,87,8,-1,-10
+ALB_1184,Via Giusti Giuseppe,88,8,-1,-10
+ALB_1185,Via Giusti Giuseppe,89,8,-1,-10
+ALB_1186,Via Giusti Giuseppe,90,8,-1,-10
+ALB_1187,Via Giusti Giuseppe,91,8,-1,-10
+ALB_1188,Via Giusti Giuseppe,92,8,-1,-10
+ALB_1189,Via Giusti Giuseppe,93,8,-1,-10
+ALB_1190,Via Giusti Giuseppe,94,8,-1,-10
+ALB_1191,Via Giusti Giuseppe,95,8,-1,-10
+ALB_1192,Via Giusti Giuseppe,96,8,-1,-10
+ALB_1193,Via Giusti Giuseppe,97,8,-1,-10
+ALB_1194,Via Giusti Giuseppe,98,8,-6,-10
+ALB_1195,Via Giusti Giuseppe,99,8,-6,-10
+ALB_1196,Via Giusti Giuseppe,100,8,-6,-10
+ALB_1197,Via Giusti Giuseppe,101,8,0,10
+ALB_1198,Via Giusti Giuseppe,102,8,0,10
+ALB_1199,Via Giusti Giuseppe,103,8,0,10
+ALB_1200,Via Giusti Giuseppe,104,8,0,10
+ALB_1201,Via Giusti Giuseppe,105,8,0,10
+ALB_1202,Via Giusti Giuseppe,106,8,0,10
+ALB_1203,Via Giusti Giuseppe,107,8,0,10
+ALB_1204,Via Giusti Giuseppe,108,8,0,10
+ALB_1205,Via Giusti Giuseppe,109,8,-6,-10
+ALB_1206,Via Giusti Giuseppe,110,8,0,10
+ALB_1207,Via Giusti Giuseppe,111,8,0,10
+ALB_1208,Via Giusti Giuseppe,112,8,0,10
+ALB_1209,Via Giusti Giuseppe,113,8,0,10
+ALB_1210,Via Giusti Giuseppe,114,8,0,10
+ALB_1211,Via Giusti Giuseppe,115,8,0,10
+ALB_1212,Via Giusti Giuseppe,116,8,0,10
+ALB_1213,Via Giusti Giuseppe,117,8,0,10
+ALB_1214,Via Giusti Giuseppe,118,8,0,10
+ALB_1215,Via Giusti Giuseppe,119,8,0,10
+ALB_1216,Via Giusti Giuseppe,120,8,0,10
+ALB_1217,Via Giusti Giuseppe,121,8,0,10
+ALB_1218,Via Giusti Giuseppe,122,8,0,10
+ALB_1219,Via Giusti Giuseppe,123,8,-6,-10
+ALB_1220,Via Giusti Giuseppe,124,8,0,10
+ALB_1221,Via Giusti Giuseppe,125,8,-6,-10
+ALB_1222,Via Giusti Giuseppe,126,8,-6,-10
+ALB_1223,Via Giusti Giuseppe,127,8,-6,-10
+ALB_1224,Via Giusti Giuseppe,128,8,0,10
+ALB_1225,Via Giusti Giuseppe,129,8,-6,-10
+ALB_1226,Via Giusti Giuseppe,130,8,-6,-10
+ALB_1227,Via Giusti Giuseppe,131,8,-6,-10
+ALB_1228,Via Giusti Giuseppe,132,8,-6,-10
+ALB_1229,Via Corazza Filippo,1,8,-6,-10
+ALB_1230,Via Corazza Filippo,2,8,0,10
+ALB_1231,Via Corazza Filippo,3,8,-6,-10
+ALB_1232,Via Corazza Filippo,4,8,0,10
+ALB_1233,Via Corazza Filippo,5,8,0,10
+ALB_1234,Via Corazza Filippo,6,8,0,10
+ALB_1235,Via Corazza Filippo,7,8,0,10
+ALB_1236,Via Corazza Filippo,8,8,0,10
+ALB_1237,Via Corazza Filippo,9,8,0,10
+ALB_1238,Via Corazza Filippo,10,8,0,10
+ALB_1239,Via Corazza Filippo,11,8,0,10
+ALB_1240,Via Corazza Filippo,12,8,0,10
+ALB_1241,Via Corazza Filippo,13,8,0,10
+ALB_1242,Via Corazza Filippo,14,8,-1,-10
+ALB_1243,Via Corazza Filippo,15,8,-1,-10
+ALB_1244,Via Corazza Filippo,16,8,-1,-10
+ALB_1245,Via Corazza Filippo,17,8,-1,-10
+ALB_1246,Via Corazza Filippo,18,8,-1,-10
+ALB_1247,Via Corazza Filippo,19,8,-1,-10
+ALB_1248,Via Corazza Filippo,20,8,-1,-10
+ALB_1249,Via Corazza Filippo,21,8,-1,-10
+ALB_1250,Via Corazza Filippo,22,8,-1,-10
+ALB_1251,Via Corazza Filippo,23,8,-1,-10
+ALB_1252,Via Corazza Filippo,24,8,-1,-10
+ALB_1253,Via Corazza Filippo,25,8,-1,-10
+ALB_1254,Via Corazza Filippo,26,8,-1,-10
+ALB_1255,Via Corazza Filippo,27,8,-1,-10
+ALB_1256,Via Corazza Filippo,28,8,-1,-10
+ALB_1257,Via Corazza Filippo,29,8,-1,-10
+ALB_1258,Via Corazza Filippo,30,8,-1,-10
+,,,8,-1,-10
+,,,8,-1,-10
+,,,8,-1,-10
+,,,8,-1,-10
+,,,8,-1,-10
+,,,8,-1,-10
+,,,8,-1,-10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,-10
+,,,8,-1,-10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,-1,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,-6,-10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,-12,1
+,,,8,-12,1
+,,,8,-12,1
+,,,8,-12,1
+,,,8,-12,1
+,,,8,-12,1
+,,,8,-12,1
+,,,8,-12,1
+,,,8,-12,1
+,,,8,-12,1
+,,,8,-12,1
+,,,8,-12,1
+,,,8,-12,1
+,,,8,-12,1
+,,,8,10,-8
+,,,8,10,-8
+,,,8,10,-8
+,,,8,10,-8
+,,,8,10,-8
+,,,8,10,-8
+,,,8,10,-8
+,,,8,10,-8
+,,,8,10,-8
+,,,8,10,-8
+,,,8,10,-8
+,,,8,10,-8
+,,,8,10,-8
+,,,8,10,-8
+,,,8,10,-8
+,,,8,10,-8
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
+,,,8,0,10
