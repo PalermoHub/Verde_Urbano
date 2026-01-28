@@ -1,8 +1,16 @@
 Odonimo,CPC,count,%,legenda,colore
+Via Corazza Filippo,No Interv,16,53%,Nessun itervento,#f4cccc
+Via Corazza Filippo,Ceppaia,11,37%,Ceppaia,#434343
+Via Corazza Filippo,Verifica,3,10%,Da verficare,#9fc5e8
 Via Delle Croci,B,31,60%,B (bassa),#2cc15f
 Via Delle Croci,C,13,25%,C (moderata),#f39c12
 Via Delle Croci,D,4,8%,D (estrema),#e74c3c
 Via Delle Croci,C/D,4,8%,C/D (elevata),#c164a1
+Via Giusti Giuseppe,No Interv,93,70%,Nessun itervento,#f4cccc
+Via Giusti Giuseppe,Verifica,29,22%,Da verficare,#9fc5e8
+Via Giusti Giuseppe,Non Class,7,5%,Non Classificato,#990000
+Via Giusti Giuseppe,Ceppaia,3,2%,Ceppaia,#434343
+Via Oreto,,116,100%,,
 Via Pignatelli Aragona,B,32,67%,B (bassa),#2cc15f
 Via Pignatelli Aragona,C,8,17%,C (moderata),#f39c12
 Via Pignatelli Aragona,D,5,10%,D (estrema),#e74c3c
@@ -11,7 +19,11 @@ Via Principe Di Belmonte,B,53,54%,B (bassa),#2cc15f
 Via Principe Di Belmonte,C,19,19%,C (moderata),#f39c12
 Via Principe Di Belmonte,D,13,13%,D (estrema),#e74c3c
 Via Principe Di Belmonte,C/D,12,12%,C/D (elevata),#c164a1
-Via Principe Di Belmonte,vuoto,2,2%,,
+Via Principe Di Belmonte,Vuoto,2,2%,Cercine vuoto,#ffff00
+Via Rapisardi Mario,Ceppaia,19,32%,Ceppaia,#434343
+Via Rapisardi Mario,No Interv,18,30%,Nessun itervento,#f4cccc
+Via Rapisardi Mario,Verifica,17,28%,Da verficare,#9fc5e8
+Via Rapisardi Mario,Non Class,6,10%,Non Classificato,#990000
 Via Rizzo Ammiraglio - A,B,45,80%,B (bassa),#2cc15f
 Via Rizzo Ammiraglio - A,C/D,5,9%,C/D (elevata),#c164a1
 Via Rizzo Ammiraglio - A,C,4,7%,C (moderata),#f39c12
@@ -33,11 +45,24 @@ Viale Emilia,B,51,78%,B (bassa),#2cc15f
 Viale Emilia,C,7,11%,C (moderata),#f39c12
 Viale Emilia,Ceppaia,4,6%,Ceppaia,#434343
 Viale Emilia,D,3,5%,D (estrema),#e74c3c
-Viale Michelangelo,A,331,64%,,
+Viale Galatea,C/D,20,42%,C/D (elevata),#c164a1
+Viale Galatea,C,13,27%,C (moderata),#f39c12
+Viale Galatea,Ceppaia,9,19%,Ceppaia,#434343
+Viale Galatea,A,4,8%,A (trascurabile),#00ff00
+Viale Galatea,D,2,4%,D (estrema),#e74c3c
+Viale Margherita di Savoia,C,93,47%,C (moderata),#f39c12
+Viale Margherita di Savoia,C/D,80,40%,C/D (elevata),#c164a1
+Viale Margherita di Savoia,D,21,11%,D (estrema),#e74c3c
+Viale Margherita di Savoia,Non Class,4,2%,Non Classificato,#990000
+Viale Margherita di Savoia,B,1,1%,B (bassa),#2cc15f
+Viale Michelangelo,A,332,64%,A (trascurabile),#00ff00
 Viale Michelangelo,C,111,21%,C (moderata),#f39c12
 Viale Michelangelo,C/D,30,6%,C/D (elevata),#c164a1
-Viale Michelangelo,D,24,5%,D (estrema),#e74c3c
-Viale Michelangelo,,18,3%,,
+Viale Michelangelo,D,25,5%,D (estrema),#e74c3c
+Viale Michelangelo,Non Class,18,3%,Non Classificato,#990000
 Viale Michelangelo,Ceppaia,5,1%,Ceppaia,#434343
-Viale Regina Margherita di Savoia,C/D,3,60%,C/D (elevata),#c164a1
-Viale Regina Margherita di Savoia,,2,40%,,
+Viale Principe Umberto,C,22,34%,C (moderata),#f39c12
+Viale Principe Umberto,C/D,19,30%,C/D (elevata),#c164a1
+Viale Principe Umberto,Ceppaia,12,19%,Ceppaia,#434343
+Viale Principe Umberto,D,7,11%,D (estrema),#e74c3c
+Viale Principe Umberto,A,4,6%,A (trascurabile),#00ff00
