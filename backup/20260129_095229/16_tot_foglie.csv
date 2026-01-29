@@ -11,10 +11,6 @@ Via Delle Croci,Primavera,600534,#FAD5A5
 Via Delle Croci,Estate,612789,#B0C4DE
 Via Delle Croci,Autunno,600534,#D2691E
 Via Delle Croci,Inverno,582150,#000080
-Via Galatea,Primavera,2029683,#FAD5A5
-Via Galatea,Estate,637293,#B0C4DE
-Via Galatea,Autunno,362925,#D2691E
-Via Galatea,Inverno,0,#000080
 Via Giusti Giuseppe,Primavera,0,#FAD5A5
 Via Giusti Giuseppe,Estate,0,#B0C4DE
 Via Giusti Giuseppe,Autunno,0,#D2691E
@@ -23,14 +19,14 @@ Via Pignatelli Aragona,Primavera,751084,#FAD5A5
 Via Pignatelli Aragona,Estate,766413,#B0C4DE
 Via Pignatelli Aragona,Autunno,751084,#D2691E
 Via Pignatelli Aragona,Inverno,728092,#000080
-Via Principe Di Belmonte,Primavera,#N/A,#FAD5A5
-Via Principe Di Belmonte,Estate,#N/A,#B0C4DE
-Via Principe Di Belmonte,Autunno,#N/A,#D2691E
-Via Principe Di Belmonte,Inverno,#N/A,#000080
-Via Rapisardi Marioa,Primavera,0,#FAD5A5
-Via Rapisardi Marioa,Estate,0,#B0C4DE
-Via Rapisardi Marioa,Autunno,0,#D2691E
-Via Rapisardi Marioa,Inverno,0,#000080
+Via Principe Di Belmonte,Primavera,226762,#FAD5A5
+Via Principe Di Belmonte,Estate,312325,#B0C4DE
+Via Principe Di Belmonte,Autunno,182507,#D2691E
+Via Principe Di Belmonte,Inverno,71254,#000080
+Via Rapisardi Mario,Primavera,0,#FAD5A5
+Via Rapisardi Mario,Estate,0,#B0C4DE
+Via Rapisardi Mario,Autunno,0,#D2691E
+Via Rapisardi Mario,Inverno,0,#000080
 Via Rizzo Ammiraglio - A,Primavera,3254497,#FAD5A5
 Via Rizzo Ammiraglio - A,Estate,3398934,#B0C4DE
 Via Rizzo Ammiraglio - A,Autunno,3330956,#D2691E
@@ -55,15 +51,27 @@ Viale Emilia,Primavera,832385,#FAD5A5
 Viale Emilia,Estate,887115,#B0C4DE
 Viale Emilia,Autunno,815078,#D2691E
 Viale Emilia,Inverno,726090,#000080
-Viale Michelangelo,Primavera,#N/A,#FAD5A5
-Viale Michelangelo,Estate,#N/A,#B0C4DE
-Viale Michelangelo,Autunno,#N/A,#D2691E
-Viale Michelangelo,Inverno,#N/A,#000080
+Viale Galatea,Primavera,2029683,#FAD5A5
+Viale Galatea,Estate,637293,#B0C4DE
+Viale Galatea,Autunno,362925,#D2691E
+Viale Galatea,Inverno,0,#000080
+Viale Margherita di Savoia - A,Primavera,0,#FAD5A5
+Viale Margherita di Savoia - A,Estate,0,#B0C4DE
+Viale Margherita di Savoia - A,Autunno,0,#D2691E
+Viale Margherita di Savoia - A,Inverno,0,#000080
+Viale Margherita di Savoia - B,Primavera,0,#FAD5A5
+Viale Margherita di Savoia - B,Estate,0,#B0C4DE
+Viale Margherita di Savoia - B,Autunno,0,#D2691E
+Viale Margherita di Savoia - B,Inverno,0,#000080
+Viale Margherita di Savoia - C,Primavera,0,#FAD5A5
+Viale Margherita di Savoia - C,Estate,0,#B0C4DE
+Viale Margherita di Savoia - C,Autunno,0,#D2691E
+Viale Margherita di Savoia - C,Inverno,0,#000080
+Viale Michelangelo,Primavera,5085016,#FAD5A5
+Viale Michelangelo,Estate,736696,#B0C4DE
+Viale Michelangelo,Autunno,440877,#D2691E
+Viale Michelangelo,Inverno,0,#000080
 Viale Principe Umberto,Primavera,#N/A,#FAD5A5
 Viale Principe Umberto,Estate,#N/A,#B0C4DE
 Viale Principe Umberto,Autunno,#N/A,#D2691E
 Viale Principe Umberto,Inverno,#N/A,#000080
-Viale Regina Margherita di Savoia,Primavera,0,#FAD5A5
-Viale Regina Margherita di Savoia,Estate,0,#B0C4DE
-Viale Regina Margherita di Savoia,Autunno,0,#D2691E
-Viale Regina Margherita di Savoia,Inverno,0,#000080
