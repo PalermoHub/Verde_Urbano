@@ -5,8 +5,6 @@ Via Delle Croci,CO2 catturata (kg/anno),1368.01
 Via Delle Croci,O2 prodotto (kg/anno),992.55
 Via Giusti Giuseppe,CO2 catturata (kg/anno),15773.9
 Via Giusti Giuseppe,O2 prodotto (kg/anno),41682.58
-Via Oreto,CO2 catturata (kg/anno),11694.53
-Via Oreto,O2 prodotto (kg/anno),30902.76
 Via Pignatelli Aragona,CO2 catturata (kg/anno),1315.12
 Via Pignatelli Aragona,O2 prodotto (kg/anno),954.17
 Via Principe Di Belmonte,CO2 catturata (kg/anno),1887.54
@@ -27,9 +25,19 @@ Viale Emilia,CO2 catturata (kg/anno),1688.73
 Viale Emilia,O2 prodotto (kg/anno),1225.4
 Viale Galatea,CO2 catturata (kg/anno),7061.65
 Viale Galatea,O2 prodotto (kg/anno),18660.53
-Viale Margherita di Savoia,CO2 catturata (kg/anno),141.18
-Viale Margherita di Savoia,O2 prodotto (kg/anno),372.66
-Viale Michelangelo,CO2 catturata (kg/anno),14326.49
-Viale Michelangelo,O2 prodotto (kg/anno),25220.17
+Viale Margherita di Savoia - A,CO2 catturata (kg/anno),141.18
+Viale Margherita di Savoia - A,O2 prodotto (kg/anno),372.66
+Viale Margherita di Savoia - B,CO2 catturata (kg/anno),0
+Viale Margherita di Savoia - B,O2 prodotto (kg/anno),0
+Viale Margherita di Savoia - C,CO2 catturata (kg/anno),0
+Viale Margherita di Savoia - C,O2 prodotto (kg/anno),0
+Viale Michelangelo - A,CO2 catturata (kg/anno),2029.52
+Viale Michelangelo - A,O2 prodotto (kg/anno),1476.87
+Viale Michelangelo - B,CO2 catturata (kg/anno),2433.79
+Viale Michelangelo - B,O2 prodotto (kg/anno),1795.34
+Viale Michelangelo - C,CO2 catturata (kg/anno),1286.51
+Viale Michelangelo - C,O2 prodotto (kg/anno),992.68
+Viale Michelangelo - D,CO2 catturata (kg/anno),891.56
+Viale Michelangelo - D,O2 prodotto (kg/anno),648.92
 Viale Principe Umberto,CO2 catturata (kg/anno),6730.12
 Viale Principe Umberto,O2 prodotto (kg/anno),17784.29
