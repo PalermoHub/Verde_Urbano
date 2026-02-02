@@ -720,15 +720,19 @@
 
         try {
             viewer = new Cesium.Viewer('cesiumContainer', {
-                timeline: false, animation: false, homeButton: false,
+                timeline: false, animation: false, homeButton: true,
                 sceneModePicker: false, baseLayerPicker: false,
                 navigationHelpButton: false, geocoder: false,
-                fullscreenButton: false, infoBox: false, selectionIndicator: false,
+                fullscreenButton: true, infoBox: false, selectionIndicator: false,
                 globe: false, skyAtmosphere: false,
             });
 
-            Cesium.RequestScheduler.requestsByServer["tile.googleapis.com:443"] = 18;
+            Cesium.RequestScheduler.requestsByServer["tile.googleapis.com:443"] = 24;
             google3dTileset = await Cesium.createGooglePhotorealistic3DTileset();
+			google3dTileset.maximumScreenSpaceError = 24;
+			google3dTileset.maximumMemoryUsage = 768;
+			google3dTileset.skipLevelOfDetail = true;
+			google3dTileset.skipScreenSpaceErrorFactor = 20;
             viewer.scene.primitives.add(google3dTileset);
 
             const gl = viewer.scene.context._gl;

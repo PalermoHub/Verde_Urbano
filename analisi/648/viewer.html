@@ -727,8 +727,12 @@
                 globe: false, skyAtmosphere: false,
             });
 
-            Cesium.RequestScheduler.requestsByServer["tile.googleapis.com:443"] = 18;
+            Cesium.RequestScheduler.requestsByServer["tile.googleapis.com:443"] = 24;
             google3dTileset = await Cesium.createGooglePhotorealistic3DTileset();
+			google3dTileset.maximumScreenSpaceError = 24;
+			google3dTileset.maximumMemoryUsage = 768;
+			google3dTileset.skipLevelOfDetail = true;
+			google3dTileset.skipScreenSpaceErrorFactor = 20;
             viewer.scene.primitives.add(google3dTileset);
 
             const gl = viewer.scene.context._gl;
