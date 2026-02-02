@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Albero 648 - Tamarix gallica - Dettaglio</title>
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.124/Build/Cesium/Cesium.js"></script>
+    <link href="https://cesium.com/downloads/cesiumjs/releases/1.124/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <style>
+        :root {
+            --sidebar-width: 400px;
+            --green-primary: #2E7D32;
+            --green-light: #4CAF50;
+            --green-dark: #1B5E20;
+            --bg-dark: #1a1d23;
+            --bg-card: #22262e;
+            --bg-section: #282c34;
+            --text-primary: #e8eaed;
+            --text-secondary: #9aa0a6;
+            --text-muted: #6b7280;
+            --border-color: rgba(255,255,255,0.06);
+            --score-green: #4CAF50;
+            --score-yellow: #FFC107;
+            --score-orange: #FF9800;
+            --score-red: #f44336;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html, body { width: 100%; height: 100%; overflow: hidden; font-family: 'Inter', 'Segoe UI', Arial, sans-serif; background: var(--bg-dark); }
+
+        #appContainer { display: flex; width: 100%; height: 100%; }
+
+        /* 3D Viewer Area */
+        #viewerArea { flex: 1; position: relative; height: 100%; min-width: 0; }
+        #cesiumContainer { width: 100%; height: 100%; }
+
+        /* Viewer overlay controls */
+        #viewerControls {
+            position: absolute; bottom: 16px; left: 16px; right: 16px;
+            display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+            z-index: 100;
+        }
+        .ctrl-group {
+            background: rgba(26, 29, 35, 0.92); backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color); border-radius: 10px;
+            padding: 8px 12px; display: flex; align-items: center; gap: 8px;
+        }
+        .ctrl-btn {
+            background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color);
+            padding: 6px 14px; border-radius: 7px; cursor: pointer; font-size: 12px;
+            font-family: inherit; transition: all 0.15s; display: flex; align-items: center; gap: 5px;
+        }
+        .ctrl-btn:hover { background: #333842; border-color: rgba(255,255,255,0.12); }
+        .ctrl-btn.active { background: var(--green-primary); border-color: var(--green-light); color: white; }
+        .ctrl-btn.warn { background: #7f5a00; border-color: #b8860b; }
+        .ctrl-btn.warn.active { background: #b8860b; border-color: #daa520; }
+        .ctrl-btn .material-icons-round { font-size: 16px; }
+        .ctrl-label { color: var(--text-secondary); font-size: 11px; white-space: nowrap; }
+        .ctrl-range { width: 70px; accent-color: var(--green-light); cursor: pointer; }
+
+        /* Viewer info badge */
+        #viewerBadge {
+            position: absolute; top: 16px; left: 16px;
+            background: rgba(26, 29, 35, 0.92); backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color); border-radius: 10px;
+            padding: 10px 16px; z-index: 100; display: flex; align-items: center; gap: 10px;
+        }
+        #viewerBadge .tree-icon {
+            width: 36px; height: 36px; background: var(--green-primary); border-radius: 8px;
+            display: flex; align-items: center; justify-content: center;
+        }
+        #viewerBadge .tree-icon .material-icons-round { color: white; font-size: 22px; }
+        #viewerBadge .badge-text h3 { color: var(--text-primary); font-size: 13px; font-weight: 600; }
+        #viewerBadge .badge-text span { color: var(--text-secondary); font-size: 11px; }
+
+        /* Point count badge */
+        #pointBadge {
+            position: absolute; top: 16px; right: calc(var(--sidebar-width) + 16px);
+            background: rgba(26, 29, 35, 0.92); backdrop-filter: blur(12px);
+            border: 1px solid var(--border-color); border-radius: 10px;
+            padding: 8px 14px; z-index: 100; font-size: 11px; color: var(--text-secondary);
+        }
+        #pointBadge strong { color: var(--green-light); }
+
+        /* ==========================================
+           SIDEBAR
+           ========================================== */
+        #sidebar {
+            width: var(--sidebar-width); height: 100%; background: var(--bg-dark);
+            border-left: 1px solid var(--border-color); overflow-y: auto; overflow-x: hidden;
+            scrollbar-width: thin; scrollbar-color: #444 transparent;
+        }
+        #sidebar::-webkit-scrollbar { width: 5px; }
+        #sidebar::-webkit-scrollbar-thumb { background: #444; border-radius: 3px; }
+
+        /* Sidebar header */
+        .sidebar-header {
+            padding: 20px 20px 16px; border-bottom: 1px solid var(--border-color);
+            background: linear-gradient(135deg, var(--green-dark) 0%, var(--bg-dark) 100%);
+        }
+        .sidebar-header .species-name {
+            font-size: 20px; font-weight: 700; color: white;
+            font-style: italic; margin-bottom: 2px;
+        }
+        .sidebar-header .species-author { font-size: 12px; color: var(--text-secondary); font-style: normal; }
+        .sidebar-header .tree-id { font-size: 11px; color: var(--green-light); margin-top: 6px; font-weight: 500; }
+        .sidebar-header .location {
+            font-size: 12px; color: var(--text-secondary); margin-top: 4px;
+            display: flex; align-items: center; gap: 4px;
+        }
+        .sidebar-header .location .material-icons-round { font-size: 14px; color: var(--green-light); }
+
+        /* Score badges row */
+        .scores-row {
+            display: flex; gap: 8px; padding: 14px 20px;
+            border-bottom: 1px solid var(--border-color); background: var(--bg-card);
+        }
+        .score-badge {
+            flex: 1; text-align: center; padding: 10px 6px; border-radius: 10px;
+            background: var(--bg-section); border: 1px solid var(--border-color);
+        }
+        .score-badge .score-value {
+            font-size: 22px; font-weight: 700; display: block; margin-bottom: 2px;
+        }
+        .score-badge .score-label { font-size: 10px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.3px; }
+        .score-1 .score-value { color: var(--score-green); }
+        .score-2 .score-value { color: #8BC34A; }
+        .score-3 .score-value { color: var(--score-yellow); }
+        .score-4 .score-value { color: var(--score-orange); }
+        .score-5 .score-value { color: var(--score-red); }
+
+        /* Collapsible sections */
+        .section {
+            border-bottom: 1px solid var(--border-color);
+        }
+        .section-header {
+            padding: 12px 20px; cursor: pointer; display: flex; align-items: center; gap: 10px;
+            transition: background 0.15s; user-select: none;
+        }
+        .section-header:hover { background: rgba(255,255,255,0.03); }
+        .section-header .section-icon {
+            width: 30px; height: 30px; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+        }
+        .section-header .section-icon .material-icons-round { font-size: 18px; color: white; }
+        .section-header .section-title { flex: 1; font-size: 13px; font-weight: 600; color: var(--text-primary); }
+        .section-header .section-arrow {
+            color: var(--text-muted); font-size: 18px; transition: transform 0.25s;
+        }
+        .section.open .section-arrow { transform: rotate(180deg); }
+        .section-body { display: none; padding: 0 20px 14px; }
+        .section.open .section-body { display: block; }
+
+        /* Data rows */
+        .data-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.03);
+        }
+        .data-row:last-child { border-bottom: none; }
+        .data-label { color: var(--text-secondary); font-size: 12px; }
+        .data-value { color: var(--text-primary); font-size: 12px; font-weight: 500; text-align: right; }
+        .data-value.green { color: var(--score-green); }
+        .data-value.yellow { color: var(--score-yellow); }
+        .data-value.red { color: var(--score-red); }
+
+        /* Tag styles */
+        .tag {
+            display: inline-block; padding: 2px 8px; border-radius: 4px;
+            font-size: 10px; font-weight: 600; text-transform: uppercase;
+        }
+        .tag-green { background: rgba(76,175,80,0.15); color: var(--score-green); }
+        .tag-yellow { background: rgba(255,193,7,0.15); color: var(--score-yellow); }
+        .tag-red { background: rgba(244,67,54,0.15); color: var(--score-red); }
+        .tag-blue { background: rgba(33,150,243,0.15); color: #42A5F5; }
+
+        /* Subsection */
+        .subsection-title {
+            font-size: 11px; color: var(--green-light); font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.5px; margin: 10px 0 6px; padding-top: 8px;
+            border-top: 1px solid rgba(255,255,255,0.04);
+        }
+        .subsection-title:first-child { border-top: none; margin-top: 4px; padding-top: 0; }
+
+        /* Icon colors for sections */
+        .icon-green { background: rgba(76,175,80,0.2); }
+        .icon-blue { background: rgba(33,150,243,0.2); }
+        .icon-orange { background: rgba(255,152,0,0.2); }
+        .icon-red { background: rgba(244,67,54,0.2); }
+        .icon-purple { background: rgba(156,39,176,0.2); }
+        .icon-teal { background: rgba(0,150,136,0.2); }
+        .icon-amber { background: rgba(255,193,7,0.2); }
+        .icon-indigo { background: rgba(63,81,181,0.2); }
+
+        /* Outlier indicators */
+        .outlier-row { display: flex; align-items: center; gap: 8px; padding: 4px 0; }
+        .outlier-dot {
+            width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+        }
+        .outlier-dot.ok { background: var(--score-green); }
+        .outlier-dot.warn { background: var(--score-red); }
+        .outlier-text { font-size: 11px; color: var(--text-secondary); }
+
+        /* Loading overlay */
+        #status {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            background: rgba(26, 29, 35, 0.97); color: var(--green-light); padding: 28px 48px;
+            border-radius: 14px; z-index: 5000; font-size: 14px; text-align: center;
+            border: 1px solid rgba(76,175,80,0.15);
+            display: flex; flex-direction: column; align-items: center; gap: 12px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.6);
+        }
+        .spinner { border: 3px solid rgba(255,255,255,0.08); border-top: 3px solid var(--green-light); border-radius: 50%; width: 30px; height: 30px; animation: spin 0.8s linear infinite; }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            :root { --sidebar-width: 320px; }
+        }
+        @media (max-width: 700px) {
+            #appContainer { flex-direction: column; }
+            #sidebar { width: 100%; height: 50%; border-left: none; border-top: 1px solid var(--border-color); }
+            #viewerArea { height: 50%; }
+            #pointBadge { right: 16px; }
+        }
+
+        /* Hide Cesium credits/logos */
+        .cesium-viewer-bottom, .cesium-viewer-toolbar { display: none !important; }
+    </style>
+</head>
+<body>
+    <div id="appContainer">
+        <!-- 3D Viewer -->
+        <div id="viewerArea">
+            <div id="cesiumContainer"></div>
+
+            <div id="viewerBadge">
+                <div class="tree-icon"><span class="material-icons-round">park</span></div>
+                <div class="badge-text">
+                    <h3>Tamarix gallica (L.)</h3>
+                    <span>ID #648 &bull; Via Barcarello 25, Palermo</span>
+                </div>
+            </div>
+
+            <div id="pointBadge">
+                <span class="material-icons-round" style="font-size:13px;vertical-align:middle;margin-right:3px;">scatter_plot</span>
+                Albero: <strong id="treePointCount">-</strong> &nbsp;|&nbsp; Ambiente: <strong id="envPointCount">-</strong>
+            </div>
+
+            <div id="viewerControls">
+                <div class="ctrl-group">
+                    <span class="ctrl-label">Dim. punti</span>
+                    <input type="range" class="ctrl-range" id="pointSizeSlider" min="1" max="12" step="0.5" value="3">
+                </div>
+                <div class="ctrl-group">
+                    <button class="ctrl-btn active" id="btnTree" onclick="toggleTree()">
+                        <span class="material-icons-round">park</span> Albero
+                    </button>
+                    <button class="ctrl-btn" id="btnEnv" onclick="toggleEnv()">
+                        <span class="material-icons-round">terrain</span> Ambiente
+                    </button>
+                    <button class="ctrl-btn active" id="btn3d" onclick="toggle3DTiles()">
+                        <span class="material-icons-round">public</span> Google 3D
+                    </button>
+                </div>
+                <div class="ctrl-group">
+                    <button class="ctrl-btn" onclick="flyToTree()">
+                        <span class="material-icons-round">center_focus_strong</span> Centra
+                    </button>
+                    <button class="ctrl-btn" onclick="flyTopDown()">
+                        <span class="material-icons-round">flight</span> Dall'alto
+                    </button>
+                    <button class="ctrl-btn" onclick="flyOrbital()">
+                        <span class="material-icons-round">360</span> Orbitale
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div id="sidebar">
+            <!-- Header -->
+            <div class="sidebar-header">
+                <div style="font-size:10px;color:var(--text-secondary);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-weight:500;">Test Visualizzazione 3D - Nuvola di Punti e Metriche</div>
+                <div class="species-name">Tamarix gallica <span class="species-author">(L.)</span></div>
+                <div class="tree-id">ID #648 &bull; Famiglia: Tamaricaceae &bull; Genere: Tamarix</div>
+                <div class="location">
+                    <span class="material-icons-round">place</span>
+                    Via Barcarello 25, 90147 Palermo
+                </div>
+            </div>
+
+            <!-- Scores -->
+            <div class="scores-row">
+                <div class="score-badge score-1">
+                    <span class="score-value">1</span>
+                    <span class="score-label">Salute</span>
+                </div>
+                <div class="score-badge score-3">
+                    <span class="score-value">3</span>
+                    <span class="score-label">Struttura</span>
+                </div>
+                <div class="score-badge score-5">
+                    <span class="score-value">5</span>
+                    <span class="score-label">Anomalie</span>
+                </div>
+            </div>
+
+            <!-- Section: General Info -->
+            <div class="section open">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-icon icon-green"><span class="material-icons-round">info</span></div>
+                    <span class="section-title">Informazioni Generali</span>
+                    <span class="material-icons-round section-arrow">expand_more</span>
+                </div>
+                <div class="section-body">
+                    <div class="data-row"><span class="data-label">Stato</span><span class="data-value"><span class="tag tag-green">Vivo</span></span></div>
+                    <div class="data-row"><span class="data-label">Classe d'et&agrave;</span><span class="data-value">Giovane</span></div>
+                    <div class="data-row"><span class="data-label">Categoria TMS</span><span class="data-value">L0</span></div>
+                    <div class="data-row"><span class="data-label">N. fusti</span><span class="data-value">1</span></div>
+                    <div class="data-row"><span class="data-label">Data rilevamento</span><span class="data-value">10/11/2025</span></div>
+                    <div class="data-row"><span class="data-label">Ultimo aggiornamento</span><span class="data-value">07/01/2026</span></div>
+                    <div class="data-row"><span class="data-label">Sorgente</span><span class="data-value">TSE</span></div>
+                    <div class="data-row"><span class="data-label">Area gestita</span><span class="data-value" style="font-size:10px;">IT_PAL_0179_A_018</span></div>
+                </div>
+            </div>
+
+            <!-- Section: Dimensions -->
+            <div class="section open">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-icon icon-blue"><span class="material-icons-round">straighten</span></div>
+                    <span class="section-title">Dimensioni</span>
+                    <span class="material-icons-round section-arrow">expand_more</span>
+                </div>
+                <div class="section-body">
+                    <div class="subsection-title">Albero</div>
+                    <div class="data-row"><span class="data-label">Altezza totale</span><span class="data-value">5.26 m</span></div>
+                    <div class="data-row"><span class="data-label">Altezza viva</span><span class="data-value">5.26 m</span></div>
+                    <div class="data-row"><span class="data-label">Altezza point cloud</span><span class="data-value">5.26 m</span></div>
+
+                    <div class="subsection-title">Tronco</div>
+                    <div class="data-row"><span class="data-label">Altezza tronco</span><span class="data-value">0.69 m</span></div>
+                    <div class="data-row"><span class="data-label">Diametro tronco</span><span class="data-value">0.11 m</span></div>
+                    <div class="data-row"><span class="data-label">Larghezza tronco</span><span class="data-value">0.34 m</span></div>
+                    <div class="data-row"><span class="data-label">Circonferenza tronco</span><span class="data-value">0.34 m</span></div>
+                    <div class="data-row"><span class="data-label">Raggio ellisse A</span><span class="data-value">0.07 m</span></div>
+                    <div class="data-row"><span class="data-label">Raggio ellisse B</span><span class="data-value">0.05 m</span></div>
+
+                    <div class="subsection-title">Chioma</div>
+                    <div class="data-row"><span class="data-label">Altezza chioma</span><span class="data-value">5.13 m</span></div>
+                    <div class="data-row"><span class="data-label">Larghezza chioma</span><span class="data-value">3.28 m</span></div>
+                    <div class="data-row"><span class="data-label">Volume chioma</span><span class="data-value">24.6 m&sup3;</span></div>
+                    <div class="data-row"><span class="data-label">Circonferenza chioma</span><span class="data-value">10.34 m</span></div>
+                    <div class="data-row"><span class="data-label">Area proiezione chioma</span><span class="data-value">8.49 m&sup2;</span></div>
+                    <div class="data-row"><span class="data-label">Altezza base chioma</span><span class="data-value">0.14 m</span></div>
+                    <div class="data-row"><span class="data-label">Raggio ellisse A</span><span class="data-value">1.82 m</span></div>
+                    <div class="data-row"><span class="data-label">Raggio ellisse B</span><span class="data-value">1.47 m</span></div>
+                    <div class="data-row"><span class="data-label">Direzione chioma</span><span class="data-value">141.23&deg;</span></div>
+                </div>
+            </div>
+
+            <!-- Section: Health -->
+            <div class="section open">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-icon icon-green"><span class="material-icons-round">favorite</span></div>
+                    <span class="section-title">Salute e Vitalit&agrave;</span>
+                    <span class="material-icons-round section-arrow">expand_more</span>
+                </div>
+                <div class="section-body">
+                    <div class="data-row"><span class="data-label">Vigore/Vitalit&agrave;</span><span class="data-value"><span class="tag tag-green">Alto</span></span></div>
+                    <div class="data-row"><span class="data-label">Trasparenza chioma</span><span class="data-value">Leggermente defogliata</span></div>
+                    <div class="data-row"><span class="data-label">Trasparenza fogliame</span><span class="data-value">19.72%</span></div>
+                    <div class="data-row"><span class="data-label">Dieback</span><span class="data-value green">0%</span></div>
+                    <div class="data-row"><span class="data-label">Densit&agrave; chioma</span><span class="data-value">86.83%</span></div>
+                    <div class="data-row"><span class="data-label">Live Crown Ratio</span><span class="data-value">97.43%</span></div>
+                    <div class="data-row"><span class="data-label">Indice area fogliare (LAI)</span><span class="data-value">9.68</span></div>
+                    <div class="data-row"><span class="data-label">Area fogliare</span><span class="data-value">82.02 m&sup2;</span></div>
+                    <div class="data-row"><span class="data-label">LAI/Volume chioma</span><span class="data-value">3.34</span></div>
+                    <div class="data-row"><span class="data-label">Esposizione luce chioma</span><span class="data-value">5 (100%)</span></div>
+                </div>
+            </div>
+
+            <!-- Section: Structural Analysis -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-icon icon-orange"><span class="material-icons-round">architecture</span></div>
+                    <span class="section-title">Analisi Strutturale</span>
+                    <span class="material-icons-round section-arrow">expand_more</span>
+                </div>
+                <div class="section-body">
+                    <div class="data-row"><span class="data-label">Angolo inclinazione</span><span class="data-value yellow">17.94&deg;</span></div>
+                    <div class="data-row"><span class="data-label">Angolo inclin. tronco</span><span class="data-value">6.95&deg;</span></div>
+                    <div class="data-row"><span class="data-label">Snellezza</span><span class="data-value">49.01</span></div>
+                    <div class="data-row"><span class="data-label">Indice competizione</span><span class="data-value">0</span></div>
+                    <div class="data-row"><span class="data-label">Zona protezione albero</span><span class="data-value">1.29 m</span></div>
+                    <div class="data-row"><span class="data-label">Zona radice critica</span><span class="data-value">0.17 m</span></div>
+                    <div class="data-row"><span class="data-label">Zona protezione radici</span><span class="data-value">1.94 m</span></div>
+                </div>
+            </div>
+
+            <!-- Section: Environmental Benefits -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-icon icon-teal"><span class="material-icons-round">eco</span></div>
+                    <span class="section-title">Benefici Ambientali</span>
+                    <span class="material-icons-round section-arrow">expand_more</span>
+                </div>
+                <div class="section-body">
+                    <div class="subsection-title">Carbonio e Ossigeno</div>
+                    <div class="data-row"><span class="data-label">Stoccaggio carbonio</span><span class="data-value">17.72 kg</span></div>
+                    <div class="data-row"><span class="data-label">Sequestro lordo CO&sup2;</span><span class="data-value">11.85 kg/anno</span></div>
+                    <div class="data-row"><span class="data-label">Produzione O&sup2;</span><span class="data-value">31.3 kg/anno</span></div>
+
+                    <div class="subsection-title">Qualit&agrave; dell'Aria</div>
+                    <div class="data-row"><span class="data-label">NO&sup2; rimosso</span><span class="data-value">3.57 g/anno</span></div>
+                    <div class="data-row"><span class="data-label">SO&sup2; rimosso</span><span class="data-value">7.7 g/anno</span></div>
+                    <div class="data-row"><span class="data-label">PM2.5 rimosso</span><span class="data-value">2.25 g/anno</span></div>
+                    <div class="data-row"><span class="data-label">CO rimosso</span><span class="data-value">0.91 g/anno</span></div>
+                    <div class="data-row"><span class="data-label">O&sup3; rimosso</span><span class="data-value">43.01 g/anno</span></div>
+
+                    <div class="subsection-title">Ciclo Idrico</div>
+                    <div class="data-row"><span class="data-label">Evapotraspirazione pot.</span><span class="data-value">2.89 m&sup3;/anno</span></div>
+                    <div class="data-row"><span class="data-label">Traspirazione</span><span class="data-value">0.56 m&sup3;/anno</span></div>
+                    <div class="data-row"><span class="data-label">Evaporazione</span><span class="data-value">0.47 m&sup3;/anno</span></div>
+                    <div class="data-row"><span class="data-label">Acqua intercettata</span><span class="data-value">0.48 m&sup3;/anno</span></div>
+                    <div class="data-row"><span class="data-label">Deflusso evitato</span><span class="data-value">0.03 m&sup3;/anno</span></div>
+                </div>
+            </div>
+
+            <!-- Section: Valuation -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-icon icon-amber"><span class="material-icons-round">euro</span></div>
+                    <span class="section-title">Valutazione Economica</span>
+                    <span class="material-icons-round section-arrow">expand_more</span>
+                </div>
+                <div class="section-body">
+                    <div class="data-row"><span class="data-label">Valore CAVAT</span><span class="data-value">&euro; 397.10</span></div>
+                    <div class="data-row"><span class="data-label">Valore RADO</span><span class="data-value">&euro; 501.56</span></div>
+                    <div class="data-row"><span class="data-label">Valore KOCH</span><span class="data-value">&euro; 4,846.63</span></div>
+                </div>
+            </div>
+
+            <!-- Section: Outliers/Anomalies -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-icon icon-red"><span class="material-icons-round">warning</span></div>
+                    <span class="section-title">Informazioni Anomale</span>
+                    <span class="material-icons-round section-arrow">expand_more</span>
+                </div>
+                <div class="section-body">
+                    <div class="data-row"><span class="data-label">Indice anomalie globale</span><span class="data-value">0</span></div>
+                    <div style="margin-top: 8px;">
+                        <div class="outlier-row"><span class="outlier-dot ok"></span><span class="outlier-text">Altezza / Volume chioma</span></div>
+                        <div class="outlier-row"><span class="outlier-dot ok"></span><span class="outlier-text">Altezza / Area fogliare</span></div>
+                        <div class="outlier-row"><span class="outlier-dot ok"></span><span class="outlier-text">Area fogliare / Volume chioma</span></div>
+                        <div class="outlier-row"><span class="outlier-dot ok"></span><span class="outlier-text">Diam. tronco / Volume chioma</span></div>
+                        <div class="outlier-row"><span class="outlier-dot ok"></span><span class="outlier-text">Diam. tronco / Altezza</span></div>
+                        <div class="outlier-row"><span class="outlier-dot ok"></span><span class="outlier-text">Diam. tronco / Area fogliare</span></div>
+                        <div class="outlier-row"><span class="outlier-dot ok"></span><span class="outlier-text">Sequestro CO&sup2;</span></div>
+                        <div class="outlier-row"><span class="outlier-dot warn"></span><span class="outlier-text">Riduzione PM</span></div>
+                        <div class="outlier-row"><span class="outlier-dot ok"></span><span class="outlier-text">Produzione O&sup2;</span></div>
+                        <div class="outlier-row"><span class="outlier-dot warn"></span><span class="outlier-text">Deflusso idrico</span></div>
+                        <div class="outlier-row"><span class="outlier-dot warn"></span><span class="outlier-text">Evapotraspirazione</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section: Clearances -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-icon icon-indigo"><span class="material-icons-round">swap_horiz</span></div>
+                    <span class="section-title">Interferenze e Distanze</span>
+                    <span class="material-icons-round section-arrow">expand_more</span>
+                </div>
+                <div class="section-body">
+                    <div class="data-row"><span class="data-label">Interferenza fili</span><span class="data-value">-</span></div>
+                    <div class="data-row"><span class="data-label">Interferenza strada</span><span class="data-value">-</span></div>
+                    <div class="data-row"><span class="data-label">Interferenza edifici</span><span class="data-value">-</span></div>
+                    <div class="data-row"><span class="data-label">Interferenza visibilit&agrave;</span><span class="data-value">-</span></div>
+                    <div class="data-row"><span class="data-label">Interferenza segnaletica</span><span class="data-value">-</span></div>
+                </div>
+            </div>
+
+            <!-- Section: Tasks -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-icon icon-purple"><span class="material-icons-round">assignment</span></div>
+                    <span class="section-title">Attivit&agrave; Assegnate</span>
+                    <span class="material-icons-round section-arrow">expand_more</span>
+                </div>
+                <div class="section-body">
+                    <div class="data-row">
+                        <span class="data-label">Remote inspection</span>
+                        <span class="data-value"><span class="tag tag-blue">Assegnata</span></span>
+                    </div>
+                    <div class="data-row"><span class="data-label">Ispezione visiva</span><span class="data-value"><span class="tag tag-yellow">Da programmare</span></span></div>
+                </div>
+            </div>
+
+            <!-- Section: Coordinates -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(this)">
+                    <div class="section-icon icon-blue"><span class="material-icons-round">my_location</span></div>
+                    <span class="section-title">Coordinate e Posizione</span>
+                    <span class="material-icons-round section-arrow">expand_more</span>
+                </div>
+                <div class="section-body">
+                    <div class="data-row"><span class="data-label">Latitudine</span><span class="data-value">38.2058946&deg; N</span></div>
+                    <div class="data-row"><span class="data-label">Longitudine</span><span class="data-value">13.2822253&deg; E</span></div>
+                    <div class="data-row"><span class="data-label">Quota (ortometrica)</span><span class="data-value">46.90 m</span></div>
+                    <div class="data-row"><span class="data-label">UTM E (EPSG:32633)</span><span class="data-value">349601.26</span></div>
+                    <div class="data-row"><span class="data-label">UTM N (EPSG:32633)</span><span class="data-value">4230054.50</span></div>
+                    <div class="data-row"><span class="data-label">EPSG:3857 X</span><span class="data-value">1478570.55</span></div>
+                    <div class="data-row"><span class="data-label">EPSG:3857 Y</span><span class="data-value">4608552.79</span></div>
+                </div>
+            </div>
+
+            <!-- Footer padding -->
+            <div style="height: 24px;"></div>
+        </div>
+    </div>
+
+    <div id="status"><div class="spinner"></div><div id="statusText">Inizializzazione...</div></div>
+
+    <script>
+    // =============================================
+    // CONFIGURAZIONE
+    // =============================================
+    const TREE_LAT = 38.2058946264;
+    const TREE_LON = 13.2822252637;
+    const TREE_ALT = 46.895386882;
+    // Z_OFFSET: differenza geoide→ellissoide (Google3D ground 47.464m - LAS base 46.895m = 0.57m)
+    const Z_OFFSET = 0.57;
+    const TREE_UTM_E = 349601.258784826;
+    const TREE_UTM_N = 4230054.501373131;
+    const TREE_BASE_Z = 46.895386882;
+    const TREE_LAS_PATH = 'point_cloud/tree/648.las';
+    const ENV_LAS_PATH  = 'point_cloud/environment/648_environment.las';
+
+    let viewer = null;
+    let google3dTileset = null;
+    let tiles3dVisible = true;
+    let treeVisible = true, envLoaded = false, envVisible = false;
+    let currentPointSize = 3.0;
+
+    let treeData = null, envData = null;
+    let customProgram = null;
+    let treeGLBuffers = null, envGLBuffers = null;
+
+    const DEFAULT_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyOWVjODVmZi1mZWViLTRlZWMtYjQ0NC1kMjk0ZGM5ZmI4MmEiLCJpZCI6MTc2ODkzLCJpYXQiOjE2OTk0NDc5MjJ9.8s6JtQbfKduNVLElEb1SYDDaLZ2UT0q4res8hdO2n7M';
+
+    // =============================================
+    // SIDEBAR - Collapsible sections
+    // =============================================
+    function toggleSection(header) {
+        header.parentElement.classList.toggle('open');
+    }
+
+    // =============================================
+    // CUSTOM GL RENDERING INTO CESIUM'S CONTEXT
+    // =============================================
+    function initCustomShader(gl) {
+        const vsSource = `
+            attribute vec3 aPosition;
+            attribute vec3 aColor;
+            uniform mat4 uViewProjection;
+            uniform float uPointSize;
+            varying vec3 vColor;
+            void main() {
+                gl_Position = uViewProjection * vec4(aPosition, 1.0);
+                gl_PointSize = uPointSize;
+                vColor = aColor;
+            }
+        `;
+        const fsSource = `
+            precision mediump float;
+            varying vec3 vColor;
+            uniform float uAlpha;
+            void main() {
+                vec2 pc = gl_PointCoord - vec2(0.5);
+                if (dot(pc, pc) > 0.25) discard;
+                gl_FragColor = vec4(vColor, uAlpha);
+            }
+        `;
+
+        const vs = gl.createShader(gl.VERTEX_SHADER);
+        gl.shaderSource(vs, vsSource);
+        gl.compileShader(vs);
+        if (!gl.getShaderParameter(vs, gl.COMPILE_STATUS)) { console.error('VS:', gl.getShaderInfoLog(vs)); return null; }
+
+        const fs = gl.createShader(gl.FRAGMENT_SHADER);
+        gl.shaderSource(fs, fsSource);
+        gl.compileShader(fs);
+        if (!gl.getShaderParameter(fs, gl.COMPILE_STATUS)) { console.error('FS:', gl.getShaderInfoLog(fs)); return null; }
+
+        const prog = gl.createProgram();
+        gl.attachShader(prog, vs);
+        gl.attachShader(prog, fs);
+        gl.linkProgram(prog);
+        if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) { console.error('Link:', gl.getProgramInfoLog(prog)); return null; }
+
+        prog.aPosition = gl.getAttribLocation(prog, 'aPosition');
+        prog.aColor = gl.getAttribLocation(prog, 'aColor');
+        prog.uViewProjection = gl.getUniformLocation(prog, 'uViewProjection');
+        prog.uPointSize = gl.getUniformLocation(prog, 'uPointSize');
+        prog.uAlpha = gl.getUniformLocation(prog, 'uAlpha');
+
+        return prog;
+    }
+
+    function createGLBuffers(gl, ecefF64, colorsU8, count, isEnv) {
+        const posBuffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, posBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, count * 3 * 4, gl.DYNAMIC_DRAW);
+
+        const colBuffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, colBuffer);
+        const colF32 = new Float32Array(count * 3);
+        if (isEnv) {
+            for (let i = 0; i < count; i++) {
+                const r = colorsU8[i*3] / 255.0;
+                const g = colorsU8[i*3+1] / 255.0;
+                const b = colorsU8[i*3+2] / 255.0;
+                const gray = r * 0.3 + g * 0.5 + b * 0.2;
+                colF32[i*3]   = gray * 0.5 + 0.25;
+                colF32[i*3+1] = gray * 0.5 + 0.3;
+                colF32[i*3+2] = gray * 0.5 + 0.35;
+            }
+        } else {
+            for (let i = 0; i < count * 3; i++) colF32[i] = colorsU8[i] / 255.0;
+        }
+        gl.bufferData(gl.ARRAY_BUFFER, colF32, gl.STATIC_DRAW);
+
+        return { posBuffer, colBuffer, ecefF64, count };
+    }
+
+    function renderPointCloudInCesium() {
+        if (!viewer || !customProgram) return;
+
+        const scene = viewer.scene;
+        const context = scene.context;
+        const gl = context._gl;
+        if (!gl) return;
+
+        const datasets = [];
+        if (envGLBuffers && envVisible) datasets.push({ buf: envGLBuffers, alpha: 0.55 });
+        if (treeGLBuffers && treeVisible) datasets.push({ buf: treeGLBuffers, alpha: 1.0 });
+        if (datasets.length === 0) return;
+
+        // Save Cesium's GL state
+        const prevProgram = gl.getParameter(gl.CURRENT_PROGRAM);
+        const prevDepthTest = gl.isEnabled(gl.DEPTH_TEST);
+        const prevDepthMask = gl.getParameter(gl.DEPTH_WRITEMASK);
+        const prevBlend = gl.isEnabled(gl.BLEND);
+        const prevBlendSrc = gl.getParameter(gl.BLEND_SRC_RGB);
+        const prevBlendDst = gl.getParameter(gl.BLEND_DST_RGB);
+
+        gl.useProgram(customProgram);
+        gl.disable(gl.DEPTH_TEST);
+        gl.depthMask(false);
+        gl.enable(gl.BLEND);
+        gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+
+        const camera = viewer.camera;
+        const camPos = camera.positionWC;
+        const viewMatrix = camera.viewMatrix;
+        const projMatrix = camera.frustum.projectionMatrix;
+
+        const viewRot = new Cesium.Matrix4();
+        viewRot[0]  = viewMatrix[0]; viewRot[1]  = viewMatrix[1]; viewRot[2]  = viewMatrix[2];  viewRot[3]  = 0;
+        viewRot[4]  = viewMatrix[4]; viewRot[5]  = viewMatrix[5]; viewRot[6]  = viewMatrix[6];  viewRot[7]  = 0;
+        viewRot[8]  = viewMatrix[8]; viewRot[9]  = viewMatrix[9]; viewRot[10] = viewMatrix[10]; viewRot[11] = 0;
+        viewRot[12] = 0;             viewRot[13] = 0;             viewRot[14] = 0;              viewRot[15] = 1;
+
+        const vpRel = Cesium.Matrix4.multiply(projMatrix, viewRot, new Cesium.Matrix4());
+        const vpArray = new Float32Array(16);
+        Cesium.Matrix4.toArray(vpRel, vpArray);
+
+        gl.uniformMatrix4fv(customProgram.uViewProjection, false, vpArray);
+        gl.uniform1f(customProgram.uPointSize, currentPointSize);
+
+        for (const ds of datasets) {
+            const buf = ds.buf;
+            const relPos = new Float32Array(buf.count * 3);
+            for (let i = 0; i < buf.count; i++) {
+                relPos[i*3]   = buf.ecefF64[i*3]   - camPos.x;
+                relPos[i*3+1] = buf.ecefF64[i*3+1] - camPos.y;
+                relPos[i*3+2] = buf.ecefF64[i*3+2] - camPos.z;
+            }
+
+            gl.bindBuffer(gl.ARRAY_BUFFER, buf.posBuffer);
+            gl.bufferSubData(gl.ARRAY_BUFFER, 0, relPos);
+            gl.enableVertexAttribArray(customProgram.aPosition);
+            gl.vertexAttribPointer(customProgram.aPosition, 3, gl.FLOAT, false, 0, 0);
+
+            gl.bindBuffer(gl.ARRAY_BUFFER, buf.colBuffer);
+            gl.enableVertexAttribArray(customProgram.aColor);
+            gl.vertexAttribPointer(customProgram.aColor, 3, gl.FLOAT, false, 0, 0);
+
+            gl.uniform1f(customProgram.uAlpha, ds.alpha);
+            gl.drawArrays(gl.POINTS, 0, buf.count);
+        }
+
+        gl.disableVertexAttribArray(customProgram.aPosition);
+        gl.disableVertexAttribArray(customProgram.aColor);
+        if (prevDepthTest) gl.enable(gl.DEPTH_TEST); else gl.disable(gl.DEPTH_TEST);
+        gl.depthMask(prevDepthMask);
+        if (prevBlend) gl.enable(gl.BLEND); else gl.disable(gl.BLEND);
+        gl.blendFunc(prevBlendSrc, prevBlendDst);
+        if (prevProgram) gl.useProgram(prevProgram);
+    }
+
+    // =============================================
+    // START
+    // =============================================
+    async function startWithGoogle(token) {
+        showStatus('Inizializzazione Google Earth 3D Tiles...');
+        Cesium.Ion.defaultAccessToken = token;
+
+        try {
+            viewer = new Cesium.Viewer('cesiumContainer', {
+                timeline: false, animation: false, homeButton: false,
+                sceneModePicker: false, baseLayerPicker: false,
+                navigationHelpButton: false, geocoder: false,
+                fullscreenButton: false, infoBox: false, selectionIndicator: false,
+                globe: false, skyAtmosphere: false,
+            });
+
+            Cesium.RequestScheduler.requestsByServer["tile.googleapis.com:443"] = 18;
+            google3dTileset = await Cesium.createGooglePhotorealistic3DTileset();
+            viewer.scene.primitives.add(google3dTileset);
+
+            const gl = viewer.scene.context._gl;
+            customProgram = initCustomShader(gl);
+            console.log('Custom shader inizializzato:', !!customProgram);
+
+            viewer.scene.postRender.addEventListener(renderPointCloudInCesium);
+
+            showStatus('Caricamento point cloud albero...');
+            await loadTreePointCloud();
+
+            // Auto-load environment
+            showStatus('Caricamento point cloud ambiente...');
+            await loadEnvPointCloud(true);
+
+            flyToTree();
+
+        } catch (err) {
+            console.error('Errore Google 3D Tiles:', err);
+            showStatus('Errore inizializzazione: ' + err.message);
+        }
+    }
+
+    // =============================================
+    // PARSER LAS
+    // =============================================
+    function parseLAS(buffer) {
+        const view = new DataView(buffer);
+        const magic = String.fromCharCode(view.getUint8(0), view.getUint8(1), view.getUint8(2), view.getUint8(3));
+        if (magic !== 'LASF') throw new Error('Non LAS valido');
+
+        const vMajor = view.getUint8(24), vMinor = view.getUint8(25);
+        const dataOffset = view.getUint32(96, true);
+        const pointFmt = view.getUint8(104);
+        const recLen = view.getUint16(105, true);
+        const numPts = (vMajor === 1 && vMinor >= 4) ? Number(view.getBigUint64(247, true)) : view.getUint32(107, true);
+
+        const sx = view.getFloat64(131, true), sy = view.getFloat64(139, true), sz = view.getFloat64(147, true);
+        const ox = view.getFloat64(155, true), oy = view.getFloat64(163, true), oz = view.getFloat64(171, true);
+
+        if ((pointFmt & 0x80) !== 0) throw new Error('LAZ_COMPRESSED');
+        if (dataOffset + numPts * recLen > buffer.byteLength * 1.2) throw new Error('LAZ_COMPRESSED');
+
+        console.log(`LAS v${vMajor}.${vMinor} | Fmt ${pointFmt} | ${numPts} pts`);
+
+        const baseFmt = pointFmt & 0x3F;
+        const hasRGB = [2,3,5,7,8,10].includes(baseFmt);
+        let rgbOff = -1;
+        if (baseFmt === 2) rgbOff = 20;
+        else if (baseFmt === 3 || baseFmt === 5) rgbOff = 28;
+        else if (baseFmt >= 7) rgbOff = 30;
+
+        const N = Math.min(numPts, 5000000);
+        const cosLat = Math.cos(TREE_LAT * Math.PI / 180);
+        const mPerDegLat = 111132.954;
+        const mPerDegLon = 111132.954 * cosLat;
+
+        const ecefPositions = new Float64Array(N * 3);
+        const colors = new Uint8Array(N * 3);
+        let count = 0;
+
+        for (let i = 0; i < N; i++) {
+            const rec = dataOffset + i * recLen;
+            if (rec + 12 > buffer.byteLength) break;
+
+            const xUTM = view.getInt32(rec, true) * sx + ox;
+            const yUTM = view.getInt32(rec + 4, true) * sy + oy;
+            const zAbs = view.getInt32(rec + 8, true) * sz + oz;
+
+            const dE = xUTM - TREE_UTM_E;
+            const dN = yUTM - TREE_UTM_N;
+            const lon = TREE_LON + dE / mPerDegLon;
+            const lat = TREE_LAT + dN / mPerDegLat;
+            const alt = zAbs + Z_OFFSET;
+
+            const cart = Cesium.Cartesian3.fromDegrees(lon, lat, alt);
+            ecefPositions[count * 3]     = cart.x;
+            ecefPositions[count * 3 + 1] = cart.y;
+            ecefPositions[count * 3 + 2] = cart.z;
+
+            if (hasRGB && rgbOff >= 0 && rec + rgbOff + 6 <= buffer.byteLength) {
+                const r16 = view.getUint16(rec + rgbOff, true);
+                const g16 = view.getUint16(rec + rgbOff + 2, true);
+                const b16 = view.getUint16(rec + rgbOff + 4, true);
+                const is16bit = r16 > 255 || g16 > 255 || b16 > 255;
+                colors[count * 3]     = is16bit ? (r16 >> 8) : r16;
+                colors[count * 3 + 1] = is16bit ? (g16 >> 8) : g16;
+                colors[count * 3 + 2] = is16bit ? (b16 >> 8) : b16;
+            } else {
+                const relH = zAbs - TREE_BASE_Z;
+                if (relH < 0.7) {
+                    colors[count * 3] = 140; colors[count * 3 + 1] = 70; colors[count * 3 + 2] = 20;
+                } else {
+                    const t = Math.min(relH / 5.3, 1.0);
+                    colors[count * 3]     = Math.round(30 + t * 50);
+                    colors[count * 3 + 1] = Math.round(80 + t * 130);
+                    colors[count * 3 + 2] = Math.round(20 + t * 40);
+                }
+            }
+            count++;
+        }
+
+        return {
+            ecefPositions: ecefPositions.subarray(0, count * 3),
+            colors: colors.subarray(0, count * 3),
+            count
+        };
+    }
+
+    // =============================================
+    // LOAD
+    // =============================================
+    async function loadTreePointCloud() {
+        try {
+            const resp = await fetch(TREE_LAS_PATH);
+            if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+            const buf = await resp.arrayBuffer();
+            treeData = parseLAS(buf);
+
+            const gl = viewer.scene.context._gl;
+            treeGLBuffers = createGLBuffers(gl, treeData.ecefPositions, treeData.colors, treeData.count, false);
+
+            document.getElementById('treePointCount').textContent = treeData.count.toLocaleString('it-IT');
+            console.log(`Albero: ${treeData.count} punti caricati`);
+        } catch (e) {
+            console.error('Errore albero:', e);
+            document.getElementById('treePointCount').textContent = 'errore';
+        }
+    }
+
+    async function loadEnvPointCloud(autoLoad) {
+        if (envLoaded && !autoLoad) { envVisible = !envVisible; updateEnvBtn(); return; }
+        if (envLoaded) return;
+
+        try {
+            const resp = await fetch(ENV_LAS_PATH);
+            if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+            const buf = await resp.arrayBuffer();
+            envData = parseLAS(buf);
+
+            const gl = viewer.scene.context._gl;
+            envGLBuffers = createGLBuffers(gl, envData.ecefPositions, envData.colors, envData.count, true);
+
+            envLoaded = true;
+            envVisible = true;
+            document.getElementById('envPointCount').textContent = envData.count.toLocaleString('it-IT');
+            updateEnvBtn();
+            console.log(`Ambiente: ${envData.count} punti caricati`);
+            hideStatus();
+        } catch (e) {
+            console.error('Errore ambiente:', e);
+            document.getElementById('envPointCount').textContent = 'errore';
+            hideStatus();
+        }
+    }
+
+    // =============================================
+    // CONTROLS
+    // =============================================
+    function toggleTree() {
+        treeVisible = !treeVisible;
+        document.getElementById('btnTree').classList.toggle('active', treeVisible);
+    }
+    function toggleEnv() {
+        if (!envLoaded) {
+            showStatus('Caricamento ambiente...');
+            loadEnvPointCloud(false);
+        } else {
+            envVisible = !envVisible;
+            updateEnvBtn();
+        }
+    }
+    function updateEnvBtn() {
+        document.getElementById('btnEnv').classList.toggle('active', envVisible);
+    }
+    function toggle3DTiles() {
+        if (!google3dTileset) return;
+        tiles3dVisible = !tiles3dVisible;
+        google3dTileset.show = tiles3dVisible;
+        document.getElementById('btn3d').classList.toggle('active', tiles3dVisible);
+    }
+
+    document.getElementById('pointSizeSlider').addEventListener('input', (e) => {
+        currentPointSize = parseFloat(e.target.value);
+    });
+
+    function flyToTree() {
+        viewer.camera.flyTo({
+            destination: Cesium.Cartesian3.fromDegrees(TREE_LON - 0.00008, TREE_LAT - 0.00005, TREE_ALT + Z_OFFSET + 10),
+            orientation: { heading: Cesium.Math.toRadians(30), pitch: Cesium.Math.toRadians(-40), roll: 0 },
+            duration: 2.0
+        });
+    }
+    function flyTopDown() {
+        viewer.camera.flyTo({
+            destination: Cesium.Cartesian3.fromDegrees(TREE_LON, TREE_LAT, TREE_ALT + Z_OFFSET + 15),
+            orientation: { heading: 0, pitch: Cesium.Math.toRadians(-90), roll: 0 },
+            duration: 1.5
+        });
+    }
+    function flyOrbital() {
+        viewer.camera.flyTo({
+            destination: Cesium.Cartesian3.fromDegrees(TREE_LON + 0.00006, TREE_LAT - 0.00004, TREE_ALT + Z_OFFSET + 6),
+            orientation: { heading: Cesium.Math.toRadians(-45), pitch: Cesium.Math.toRadians(-30), roll: 0 },
+            duration: 2.0
+        });
+    }
+
+    function showStatus(t) { document.getElementById('status').style.display = 'flex'; document.getElementById('statusText').textContent = t; }
+    function hideStatus() { document.getElementById('status').style.display = 'none'; }
+
+    // =============================================
+    // AUTO START
+    // =============================================
+    startWithGoogle(DEFAULT_TOKEN);
+    </script>
+</body>
+</html>

@@ -1,0 +1,1013 @@
+{
+  "id": "e6ee5fea-c34e-4dfb-ad9e-d0ede9eb66e3",
+  "externalId": "648",
+  "tseId": "648",
+  "customerTreeId": null,
+  "customerTagId": null,
+  "customerSiteId": null,
+  "organizationId": "dd9b052e-2313-4b69-ad49-74a4b08b5105",
+  "createdAt": "2025-12-30T15:53:23.192Z",
+  "deletedAt": null,
+  "managedAreaId": "b27baaa3-b24b-4636-a8ca-c9790d168fa9",
+  "location": {
+    "type": "Point",
+    "crs": {
+      "type": "name",
+      "properties": {
+        "name": "EPSG:3857"
+      }
+    },
+    "coordinates": [
+      1478570.552952886,
+      4608552.788244117,
+      46.895386882
+    ]
+  },
+  "localizedLocation": {
+    "type": "Point",
+    "crs": {
+      "type": "name",
+      "properties": {
+        "name": "EPSG:32633"
+      }
+    },
+    "coordinates": [
+      349601.258784826,
+      4230054.501373131,
+      46.895386882
+    ]
+  },
+  "images": [],
+  "height": 5.26,
+  "pointCloudHeight": 5.26,
+  "trunkHeight": 0.69,
+  "firstBifurcationPoint": {
+    "type": "Point",
+    "crs": {
+      "type": "name",
+      "properties": {
+        "name": "EPSG:32633"
+      }
+    },
+    "coordinates": [
+      349601.155243847,
+      4230054.414048571,
+      47.17754025
+    ]
+  },
+  "trunkWidth": 0.34,
+  "trunkDiameter": 0.11,
+  "trunkEllipseRadiusA": 0.07,
+  "trunkEllipseRadiusB": 0.05,
+  "canopyHeight": 5.13,
+  "canopyWidth": 3.28,
+  "canopyEllipseRadiusA": 1.82,
+  "canopyEllipseRadiusB": 1.47,
+  "canopyDirection": 141.23,
+  "canopyOffset": {
+    "type": "Point",
+    "coordinates": [
+      0.872037232,
+      0.044882298
+    ]
+  },
+  "leafBiomass": null,
+  "leafAreaIndex": 9.68,
+  "carbonStorage": 17.72,
+  "carbonStorageEcoValue": null,
+  "grossCarbonSequestration": 11.85,
+  "grossCarbonSequestrationEcoValue": null,
+  "no2": 3.57,
+  "no2EcoValue": null,
+  "so2": 7.7,
+  "so2EcoValue": null,
+  "pm25": 2.25,
+  "pm25EcoValue": null,
+  "co": 0.91,
+  "coEcoValue": null,
+  "o3": 43.01,
+  "o3EcoValue": null,
+  "ndvi": null,
+  "treeHealth": 0,
+  "potentialEvapotranspiration": 2.89,
+  "transpiration": 0.56,
+  "oxygenProduction": 31.3,
+  "evaporation": 0.47,
+  "waterIntercepted": 0.48,
+  "avoidedRunoff": 0.03,
+  "avoidedRunoffEcoValue": null,
+  "treeValueCavat": 397.1,
+  "treeValueRado": 501.56,
+  "treeValueKoch": 4846.63,
+  "vat19": null,
+  "alnarpModel": null,
+  "normaGranada": null,
+  "leaningVector": {
+    "type": "Point",
+    "coordinates": [
+      0.872037232,
+      0.044882298,
+      2.6974665
+    ]
+  },
+  "leaningAngle": 17.94,
+  "safetyFactors": [],
+  "safetyFactorAt80Kmh": null,
+  "safetyFactorAtDefaultWindSpeed": null,
+  "coDominantLimbs": null,
+  "includedBark": null,
+  "fork": null,
+  "crossSectionalShape": null,
+  "species": "gallica",
+  "speciesHybrid": null,
+  "cultivar": null,
+  "infraspecies": null,
+  "thermalComfort": null,
+  "capturePointId": "9c34954a-94bb-4368-8956-b023e268e1e9",
+  "canopyCircumference": 10.34,
+  "trunkCircumference": 0.34,
+  "family": "Tamaricaceae",
+  "genus": "Tamarix",
+  "genusHybrid": null,
+  "authorSpecies": "L.",
+  "tseScientificName": "Tamarix gallica",
+  "clientScientificName": null,
+  "streetAddress": "Via Barcarello 25",
+  "addressFromParcel": "Via Barcarello 25",
+  "numberOfStems": 1,
+  "status": "alive",
+  "plantingYear": null,
+  "commonName": null,
+  "owner": null,
+  "onStreetName": null,
+  "sideLocation": null,
+  "landUse": null,
+  "parkName": null,
+  "growSpaceSize": null,
+  "overheadUtilities": null,
+  "prevailingWindDirection": null,
+  "growSpace": null,
+  "deadDyingOrBrokenBranches": null,
+  "overExtendedBranches": null,
+  "mechanicalDamage": null,
+  "coDominantStems": null,
+  "girdlingRoots": null,
+  "furtherInspectionNeeded": null,
+  "overallTreeRiskRating": null,
+  "overallResidualRisk": null,
+  "vitalityVigor": "high",
+  "crownTransparency": "slightlyDefoliated",
+  "foliageTransparency": 19.72,
+  "condition": null,
+  "ctla": null,
+  "leafArea": 82.02,
+  "foliage": null,
+  "dieback": 0,
+  "deadBranchesRatio": null,
+  "crownLightExposure": 5,
+  "crownLightExposureRatio": 100,
+  "leafAreaPerCrownVolume": 3.34,
+  "liveCrownRatio": 97.43,
+  "slenderness": 49.01,
+  "tmsCategory": "l0",
+  "ageClass": "young",
+  "ageAtPlanting": null,
+  "crownVolume": 24.6,
+  "viStatus": "toBeScheduled",
+  "primaryMaintenanceNeeds": null,
+  "maintenancePriority": null,
+  "pruningType": null,
+  "foliageNoneSeasonal": null,
+  "foliageNoneDead": null,
+  "normalFoliage": null,
+  "chloroticFoliage": null,
+  "necroticFoliage": null,
+  "limbs": [],
+  "treeProtectionZone": 1.29,
+  "criticalRootZone": 0.17,
+  "recordingDate": "2025-11-10",
+  "dataStatus": null,
+  "recommendedInspectionInterval": "",
+  "advancedAssessmentNeeded": false,
+  "advancedAssessmentReason": "",
+  "inspectionLimitation": "none",
+  "inspectionLimitationDescription": "",
+  "note": "",
+  "originalSource": "TSE",
+  "userUpdatedProperties": [],
+  "outlierHeightPerCrownVolume": false,
+  "outlierHeightPerLeafArea": false,
+  "outlierLeafAreaPerCrownVolume": false,
+  "outlierTrunkDiameterPerCrownVolume": false,
+  "outlierTrunkDiameterPerHeight": false,
+  "outlierTrunkDiameterPerLeafArea": false,
+  "overallOutlierIndex": 0,
+  "lastUpdatedAt": "2026-01-07T07:51:40.526Z",
+  "outlierCoSequestration": false,
+  "outlierPmReduction": true,
+  "outlierOxygenProduction": false,
+  "outlierWaterRunoff": true,
+  "outlierEvapotranspiration": true,
+  "wireClearanceIssueDetected": null,
+  "roadClearanceIssueDetected": null,
+  "buildingClearanceIssueDetected": null,
+  "visibilityClearanceIssueDetected": null,
+  "trafficSignClearanceIssueDetected": null,
+  "canopyCentroid": {
+    "type": "Point",
+    "crs": {
+      "type": "name",
+      "properties": {
+        "name": "EPSG:32633"
+      }
+    },
+    "coordinates": [
+      349602.130822058,
+      4230054.546255428,
+      49.592853383
+    ]
+  },
+  "createdBy": "tse",
+  "deliveryStatus": "published",
+  "growthForm": null,
+  "liveHeight": 5.26,
+  "crownBaseHeight": 0.14,
+  "crownProjectionArea": 8.49,
+  "crownDensity": 86.83,
+  "requiredResidualWallThickness": null,
+  "trunkLeaningVector": {
+    "type": "Point",
+    "coordinates": [
+      -0.065584475,
+      0.028148946,
+      0.585667409
+    ]
+  },
+  "trunkLeanAngle": 6.95,
+  "competitionIndex": 0,
+  "trunkMeasurementsAvailable": true,
+  "crownMeasurementsAvailable": true,
+  "speciesAvailable": true,
+  "rootProtectionZone": 1.94,
+  "deliveryBatch": null,
+  "arboricExemplarIdCode": null,
+  "road": "Via Barcarello",
+  "houseNumber": "25",
+  "postalCode": "90147",
+  "neighborhood": null,
+  "typeOfLocation": null,
+  "generalCondition": null,
+  "plantingPotential": null,
+  "basalAreaIncrement": null,
+  "estimatedProperties": [],
+  "managedArea": {
+    "id": "b27baaa3-b24b-4636-a8ca-c9790d168fa9",
+    "loadingStartedAt": null,
+    "name": "",
+    "code": "IT_PAL_0179_A_018",
+    "boundingBox": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            13.278636789,
+            38.203475977
+          ],
+          [
+            13.278497333,
+            38.209395816
+          ],
+          [
+            13.28317537,
+            38.20946434
+          ],
+          [
+            13.283314447,
+            38.203544487
+          ],
+          [
+            13.278636789,
+            38.203475977
+          ]
+        ]
+      ]
+    }
+  },
+  "environment": {
+    "treeId": "e6ee5fea-c34e-4dfb-ad9e-d0ede9eb66e3",
+    "corridorMinimumHeightClearance": null,
+    "corridorObstructionHeight": null,
+    "corridorObstructionVolume": null,
+    "corridorAffectedCrown": null,
+    "corridorLShapeVertex": null,
+    "viaductSafetyZone": null,
+    "viaductCriticalHeight": null,
+    "viaductOutsideCriticalBoundaryPercentage": null,
+    "viaductOutsideCriticalBoundaryArea": null,
+    "trafficSignVisibleDistance": null,
+    "trafficSignCoverage": null,
+    "distanceToWires": null,
+    "potentialTargets": null
+  },
+  "tseTreeScans": [
+    {
+      "id": "a580516f-e7b0-4c70-89bf-8f60c42486aa",
+      "treeId": "e6ee5fea-c34e-4dfb-ad9e-d0ede9eb66e3",
+      "externalId": "648",
+      "scanInterval": "[2025-01-01,2025-12-31)",
+      "organizationId": "dd9b052e-2313-4b69-ad49-74a4b08b5105",
+      "createdAt": "2025-12-30T15:53:23.192Z",
+      "managedAreaId": "b27baaa3-b24b-4636-a8ca-c9790d168fa9",
+      "localizedLocation": {
+        "type": "Point",
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:32633"
+          }
+        },
+        "coordinates": [
+          349601.258784826,
+          4230054.501373131,
+          46.895386882
+        ]
+      },
+      "canopyHeight": 5.123999999999995,
+      "canopyWidth": 3.278358578681946,
+      "trunkDiameter": 0.10732863415962925,
+      "height": 5.259466500241075,
+      "trunkHeight": 0.688466500241077,
+      "leafAreaIndex": 9.671698112579524,
+      "safetyFactors": [],
+      "safetyFactorAtDefaultWindSpeed": null,
+      "dieback": 0,
+      "avoidedRunoff": 0.02654938193100984,
+      "co": 0.902661557406444,
+      "grossCarbonSequestration": 11.842057947659297,
+      "oxygenProduction": 31.29345917604073,
+      "pm25": 2.245169129173578,
+      "so2": 7.697826241654487,
+      "waterIntercepted": 0.4708956845722087,
+      "carbonStorage": 17.71269240769175,
+      "evaporation": 0.46777455021856185,
+      "no2": 3.567742923813323,
+      "o3": 43.00246994516589,
+      "ndvi": null,
+      "potentialEvapotranspiration": 2.888450778037096,
+      "transpiration": 0.5540340576688995,
+      "images": [],
+      "pointCloudPath": "IT_PAL25_0179/IT_PAL_0179_A_018/2025-01-01_2025-12-31/tree_segmentation_clips/648.laz",
+      "environmentPointCloudPath": "IT_PAL25_0179/IT_PAL_0179_A_018/2025-01-01_2025-12-31/tree_segmentation_clips/648_environment.laz",
+      "recordingDate": "2025-11-10"
+    }
+  ],
+  "wireClearances": [],
+  "aggByClassWireClearances": [],
+  "aggAllWireClearances": [
+    {
+      "id": "dbd74459-5253-4ec5-8677-fb4726d10532",
+      "treeId": "e6ee5fea-c34e-4dfb-ad9e-d0ede9eb66e3",
+      "externalId": "648",
+      "minimumHeight": null,
+      "minimumDistance": null,
+      "clearanceVolume": null,
+      "clearanceVolumeRatio": null,
+      "clearanceBlobPath": null,
+      "clearanceZoneGltfPath": null,
+      "createdAt": "2026-01-07T07:51:40.526Z",
+      "updatedAt": null,
+      "deletedAt": null
+    }
+  ],
+  "roadClearances": [],
+  "buildingClearances": [],
+  "visibilityClearances": [],
+  "customAreas": [
+    {
+      "id": "86766132-624e-4724-ae05-e9599a2a6a2b",
+      "customLayerId": "202caf9f-1299-4382-805f-9b2e55ab8ca8",
+      "name": "IT_PAL_0179_A_018",
+      "boundingBox": {
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:3857"
+          }
+        },
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                1478222.630185062,
+                4608211.117563414
+              ],
+              [
+                1478171.00139754,
+                4608214.715947232
+              ],
+              [
+                1478201.446935324,
+                4608243.202658305
+              ],
+              [
+                1478250.862712428,
+                4608288.65620637
+              ],
+              [
+                1478249.60576516,
+                4608289.736846742
+              ],
+              [
+                1478252.715578224,
+                4608292.50908523
+              ],
+              [
+                1478252.338138798,
+                4608293.100092768
+              ],
+              [
+                1478272.769538421,
+                4608310.50264757
+              ],
+              [
+                1478284.067458624,
+                4608318.902080248
+              ],
+              [
+                1478294.02464952,
+                4608325.482347568
+              ],
+              [
+                1478329.345357168,
+                4608345.370741041
+              ],
+              [
+                1478357.873091582,
+                4608360.99202676
+              ],
+              [
+                1478373.513412666,
+                4608369.93241079
+              ],
+              [
+                1478401.998773867,
+                4608387.853031622
+              ],
+              [
+                1478421.169638683,
+                4608401.597618621
+              ],
+              [
+                1478433.273441396,
+                4608411.024078817
+              ],
+              [
+                1478452.950617409,
+                4608427.124297517
+              ],
+              [
+                1478472.652405502,
+                4608444.375073815
+              ],
+              [
+                1478487.549801409,
+                4608458.822053776
+              ],
+              [
+                1478504.259531192,
+                4608476.84515292
+              ],
+              [
+                1478530.768030828,
+                4608507.564084739
+              ],
+              [
+                1478541.760072941,
+                4608520.144133553
+              ],
+              [
+                1478550.928314735,
+                4608531.011036877
+              ],
+              [
+                1478551.362896541,
+                4608533.526395795
+              ],
+              [
+                1478555.5142575,
+                4608539.44634118
+              ],
+              [
+                1478559.495134005,
+                4608545.915171535
+              ],
+              [
+                1478562.006291196,
+                4608550.102387604
+              ],
+              [
+                1478565.078388235,
+                4608557.405386688
+              ],
+              [
+                1478566.72656111,
+                4608562.427624128
+              ],
+              [
+                1478568.192353371,
+                4608568.642596701
+              ],
+              [
+                1478569.452903003,
+                4608574.807744961
+              ],
+              [
+                1478570.692014184,
+                4608574.692809211
+              ],
+              [
+                1478573.149223596,
+                4608596.682997643
+              ],
+              [
+                1478576.141974878,
+                4608620.684433947
+              ],
+              [
+                1478578.122635386,
+                4608639.951528513
+              ],
+              [
+                1478581.236168006,
+                4608667.336711831
+              ],
+              [
+                1478581.875511358,
+                4608672.40921884
+              ],
+              [
+                1478580.320467259,
+                4608672.265242609
+              ],
+              [
+                1478580.945830299,
+                4608676.854434148
+              ],
+              [
+                1478581.490421945,
+                4608688.296944968
+              ],
+              [
+                1478581.575603726,
+                4608704.768524081
+              ],
+              [
+                1478581.136787038,
+                4608716.123741059
+              ],
+              [
+                1478579.945180881,
+                4608729.78823777
+              ],
+              [
+                1478578.73209227,
+                4608738.414721186
+              ],
+              [
+                1478579.806677877,
+                4608738.526747162
+              ],
+              [
+                1478577.959821281,
+                4608754.180321674
+              ],
+              [
+                1478574.477396341,
+                4608781.488957845
+              ],
+              [
+                1478573.036072452,
+                4608792.54954927
+              ],
+              [
+                1478572.058064742,
+                4608795.889770524
+              ],
+              [
+                1478570.412336499,
+                4608806.854557412
+              ],
+              [
+                1478567.349442456,
+                4608828.811425304
+              ],
+              [
+                1478566.674495951,
+                4608836.82692926
+              ],
+              [
+                1478566.124667402,
+                4608844.269692155
+              ],
+              [
+                1478565.754909226,
+                4608856.845512574
+              ],
+              [
+                1478565.78383307,
+                4608867.680534082
+              ],
+              [
+                1478567.261480199,
+                4608889.377057428
+              ],
+              [
+                1478569.189328436,
+                4608889.182935012
+              ],
+              [
+                1478572.899143846,
+                4608916.533876125
+              ],
+              [
+                1478577.135017987,
+                4608937.729796091
+              ],
+              [
+                1478579.337676477,
+                4608937.540789605
+              ],
+              [
+                1478586.365326123,
+                4608971.302583889
+              ],
+              [
+                1478593.018227077,
+                4609001.791012255
+              ],
+              [
+                1478602.043139964,
+                4609044.009499111
+              ],
+              [
+                1478602.801719988,
+                4609047.589177694
+              ],
+              [
+                1478601.271113352,
+                4609051.080216633
+              ],
+              [
+                1478615.220667308,
+                4609057.36694058
+              ],
+              [
+                1478617.612499651,
+                4609056.859396817
+              ],
+              [
+                1478648.264546295,
+                4609044.410149717
+              ],
+              [
+                1478651.193341787,
+                4609052.415386986
+              ],
+              [
+                1478656.657795368,
+                4609051.375477789
+              ],
+              [
+                1478669.448038156,
+                4609053.453892635
+              ],
+              [
+                1478676.465148764,
+                4609050.548339495
+              ],
+              [
+                1478668.718212643,
+                4609026.933117877
+              ],
+              [
+                1478658.971317092,
+                4609030.295547602
+              ],
+              [
+                1478625.798146614,
+                4609010.561956881
+              ],
+              [
+                1478616.502690922,
+                4609012.758215184
+              ],
+              [
+                1478613.947581939,
+                4609000.597864248
+              ],
+              [
+                1478611.975376993,
+                4608991.211678771
+              ],
+              [
+                1478610.005377784,
+                4608981.283519876
+              ],
+              [
+                1478607.246650749,
+                4608969.408396898
+              ],
+              [
+                1478605.635051928,
+                4608961.823435021
+              ],
+              [
+                1478602.104110985,
+                4608945.205105139
+              ],
+              [
+                1478600.695099685,
+                4608938.23956615
+              ],
+              [
+                1478594.883101564,
+                4608909.507531111
+              ],
+              [
+                1478592.039746814,
+                4608892.294162821
+              ],
+              [
+                1478590.808600304,
+                4608879.573466367
+              ],
+              [
+                1478590.043064978,
+                4608867.689570908
+              ],
+              [
+                1478589.962016308,
+                4608854.714286867
+              ],
+              [
+                1478590.522022108,
+                4608846.719629838
+              ],
+              [
+                1478591.834007164,
+                4608835.219510833
+              ],
+              [
+                1478592.877986174,
+                4608823.346363893
+              ],
+              [
+                1478593.991865866,
+                4608813.889851308
+              ],
+              [
+                1478594.435527315,
+                4608810.953725108
+              ],
+              [
+                1478596.627602339,
+                4608793.972317545
+              ],
+              [
+                1478597.829710612,
+                4608783.459337337
+              ],
+              [
+                1478599.771965097,
+                4608767.600465189
+              ],
+              [
+                1478601.685231601,
+                4608757.031746416
+              ],
+              [
+                1478602.530702243,
+                4608745.983094528
+              ],
+              [
+                1478603.858600648,
+                4608736.10787068
+              ],
+              [
+                1478604.150546099,
+                4608733.936749171
+              ],
+              [
+                1478604.640949813,
+                4608727.229047146
+              ],
+              [
+                1478604.835356252,
+                4608720.42382578
+              ],
+              [
+                1478605.584807381,
+                4608715.814213521
+              ],
+              [
+                1478605.634425032,
+                4608715.155539045
+              ],
+              [
+                1478605.979330398,
+                4608710.576917545
+              ],
+              [
+                1478606.231525285,
+                4608699.402252171
+              ],
+              [
+                1478605.558201739,
+                4608680.04438479
+              ],
+              [
+                1478604.640887642,
+                4608666.455690014
+              ],
+              [
+                1478603.58059089,
+                4608655.647675693
+              ],
+              [
+                1478600.880789198,
+                4608631.904650705
+              ],
+              [
+                1478598.878428162,
+                4608613.810303378
+              ],
+              [
+                1478597.191075362,
+                4608598.505163837
+              ],
+              [
+                1478593.665396696,
+                4608568.628219848
+              ],
+              [
+                1478591.975727005,
+                4608560.890917296
+              ],
+              [
+                1478586.467119455,
+                4608547.837935731
+              ],
+              [
+                1478581.746336033,
+                4608538.019980712
+              ],
+              [
+                1478574.00803582,
+                4608525.385542458
+              ],
+              [
+                1478566.02118658,
+                4608515.046722412
+              ],
+              [
+                1478550.408745895,
+                4608497.136104987
+              ],
+              [
+                1478525.718500621,
+                4608468.429323775
+              ],
+              [
+                1478506.28007037,
+                4608446.836092388
+              ],
+              [
+                1478494.067277893,
+                4608434.624386989
+              ],
+              [
+                1478483.191908447,
+                4608424.415790286
+              ],
+              [
+                1478474.471939788,
+                4608416.570575669
+              ],
+              [
+                1478461.568378739,
+                4608405.795130318
+              ],
+              [
+                1478451.798067583,
+                4608397.769321954
+              ],
+              [
+                1478436.215437442,
+                4608385.701822189
+              ],
+              [
+                1478412.257585329,
+                4608368.831781771
+              ],
+              [
+                1478402.094821743,
+                4608362.034678513
+              ],
+              [
+                1478399.982144767,
+                4608360.552398117
+              ],
+              [
+                1478380.320888158,
+                4608349.233572841
+              ],
+              [
+                1478360.344610542,
+                4608337.856686837
+              ],
+              [
+                1478343.278222175,
+                4608328.514075487
+              ],
+              [
+                1478322.703032058,
+                4608317.164116638
+              ],
+              [
+                1478318.171216064,
+                4608314.757281648
+              ],
+              [
+                1478310.52787286,
+                4608310.503008895
+              ],
+              [
+                1478296.818256849,
+                4608301.388176318
+              ],
+              [
+                1478284.484020523,
+                4608292.049366439
+              ],
+              [
+                1478267.541090467,
+                4608278.001205912
+              ],
+              [
+                1478213.302872371,
+                4608228.248481763
+              ],
+              [
+                1478211.382925482,
+                4608226.506339993
+              ],
+              [
+                1478221.681756184,
+                4608212.41862596
+              ],
+              [
+                1478222.630185062,
+                4608211.117563414
+              ]
+            ]
+          ]
+        ]
+      },
+      "code": "customAreaitpal0179A018"
+    }
+  ],
+  "tasksOfTree": [
+    {
+      "id": "a2c71bbd-ac40-40d9-a3a8-dd17ac299506",
+      "treeId": "e6ee5fea-c34e-4dfb-ad9e-d0ede9eb66e3",
+      "status": "assigned",
+      "taskId": "a285eb23-9593-42b7-b506-a2eb634a1d52",
+      "workOrderId": null,
+      "observation": null,
+      "residualRisk": null,
+      "artifact": null,
+      "completedAt": null,
+      "createdAt": "2026-01-23T09:31:00.597Z",
+      "updatedAt": "2026-01-23T09:31:00.597Z",
+      "task": {
+        "id": "a285eb23-9593-42b7-b506-a2eb634a1d52",
+        "name": "Remote inspection",
+        "protected": true,
+        "type": "remote",
+        "createdAt": "2025-12-16T13:22:29.865Z",
+        "updatedAt": "2025-12-16T13:22:29.865Z",
+        "taskSteps": []
+      },
+      "workOrder": null
+    }
+  ],
+  "potentialTargets": [],
+  "healthScore": "1",
+  "structureScore": "3",
+  "clearancesScore": null,
+  "outliersScore": "5",
+  "scientificName": "Tamarix gallica",
+  "pointCloudPath": "IT_PAL25_0179/IT_PAL_0179_A_018/2025-01-01_2025-12-31/tree_segmentation_clips/648.laz",
+  "environmentPointCloudPath": "IT_PAL25_0179/IT_PAL_0179_A_018/2025-01-01_2025-12-31/tree_segmentation_clips/648_environment.laz"
+}
