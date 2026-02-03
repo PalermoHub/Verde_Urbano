@@ -62,12 +62,23 @@ Viale Margherita di Savoia - C,C/D,32,50%,C/D (elevata),#c164a1
 Viale Margherita di Savoia - C,C,21,33%,C (moderata),#f39c12
 Viale Margherita di Savoia - C,D,10,16%,D (estrema),#e74c3c
 Viale Margherita di Savoia - C,B,1,2%,B (bassa),#2cc15f
-Viale Michelangelo,C,111,59%,C (moderata),#f39c12
-Viale Michelangelo,C/D,30,16%,C/D (elevata),#c164a1
-Viale Michelangelo,D,23,12%,D (estrema),#e74c3c
-Viale Michelangelo,Non Class,18,10%,Non Classificato,#990000
-Viale Michelangelo,Ceppaia,5,3%,Ceppaia,#434343
-Viale Michelangelo,A,2,1%,A (trascurabile),#00ff00
+Viale Michelangelo - A,C,32,53%,C (moderata),#f39c12
+Viale Michelangelo - A,Non Class,17,28%,Non Classificato,#990000
+Viale Michelangelo - A,D,4,7%,D (estrema),#e74c3c
+Viale Michelangelo - A,C/D,4,7%,C/D (elevata),#c164a1
+Viale Michelangelo - A,Ceppaia,3,5%,Ceppaia,#434343
+Viale Michelangelo - B,C,41,62%,C (moderata),#f39c12
+Viale Michelangelo - B,C/D,14,21%,C/D (elevata),#c164a1
+Viale Michelangelo - B,D,8,12%,D (estrema),#e74c3c
+Viale Michelangelo - B,Ceppaia,2,3%,Ceppaia,#434343
+Viale Michelangelo - B,Non Class,1,2%,Non Classificato,#990000
+Viale Michelangelo - C,C,22,56%,C (moderata),#f39c12
+Viale Michelangelo - C,D,8,21%,D (estrema),#e74c3c
+Viale Michelangelo - C,C/D,7,18%,C/D (elevata),#c164a1
+Viale Michelangelo - C,A,2,5%,A (trascurabile),#00ff00
+Viale Michelangelo - D,C,16,67%,C (moderata),#f39c12
+Viale Michelangelo - D,C/D,5,21%,C/D (elevata),#c164a1
+Viale Michelangelo - D,D,3,13%,D (estrema),#e74c3c
 Viale Principe Umberto,C,22,34%,C (moderata),#f39c12
 Viale Principe Umberto,C/D,19,30%,C/D (elevata),#c164a1
 Viale Principe Umberto,Ceppaia,12,19%,Ceppaia,#434343
