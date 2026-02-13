@@ -1087,36 +1087,20 @@
             navCounter.innerHTML = `<strong>${idx + 1}</strong> / ${TREE_IDS.length}`;
         }
 
-        // Fly to - vista ravvicinata centrata sull'albero (point cloud al centro)
-        const treeHeight = d.height || 5;
-        // Punto di mira: centro dell'albero (a metà altezza)
-        const targetAlt = tree.alt + Z_OFFSET + treeHeight * 0.45;
-
-        // Distanza camera proporzionale all'altezza dell'albero
-        const cameraDistance = Math.max(20, treeHeight * 2.2);
-        const cameraHeading = Cesium.Math.toRadians(40);   // da sud-ovest
-        const cameraPitch = Cesium.Math.toRadians(-28);     // angolo verso il basso
-
-        // Calcola posizione camera con offset
-        const offsetSouth = -cameraDistance * Math.cos(cameraHeading) * Math.cos(cameraPitch);
-        const offsetWest = -cameraDistance * Math.sin(cameraHeading) * Math.cos(cameraPitch);
-        const offsetUp = -cameraDistance * Math.sin(cameraPitch);
-
-        // Compensazione sidebar: sposta leggermente la camera verso destra
-        // per centrare la point cloud nella porzione visibile del viewer
-        const sidebarCompLon = 0.00004;
-
-        const mPerDegLat = 111132.954;
-        const mPerDegLon = 111132.954 * Math.cos(tree.lat * Math.PI / 180);
-        const camLon = tree.lon + offsetWest / mPerDegLon + sidebarCompLon;
-        const camLat = tree.lat + offsetSouth / mPerDegLat;
-        const camAlt = targetAlt + offsetUp;
+        // Fly to - vista ampia centrata sull'albero con contesto urbano
+        // Camera da sud guardando nord, inclinazione moderata per evitare tetti
+        const camOffsetLat = -0.0004;
+        const camOffsetLon = 0.0001;
 
         viewer.camera.flyTo({
-            destination: Cesium.Cartesian3.fromDegrees(camLon, camLat, camAlt),
+            destination: Cesium.Cartesian3.fromDegrees(
+                tree.lon + camOffsetLon,
+                tree.lat + camOffsetLat,
+                110
+            ),
             orientation: {
-                heading: cameraHeading,
-                pitch: cameraPitch,
+                heading: Cesium.Math.toRadians(350),
+                pitch: Cesium.Math.toRadians(-50),
                 roll: 0
             },
             duration: 2.0
@@ -1219,29 +1203,19 @@
     function flyToSelected() {
         if (!selectedTreeId || !treesData[selectedTreeId]) return;
         const tree = treesData[selectedTreeId];
-        const d = tree.json;
-        const treeHeight = d.height || 5;
-        const targetAlt = tree.alt + Z_OFFSET + treeHeight * 0.45;
 
-        const cameraDistance = Math.max(20, treeHeight * 2.2);
-        const cameraHeading = Cesium.Math.toRadians(40);
-        const cameraPitch = Cesium.Math.toRadians(-25);
-
-        const offsetSouth = -cameraDistance * Math.cos(cameraHeading) * Math.cos(cameraPitch);
-        const offsetWest = -cameraDistance * Math.sin(cameraHeading) * Math.cos(cameraPitch);
-        const offsetUp = -cameraDistance * Math.sin(cameraPitch);
-
-        const mPerDegLat = 111132.954;
-        const mPerDegLon = 111132.954 * Math.cos(tree.lat * Math.PI / 180);
-        const camLon = tree.lon + offsetWest / mPerDegLon;
-        const camLat = tree.lat + offsetSouth / mPerDegLat;
-        const camAlt = targetAlt + offsetUp;
+        const camOffsetLat = -0.0004;
+        const camOffsetLon = 0.0001;
 
         viewer.camera.flyTo({
-            destination: Cesium.Cartesian3.fromDegrees(camLon, camLat, camAlt),
+            destination: Cesium.Cartesian3.fromDegrees(
+                tree.lon + camOffsetLon,
+                tree.lat + camOffsetLat,
+                110
+            ),
             orientation: {
-                heading: cameraHeading,
-                pitch: cameraPitch,
+                heading: Cesium.Math.toRadians(350),
+                pitch: Cesium.Math.toRadians(-50),
                 roll: 0
             },
             duration: 2.0
