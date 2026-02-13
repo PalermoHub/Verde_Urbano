@@ -1,0 +1,949 @@
+{
+  "id": "dc29f2c3-b4e2-443a-9fa7-1cb7a0401058",
+  "externalId": "12041",
+  "tseId": "12041",
+  "customerTreeId": null,
+  "customerTagId": null,
+  "customerSiteId": null,
+  "organizationId": "dd9b052e-2313-4b69-ad49-74a4b08b5105",
+  "createdAt": "2025-12-30T15:55:32.165Z",
+  "deletedAt": null,
+  "managedAreaId": "b4c9cf14-076c-435e-970c-64a3e04a93c4",
+  "location": {
+    "type": "Point",
+    "crs": {
+      "type": "name",
+      "properties": {
+        "name": "EPSG:3857"
+      }
+    },
+    "coordinates": [
+      1486637.995200636,
+      4596976.574430498,
+      61.484055991
+    ]
+  },
+  "localizedLocation": {
+    "type": "Point",
+    "crs": {
+      "type": "name",
+      "properties": {
+        "name": "EPSG:32633"
+      }
+    },
+    "coordinates": [
+      355785.808023331,
+      4220866.561462317,
+      61.484055991
+    ]
+  },
+  "images": [],
+  "height": 16.6,
+  "pointCloudHeight": 16.6,
+  "trunkHeight": 13.21,
+  "firstBifurcationPoint": {
+    "type": "Point",
+    "crs": {
+      "type": "name",
+      "properties": {
+        "name": "EPSG:32633"
+      }
+    },
+    "coordinates": [
+      355785.529619482,
+      4220865.815943275,
+      74.685324187
+    ]
+  },
+  "trunkWidth": 1.72,
+  "trunkDiameter": 0.55,
+  "trunkEllipseRadiusA": 0.28,
+  "trunkEllipseRadiusB": 0.27,
+  "canopyHeight": 6.99,
+  "canopyWidth": 7.66,
+  "canopyEllipseRadiusA": 3.79,
+  "canopyEllipseRadiusB": 3.88,
+  "canopyDirection": 28.52,
+  "canopyOffset": {
+    "type": "Point",
+    "coordinates": [
+      -0.411528945,
+      -0.517231464
+    ]
+  },
+  "leafBiomass": null,
+  "leafAreaIndex": 8.86,
+  "carbonStorage": 111.12,
+  "carbonStorageEcoValue": null,
+  "grossCarbonSequestration": 0.72,
+  "grossCarbonSequestrationEcoValue": null,
+  "no2": 2.82,
+  "no2EcoValue": null,
+  "so2": 1.8,
+  "so2EcoValue": null,
+  "pm25": 0.94,
+  "pm25EcoValue": null,
+  "co": 0.01,
+  "coEcoValue": null,
+  "o3": 4.03,
+  "o3EcoValue": null,
+  "ndvi": null,
+  "treeHealth": 0,
+  "potentialEvapotranspiration": 5.82,
+  "transpiration": 1.76,
+  "oxygenProduction": 1.88,
+  "evaporation": 0.46,
+  "waterIntercepted": 0.46,
+  "avoidedRunoff": 0.01,
+  "avoidedRunoffEcoValue": null,
+  "treeValueCavat": 10274.66,
+  "treeValueRado": 3571.82,
+  "treeValueKoch": 34542.68,
+  "vat19": null,
+  "alnarpModel": null,
+  "normaGranada": null,
+  "leaningVector": {
+    "type": "Point",
+    "coordinates": [
+      -0.411528945,
+      -0.517231464,
+      13.100075506
+    ]
+  },
+  "leaningAngle": 2.89,
+  "safetyFactors": [
+    {
+      "windSpeed": 20,
+      "safetyFactor": 48.04,
+      "windDirection": 0
+    },
+    {
+      "windSpeed": 25,
+      "safetyFactor": 30.75,
+      "windDirection": 0
+    },
+    {
+      "windSpeed": 30,
+      "safetyFactor": 21.35,
+      "windDirection": 0
+    },
+    {
+      "windSpeed": 35,
+      "safetyFactor": 15.69,
+      "windDirection": 0
+    },
+    {
+      "windSpeed": 40,
+      "safetyFactor": 12.01,
+      "windDirection": 0
+    },
+    {
+      "windSpeed": 45,
+      "safetyFactor": 9.49,
+      "windDirection": 0
+    },
+    {
+      "windSpeed": 50,
+      "safetyFactor": 7.69,
+      "windDirection": 0
+    },
+    {
+      "windSpeed": 55,
+      "safetyFactor": 6.36,
+      "windDirection": 0
+    },
+    {
+      "windSpeed": 60,
+      "safetyFactor": 5.34,
+      "windDirection": 0
+    },
+    {
+      "windSpeed": 65,
+      "safetyFactor": 4.55,
+      "windDirection": 0
+    },
+    {
+      "windSpeed": 70,
+      "safetyFactor": 3.93,
+      "windDirection": 0
+    },
+    {
+      "windSpeed": 75,
+      "safetyFactor": 3.42,
+      "windDirection": 0
+    },
+    {
+      "windSpeed": 80,
+      "safetyFactor": 3.01,
+      "windDirection": 0
+    },
+    {
+      "windSpeed": 85,
+      "safetyFactor": 2.66,
+      "windDirection": 0
+    },
+    {
+      "windSpeed": 90,
+      "safetyFactor": 2.38,
+      "windDirection": 0
+    },
+    {
+      "windSpeed": 95,
+      "safetyFactor": 2.13,
+      "windDirection": 0
+    },
+    {
+      "windSpeed": 100,
+      "safetyFactor": 1.93,
+      "windDirection": 0
+    },
+    {
+      "windSpeed": 105,
+      "safetyFactor": 1.75,
+      "windDirection": 0
+    },
+    {
+      "windSpeed": 110,
+      "safetyFactor": 1.59,
+      "windDirection": 0
+    },
+    {
+      "windSpeed": 115,
+      "safetyFactor": 1.46,
+      "windDirection": 0
+    },
+    {
+      "windSpeed": 120,
+      "safetyFactor": 1.34,
+      "windDirection": 0
+    },
+    {
+      "windSpeed": 125,
+      "safetyFactor": 1.23,
+      "windDirection": 0
+    },
+    {
+      "windSpeed": 130,
+      "safetyFactor": 1.14,
+      "windDirection": 0
+    },
+    {
+      "windSpeed": 135,
+      "safetyFactor": 1.06,
+      "windDirection": 0
+    },
+    {
+      "windSpeed": 140,
+      "safetyFactor": 0.99,
+      "windDirection": 0
+    },
+    {
+      "windSpeed": 145,
+      "safetyFactor": 0.92,
+      "windDirection": 0
+    },
+    {
+      "windSpeed": 150,
+      "safetyFactor": 0.86,
+      "windDirection": 0
+    },
+    {
+      "windSpeed": 155,
+      "safetyFactor": 0.8,
+      "windDirection": 0
+    },
+    {
+      "windSpeed": 160,
+      "safetyFactor": 0.76,
+      "windDirection": 0
+    },
+    {
+      "windSpeed": 165,
+      "safetyFactor": 0.71,
+      "windDirection": 0
+    },
+    {
+      "windSpeed": 170,
+      "safetyFactor": 0.67,
+      "windDirection": 0
+    },
+    {
+      "windSpeed": 175,
+      "safetyFactor": 0.63,
+      "windDirection": 0
+    }
+  ],
+  "safetyFactorAt80Kmh": 3.01,
+  "safetyFactorAtDefaultWindSpeed": 3.01,
+  "coDominantLimbs": null,
+  "includedBark": null,
+  "fork": null,
+  "crossSectionalShape": null,
+  "species": "dactylifera",
+  "speciesHybrid": null,
+  "cultivar": null,
+  "infraspecies": null,
+  "thermalComfort": null,
+  "capturePointId": "e8bd4a58-1ed9-4542-98a6-fb1e9d9d888d",
+  "canopyCircumference": 24.06,
+  "trunkCircumference": 1.72,
+  "family": "Arecaceae",
+  "genus": "Phoenix",
+  "genusHybrid": null,
+  "authorSpecies": "L.",
+  "tseScientificName": "Phoenix dactylifera",
+  "clientScientificName": null,
+  "streetAddress": "Piazza Castelnuovo 32",
+  "addressFromParcel": "Piazza Castelnuovo 32",
+  "numberOfStems": 1,
+  "status": "alive",
+  "plantingYear": null,
+  "commonName": null,
+  "owner": null,
+  "onStreetName": null,
+  "sideLocation": null,
+  "landUse": null,
+  "parkName": null,
+  "growSpaceSize": null,
+  "overheadUtilities": null,
+  "prevailingWindDirection": null,
+  "growSpace": null,
+  "deadDyingOrBrokenBranches": null,
+  "overExtendedBranches": null,
+  "mechanicalDamage": null,
+  "coDominantStems": null,
+  "girdlingRoots": null,
+  "furtherInspectionNeeded": null,
+  "overallTreeRiskRating": null,
+  "overallResidualRisk": null,
+  "vitalityVigor": "high",
+  "crownTransparency": "notDefoliated",
+  "foliageTransparency": 14.46,
+  "condition": null,
+  "ctla": null,
+  "leafArea": 401.68,
+  "foliage": null,
+  "dieback": 0,
+  "deadBranchesRatio": null,
+  "crownLightExposure": 5,
+  "crownLightExposureRatio": 99.46,
+  "leafAreaPerCrownVolume": 1.17,
+  "liveCrownRatio": 42.12,
+  "slenderness": 30.4,
+  "tmsCategory": "l0",
+  "ageClass": "mature",
+  "ageAtPlanting": null,
+  "crownVolume": 345.48,
+  "viStatus": "toBeScheduled",
+  "primaryMaintenanceNeeds": null,
+  "maintenancePriority": null,
+  "pruningType": null,
+  "foliageNoneSeasonal": null,
+  "foliageNoneDead": null,
+  "normalFoliage": null,
+  "chloroticFoliage": null,
+  "necroticFoliage": null,
+  "limbs": [],
+  "treeProtectionZone": 6.56,
+  "criticalRootZone": 0.82,
+  "recordingDate": "2025-11-18",
+  "dataStatus": null,
+  "recommendedInspectionInterval": "",
+  "advancedAssessmentNeeded": false,
+  "advancedAssessmentReason": "",
+  "inspectionLimitation": "none",
+  "inspectionLimitationDescription": "",
+  "note": "",
+  "originalSource": "TSE",
+  "userUpdatedProperties": [],
+  "outlierHeightPerCrownVolume": false,
+  "outlierHeightPerLeafArea": false,
+  "outlierLeafAreaPerCrownVolume": false,
+  "outlierTrunkDiameterPerCrownVolume": false,
+  "outlierTrunkDiameterPerHeight": false,
+  "outlierTrunkDiameterPerLeafArea": false,
+  "overallOutlierIndex": 0,
+  "lastUpdatedAt": "2026-02-06T13:31:02.601Z",
+  "outlierCoSequestration": false,
+  "outlierPmReduction": true,
+  "outlierOxygenProduction": false,
+  "outlierWaterRunoff": false,
+  "outlierEvapotranspiration": false,
+  "wireClearanceIssueDetected": null,
+  "roadClearanceIssueDetected": null,
+  "buildingClearanceIssueDetected": null,
+  "visibilityClearanceIssueDetected": null,
+  "trafficSignClearanceIssueDetected": null,
+  "canopyCentroid": {
+    "type": "Point",
+    "crs": {
+      "type": "name",
+      "properties": {
+        "name": "EPSG:32633"
+      }
+    },
+    "coordinates": [
+      355785.396494386,
+      4220866.044230852,
+      74.584131497
+    ]
+  },
+  "createdBy": "tse",
+  "deliveryStatus": "published",
+  "growthForm": "palm",
+  "liveHeight": 16.6,
+  "crownBaseHeight": 9.61,
+  "crownProjectionArea": 45.39,
+  "crownDensity": 84.29,
+  "requiredResidualWallThickness": 0.05,
+  "trunkLeaningVector": {
+    "type": "Point",
+    "coordinates": [
+      -0.001677094,
+      0.043157487,
+      0.999066874
+    ]
+  },
+  "trunkLeanAngle": 2.48,
+  "competitionIndex": 0.55,
+  "trunkMeasurementsAvailable": true,
+  "crownMeasurementsAvailable": true,
+  "speciesAvailable": true,
+  "rootProtectionZone": 9.83,
+  "deliveryBatch": null,
+  "arboricExemplarIdCode": null,
+  "road": "Piazza Castelnuovo",
+  "houseNumber": "32",
+  "postalCode": "90141",
+  "neighborhood": null,
+  "typeOfLocation": null,
+  "generalCondition": null,
+  "plantingPotential": null,
+  "basalAreaIncrement": null,
+  "estimatedProperties": [],
+  "managedArea": {
+    "id": "b4c9cf14-076c-435e-970c-64a3e04a93c4",
+    "loadingStartedAt": null,
+    "name": "",
+    "code": "IT_PAL_0179_A_176",
+    "boundingBox": {
+      "type": "Polygon",
+      "coordinates": [
+        [
+          [
+            13.354381261,
+            38.123394167
+          ],
+          [
+            13.354335953,
+            38.125412045
+          ],
+          [
+            13.358360474,
+            38.125468366
+          ],
+          [
+            13.358405671,
+            38.123450485
+          ],
+          [
+            13.354381261,
+            38.123394167
+          ]
+        ]
+      ]
+    }
+  },
+  "environment": {
+    "treeId": "dc29f2c3-b4e2-443a-9fa7-1cb7a0401058",
+    "corridorMinimumHeightClearance": null,
+    "corridorObstructionHeight": null,
+    "corridorObstructionVolume": null,
+    "corridorAffectedCrown": null,
+    "corridorLShapeVertex": null,
+    "viaductSafetyZone": null,
+    "viaductCriticalHeight": null,
+    "viaductOutsideCriticalBoundaryPercentage": null,
+    "viaductOutsideCriticalBoundaryArea": null,
+    "trafficSignVisibleDistance": null,
+    "trafficSignCoverage": null,
+    "distanceToWires": null,
+    "potentialTargets": null
+  },
+  "tseTreeScans": [
+    {
+      "id": "4e662bee-fe0c-46fb-a0af-83f1ded9945f",
+      "treeId": "dc29f2c3-b4e2-443a-9fa7-1cb7a0401058",
+      "externalId": "12041",
+      "scanInterval": "[2025-01-01,2025-12-31)",
+      "organizationId": "dd9b052e-2313-4b69-ad49-74a4b08b5105",
+      "createdAt": "2025-12-30T15:55:32.165Z",
+      "managedAreaId": "b4c9cf14-076c-435e-970c-64a3e04a93c4",
+      "localizedLocation": {
+        "type": "Point",
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:32633"
+          }
+        },
+        "coordinates": [
+          355785.808023331,
+          4220866.561462317,
+          61.484055991
+        ]
+      },
+      "canopyHeight": 6.9879999999999995,
+      "canopyWidth": 7.655090093612671,
+      "trunkDiameter": 0.5459515327320564,
+      "height": 16.594075506455262,
+      "trunkHeight": 13.20126819610595,
+      "leafAreaIndex": 8.851388276765285,
+      "safetyFactors": [
+        {
+          "windSpeed": 20,
+          "safetyFactor": 48.03476893878857,
+          "windDirection": 0
+        },
+        {
+          "windSpeed": 25,
+          "safetyFactor": 30.742252120824674,
+          "windDirection": 0
+        },
+        {
+          "windSpeed": 30,
+          "safetyFactor": 21.348786195017126,
+          "windDirection": 0
+        },
+        {
+          "windSpeed": 35,
+          "safetyFactor": 15.68482251062483,
+          "windDirection": 0
+        },
+        {
+          "windSpeed": 40,
+          "safetyFactor": 12.008692234697142,
+          "windDirection": 0
+        },
+        {
+          "windSpeed": 45,
+          "safetyFactor": 9.488349420007616,
+          "windDirection": 0
+        },
+        {
+          "windSpeed": 50,
+          "safetyFactor": 7.685563030206168,
+          "windDirection": 0
+        },
+        {
+          "windSpeed": 55,
+          "safetyFactor": 6.351704983641458,
+          "windDirection": 0
+        },
+        {
+          "windSpeed": 60,
+          "safetyFactor": 5.337196548754282,
+          "windDirection": 0
+        },
+        {
+          "windSpeed": 65,
+          "safetyFactor": 4.547670432074654,
+          "windDirection": 0
+        },
+        {
+          "windSpeed": 70,
+          "safetyFactor": 3.9212056276562075,
+          "windDirection": 0
+        },
+        {
+          "windSpeed": 75,
+          "safetyFactor": 3.415805791202741,
+          "windDirection": 0
+        },
+        {
+          "windSpeed": 80,
+          "safetyFactor": 3.0021730586742854,
+          "windDirection": 0
+        },
+        {
+          "windSpeed": 85,
+          "safetyFactor": 2.659364370313553,
+          "windDirection": 0
+        },
+        {
+          "windSpeed": 90,
+          "safetyFactor": 2.372087355001904,
+          "windDirection": 0
+        },
+        {
+          "windSpeed": 95,
+          "safetyFactor": 2.128964828311958,
+          "windDirection": 0
+        },
+        {
+          "windSpeed": 100,
+          "safetyFactor": 1.921390757551542,
+          "windDirection": 0
+        },
+        {
+          "windSpeed": 105,
+          "safetyFactor": 1.7427580567360925,
+          "windDirection": 0
+        },
+        {
+          "windSpeed": 110,
+          "safetyFactor": 1.5879262459103645,
+          "windDirection": 0
+        },
+        {
+          "windSpeed": 115,
+          "safetyFactor": 1.4528474537251734,
+          "windDirection": 0
+        },
+        {
+          "windSpeed": 120,
+          "safetyFactor": 1.3342991371885704,
+          "windDirection": 0
+        },
+        {
+          "windSpeed": 125,
+          "safetyFactor": 1.2296900848329868,
+          "windDirection": 0
+        },
+        {
+          "windSpeed": 130,
+          "safetyFactor": 1.1369176080186636,
+          "windDirection": 0
+        },
+        {
+          "windSpeed": 135,
+          "safetyFactor": 1.0542610466675122,
+          "windDirection": 0
+        },
+        {
+          "windSpeed": 140,
+          "safetyFactor": 0.9803014069140519,
+          "windDirection": 0
+        },
+        {
+          "windSpeed": 145,
+          "safetyFactor": 0.913860051154122,
+          "windDirection": 0
+        },
+        {
+          "windSpeed": 150,
+          "safetyFactor": 0.8539514478006852,
+          "windDirection": 0
+        },
+        {
+          "windSpeed": 155,
+          "safetyFactor": 0.7997464131327957,
+          "windDirection": 0
+        },
+        {
+          "windSpeed": 160,
+          "safetyFactor": 0.7505432646685714,
+          "windDirection": 0
+        },
+        {
+          "windSpeed": 165,
+          "safetyFactor": 0.7057449981823842,
+          "windDirection": 0
+        },
+        {
+          "windSpeed": 170,
+          "safetyFactor": 0.6648410925783883,
+          "windDirection": 0
+        },
+        {
+          "windSpeed": 175,
+          "safetyFactor": 0.6273929004249932,
+          "windDirection": 0
+        }
+      ],
+      "safetyFactorAtDefaultWindSpeed": 3.0021730586742854,
+      "dieback": 0,
+      "avoidedRunoff": 0.008824473911949376,
+      "co": 0.0017225374671827577,
+      "grossCarbonSequestration": 0.7107499028652684,
+      "oxygenProduction": 1.8782058969814037,
+      "pm25": 0.9391622377258904,
+      "so2": 1.7944425893339202,
+      "waterIntercepted": 0.45167890296066715,
+      "carbonStorage": 111.11378469624987,
+      "evaporation": 0.45167890296066815,
+      "no2": 2.818341286133984,
+      "o3": 4.0282551326430776,
+      "ndvi": null,
+      "potentialEvapotranspiration": 5.813908801665466,
+      "transpiration": 1.752044009729251,
+      "images": [],
+      "pointCloudPath": "IT_PAL25_0179/IT_PAL_0179_A_176/2025-01-01_2025-12-31/tree_segmentation_clips/12041.laz",
+      "environmentPointCloudPath": "IT_PAL25_0179/IT_PAL_0179_A_176/2025-01-01_2025-12-31/tree_segmentation_clips/12041_environment.laz",
+      "recordingDate": "2025-11-18"
+    }
+  ],
+  "wireClearances": [],
+  "aggByClassWireClearances": [],
+  "aggAllWireClearances": [
+    {
+      "id": "fd77540f-a302-4e7a-941c-0e665b2cc3e1",
+      "treeId": "dc29f2c3-b4e2-443a-9fa7-1cb7a0401058",
+      "externalId": "12041",
+      "minimumHeight": null,
+      "minimumDistance": null,
+      "clearanceVolume": null,
+      "clearanceVolumeRatio": null,
+      "clearanceBlobPath": null,
+      "clearanceZoneGltfPath": null,
+      "createdAt": "2026-02-06T13:31:02.601Z",
+      "updatedAt": null,
+      "deletedAt": null
+    }
+  ],
+  "roadClearances": [],
+  "buildingClearances": [],
+  "visibilityClearances": [],
+  "customAreas": [
+    {
+      "id": "d1c589d2-e40a-4582-b8cb-029fceb9cba0",
+      "customLayerId": "202caf9f-1299-4382-805f-9b2e55ab8ca8",
+      "name": "IT_PAL_0179_A_176",
+      "boundingBox": {
+        "crs": {
+          "type": "name",
+          "properties": {
+            "name": "EPSG:3857"
+          }
+        },
+        "type": "MultiPolygon",
+        "coordinates": [
+          [
+            [
+              [
+                1486923.012306966,
+                4597108.6945411
+              ],
+              [
+                1486924.398943055,
+                4597113.471267896
+              ],
+              [
+                1486905.457543054,
+                4597150.583157737
+              ],
+              [
+                1486924.363641839,
+                4597159.172492748
+              ],
+              [
+                1486943.200469828,
+                4597122.161842223
+              ],
+              [
+                1486947.052403101,
+                4597120.979434486
+              ],
+              [
+                1487033.710243376,
+                4597165.262468472
+              ],
+              [
+                1487046.300296576,
+                4597141.95437927
+              ],
+              [
+                1487014.273860606,
+                4597125.719922369
+              ],
+              [
+                1486905.893131652,
+                4597070.779946245
+              ],
+              [
+                1486900.885033558,
+                4597068.192412569
+              ],
+              [
+                1486891.838269542,
+                4597063.682343788
+              ],
+              [
+                1486776.885582482,
+                4597005.345854335
+              ],
+              [
+                1486776.566092406,
+                4597005.182848764
+              ],
+              [
+                1486779.15411609,
+                4596999.664651344
+              ],
+              [
+                1486761.722898506,
+                4596991.249746797
+              ],
+              [
+                1486743.049587052,
+                4596982.511358228
+              ],
+              [
+                1486735.593405514,
+                4596976.440730301
+              ],
+              [
+                1486709.953181088,
+                4596956.951087858
+              ],
+              [
+                1486691.00327211,
+                4596936.292634157
+              ],
+              [
+                1486674.541347558,
+                4596917.584173642
+              ],
+              [
+                1486640.857337974,
+                4596872.640927383
+              ],
+              [
+                1486601.579095732,
+                4596947.984570815
+              ],
+              [
+                1486613.933500974,
+                4596955.219659699
+              ],
+              [
+                1486609.578438552,
+                4596965.168774306
+              ],
+              [
+                1486602.104048649,
+                4596982.243945801
+              ],
+              [
+                1486621.678966769,
+                4596991.163089754
+              ],
+              [
+                1486629.671875068,
+                4596994.80497726
+              ],
+              [
+                1486631.428386606,
+                4596991.328714923
+              ],
+              [
+                1486638.497893663,
+                4596995.323218093
+              ],
+              [
+                1486636.465504777,
+                4596999.877782555
+              ],
+              [
+                1486637.373434136,
+                4597000.822418069
+              ],
+              [
+                1486636.374495851,
+                4597002.816905253
+              ],
+              [
+                1486691.850824392,
+                4597031.69272212
+              ],
+              [
+                1486694.48088615,
+                4597026.477487395
+              ],
+              [
+                1486705.098538484,
+                4597032.06418508
+              ],
+              [
+                1486702.611146645,
+                4597037.293501698
+              ],
+              [
+                1486814.644067856,
+                4597095.606131292
+              ],
+              [
+                1486831.309144739,
+                4597062.058473814
+              ],
+              [
+                1486922.541849438,
+                4597108.454128693
+              ],
+              [
+                1486923.012306966,
+                4597108.6945411
+              ]
+            ],
+            [
+              [
+                1486719.799862253,
+                4597033.857838233
+              ],
+              [
+                1486728.112851313,
+                4597016.880687065
+              ],
+              [
+                1486739.421314216,
+                4597022.345386632
+              ],
+              [
+                1486730.571762299,
+                4597039.479948163
+              ],
+              [
+                1486719.799862253,
+                4597033.857838233
+              ]
+            ]
+          ]
+        ]
+      },
+      "code": "customAreaitpal0179A176"
+    }
+  ],
+  "tasksOfTree": [
+    {
+      "id": "bb34623a-44ac-42d9-8373-e341071360f8",
+      "treeId": "dc29f2c3-b4e2-443a-9fa7-1cb7a0401058",
+      "status": "assigned",
+      "taskId": "a285eb23-9593-42b7-b506-a2eb634a1d52",
+      "workOrderId": null,
+      "observation": null,
+      "residualRisk": null,
+      "artifact": null,
+      "completedAt": null,
+      "createdAt": "2026-01-23T09:31:00.597Z",
+      "updatedAt": "2026-01-23T09:31:00.597Z",
+      "task": {
+        "id": "a285eb23-9593-42b7-b506-a2eb634a1d52",
+        "name": "Remote inspection",
+        "protected": true,
+        "type": "remote",
+        "createdAt": "2025-12-16T13:22:29.865Z",
+        "updatedAt": "2025-12-16T13:22:29.865Z",
+        "taskSteps": []
+      },
+      "workOrder": null
+    }
+  ],
+  "potentialTargets": [],
+  "healthScore": "1",
+  "structureScore": "3",
+  "clearancesScore": null,
+  "outliersScore": "5",
+  "scientificName": "Phoenix dactylifera",
+  "pointCloudPath": "IT_PAL25_0179/IT_PAL_0179_A_176/2025-01-01_2025-12-31/tree_segmentation_clips/12041.laz",
+  "environmentPointCloudPath": "IT_PAL25_0179/IT_PAL_0179_A_176/2025-01-01_2025-12-31/tree_segmentation_clips/12041_environment.laz"
+}
