@@ -1087,10 +1087,38 @@
             navCounter.innerHTML = `<strong>${idx + 1}</strong> / ${TREE_IDS.length}`;
         }
 
-        // Fly to
+        // Fly to - vista ravvicinata centrata sull'albero (point cloud al centro)
+        const treeHeight = d.height || 5;
+        // Punto di mira: centro dell'albero (a metà altezza)
+        const targetAlt = tree.alt + Z_OFFSET + treeHeight * 0.45;
+
+        // Distanza camera proporzionale all'altezza dell'albero
+        const cameraDistance = Math.max(20, treeHeight * 2.2);
+        const cameraHeading = Cesium.Math.toRadians(40);   // da sud-ovest
+        const cameraPitch = Cesium.Math.toRadians(-28);     // angolo verso il basso
+
+        // Calcola posizione camera con offset
+        const offsetSouth = -cameraDistance * Math.cos(cameraHeading) * Math.cos(cameraPitch);
+        const offsetWest = -cameraDistance * Math.sin(cameraHeading) * Math.cos(cameraPitch);
+        const offsetUp = -cameraDistance * Math.sin(cameraPitch);
+
+        // Compensazione sidebar: sposta leggermente la camera verso destra
+        // per centrare la point cloud nella porzione visibile del viewer
+        const sidebarCompLon = 0.00004;
+
+        const mPerDegLat = 111132.954;
+        const mPerDegLon = 111132.954 * Math.cos(tree.lat * Math.PI / 180);
+        const camLon = tree.lon + offsetWest / mPerDegLon + sidebarCompLon;
+        const camLat = tree.lat + offsetSouth / mPerDegLat;
+        const camAlt = targetAlt + offsetUp;
+
         viewer.camera.flyTo({
-            destination: Cesium.Cartesian3.fromDegrees(tree.lon - 0.00008, tree.lat - 0.00005, tree.alt + Z_OFFSET + 15),
-            orientation: { heading: Cesium.Math.toRadians(30), pitch: Cesium.Math.toRadians(-40), roll: 0 },
+            destination: Cesium.Cartesian3.fromDegrees(camLon, camLat, camAlt),
+            orientation: {
+                heading: cameraHeading,
+                pitch: cameraPitch,
+                roll: 0
+            },
             duration: 2.0
         });
     }
@@ -1191,9 +1219,31 @@
     function flyToSelected() {
         if (!selectedTreeId || !treesData[selectedTreeId]) return;
         const tree = treesData[selectedTreeId];
+        const d = tree.json;
+        const treeHeight = d.height || 5;
+        const targetAlt = tree.alt + Z_OFFSET + treeHeight * 0.45;
+
+        const cameraDistance = Math.max(20, treeHeight * 2.2);
+        const cameraHeading = Cesium.Math.toRadians(40);
+        const cameraPitch = Cesium.Math.toRadians(-25);
+
+        const offsetSouth = -cameraDistance * Math.cos(cameraHeading) * Math.cos(cameraPitch);
+        const offsetWest = -cameraDistance * Math.sin(cameraHeading) * Math.cos(cameraPitch);
+        const offsetUp = -cameraDistance * Math.sin(cameraPitch);
+
+        const mPerDegLat = 111132.954;
+        const mPerDegLon = 111132.954 * Math.cos(tree.lat * Math.PI / 180);
+        const camLon = tree.lon + offsetWest / mPerDegLon;
+        const camLat = tree.lat + offsetSouth / mPerDegLat;
+        const camAlt = targetAlt + offsetUp;
+
         viewer.camera.flyTo({
-            destination: Cesium.Cartesian3.fromDegrees(tree.lon - 0.00008, tree.lat - 0.00005, tree.alt + Z_OFFSET + 15),
-            orientation: { heading: Cesium.Math.toRadians(30), pitch: Cesium.Math.toRadians(-40), roll: 0 },
+            destination: Cesium.Cartesian3.fromDegrees(camLon, camLat, camAlt),
+            orientation: {
+                heading: cameraHeading,
+                pitch: cameraPitch,
+                roll: 0
+            },
             duration: 2.0
         });
     }
@@ -1209,13 +1259,19 @@
         }
         const cLat = (minLat + maxLat) / 2;
         const cLon = (minLon + maxLon) / 2;
-        const dLat = maxLat - minLat;
-        const dLon = maxLon - minLon;
-        const alt = Math.max(dLat, dLon) * 111000 * 1.5 + 50;
+
+        // Offset camera a nord-ovest rispetto al centro per una vista obliqua
+        // che mostra tutti gli alberi centrati nella scena
+        const offsetLat = 0.0012;
+        const offsetLon = -0.0014;
 
         viewer.camera.flyTo({
-            destination: Cesium.Cartesian3.fromDegrees(cLon, cLat, alt),
-            orientation: { heading: 0, pitch: Cesium.Math.toRadians(-60), roll: 0 },
+            destination: Cesium.Cartesian3.fromDegrees(cLon + offsetLon, cLat + offsetLat, 280),
+            orientation: {
+                heading: Cesium.Math.toRadians(135),
+                pitch: Cesium.Math.toRadians(-45),
+                roll: 0
+            },
             duration: 2.5
         });
     }
@@ -1398,18 +1454,18 @@
         renderStreetViewPointCloud();
     }
 
+    let svTargetLat = null, svTargetLon = null;
+
     function openStreetView() {
         // Usa le coordinate dell'albero selezionato o il centro di tutti
-        let targetLat, targetLon;
         if (selectedTreeId && treesData[selectedTreeId]) {
-            targetLat = treesData[selectedTreeId].lat;
-            targetLon = treesData[selectedTreeId].lon;
+            svTargetLat = treesData[selectedTreeId].lat;
+            svTargetLon = treesData[selectedTreeId].lon;
         } else {
-            // Centro di tutti
             let sumLat = 0, sumLon = 0, cnt = 0;
             for (const t of Object.values(treesData)) { sumLat += t.lat; sumLon += t.lon; cnt++; }
-            targetLat = sumLat / cnt;
-            targetLon = sumLon / cnt;
+            svTargetLat = sumLat / cnt;
+            svTargetLon = sumLon / cnt;
         }
 
         const popup = document.getElementById('streetViewPopup');
@@ -1423,89 +1479,80 @@
         svCanvas = document.getElementById('streetViewCanvas');
         svCtx = svCanvas.getContext('2d');
 
-        if (streetViewPanorama) {
-            // Reset posizione
+        if (!streetViewPanorama) {
+            // Prima inizializzazione
+            const container = document.getElementById('streetViewContainer');
+            const svService = new google.maps.StreetViewService();
+
+            svService.getPanorama({
+                location: { lat: svTargetLat, lng: svTargetLon },
+                radius: 50,
+                preference: google.maps.StreetViewPreference.NEAREST
+            }, (data, status) => {
+                if (status === google.maps.StreetViewStatus.OK) {
+                    const panoLocation = data.location.latLng;
+                    const panoPos = { lat: panoLocation.lat(), lng: panoLocation.lng() };
+
+                    const headingToTree = calculateHeadingToTree(panoPos.lat, panoPos.lng, svTargetLat, svTargetLon);
+                    const distance = calculateDistance(panoPos.lat, panoPos.lng, svTargetLat, svTargetLon);
+                    document.getElementById('svDistance').textContent = distance.toFixed(1);
+
+                    svPointsLocal = convertAllPointsToLocalENU(panoPos.lat, panoPos.lng, 1.6);
+
+                    streetViewPanorama = new google.maps.StreetViewPanorama(container, {
+                        pano: data.location.pano,
+                        pov: { heading: headingToTree, pitch: 10 },
+                        zoom: 1,
+                        addressControl: true, linksControl: true, panControl: true,
+                        enableCloseButton: false, fullscreenControl: true,
+                        motionTracking: false, motionTrackingControl: false
+                    });
+
+                    streetViewPanorama.addListener('pov_changed', renderStreetViewPointCloud);
+                    streetViewPanorama.addListener('zoom_changed', renderStreetViewPointCloud);
+                    streetViewPanorama.addListener('position_changed', () => {
+                        const pos = streetViewPanorama.getPosition();
+                        const newPos = { lat: pos.lat(), lng: pos.lng() };
+                        svPointsLocal = convertAllPointsToLocalENU(newPos.lat, newPos.lng, 1.6);
+
+                        const dist = calculateDistance(newPos.lat, newPos.lng, svTargetLat, svTargetLon);
+                        document.getElementById('svDistance').textContent = dist.toFixed(1);
+                        renderStreetViewPointCloud();
+                    });
+
+                    setTimeout(() => resizeStreetViewCanvas(), 500);
+                } else {
+                    console.error('Street View non disponibile:', status);
+                    alert('Street View non disponibile in questa posizione');
+                }
+            });
+        } else {
+            // Panorama già inizializzato: aggiorna posizione verso il nuovo albero
             const svService = new google.maps.StreetViewService();
             svService.getPanorama({
-                location: { lat: targetLat, lng: targetLon },
-                radius: 200,
-                source: google.maps.StreetViewSource.OUTDOOR,
+                location: { lat: svTargetLat, lng: svTargetLon },
+                radius: 50,
                 preference: google.maps.StreetViewPreference.NEAREST
             }, (data, status) => {
                 if (status === google.maps.StreetViewStatus.OK) {
                     streetViewPanorama.setPano(data.location.pano);
                     const headingToTree = calculateHeadingToTree(
                         data.location.latLng.lat(), data.location.latLng.lng(),
-                        targetLat, targetLon
+                        svTargetLat, svTargetLon
                     );
                     streetViewPanorama.setPov({ heading: headingToTree, pitch: 10 });
 
                     const panoPos = { lat: data.location.latLng.lat(), lng: data.location.latLng.lng() };
                     svPointsLocal = convertAllPointsToLocalENU(panoPos.lat, panoPos.lng, 1.6);
-                    const dist = calculateDistance(panoPos.lat, panoPos.lng, targetLat, targetLon);
+                    const dist = calculateDistance(panoPos.lat, panoPos.lng, svTargetLat, svTargetLon);
                     document.getElementById('svDistance').textContent = dist.toFixed(1);
                 }
             });
             setTimeout(() => {
                 google.maps.event.trigger(streetViewPanorama, 'resize');
                 resizeStreetViewCanvas();
-            }, 300);
-            return;
+            }, 100);
         }
-
-        const container = document.getElementById('streetViewContainer');
-        const svService = new google.maps.StreetViewService();
-
-        svService.getPanorama({
-            location: { lat: targetLat, lng: targetLon },
-            radius: 200,
-            source: google.maps.StreetViewSource.OUTDOOR,
-            preference: google.maps.StreetViewPreference.NEAREST
-        }, (data, status) => {
-            if (status === google.maps.StreetViewStatus.OK) {
-                const panoLocation = data.location.latLng;
-                const panoPos = { lat: panoLocation.lat(), lng: panoLocation.lng() };
-
-                const headingToTree = calculateHeadingToTree(panoPos.lat, panoPos.lng, targetLat, targetLon);
-                const distance = calculateDistance(panoPos.lat, panoPos.lng, targetLat, targetLon);
-                document.getElementById('svDistance').textContent = distance.toFixed(1);
-
-                svPointsLocal = convertAllPointsToLocalENU(panoPos.lat, panoPos.lng, 1.6);
-
-                streetViewPanorama = new google.maps.StreetViewPanorama(container, {
-                    pano: data.location.pano,
-                    pov: { heading: headingToTree, pitch: 10 },
-                    zoom: 1,
-                    addressControl: true, linksControl: true, panControl: true,
-                    enableCloseButton: false, fullscreenControl: true,
-                    motionTracking: false, motionTrackingControl: false
-                });
-
-                streetViewPanorama.addListener('pov_changed', renderStreetViewPointCloud);
-                streetViewPanorama.addListener('zoom_changed', renderStreetViewPointCloud);
-                streetViewPanorama.addListener('position_changed', () => {
-                    const pos = streetViewPanorama.getPosition();
-                    const newPos = { lat: pos.lat(), lng: pos.lng() };
-                    svPointsLocal = convertAllPointsToLocalENU(newPos.lat, newPos.lng, 1.6);
-
-                    const dist = calculateDistance(newPos.lat, newPos.lng, targetLat, targetLon);
-                    document.getElementById('svDistance').textContent = dist.toFixed(1);
-                    renderStreetViewPointCloud();
-                });
-
-                // Trigger resize dopo che il panorama è pronto
-                setTimeout(() => {
-                    google.maps.event.trigger(streetViewPanorama, 'resize');
-                    resizeStreetViewCanvas();
-                }, 500);
-                setTimeout(() => {
-                    google.maps.event.trigger(streetViewPanorama, 'resize');
-                    resizeStreetViewCanvas();
-                }, 1500);
-            } else {
-                alert('Street View non disponibile in questa posizione');
-            }
-        });
     }
 
     function closeStreetView() {
