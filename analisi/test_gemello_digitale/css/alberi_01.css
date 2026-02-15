@@ -216,6 +216,73 @@
         .leaflet-top.leaflet-right { z-index: 1000; transition: right 0.3s ease; right: 0; }
         #viewerArea.sidebar-open .leaflet-top.leaflet-right { right: var(--sidebar-width); }
 
+        /* Green styled Leaflet zoom controls */
+        .leaflet-control-zoom a,
+        .leaflet-control-custom-btn {
+            background: #4caf507d!important;
+            color: var(--green-primary) !important;
+            border: 1px solid #fff !important;
+            font-size: 20px !important;
+            font-weight: 700 !important;
+            width: 36px !important;
+            height: 36px !important;
+            line-height: 32px !important;
+            text-align: center;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s;
+        }
+        .leaflet-control-zoom a:hover,
+        .leaflet-control-custom-btn:hover {
+            background: var(--green-primary) !important;
+            color: #fff !important;
+        }
+        .leaflet-control-zoom { border: none !important; border-radius: 8px !important; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important; }
+        .leaflet-control-zoom a:first-child { border-radius: 8px 8px 0 0 !important; border-bottom: 1px solid rgba(46,125,50,0.3) !important; }
+        .leaflet-control-zoom a:last-child { border-radius: 0 0 8px 8px !important; }
+
+        /* Custom map control buttons (Home, Fullscreen) */
+        .leaflet-control-custom {
+            border: none !important;
+            border-radius: 8px !important;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2) !important;
+        }
+        .leaflet-control-custom .leaflet-control-custom-btn {
+            cursor: pointer;
+            border-radius: 8px !important;
+        }
+        .leaflet-control-custom .leaflet-control-custom-btn .material-icons-round {
+            font-size: 20px;
+            line-height: 1;
+        }
+		
+		
+				.leaflet-touch .leaflet-control-layers-toggle {
+    width: 36px!important;
+    height: 36px!important;
+	border: 1px solid #fff !important;
+	background-color: #4caf507d!important;
+	border-radius: 8px !important;
+}
+.leaflet-touch .leaflet-control-layers, .leaflet-touch .leaflet-bar {
+     border: 0px solid rgba(0, 0, 0, 0.2)!important;
+    background-clip: padding-box;
+}
+        /* Fullscreen mode */
+        #viewerArea.map-fullscreen {
+            position: fixed !important;
+            top: 0; left: 0; right: 0; bottom: 0;
+            width: 100% !important; height: 100% !important;
+            z-index: 9999;
+        }
+        #viewerArea.map-fullscreen #viewerBadge,
+        #viewerArea.map-fullscreen #treeBadge,
+        #viewerArea.map-fullscreen #viewerControls,
+        #viewerArea.map-fullscreen .canopy-legend { z-index: 10000; }
+        #viewerArea.map-fullscreen .leaflet-top.leaflet-right { z-index: 10000; }
+
         /* Generic Popup (shared by Street View and Point Cloud viewer) */
         .fullscreen-popup {
             position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
@@ -437,3 +504,21 @@
         .canopy-legend h4 { color: var(--text-primary); font-size: 12px; margin-bottom: 8px; font-weight: 600; }
         .legend-item { display: flex; align-items: center; gap: 8px; margin: 4px 0; }
         .legend-circle { border-radius: 50%; border: 2px solid rgba(76,175,80,0.7); background: rgba(76,175,80,0.25); flex-shrink: 0; }
+
+        /* DEMO Stamp */
+        .demo-stamp {
+            position: fixed;
+            top: 110px;
+            le: 0;
+            background: #ff9800;
+            color: white;
+            padding: 5px 15px;
+            font-weight: bold;
+            z-index: 10000;
+            border-bottom-left-radius: 0px;
+			border-bottom-right-radius: 8px;
+			border-top-right-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        }
+		
+		
