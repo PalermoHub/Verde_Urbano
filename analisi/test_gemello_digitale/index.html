@@ -4,339 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gemello Digitale - Verde Urbano Palermo</title>
-    <script src="https://cesium.com/downloads/cesiumjs/releases/1.124/Build/Cesium/Cesium.js"></script>
-    <link href="https://cesium.com/downloads/cesiumjs/releases/1.124/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+    <link rel="icon" href="img/favicon.png">
+	<link rel="stylesheet" href="css/alberi_01.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-hash@0.2.1/leaflet-hash.js"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDU1ZlYSq1yXtydeNTW5K-AroyUh-PPXXU"></script>
-    <style>
-        :root {
-            --sidebar-width: 400px;
-            --green-primary: #2E7D32;
-            --green-light: #4CAF50;
-            --green-dark: #1B5E20;
-            --bg-dark: #1a1d23;
-            --bg-card: #22262e;
-            --bg-section: #282c34;
-            --text-primary: #e8eaed;
-            --text-secondary: #9aa0a6;
-            --text-muted: #6b7280;
-            --border-color: rgba(255,255,255,0.06);
-            --score-green: #4CAF50;
-            --score-yellow: #FFC107;
-            --score-orange: #FF9800;
-            --score-red: #f44336;
-        }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        html, body { width: 100%; height: 100%; overflow: hidden; font-family: 'Inter', 'Segoe UI', Arial, sans-serif; background: var(--bg-dark); }
-
-        #appContainer { display: flex; width: 100%; height: 100%; }
-
-        /* 3D Viewer Area */
-        #viewerArea { flex: 1; position: relative; height: 100%; min-width: 0; }
-        #cesiumContainer { width: 100%; height: 100%; }
-
-        /* Viewer overlay controls */
-        #viewerControls {
-            position: absolute; bottom: 16px; left: 16px; right: 16px;
-            display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
-            z-index: 100;
-        }
-        .ctrl-group {
-            background: rgba(26, 29, 35, 0.92); backdrop-filter: blur(12px);
-            border: 1px solid var(--border-color); border-radius: 10px;
-            padding: 8px 12px; display: flex; align-items: center; gap: 8px;
-        }
-        .ctrl-btn {
-            background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color);
-            padding: 6px 14px; border-radius: 7px; cursor: pointer; font-size: 12px;
-            font-family: inherit; transition: all 0.15s; display: flex; align-items: center; gap: 5px;
-        }
-        .ctrl-btn:hover { background: #333842; border-color: rgba(255,255,255,0.12); }
-        .ctrl-btn.active { background: var(--green-primary); border-color: var(--green-light); color: white; }
-        .ctrl-btn.warn { background: #7f5a00; border-color: #b8860b; }
-        .ctrl-btn.warn.active { background: #b8860b; border-color: #daa520; }
-        .ctrl-btn .material-icons-round { font-size: 16px; }
-        .ctrl-label { color: var(--text-secondary); font-size: 11px; white-space: nowrap; }
-        .ctrl-range { width: 70px; accent-color: var(--green-light); cursor: pointer; }
-
-        /* Viewer info badge */
-        #viewerBadge {
-            position: absolute; top: 16px; left: 16px;
-            background: rgba(26, 29, 35, 0.92); backdrop-filter: blur(12px);
-            border: 1px solid var(--border-color); border-radius: 10px;
-            padding: 10px 16px; z-index: 100; display: flex; align-items: center; gap: 10px;
-        }
-        #viewerBadge .tree-icon {
-            width: 36px; height: 36px; background: var(--green-primary); border-radius: 8px;
-            display: flex; align-items: center; justify-content: center;
-        }
-        #viewerBadge .tree-icon .material-icons-round { color: white; font-size: 22px; }
-        #viewerBadge .badge-text h3 { color: var(--text-primary); font-size: 13px; font-weight: 600; }
-        #viewerBadge .badge-text span { color: var(--text-secondary); font-size: 11px; }
-
-        /* Point count badge */
-        #pointBadge {
-            position: absolute; top: 16px; right: 16px;
-            background: rgba(26, 29, 35, 0.92); backdrop-filter: blur(12px);
-            border: 1px solid var(--border-color); border-radius: 10px;
-            padding: 8px 14px; z-index: 100; font-size: 11px; color: var(--text-secondary);
-            transition: right 0.3s;
-        }
-        #pointBadge.sidebar-open { right: calc(var(--sidebar-width) + 16px); }
-        #pointBadge strong { color: var(--green-light); }
-
-        /* Tree counter badge */
-        #treeBadge {
-            position: absolute; top: 60px; left: 16px;
-            background: rgba(26, 29, 35, 0.92); backdrop-filter: blur(12px);
-            border: 1px solid var(--border-color); border-radius: 10px;
-            padding: 8px 14px; z-index: 100; font-size: 11px; color: var(--text-secondary);
-        }
-        #treeBadge strong { color: var(--green-light); }
-
-        /* ==========================================
-           SIDEBAR
-           ========================================== */
-        #sidebar {
-            width: var(--sidebar-width); height: 100%; background: var(--bg-dark);
-            border-left: 1px solid var(--border-color); overflow-y: auto; overflow-x: hidden;
-            scrollbar-width: thin; scrollbar-color: #444 transparent;
-            transform: translateX(100%); transition: transform 0.3s ease;
-            position: absolute; right: 0; top: 0; z-index: 200;
-        }
-        #sidebar.open { transform: translateX(0); }
-        #sidebar::-webkit-scrollbar { width: 5px; }
-        #sidebar::-webkit-scrollbar-thumb { background: #444; border-radius: 3px; }
-
-        /* Close button */
-        .sidebar-close {
-            position: absolute; top: 12px; right: 12px; z-index: 10;
-            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-            color: white; width: 28px; height: 28px; border-radius: 6px;
-            cursor: pointer; display: flex; align-items: center; justify-content: center;
-        }
-        .sidebar-close:hover { background: rgba(255,255,255,0.2); }
-        .sidebar-close .material-icons-round { font-size: 18px; }
-
-        /* Sidebar header */
-        .sidebar-header {
-            padding: 20px 20px 16px; border-bottom: 1px solid var(--border-color);
-            background: linear-gradient(135deg, var(--green-dark) 0%, var(--bg-dark) 100%);
-            position: relative;
-        }
-        .sidebar-header .species-name {
-            font-size: 20px; font-weight: 700; color: white;
-            font-style: italic; margin-bottom: 2px;
-        }
-        .sidebar-header .species-author { font-size: 12px; color: var(--text-secondary); font-style: normal; }
-        .sidebar-header .tree-id { font-size: 11px; color: var(--green-light); margin-top: 6px; font-weight: 500; }
-        .sidebar-header .location {
-            font-size: 12px; color: var(--text-secondary); margin-top: 4px;
-            display: flex; align-items: center; gap: 4px;
-        }
-        .sidebar-header .location .material-icons-round { font-size: 14px; color: var(--green-light); }
-
-        /* Score badges row */
-        .scores-row {
-            display: flex; gap: 8px; padding: 14px 20px;
-            border-bottom: 1px solid var(--border-color); background: var(--bg-card);
-        }
-        .score-badge {
-            flex: 1; text-align: center; padding: 10px 6px; border-radius: 10px;
-            background: var(--bg-section); border: 1px solid var(--border-color);
-        }
-        .score-badge .score-value {
-            font-size: 22px; font-weight: 700; display: block; margin-bottom: 2px;
-        }
-        .score-badge .score-label { font-size: 10px; color: var(--text-secondary); text-transform: uppercase; letter-spacing: 0.3px; }
-        .score-1 .score-value { color: var(--score-green); }
-        .score-2 .score-value { color: #8BC34A; }
-        .score-3 .score-value { color: var(--score-yellow); }
-        .score-4 .score-value { color: var(--score-orange); }
-        .score-5 .score-value { color: var(--score-red); }
-
-        /* Collapsible sections */
-        .section { border-bottom: 1px solid var(--border-color); }
-        .section-header {
-            padding: 12px 20px; cursor: pointer; display: flex; align-items: center; gap: 10px;
-            transition: background 0.15s; user-select: none;
-        }
-        .section-header:hover { background: rgba(255,255,255,0.03); }
-        .section-header .section-icon {
-            width: 30px; height: 30px; border-radius: 8px;
-            display: flex; align-items: center; justify-content: center; flex-shrink: 0;
-        }
-        .section-header .section-icon .material-icons-round { font-size: 18px; color: white; }
-        .section-header .section-title { flex: 1; font-size: 13px; font-weight: 600; color: var(--text-primary); }
-        .section-header .section-arrow {
-            color: var(--text-muted); font-size: 18px; transition: transform 0.25s;
-        }
-        .section.open .section-arrow { transform: rotate(180deg); }
-        .section-body { display: none; padding: 0 20px 14px; }
-        .section.open .section-body { display: block; }
-
-        /* Data rows */
-        .data-row {
-            display: flex; justify-content: space-between; align-items: center;
-            padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.03);
-        }
-        .data-row:last-child { border-bottom: none; }
-        .data-label { color: var(--text-secondary); font-size: 12px; }
-        .data-value { color: var(--text-primary); font-size: 12px; font-weight: 500; text-align: right; }
-        .data-value.green { color: var(--score-green); }
-        .data-value.yellow { color: var(--score-yellow); }
-        .data-value.red { color: var(--score-red); }
-
-        /* Tag styles */
-        .tag {
-            display: inline-block; padding: 2px 8px; border-radius: 4px;
-            font-size: 10px; font-weight: 600; text-transform: uppercase;
-        }
-        .tag-green { background: rgba(76,175,80,0.15); color: var(--score-green); }
-        .tag-yellow { background: rgba(255,193,7,0.15); color: var(--score-yellow); }
-        .tag-red { background: rgba(244,67,54,0.15); color: var(--score-red); }
-        .tag-blue { background: rgba(33,150,243,0.15); color: #42A5F5; }
-
-        /* Subsection */
-        .subsection-title {
-            font-size: 11px; color: var(--green-light); font-weight: 600;
-            text-transform: uppercase; letter-spacing: 0.5px; margin: 10px 0 6px; padding-top: 8px;
-            border-top: 1px solid rgba(255,255,255,0.04);
-        }
-        .subsection-title:first-child { border-top: none; margin-top: 4px; padding-top: 0; }
-
-        /* Icon colors for sections */
-        .icon-green { background: rgba(76,175,80,0.2); }
-        .icon-blue { background: rgba(33,150,243,0.2); }
-        .icon-orange { background: rgba(255,152,0,0.2); }
-        .icon-red { background: rgba(244,67,54,0.2); }
-        .icon-purple { background: rgba(156,39,176,0.2); }
-        .icon-teal { background: rgba(0,150,136,0.2); }
-        .icon-amber { background: rgba(255,193,7,0.2); }
-        .icon-indigo { background: rgba(63,81,181,0.2); }
-
-        /* Outlier indicators */
-        .outlier-row { display: flex; align-items: center; gap: 8px; padding: 4px 0; }
-        .outlier-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
-        .outlier-dot.ok { background: var(--score-green); }
-        .outlier-dot.warn { background: var(--score-red); }
-        .outlier-text { font-size: 11px; color: var(--text-secondary); }
-
-        /* Navigation buttons */
-        .nav-row {
-            display: flex; gap: 8px; padding: 0 16px 12px; align-items: center;
-        }
-        .nav-btn {
-            flex: 1; display: flex; align-items: center; justify-content: center; gap: 6px;
-            padding: 9px 10px; border-radius: 8px; cursor: pointer;
-            background: var(--bg-section); border: 1px solid var(--border-color);
-            color: var(--text-secondary); font-size: 12px; font-family: inherit; font-weight: 500;
-            transition: all 0.2s;
-        }
-        .nav-btn:hover { background: var(--green-primary); color: white; border-color: var(--green-primary); }
-        .nav-btn .material-icons-round { font-size: 18px; }
-        .nav-counter {
-            font-size: 11px; color: var(--text-muted); white-space: nowrap;
-            text-align: center; min-width: 60px;
-        }
-        .nav-counter strong { color: var(--green-light); }
-
-        /* Loading overlay */
-        #status {
-            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            background: rgba(26, 29, 35, 0.97); color: var(--green-light); padding: 28px 48px;
-            border-radius: 14px; z-index: 5000; font-size: 14px; text-align: center;
-            border: 1px solid rgba(76,175,80,0.15);
-            display: flex; flex-direction: column; align-items: center; gap: 12px;
-            box-shadow: 0 8px 32px rgba(0,0,0,0.6);
-        }
-        .spinner { border: 3px solid rgba(255,255,255,0.08); border-top: 3px solid var(--green-light); border-radius: 50%; width: 30px; height: 30px; animation: spin 0.8s linear infinite; }
-        @keyframes spin { to { transform: rotate(360deg); } }
-
-        /* Progress bar */
-        #loadProgress {
-            width: 200px; height: 4px; background: rgba(255,255,255,0.1); border-radius: 2px; margin-top: 8px; overflow: hidden;
-        }
-        #loadProgressBar { height: 100%; background: var(--green-light); border-radius: 2px; width: 0%; transition: width 0.3s; }
-
-        /* Responsive */
-        @media (max-width: 900px) { :root { --sidebar-width: 320px; } }
-        @media (max-width: 700px) {
-            #appContainer { flex-direction: column; }
-            #sidebar { width: 100%; height: 50%; border-left: none; border-top: 1px solid var(--border-color); }
-            #viewerArea { height: 50%; }
-        }
-
-        /* Hide Cesium credits/logos */
-        .cesium-viewer-bottom, .cesium-viewer-toolbar { display: none !important; }
-
-        /* Street View Popup */
-        #streetViewPopup {
-            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            width: 90%; max-width: 1000px; height: 80%; max-height: 700px;
-            background: var(--bg-card); border: 2px solid var(--green-primary); border-radius: 16px;
-            z-index: 10000; display: none; flex-direction: column;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.8); overflow: hidden;
-        }
-        #streetViewPopup.active { display: flex; }
-        .popup-header {
-            background: linear-gradient(135deg, var(--green-dark) 0%, var(--green-primary) 100%);
-            padding: 16px 20px; display: flex; align-items: center; justify-content: space-between;
-            border-bottom: 1px solid var(--border-color);
-        }
-        .popup-header h3 { color: white; font-size: 16px; font-weight: 600; display: flex; align-items: center; gap: 10px; }
-        .popup-header .material-icons-round { font-size: 24px; }
-        .popup-close {
-            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-            color: white; width: 32px; height: 32px; border-radius: 8px; cursor: pointer;
-            display: flex; align-items: center; justify-content: center; transition: all 0.2s;
-        }
-        .popup-close:hover { background: rgba(255,255,255,0.2); transform: scale(1.05); }
-        .popup-close .material-icons-round { font-size: 20px; }
-        #streetViewContainer { flex: 1; width: 100%; position: relative; }
-        #streetViewCanvas { position: absolute; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 10; }
-        .sv-info {
-            position: absolute; bottom: 10px; left: 10px;
-            background: rgba(26, 29, 35, 0.85); backdrop-filter: blur(8px);
-            padding: 8px 12px; border-radius: 8px; font-size: 11px; color: var(--text-secondary);
-            z-index: 15; border: 1px solid var(--border-color);
-        }
-        .sv-info strong { color: var(--green-light); }
-        .sv-controls {
-            position: absolute; bottom: 10px; right: 10px;
-            background: rgba(26, 29, 35, 0.92); backdrop-filter: blur(12px);
-            padding: 10px 14px; border-radius: 10px; z-index: 15;
-            border: 1px solid var(--border-color); display: flex; align-items: center; gap: 12px;
-        }
-        .sv-controls .sv-ctrl-group { display: flex; align-items: center; gap: 6px; }
-        .sv-controls .sv-ctrl-label { color: var(--text-secondary); font-size: 11px; white-space: nowrap; }
-        .sv-controls .sv-ctrl-btn {
-            background: var(--bg-card); color: var(--text-primary); border: 1px solid var(--border-color);
-            padding: 5px 10px; border-radius: 6px; cursor: pointer; font-size: 11px;
-            font-family: inherit; transition: all 0.15s; display: flex; align-items: center; gap: 4px;
-        }
-        .sv-controls .sv-ctrl-btn:hover { background: #333842; border-color: rgba(255,255,255,0.12); }
-        .sv-controls .sv-ctrl-btn.active { background: var(--green-primary); border-color: var(--green-light); color: white; }
-        .sv-controls .sv-ctrl-btn .material-icons-round { font-size: 14px; }
-        .sv-controls .sv-ctrl-range { width: 60px; accent-color: var(--green-light); cursor: pointer; }
-        #streetViewOverlay {
-            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.7); backdrop-filter: blur(4px); z-index: 9999; display: none;
-        }
-        #streetViewOverlay.active { display: block; }
-    </style>
+	
 </head>
 <body>
     <div id="appContainer">
-        <!-- 3D Viewer -->
+        <!-- Map Area -->
         <div id="viewerArea">
-            <div id="cesiumContainer"></div>
+            <div id="mapContainer"></div>
 
             <div id="viewerBadge">
                 <div class="tree-icon"><span class="material-icons-round">park</span></div>
                 <div class="badge-text">
-                    <h3 id="badgeTitle">Gemello Digitale - Verde Urbano</h3>
+                    <h3 id="badgeTitle">Palermo 2026 - Gemello Digitale - Verde Urbano</h3>
                     <span id="badgeSubtitle">Seleziona un albero dalla mappa</span>
                 </div>
             </div>
@@ -346,42 +33,31 @@
                 Alberi: <strong id="treeCount">0</strong>
             </div>
 
-            <div id="pointBadge">
-                <span class="material-icons-round" style="font-size:13px;vertical-align:middle;margin-right:3px;">scatter_plot</span>
-                Punti: <strong id="treePointCount">-</strong>
+            <!-- Canopy Legend -->
+            <div class="canopy-legend">
+                <h4>Diametro Chioma</h4>
+                <div class="legend-item"><div class="legend-circle" style="width:10px;height:10px;"></div> &lt; 3 m</div>
+                <div class="legend-item"><div class="legend-circle" style="width:16px;height:16px;"></div> 3 - 6 m</div>
+                <div class="legend-item"><div class="legend-circle" style="width:22px;height:22px;"></div> 6 - 10 m</div>
+                <div class="legend-item"><div class="legend-circle" style="width:28px;height:28px;"></div> &gt; 10 m</div>
             </div>
 
             <div id="viewerControls">
                 <div class="ctrl-group">
-                    <span class="ctrl-label">Dim. punti</span>
-                    <input type="range" class="ctrl-range" id="pointSizeSlider" min="1" max="12" step="0.5" value="3">
-                </div>
-                <div class="ctrl-group">
-                    <button class="ctrl-btn" id="btnTree" title="Mostra/Nascondi nuvola selezionata" onclick="toggleTree()">
+                    <button class="ctrl-btn" id="btnTree" title="Mostra nuvola di punti dell'albero selezionato" onclick="openPointCloudViewer()">
                         <span class="material-icons-round">park</span> Albero
-                    </button>
-                    <button class="ctrl-btn active" id="btn3d" title="Attiva/Disattiva Google Earth" onclick="toggle3DTiles()">
-                        <span class="material-icons-round">public</span> Google 3D
-                    </button>
-                    <button class="ctrl-btn" id="btnAllTrees" title="Carica tutte le nuvole di punti" onclick="loadAllPointClouds()">
-                        <span class="material-icons-round">forest</span> Mostra Tutti
-                    </button>
-                </div>
-                <div class="ctrl-group">
-                    <button class="ctrl-btn" id="btnFlyCenter" onclick="flyToSelected()">
-                        <span class="material-icons-round">center_focus_strong</span> Centra
-                    </button>
-                    <button class="ctrl-btn" onclick="flyOverview()">
-                        <span class="material-icons-round">flight</span> Panoramica
                     </button>
                     <button class="ctrl-btn" id="btnStreetView" onclick="openStreetView()">
                         <span class="material-icons-round">streetview</span> Street View
+                    </button>
+                    <button class="ctrl-btn" id="btn3dView" onclick="open3dView()">
+                        <span class="material-icons-round">view_in_ar</span> Vista 3D
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Sidebar (hidden by default, shown on tree click) -->
+        <!-- Sidebar -->
         <div id="sidebar">
             <button class="sidebar-close" onclick="closeSidebar()">
                 <span class="material-icons-round">close</span>
@@ -392,9 +68,11 @@
 
     <div id="status"><div class="spinner"></div><div id="statusText">Inizializzazione...</div><div id="loadProgress"><div id="loadProgressBar"></div></div></div>
 
+    <!-- Shared overlay -->
+    <div id="popupOverlay" onclick="closeAllPopups()"></div>
+
     <!-- Street View Popup -->
-    <div id="streetViewOverlay" onclick="closeStreetView()"></div>
-    <div id="streetViewPopup">
+    <div id="streetViewPopup" class="fullscreen-popup">
         <div class="popup-header">
             <h3>
                 <span class="material-icons-round">streetview</span>
@@ -419,8 +97,99 @@
                 </div>
                 <div class="sv-ctrl-group">
                     <span class="sv-ctrl-label">Dim.</span>
-                    <input type="range" class="sv-ctrl-range" id="svPointSizeSlider" min="1" max="8" step="0.5" value="3">
+                    <input type="range" class="sv-ctrl-range" id="svPointSizeSlider" min="1" max="8" step="0.5" value="1">
                 </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Point Cloud 3D Viewer Popup -->
+    <div id="pointCloudPopup" class="fullscreen-popup">
+        <div class="popup-header">
+            <h3>
+                <span class="material-icons-round">park</span>
+                <span id="pcTitle">Nuvola di Punti</span>
+            </h3>
+            <button class="popup-close" onclick="closePointCloudViewer()">
+                <span class="material-icons-round">close</span>
+            </button>
+        </div>
+        <div class="popup-body">
+            <canvas id="pcViewerCanvas"></canvas>
+            <canvas id="pcDimCanvas" class="pc-dimensions-overlay"></canvas>
+            <div class="pc-info">
+                <span class="material-icons-round" style="font-size:12px;vertical-align:middle;">scatter_plot</span>
+                Punti: <strong id="pcPointCount">-</strong> |
+                Altezza: <strong id="pcTreeHeight">-</strong>
+            </div>
+            <div class="pc-controls">
+                <span class="ctrl-label">Dim. punti</span>
+                <input type="range" class="ctrl-range" id="pcPointSizeSlider" min="1" max="12" step="0.5" value="1">
+            </div>
+            <!-- Dimension annotations panel -->
+            <div class="pc-dim-panel" id="pcDimPanel">
+                <div class="pc-dim-panel-title">
+                    <span class="material-icons-round">straighten</span> Dimensioni
+                    <button class="dim-toggle-all active" id="dimToggleAll" onclick="toggleAllDimLayers()" title="Attiva/Disattiva tutte">
+                        <span class="material-icons-round">visibility</span>
+                    </button>
+                </div>
+                <!-- Altezza totale -->
+                <div class="pc-dim-section">
+                    <div class="pc-dim-section-header" onclick="toggleDimLayer('height')">
+                        <span class="pc-dim-indicator-color" style="background:#4CAF50;"></span>
+                        <span class="pc-dim-section-label">Altezza totale</span>
+                        <span class="material-icons-round pc-dim-eye active" id="dimEye_height">visibility</span>
+                    </div>
+                    <div class="pc-dim-row"><span class="pc-dim-label">Altezza totale</span><span class="pc-dim-value highlight" id="dimHeight">-</span></div>
+                    <div class="pc-dim-row"><span class="pc-dim-label">Altezza viva</span><span class="pc-dim-value" id="dimLiveHeight">-</span></div>
+                    <div class="pc-dim-row"><span class="pc-dim-label">Inclinazione</span><span class="pc-dim-value" id="dimLeanAngle">-</span></div>
+                </div>
+                <!-- Chioma altezza -->
+                <div class="pc-dim-section">
+                    <div class="pc-dim-section-header" onclick="toggleDimLayer('canopyHeight')">
+                        <span class="pc-dim-indicator-color" style="background:#42A5F5;"></span>
+                        <span class="pc-dim-section-label">Altezza chioma</span>
+                        <span class="material-icons-round pc-dim-eye active" id="dimEye_canopyHeight">visibility</span>
+                    </div>
+                    <div class="pc-dim-row"><span class="pc-dim-label">Altezza chioma</span><span class="pc-dim-value highlight" id="dimCanopyHeight">-</span></div>
+                    <div class="pc-dim-row"><span class="pc-dim-label">Base chioma</span><span class="pc-dim-value" id="dimCrownBase">-</span></div>
+                </div>
+                <!-- Chioma larghezza -->
+                <div class="pc-dim-section">
+                    <div class="pc-dim-section-header" onclick="toggleDimLayer('canopyWidth')">
+                        <span class="pc-dim-indicator-color" style="background:#42A5F5;"></span>
+                        <span class="pc-dim-section-label">Larghezza chioma</span>
+                        <span class="material-icons-round pc-dim-eye active" id="dimEye_canopyWidth">visibility</span>
+                    </div>
+                    <div class="pc-dim-row"><span class="pc-dim-label">Larghezza chioma</span><span class="pc-dim-value highlight" id="dimCanopyWidth">-</span></div>
+                    <div class="pc-dim-row"><span class="pc-dim-label">Volume chioma</span><span class="pc-dim-value" id="dimCrownVol">-</span></div>
+                </div>
+                <!-- Tronco -->
+                <div class="pc-dim-section">
+                    <div class="pc-dim-section-header" onclick="toggleDimLayer('trunk')">
+                        <span class="pc-dim-indicator-color" style="background:#FF9800;"></span>
+                        <span class="pc-dim-section-label">Tronco</span>
+                        <span class="material-icons-round pc-dim-eye active" id="dimEye_trunk">visibility</span>
+                    </div>
+                    <div class="pc-dim-row"><span class="pc-dim-label">Diametro</span><span class="pc-dim-value" id="dimTrunkDiam">-</span></div>
+                    <div class="pc-dim-row"><span class="pc-dim-label">Altezza tronco</span><span class="pc-dim-value" id="dimTrunkHeight">-</span></div>
+                </div>
+                <!-- Proiezione chioma -->
+                <div class="pc-dim-section">
+                    <div class="pc-dim-section-header" onclick="toggleDimLayer('groundProjection')">
+                        <span class="pc-dim-indicator-color" style="background:rgba(255,152,0,0.5);"></span>
+                        <span class="pc-dim-section-label">Proiezione chioma</span>
+                        <span class="material-icons-round pc-dim-eye active" id="dimEye_groundProjection">visibility</span>
+                    </div>
+                    <div class="pc-dim-row"><span class="pc-dim-label">Area proiezione</span><span class="pc-dim-value" id="dimCrownArea">-</span></div>
+                </div>
+            </div>
+            <!-- Toggle dimensions master button -->
+            <div class="pc-dim-toggle">
+                <button class="dim-btn active" id="pcDimToggleBtn" onclick="togglePcDimensions()">
+                    <span class="material-icons-round">straighten</span> Quote
+                </button>
             </div>
         </div>
     </div>
@@ -429,9 +198,6 @@
     // =============================================
     // CONFIGURAZIONE
     // =============================================
-    const DEFAULT_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyOWVjODVmZi1mZWViLTRlZWMtYjQ0NC1kMjk0ZGM5ZmI4MmEiLCJpZCI6MTc2ODkzLCJpYXQiOjE2OTk0NDc5MjJ9.8s6JtQbfKduNVLElEb1SYDDaLZ2UT0q4res8hdO2n7M';
-
-    // Lista degli ID alberi (letti dalla cartella point_cloud/tree/*.laz e dettagli_json/*.json)
     const TREE_IDS = [
         12026,12027,12028,12029,12030,12031,12032,12033,12034,12035,
         12036,12037,12038,12039,12040,12041,12042,12043,12044,12045,
@@ -442,23 +208,13 @@
         12464,12467,12473,12476,12479,12489,12501
     ];
 
-    // Z_OFFSET: differenza geoide->ellissoide per allineare con Google 3D Tiles
-    const Z_OFFSET = 0.57;
+    const WMS_URL = 'https://palermoverde.r3gis.com/author/services/ows.php?PROJECT=palermoverde&MAP=r3-trees';
 
     // State
-    let viewer = null;
-    let google3dTileset = null;
-    let tiles3dVisible = true;
-    let treeVisible = true;
-    let currentPointSize = 3.0;
-    let customProgram = null;
-
-    // Dati alberi: { id: { json, lat, lon, alt, utmE, utmN, entity, glBuffers, loaded } }
+    let map = null;
     let treesData = {};
     let selectedTreeId = null;
-    let allTreesGLBuffers = []; // Array di { glBuffers, alpha } per rendering multi-albero
-    let allTreesLoaded = false;
-    let allTreesVisible = false;
+    let treeMarkers = {}; // Leaflet circle markers
 
     // =============================================
     // UTILITY: Converti EPSG:3857 -> WGS84
@@ -471,20 +227,20 @@
     }
 
     // =============================================
-    // SIDEBAR - Collapsible sections
+    // SIDEBAR
     // =============================================
     function toggleSection(header) {
         header.parentElement.classList.toggle('open');
     }
-
     function openSidebar() {
         document.getElementById('sidebar').classList.add('open');
-        document.getElementById('pointBadge').classList.add('sidebar-open');
+        document.getElementById('viewerControls').classList.add('sidebar-open');
+        document.getElementById('viewerArea').classList.add('sidebar-open');
     }
-
     function closeSidebar() {
         document.getElementById('sidebar').classList.remove('open');
-        document.getElementById('pointBadge').classList.remove('sidebar-open');
+        document.getElementById('viewerControls').classList.remove('sidebar-open');
+        document.getElementById('viewerArea').classList.remove('sidebar-open');
     }
 
     // =============================================
@@ -502,8 +258,6 @@
         const os = d.outliersScore || '-';
 
         const fmt = (v, u, dec) => v != null ? (typeof v === 'number' ? v.toFixed(dec !== undefined ? dec : 2) : v) + (u || '') : '-';
-        const fmtG = (v) => v != null ? (v * 1000).toFixed(2) + ' g/anno' : '-';
-        const pct = (v) => v != null ? (v * 100).toFixed(2) + '%' : (typeof v === 'number' ? v.toFixed(2) + '%' : '-');
 
         const vigor = { high: 'Alto', medium: 'Medio', low: 'Basso' }[d.vitalityVigor] || d.vitalityVigor || '-';
         const vigorClass = d.vitalityVigor === 'high' ? 'tag-green' : d.vitalityVigor === 'medium' ? 'tag-yellow' : 'tag-red';
@@ -519,7 +273,6 @@
         const dateStr = d.recordingDate ? new Date(d.recordingDate).toLocaleDateString('it-IT') : '-';
         const updateStr = d.lastUpdatedAt ? new Date(d.lastUpdatedAt).toLocaleDateString('it-IT') : '-';
 
-        // Outliers
         const outliers = [
             { label: 'Altezza / Volume chioma', key: 'outlierHeightPerCrownVolume' },
             { label: 'Altezza / Area fogliare', key: 'outlierHeightPerLeafArea' },
@@ -693,153 +446,153 @@
     }
 
     // =============================================
-    // CUSTOM GL RENDERING INTO CESIUM'S CONTEXT
+    // CARICA TUTTI I JSON + CREA MARKER LEAFLET
     // =============================================
-    function initCustomShader(gl) {
-        const vsSource = `
-            attribute vec3 aPosition;
-            attribute vec3 aColor;
-            uniform mat4 uViewProjection;
-            uniform float uPointSize;
-            varying vec3 vColor;
-            void main() {
-                gl_Position = uViewProjection * vec4(aPosition, 1.0);
-                gl_PointSize = uPointSize;
-                vColor = aColor;
+    async function loadAllTreeJSON() {
+        showStatus('Caricamento dati alberi...');
+        let loaded = 0;
+
+        const promises = TREE_IDS.map(async (id) => {
+            try {
+                const resp = await fetch(`dettagli_json/${id}.json`);
+                if (!resp.ok) return;
+                const json = await resp.json();
+
+                const coords = json.location?.coordinates;
+                if (!coords) return;
+
+                const wgs = mercatorToWgs84(coords[0], coords[1]);
+                const utmCoords = json.localizedLocation?.coordinates || [0, 0, 0];
+
+                treesData[id] = {
+                    json,
+                    lat: wgs.lat,
+                    lon: wgs.lon,
+                    alt: coords[2] || 0,
+                    utmE: utmCoords[0],
+                    utmN: utmCoords[1],
+                    loaded: false,
+                    parsedData: null
+                };
+
+                loaded++;
+                const pct = Math.round((loaded / TREE_IDS.length) * 100);
+                document.getElementById('loadProgressBar').style.width = pct + '%';
+            } catch (e) {
+                console.warn(`Errore caricamento JSON ${id}:`, e);
             }
-        `;
-        const fsSource = `
-            precision mediump float;
-            varying vec3 vColor;
-            uniform float uAlpha;
-            void main() {
-                vec2 pc = gl_PointCoord - vec2(0.5);
-                if (dot(pc, pc) > 0.25) discard;
-                gl_FragColor = vec4(vColor, uAlpha);
-            }
-        `;
+        });
 
-        const vs = gl.createShader(gl.VERTEX_SHADER);
-        gl.shaderSource(vs, vsSource); gl.compileShader(vs);
-        if (!gl.getShaderParameter(vs, gl.COMPILE_STATUS)) { console.error('VS:', gl.getShaderInfoLog(vs)); return null; }
-
-        const fs = gl.createShader(gl.FRAGMENT_SHADER);
-        gl.shaderSource(fs, fsSource); gl.compileShader(fs);
-        if (!gl.getShaderParameter(fs, gl.COMPILE_STATUS)) { console.error('FS:', gl.getShaderInfoLog(fs)); return null; }
-
-        const prog = gl.createProgram();
-        gl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);
-        if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) { console.error('Link:', gl.getProgramInfoLog(prog)); return null; }
-
-        prog.aPosition = gl.getAttribLocation(prog, 'aPosition');
-        prog.aColor = gl.getAttribLocation(prog, 'aColor');
-        prog.uViewProjection = gl.getUniformLocation(prog, 'uViewProjection');
-        prog.uPointSize = gl.getUniformLocation(prog, 'uPointSize');
-        prog.uAlpha = gl.getUniformLocation(prog, 'uAlpha');
-        return prog;
-    }
-
-    function createGLBuffers(gl, ecefF64, colorsU8, count) {
-        const posBuffer = gl.createBuffer();
-        gl.bindBuffer(gl.ARRAY_BUFFER, posBuffer);
-        gl.bufferData(gl.ARRAY_BUFFER, count * 3 * 4, gl.DYNAMIC_DRAW);
-
-        const colBuffer = gl.createBuffer();
-        gl.bindBuffer(gl.ARRAY_BUFFER, colBuffer);
-        const colF32 = new Float32Array(count * 3);
-        for (let i = 0; i < count * 3; i++) colF32[i] = colorsU8[i] / 255.0;
-        gl.bufferData(gl.ARRAY_BUFFER, colF32, gl.STATIC_DRAW);
-
-        return { posBuffer, colBuffer, ecefF64, count };
-    }
-
-    function renderPointClouds() {
-        if (!viewer || !customProgram) return;
-
-        const scene = viewer.scene;
-        const gl = scene.context._gl;
-        if (!gl) return;
-
-        const datasets = [];
-
-        // Nuvole "mostra tutti"
-        if (allTreesVisible) {
-            for (const entry of allTreesGLBuffers) {
-                if (entry.glBuffers) datasets.push({ buf: entry.glBuffers, alpha: 0.85 });
-            }
-        }
-
-        // Albero selezionato (sopra a tutti)
-        if (selectedTreeId && treesData[selectedTreeId]?.glBuffers && treeVisible) {
-            datasets.push({ buf: treesData[selectedTreeId].glBuffers, alpha: 1.0 });
-        }
-
-        if (datasets.length === 0) return;
-
-        const prevProgram = gl.getParameter(gl.CURRENT_PROGRAM);
-        const prevDepthTest = gl.isEnabled(gl.DEPTH_TEST);
-        const prevDepthMask = gl.getParameter(gl.DEPTH_WRITEMASK);
-        const prevBlend = gl.isEnabled(gl.BLEND);
-        const prevBlendSrc = gl.getParameter(gl.BLEND_SRC_RGB);
-        const prevBlendDst = gl.getParameter(gl.BLEND_DST_RGB);
-
-        gl.useProgram(customProgram);
-        gl.disable(gl.DEPTH_TEST);
-        gl.depthMask(false);
-        gl.enable(gl.BLEND);
-        gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
-
-        const camera = viewer.camera;
-        const camPos = camera.positionWC;
-        const viewMatrix = camera.viewMatrix;
-        const projMatrix = camera.frustum.projectionMatrix;
-
-        const viewRot = new Cesium.Matrix4();
-        viewRot[0]=viewMatrix[0]; viewRot[1]=viewMatrix[1]; viewRot[2]=viewMatrix[2]; viewRot[3]=0;
-        viewRot[4]=viewMatrix[4]; viewRot[5]=viewMatrix[5]; viewRot[6]=viewMatrix[6]; viewRot[7]=0;
-        viewRot[8]=viewMatrix[8]; viewRot[9]=viewMatrix[9]; viewRot[10]=viewMatrix[10]; viewRot[11]=0;
-        viewRot[12]=0; viewRot[13]=0; viewRot[14]=0; viewRot[15]=1;
-
-        const vpRel = Cesium.Matrix4.multiply(projMatrix, viewRot, new Cesium.Matrix4());
-        const vpArray = new Float32Array(16);
-        Cesium.Matrix4.toArray(vpRel, vpArray);
-
-        gl.uniformMatrix4fv(customProgram.uViewProjection, false, vpArray);
-        gl.uniform1f(customProgram.uPointSize, currentPointSize);
-
-        for (const ds of datasets) {
-            const buf = ds.buf;
-            const relPos = new Float32Array(buf.count * 3);
-            for (let i = 0; i < buf.count; i++) {
-                relPos[i*3]   = buf.ecefF64[i*3]   - camPos.x;
-                relPos[i*3+1] = buf.ecefF64[i*3+1] - camPos.y;
-                relPos[i*3+2] = buf.ecefF64[i*3+2] - camPos.z;
-            }
-
-            gl.bindBuffer(gl.ARRAY_BUFFER, buf.posBuffer);
-            gl.bufferSubData(gl.ARRAY_BUFFER, 0, relPos);
-            gl.enableVertexAttribArray(customProgram.aPosition);
-            gl.vertexAttribPointer(customProgram.aPosition, 3, gl.FLOAT, false, 0, 0);
-
-            gl.bindBuffer(gl.ARRAY_BUFFER, buf.colBuffer);
-            gl.enableVertexAttribArray(customProgram.aColor);
-            gl.vertexAttribPointer(customProgram.aColor, 3, gl.FLOAT, false, 0, 0);
-
-            gl.uniform1f(customProgram.uAlpha, ds.alpha);
-            gl.drawArrays(gl.POINTS, 0, buf.count);
-        }
-
-        gl.disableVertexAttribArray(customProgram.aPosition);
-        gl.disableVertexAttribArray(customProgram.aColor);
-        if (prevDepthTest) gl.enable(gl.DEPTH_TEST); else gl.disable(gl.DEPTH_TEST);
-        gl.depthMask(prevDepthMask);
-        if (prevBlend) gl.enable(gl.BLEND); else gl.disable(gl.BLEND);
-        gl.blendFunc(prevBlendSrc, prevBlendDst);
-        if (prevProgram) gl.useProgram(prevProgram);
+        await Promise.all(promises);
+        document.getElementById('treeCount').textContent = Object.keys(treesData).length;
     }
 
     // =============================================
-    // PARSER LAS (identico all'esempio 648 funzionante)
+    // CREA MARKER CERCHIO (diametro chioma)
+    // =============================================
+    function getHealthColor(hs) {
+        const colors = { '1': '#4CAF50', '2': '#8BC34A', '3': '#FFC107', '4': '#FF9800', '5': '#f44336' };
+        return colors[String(hs)] || '#4CAF50';
+    }
+
+    function getCanopyRadius(canopyWidth) {
+        // canopyWidth in meters -> pixel radius on map
+        // We scale to a reasonable circle size
+        if (!canopyWidth || canopyWidth <= 0) return 6;
+        if (canopyWidth < 3) return 6;
+        if (canopyWidth < 6) return 10;
+        if (canopyWidth < 10) return 15;
+        return 20;
+    }
+
+    function createTreeMarkers() {
+        for (const [id, tree] of Object.entries(treesData)) {
+            const d = tree.json;
+            const hs = d.healthScore || '1';
+            const color = getHealthColor(hs);
+            const canopyW = d.canopyWidth || 5;
+            const radius = getCanopyRadius(canopyW);
+
+            const marker = L.circleMarker([tree.lat, tree.lon], {
+                radius: radius,
+                fillColor: color,
+                color: '#fff',
+                weight: 2,
+                opacity: 0.9,
+                fillOpacity: 0.5
+            });
+
+            const name = d.tseScientificName || d.scientificName || `${d.genus || ''} ${d.species || ''}`.trim() || 'Sconosciuto';
+            marker.bindTooltip(`#${id} - ${name}`, {
+                direction: 'top',
+                offset: [0, -radius],
+                className: 'tree-tooltip'
+            });
+
+            marker.on('click', () => selectTree(String(id)));
+            marker.addTo(map);
+            treeMarkers[id] = marker;
+        }
+    }
+
+    // =============================================
+    // SELEZIONA ALBERO
+    // =============================================
+    async function selectTree(id) {
+        // Deselect previous
+        if (selectedTreeId && treeMarkers[selectedTreeId]) {
+            const prevTree = treesData[selectedTreeId];
+            const prevColor = getHealthColor(prevTree?.json?.healthScore || '1');
+            treeMarkers[selectedTreeId].setStyle({ color: '#fff', weight: 2, fillOpacity: 0.5 });
+        }
+
+        selectedTreeId = id;
+        const tree = treesData[id];
+        if (!tree) return;
+
+        // Highlight selected
+        if (treeMarkers[id]) {
+            treeMarkers[id].setStyle({ color: '#FFD700', weight: 3, fillOpacity: 0.8 });
+            treeMarkers[id].bringToFront();
+        }
+
+        const d = tree.json;
+        const name = d.tseScientificName || d.scientificName || `${d.genus || ''} ${d.species || ''}`;
+
+        document.getElementById('badgeTitle').textContent = name;
+        document.getElementById('badgeSubtitle').textContent = `ID #${id}`;
+
+        document.getElementById('sidebarContent').innerHTML = buildSidebarHTML(d);
+        openSidebar();
+
+        document.getElementById('btnTree').classList.add('active');
+
+        // Load point cloud in background
+        if (!tree.loaded) {
+            loadSinglePointCloud(id);
+        }
+
+        // Nav counter
+        const navCounter = document.getElementById('navCounter');
+        if (navCounter) {
+            const idx = TREE_IDS.indexOf(Number(id));
+            navCounter.innerHTML = `<strong>${idx + 1}</strong> / ${TREE_IDS.length}`;
+        }
+
+        // Pan to tree
+        map.setView([tree.lat, tree.lon], 19, { animate: true });
+    }
+
+    function navigateTree(direction) {
+        if (!selectedTreeId) return;
+        const idx = TREE_IDS.indexOf(Number(selectedTreeId));
+        if (idx === -1) return;
+        const newIdx = (idx + direction + TREE_IDS.length) % TREE_IDS.length;
+        selectTree(String(TREE_IDS[newIdx]));
+    }
+
+    // =============================================
+    // PARSER LAS
     // =============================================
     function parseLAS(buffer, treeLat, treeLon, treeUtmE, treeUtmN, treeBaseZ, treeHeight) {
         const view = new DataView(buffer);
@@ -855,8 +608,8 @@
         const sx = view.getFloat64(131, true), sy = view.getFloat64(139, true), sz = view.getFloat64(147, true);
         const ox = view.getFloat64(155, true), oy = view.getFloat64(163, true), oz = view.getFloat64(171, true);
 
-        if ((pointFmt & 0x80) !== 0) throw new Error('LAZ_COMPRESSED - serve file .las');
-        if (dataOffset + numPts * recLen > buffer.byteLength * 1.2) throw new Error('LAZ_COMPRESSED - serve file .las');
+        if ((pointFmt & 0x80) !== 0) throw new Error('LAZ_COMPRESSED');
+        if (dataOffset + numPts * recLen > buffer.byteLength * 1.2) throw new Error('LAZ_COMPRESSED');
 
         const baseFmt = pointFmt & 0x3F;
         const hasRGB = [2,3,5,7,8,10].includes(baseFmt);
@@ -866,13 +619,12 @@
         else if (baseFmt >= 7) rgbOff = 30;
 
         const N = Math.min(numPts, 5000000);
-        const cosLat = Math.cos(treeLat * Math.PI / 180);
-        const mPerDegLat = 111132.954;
-        const mPerDegLon = 111132.954 * cosLat;
 
-        const ecefPositions = new Float64Array(N * 3);
+        // Local coordinates relative to tree base for 3D viewer
+        const positions = new Float32Array(N * 3); // x(east), y(north), z(up) relative to tree base
         const colors = new Uint8Array(N * 3);
         let count = 0;
+        let minZ = Infinity, maxZ = -Infinity;
 
         for (let i = 0; i < N; i++) {
             const rec = dataOffset + i * recLen;
@@ -882,16 +634,17 @@
             const yUTM = view.getInt32(rec + 4, true) * sy + oy;
             const zAbs = view.getInt32(rec + 8, true) * sz + oz;
 
+            // Store as local coords relative to tree center
             const dE = xUTM - treeUtmE;
             const dN = yUTM - treeUtmN;
-            const lon = treeLon + dE / mPerDegLon;
-            const lat = treeLat + dN / mPerDegLat;
-            const alt = zAbs + Z_OFFSET;
+            const dZ = zAbs - treeBaseZ;
 
-            const cart = Cesium.Cartesian3.fromDegrees(lon, lat, alt);
-            ecefPositions[count * 3]     = cart.x;
-            ecefPositions[count * 3 + 1] = cart.y;
-            ecefPositions[count * 3 + 2] = cart.z;
+            positions[count * 3] = dE;
+            positions[count * 3 + 1] = dZ; // Y = up
+            positions[count * 3 + 2] = -dN; // Z = towards viewer (flip N)
+
+            if (dZ < minZ) minZ = dZ;
+            if (dZ > maxZ) maxZ = dZ;
 
             if (hasRGB && rgbOff >= 0 && rec + rgbOff + 6 <= buffer.byteLength) {
                 const r16 = view.getUint16(rec + rgbOff, true);
@@ -917,202 +670,13 @@
         }
 
         return {
-            ecefPositions: ecefPositions.subarray(0, count * 3),
+            positions: positions.subarray(0, count * 3),
             colors: colors.subarray(0, count * 3),
-            count
+            count,
+            minZ, maxZ,
+            // Also store lat/lon-based ECEF for Street View
+            treeLat, treeLon, treeUtmE, treeUtmN, treeBaseZ
         };
-    }
-
-    // =============================================
-    // CARICA TUTTI I JSON + CREA MARKER
-    // =============================================
-    async function loadAllTreeJSON() {
-        showStatus('Caricamento dati alberi...');
-        let loaded = 0;
-
-        const promises = TREE_IDS.map(async (id) => {
-            try {
-                const resp = await fetch(`dettagli_json/${id}.json`);
-                if (!resp.ok) return;
-                const json = await resp.json();
-
-                const coords = json.location?.coordinates;
-                if (!coords) return;
-
-                const wgs = mercatorToWgs84(coords[0], coords[1]);
-                const utmCoords = json.localizedLocation?.coordinates || [0, 0, 0];
-
-                treesData[id] = {
-                    json,
-                    lat: wgs.lat,
-                    lon: wgs.lon,
-                    alt: coords[2] || 0,
-                    utmE: utmCoords[0],
-                    utmN: utmCoords[1],
-                    entity: null,
-                    glBuffers: null,
-                    loaded: false
-                };
-
-                loaded++;
-                const pct = Math.round((loaded / TREE_IDS.length) * 100);
-                document.getElementById('loadProgressBar').style.width = pct + '%';
-            } catch (e) {
-                console.warn(`Errore caricamento JSON ${id}:`, e);
-            }
-        });
-
-        await Promise.all(promises);
-        document.getElementById('treeCount').textContent = Object.keys(treesData).length;
-        console.log(`Caricati ${Object.keys(treesData).length} alberi`);
-    }
-
-    function createTreeMarkers() {
-        const scoreColor = (s) => {
-            if (s === '1') return Cesium.Color.fromCssColorString('#4CAF50');
-            if (s === '2') return Cesium.Color.fromCssColorString('#8BC34A');
-            if (s === '3') return Cesium.Color.fromCssColorString('#FFC107');
-            if (s === '4') return Cesium.Color.fromCssColorString('#FF9800');
-            if (s === '5') return Cesium.Color.fromCssColorString('#f44336');
-            return Cesium.Color.fromCssColorString('#4CAF50');
-        };
-
-        for (const [id, tree] of Object.entries(treesData)) {
-            const d = tree.json;
-            const name = d.tseScientificName || d.scientificName || `${d.genus || ''} ${d.species || ''}`;
-            const hs = d.healthScore || '1';
-
-            tree.entity = viewer.entities.add({
-                position: Cesium.Cartesian3.fromDegrees(tree.lon, tree.lat, tree.alt + Z_OFFSET + (d.height || 3)),
-                billboard: {
-                    image: createTreeIcon(hs),
-                    width: 32,
-                    height: 32,
-                    verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
-                    disableDepthTestDistance: Number.POSITIVE_INFINITY,
-                    heightReference: Cesium.HeightReference.NONE
-                },
-                label: {
-                    text: `#${id}`,
-                    font: '11px Inter, sans-serif',
-                    fillColor: Cesium.Color.WHITE,
-                    outlineColor: Cesium.Color.BLACK,
-                    outlineWidth: 2,
-                    style: Cesium.LabelStyle.FILL_AND_OUTLINE,
-                    verticalOrigin: Cesium.VerticalOrigin.TOP,
-                    pixelOffset: new Cesium.Cartesian2(0, 4),
-                    disableDepthTestDistance: Number.POSITIVE_INFINITY,
-                    showBackground: true,
-                    backgroundColor: new Cesium.Color(0.1, 0.12, 0.14, 0.85),
-                    backgroundPadding: new Cesium.Cartesian2(4, 2),
-                    show: false
-                },
-                properties: { treeId: id }
-            });
-        }
-    }
-
-    function createTreeIcon(healthScore) {
-        const canvas = document.createElement('canvas');
-        canvas.width = 64; canvas.height = 64;
-        const ctx = canvas.getContext('2d');
-
-        const colors = { '1': '#4CAF50', '2': '#8BC34A', '3': '#FFC107', '4': '#FF9800', '5': '#f44336' };
-        const color = colors[healthScore] || '#4CAF50';
-
-        // Circle background
-        ctx.beginPath();
-        ctx.arc(32, 32, 28, 0, Math.PI * 2);
-        ctx.fillStyle = color;
-        ctx.fill();
-        ctx.strokeStyle = 'white';
-        ctx.lineWidth = 3;
-        ctx.stroke();
-
-        // Tree icon (simplified)
-        ctx.fillStyle = 'white';
-        ctx.beginPath();
-        // Trunk
-        ctx.fillRect(29, 40, 6, 12);
-        // Crown (triangle)
-        ctx.beginPath();
-        ctx.moveTo(32, 14);
-        ctx.lineTo(18, 42);
-        ctx.lineTo(46, 42);
-        ctx.closePath();
-        ctx.fill();
-
-        return canvas.toDataURL();
-    }
-
-    // =============================================
-    // SELEZIONA ALBERO (CLICK SU MARKER)
-    // =============================================
-    async function selectTree(id) {
-        selectedTreeId = id;
-        const tree = treesData[id];
-        if (!tree) return;
-
-        const d = tree.json;
-        const name = d.tseScientificName || d.scientificName || `${d.genus || ''} ${d.species || ''}`;
-
-        // Aggiorna badge
-        document.getElementById('badgeTitle').textContent = name;
-        document.getElementById('badgeSubtitle').textContent = `ID #${id}`;
-
-        // Aggiorna sidebar
-        document.getElementById('sidebarContent').innerHTML = buildSidebarHTML(d);
-        openSidebar();
-
-        // Aggiorna bottone albero
-        document.getElementById('btnTree').classList.add('active');
-        treeVisible = true;
-
-        // Carica point cloud se non caricata
-        if (!tree.loaded) {
-            showStatus(`Caricamento nuvola di punti #${id}...`);
-            await loadSinglePointCloud(id);
-            hideStatus();
-        }
-
-        // Aggiorna contatore punti
-        if (tree.glBuffers) {
-            document.getElementById('treePointCount').textContent = tree.glBuffers.count.toLocaleString('it-IT');
-        }
-
-        // Aggiorna contatore navigazione
-        const navCounter = document.getElementById('navCounter');
-        if (navCounter) {
-            const idx = TREE_IDS.indexOf(Number(id));
-            navCounter.innerHTML = `<strong>${idx + 1}</strong> / ${TREE_IDS.length}`;
-        }
-
-        // Fly to - vista ampia centrata sull'albero con contesto urbano
-        // Camera da sud guardando nord, inclinazione moderata per evitare tetti
-        const camOffsetLat = -0.0004;
-        const camOffsetLon = 0.0001;
-
-        viewer.camera.flyTo({
-            destination: Cesium.Cartesian3.fromDegrees(
-                tree.lon + camOffsetLon,
-                tree.lat + camOffsetLat,
-                110
-            ),
-            orientation: {
-                heading: Cesium.Math.toRadians(350),
-                pitch: Cesium.Math.toRadians(-50),
-                roll: 0
-            },
-            duration: 2.0
-        });
-    }
-
-    function navigateTree(direction) {
-        if (!selectedTreeId) return;
-        const idx = TREE_IDS.indexOf(Number(selectedTreeId));
-        if (idx === -1) return;
-        const newIdx = (idx + direction + TREE_IDS.length) % TREE_IDS.length;
-        selectTree(String(TREE_IDS[newIdx]));
     }
 
     async function loadSinglePointCloud(id) {
@@ -1123,107 +687,697 @@
             const resp = await fetch(`point_cloud/tree/${id}.las`);
             if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
             const buf = await resp.arrayBuffer();
-
-            const parsed = parseLAS(buf, tree.lat, tree.lon, tree.utmE, tree.utmN, tree.alt, tree.json.height);
-
-            const gl = viewer.scene.context._gl;
-            tree.glBuffers = createGLBuffers(gl, parsed.ecefPositions, parsed.colors, parsed.count);
+            tree.parsedData = parseLAS(buf, tree.lat, tree.lon, tree.utmE, tree.utmN, tree.alt, tree.json.height);
             tree.loaded = true;
-            tree.parsedData = parsed; // Salva per Street View
-
-            console.log(`Albero #${id}: ${parsed.count} punti caricati`);
+            console.log(`Albero #${id}: ${tree.parsedData.count} punti caricati`);
         } catch (e) {
             console.error(`Errore caricamento point cloud #${id}:`, e);
         }
     }
 
     // =============================================
-    // CARICA TUTTE LE POINT CLOUD
+    // POINT CLOUD 3D VIEWER (WebGL)
     // =============================================
-    async function loadAllPointClouds() {
-        if (allTreesLoaded) {
-            allTreesVisible = !allTreesVisible;
-            document.getElementById('btnAllTrees').classList.toggle('active', allTreesVisible);
+    let pcGL = null, pcProgram = null, pcAnimId = null;
+    let pcRotX = -0.3, pcRotY = 0, pcZoom = 1.5;
+    let pcDragging = false, pcLastX = 0, pcLastY = 0;
+    let pcPointSize = 1;
+    let pcPosBuffer = null, pcColBuffer = null, pcCount = 0;
+
+    // Dimension annotation state
+    let pcDimVisible = true;
+    let pcDimCanvas = null, pcDimCtx = null;
+    let pcNormCenter = [0, 0, 0]; // center used for normalization
+    let pcNormScale = 1;           // scale used for normalization
+    let pcCurrentTreeData = null;  // current tree JSON data
+    let pcCurrentMVP = null;       // current MVP matrix for projection
+
+    // Individual dimension layer visibility
+    const pcDimLayers = {
+        height: true,           // Altezza totale (verde)
+        canopyHeight: true,     // Altezza chioma (blu)
+        canopyWidth: true,      // Larghezza chioma (blu)
+        trunk: true,            // Diametro tronco (arancione)
+        groundProjection: true  // Proiezione chioma al suolo
+    };
+
+    function initPointCloudGL() {
+        const canvas = document.getElementById('pcViewerCanvas');
+        pcGL = canvas.getContext('webgl', { antialias: true });
+        if (!pcGL) { alert('WebGL non supportato'); return; }
+
+        const gl = pcGL;
+
+        const vs = gl.createShader(gl.VERTEX_SHADER);
+        gl.shaderSource(vs, `
+            attribute vec3 aPos;
+            attribute vec3 aCol;
+            uniform mat4 uMVP;
+            uniform float uPointSize;
+            varying vec3 vCol;
+            void main() {
+                gl_Position = uMVP * vec4(aPos, 1.0);
+                gl_PointSize = uPointSize;
+                vCol = aCol;
+            }
+        `);
+        gl.compileShader(vs);
+
+        const fs = gl.createShader(gl.FRAGMENT_SHADER);
+        gl.shaderSource(fs, `
+            precision mediump float;
+            varying vec3 vCol;
+            void main() {
+                vec2 pc = gl_PointCoord - vec2(0.5);
+                if (dot(pc, pc) > 0.25) discard;
+                gl_FragColor = vec4(vCol, 1.0);
+            }
+        `);
+        gl.compileShader(fs);
+
+        pcProgram = gl.createProgram();
+        gl.attachShader(pcProgram, vs);
+        gl.attachShader(pcProgram, fs);
+        gl.linkProgram(pcProgram);
+
+        pcProgram.aPos = gl.getAttribLocation(pcProgram, 'aPos');
+        pcProgram.aCol = gl.getAttribLocation(pcProgram, 'aCol');
+        pcProgram.uMVP = gl.getUniformLocation(pcProgram, 'uMVP');
+        pcProgram.uPointSize = gl.getUniformLocation(pcProgram, 'uPointSize');
+
+        // Mouse controls
+        canvas.addEventListener('mousedown', (e) => { pcDragging = true; pcLastX = e.clientX; pcLastY = e.clientY; });
+        canvas.addEventListener('mousemove', (e) => {
+            if (!pcDragging) return;
+            const dx = e.clientX - pcLastX, dy = e.clientY - pcLastY;
+            pcRotY += dx * 0.01;
+            pcRotX += dy * 0.01;
+            pcRotX = Math.max(-Math.PI/2, Math.min(Math.PI/2, pcRotX));
+            pcLastX = e.clientX; pcLastY = e.clientY;
+        });
+        canvas.addEventListener('mouseup', () => pcDragging = false);
+        canvas.addEventListener('mouseleave', () => pcDragging = false);
+        canvas.addEventListener('wheel', (e) => {
+            e.preventDefault();
+            pcZoom *= e.deltaY > 0 ? 1.1 : 0.9;
+            pcZoom = Math.max(0.2, Math.min(10, pcZoom));
+        }, { passive: false });
+
+        // Touch controls
+        let lastTouchDist = 0;
+        canvas.addEventListener('touchstart', (e) => {
+            if (e.touches.length === 1) {
+                pcDragging = true; pcLastX = e.touches[0].clientX; pcLastY = e.touches[0].clientY;
+            } else if (e.touches.length === 2) {
+                lastTouchDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+            }
+        });
+        canvas.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            if (e.touches.length === 1 && pcDragging) {
+                const dx = e.touches[0].clientX - pcLastX, dy = e.touches[0].clientY - pcLastY;
+                pcRotY += dx * 0.01; pcRotX += dy * 0.01;
+                pcRotX = Math.max(-Math.PI/2, Math.min(Math.PI/2, pcRotX));
+                pcLastX = e.touches[0].clientX; pcLastY = e.touches[0].clientY;
+            } else if (e.touches.length === 2) {
+                const dist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+                pcZoom *= lastTouchDist / dist;
+                pcZoom = Math.max(0.2, Math.min(10, pcZoom));
+                lastTouchDist = dist;
+            }
+        }, { passive: false });
+        canvas.addEventListener('touchend', () => pcDragging = false);
+    }
+
+    function mat4Perspective(fov, aspect, near, far) {
+        const f = 1 / Math.tan(fov / 2);
+        return new Float32Array([
+            f/aspect, 0, 0, 0,
+            0, f, 0, 0,
+            0, 0, (far+near)/(near-far), -1,
+            0, 0, 2*far*near/(near-far), 0
+        ]);
+    }
+
+    function mat4Multiply(a, b) {
+        const r = new Float32Array(16);
+        for (let i = 0; i < 4; i++)
+            for (let j = 0; j < 4; j++)
+                for (let k = 0; k < 4; k++)
+                    r[j*4+i] += a[k*4+i] * b[j*4+k];
+        return r;
+    }
+
+    function mat4RotX(a) {
+        const c = Math.cos(a), s = Math.sin(a);
+        return new Float32Array([1,0,0,0, 0,c,s,0, 0,-s,c,0, 0,0,0,1]);
+    }
+    function mat4RotY(a) {
+        const c = Math.cos(a), s = Math.sin(a);
+        return new Float32Array([c,0,-s,0, 0,1,0,0, s,0,c,0, 0,0,0,1]);
+    }
+    function mat4Translate(x, y, z) {
+        return new Float32Array([1,0,0,0, 0,1,0,0, 0,0,1,0, x,y,z,1]);
+    }
+
+    // =============================================
+    // DIMENSION ANNOTATION SYSTEM
+    // =============================================
+    function initDimCanvas() {
+        pcDimCanvas = document.getElementById('pcDimCanvas');
+        pcDimCtx = pcDimCanvas.getContext('2d');
+    }
+
+    // Project a 3D point (in normalized viewer space) to 2D screen coords
+    function projectToScreen(x, y, z, mvp, width, height) {
+        const w = mvp[3]*x + mvp[7]*y + mvp[11]*z + mvp[15];
+        if (w <= 0.001) return null;
+        const nx = (mvp[0]*x + mvp[4]*y + mvp[8]*z + mvp[12]) / w;
+        const ny = (mvp[1]*x + mvp[5]*y + mvp[9]*z + mvp[13]) / w;
+        return {
+            x: (nx * 0.5 + 0.5) * width,
+            y: (1.0 - (ny * 0.5 + 0.5)) * height
+        };
+    }
+
+    // Convert real-world local coords (dE, dZ_up, -dN) to normalized viewer coords
+    function realToNorm(dE, dUp, dN) {
+        // positions stored as: x=dE, y=dZ(up), z=-dN
+        const x = (dE - pcNormCenter[0]) * pcNormScale;
+        const y = (dUp - pcNormCenter[1]) * pcNormScale;
+        const z = (-dN - pcNormCenter[2]) * pcNormScale;
+        return [x, y, z];
+    }
+
+    function drawDashedLine(ctx, x1, y1, x2, y2, dashLen) {
+        ctx.beginPath();
+        ctx.setLineDash([dashLen || 4, 3]);
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.stroke();
+        ctx.setLineDash([]);
+    }
+
+    function drawDimensionLine(ctx, p1, p2, label, color, side, mvp, w, h) {
+        if (!p1 || !p2) return;
+        const s1 = projectToScreen(p1[0], p1[1], p1[2], mvp, w, h);
+        const s2 = projectToScreen(p2[0], p2[1], p2[2], mvp, w, h);
+        if (!s1 || !s2) return;
+
+        const offset = side === 'left' ? -30 : (side === 'right' ? 30 : 0);
+        const x1 = s1.x + offset, y1 = s1.y;
+        const x2 = s2.x + offset, y2 = s2.y;
+
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 1.5;
+        ctx.globalAlpha = 0.85;
+
+        // Main dimension line
+        ctx.beginPath();
+        ctx.moveTo(x1, y1);
+        ctx.lineTo(x2, y2);
+        ctx.stroke();
+
+        // End ticks
+        const tickW = side === 'left' ? -6 : 6;
+        ctx.beginPath();
+        ctx.moveTo(x1 - tickW, y1); ctx.lineTo(x1 + tickW, y1);
+        ctx.moveTo(x2 - tickW, y2); ctx.lineTo(x2 + tickW, y2);
+        ctx.stroke();
+
+        // Extension lines from point cloud to dimension line
+        ctx.globalAlpha = 0.3;
+        ctx.lineWidth = 0.8;
+        drawDashedLine(ctx, s1.x, s1.y, x1, y1, 3);
+        drawDashedLine(ctx, s2.x, s2.y, x2, y2, 3);
+        ctx.globalAlpha = 0.85;
+
+        // Label
+        const mx = (x1 + x2) / 2;
+        const my = (y1 + y2) / 2;
+        ctx.save();
+        ctx.font = '600 11px Inter, Arial, sans-serif';
+        const textW = ctx.measureText(label).width;
+        const padX = 6, padY = 4;
+
+        const lx = side === 'left' ? mx - textW / 2 - padX - 12 : mx + 12;
+
+        // Label background
+        ctx.fillStyle = 'rgba(26, 29, 35, 0.88)';
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 1;
+        const rx = lx - padX, ry = my - 8 - padY, rw = textW + padX * 2, rh = 16 + padY * 2;
+        ctx.beginPath();
+        ctx.roundRect(rx, ry, rw, rh, 4);
+        ctx.fill();
+        ctx.stroke();
+
+        // Label text
+        ctx.fillStyle = color;
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(label, lx, my);
+        ctx.restore();
+    }
+
+    function drawHorizontalDimension(ctx, p1, p2, label, color, vertOffset, mvp, w, h) {
+        if (!p1 || !p2) return;
+        const s1 = projectToScreen(p1[0], p1[1], p1[2], mvp, w, h);
+        const s2 = projectToScreen(p2[0], p2[1], p2[2], mvp, w, h);
+        if (!s1 || !s2) return;
+
+        const y = Math.min(s1.y, s2.y) + vertOffset;
+
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 1.5;
+        ctx.globalAlpha = 0.85;
+
+        // Horizontal dimension line
+        ctx.beginPath();
+        ctx.moveTo(s1.x, y);
+        ctx.lineTo(s2.x, y);
+        ctx.stroke();
+
+        // End ticks (vertical)
+        ctx.beginPath();
+        ctx.moveTo(s1.x, y - 5); ctx.lineTo(s1.x, y + 5);
+        ctx.moveTo(s2.x, y - 5); ctx.lineTo(s2.x, y + 5);
+        ctx.stroke();
+
+        // Extension lines
+        ctx.globalAlpha = 0.3;
+        ctx.lineWidth = 0.8;
+        drawDashedLine(ctx, s1.x, s1.y, s1.x, y, 3);
+        drawDashedLine(ctx, s2.x, s2.y, s2.x, y, 3);
+        ctx.globalAlpha = 0.85;
+
+        // Label
+        const mx = (s1.x + s2.x) / 2;
+        ctx.save();
+        ctx.font = '600 11px Inter, Arial, sans-serif';
+        const textW = ctx.measureText(label).width;
+        const padX = 6, padY = 4;
+
+        ctx.fillStyle = 'rgba(26, 29, 35, 0.88)';
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 1;
+        const rx = mx - textW / 2 - padX, ry = y - 22 - padY, rw = textW + padX * 2, rh = 16 + padY * 2;
+        ctx.beginPath();
+        ctx.roundRect(rx, ry, rw, rh, 4);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.fillStyle = color;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(label, mx, y - 14);
+        ctx.restore();
+    }
+
+    function drawGroundEllipse(ctx, centerNorm, radiusX, radiusZ, color, mvp, w, h) {
+        // Draw a projected ellipse on the ground plane (y=ground)
+        const segments = 48;
+        const points = [];
+        for (let i = 0; i <= segments; i++) {
+            const angle = (i / segments) * Math.PI * 2;
+            const px = centerNorm[0] + Math.cos(angle) * radiusX * pcNormScale;
+            const py = centerNorm[1]; // ground level
+            const pz = centerNorm[2] + Math.sin(angle) * radiusZ * pcNormScale;
+            const s = projectToScreen(px, py, pz, mvp, w, h);
+            if (s) points.push(s);
+        }
+        if (points.length < 3) return;
+
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 1.5;
+        ctx.globalAlpha = 0.6;
+        ctx.setLineDash([5, 3]);
+        ctx.beginPath();
+        ctx.moveTo(points[0].x, points[0].y);
+        for (let i = 1; i < points.length; i++) {
+            ctx.lineTo(points[i].x, points[i].y);
+        }
+        ctx.stroke();
+        ctx.setLineDash([]);
+
+        // Fill
+        ctx.fillStyle = color;
+        ctx.globalAlpha = 0.08;
+        ctx.beginPath();
+        ctx.moveTo(points[0].x, points[0].y);
+        for (let i = 1; i < points.length; i++) ctx.lineTo(points[i].x, points[i].y);
+        ctx.closePath();
+        ctx.fill();
+        ctx.globalAlpha = 1;
+    }
+
+    function drawTrunkDiameterMark(ctx, centerNorm, diameter, color, mvp, w, h) {
+        // Small horizontal line at trunk height showing diameter
+        const halfD = (diameter / 2);
+        const p1 = [centerNorm[0] - halfD * pcNormScale, centerNorm[1], centerNorm[2]];
+        const p2 = [centerNorm[0] + halfD * pcNormScale, centerNorm[1], centerNorm[2]];
+        const s1 = projectToScreen(p1[0], p1[1], p1[2], mvp, w, h);
+        const s2 = projectToScreen(p2[0], p2[1], p2[2], mvp, w, h);
+        if (!s1 || !s2) return;
+
+        // Draw the diameter mark as a small H-bracket
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 2;
+        ctx.globalAlpha = 0.9;
+        ctx.beginPath();
+        ctx.moveTo(s1.x, s1.y);
+        ctx.lineTo(s2.x, s2.y);
+        ctx.stroke();
+
+        // Ticks
+        ctx.beginPath();
+        ctx.moveTo(s1.x, s1.y - 4); ctx.lineTo(s1.x, s1.y + 4);
+        ctx.moveTo(s2.x, s2.y - 4); ctx.lineTo(s2.x, s2.y + 4);
+        ctx.stroke();
+
+        // Label
+        const label = `Diam. tronco ${(diameter).toFixed(2)} m`;
+        ctx.save();
+        ctx.font = '600 10px Inter, Arial, sans-serif';
+        const textW = ctx.measureText(label).width;
+        const mx = (s1.x + s2.x) / 2;
+        const my = (s1.y + s2.y) / 2;
+
+        ctx.fillStyle = 'rgba(26, 29, 35, 0.88)';
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.roundRect(mx - textW / 2 - 5, my + 6, textW + 10, 18, 3);
+        ctx.fill();
+        ctx.stroke();
+
+        ctx.fillStyle = color;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(label, mx, my + 15);
+        ctx.restore();
+        ctx.globalAlpha = 1;
+    }
+
+    function renderDimensionAnnotations() {
+        if (!pcDimCanvas || !pcDimCtx || !pcCurrentMVP || !pcCurrentTreeData || !pcDimVisible) {
+            if (pcDimCtx && pcDimCanvas) pcDimCtx.clearRect(0, 0, pcDimCanvas.width, pcDimCanvas.height);
             return;
         }
 
-        showStatus('Caricamento di tutte le nuvole di punti...');
-        document.getElementById('loadProgressBar').style.width = '0%';
-        document.getElementById('btnAllTrees').classList.add('active');
-        allTreesVisible = true;
+        const ctx = pcDimCtx;
+        const w = pcDimCanvas.width;
+        const h = pcDimCanvas.height;
+        ctx.clearRect(0, 0, w, h);
 
-        const ids = Object.keys(treesData);
-        let loaded = 0;
-        let totalPoints = 0;
+        const d = pcCurrentTreeData;
+        const mvp = pcCurrentMVP;
 
-        // Carica in batch di 5 per non sovraccaricare
-        const batchSize = 5;
-        for (let i = 0; i < ids.length; i += batchSize) {
-            const batch = ids.slice(i, i + batchSize);
-            await Promise.all(batch.map(async (id) => {
-                if (!treesData[id].loaded) {
-                    await loadSinglePointCloud(id);
-                }
-                if (treesData[id].glBuffers) {
-                    allTreesGLBuffers.push({ glBuffers: treesData[id].glBuffers });
-                    totalPoints += treesData[id].glBuffers.count;
-                }
-                loaded++;
-                const pct = Math.round((loaded / ids.length) * 100);
-                document.getElementById('loadProgressBar').style.width = pct + '%';
-                document.getElementById('statusText').textContent = `Caricamento nuvole... ${loaded}/${ids.length}`;
-            }));
+        // Compute key Y positions in normalized space
+        // Ground is at minZ of point cloud; we use positions stored as dE, dZ(up), -dN
+        // In the parseLAS, y=dZ (height above ground base)
+        // So ground ~ minZ, top ~ maxZ
+        const groundY = (0 - pcNormCenter[1]) * pcNormScale;   // dZ=0 = ground level
+        const totalH = d.height || d.pointCloudHeight || 0;
+        const topY = (totalH - pcNormCenter[1]) * pcNormScale;
+
+        const crownBaseH = d.crownBaseHeight || 0;
+        const crownBaseY = (crownBaseH - pcNormCenter[1]) * pcNormScale;
+
+        const canopyH = d.canopyHeight || 0;
+        const canopyTopY = ((crownBaseH + canopyH) - pcNormCenter[1]) * pcNormScale;
+
+        const trunkH = d.trunkHeight || crownBaseH || 0;
+        const trunkTopY = (trunkH - pcNormCenter[1]) * pcNormScale;
+
+        const centerX = (0 - pcNormCenter[0]) * pcNormScale;
+        const centerZ = (0 - pcNormCenter[2]) * pcNormScale;
+
+        // Colors
+        const COL_HEIGHT = '#4CAF50';
+        const COL_CANOPY = '#42A5F5';
+        const COL_TRUNK = '#FF9800';
+        const COL_GROUND = 'rgba(255,152,0,0.5)';
+
+        // 1. Total height - LEFT side
+        if (pcDimLayers.height && totalH > 0) {
+            const pBottom = [centerX, groundY, centerZ];
+            const pTop = [centerX, topY, centerZ];
+            drawDimensionLine(ctx, pBottom, pTop, `Altezza ${totalH.toFixed(2)} m`, COL_HEIGHT, 'left', mvp, w, h);
         }
 
-        allTreesLoaded = true;
-        document.getElementById('treePointCount').textContent = totalPoints.toLocaleString('it-IT');
-        hideStatus();
-        console.log(`Tutte le nuvole caricate: ${totalPoints} punti totali`);
+        // 2. Canopy height - RIGHT side
+        if (pcDimLayers.canopyHeight && canopyH > 0 && crownBaseH >= 0) {
+            const pCrownBase = [centerX, crownBaseY, centerZ];
+            const pCrownTop = [centerX, canopyTopY, centerZ];
+            drawDimensionLine(ctx, pCrownBase, pCrownTop, `Chioma ${canopyH.toFixed(2)} m`, COL_CANOPY, 'right', mvp, w, h);
+        }
+
+        // 3. Canopy width - horizontal at top
+        const canopyW = d.canopyWidth || 0;
+        if (pcDimLayers.canopyWidth && canopyW > 0) {
+            const midCanopyY = crownBaseH + canopyH / 2;
+            const midNormY = (midCanopyY - pcNormCenter[1]) * pcNormScale;
+            const halfW = canopyW / 2;
+            const pLeft = realToNorm(-halfW, midCanopyY, 0);
+            const pRight = realToNorm(halfW, midCanopyY, 0);
+            drawHorizontalDimension(ctx, pLeft, pRight, `Larghezza chioma ${canopyW.toFixed(2)} m`, COL_CANOPY, -20, mvp, w, h);
+        }
+
+        // 4. Trunk diameter mark at ~1.3m (standard DBH height)
+        const trunkDiam = d.trunkDiameter || 0;
+        if (pcDimLayers.trunk && trunkDiam > 0) {
+            const dbhH = Math.min(1.3, totalH * 0.3); // 1.3m or 30% of height for small trees
+            const dbhNorm = realToNorm(0, dbhH, 0);
+            drawTrunkDiameterMark(ctx, dbhNorm, trunkDiam, COL_TRUNK, mvp, w, h);
+        }
+
+        // 5. Ground projection ellipse (canopy)
+        if (pcDimLayers.groundProjection && canopyW > 0) {
+            const radA = d.canopyEllipseRadiusA || canopyW / 2;
+            const radB = d.canopyEllipseRadiusB || canopyW / 2;
+            const groundNorm = [centerX, groundY, centerZ];
+            drawGroundEllipse(ctx, groundNorm, radA, radB, COL_GROUND, mvp, w, h);
+        }
     }
+
+    function togglePcDimensions() {
+        pcDimVisible = !pcDimVisible;
+        document.getElementById('pcDimToggleBtn').classList.toggle('active', pcDimVisible);
+        document.getElementById('pcDimPanel').classList.toggle('hidden', !pcDimVisible);
+        if (!pcDimVisible && pcDimCtx && pcDimCanvas) {
+            pcDimCtx.clearRect(0, 0, pcDimCanvas.width, pcDimCanvas.height);
+        }
+    }
+
+    function toggleDimLayer(layerName) {
+        pcDimLayers[layerName] = !pcDimLayers[layerName];
+        const eye = document.getElementById('dimEye_' + layerName);
+        if (eye) {
+            eye.classList.toggle('active', pcDimLayers[layerName]);
+            eye.textContent = pcDimLayers[layerName] ? 'visibility' : 'visibility_off';
+        }
+        // Toggle visual dimming of the section
+        const section = eye ? eye.closest('.pc-dim-section') : null;
+        if (section) section.classList.toggle('layer-off', !pcDimLayers[layerName]);
+        // Update the "all" toggle state
+        updateToggleAllState();
+    }
+
+    function toggleAllDimLayers() {
+        const anyOn = Object.values(pcDimLayers).some(v => v);
+        const newState = !anyOn; // if any are on, turn all off; otherwise turn all on
+        for (const key in pcDimLayers) {
+            pcDimLayers[key] = newState;
+            const eye = document.getElementById('dimEye_' + key);
+            if (eye) {
+                eye.classList.toggle('active', newState);
+                eye.textContent = newState ? 'visibility' : 'visibility_off';
+                const section = eye.closest('.pc-dim-section');
+                if (section) section.classList.toggle('layer-off', !newState);
+            }
+        }
+        updateToggleAllState();
+    }
+
+    function updateToggleAllState() {
+        const allOn = Object.values(pcDimLayers).every(v => v);
+        const btn = document.getElementById('dimToggleAll');
+        if (btn) {
+            btn.classList.toggle('active', allOn);
+            btn.querySelector('.material-icons-round').textContent = allOn ? 'visibility' : 'visibility_off';
+        }
+    }
+
+    function renderPointCloud() {
+        if (!pcGL || !pcProgram || pcCount === 0) return;
+        const gl = pcGL;
+        const canvas = gl.canvas;
+        canvas.width = canvas.clientWidth;
+        canvas.height = canvas.clientHeight;
+        gl.viewport(0, 0, canvas.width, canvas.height);
+
+        gl.clearColor(0.067, 0.075, 0.09, 1);
+        gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+        gl.enable(gl.DEPTH_TEST);
+
+        gl.useProgram(pcProgram);
+
+        const aspect = canvas.width / canvas.height;
+        const proj = mat4Perspective(Math.PI / 4, aspect, 0.1, 200);
+        const view = mat4Multiply(mat4Translate(0, 0, -pcZoom * 15), mat4Multiply(mat4RotX(pcRotX), mat4RotY(pcRotY)));
+        const mvp = mat4Multiply(proj, view);
+
+        gl.uniformMatrix4fv(pcProgram.uMVP, false, mvp);
+        gl.uniform1f(pcProgram.uPointSize, pcPointSize);
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, pcPosBuffer);
+        gl.enableVertexAttribArray(pcProgram.aPos);
+        gl.vertexAttribPointer(pcProgram.aPos, 3, gl.FLOAT, false, 0, 0);
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, pcColBuffer);
+        gl.enableVertexAttribArray(pcProgram.aCol);
+        gl.vertexAttribPointer(pcProgram.aCol, 3, gl.FLOAT, false, 0, 0);
+
+        gl.drawArrays(gl.POINTS, 0, pcCount);
+
+        // Update dimension overlay
+        if (pcDimCanvas) {
+            pcDimCanvas.width = canvas.width;
+            pcDimCanvas.height = canvas.height;
+            pcCurrentMVP = mvp;
+            renderDimensionAnnotations();
+        }
+
+        pcAnimId = requestAnimationFrame(renderPointCloud);
+    }
+
+    function loadPointCloudIntoViewer(parsedData) {
+        if (!pcGL) initPointCloudGL();
+        if (!pcDimCanvas) initDimCanvas();
+        const gl = pcGL;
+
+        // Center the point cloud
+        const pos = parsedData.positions;
+        const count = parsedData.count;
+        let cx = 0, cy = 0, cz = 0;
+        for (let i = 0; i < count; i++) {
+            cx += pos[i*3]; cy += pos[i*3+1]; cz += pos[i*3+2];
+        }
+        cx /= count; cy /= count; cz /= count;
+
+        // Find max extent for normalization
+        let maxExt = 0;
+        for (let i = 0; i < count; i++) {
+            maxExt = Math.max(maxExt, Math.abs(pos[i*3]-cx), Math.abs(pos[i*3+1]-cy), Math.abs(pos[i*3+2]-cz));
+        }
+        const scale = maxExt > 0 ? 5.0 / maxExt : 1;
+
+        // Store normalization params for dimension lines
+        // positions are stored as: x=dE, y=dZ(up), z=-dN
+        pcNormCenter = [cx, cy, cz];
+        pcNormScale = scale;
+
+        const centeredPos = new Float32Array(count * 3);
+        for (let i = 0; i < count; i++) {
+            centeredPos[i*3]   = (pos[i*3]   - cx) * scale;
+            centeredPos[i*3+1] = (pos[i*3+1] - cy) * scale;
+            centeredPos[i*3+2] = (pos[i*3+2] - cz) * scale;
+        }
+
+        const colF32 = new Float32Array(count * 3);
+        for (let i = 0; i < count * 3; i++) colF32[i] = parsedData.colors[i] / 255;
+
+        if (pcPosBuffer) gl.deleteBuffer(pcPosBuffer);
+        if (pcColBuffer) gl.deleteBuffer(pcColBuffer);
+
+        pcPosBuffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, pcPosBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, centeredPos, gl.STATIC_DRAW);
+
+        pcColBuffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, pcColBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, colF32, gl.STATIC_DRAW);
+
+        pcCount = count;
+
+        // Reset camera
+        pcRotX = -0.3;
+        pcRotY = 0;
+        pcZoom = 1.5;
+    }
+
+    async function openPointCloudViewer() {
+        if (!selectedTreeId || !treesData[selectedTreeId]) {
+            alert('Seleziona prima un albero dalla mappa');
+            return;
+        }
+
+        const tree = treesData[selectedTreeId];
+        const d = tree.json;
+        const name = d.tseScientificName || d.scientificName || `${d.genus || ''} ${d.species || ''}`.trim() || 'Sconosciuto';
+
+        document.getElementById('pcTitle').textContent = `Nuvola di Punti - #${selectedTreeId} ${name}`;
+
+        // Load if needed
+        if (!tree.loaded) {
+            showStatus(`Caricamento nuvola di punti #${selectedTreeId}...`);
+            await loadSinglePointCloud(selectedTreeId);
+            hideStatus();
+        }
+
+        if (!tree.parsedData) {
+            alert('Nuvola di punti non disponibile per questo albero');
+            return;
+        }
+
+        document.getElementById('pcPointCount').textContent = tree.parsedData.count.toLocaleString('it-IT');
+        document.getElementById('pcTreeHeight').textContent = (d.height || '-') + ' m';
+
+        // Populate dimension panel
+        const fmt = (v, u, dec) => v != null && v !== 0 ? v.toFixed(dec !== undefined ? dec : 2) + (u || '') : '-';
+        document.getElementById('dimHeight').textContent = fmt(d.height, ' m');
+        document.getElementById('dimLiveHeight').textContent = fmt(d.liveHeight, ' m');
+        document.getElementById('dimLeanAngle').textContent = fmt(d.leaningAngle, '\u00B0', 1);
+        document.getElementById('dimTrunkDiam').textContent = fmt(d.trunkDiameter, ' m');
+        document.getElementById('dimTrunkHeight').textContent = fmt(d.trunkHeight || d.crownBaseHeight, ' m');
+        document.getElementById('dimCanopyHeight').textContent = fmt(d.canopyHeight, ' m');
+        document.getElementById('dimCanopyWidth').textContent = fmt(d.canopyWidth, ' m');
+        document.getElementById('dimCrownBase').textContent = fmt(d.crownBaseHeight, ' m');
+        document.getElementById('dimCrownVol').textContent = fmt(d.crownVolume, ' m\u00B3');
+        document.getElementById('dimCrownArea').textContent = fmt(d.crownProjectionArea, ' m\u00B2');
+
+        // Store tree data for dimension rendering
+        pcCurrentTreeData = d;
+
+        // Show popup
+        document.getElementById('pointCloudPopup').classList.add('active');
+        document.getElementById('popupOverlay').classList.add('active');
+
+        // Ensure dim panel visibility matches toggle state
+        document.getElementById('pcDimPanel').classList.toggle('hidden', !pcDimVisible);
+        document.getElementById('pcDimToggleBtn').classList.toggle('active', pcDimVisible);
+
+        loadPointCloudIntoViewer(tree.parsedData);
+
+        if (pcAnimId) cancelAnimationFrame(pcAnimId);
+        renderPointCloud();
+    }
+
+    function closePointCloudViewer() {
+        document.getElementById('pointCloudPopup').classList.remove('active');
+        document.getElementById('popupOverlay').classList.remove('active');
+        if (pcAnimId) { cancelAnimationFrame(pcAnimId); pcAnimId = null; }
+    }
+
+    document.getElementById('pcPointSizeSlider').addEventListener('input', (e) => {
+        pcPointSize = parseFloat(e.target.value);
+    });
 
     // =============================================
     // CONTROLS
     // =============================================
-    function toggleTree() {
-        treeVisible = !treeVisible;
-        document.getElementById('btnTree').classList.toggle('active', treeVisible);
-    }
-
-    function toggle3DTiles() {
-        if (!google3dTileset) return;
-        tiles3dVisible = !tiles3dVisible;
-        google3dTileset.show = tiles3dVisible;
-        document.getElementById('btn3d').classList.toggle('active', tiles3dVisible);
-    }
-
-    document.getElementById('pointSizeSlider').addEventListener('input', (e) => {
-        currentPointSize = parseFloat(e.target.value);
-    });
-
-    function flyToSelected() {
-        if (!selectedTreeId || !treesData[selectedTreeId]) return;
-        const tree = treesData[selectedTreeId];
-
-        const camOffsetLat = -0.0004;
-        const camOffsetLon = 0.0001;
-
-        viewer.camera.flyTo({
-            destination: Cesium.Cartesian3.fromDegrees(
-                tree.lon + camOffsetLon,
-                tree.lat + camOffsetLat,
-                110
-            ),
-            orientation: {
-                heading: Cesium.Math.toRadians(350),
-                pitch: Cesium.Math.toRadians(-50),
-                roll: 0
-            },
-            duration: 2.0
-        });
-    }
-
     function flyOverview() {
-        // Calcola il bounding box di tutti gli alberi
         let minLat = 90, maxLat = -90, minLon = 180, maxLon = -180;
         for (const tree of Object.values(treesData)) {
             minLat = Math.min(minLat, tree.lat);
@@ -1231,23 +1385,7 @@
             minLon = Math.min(minLon, tree.lon);
             maxLon = Math.max(maxLon, tree.lon);
         }
-        const cLat = (minLat + maxLat) / 2;
-        const cLon = (minLon + maxLon) / 2;
-
-        // Offset camera a nord-ovest rispetto al centro per una vista obliqua
-        // che mostra tutti gli alberi centrati nella scena
-        const offsetLat = 0.0012;
-        const offsetLon = -0.0014;
-
-        viewer.camera.flyTo({
-            destination: Cesium.Cartesian3.fromDegrees(cLon + offsetLon, cLat + offsetLat, 280),
-            orientation: {
-                heading: Cesium.Math.toRadians(135),
-                pitch: Cesium.Math.toRadians(-45),
-                roll: 0
-            },
-            duration: 2.5
-        });
+        map.fitBounds([[minLat, minLon], [maxLat, maxLon]], { padding: [50, 50], animate: true });
     }
 
     function showStatus(t) {
@@ -1257,53 +1395,13 @@
     function hideStatus() { document.getElementById('status').style.display = 'none'; }
 
     // =============================================
-    // CLICK HANDLER
-    // =============================================
-    function setupClickHandler() {
-        const handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
-
-        handler.setInputAction((click) => {
-            // Usa drillPick per trovare entities sotto le 3D Tiles
-            const pickedObjects = viewer.scene.drillPick(click.position);
-            for (const picked of pickedObjects) {
-                if (Cesium.defined(picked) && picked.id && picked.id.properties) {
-                    const treeId = picked.id.properties.treeId?.getValue();
-                    if (treeId) {
-                        console.log('Click su albero:', treeId);
-                        selectTree(treeId);
-                        return;
-                    }
-                }
-            }
-        }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
-
-        // Hover: mostra label
-        handler.setInputAction((movement) => {
-            const pickedObjects = viewer.scene.drillPick(movement.endPosition, 5);
-            // Nascondi tutte le label
-            for (const tree of Object.values(treesData)) {
-                if (tree.entity?.label) tree.entity.label.show = false;
-            }
-            for (const picked of pickedObjects) {
-                if (Cesium.defined(picked) && picked.id && picked.id.properties) {
-                    const treeId = picked.id.properties.treeId?.getValue();
-                    if (treeId && treesData[treeId]?.entity?.label) {
-                        treesData[treeId].entity.label.show = true;
-                        break;
-                    }
-                }
-            }
-        }, Cesium.ScreenSpaceEventType.MOUSE_MOVE);
-    }
-
-    // =============================================
     // STREET VIEW CON POINT CLOUD OVERLAY
     // =============================================
     let streetViewPanorama = null;
     let svCanvas = null, svCtx = null;
     let svPointsLocal = null;
     let svPointCloudVisible = true;
-    let svPointSize = 3;
+    let svPointSize = 1;
 
     function calculateHeadingToTree(fromLat, fromLng, toLat, toLng) {
         const dLon = (toLng - fromLng) * Math.PI / 180;
@@ -1323,46 +1421,42 @@
         return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
     }
 
-    function convertAllPointsToLocalENU(panoLat, panoLng, cameraHeight) {
+    function convertPointsToLocalENU(panoLat, panoLng, cameraHeight, tree) {
+        if (!tree.parsedData) return { points: [], colors: [] };
+        const data = tree.parsedData;
         const cosLat = Math.cos(panoLat * Math.PI / 180);
         const mPerDegLat = 111132.954;
         const mPerDegLon = 111132.954 * cosLat;
-        const points = [];
-        const colors = [];
+        const points = [], colors = [];
 
-        // Raccogli punti da tutti gli alberi caricati
-        const treesToRender = allTreesVisible ? Object.values(treesData) :
-            (selectedTreeId && treesData[selectedTreeId] ? [treesData[selectedTreeId]] : []);
+        // We need lat/lon for each point. Reconstruct from UTM offsets.
+        const treeUtmE = data.treeUtmE, treeUtmN = data.treeUtmN;
+        const treeLat = data.treeLat, treeLon = data.treeLon;
+        const treeBaseZ = data.treeBaseZ;
+        const Z_OFFSET = 0.57;
+        const cameraAlt = treeBaseZ + Z_OFFSET + (cameraHeight || 1.6);
 
-        for (const tree of treesToRender) {
-            if (!tree.parsedData) continue;
-            const data = tree.parsedData;
-            const groundAlt = tree.alt + Z_OFFSET;
-            const cameraAlt = groundAlt + (cameraHeight || 1.6);
+        for (let i = 0; i < data.count; i++) {
+            // positions are stored as dE, dZ(up), -dN
+            const dE = data.positions[i*3];
+            const dN = -data.positions[i*3+2]; // un-flip
+            const dZ = data.positions[i*3+1];
 
-            for (let i = 0; i < data.count; i++) {
-                const ecefX = data.ecefPositions[i * 3];
-                const ecefY = data.ecefPositions[i * 3 + 1];
-                const ecefZ = data.ecefPositions[i * 3 + 2];
+            const ptLon = treeLon + dE / mPerDegLon;
+            const ptLat = treeLat + dN / mPerDegLat;
+            const ptAlt = treeBaseZ + dZ + Z_OFFSET;
 
-                const carto = Cesium.Cartographic.fromCartesian(new Cesium.Cartesian3(ecefX, ecefY, ecefZ));
-                const ptLon = Cesium.Math.toDegrees(carto.longitude);
-                const ptLat = Cesium.Math.toDegrees(carto.latitude);
-                const ptAlt = carto.height;
+            const e = (ptLon - panoLng) * mPerDegLon;
+            const n = (ptLat - panoLat) * mPerDegLat;
+            const u = ptAlt - cameraAlt;
 
-                const e = (ptLon - panoLng) * mPerDegLon;
-                const n = (ptLat - panoLat) * mPerDegLat;
-                const u = ptAlt - cameraAlt;
-
-                points.push({ e, n, u });
-                colors.push({
-                    r: data.colors[i * 3],
-                    g: data.colors[i * 3 + 1],
-                    b: data.colors[i * 3 + 2]
-                });
-            }
+            points.push({ e, n, u });
+            colors.push({
+                r: data.colors[i * 3],
+                g: data.colors[i * 3 + 1],
+                b: data.colors[i * 3 + 2]
+            });
         }
-
         return { points, colors };
     }
 
@@ -1431,7 +1525,6 @@
     let svTargetLat = null, svTargetLon = null;
 
     function openStreetView() {
-        // Usa le coordinate dell'albero selezionato o il centro di tutti
         if (selectedTreeId && treesData[selectedTreeId]) {
             svTargetLat = treesData[selectedTreeId].lat;
             svTargetLon = treesData[selectedTreeId].lon;
@@ -1442,10 +1535,8 @@
             svTargetLon = sumLon / cnt;
         }
 
-        const popup = document.getElementById('streetViewPopup');
-        const overlay = document.getElementById('streetViewOverlay');
-        popup.classList.add('active');
-        overlay.classList.add('active');
+        document.getElementById('streetViewPopup').classList.add('active');
+        document.getElementById('popupOverlay').classList.add('active');
 
         document.getElementById('svTitle').textContent = selectedTreeId ?
             `Street View - Albero #${selectedTreeId}` : 'Street View - Panoramica';
@@ -1453,8 +1544,9 @@
         svCanvas = document.getElementById('streetViewCanvas');
         svCtx = svCanvas.getContext('2d');
 
+        const currentTree = selectedTreeId ? treesData[selectedTreeId] : null;
+
         if (!streetViewPanorama) {
-            // Prima inizializzazione
             const container = document.getElementById('streetViewContainer');
             const svService = new google.maps.StreetViewService();
 
@@ -1466,12 +1558,13 @@
                 if (status === google.maps.StreetViewStatus.OK) {
                     const panoLocation = data.location.latLng;
                     const panoPos = { lat: panoLocation.lat(), lng: panoLocation.lng() };
-
                     const headingToTree = calculateHeadingToTree(panoPos.lat, panoPos.lng, svTargetLat, svTargetLon);
                     const distance = calculateDistance(panoPos.lat, panoPos.lng, svTargetLat, svTargetLon);
                     document.getElementById('svDistance').textContent = distance.toFixed(1);
 
-                    svPointsLocal = convertAllPointsToLocalENU(panoPos.lat, panoPos.lng, 1.6);
+                    if (currentTree) {
+                        svPointsLocal = convertPointsToLocalENU(panoPos.lat, panoPos.lng, 1.6, currentTree);
+                    }
 
                     streetViewPanorama = new google.maps.StreetViewPanorama(container, {
                         pano: data.location.pano,
@@ -1487,21 +1580,24 @@
                     streetViewPanorama.addListener('position_changed', () => {
                         const pos = streetViewPanorama.getPosition();
                         const newPos = { lat: pos.lat(), lng: pos.lng() };
-                        svPointsLocal = convertAllPointsToLocalENU(newPos.lat, newPos.lng, 1.6);
-
+                        const activeTree = selectedTreeId ? treesData[selectedTreeId] : null;
+                        if (activeTree) {
+                            svPointsLocal = convertPointsToLocalENU(newPos.lat, newPos.lng, 1.6, activeTree);
+                        }
                         const dist = calculateDistance(newPos.lat, newPos.lng, svTargetLat, svTargetLon);
                         document.getElementById('svDistance').textContent = dist.toFixed(1);
                         renderStreetViewPointCloud();
                     });
 
-                    setTimeout(() => resizeStreetViewCanvas(), 500);
+                    setTimeout(() => {
+                        google.maps.event.trigger(streetViewPanorama, 'resize');
+                        resizeStreetViewCanvas();
+                    }, 500);
                 } else {
-                    console.error('Street View non disponibile:', status);
                     alert('Street View non disponibile in questa posizione');
                 }
             });
         } else {
-            // Panorama già inizializzato: aggiorna posizione verso il nuovo albero
             const svService = new google.maps.StreetViewService();
             svService.getPanorama({
                 location: { lat: svTargetLat, lng: svTargetLon },
@@ -1517,21 +1613,34 @@
                     streetViewPanorama.setPov({ heading: headingToTree, pitch: 10 });
 
                     const panoPos = { lat: data.location.latLng.lat(), lng: data.location.latLng.lng() };
-                    svPointsLocal = convertAllPointsToLocalENU(panoPos.lat, panoPos.lng, 1.6);
+                    const activeTree = selectedTreeId ? treesData[selectedTreeId] : null;
+                    if (activeTree) {
+                        svPointsLocal = convertPointsToLocalENU(panoPos.lat, panoPos.lng, 1.6, activeTree);
+                    }
                     const dist = calculateDistance(panoPos.lat, panoPos.lng, svTargetLat, svTargetLon);
                     document.getElementById('svDistance').textContent = dist.toFixed(1);
+                    renderStreetViewPointCloud();
                 }
             });
             setTimeout(() => {
                 google.maps.event.trigger(streetViewPanorama, 'resize');
                 resizeStreetViewCanvas();
-            }, 100);
+            }, 300);
         }
     }
 
     function closeStreetView() {
         document.getElementById('streetViewPopup').classList.remove('active');
-        document.getElementById('streetViewOverlay').classList.remove('active');
+        document.getElementById('popupOverlay').classList.remove('active');
+    }
+
+    function open3dView() {
+        window.open('3d.html', '_blank');
+    }
+
+    function closeAllPopups() {
+        closeStreetView();
+        closePointCloudViewer();
     }
 
     function toggleSvPointCloud() {
@@ -1550,50 +1659,74 @@
     });
 
     document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeStreetView();
+        if (e.key === 'Escape') closeAllPopups();
     });
 
     // =============================================
-    // START
+    // START - LEAFLET MAP
     // =============================================
     async function start() {
-        showStatus('Inizializzazione...');
-        Cesium.Ion.defaultAccessToken = DEFAULT_TOKEN;
+        showStatus('Inizializzazione mappa...');
 
-        try {
-            viewer = new Cesium.Viewer('cesiumContainer', {
-                timeline: false, animation: false, homeButton: true,
-                sceneModePicker: false, baseLayerPicker: false,
-                navigationHelpButton: false, geocoder: false,
-                fullscreenButton: true, infoBox: false, selectionIndicator: false,
-                globe: false, skyAtmosphere: false,
-            });
+        // Base layers
+        const r3gisBase = L.tileLayer.wms('https://palermoverde.r3gis.com/author/services/ows.php', {
+            layers: 'basemap_r3gis.basemap_r3gis',
+            format: 'image/png',
+            transparent: false,
+            version: '1.3.0',
+            attribution: 'R3 GIS Palermo Verde - Rielaborazione: <a href="https://www.linkedin.com/in/gbvitrano/" title="Giovan Battista Vitrano" target="_blank" rel="noopener">gbvitrano</a>',
+            PROJECT: 'palermoverde',
+            MAP: 'r3-trees',
+			minZoom: 18,
+            maxZoom: 20
+        });
 
-            Cesium.RequestScheduler.requestsByServer["tile.googleapis.com:443"] = 18;
-            google3dTileset = await Cesium.createGooglePhotorealistic3DTileset();
-            viewer.scene.primitives.add(google3dTileset);
+        const satelliteLayer = L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+            attribution: '&copy; Google',
+			minZoom: 18,
+            maxZoom: 20
+        });
 
-            const gl = viewer.scene.context._gl;
-            customProgram = initCustomShader(gl);
-            viewer.scene.postRender.addEventListener(renderPointClouds);
+        // WMS overlay layer (alberi)
+        const wmsTreesLayer = L.tileLayer.wms(WMS_URL, {
+            layers: 'g_green_ts_03',
+            format: 'image/png',
+            transparent: true,
+            version: '1.3.0',
+            crs: L.CRS.EPSG3857,
+			minZoom: 18,
+            maxZoom: 20
+        });
 
-            // Carica tutti i JSON degli alberi
-            await loadAllTreeJSON();
+        // Create map - zoom control disabled here, added manually on the right
+        map = L.map('mapContainer', {
+            center: [38.12, 13.36],
+            zoom: 15,
+            layers: [r3gisBase, wmsTreesLayer],
+            zoomControl: false
+        });
 
-            // Crea i marker sulla mappa
-            createTreeMarkers();
+        // Zoom control on the right
+        L.control.zoom({ position: 'topright' }).addTo(map);
 
-            // Setup click handler
-            setupClickHandler();
+        // Layer control
+        const baseLayers = {
+            'Mappa R3 GIS': r3gisBase,
+            'Foto Satellitare': satelliteLayer
+        };
+        const overlays = {
+            'Alberi WMS (r3gis)': wmsTreesLayer
+        };
+        L.control.layers(baseLayers, overlays, { position: 'topright' }).addTo(map);
 
-            // Vola alla panoramica
-            flyOverview();
-            hideStatus();
+        // Hash plugin - sync coordinates to URL
+        const hash = new L.Hash(map);
 
-        } catch (err) {
-            console.error('Errore:', err);
-            showStatus('Errore: ' + err.message);
-        }
+        // Load tree data
+        await loadAllTreeJSON();
+        createTreeMarkers();
+        flyOverview();
+        hideStatus();
     }
 
     start();

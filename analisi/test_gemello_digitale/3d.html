@@ -1,0 +1,1289 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gemello Digitale - Verde Urbano Palermo</title>
+	<link rel="icon" href="img/favicon.png">
+	<link rel="stylesheet" href="css/alberi_02.css" />
+    <script src="https://cesium.com/downloads/cesiumjs/releases/1.124/Build/Cesium/Cesium.js"></script>
+    <link href="https://cesium.com/downloads/cesiumjs/releases/1.124/Build/Cesium/Widgets/widgets.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDU1ZlYSq1yXtydeNTW5K-AroyUh-PPXXU"></script>
+
+
+</head>
+<body>
+    <div id="appContainer">
+        <!-- 3D Viewer -->
+        <div id="viewerArea">
+            <div id="cesiumContainer"></div>
+
+            <div id="viewerBadge">
+                <div class="tree-icon"><span class="material-icons-round">park</span></div>
+                <div class="badge-text">
+                    <h3 id="badgeTitle">Palermo 2026 - Gemello Digitale - Verde Urbano</h3>
+                    <span id="badgeSubtitle">Seleziona un albero dalla mappa</span>
+                </div>
+            </div>
+
+            <div id="treeBadge">
+                <span class="material-icons-round" style="font-size:13px;vertical-align:middle;margin-right:3px;">forest</span>
+                Alberi: <strong id="treeCount">0</strong>
+            </div>
+
+            <div id="pointBadge">
+                <span class="material-icons-round" style="font-size:13px;vertical-align:middle;margin-right:3px;">scatter_plot</span>
+                Punti: <strong id="treePointCount">-</strong>
+            </div>
+
+            <div id="viewerControls">
+                <div class="ctrl-group">
+                    <span class="ctrl-label">Dim. punti</span>
+                    <input type="range" class="ctrl-range" id="pointSizeSlider" min="1" max="12" step="0.5" value="3">
+                </div>
+                <div class="ctrl-group">
+                    <button class="ctrl-btn" id="btnTree" title="Mostra/Nascondi nuvola selezionata" onclick="toggleTree()">
+                        <span class="material-icons-round">park</span> Albero
+                    </button>
+                    <button class="ctrl-btn active" id="btn3d" title="Attiva/Disattiva Google Earth" onclick="toggle3DTiles()">
+                        <span class="material-icons-round">public</span> Google 3D
+                    </button>
+                    <button class="ctrl-btn" id="btnAllTrees" title="Carica tutte le nuvole di punti" onclick="loadAllPointClouds()">
+                        <span class="material-icons-round">forest</span> Mostra Tutti
+                    </button>
+                </div>
+                <div class="ctrl-group">
+                    <button class="ctrl-btn" id="btnFlyCenter" onclick="flyToSelected()">
+                        <span class="material-icons-round">center_focus_strong</span> Centra
+                    </button>
+                    <button class="ctrl-btn" onclick="flyOverview()">
+                        <span class="material-icons-round">flight</span> Panoramica
+                    </button>
+                    <button class="ctrl-btn" id="btnStreetView" onclick="openStreetView()">
+                        <span class="material-icons-round">streetview</span> Street View
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar (hidden by default, shown on tree click) -->
+        <div id="sidebar">
+            <button class="sidebar-close" onclick="closeSidebar()">
+                <span class="material-icons-round">close</span>
+            </button>
+            <div id="sidebarContent"></div>
+        </div>
+    </div>
+
+    <div id="status"><div class="spinner"></div><div id="statusText">Inizializzazione...</div><div id="loadProgress"><div id="loadProgressBar"></div></div></div>
+
+    <!-- Street View Popup -->
+    <div id="streetViewOverlay" onclick="closeStreetView()"></div>
+    <div id="streetViewPopup">
+        <div class="popup-header">
+            <h3>
+                <span class="material-icons-round">streetview</span>
+                <span id="svTitle">Google Street View</span>
+            </h3>
+            <button class="popup-close" onclick="closeStreetView()">
+                <span class="material-icons-round">close</span>
+            </button>
+        </div>
+        <div id="streetViewContainer">
+            <canvas id="streetViewCanvas"></canvas>
+            <div class="sv-info">
+                <span class="material-icons-round" style="font-size:12px;vertical-align:middle;">park</span>
+                Punti: <strong id="svPointCount">-</strong> |
+                Distanza: <strong id="svDistance">-</strong>m
+            </div>
+            <div class="sv-controls">
+                <div class="sv-ctrl-group">
+                    <button class="sv-ctrl-btn active" id="svBtnPointCloud" onclick="toggleSvPointCloud()">
+                        <span class="material-icons-round">scatter_plot</span> Gemello digitale
+                    </button>
+                </div>
+                <div class="sv-ctrl-group">
+                    <span class="sv-ctrl-label">Dim.</span>
+                    <input type="range" class="sv-ctrl-range" id="svPointSizeSlider" min="1" max="8" step="0.5" value="3">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+    // =============================================
+    // CONFIGURAZIONE
+    // =============================================
+    const DEFAULT_TOKEN = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyOWVjODVmZi1mZWViLTRlZWMtYjQ0NC1kMjk0ZGM5ZmI4MmEiLCJpZCI6MTc2ODkzLCJpYXQiOjE2OTk0NDc5MjJ9.8s6JtQbfKduNVLElEb1SYDDaLZ2UT0q4res8hdO2n7M';
+
+    // Lista degli ID alberi (letti dalla cartella point_cloud/tree/*.laz e dettagli_json/*.json)
+    const TREE_IDS = [
+        12026,12027,12028,12029,12030,12031,12032,12033,12034,12035,
+        12036,12037,12038,12039,12040,12041,12042,12043,12044,12045,
+        12046,12047,12048,12049,12050,12051,12052,12053,12054,12055,
+        12056,12057,12058,12061,12062,12063,12066,12067,12071,12077,
+        12081,12083,12084,12088,12092,12093,12095,12099,12450,12452,
+        12453,12454,12455,12456,12457,12458,12459,12460,12461,12462,
+        12464,12467,12473,12476,12479,12489,12501
+    ];
+
+    // Z_OFFSET: differenza geoide->ellissoide per allineare con Google 3D Tiles
+    const Z_OFFSET = 0.57;
+
+    // State
+    let viewer = null;
+    let google3dTileset = null;
+    let tiles3dVisible = true;
+    let treeVisible = true;
+    let currentPointSize = 3.0;
+    let customProgram = null;
+
+    // Dati alberi: { id: { json, lat, lon, alt, utmE, utmN, entity, glBuffers, loaded } }
+    let treesData = {};
+    let selectedTreeId = null;
+    let allTreesGLBuffers = []; // Array di { glBuffers, alpha } per rendering multi-albero
+    let allTreesLoaded = false;
+    let allTreesVisible = false;
+
+    // =============================================
+    // UTILITY: Converti EPSG:3857 -> WGS84
+    // =============================================
+    function mercatorToWgs84(x, y) {
+        const maxM = 20037508.34;
+        const lon = (x / maxM) * 180;
+        const lat = Math.atan(Math.exp((y / maxM) * Math.PI)) * 360 / Math.PI - 90;
+        return { lat, lon };
+    }
+
+    // =============================================
+    // SIDEBAR - Collapsible sections
+    // =============================================
+    function toggleSection(header) {
+        header.parentElement.classList.toggle('open');
+    }
+
+    function openSidebar() {
+        document.getElementById('sidebar').classList.add('open');
+        document.getElementById('pointBadge').classList.add('sidebar-open');
+    }
+
+    function closeSidebar() {
+        document.getElementById('sidebar').classList.remove('open');
+        document.getElementById('pointBadge').classList.remove('sidebar-open');
+    }
+
+    // =============================================
+    // GENERA HTML SIDEBAR DA JSON
+    // =============================================
+    function buildSidebarHTML(d) {
+        const name = d.tseScientificName || d.scientificName || `${d.genus || ''} ${d.species || ''}`.trim() || 'Sconosciuto';
+        const author = d.authorSpecies || '';
+        const address = d.streetAddress || d.addressFromParcel || (d.road ? `${d.road} ${d.houseNumber || ''}` : '') || '';
+        const postalCode = d.postalCode || '';
+        const fullAddress = address ? `${address}${postalCode ? ', ' + postalCode + ' Palermo' : ''}` : (postalCode ? postalCode + ' Palermo' : 'Palermo');
+
+        const hs = d.healthScore || '-';
+        const ss = d.structureScore || '-';
+        const os = d.outliersScore || '-';
+
+        const fmt = (v, u, dec) => v != null ? (typeof v === 'number' ? v.toFixed(dec !== undefined ? dec : 2) : v) + (u || '') : '-';
+        const fmtG = (v) => v != null ? (v * 1000).toFixed(2) + ' g/anno' : '-';
+        const pct = (v) => v != null ? (v * 100).toFixed(2) + '%' : (typeof v === 'number' ? v.toFixed(2) + '%' : '-');
+
+        const vigor = { high: 'Alto', medium: 'Medio', low: 'Basso' }[d.vitalityVigor] || d.vitalityVigor || '-';
+        const vigorClass = d.vitalityVigor === 'high' ? 'tag-green' : d.vitalityVigor === 'medium' ? 'tag-yellow' : 'tag-red';
+
+        const statusText = d.status === 'alive' ? 'Vivo' : d.status || '-';
+        const statusClass = d.status === 'alive' ? 'tag-green' : 'tag-red';
+
+        const ageMap = { young: 'Giovane', mature: 'Maturo', old: 'Vecchio' };
+        const age = ageMap[d.ageClass] || d.ageClass || '-';
+
+        const crownTransp = { notDefoliated: 'Non defogliata', slightlyDefoliated: 'Leggermente defogliata', moderatelyDefoliated: 'Moderatamente defogliata', severelyDefoliated: 'Gravemente defogliata' }[d.crownTransparency] || d.crownTransparency || '-';
+
+        const dateStr = d.recordingDate ? new Date(d.recordingDate).toLocaleDateString('it-IT') : '-';
+        const updateStr = d.lastUpdatedAt ? new Date(d.lastUpdatedAt).toLocaleDateString('it-IT') : '-';
+
+        // Outliers
+        const outliers = [
+            { label: 'Altezza / Volume chioma', key: 'outlierHeightPerCrownVolume' },
+            { label: 'Altezza / Area fogliare', key: 'outlierHeightPerLeafArea' },
+            { label: 'Area fogliare / Volume chioma', key: 'outlierLeafAreaPerCrownVolume' },
+            { label: 'Diam. tronco / Volume chioma', key: 'outlierTrunkDiameterPerCrownVolume' },
+            { label: 'Diam. tronco / Altezza', key: 'outlierTrunkDiameterPerHeight' },
+            { label: 'Diam. tronco / Area fogliare', key: 'outlierTrunkDiameterPerLeafArea' },
+            { label: 'Sequestro CO2', key: 'outlierCoSequestration' },
+            { label: 'Riduzione PM', key: 'outlierPmReduction' },
+            { label: 'Produzione O2', key: 'outlierOxygenProduction' },
+            { label: 'Deflusso idrico', key: 'outlierWaterRunoff' },
+            { label: 'Evapotraspirazione', key: 'outlierEvapotranspiration' },
+        ];
+
+        return `
+        <div class="sidebar-header">
+            <div style="font-size:10px;color:var(--text-secondary);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;font-weight:500;">Gemello Digitale - Scheda Albero</div>
+            <div class="species-name">${name} <span class="species-author">${author ? '(' + author + ')' : ''}</span></div>
+            <div class="tree-id">ID #${d.externalId || d.tseId} &bull; Famiglia: ${d.family || '-'} &bull; Genere: ${d.genus || '-'}</div>
+            <div class="location"><span class="material-icons-round">place</span>${fullAddress}</div>
+        </div>
+
+        <div class="scores-row">
+            <div class="score-badge score-${hs}"><span class="score-value">${hs}</span><span class="score-label">Salute</span></div>
+            <div class="score-badge score-${ss}"><span class="score-value">${ss}</span><span class="score-label">Struttura</span></div>
+            <div class="score-badge score-${os}"><span class="score-value">${os}</span><span class="score-label">Anomalie</span></div>
+        </div>
+
+        <div class="nav-row">
+            <button class="nav-btn" onclick="navigateTree(-1)">
+                <span class="material-icons-round">chevron_left</span> Indietro
+            </button>
+            <div class="nav-counter" id="navCounter"></div>
+            <button class="nav-btn" onclick="navigateTree(1)">
+                Avanti <span class="material-icons-round">chevron_right</span>
+            </button>
+        </div>
+
+        <div class="section open">
+            <div class="section-header" onclick="toggleSection(this)">
+                <div class="section-icon icon-green"><span class="material-icons-round">info</span></div>
+                <span class="section-title">Informazioni Generali</span>
+                <span class="material-icons-round section-arrow">expand_more</span>
+            </div>
+            <div class="section-body">
+                <div class="data-row"><span class="data-label">Stato</span><span class="data-value"><span class="tag ${statusClass}">${statusText}</span></span></div>
+                <div class="data-row"><span class="data-label">Classe d'et&agrave;</span><span class="data-value">${age}</span></div>
+                <div class="data-row"><span class="data-label">Categoria TMS</span><span class="data-value">${(d.tmsCategory || '-').toUpperCase()}</span></div>
+                <div class="data-row"><span class="data-label">N. fusti</span><span class="data-value">${d.numberOfStems || '-'}</span></div>
+                <div class="data-row"><span class="data-label">Data rilevamento</span><span class="data-value">${dateStr}</span></div>
+                <div class="data-row"><span class="data-label">Ultimo aggiornamento</span><span class="data-value">${updateStr}</span></div>
+                <div class="data-row"><span class="data-label">Sorgente</span><span class="data-value">${d.originalSource || '-'}</span></div>
+                <div class="data-row"><span class="data-label">Area gestita</span><span class="data-value" style="font-size:10px;">${d.managedArea?.code || '-'}</span></div>
+            </div>
+        </div>
+
+        <div class="section open">
+            <div class="section-header" onclick="toggleSection(this)">
+                <div class="section-icon icon-blue"><span class="material-icons-round">straighten</span></div>
+                <span class="section-title">Dimensioni</span>
+                <span class="material-icons-round section-arrow">expand_more</span>
+            </div>
+            <div class="section-body">
+                <div class="subsection-title">Albero</div>
+                <div class="data-row"><span class="data-label">Altezza totale</span><span class="data-value">${fmt(d.height, ' m')}</span></div>
+                <div class="data-row"><span class="data-label">Altezza viva</span><span class="data-value">${fmt(d.liveHeight, ' m')}</span></div>
+                <div class="data-row"><span class="data-label">Altezza point cloud</span><span class="data-value">${fmt(d.pointCloudHeight, ' m')}</span></div>
+                <div class="subsection-title">Tronco</div>
+                <div class="data-row"><span class="data-label">Altezza tronco</span><span class="data-value">${fmt(d.trunkHeight, ' m')}</span></div>
+                <div class="data-row"><span class="data-label">Diametro tronco</span><span class="data-value">${fmt(d.trunkDiameter, ' m')}</span></div>
+                <div class="data-row"><span class="data-label">Larghezza tronco</span><span class="data-value">${fmt(d.trunkWidth, ' m')}</span></div>
+                <div class="data-row"><span class="data-label">Circonferenza tronco</span><span class="data-value">${fmt(d.trunkCircumference, ' m')}</span></div>
+                <div class="subsection-title">Chioma</div>
+                <div class="data-row"><span class="data-label">Altezza chioma</span><span class="data-value">${fmt(d.canopyHeight, ' m')}</span></div>
+                <div class="data-row"><span class="data-label">Larghezza chioma</span><span class="data-value">${fmt(d.canopyWidth, ' m')}</span></div>
+                <div class="data-row"><span class="data-label">Volume chioma</span><span class="data-value">${fmt(d.crownVolume, ' m&sup3;')}</span></div>
+                <div class="data-row"><span class="data-label">Circonferenza chioma</span><span class="data-value">${fmt(d.canopyCircumference, ' m')}</span></div>
+                <div class="data-row"><span class="data-label">Area proiezione chioma</span><span class="data-value">${fmt(d.crownProjectionArea, ' m&sup2;')}</span></div>
+                <div class="data-row"><span class="data-label">Altezza base chioma</span><span class="data-value">${fmt(d.crownBaseHeight, ' m')}</span></div>
+            </div>
+        </div>
+
+        <div class="section open">
+            <div class="section-header" onclick="toggleSection(this)">
+                <div class="section-icon icon-green"><span class="material-icons-round">favorite</span></div>
+                <span class="section-title">Salute e Vitalit&agrave;</span>
+                <span class="material-icons-round section-arrow">expand_more</span>
+            </div>
+            <div class="section-body">
+                <div class="data-row"><span class="data-label">Vigore/Vitalit&agrave;</span><span class="data-value"><span class="tag ${vigorClass}">${vigor}</span></span></div>
+                <div class="data-row"><span class="data-label">Trasparenza chioma</span><span class="data-value">${crownTransp}</span></div>
+                <div class="data-row"><span class="data-label">Trasparenza fogliame</span><span class="data-value">${fmt(d.foliageTransparency, '%')}</span></div>
+                <div class="data-row"><span class="data-label">Dieback</span><span class="data-value ${d.dieback === 0 ? 'green' : 'yellow'}">${d.dieback != null ? (d.dieback * 100).toFixed(0) + '%' : '-'}</span></div>
+                <div class="data-row"><span class="data-label">Densit&agrave; chioma</span><span class="data-value">${fmt(d.crownDensity, '%')}</span></div>
+                <div class="data-row"><span class="data-label">Live Crown Ratio</span><span class="data-value">${fmt(d.liveCrownRatio, '%')}</span></div>
+                <div class="data-row"><span class="data-label">Indice area fogliare (LAI)</span><span class="data-value">${fmt(d.leafAreaIndex, '')}</span></div>
+                <div class="data-row"><span class="data-label">Area fogliare</span><span class="data-value">${fmt(d.leafArea, ' m&sup2;')}</span></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <div class="section-icon icon-orange"><span class="material-icons-round">architecture</span></div>
+                <span class="section-title">Analisi Strutturale</span>
+                <span class="material-icons-round section-arrow">expand_more</span>
+            </div>
+            <div class="section-body">
+                <div class="data-row"><span class="data-label">Angolo inclinazione</span><span class="data-value ${d.leaningAngle > 15 ? 'yellow' : ''}">${fmt(d.leaningAngle, '&deg;')}</span></div>
+                <div class="data-row"><span class="data-label">Angolo inclin. tronco</span><span class="data-value">${fmt(d.trunkLeanAngle, '&deg;')}</span></div>
+                <div class="data-row"><span class="data-label">Snellezza</span><span class="data-value">${fmt(d.slenderness, '')}</span></div>
+                <div class="data-row"><span class="data-label">Indice competizione</span><span class="data-value">${fmt(d.competitionIndex, '')}</span></div>
+                <div class="data-row"><span class="data-label">Fattore sicurezza 80km/h</span><span class="data-value">${fmt(d.safetyFactorAt80Kmh, '')}</span></div>
+                <div class="data-row"><span class="data-label">Zona protezione albero</span><span class="data-value">${fmt(d.treeProtectionZone, ' m')}</span></div>
+                <div class="data-row"><span class="data-label">Zona radice critica</span><span class="data-value">${fmt(d.criticalRootZone, ' m')}</span></div>
+                <div class="data-row"><span class="data-label">Zona protezione radici</span><span class="data-value">${fmt(d.rootProtectionZone, ' m')}</span></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <div class="section-icon icon-teal"><span class="material-icons-round">eco</span></div>
+                <span class="section-title">Benefici Ambientali</span>
+                <span class="material-icons-round section-arrow">expand_more</span>
+            </div>
+            <div class="section-body">
+                <div class="subsection-title">Carbonio e Ossigeno</div>
+                <div class="data-row"><span class="data-label">Stoccaggio carbonio</span><span class="data-value">${fmt(d.carbonStorage, ' kg')}</span></div>
+                <div class="data-row"><span class="data-label">Sequestro lordo CO&sup2;</span><span class="data-value">${fmt(d.grossCarbonSequestration, ' kg/anno')}</span></div>
+                <div class="data-row"><span class="data-label">Produzione O&sup2;</span><span class="data-value">${fmt(d.oxygenProduction, ' kg/anno')}</span></div>
+                <div class="subsection-title">Qualit&agrave; dell'Aria</div>
+                <div class="data-row"><span class="data-label">NO&sup2; rimosso</span><span class="data-value">${fmt(d.no2, ' g/anno')}</span></div>
+                <div class="data-row"><span class="data-label">SO&sup2; rimosso</span><span class="data-value">${fmt(d.so2, ' g/anno')}</span></div>
+                <div class="data-row"><span class="data-label">PM2.5 rimosso</span><span class="data-value">${fmt(d.pm25, ' g/anno')}</span></div>
+                <div class="data-row"><span class="data-label">O&sup3; rimosso</span><span class="data-value">${fmt(d.o3, ' g/anno')}</span></div>
+                <div class="subsection-title">Ciclo Idrico</div>
+                <div class="data-row"><span class="data-label">Evapotraspirazione pot.</span><span class="data-value">${fmt(d.potentialEvapotranspiration, ' m&sup3;/anno')}</span></div>
+                <div class="data-row"><span class="data-label">Traspirazione</span><span class="data-value">${fmt(d.transpiration, ' m&sup3;/anno')}</span></div>
+                <div class="data-row"><span class="data-label">Acqua intercettata</span><span class="data-value">${fmt(d.waterIntercepted, ' m&sup3;/anno')}</span></div>
+                <div class="data-row"><span class="data-label">Deflusso evitato</span><span class="data-value">${fmt(d.avoidedRunoff, ' m&sup3;/anno')}</span></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <div class="section-icon icon-amber"><span class="material-icons-round">euro</span></div>
+                <span class="section-title">Valutazione Economica</span>
+                <span class="material-icons-round section-arrow">expand_more</span>
+            </div>
+            <div class="section-body">
+                <div class="data-row"><span class="data-label">Valore CAVAT</span><span class="data-value">&euro; ${d.treeValueCavat != null ? d.treeValueCavat.toLocaleString('it-IT', {minimumFractionDigits:2}) : '-'}</span></div>
+                <div class="data-row"><span class="data-label">Valore RADO</span><span class="data-value">&euro; ${d.treeValueRado != null ? d.treeValueRado.toLocaleString('it-IT', {minimumFractionDigits:2}) : '-'}</span></div>
+                <div class="data-row"><span class="data-label">Valore KOCH</span><span class="data-value">&euro; ${d.treeValueKoch != null ? d.treeValueKoch.toLocaleString('it-IT', {minimumFractionDigits:2}) : '-'}</span></div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="section-header" onclick="toggleSection(this)">
+                <div class="section-icon icon-red"><span class="material-icons-round">warning</span></div>
+                <span class="section-title">Informazioni Anomale</span>
+                <span class="material-icons-round section-arrow">expand_more</span>
+            </div>
+            <div class="section-body">
+                <div class="data-row"><span class="data-label">Indice anomalie globale</span><span class="data-value">${d.overallOutlierIndex != null ? d.overallOutlierIndex : '-'}</span></div>
+                <div style="margin-top: 8px;">
+                    ${outliers.map(o => `<div class="outlier-row"><span class="outlier-dot ${d[o.key] ? 'warn' : 'ok'}"></span><span class="outlier-text">${o.label}</span></div>`).join('')}
+                </div>
+            </div>
+        </div>
+
+        <div style="height: 24px;"></div>`;
+    }
+
+    // =============================================
+    // CUSTOM GL RENDERING INTO CESIUM'S CONTEXT
+    // =============================================
+    function initCustomShader(gl) {
+        const vsSource = `
+            attribute vec3 aPosition;
+            attribute vec3 aColor;
+            uniform mat4 uViewProjection;
+            uniform float uPointSize;
+            varying vec3 vColor;
+            void main() {
+                gl_Position = uViewProjection * vec4(aPosition, 1.0);
+                gl_PointSize = uPointSize;
+                vColor = aColor;
+            }
+        `;
+        const fsSource = `
+            precision mediump float;
+            varying vec3 vColor;
+            uniform float uAlpha;
+            void main() {
+                vec2 pc = gl_PointCoord - vec2(0.5);
+                if (dot(pc, pc) > 0.25) discard;
+                gl_FragColor = vec4(vColor, uAlpha);
+            }
+        `;
+
+        const vs = gl.createShader(gl.VERTEX_SHADER);
+        gl.shaderSource(vs, vsSource); gl.compileShader(vs);
+        if (!gl.getShaderParameter(vs, gl.COMPILE_STATUS)) { console.error('VS:', gl.getShaderInfoLog(vs)); return null; }
+
+        const fs = gl.createShader(gl.FRAGMENT_SHADER);
+        gl.shaderSource(fs, fsSource); gl.compileShader(fs);
+        if (!gl.getShaderParameter(fs, gl.COMPILE_STATUS)) { console.error('FS:', gl.getShaderInfoLog(fs)); return null; }
+
+        const prog = gl.createProgram();
+        gl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);
+        if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) { console.error('Link:', gl.getProgramInfoLog(prog)); return null; }
+
+        prog.aPosition = gl.getAttribLocation(prog, 'aPosition');
+        prog.aColor = gl.getAttribLocation(prog, 'aColor');
+        prog.uViewProjection = gl.getUniformLocation(prog, 'uViewProjection');
+        prog.uPointSize = gl.getUniformLocation(prog, 'uPointSize');
+        prog.uAlpha = gl.getUniformLocation(prog, 'uAlpha');
+        return prog;
+    }
+
+    function createGLBuffers(gl, ecefF64, colorsU8, count) {
+        const posBuffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, posBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, count * 3 * 4, gl.DYNAMIC_DRAW);
+
+        const colBuffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, colBuffer);
+        const colF32 = new Float32Array(count * 3);
+        for (let i = 0; i < count * 3; i++) colF32[i] = colorsU8[i] / 255.0;
+        gl.bufferData(gl.ARRAY_BUFFER, colF32, gl.STATIC_DRAW);
+
+        return { posBuffer, colBuffer, ecefF64, count };
+    }
+
+    function renderPointClouds() {
+        if (!viewer || !customProgram) return;
+
+        const scene = viewer.scene;
+        const gl = scene.context._gl;
+        if (!gl) return;
+
+        const datasets = [];
+
+        // Nuvole "mostra tutti"
+        if (allTreesVisible) {
+            for (const entry of allTreesGLBuffers) {
+                if (entry.glBuffers) datasets.push({ buf: entry.glBuffers, alpha: 0.85 });
+            }
+        }
+
+        // Albero selezionato (sopra a tutti)
+        if (selectedTreeId && treesData[selectedTreeId]?.glBuffers && treeVisible) {
+            datasets.push({ buf: treesData[selectedTreeId].glBuffers, alpha: 1.0 });
+        }
+
+        if (datasets.length === 0) return;
+
+        const prevProgram = gl.getParameter(gl.CURRENT_PROGRAM);
+        const prevDepthTest = gl.isEnabled(gl.DEPTH_TEST);
+        const prevDepthMask = gl.getParameter(gl.DEPTH_WRITEMASK);
+        const prevBlend = gl.isEnabled(gl.BLEND);
+        const prevBlendSrc = gl.getParameter(gl.BLEND_SRC_RGB);
+        const prevBlendDst = gl.getParameter(gl.BLEND_DST_RGB);
+
+        gl.useProgram(customProgram);
+        gl.disable(gl.DEPTH_TEST);
+        gl.depthMask(false);
+        gl.enable(gl.BLEND);
+        gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+
+        const camera = viewer.camera;
+        const camPos = camera.positionWC;
+        const viewMatrix = camera.viewMatrix;
+        const projMatrix = camera.frustum.projectionMatrix;
+
+        const viewRot = new Cesium.Matrix4();
+        viewRot[0]=viewMatrix[0]; viewRot[1]=viewMatrix[1]; viewRot[2]=viewMatrix[2]; viewRot[3]=0;
+        viewRot[4]=viewMatrix[4]; viewRot[5]=viewMatrix[5]; viewRot[6]=viewMatrix[6]; viewRot[7]=0;
+        viewRot[8]=viewMatrix[8]; viewRot[9]=viewMatrix[9]; viewRot[10]=viewMatrix[10]; viewRot[11]=0;
+        viewRot[12]=0; viewRot[13]=0; viewRot[14]=0; viewRot[15]=1;
+
+        const vpRel = Cesium.Matrix4.multiply(projMatrix, viewRot, new Cesium.Matrix4());
+        const vpArray = new Float32Array(16);
+        Cesium.Matrix4.toArray(vpRel, vpArray);
+
+        gl.uniformMatrix4fv(customProgram.uViewProjection, false, vpArray);
+        gl.uniform1f(customProgram.uPointSize, currentPointSize);
+
+        for (const ds of datasets) {
+            const buf = ds.buf;
+            const relPos = new Float32Array(buf.count * 3);
+            for (let i = 0; i < buf.count; i++) {
+                relPos[i*3]   = buf.ecefF64[i*3]   - camPos.x;
+                relPos[i*3+1] = buf.ecefF64[i*3+1] - camPos.y;
+                relPos[i*3+2] = buf.ecefF64[i*3+2] - camPos.z;
+            }
+
+            gl.bindBuffer(gl.ARRAY_BUFFER, buf.posBuffer);
+            gl.bufferSubData(gl.ARRAY_BUFFER, 0, relPos);
+            gl.enableVertexAttribArray(customProgram.aPosition);
+            gl.vertexAttribPointer(customProgram.aPosition, 3, gl.FLOAT, false, 0, 0);
+
+            gl.bindBuffer(gl.ARRAY_BUFFER, buf.colBuffer);
+            gl.enableVertexAttribArray(customProgram.aColor);
+            gl.vertexAttribPointer(customProgram.aColor, 3, gl.FLOAT, false, 0, 0);
+
+            gl.uniform1f(customProgram.uAlpha, ds.alpha);
+            gl.drawArrays(gl.POINTS, 0, buf.count);
+        }
+
+        gl.disableVertexAttribArray(customProgram.aPosition);
+        gl.disableVertexAttribArray(customProgram.aColor);
+        if (prevDepthTest) gl.enable(gl.DEPTH_TEST); else gl.disable(gl.DEPTH_TEST);
+        gl.depthMask(prevDepthMask);
+        if (prevBlend) gl.enable(gl.BLEND); else gl.disable(gl.BLEND);
+        gl.blendFunc(prevBlendSrc, prevBlendDst);
+        if (prevProgram) gl.useProgram(prevProgram);
+    }
+
+    // =============================================
+    // PARSER LAS (identico all'esempio 648 funzionante)
+    // =============================================
+    function parseLAS(buffer, treeLat, treeLon, treeUtmE, treeUtmN, treeBaseZ, treeHeight) {
+        const view = new DataView(buffer);
+        const magic = String.fromCharCode(view.getUint8(0), view.getUint8(1), view.getUint8(2), view.getUint8(3));
+        if (magic !== 'LASF') throw new Error('Non LAS valido');
+
+        const vMajor = view.getUint8(24), vMinor = view.getUint8(25);
+        const dataOffset = view.getUint32(96, true);
+        const pointFmt = view.getUint8(104);
+        const recLen = view.getUint16(105, true);
+        const numPts = (vMajor === 1 && vMinor >= 4) ? Number(view.getBigUint64(247, true)) : view.getUint32(107, true);
+
+        const sx = view.getFloat64(131, true), sy = view.getFloat64(139, true), sz = view.getFloat64(147, true);
+        const ox = view.getFloat64(155, true), oy = view.getFloat64(163, true), oz = view.getFloat64(171, true);
+
+        if ((pointFmt & 0x80) !== 0) throw new Error('LAZ_COMPRESSED - serve file .las');
+        if (dataOffset + numPts * recLen > buffer.byteLength * 1.2) throw new Error('LAZ_COMPRESSED - serve file .las');
+
+        const baseFmt = pointFmt & 0x3F;
+        const hasRGB = [2,3,5,7,8,10].includes(baseFmt);
+        let rgbOff = -1;
+        if (baseFmt === 2) rgbOff = 20;
+        else if (baseFmt === 3 || baseFmt === 5) rgbOff = 28;
+        else if (baseFmt >= 7) rgbOff = 30;
+
+        const N = Math.min(numPts, 5000000);
+        const cosLat = Math.cos(treeLat * Math.PI / 180);
+        const mPerDegLat = 111132.954;
+        const mPerDegLon = 111132.954 * cosLat;
+
+        const ecefPositions = new Float64Array(N * 3);
+        const colors = new Uint8Array(N * 3);
+        let count = 0;
+
+        for (let i = 0; i < N; i++) {
+            const rec = dataOffset + i * recLen;
+            if (rec + 12 > buffer.byteLength) break;
+
+            const xUTM = view.getInt32(rec, true) * sx + ox;
+            const yUTM = view.getInt32(rec + 4, true) * sy + oy;
+            const zAbs = view.getInt32(rec + 8, true) * sz + oz;
+
+            const dE = xUTM - treeUtmE;
+            const dN = yUTM - treeUtmN;
+            const lon = treeLon + dE / mPerDegLon;
+            const lat = treeLat + dN / mPerDegLat;
+            const alt = zAbs + Z_OFFSET;
+
+            const cart = Cesium.Cartesian3.fromDegrees(lon, lat, alt);
+            ecefPositions[count * 3]     = cart.x;
+            ecefPositions[count * 3 + 1] = cart.y;
+            ecefPositions[count * 3 + 2] = cart.z;
+
+            if (hasRGB && rgbOff >= 0 && rec + rgbOff + 6 <= buffer.byteLength) {
+                const r16 = view.getUint16(rec + rgbOff, true);
+                const g16 = view.getUint16(rec + rgbOff + 2, true);
+                const b16 = view.getUint16(rec + rgbOff + 4, true);
+                const is16bit = r16 > 255 || g16 > 255 || b16 > 255;
+                colors[count * 3]     = is16bit ? (r16 >> 8) : r16;
+                colors[count * 3 + 1] = is16bit ? (g16 >> 8) : g16;
+                colors[count * 3 + 2] = is16bit ? (b16 >> 8) : b16;
+            } else {
+                const relH = zAbs - treeBaseZ;
+                const trunkH = treeHeight ? treeHeight * 0.3 : 1;
+                if (relH < trunkH) {
+                    colors[count*3] = 140; colors[count*3+1] = 70; colors[count*3+2] = 20;
+                } else {
+                    const t = Math.min(relH / (treeHeight || 5), 1.0);
+                    colors[count*3]     = Math.round(30 + t * 50);
+                    colors[count*3+1] = Math.round(80 + t * 130);
+                    colors[count*3+2] = Math.round(20 + t * 40);
+                }
+            }
+            count++;
+        }
+
+        return {
+            ecefPositions: ecefPositions.subarray(0, count * 3),
+            colors: colors.subarray(0, count * 3),
+            count
+        };
+    }
+
+    // =============================================
+    // CARICA TUTTI I JSON + CREA MARKER
+    // =============================================
+    async function loadAllTreeJSON() {
+        showStatus('Caricamento dati alberi...');
+        let loaded = 0;
+
+        const promises = TREE_IDS.map(async (id) => {
+            try {
+                const resp = await fetch(`dettagli_json/${id}.json`);
+                if (!resp.ok) return;
+                const json = await resp.json();
+
+                const coords = json.location?.coordinates;
+                if (!coords) return;
+
+                const wgs = mercatorToWgs84(coords[0], coords[1]);
+                const utmCoords = json.localizedLocation?.coordinates || [0, 0, 0];
+
+                treesData[id] = {
+                    json,
+                    lat: wgs.lat,
+                    lon: wgs.lon,
+                    alt: coords[2] || 0,
+                    utmE: utmCoords[0],
+                    utmN: utmCoords[1],
+                    entity: null,
+                    glBuffers: null,
+                    loaded: false
+                };
+
+                loaded++;
+                const pct = Math.round((loaded / TREE_IDS.length) * 100);
+                document.getElementById('loadProgressBar').style.width = pct + '%';
+            } catch (e) {
+                console.warn(`Errore caricamento JSON ${id}:`, e);
+            }
+        });
+
+        await Promise.all(promises);
+        document.getElementById('treeCount').textContent = Object.keys(treesData).length;
+        console.log(`Caricati ${Object.keys(treesData).length} alberi`);
+    }
+
+    function createTreeMarkers() {
+        const scoreColor = (s) => {
+            if (s === '1') return Cesium.Color.fromCssColorString('#4CAF50');
+            if (s === '2') return Cesium.Color.fromCssColorString('#8BC34A');
+            if (s === '3') return Cesium.Color.fromCssColorString('#FFC107');
+            if (s === '4') return Cesium.Color.fromCssColorString('#FF9800');
+            if (s === '5') return Cesium.Color.fromCssColorString('#f44336');
+            return Cesium.Color.fromCssColorString('#4CAF50');
+        };
+
+        for (const [id, tree] of Object.entries(treesData)) {
+            const d = tree.json;
+            const name = d.tseScientificName || d.scientificName || `${d.genus || ''} ${d.species || ''}`;
+            const hs = d.healthScore || '1';
+
+            tree.entity = viewer.entities.add({
+                position: Cesium.Cartesian3.fromDegrees(tree.lon, tree.lat, tree.alt + Z_OFFSET + (d.height || 3)),
+                billboard: {
+                    image: createTreeIcon(hs),
+                    width: 32,
+                    height: 32,
+                    verticalOrigin: Cesium.VerticalOrigin.BOTTOM,
+                    disableDepthTestDistance: Number.POSITIVE_INFINITY,
+                    heightReference: Cesium.HeightReference.NONE
+                },
+                label: {
+                    text: `#${id}`,
+                    font: '11px Inter, sans-serif',
+                    fillColor: Cesium.Color.WHITE,
+                    outlineColor: Cesium.Color.BLACK,
+                    outlineWidth: 2,
+                    style: Cesium.LabelStyle.FILL_AND_OUTLINE,
+                    verticalOrigin: Cesium.VerticalOrigin.TOP,
+                    pixelOffset: new Cesium.Cartesian2(0, 4),
+                    disableDepthTestDistance: Number.POSITIVE_INFINITY,
+                    showBackground: true,
+                    backgroundColor: new Cesium.Color(0.1, 0.12, 0.14, 0.85),
+                    backgroundPadding: new Cesium.Cartesian2(4, 2),
+                    show: false
+                },
+                properties: { treeId: id }
+            });
+        }
+    }
+
+    function createTreeIcon(healthScore) {
+        const canvas = document.createElement('canvas');
+        canvas.width = 64; canvas.height = 64;
+        const ctx = canvas.getContext('2d');
+
+        const colors = { '1': '#4CAF50', '2': '#8BC34A', '3': '#FFC107', '4': '#FF9800', '5': '#f44336' };
+        const color = colors[healthScore] || '#4CAF50';
+
+        // Circle background
+        ctx.beginPath();
+        ctx.arc(32, 32, 28, 0, Math.PI * 2);
+        ctx.fillStyle = color;
+        ctx.fill();
+        ctx.strokeStyle = 'white';
+        ctx.lineWidth = 3;
+        ctx.stroke();
+
+        // Tree icon (simplified)
+        ctx.fillStyle = 'white';
+        ctx.beginPath();
+        // Trunk
+        ctx.fillRect(29, 40, 6, 12);
+        // Crown (triangle)
+        ctx.beginPath();
+        ctx.moveTo(32, 14);
+        ctx.lineTo(18, 42);
+        ctx.lineTo(46, 42);
+        ctx.closePath();
+        ctx.fill();
+
+        return canvas.toDataURL();
+    }
+
+    // =============================================
+    // SELEZIONA ALBERO (CLICK SU MARKER)
+    // =============================================
+    async function selectTree(id) {
+        selectedTreeId = id;
+        const tree = treesData[id];
+        if (!tree) return;
+
+        const d = tree.json;
+        const name = d.tseScientificName || d.scientificName || `${d.genus || ''} ${d.species || ''}`;
+
+        // Aggiorna badge
+        document.getElementById('badgeTitle').textContent = name;
+        document.getElementById('badgeSubtitle').textContent = `ID #${id}`;
+
+        // Aggiorna sidebar
+        document.getElementById('sidebarContent').innerHTML = buildSidebarHTML(d);
+        openSidebar();
+
+        // Aggiorna bottone albero
+        document.getElementById('btnTree').classList.add('active');
+        treeVisible = true;
+
+        // Carica point cloud se non caricata
+        if (!tree.loaded) {
+            showStatus(`Caricamento nuvola di punti #${id}...`);
+            await loadSinglePointCloud(id);
+            hideStatus();
+        }
+
+        // Aggiorna contatore punti
+        if (tree.glBuffers) {
+            document.getElementById('treePointCount').textContent = tree.glBuffers.count.toLocaleString('it-IT');
+        }
+
+        // Aggiorna contatore navigazione
+        const navCounter = document.getElementById('navCounter');
+        if (navCounter) {
+            const idx = TREE_IDS.indexOf(Number(id));
+            navCounter.innerHTML = `<strong>${idx + 1}</strong> / ${TREE_IDS.length}`;
+        }
+
+        // Fly to - vista ampia centrata sull'albero con contesto urbano
+        // Camera da sud guardando nord, inclinazione moderata per evitare tetti
+        const camOffsetLat = -0.0004;
+        const camOffsetLon = 0.0001;
+
+        viewer.camera.flyTo({
+            destination: Cesium.Cartesian3.fromDegrees(
+                tree.lon + camOffsetLon,
+                tree.lat + camOffsetLat,
+                110
+            ),
+            orientation: {
+                heading: Cesium.Math.toRadians(350),
+                pitch: Cesium.Math.toRadians(-50),
+                roll: 0
+            },
+            duration: 2.0
+        });
+    }
+
+    function navigateTree(direction) {
+        if (!selectedTreeId) return;
+        const idx = TREE_IDS.indexOf(Number(selectedTreeId));
+        if (idx === -1) return;
+        const newIdx = (idx + direction + TREE_IDS.length) % TREE_IDS.length;
+        selectTree(String(TREE_IDS[newIdx]));
+    }
+
+    async function loadSinglePointCloud(id) {
+        const tree = treesData[id];
+        if (!tree || tree.loaded) return;
+
+        try {
+            const resp = await fetch(`point_cloud/tree/${id}.las`);
+            if (!resp.ok) throw new Error(`HTTP ${resp.status}`);
+            const buf = await resp.arrayBuffer();
+
+            const parsed = parseLAS(buf, tree.lat, tree.lon, tree.utmE, tree.utmN, tree.alt, tree.json.height);
+
+            const gl = viewer.scene.context._gl;
+            tree.glBuffers = createGLBuffers(gl, parsed.ecefPositions, parsed.colors, parsed.count);
+            tree.loaded = true;
+            tree.parsedData = parsed; // Salva per Street View
+
+            console.log(`Albero #${id}: ${parsed.count} punti caricati`);
+        } catch (e) {
+            console.error(`Errore caricamento point cloud #${id}:`, e);
+        }
+    }
+
+    // =============================================
+    // CARICA TUTTE LE POINT CLOUD
+    // =============================================
+    async function loadAllPointClouds() {
+        if (allTreesLoaded) {
+            allTreesVisible = !allTreesVisible;
+            document.getElementById('btnAllTrees').classList.toggle('active', allTreesVisible);
+            return;
+        }
+
+        showStatus('Caricamento di tutte le nuvole di punti...');
+        document.getElementById('loadProgressBar').style.width = '0%';
+        document.getElementById('btnAllTrees').classList.add('active');
+        allTreesVisible = true;
+
+        const ids = Object.keys(treesData);
+        let loaded = 0;
+        let totalPoints = 0;
+
+        // Carica in batch di 5 per non sovraccaricare
+        const batchSize = 5;
+        for (let i = 0; i < ids.length; i += batchSize) {
+            const batch = ids.slice(i, i + batchSize);
+            await Promise.all(batch.map(async (id) => {
+                if (!treesData[id].loaded) {
+                    await loadSinglePointCloud(id);
+                }
+                if (treesData[id].glBuffers) {
+                    allTreesGLBuffers.push({ glBuffers: treesData[id].glBuffers });
+                    totalPoints += treesData[id].glBuffers.count;
+                }
+                loaded++;
+                const pct = Math.round((loaded / ids.length) * 100);
+                document.getElementById('loadProgressBar').style.width = pct + '%';
+                document.getElementById('statusText').textContent = `Caricamento nuvole... ${loaded}/${ids.length}`;
+            }));
+        }
+
+        allTreesLoaded = true;
+        document.getElementById('treePointCount').textContent = totalPoints.toLocaleString('it-IT');
+        hideStatus();
+        console.log(`Tutte le nuvole caricate: ${totalPoints} punti totali`);
+    }
+
+    // =============================================
+    // CONTROLS
+    // =============================================
+    function toggleTree() {
+        treeVisible = !treeVisible;
+        document.getElementById('btnTree').classList.toggle('active', treeVisible);
+    }
+
+    function toggle3DTiles() {
+        if (!google3dTileset) return;
+        tiles3dVisible = !tiles3dVisible;
+        google3dTileset.show = tiles3dVisible;
+        document.getElementById('btn3d').classList.toggle('active', tiles3dVisible);
+    }
+
+    document.getElementById('pointSizeSlider').addEventListener('input', (e) => {
+        currentPointSize = parseFloat(e.target.value);
+    });
+
+    function flyToSelected() {
+        if (!selectedTreeId || !treesData[selectedTreeId]) return;
+        const tree = treesData[selectedTreeId];
+
+        const camOffsetLat = -0.0004;
+        const camOffsetLon = 0.0001;
+
+        viewer.camera.flyTo({
+            destination: Cesium.Cartesian3.fromDegrees(
+                tree.lon + camOffsetLon,
+                tree.lat + camOffsetLat,
+                110
+            ),
+            orientation: {
+                heading: Cesium.Math.toRadians(350),
+                pitch: Cesium.Math.toRadians(-50),
+                roll: 0
+            },
+            duration: 2.0
+        });
+    }
+
+    function flyOverview() {
+        // Calcola il bounding box di tutti gli alberi
+        let minLat = 90, maxLat = -90, minLon = 180, maxLon = -180;
+        for (const tree of Object.values(treesData)) {
+            minLat = Math.min(minLat, tree.lat);
+            maxLat = Math.max(maxLat, tree.lat);
+            minLon = Math.min(minLon, tree.lon);
+            maxLon = Math.max(maxLon, tree.lon);
+        }
+        const cLat = (minLat + maxLat) / 2;
+        const cLon = (minLon + maxLon) / 2;
+
+        // Offset camera a nord-ovest rispetto al centro per una vista obliqua
+        // che mostra tutti gli alberi centrati nella scena
+        const offsetLat = 0.0012;
+        const offsetLon = -0.0014;
+
+        viewer.camera.flyTo({
+            destination: Cesium.Cartesian3.fromDegrees(cLon + offsetLon, cLat + offsetLat, 280),
+            orientation: {
+                heading: Cesium.Math.toRadians(135),
+                pitch: Cesium.Math.toRadians(-45),
+                roll: 0
+            },
+            duration: 2.5
+        });
+    }
+
+    function showStatus(t) {
+        document.getElementById('status').style.display = 'flex';
+        document.getElementById('statusText').textContent = t;
+    }
+    function hideStatus() { document.getElementById('status').style.display = 'none'; }
+
+    // =============================================
+    // CLICK HANDLER
+    // =============================================
+    function setupClickHandler() {
+        const handler = new Cesium.ScreenSpaceEventHandler(viewer.scene.canvas);
+
+        handler.setInputAction((click) => {
+            // Usa drillPick per trovare entities sotto le 3D Tiles
+            const pickedObjects = viewer.scene.drillPick(click.position);
+            for (const picked of pickedObjects) {
+                if (Cesium.defined(picked) && picked.id && picked.id.properties) {
+                    const treeId = picked.id.properties.treeId?.getValue();
+                    if (treeId) {
+                        console.log('Click su albero:', treeId);
+                        selectTree(treeId);
+                        return;
+                    }
+                }
+            }
+        }, Cesium.ScreenSpaceEventType.LEFT_CLICK);
+
+        // Hover: mostra label
+        handler.setInputAction((movement) => {
+            const pickedObjects = viewer.scene.drillPick(movement.endPosition, 5);
+            // Nascondi tutte le label
+            for (const tree of Object.values(treesData)) {
+                if (tree.entity?.label) tree.entity.label.show = false;
+            }
+            for (const picked of pickedObjects) {
+                if (Cesium.defined(picked) && picked.id && picked.id.properties) {
+                    const treeId = picked.id.properties.treeId?.getValue();
+                    if (treeId && treesData[treeId]?.entity?.label) {
+                        treesData[treeId].entity.label.show = true;
+                        break;
+                    }
+                }
+            }
+        }, Cesium.ScreenSpaceEventType.MOUSE_MOVE);
+    }
+
+    // =============================================
+    // STREET VIEW CON POINT CLOUD OVERLAY
+    // =============================================
+    let streetViewPanorama = null;
+    let svCanvas = null, svCtx = null;
+    let svPointsLocal = null;
+    let svPointCloudVisible = true;
+    let svPointSize = 3;
+
+    function calculateHeadingToTree(fromLat, fromLng, toLat, toLng) {
+        const dLon = (toLng - fromLng) * Math.PI / 180;
+        const lat1 = fromLat * Math.PI / 180;
+        const lat2 = toLat * Math.PI / 180;
+        const x = Math.sin(dLon) * Math.cos(lat2);
+        const y = Math.cos(lat1) * Math.sin(lat2) - Math.sin(lat1) * Math.cos(lat2) * Math.cos(dLon);
+        let heading = Math.atan2(x, y) * 180 / Math.PI;
+        return (heading + 360) % 360;
+    }
+
+    function calculateDistance(lat1, lng1, lat2, lng2) {
+        const R = 6371000;
+        const dLat = (lat2 - lat1) * Math.PI / 180;
+        const dLng = (lng2 - lng1) * Math.PI / 180;
+        const a = Math.sin(dLat/2)**2 + Math.cos(lat1*Math.PI/180)*Math.cos(lat2*Math.PI/180)*Math.sin(dLng/2)**2;
+        return R * 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+    }
+
+    function convertAllPointsToLocalENU(panoLat, panoLng, cameraHeight) {
+        const cosLat = Math.cos(panoLat * Math.PI / 180);
+        const mPerDegLat = 111132.954;
+        const mPerDegLon = 111132.954 * cosLat;
+        const points = [];
+        const colors = [];
+
+        // Raccogli punti da tutti gli alberi caricati
+        const treesToRender = allTreesVisible ? Object.values(treesData) :
+            (selectedTreeId && treesData[selectedTreeId] ? [treesData[selectedTreeId]] : []);
+
+        for (const tree of treesToRender) {
+            if (!tree.parsedData) continue;
+            const data = tree.parsedData;
+            const groundAlt = tree.alt + Z_OFFSET;
+            const cameraAlt = groundAlt + (cameraHeight || 1.6);
+
+            for (let i = 0; i < data.count; i++) {
+                const ecefX = data.ecefPositions[i * 3];
+                const ecefY = data.ecefPositions[i * 3 + 1];
+                const ecefZ = data.ecefPositions[i * 3 + 2];
+
+                const carto = Cesium.Cartographic.fromCartesian(new Cesium.Cartesian3(ecefX, ecefY, ecefZ));
+                const ptLon = Cesium.Math.toDegrees(carto.longitude);
+                const ptLat = Cesium.Math.toDegrees(carto.latitude);
+                const ptAlt = carto.height;
+
+                const e = (ptLon - panoLng) * mPerDegLon;
+                const n = (ptLat - panoLat) * mPerDegLat;
+                const u = ptAlt - cameraAlt;
+
+                points.push({ e, n, u });
+                colors.push({
+                    r: data.colors[i * 3],
+                    g: data.colors[i * 3 + 1],
+                    b: data.colors[i * 3 + 2]
+                });
+            }
+        }
+
+        return { points, colors };
+    }
+
+    function projectToStreetView(e, n, u, pov, canvasWidth, canvasHeight, zoom) {
+        const dist = Math.sqrt(e * e + n * n);
+        if (dist < 0.1) return null;
+
+        let pointHeading = Math.atan2(e, n) * 180 / Math.PI;
+        pointHeading = (pointHeading + 360) % 360;
+        const pointPitch = Math.atan2(u, dist) * 180 / Math.PI;
+
+        let dHeading = pointHeading - pov.heading;
+        while (dHeading > 180) dHeading -= 360;
+        while (dHeading < -180) dHeading += 360;
+        const dPitch = pointPitch - pov.pitch;
+
+        const fovH = 180 / Math.pow(2, zoom);
+        const fovV = fovH * (canvasHeight / canvasWidth);
+
+        if (Math.abs(dHeading) > fovH / 2 + 5 || Math.abs(dPitch) > fovV / 2 + 5) return null;
+
+        const x = canvasWidth / 2 + (dHeading / fovH) * canvasWidth;
+        const y = canvasHeight / 2 - (dPitch / fovV) * canvasHeight;
+        const dist3D = Math.sqrt(e * e + n * n + u * u);
+        const baseSize = svPointSize * 0.8;
+        const size = Math.max(0.5, Math.min(baseSize * 2, baseSize * 5 / dist3D));
+
+        return { x, y, size, dist: dist3D };
+    }
+
+    function renderStreetViewPointCloud() {
+        if (!svCanvas || !svCtx) return;
+        svCtx.clearRect(0, 0, svCanvas.width, svCanvas.height);
+        if (!svPointCloudVisible || !svPointsLocal || !streetViewPanorama) return;
+
+        const pov = streetViewPanorama.getPov();
+        const zoom = streetViewPanorama.getZoom();
+        const projected = [];
+
+        for (let i = 0; i < svPointsLocal.points.length; i++) {
+            const pt = svPointsLocal.points[i];
+            const col = svPointsLocal.colors[i];
+            const p = projectToStreetView(pt.e, pt.n, pt.u, pov, svCanvas.width, svCanvas.height, zoom);
+            if (p) projected.push({ ...p, r: col.r, g: col.g, b: col.b });
+        }
+
+        document.getElementById('svPointCount').textContent = projected.length.toLocaleString('it-IT');
+        projected.sort((a, b) => b.dist - a.dist);
+
+        for (const pt of projected) {
+            svCtx.beginPath();
+            svCtx.arc(pt.x, pt.y, pt.size, 0, Math.PI * 2);
+            svCtx.fillStyle = `rgba(${pt.r}, ${pt.g}, ${pt.b}, 0.6)`;
+            svCtx.fill();
+        }
+    }
+
+    function resizeStreetViewCanvas() {
+        if (!svCanvas) return;
+        const container = document.getElementById('streetViewContainer');
+        svCanvas.width = container.clientWidth;
+        svCanvas.height = container.clientHeight;
+        renderStreetViewPointCloud();
+    }
+
+    let svTargetLat = null, svTargetLon = null;
+
+    function openStreetView() {
+        // Usa le coordinate dell'albero selezionato o il centro di tutti
+        if (selectedTreeId && treesData[selectedTreeId]) {
+            svTargetLat = treesData[selectedTreeId].lat;
+            svTargetLon = treesData[selectedTreeId].lon;
+        } else {
+            let sumLat = 0, sumLon = 0, cnt = 0;
+            for (const t of Object.values(treesData)) { sumLat += t.lat; sumLon += t.lon; cnt++; }
+            svTargetLat = sumLat / cnt;
+            svTargetLon = sumLon / cnt;
+        }
+
+        const popup = document.getElementById('streetViewPopup');
+        const overlay = document.getElementById('streetViewOverlay');
+        popup.classList.add('active');
+        overlay.classList.add('active');
+
+        document.getElementById('svTitle').textContent = selectedTreeId ?
+            `Street View - Albero #${selectedTreeId}` : 'Street View - Panoramica';
+
+        svCanvas = document.getElementById('streetViewCanvas');
+        svCtx = svCanvas.getContext('2d');
+
+        if (!streetViewPanorama) {
+            // Prima inizializzazione
+            const container = document.getElementById('streetViewContainer');
+            const svService = new google.maps.StreetViewService();
+
+            svService.getPanorama({
+                location: { lat: svTargetLat, lng: svTargetLon },
+                radius: 50,
+                preference: google.maps.StreetViewPreference.NEAREST
+            }, (data, status) => {
+                if (status === google.maps.StreetViewStatus.OK) {
+                    const panoLocation = data.location.latLng;
+                    const panoPos = { lat: panoLocation.lat(), lng: panoLocation.lng() };
+
+                    const headingToTree = calculateHeadingToTree(panoPos.lat, panoPos.lng, svTargetLat, svTargetLon);
+                    const distance = calculateDistance(panoPos.lat, panoPos.lng, svTargetLat, svTargetLon);
+                    document.getElementById('svDistance').textContent = distance.toFixed(1);
+
+                    svPointsLocal = convertAllPointsToLocalENU(panoPos.lat, panoPos.lng, 1.6);
+
+                    streetViewPanorama = new google.maps.StreetViewPanorama(container, {
+                        pano: data.location.pano,
+                        pov: { heading: headingToTree, pitch: 10 },
+                        zoom: 1,
+                        addressControl: true, linksControl: true, panControl: true,
+                        enableCloseButton: false, fullscreenControl: true,
+                        motionTracking: false, motionTrackingControl: false
+                    });
+
+                    streetViewPanorama.addListener('pov_changed', renderStreetViewPointCloud);
+                    streetViewPanorama.addListener('zoom_changed', renderStreetViewPointCloud);
+                    streetViewPanorama.addListener('position_changed', () => {
+                        const pos = streetViewPanorama.getPosition();
+                        const newPos = { lat: pos.lat(), lng: pos.lng() };
+                        svPointsLocal = convertAllPointsToLocalENU(newPos.lat, newPos.lng, 1.6);
+
+                        const dist = calculateDistance(newPos.lat, newPos.lng, svTargetLat, svTargetLon);
+                        document.getElementById('svDistance').textContent = dist.toFixed(1);
+                        renderStreetViewPointCloud();
+                    });
+
+                    setTimeout(() => resizeStreetViewCanvas(), 500);
+                } else {
+                    console.error('Street View non disponibile:', status);
+                    alert('Street View non disponibile in questa posizione');
+                }
+            });
+        } else {
+            // Panorama già inizializzato: aggiorna posizione verso il nuovo albero
+            const svService = new google.maps.StreetViewService();
+            svService.getPanorama({
+                location: { lat: svTargetLat, lng: svTargetLon },
+                radius: 50,
+                preference: google.maps.StreetViewPreference.NEAREST
+            }, (data, status) => {
+                if (status === google.maps.StreetViewStatus.OK) {
+                    streetViewPanorama.setPano(data.location.pano);
+                    const headingToTree = calculateHeadingToTree(
+                        data.location.latLng.lat(), data.location.latLng.lng(),
+                        svTargetLat, svTargetLon
+                    );
+                    streetViewPanorama.setPov({ heading: headingToTree, pitch: 10 });
+
+                    const panoPos = { lat: data.location.latLng.lat(), lng: data.location.latLng.lng() };
+                    svPointsLocal = convertAllPointsToLocalENU(panoPos.lat, panoPos.lng, 1.6);
+                    const dist = calculateDistance(panoPos.lat, panoPos.lng, svTargetLat, svTargetLon);
+                    document.getElementById('svDistance').textContent = dist.toFixed(1);
+                }
+            });
+            setTimeout(() => {
+                google.maps.event.trigger(streetViewPanorama, 'resize');
+                resizeStreetViewCanvas();
+            }, 100);
+        }
+    }
+
+    function closeStreetView() {
+        document.getElementById('streetViewPopup').classList.remove('active');
+        document.getElementById('streetViewOverlay').classList.remove('active');
+    }
+
+    function toggleSvPointCloud() {
+        svPointCloudVisible = !svPointCloudVisible;
+        document.getElementById('svBtnPointCloud').classList.toggle('active', svPointCloudVisible);
+        renderStreetViewPointCloud();
+    }
+
+    document.getElementById('svPointSizeSlider').addEventListener('input', (e) => {
+        svPointSize = parseFloat(e.target.value);
+        renderStreetViewPointCloud();
+    });
+
+    window.addEventListener('resize', () => {
+        if (document.getElementById('streetViewPopup').classList.contains('active')) resizeStreetViewCanvas();
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeStreetView();
+    });
+
+    // =============================================
+    // START
+    // =============================================
+    async function start() {
+        showStatus('Inizializzazione...');
+        Cesium.Ion.defaultAccessToken = DEFAULT_TOKEN;
+
+        try {
+            viewer = new Cesium.Viewer('cesiumContainer', {
+                timeline: false, animation: false, homeButton: true,
+                sceneModePicker: false, baseLayerPicker: false,
+                navigationHelpButton: false, geocoder: false,
+                fullscreenButton: true, infoBox: false, selectionIndicator: false,
+                globe: false, skyAtmosphere: false,
+            });
+
+            Cesium.RequestScheduler.requestsByServer["tile.googleapis.com:443"] = 18;
+            google3dTileset = await Cesium.createGooglePhotorealistic3DTileset();
+            viewer.scene.primitives.add(google3dTileset);
+
+            const gl = viewer.scene.context._gl;
+            customProgram = initCustomShader(gl);
+            viewer.scene.postRender.addEventListener(renderPointClouds);
+
+            // Carica tutti i JSON degli alberi
+            await loadAllTreeJSON();
+
+            // Crea i marker sulla mappa
+            createTreeMarkers();
+
+            // Setup click handler
+            setupClickHandler();
+
+            // Vola alla panoramica
+            flyOverview();
+            hideStatus();
+
+        } catch (err) {
+            console.error('Errore:', err);
+            showStatus('Errore: ' + err.message);
+        }
+    }
+
+    start();
+    </script>
+</body>
+</html>
