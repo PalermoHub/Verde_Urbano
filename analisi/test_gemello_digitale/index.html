@@ -15,6 +15,11 @@
 	
 </head>
 <body>
+
+<!-- DEMO Stamp -->
+    <div class="demo-stamp">DEMO!</div>
+	
+	
     <div id="appContainer">
         <!-- Map Area -->
         <div id="viewerArea">
@@ -228,6 +233,10 @@
     ];
 
     const WMS_URL = 'https://palermoverde.r3gis.com/author/services/ows.php?PROJECT=palermoverde&MAP=r3-trees';
+
+    // Initial map view
+    const INITIAL_CENTER = [38.12448, 13.35522]; 
+    const INITIAL_ZOOM = 20;
 
     // State
     let map = null;
@@ -2116,6 +2125,18 @@
         showStatus('Inizializzazione mappa...');
 
         // Base layers
+        const mantovaBase = L.tileLayer.wms('https://mantova-ambiente.r3gis.com/author/services/ows.php', {
+            layers: 'osm.osm',
+            format: 'image/png',
+            transparent: false,
+            version: '1.3.0',
+            attribution: 'R3 GIS Mantova Ambiente - Rielaborazione: <a href="https://www.linkedin.com/in/gbvitrano/" title="Giovan Battista Vitrano" target="_blank" rel="noopener">gbvitrano</a> - AI Claude Anthropic',
+            project: 'public_portal_mantova',
+            map: 'public_portal_wms',
+            minZoom: 2,
+            maxZoom: 20
+        });
+
         const r3gisBase = L.tileLayer.wms('https://palermoverde.r3gis.com/author/services/ows.php', {
             layers: 'basemap_r3gis.basemap_r3gis',
             format: 'image/png',
@@ -2145,21 +2166,81 @@
             maxZoom: 20
         });
 
+        // Max bounds: ~1 km around initial center
+        const BOUNDS_OFFSET = 0.009; // ~1 km in degrees
+        const maxBounds = L.latLngBounds(
+            [INITIAL_CENTER[0] - BOUNDS_OFFSET, INITIAL_CENTER[1] - BOUNDS_OFFSET],
+            [INITIAL_CENTER[0] + BOUNDS_OFFSET, INITIAL_CENTER[1] + BOUNDS_OFFSET]
+        );
+
         // Create map - zoom control disabled here, added manually on the right
         map = L.map('mapContainer', {
-            center: [38.12, 13.36],
-            zoom: 15,
-            layers: [r3gisBase, wmsTreesLayer],
-            zoomControl: false
+            center: INITIAL_CENTER,
+            zoom: INITIAL_ZOOM,
+            layers: [mantovaBase, wmsTreesLayer],
+            zoomControl: false,
+            maxBounds: maxBounds,
+            maxBoundsViscosity: 1.0
         });
 
         // Zoom control on the right
         L.control.zoom({ position: 'topright' }).addTo(map);
 
+        // Home button - reset to initial view
+        const homeControl = L.Control.extend({
+            options: { position: 'topright' },
+            onAdd: function () {
+                const container = L.DomUtil.create('div', 'leaflet-control leaflet-control-custom');
+                const btn = L.DomUtil.create('a', 'leaflet-control-custom-btn', container);
+                btn.href = '#';
+                btn.title = 'Torna alla vista iniziale';
+                btn.innerHTML = '<span class="material-icons-round">home</span>';
+                btn.setAttribute('role', 'button');
+                btn.setAttribute('aria-label', 'Home');
+                L.DomEvent.disableClickPropagation(container);
+                L.DomEvent.on(btn, 'click', function (e) {
+                    L.DomEvent.preventDefault(e);
+                    map.setView(INITIAL_CENTER, INITIAL_ZOOM, { animate: true });
+                });
+                return container;
+            }
+        });
+        new homeControl().addTo(map);
+
+        // Fullscreen button
+        const fullscreenControl = L.Control.extend({
+            options: { position: 'topright' },
+            onAdd: function () {
+                const container = L.DomUtil.create('div', 'leaflet-control leaflet-control-custom');
+                const btn = L.DomUtil.create('a', 'leaflet-control-custom-btn', container);
+                btn.href = '#';
+                btn.title = 'Mappa a tutto schermo';
+                btn.innerHTML = '<span class="material-icons-round">fullscreen</span>';
+                btn.setAttribute('role', 'button');
+                btn.setAttribute('aria-label', 'Fullscreen');
+                L.DomEvent.disableClickPropagation(container);
+                L.DomEvent.on(btn, 'click', function (e) {
+                    L.DomEvent.preventDefault(e);
+                    const viewerArea = document.getElementById('viewerArea');
+                    viewerArea.classList.toggle('map-fullscreen');
+                    const isFullscreen = viewerArea.classList.contains('map-fullscreen');
+                    btn.innerHTML = isFullscreen
+                        ? '<span class="material-icons-round">fullscreen_exit</span>'
+                        : '<span class="material-icons-round">fullscreen</span>';
+                    btn.title = isFullscreen ? 'Esci da tutto schermo' : 'Mappa a tutto schermo';
+                    // Recalculate map size after transition
+                    setTimeout(function () { map.invalidateSize(); }, 300);
+                });
+                return container;
+            }
+        });
+        new fullscreenControl().addTo(map);
+
         // Layer control
         const baseLayers = {
-            'Mappa R3 GIS': r3gisBase,
-            'Foto Satellitare': satelliteLayer
+            'MapBox': mantovaBase,
+            'Mappa R3 GIS Palermo': r3gisBase,
+            'Google Satellite': satelliteLayer
         };
         const overlays = {
             'Alberi WMS (r3gis)': wmsTreesLayer
@@ -2178,5 +2259,7 @@
 
     start();
     </script>
+	
+	
 </body>
 </html>
