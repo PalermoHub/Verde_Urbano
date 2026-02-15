@@ -125,68 +125,88 @@
             <div class="pc-controls">
                 <span class="ctrl-label">Dim. punti</span>
                 <input type="range" class="ctrl-range" id="pcPointSizeSlider" min="1" max="12" step="0.5" value="1">
+                <span class="ctrl-divider"></span>
+                <span class="ctrl-label">EDL</span>
+                <input type="range" class="ctrl-range" id="pcEdlSlider" min="0" max="2" step="0.1" value="0.7">
             </div>
             <!-- Dimension annotations panel -->
             <div class="pc-dim-panel" id="pcDimPanel">
                 <div class="pc-dim-panel-title">
                     <span class="material-icons-round">straighten</span> Dimensioni
-                    <button class="dim-toggle-all active" id="dimToggleAll" onclick="toggleAllDimLayers()" title="Attiva/Disattiva tutte">
-                        <span class="material-icons-round">visibility</span>
+                    <button class="dim-toggle-all" id="dimToggleAll" onclick="toggleAllDimLayers()" title="Attiva/Disattiva tutte">
+                        <span class="material-icons-round">visibility_off</span>
                     </button>
                 </div>
                 <!-- Altezza totale -->
-                <div class="pc-dim-section">
+                <div class="pc-dim-section layer-off">
                     <div class="pc-dim-section-header" onclick="toggleDimLayer('height')">
                         <span class="pc-dim-indicator-color" style="background:#4CAF50;"></span>
                         <span class="pc-dim-section-label">Altezza totale</span>
-                        <span class="material-icons-round pc-dim-eye active" id="dimEye_height">visibility</span>
+                        <span class="material-icons-round pc-dim-eye" id="dimEye_height">visibility_off</span>
                     </div>
                     <div class="pc-dim-row"><span class="pc-dim-label">Altezza totale</span><span class="pc-dim-value highlight" id="dimHeight">-</span></div>
                     <div class="pc-dim-row"><span class="pc-dim-label">Altezza viva</span><span class="pc-dim-value" id="dimLiveHeight">-</span></div>
                     <div class="pc-dim-row"><span class="pc-dim-label">Inclinazione</span><span class="pc-dim-value" id="dimLeanAngle">-</span></div>
                 </div>
                 <!-- Chioma altezza -->
-                <div class="pc-dim-section">
+                <div class="pc-dim-section layer-off">
                     <div class="pc-dim-section-header" onclick="toggleDimLayer('canopyHeight')">
                         <span class="pc-dim-indicator-color" style="background:#42A5F5;"></span>
                         <span class="pc-dim-section-label">Altezza chioma</span>
-                        <span class="material-icons-round pc-dim-eye active" id="dimEye_canopyHeight">visibility</span>
+                        <span class="material-icons-round pc-dim-eye" id="dimEye_canopyHeight">visibility_off</span>
                     </div>
                     <div class="pc-dim-row"><span class="pc-dim-label">Altezza chioma</span><span class="pc-dim-value highlight" id="dimCanopyHeight">-</span></div>
                     <div class="pc-dim-row"><span class="pc-dim-label">Base chioma</span><span class="pc-dim-value" id="dimCrownBase">-</span></div>
                 </div>
                 <!-- Chioma larghezza -->
-                <div class="pc-dim-section">
+                <div class="pc-dim-section layer-off">
                     <div class="pc-dim-section-header" onclick="toggleDimLayer('canopyWidth')">
                         <span class="pc-dim-indicator-color" style="background:#42A5F5;"></span>
                         <span class="pc-dim-section-label">Larghezza chioma</span>
-                        <span class="material-icons-round pc-dim-eye active" id="dimEye_canopyWidth">visibility</span>
+                        <span class="material-icons-round pc-dim-eye" id="dimEye_canopyWidth">visibility_off</span>
                     </div>
                     <div class="pc-dim-row"><span class="pc-dim-label">Larghezza chioma</span><span class="pc-dim-value highlight" id="dimCanopyWidth">-</span></div>
                     <div class="pc-dim-row"><span class="pc-dim-label">Volume chioma</span><span class="pc-dim-value" id="dimCrownVol">-</span></div>
                 </div>
                 <!-- Tronco -->
-                <div class="pc-dim-section">
+                <div class="pc-dim-section layer-off">
                     <div class="pc-dim-section-header" onclick="toggleDimLayer('trunk')">
                         <span class="pc-dim-indicator-color" style="background:#FF9800;"></span>
                         <span class="pc-dim-section-label">Tronco</span>
-                        <span class="material-icons-round pc-dim-eye active" id="dimEye_trunk">visibility</span>
+                        <span class="material-icons-round pc-dim-eye" id="dimEye_trunk">visibility_off</span>
                     </div>
                     <div class="pc-dim-row"><span class="pc-dim-label">Diametro</span><span class="pc-dim-value" id="dimTrunkDiam">-</span></div>
                     <div class="pc-dim-row"><span class="pc-dim-label">Altezza tronco</span><span class="pc-dim-value" id="dimTrunkHeight">-</span></div>
                 </div>
                 <!-- Proiezione chioma -->
-                <div class="pc-dim-section">
+                <div class="pc-dim-section layer-off">
                     <div class="pc-dim-section-header" onclick="toggleDimLayer('groundProjection')">
                         <span class="pc-dim-indicator-color" style="background:rgba(255,152,0,0.5);"></span>
                         <span class="pc-dim-section-label">Proiezione chioma</span>
-                        <span class="material-icons-round pc-dim-eye active" id="dimEye_groundProjection">visibility</span>
+                        <span class="material-icons-round pc-dim-eye" id="dimEye_groundProjection">visibility_off</span>
                     </div>
                     <div class="pc-dim-row"><span class="pc-dim-label">Area proiezione</span><span class="pc-dim-value" id="dimCrownArea">-</span></div>
                 </div>
             </div>
-            <!-- Toggle dimensions master button -->
+            <!-- Height color scale legend -->
+            <div class="pc-height-legend" id="pcHeightLegend" style="display:none;">
+                <div class="pc-height-legend-title">Altezza</div>
+                <div class="pc-height-legend-bar">
+                    <div class="pc-height-legend-gradient"></div>
+                    <div class="pc-height-legend-ticks" id="pcHeightTicks"></div>
+                </div>
+            </div>
+            <!-- Toggle buttons -->
             <div class="pc-dim-toggle">
+                <button class="dim-btn" id="pcColorModeBtn" onclick="toggleColorMode()">
+                    <span class="material-icons-round">trending_up</span> Altezza
+                </button>
+                <button class="dim-btn" id="pcEdlToggleBtn" onclick="toggleEdl()" title="Eye-Dome Lighting: tecnica di illuminazione che evidenzia i bordi e la profondit&#224; della nuvola di punti, rendendo pi&#249; leggibile la struttura 3D">
+                    <span class="material-icons-round">blur_on</span> EDL
+                </button>
+                <button class="dim-btn active" id="pcGridToggleBtn" onclick="togglePcGrid()">
+                    <span class="material-icons-round">grid_on</span> Griglia
+                </button>
                 <button class="dim-btn active" id="pcDimToggleBtn" onclick="togglePcDimensions()">
                     <span class="material-icons-round">straighten</span> Quote
                 </button>
@@ -201,11 +221,10 @@
     const TREE_IDS = [
         12026,12027,12028,12029,12030,12031,12032,12033,12034,12035,
         12036,12037,12038,12039,12040,12041,12042,12043,12044,12045,
-        12046,12047,12048,12049,12050,12051,12052,12053,12054,12055,
-        12056,12057,12058,12061,12062,12063,12066,12067,12071,12077,
-        12081,12083,12084,12088,12092,12093,12095,12099,12450,12452,
-        12453,12454,12455,12456,12457,12458,12459,12460,12461,12462,
-        12464,12467,12473,12476,12479,12489,12501
+        12046,12047,12048,12049,12050,12051,12052,12053,12054,12056,
+		12057,12058,12088,12093,12095,12099,12450,12452,12453,12454,
+		12455,12456,12457,12458,12459,12460,12461,12462,12464,12467,
+		12479,12489
     ];
 
     const WMS_URL = 'https://palermoverde.r3gis.com/author/services/ows.php?PROJECT=palermoverde&MAP=r3-trees';
@@ -702,7 +721,17 @@
     let pcRotX = -0.3, pcRotY = 0, pcZoom = 1.5;
     let pcDragging = false, pcLastX = 0, pcLastY = 0;
     let pcPointSize = 1;
-    let pcPosBuffer = null, pcColBuffer = null, pcCount = 0;
+    let pcPosBuffer = null, pcColBuffer = null, pcHeightBuffer = null, pcCount = 0;
+    let pcColorMode = 0; // 0 = RGB originale, 1 = altezza heatmap
+    let pcTreeHeightMeters = 0; // actual tree height in meters for legend
+
+    // EDL (Eye-Dome Lighting) state
+    let pcEdlEnabled = false;
+    let pcEdlStrength = 0.7;
+    let pcEdlProgram = null;
+    let pcFbo = null, pcDepthTex = null, pcColorTex = null, pcFboDepthRb = null;
+    let pcEdlQuadBuffer = null;
+    let pcFboWidth = 0, pcFboHeight = 0;
 
     // Dimension annotation state
     let pcDimVisible = true;
@@ -712,18 +741,23 @@
     let pcCurrentTreeData = null;  // current tree JSON data
     let pcCurrentMVP = null;       // current MVP matrix for projection
 
+    // Grid state (Blender-style)
+    let pcGridVisible = true;
+    let pcGridProgram = null;
+    let pcGridPosBuffer = null, pcGridColBuffer = null, pcGridVertexCount = 0;
+
     // Individual dimension layer visibility
     const pcDimLayers = {
-        height: true,           // Altezza totale (verde)
-        canopyHeight: true,     // Altezza chioma (blu)
-        canopyWidth: true,      // Larghezza chioma (blu)
-        trunk: true,            // Diametro tronco (arancione)
-        groundProjection: true  // Proiezione chioma al suolo
+        height: false,           // Altezza totale (verde)
+        canopyHeight: false,     // Altezza chioma (blu)
+        canopyWidth: false,      // Larghezza chioma (blu)
+        trunk: false,            // Diametro tronco (arancione)
+        groundProjection: false  // Proiezione chioma al suolo
     };
 
     function initPointCloudGL() {
         const canvas = document.getElementById('pcViewerCanvas');
-        pcGL = canvas.getContext('webgl', { antialias: true });
+        pcGL = canvas.getContext('webgl', { antialias: true, alpha: false });
         if (!pcGL) { alert('WebGL non supportato'); return; }
 
         const gl = pcGL;
@@ -732,13 +766,20 @@
         gl.shaderSource(vs, `
             attribute vec3 aPos;
             attribute vec3 aCol;
+            attribute float aHeight;
             uniform mat4 uMVP;
             uniform float uPointSize;
             varying vec3 vCol;
+            varying float vHeight;
+            varying float vDepth;
             void main() {
-                gl_Position = uMVP * vec4(aPos, 1.0);
-                gl_PointSize = uPointSize;
+                vec4 pos = uMVP * vec4(aPos, 1.0);
+                gl_Position = pos;
+                float dist = max(pos.w, 0.5);
+                gl_PointSize = uPointSize * (8.0 / dist);
                 vCol = aCol;
+                vHeight = aHeight;
+                vDepth = pos.z / pos.w * 0.5 + 0.5;
             }
         `);
         gl.compileShader(vs);
@@ -747,10 +788,39 @@
         gl.shaderSource(fs, `
             precision mediump float;
             varying vec3 vCol;
+            varying float vHeight;
+            varying float vDepth;
+            uniform int uColorMode;
+
             void main() {
                 vec2 pc = gl_PointCoord - vec2(0.5);
-                if (dot(pc, pc) > 0.25) discard;
-                gl_FragColor = vec4(vCol, 1.0);
+                float d2 = dot(pc, pc);
+                if (d2 > 0.25) discard;
+
+                vec3 finalCol;
+
+                if (uColorMode == 0) {
+                    // RGB originale migliorato
+                    float lum = dot(vCol, vec3(0.299, 0.587, 0.114));
+                    finalCol = vCol;
+                    if (lum < 0.35) {
+                        finalCol = vCol * (1.0 + (0.35 - lum) * 0.8);
+                    }
+                } else {
+                    // Altezza heatmap (blu → ciano → verde → giallo → rosso)
+                    float h = vHeight;
+                    if (h < 0.25) {
+                        finalCol = mix(vec3(0.1, 0.2, 0.8), vec3(0.1, 0.7, 0.7), h / 0.25);
+                    } else if (h < 0.5) {
+                        finalCol = mix(vec3(0.1, 0.7, 0.7), vec3(0.2, 0.8, 0.1), (h - 0.25) / 0.25);
+                    } else if (h < 0.75) {
+                        finalCol = mix(vec3(0.2, 0.8, 0.1), vec3(0.95, 0.85, 0.0), (h - 0.5) / 0.25);
+                    } else {
+                        finalCol = mix(vec3(0.95, 0.85, 0.0), vec3(0.9, 0.1, 0.05), (h - 0.75) / 0.25);
+                    }
+                }
+
+                gl_FragColor = vec4(finalCol, vDepth);
             }
         `);
         gl.compileShader(fs);
@@ -762,8 +832,10 @@
 
         pcProgram.aPos = gl.getAttribLocation(pcProgram, 'aPos');
         pcProgram.aCol = gl.getAttribLocation(pcProgram, 'aCol');
+        pcProgram.aHeight = gl.getAttribLocation(pcProgram, 'aHeight');
         pcProgram.uMVP = gl.getUniformLocation(pcProgram, 'uMVP');
         pcProgram.uPointSize = gl.getUniformLocation(pcProgram, 'uPointSize');
+        pcProgram.uColorMode = gl.getUniformLocation(pcProgram, 'uColorMode');
 
         // Mouse controls
         canvas.addEventListener('mousedown', (e) => { pcDragging = true; pcLastX = e.clientX; pcLastY = e.clientY; });
@@ -807,6 +879,301 @@
             }
         }, { passive: false });
         canvas.addEventListener('touchend', () => pcDragging = false);
+    }
+
+    // =============================================
+    // BLENDER-STYLE GRID
+    // =============================================
+    function initGridGL() {
+        const gl = pcGL;
+        if (!gl) return;
+
+        const vs = gl.createShader(gl.VERTEX_SHADER);
+        gl.shaderSource(vs, `
+            attribute vec3 aPos;
+            attribute vec4 aCol;
+            uniform mat4 uMVP;
+            varying vec4 vCol;
+            void main() {
+                gl_Position = uMVP * vec4(aPos, 1.0);
+                vCol = aCol;
+            }
+        `);
+        gl.compileShader(vs);
+
+        const fs = gl.createShader(gl.FRAGMENT_SHADER);
+        gl.shaderSource(fs, `
+            precision mediump float;
+            varying vec4 vCol;
+            void main() {
+                gl_FragColor = vCol;
+            }
+        `);
+        gl.compileShader(fs);
+
+        pcGridProgram = gl.createProgram();
+        gl.attachShader(pcGridProgram, vs);
+        gl.attachShader(pcGridProgram, fs);
+        gl.linkProgram(pcGridProgram);
+
+        pcGridProgram.aPos = gl.getAttribLocation(pcGridProgram, 'aPos');
+        pcGridProgram.aCol = gl.getAttribLocation(pcGridProgram, 'aCol');
+        pcGridProgram.uMVP = gl.getUniformLocation(pcGridProgram, 'uMVP');
+    }
+
+    function buildGridGeometry(groundY, extentReal) {
+        // Build a Blender-style grid on the ground plane
+        // groundY: normalized Y coordinate of the ground
+        // extentReal: real-world extent in meters to determine grid spacing
+        const positions = [];
+        const colors = [];
+
+        // Determine grid parameters based on the real extent
+        const gridHalf = 6.0; // normalized half-extent of the grid
+        const majorStep = 1.0; // normalized step for major lines
+        const minorStep = 0.25; // normalized step for minor lines
+
+        // Colors (Blender style)
+        const axisX = [0.75, 0.22, 0.17, 0.85]; // Red - X axis
+        const axisY = [0.22, 0.55, 0.75, 0.85]; // Blue - Z axis (depth)
+        const axisUp = [0.34, 0.69, 0.24, 0.85]; // Green - Y axis (up)
+        const majorCol = [1, 1, 1, 0.12];         // Major grid lines
+        const minorCol = [1, 1, 1, 0.05];         // Minor grid lines
+
+        function addLine(x1, y1, z1, x2, y2, z2, col) {
+            positions.push(x1, y1, z1, x2, y2, z2);
+            colors.push(col[0], col[1], col[2], col[3], col[0], col[1], col[2], col[3]);
+        }
+
+        // Minor grid lines
+        for (let i = -gridHalf; i <= gridHalf; i += minorStep) {
+            // Skip lines that will be drawn as major or axis
+            if (Math.abs(i % majorStep) < 0.01 || Math.abs(i) < 0.01) continue;
+            // Lines along X
+            addLine(-gridHalf, groundY, i, gridHalf, groundY, i, minorCol);
+            // Lines along Z
+            addLine(i, groundY, -gridHalf, i, groundY, gridHalf, minorCol);
+        }
+
+        // Major grid lines
+        for (let i = -gridHalf; i <= gridHalf; i += majorStep) {
+            if (Math.abs(i) < 0.01) continue; // skip center (axis)
+            // Lines along X
+            addLine(-gridHalf, groundY, i, gridHalf, groundY, i, majorCol);
+            // Lines along Z
+            addLine(i, groundY, -gridHalf, i, groundY, gridHalf, majorCol);
+        }
+
+        // Center axes on the ground plane
+        // X axis (red) - full extent
+        addLine(-gridHalf, groundY, 0, gridHalf, groundY, 0, axisX);
+        // Z axis (blue) - full extent
+        addLine(0, groundY, -gridHalf, 0, groundY, gridHalf, axisY);
+        // Y axis (green, vertical) - from ground up
+        addLine(0, groundY, 0, 0, groundY + gridHalf, 0, axisUp);
+
+        const gl = pcGL;
+        if (pcGridPosBuffer) gl.deleteBuffer(pcGridPosBuffer);
+        if (pcGridColBuffer) gl.deleteBuffer(pcGridColBuffer);
+
+        pcGridPosBuffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, pcGridPosBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(positions), gl.STATIC_DRAW);
+
+        pcGridColBuffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, pcGridColBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array(colors), gl.STATIC_DRAW);
+
+        pcGridVertexCount = positions.length / 3;
+    }
+
+    function renderGrid(mvp) {
+        if (!pcGridVisible || !pcGridProgram || pcGridVertexCount === 0) return;
+        const gl = pcGL;
+
+        gl.useProgram(pcGridProgram);
+        gl.enable(gl.BLEND);
+        gl.blendFunc(gl.SRC_ALPHA, gl.ONE_MINUS_SRC_ALPHA);
+
+        gl.uniformMatrix4fv(pcGridProgram.uMVP, false, mvp);
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, pcGridPosBuffer);
+        gl.enableVertexAttribArray(pcGridProgram.aPos);
+        gl.vertexAttribPointer(pcGridProgram.aPos, 3, gl.FLOAT, false, 0, 0);
+
+        gl.bindBuffer(gl.ARRAY_BUFFER, pcGridColBuffer);
+        gl.enableVertexAttribArray(pcGridProgram.aCol);
+        gl.vertexAttribPointer(pcGridProgram.aCol, 4, gl.FLOAT, false, 0, 0);
+
+        gl.drawArrays(gl.LINES, 0, pcGridVertexCount);
+
+        gl.disable(gl.BLEND);
+        gl.disableVertexAttribArray(pcGridProgram.aCol);
+    }
+
+    function togglePcGrid() {
+        pcGridVisible = !pcGridVisible;
+        document.getElementById('pcGridToggleBtn').classList.toggle('active', pcGridVisible);
+    }
+
+    // =============================================
+    // EYE-DOME LIGHTING (EDL) POST-PROCESS
+    // =============================================
+    function initEdlGL() {
+        const gl = pcGL;
+        if (!gl) return;
+
+        // EDL fullscreen quad shader
+        const vs = gl.createShader(gl.VERTEX_SHADER);
+        gl.shaderSource(vs, `
+            attribute vec2 aPos;
+            varying vec2 vUV;
+            void main() {
+                vUV = aPos * 0.5 + 0.5;
+                gl_Position = vec4(aPos, 0.0, 1.0);
+            }
+        `);
+        gl.compileShader(vs);
+
+        const fs = gl.createShader(gl.FRAGMENT_SHADER);
+        gl.shaderSource(fs, `
+            precision mediump float;
+            uniform sampler2D uColor;
+            uniform vec2 uScreenSize;
+            uniform float uEdlStrength;
+            varying vec2 vUV;
+
+            float getDepth(vec2 uv) {
+                return texture2D(uColor, uv).a;
+            }
+
+            void main() {
+                vec4 color = texture2D(uColor, vUV);
+                float depth = color.a;
+
+                // If background (no point rendered, depth ~0), pass through
+                if (depth < 0.001) {
+                    gl_FragColor = vec4(color.rgb, 1.0);
+                    return;
+                }
+
+                // EDL: compare depth with neighbours
+                float pixelX = 1.0 / uScreenSize.x;
+                float pixelY = 1.0 / uScreenSize.y;
+                float edlRadius = 1.5;
+
+                float response = 0.0;
+                // 8-neighbour sampling
+                response += max(0.0, depth - getDepth(vUV + vec2(-pixelX, 0.0) * edlRadius));
+                response += max(0.0, depth - getDepth(vUV + vec2( pixelX, 0.0) * edlRadius));
+                response += max(0.0, depth - getDepth(vUV + vec2(0.0, -pixelY) * edlRadius));
+                response += max(0.0, depth - getDepth(vUV + vec2(0.0,  pixelY) * edlRadius));
+                response += max(0.0, depth - getDepth(vUV + vec2(-pixelX, -pixelY) * edlRadius)) * 0.707;
+                response += max(0.0, depth - getDepth(vUV + vec2( pixelX, -pixelY) * edlRadius)) * 0.707;
+                response += max(0.0, depth - getDepth(vUV + vec2(-pixelX,  pixelY) * edlRadius)) * 0.707;
+                response += max(0.0, depth - getDepth(vUV + vec2( pixelX,  pixelY) * edlRadius)) * 0.707;
+
+                // Shade factor: stronger response = darker edge shading
+                float shade = exp(-response * 300.0 * uEdlStrength);
+
+                gl_FragColor = vec4(color.rgb * shade, 1.0);
+            }
+        `);
+        gl.compileShader(fs);
+
+        pcEdlProgram = gl.createProgram();
+        gl.attachShader(pcEdlProgram, vs);
+        gl.attachShader(pcEdlProgram, fs);
+        gl.linkProgram(pcEdlProgram);
+
+        pcEdlProgram.aPos = gl.getAttribLocation(pcEdlProgram, 'aPos');
+        pcEdlProgram.uColor = gl.getUniformLocation(pcEdlProgram, 'uColor');
+        pcEdlProgram.uScreenSize = gl.getUniformLocation(pcEdlProgram, 'uScreenSize');
+        pcEdlProgram.uEdlStrength = gl.getUniformLocation(pcEdlProgram, 'uEdlStrength');
+
+        // Fullscreen quad
+        pcEdlQuadBuffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, pcEdlQuadBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 1,-1, -1,1, 1,1]), gl.STATIC_DRAW);
+    }
+
+    function setupFbo(width, height) {
+        const gl = pcGL;
+        if (pcFbo && pcFboWidth === width && pcFboHeight === height) return;
+
+        // Cleanup old
+        if (pcFbo) {
+            gl.deleteFramebuffer(pcFbo);
+            gl.deleteTexture(pcColorTex);
+            gl.deleteRenderbuffer(pcFboDepthRb);
+        }
+
+        pcFboWidth = width;
+        pcFboHeight = height;
+
+        // Color texture
+        pcColorTex = gl.createTexture();
+        gl.bindTexture(gl.TEXTURE_2D, pcColorTex);
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, width, height, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+
+        // Depth texture (store depth in a separate color texture for reading in shader)
+        pcDepthTex = gl.createTexture();
+        gl.bindTexture(gl.TEXTURE_2D, pcDepthTex);
+        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, width, height, 0, gl.RGBA, gl.UNSIGNED_BYTE, null);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+        gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+
+        // Depth renderbuffer for actual depth testing
+        pcFboDepthRb = gl.createRenderbuffer();
+        gl.bindRenderbuffer(gl.RENDERBUFFER, pcFboDepthRb);
+        gl.renderbufferStorage(gl.RENDERBUFFER, gl.DEPTH_COMPONENT16, width, height);
+
+        pcFbo = gl.createFramebuffer();
+        gl.bindFramebuffer(gl.FRAMEBUFFER, pcFbo);
+        gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, pcColorTex, 0);
+        gl.framebufferRenderbuffer(gl.FRAMEBUFFER, gl.DEPTH_ATTACHMENT, gl.RENDERBUFFER, pcFboDepthRb);
+
+        gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+    }
+
+    function toggleEdl() {
+        pcEdlEnabled = !pcEdlEnabled;
+        document.getElementById('pcEdlToggleBtn').classList.toggle('active', pcEdlEnabled);
+    }
+
+    function toggleColorMode() {
+        pcColorMode = pcColorMode === 0 ? 1 : 0;
+        const btn = document.getElementById('pcColorModeBtn');
+        btn.classList.toggle('active', pcColorMode === 1);
+        // Show/hide height legend
+        document.getElementById('pcHeightLegend').style.display = pcColorMode === 1 ? '' : 'none';
+    }
+
+    function updateHeightLegend(heightMeters) {
+        pcTreeHeightMeters = heightMeters;
+        const ticksEl = document.getElementById('pcHeightTicks');
+        if (!ticksEl) return;
+        // Create ticks every ~1m or every 2m for tall trees
+        const step = heightMeters > 12 ? 2 : 1;
+        const numSteps = Math.floor(heightMeters / step);
+        let html = '';
+        // Bottom tick (0 m)
+        html += '<span class="pc-height-tick" style="bottom:0%"><span class="tick-line"></span><span class="tick-val">0 m</span></span>';
+        for (let i = 1; i <= numSteps; i++) {
+            const m = i * step;
+            const pct = (m / heightMeters) * 100;
+            if (pct > 98) continue;
+            html += '<span class="pc-height-tick" style="bottom:' + pct.toFixed(1) + '%"><span class="tick-line"></span><span class="tick-val">' + m.toFixed(0) + ' m</span></span>';
+        }
+        // Top tick
+        html += '<span class="pc-height-tick" style="bottom:100%"><span class="tick-line"></span><span class="tick-val">' + heightMeters.toFixed(1) + ' m</span></span>';
+        ticksEl.innerHTML = html;
     }
 
     function mat4Perspective(fov, aspect, near, far) {
@@ -1215,21 +1582,36 @@
         const canvas = gl.canvas;
         canvas.width = canvas.clientWidth;
         canvas.height = canvas.clientHeight;
-        gl.viewport(0, 0, canvas.width, canvas.height);
+        const w = canvas.width, h = canvas.height;
+        gl.viewport(0, 0, w, h);
 
-        gl.clearColor(0.067, 0.075, 0.09, 1);
-        gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
-        gl.enable(gl.DEPTH_TEST);
-
-        gl.useProgram(pcProgram);
-
-        const aspect = canvas.width / canvas.height;
+        const aspect = w / h;
         const proj = mat4Perspective(Math.PI / 4, aspect, 0.1, 200);
         const view = mat4Multiply(mat4Translate(0, 0, -pcZoom * 15), mat4Multiply(mat4RotX(pcRotX), mat4RotY(pcRotY)));
         const mvp = mat4Multiply(proj, view);
 
+        const useEdl = pcEdlEnabled && pcEdlProgram;
+
+        if (useEdl) {
+            // --- PASS 1: Render scene to FBO (color.rgb + depth in alpha) ---
+            setupFbo(w, h);
+            gl.bindFramebuffer(gl.FRAMEBUFFER, pcFbo);
+            gl.viewport(0, 0, w, h);
+        }
+
+        // Clear (alpha=0 for EDL background detection, alpha=1 for direct render)
+        gl.clearColor(0.067, 0.075, 0.09, useEdl ? 0.0 : 1.0);
+        gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);
+        gl.enable(gl.DEPTH_TEST);
+
+        // Render grid first (behind points)
+        renderGrid(mvp);
+
+        // Render points
+        gl.useProgram(pcProgram);
         gl.uniformMatrix4fv(pcProgram.uMVP, false, mvp);
         gl.uniform1f(pcProgram.uPointSize, pcPointSize);
+        gl.uniform1i(pcProgram.uColorMode, pcColorMode);
 
         gl.bindBuffer(gl.ARRAY_BUFFER, pcPosBuffer);
         gl.enableVertexAttribArray(pcProgram.aPos);
@@ -1239,12 +1621,45 @@
         gl.enableVertexAttribArray(pcProgram.aCol);
         gl.vertexAttribPointer(pcProgram.aCol, 3, gl.FLOAT, false, 0, 0);
 
+        if (pcHeightBuffer) {
+            gl.bindBuffer(gl.ARRAY_BUFFER, pcHeightBuffer);
+            gl.enableVertexAttribArray(pcProgram.aHeight);
+            gl.vertexAttribPointer(pcProgram.aHeight, 1, gl.FLOAT, false, 0, 0);
+        }
+
         gl.drawArrays(gl.POINTS, 0, pcCount);
+
+        if (useEdl) {
+            // --- PASS 2: EDL post-process to screen ---
+            gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+            gl.viewport(0, 0, w, h);
+            gl.clearColor(0.067, 0.075, 0.09, 1.0);
+            gl.clear(gl.COLOR_BUFFER_BIT);
+            gl.disable(gl.DEPTH_TEST);
+
+            gl.useProgram(pcEdlProgram);
+
+            gl.activeTexture(gl.TEXTURE0);
+            gl.bindTexture(gl.TEXTURE_2D, pcColorTex);
+            gl.uniform1i(pcEdlProgram.uColor, 0);
+
+            gl.uniform2f(pcEdlProgram.uScreenSize, w, h);
+            gl.uniform1f(pcEdlProgram.uEdlStrength, pcEdlStrength);
+
+            gl.bindBuffer(gl.ARRAY_BUFFER, pcEdlQuadBuffer);
+            gl.enableVertexAttribArray(pcEdlProgram.aPos);
+            gl.vertexAttribPointer(pcEdlProgram.aPos, 2, gl.FLOAT, false, 0, 0);
+
+            gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+
+            gl.disableVertexAttribArray(pcEdlProgram.aPos);
+            gl.enable(gl.DEPTH_TEST);
+        }
 
         // Update dimension overlay
         if (pcDimCanvas) {
-            pcDimCanvas.width = canvas.width;
-            pcDimCanvas.height = canvas.height;
+            pcDimCanvas.width = w;
+            pcDimCanvas.height = h;
             pcCurrentMVP = mvp;
             renderDimensionAnnotations();
         }
@@ -1254,6 +1669,8 @@
 
     function loadPointCloudIntoViewer(parsedData) {
         if (!pcGL) initPointCloudGL();
+        if (!pcGridProgram) initGridGL();
+        if (!pcEdlProgram) initEdlGL();
         if (!pcDimCanvas) initDimCanvas();
         const gl = pcGL;
 
@@ -1268,8 +1685,10 @@
 
         // Find max extent for normalization
         let maxExt = 0;
+        let minY = Infinity;
         for (let i = 0; i < count; i++) {
             maxExt = Math.max(maxExt, Math.abs(pos[i*3]-cx), Math.abs(pos[i*3+1]-cy), Math.abs(pos[i*3+2]-cz));
+            if (pos[i*3+1] < minY) minY = pos[i*3+1];
         }
         const scale = maxExt > 0 ? 5.0 / maxExt : 1;
 
@@ -1288,8 +1707,16 @@
         const colF32 = new Float32Array(count * 3);
         for (let i = 0; i < count * 3; i++) colF32[i] = parsedData.colors[i] / 255;
 
+        // Compute normalized height (0=ground, 1=top) using original dZ values
+        const heightRange = (parsedData.maxZ - parsedData.minZ) || 1;
+        const heightData = new Float32Array(count);
+        for (let i = 0; i < count; i++) {
+            heightData[i] = Math.max(0, Math.min(1, (pos[i*3+1] - parsedData.minZ) / heightRange));
+        }
+
         if (pcPosBuffer) gl.deleteBuffer(pcPosBuffer);
         if (pcColBuffer) gl.deleteBuffer(pcColBuffer);
+        if (pcHeightBuffer) gl.deleteBuffer(pcHeightBuffer);
 
         pcPosBuffer = gl.createBuffer();
         gl.bindBuffer(gl.ARRAY_BUFFER, pcPosBuffer);
@@ -1299,7 +1726,15 @@
         gl.bindBuffer(gl.ARRAY_BUFFER, pcColBuffer);
         gl.bufferData(gl.ARRAY_BUFFER, colF32, gl.STATIC_DRAW);
 
+        pcHeightBuffer = gl.createBuffer();
+        gl.bindBuffer(gl.ARRAY_BUFFER, pcHeightBuffer);
+        gl.bufferData(gl.ARRAY_BUFFER, heightData, gl.STATIC_DRAW);
+
         pcCount = count;
+
+        // Build grid at ground level (minimum Y of point cloud in normalized space)
+        const groundY = (minY - cy) * scale;
+        buildGridGeometry(groundY, maxExt);
 
         // Reset camera
         pcRotX = -0.3;
@@ -1358,7 +1793,16 @@
         document.getElementById('pcDimPanel').classList.toggle('hidden', !pcDimVisible);
         document.getElementById('pcDimToggleBtn').classList.toggle('active', pcDimVisible);
 
+        // Reset color mode to RGB when opening a new tree
+        pcColorMode = 0;
+        document.getElementById('pcColorModeBtn').classList.remove('active');
+        document.getElementById('pcHeightLegend').style.display = 'none';
+
         loadPointCloudIntoViewer(tree.parsedData);
+
+        // Update height legend with actual tree height
+        const treeHeight = d.height || (tree.parsedData.maxZ - tree.parsedData.minZ) || 0;
+        updateHeightLegend(treeHeight);
 
         if (pcAnimId) cancelAnimationFrame(pcAnimId);
         renderPointCloud();
@@ -1372,6 +1816,9 @@
 
     document.getElementById('pcPointSizeSlider').addEventListener('input', (e) => {
         pcPointSize = parseFloat(e.target.value);
+    });
+    document.getElementById('pcEdlSlider').addEventListener('input', (e) => {
+        pcEdlStrength = parseFloat(e.target.value);
     });
 
     // =============================================
@@ -1674,7 +2121,7 @@
             format: 'image/png',
             transparent: false,
             version: '1.3.0',
-            attribution: 'R3 GIS Palermo Verde - Rielaborazione: <a href="https://www.linkedin.com/in/gbvitrano/" title="Giovan Battista Vitrano" target="_blank" rel="noopener">gbvitrano</a>',
+            attribution: 'R3 GIS Palermo Verde - Rielaborazione: <a href="https://www.linkedin.com/in/gbvitrano/" title="Giovan Battista Vitrano" target="_blank" rel="noopener">gbvitrano</a> - AI Claude Anthropic',
             PROJECT: 'palermoverde',
             MAP: 'r3-trees',
 			minZoom: 18,
