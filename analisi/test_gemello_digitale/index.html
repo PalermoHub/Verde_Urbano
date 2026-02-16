@@ -149,7 +149,8 @@
                 <span class="material-icons-round">close</span>
             </button>
         </div>
-        <div id="streetViewContainer">
+        <div id="streetViewWrapper">
+            <div id="streetViewContainer"></div>
             <canvas id="streetViewCanvas"></canvas>
             <div class="sv-info">
                 <span class="material-icons-round" style="font-size:12px;vertical-align:middle;">park</span>
@@ -1920,6 +1921,8 @@
     let svPointsLocal = null;
     let svPointCloudVisible = true;
     let svPointSize = 1;
+    let svRafId = null;          // requestAnimationFrame handle
+    let svPositionThrottle = null; // throttle handle for position_changed
 
     function calculateHeadingToTree(fromLat, fromLng, toLat, toLng) {
         const dLon = (toLng - fromLng) * Math.PI / 180;
@@ -2005,38 +2008,55 @@
         return { x, y, size, dist: dist3D };
     }
 
-    function renderStreetViewPointCloud() {
+    function _doRenderSV() {
+        svRafId = null;
         if (!svCanvas || !svCtx) return;
         svCtx.clearRect(0, 0, svCanvas.width, svCanvas.height);
         if (!svPointCloudVisible || !svPointsLocal || !streetViewPanorama) return;
 
         const pov = streetViewPanorama.getPov();
         const zoom = streetViewPanorama.getZoom();
+        const w = svCanvas.width, h = svCanvas.height;
         const projected = [];
 
         for (let i = 0; i < svPointsLocal.points.length; i++) {
             const pt = svPointsLocal.points[i];
-            const col = svPointsLocal.colors[i];
-            const p = projectToStreetView(pt.e, pt.n, pt.u, pov, svCanvas.width, svCanvas.height, zoom);
-            if (p) projected.push({ ...p, r: col.r, g: col.g, b: col.b });
+            const p = projectToStreetView(pt.e, pt.n, pt.u, pov, w, h, zoom);
+            if (p) {
+                const col = svPointsLocal.colors[i];
+                projected.push({ x: p.x, y: p.y, size: p.size, r: col.r, g: col.g, b: col.b });
+            }
         }
 
         document.getElementById('svPointCount').textContent = projected.length.toLocaleString('it-IT');
-        projected.sort((a, b) => b.dist - a.dist);
 
+        // Batch draw: group points by integer size to minimise state changes
+        const bySize = new Map();
         for (const pt of projected) {
-            svCtx.beginPath();
-            svCtx.arc(pt.x, pt.y, pt.size, 0, Math.PI * 2);
-            svCtx.fillStyle = `rgba(${pt.r}, ${pt.g}, ${pt.b}, 0.6)`;
-            svCtx.fill();
+            const s = Math.round(pt.size * 2) / 2; // quantize to 0.5 steps
+            if (!bySize.has(s)) bySize.set(s, []);
+            bySize.get(s).push(pt);
         }
+        for (const [sz, pts] of bySize) {
+            for (const pt of pts) {
+                svCtx.beginPath();
+                svCtx.arc(pt.x, pt.y, sz, 0, Math.PI * 2);
+                svCtx.fillStyle = `rgba(${pt.r},${pt.g},${pt.b},0.75)`;
+                svCtx.fill();
+            }
+        }
+    }
+
+    function renderStreetViewPointCloud() {
+        if (svRafId) return; // already scheduled
+        svRafId = requestAnimationFrame(_doRenderSV);
     }
 
     function resizeStreetViewCanvas() {
         if (!svCanvas) return;
-        const container = document.getElementById('streetViewContainer');
-        svCanvas.width = container.clientWidth;
-        svCanvas.height = container.clientHeight;
+        const wrapper = document.getElementById('streetViewWrapper');
+        svCanvas.width = wrapper.clientWidth;
+        svCanvas.height = wrapper.clientHeight;
         renderStreetViewPointCloud();
     }
 
@@ -2061,6 +2081,15 @@
 
         svCanvas = document.getElementById('streetViewCanvas');
         svCtx = svCanvas.getContext('2d');
+
+        // Inizializza subito le dimensioni reali del canvas (evita render su canvas 0x0)
+        requestAnimationFrame(() => {
+            const wrapper = document.getElementById('streetViewWrapper');
+            if (wrapper.clientWidth > 0) {
+                svCanvas.width = wrapper.clientWidth;
+                svCanvas.height = wrapper.clientHeight;
+            }
+        });
 
         const currentTree = selectedTreeId ? treesData[selectedTreeId] : null;
 
@@ -2096,21 +2125,25 @@
                     streetViewPanorama.addListener('pov_changed', renderStreetViewPointCloud);
                     streetViewPanorama.addListener('zoom_changed', renderStreetViewPointCloud);
                     streetViewPanorama.addListener('position_changed', () => {
-                        const pos = streetViewPanorama.getPosition();
-                        const newPos = { lat: pos.lat(), lng: pos.lng() };
-                        const activeTree = selectedTreeId ? treesData[selectedTreeId] : null;
-                        if (activeTree) {
-                            svPointsLocal = convertPointsToLocalENU(newPos.lat, newPos.lng, 1.6, activeTree);
-                        }
-                        const dist = calculateDistance(newPos.lat, newPos.lng, svTargetLat, svTargetLon);
-                        document.getElementById('svDistance').textContent = dist.toFixed(1);
-                        renderStreetViewPointCloud();
+                        if (svPositionThrottle) return;
+                        svPositionThrottle = setTimeout(() => {
+                            svPositionThrottle = null;
+                            const pos = streetViewPanorama.getPosition();
+                            const newPos = { lat: pos.lat(), lng: pos.lng() };
+                            const activeTree = selectedTreeId ? treesData[selectedTreeId] : null;
+                            if (activeTree) {
+                                svPointsLocal = convertPointsToLocalENU(newPos.lat, newPos.lng, 1.6, activeTree);
+                            }
+                            const dist = calculateDistance(newPos.lat, newPos.lng, svTargetLat, svTargetLon);
+                            document.getElementById('svDistance').textContent = dist.toFixed(1);
+                            renderStreetViewPointCloud();
+                        }, 200);
                     });
 
                     setTimeout(() => {
                         google.maps.event.trigger(streetViewPanorama, 'resize');
                         resizeStreetViewCanvas();
-                    }, 500);
+                    }, 150);
                 } else {
                     alert('Street View non disponibile in questa posizione');
                 }
@@ -2143,13 +2176,15 @@
             setTimeout(() => {
                 google.maps.event.trigger(streetViewPanorama, 'resize');
                 resizeStreetViewCanvas();
-            }, 300);
+            }, 100);
         }
     }
 
     function closeStreetView() {
         document.getElementById('streetViewPopup').classList.remove('active');
         document.getElementById('popupOverlay').classList.remove('active');
+        if (svRafId) { cancelAnimationFrame(svRafId); svRafId = null; }
+        if (svPositionThrottle) { clearTimeout(svPositionThrottle); svPositionThrottle = null; }
     }
 
     function open3dView() {
@@ -2175,6 +2210,17 @@
     window.addEventListener('resize', () => {
         if (document.getElementById('streetViewPopup').classList.contains('active')) resizeStreetViewCanvas();
     });
+
+    // ResizeObserver per aggiornare il canvas quando il container cambia dimensione
+    if (typeof ResizeObserver !== 'undefined') {
+        const svContainerObserver = new ResizeObserver(() => {
+            if (document.getElementById('streetViewPopup').classList.contains('active')) {
+                resizeStreetViewCanvas();
+                if (streetViewPanorama) google.maps.event.trigger(streetViewPanorama, 'resize');
+            }
+        });
+        svContainerObserver.observe(document.getElementById('streetViewWrapper'));
+    }
 
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeAllPopups();
