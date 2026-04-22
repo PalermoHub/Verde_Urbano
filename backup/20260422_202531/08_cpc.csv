@@ -2,10 +2,6 @@ Odonimo,CPC,count,%,legenda,colore
 Via Corazza Filippo,No Interv,16,53%,Nessun itervento,#f4cccc
 Via Corazza Filippo,Ceppaia,11,37%,Ceppaia,#434343
 Via Corazza Filippo,Verifica,3,10%,Da verficare,#9fc5e8
-Via Delle Croci,B,25,48%,B (bassa),#2cc15f
-Via Delle Croci,D,13,25%,D (estrema),#e74c3c
-Via Delle Croci,C,11,21%,C (moderata),#f39c12
-Via Delle Croci,C/D,3,6%,C/D (elevata),#c164a1
 Via Giusti Giuseppe,No Interv,98,71%,Nessun itervento,#f4cccc
 Via Giusti Giuseppe,Verifica,30,22%,Da verficare,#9fc5e8
 Via Giusti Giuseppe,Non Class,7,5%,Non Classificato,#990000
@@ -14,11 +10,6 @@ Via Pignatelli Aragona,B,32,67%,B (bassa),#2cc15f
 Via Pignatelli Aragona,C,8,17%,C (moderata),#f39c12
 Via Pignatelli Aragona,D,5,10%,D (estrema),#e74c3c
 Via Pignatelli Aragona,C/D,3,6%,C/D (elevata),#c164a1
-Via Principe Di Belmonte,B,53,54%,B (bassa),#2cc15f
-Via Principe Di Belmonte,C,19,19%,C (moderata),#f39c12
-Via Principe Di Belmonte,D,13,13%,D (estrema),#e74c3c
-Via Principe Di Belmonte,C/D,12,12%,C/D (elevata),#c164a1
-Via Principe Di Belmonte,Vuoto,2,2%,Cercine vuoto,#ffff00
 Via Rapisardi Mario,Ceppaia,19,32%,Ceppaia,#434343
 Via Rapisardi Mario,No Interv,18,30%,Nessun itervento,#f4cccc
 Via Rapisardi Mario,Verifica,17,28%,Da verficare,#9fc5e8
@@ -53,14 +44,14 @@ Viale Margherita di Savoia - A,C,48,64%,C (moderata),#f39c12
 Viale Margherita di Savoia - A,C/D,17,23%,C/D (elevata),#c164a1
 Viale Margherita di Savoia - A,D,6,8%,D (estrema),#e74c3c
 Viale Margherita di Savoia - A,Non Class,4,5%,Non Classificato,#990000
-Viale Margherita di Savoia - B,C/D,60,49%,C/D (elevata),#c164a1
-Viale Margherita di Savoia - B,C,51,41%,C (moderata),#f39c12
-Viale Margherita di Savoia - B,D,7,6%,D (estrema),#e74c3c
+Viale Margherita di Savoia - B,C/D,55,45%,C/D (elevata),#c164a1
+Viale Margherita di Savoia - B,C,48,39%,C (moderata),#f39c12
+Viale Margherita di Savoia - B,D,15,12%,D (estrema),#e74c3c
 Viale Margherita di Savoia - B,B,4,3%,B (bassa),#2cc15f
 Viale Margherita di Savoia - B,Non Class,1,1%,Non Classificato,#990000
-Viale Margherita di Savoia - C,C/D,32,50%,C/D (elevata),#c164a1
+Viale Margherita di Savoia - C,D,21,33%,D (estrema),#e74c3c
+Viale Margherita di Savoia - C,C/D,21,33%,C/D (elevata),#c164a1
 Viale Margherita di Savoia - C,C,21,33%,C (moderata),#f39c12
-Viale Margherita di Savoia - C,D,10,16%,D (estrema),#e74c3c
 Viale Margherita di Savoia - C,B,1,2%,B (bassa),#2cc15f
 Viale Michelangelo - A,C,32,53%,C (moderata),#f39c12
 Viale Michelangelo - A,Non Class,17,28%,Non Classificato,#990000
