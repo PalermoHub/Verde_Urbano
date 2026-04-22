@@ -3,6 +3,9 @@
 function updateURLFromFilters() {
     const params = new URLSearchParams();
 
+    const selectedP = typeof getSelectedProgetti === 'function' ? getSelectedProgetti() : [];
+    if (selectedP.length) params.set('progetto', selectedP.join(','));
+
     const specie = document.getElementById('specieFilter').value;
     const cpc = document.getElementById('cpcFilter').value;
     const site = document.getElementById('siteFilter').value;
@@ -49,6 +52,13 @@ function applyFiltersFromURL() {
     const circoscrizione = params.get('circoscrizione');
     const pulizia = params.get('pulizia');
     const fase = params.get('fase');
+
+    const progetto = params.get('progetto');
+    if (progetto) {
+        const values = progetto.split(',');
+        document.querySelectorAll('.progetto-cb').forEach(cb => { cb.checked = values.includes(cb.value); });
+        if (typeof onProgettoChange === 'function') onProgettoChange();
+    }
 
     if (specie) document.getElementById('specieFilter').value = specie;
     if (cpc) document.getElementById('cpcFilter').value = cpc;

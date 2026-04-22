@@ -19,7 +19,6 @@ hr {
     margin-bottom: 10px;
     border: 1px solid #d0e8d8;
     border-radius: 8px;
-    overflow: hidden;
 }
 .filter-accordion-header {
     display: flex;
@@ -61,6 +60,128 @@ hr {
     max-height: 0;
     padding-top: 0;
     padding-bottom: 0;
+}
+
+/* Tab Progetti */
+.progetti-list {
+    list-style: none;
+    counter-reset: progetti-counter;
+    padding: 0;
+    margin: 10px 0 0 0;
+}
+.progetti-list li {
+    counter-increment: progetti-counter;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #e8f5e9;
+}
+.progetti-list li::before {
+    content: counter(progetti-counter);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 24px;
+    height: 24px;
+    background: #27ae60;
+    color: white;
+    border-radius: 50%;
+    font-size: 11px;
+    font-weight: 700;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+.progetto-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    flex: 1;
+}
+.progetto-nome {
+    font-size: 12px;
+    font-weight: 700;
+    color: #313131;
+    line-height: 1.4;
+}
+.progetto-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 11px;
+    color: #27ae60;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+.progetto-link:hover {
+    color: #1e8449;
+    text-decoration: underline;
+}
+
+/* Multi-select Progetto */
+.multi-select-wrap {
+    width: 100%;
+}
+.multi-select-trigger {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 5px 8px;
+    border: 2px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 11px;
+    font-family: inherit;
+    background: white;
+    cursor: pointer;
+    transition: border-color 0.3s, box-shadow 0.3s;
+    min-height: 30px;
+    box-sizing: border-box;
+}
+.multi-select-trigger:hover,
+.multi-select-trigger.open {
+    border-color: #27ae60;
+    box-shadow: 0 0 0 3px rgba(39,174,96,0.1);
+}
+.multi-select-trigger #progettoChevron {
+    transition: transform 0.2s;
+    font-size: 10px;
+    color: #888;
+}
+.multi-select-list {
+    background: white;
+    border: 2px solid #27ae60;
+    border-top: none;
+    border-radius: 0 0 6px 6px;
+    overflow-y: auto;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+.multi-select-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 5px 8px;
+    cursor: pointer;
+    font-size: 11px;
+    transition: background 0.15s;
+    font-weight: normal;
+    text-transform: none;
+    letter-spacing: normal;
+    color: #333;
+}
+.multi-select-item:hover {
+    background: #f0f9f4;
+}
+.multi-select-all-item {
+    border-bottom: 1px solid #e0e0e0;
+    font-weight: 700 !important;
+}
+.multi-select-item input[type="checkbox"] {
+    width: auto;
+    padding: 0;
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0;
 }
 
         .container {
@@ -1057,7 +1178,7 @@ hr {
 .sidebar.sidebar-left {
     display: flex;
     flex-direction: column;
-    overflow: hidden;
+    overflow: visible;
     background: #f1f8f1;
     padding: 0;
     flex: 1;
@@ -1118,10 +1239,23 @@ hr {
 .sb-pane {
     display: none;
     flex-direction: column;
-    overflow-y: auto;
+    overflow-y: scroll;
     flex: 1;
     min-height: 0;
     padding: 8px;
+}
+.sb-pane::-webkit-scrollbar {
+    width: 6px;
+}
+.sb-pane::-webkit-scrollbar-track {
+    background: #e8f5e9;
+}
+.sb-pane::-webkit-scrollbar-thumb {
+    background: #27ae60;
+    border-radius: 3px;
+}
+.sb-pane::-webkit-scrollbar-thumb:hover {
+    background: #1e8449;
 }
 .sb-pane.active {
     display: flex;

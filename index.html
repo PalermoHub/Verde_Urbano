@@ -247,6 +247,7 @@
                     <button class="sb-tab-btn" data-tab="lavorazione" onclick="showSidebarTab('lavorazione')"><i class="fas fa-tools"></i> Lavoraz.</button>
                     <button class="sb-tab-btn" data-tab="statistiche" onclick="showSidebarTab('statistiche')"><i class="fas fa-chart-simple"></i> Statistiche</button>
                     <button class="sb-tab-btn" data-tab="dataviz" onclick="showSidebarTab('dataviz')"><i class="fas fa-chart-bar"></i> DataViz</button>
+                    <button class="sb-tab-btn" data-tab="progetti" onclick="showSidebarTab('progetti')"><i class="fas fa-folder-open"></i> Progetti</button>
                 </div>
 
                 <!-- Pane: Filtri -->
@@ -264,6 +265,32 @@
                         <button onclick="clearSelectedTreeFilter()" style="background: #e74c3c; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 11px; font-weight: 600;">
                             <i class="fas fa-times"></i> Deseleziona
                         </button>
+                    </div>
+
+                    <!-- Accordion: Progetto -->
+                    <div class="filter-accordion" id="accordion-progetto">
+                        <div class="filter-accordion-header" onclick="toggleAccordion('progetto')">
+                            <span class="accordion-label"><i class="fas fa-folder-open"></i> Progetto</span>
+                            <i class="fas fa-chevron-down accordion-chevron"></i>
+                        </div>
+                        <div class="filter-accordion-body">
+                            <div class="filter-group" id="progettoFilterGroup">
+                                <div class="multi-select-wrap" id="progettoMultiWrap">
+                                    <div class="multi-select-trigger" onclick="toggleProgettoDropdown()" id="progettoTrigger">
+                                        <span id="progettoLabel">Tutti i progetti</span>
+                                        <i class="fas fa-chevron-down" id="progettoChevron"></i>
+                                    </div>
+                                    <div class="multi-select-list" id="progettoList" style="display:none;">
+                                        <label class="multi-select-item multi-select-all-item">
+                                            <input type="checkbox" id="progettoAll" onchange="toggleAllProgetti(this)" checked>
+                                            <span>Seleziona tutti</span>
+                                        </label>
+                                        <div id="progettoOptions"></div>
+                                    </div>
+                                </div>
+                                <div class="filter-info" id="progettoInfo"></div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Accordion: Analisi Territoriale -->
@@ -491,6 +518,24 @@
                     </div>
                 </div>
 
+                <!-- Pane: Progetti -->
+                <div class="sb-pane" id="sb-pane-progetti">
+                  <!--   <div class="sb-section-title"><i class="fas fa-folder-open"></i> Progetti</div> -->
+                    <ol class="progetti-list">
+                        <li>
+                            <div class="progetto-item">
+                                <div class="progetto-nome">Accordo Quadro - CUP D71G23000050001</div>
+                                <a href="https://www.opencup.gov.it//portale/it/web/opencup/home/progetto/-/cup/D71G23000050001"
+                                   target="_blank"
+                                   title="Accordo Quadro - CUP D71G23000050001"
+                                   class="progetto-link">
+                                    <i class="fas fa-external-link-alt"></i> Apri su OpenCUP
+                                </a>
+                            </div>
+                        </li>
+                    </ol>
+                </div>
+
                 <!-- Pulsanti azione filtri (fuori dai pane, sempre in fondo) -->
                 <div class="sb-actions" id="sb-filtri-actions">
                     <button onclick="applyFilters()"><i class="fas fa-check"></i> Applica</button>
@@ -499,7 +544,7 @@
                 </div>
 
                 <!-- Footer -->
-                <div class="sb-footer">Accordo Quadro · CUP D71G23000050001</div>
+                <div class="sb-footer">by <a href="https://www.linkedin.com/in/gbvitrano/" target="_blank" rel="noopener">@gbvitrano</a></div>
 
             </div>
             <div class="sb-resize-handle" id="sbResizeHandle"></div>

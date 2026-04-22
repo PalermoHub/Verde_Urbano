@@ -6,7 +6,9 @@ function showActiveFilters() {
     const content = document.getElementById('activeFiltersContent');
 
     // Raccogli i valori dei filtri
+    const selectedP = typeof getSelectedProgetti === 'function' ? getSelectedProgetti() : [];
     const filters = {
+        ...(selectedP.length ? { 'Progetto': selectedP.join(', ') } : {}),
         'Odonimo (Strada)': document.getElementById('odonimoFilter').value,
         'Circoscrizione': document.getElementById('circoscrizioneFilter').value,
         'Quartiere': document.getElementById('quartiereFilter').value,
