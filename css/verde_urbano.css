@@ -1272,3 +1272,30 @@ hr {
     padding: 11px;
     font-size: 13px;
 }
+
+/* ── Basemap thumbnail gallery ── */
+.basemap-gallery { display: flex; gap: 3px; }
+.basemap-gallery.bm-horizontal { flex-direction: row; }
+.leaflet-right .basemap-gallery.bm-horizontal { flex-direction: row-reverse; }
+.bm-item {
+    width: 56px; height: 56px; border: 2px solid rgba(255,255,255,.85);
+    overflow: hidden; cursor: pointer; position: relative; flex-shrink: 0;
+    box-shadow: 0 1px 5px rgba(0,0,0,.35); background: #d0d0d0;
+    display: none; transition: border-color .15s;
+}
+.bm-item.bm-square { border-radius: 5px; }
+.bm-item.active { display: block; border-color: #27ae60; }
+.basemap-gallery:hover .bm-item { display: block; }
+.bm-thumb { width: 100%; height: 100%; object-fit: cover; display: block; }
+.bm-label {
+    position: absolute; bottom: 0; left: 0; right: 0;
+    background: rgba(0,0,0,.55); color: #fff; font-size: 8px;
+    text-align: center; padding: 2px 1px; opacity: 0; transition: opacity .15s;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.bm-item:hover .bm-label, .bm-item.active:hover .bm-label { opacity: 1; }
+
+/* ── Cluster donut e tooltip ── */
+.gs-donut-cluster { background: transparent !important; border: none !important; }
+.gs-cluster-tt { background: #fff; border: 1px solid #ddd; border-radius: 6px; box-shadow: 0 2px 8px rgba(0,0,0,.15); padding: 7px 10px; font-size: 11px; color: #333; white-space: nowrap; }
+.gs-cluster-tt::before { display: none; }
