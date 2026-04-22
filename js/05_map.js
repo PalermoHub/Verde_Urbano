@@ -44,6 +44,7 @@ function initMap() {
 
     // Aggiungi legenda CPC
     addCpcLegend();
+    map.on('moveend', updateLegendContent);
 
     // Aggiungi evento click sulla mappa per deselezionare l'albero
     map.on('click', function(e) {
@@ -342,55 +343,76 @@ function addCpcLegend() {
     map.addControl(legendControl);
 }
 
+// Restituisce true se almeno un filtro è attivo
+function isAnyFilterActive() {
+    if (selectedTree !== null) return true;
+    const filterIds = ['specieFilter', 'cpcFilter', 'siteFilter', 'odonimoFilter',
+                       'civicoFilter', 'uplFilter', 'quartiereFilter',
+                       'circoscrizioneFilter', 'puliziaFilter', 'faseFilter'];
+    if (filterIds.some(id => { const el = document.getElementById(id); return el && el.value !== ''; })) return true;
+    if (parseFloat(document.getElementById('minHeight').value) > 0) return true;
+    if (parseFloat(document.getElementById('minDiameter').value) > 0) return true;
+    return false;
+}
+
+// Restituisce gli alberi visibili nel viewport corrente
+function getViewportTrees() {
+    if (!map || !allTrees.length) return [];
+    const bounds = map.getBounds();
+    return allTrees.filter(t => t.lat && t.lon && bounds.contains([t.lat, t.lon]));
+}
+
+// Filtro CPC dalla legenda (toggle)
+function filterByCpcLegend(cpcValue) {
+    const cpcSelect = document.getElementById('cpcFilter');
+    cpcSelect.value = (cpcSelect.value === cpcValue) ? '' : cpcValue;
+    applyFilters();
+}
+
 // Aggiorna il contenuto della legenda con i conteggi
 function updateLegendContent() {
     const container = document.getElementById('map-legend-cpc');
     if (!container) return;
 
-    // Calcola i conteggi CPC dai dati filtrati
+    const viewportMode = !isAnyFilterActive();
+    const sourceTrees = viewportMode ? getViewportTrees() : filteredTrees;
+
     const cpcCount = {B: 0, C: 0, 'C/D': 0, D: 0, 'Ceppaia': 0};
-    filteredTrees.forEach(t => {
-        if (cpcCount.hasOwnProperty(t.cpc)) {
-            cpcCount[t.cpc]++;
-        }
+    sourceTrees.forEach(t => {
+        if (cpcCount.hasOwnProperty(t.cpc)) cpcCount[t.cpc]++;
     });
+
+    const activeCpc = document.getElementById('cpcFilter') ? document.getElementById('cpcFilter').value : '';
+
+    const legendDefs = [
+        { key: 'B',       color: '#2cc15f', label: '<strong>B</strong> - Bassa'    },
+        { key: 'C',       color: '#f39c12', label: '<strong>C</strong> - Moderata' },
+        { key: 'C/D',     color: '#c164a1', label: '<strong>C/D</strong> - Elevata'},
+        { key: 'D',       color: '#e74c3c', label: '<strong>D</strong> - Estrema'  },
+        { key: 'Ceppaia', color: '#434343', label: '<strong>Ceppaia</strong>'       },
+    ];
+
+    const itemsHtml = legendDefs.map(item => {
+        const isActive = activeCpc === item.key;
+        const tipText = isActive ? 'Clicca per rimuovere il filtro' : 'Filtra per questa classe CPC';
+        return `<div class="legend-item legend-item-clickable${isActive ? ' legend-item-active' : ''}"
+                     style="display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px;"
+                     onclick="filterByCpcLegend('${item.key}')" title="${tipText}">
+            <div style="display:flex;align-items:center;gap:8px;">
+                <i class="fas fa-circle" style="color:${item.color};font-size:14px;"></i>
+                <span style="color:#313131;font-size:11px;">${item.label}</span>
+            </div>
+            <span style="color:#313131;font-weight:bold;font-size:11px;">${cpcCount[item.key]}</span>
+        </div>`;
+    }).join('');
+
+    const modeLabel = viewportMode
+        ? '<i class="fas fa-eye"></i> Viewport'
+        : '<i class="fas fa-filter"></i> Filtrati';
 
     container.innerHTML = `
         <h4><i class="fas fa-list-check"></i> Classificazione CPC</h4>
-        <div class="legend-item" style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px;">
-            <div style="display: flex; align-items: center; gap: 8px;">
-                <i class="fas fa-circle" style="color: #2cc15f; font-size: 14px;"></i>
-                <span style="color: #313131; font-size: 11px;"><strong>B</strong> - Bassa</span>
-            </div>
-            <span style="color: #313131; font-weight: bold; font-size: 11px;">${cpcCount.B}</span>
-        </div>
-        <div class="legend-item" style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px;">
-            <div style="display: flex; align-items: center; gap: 8px;">
-                <i class="fas fa-circle" style="color: #f39c12; font-size: 14px;"></i>
-                <span style="color: #313131; font-size: 11px;"><strong>C</strong> - Moderata</span>
-            </div>
-            <span style="color: #313131; font-weight: bold; font-size: 11px;">${cpcCount.C}</span>
-        </div>
-        <div class="legend-item" style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px;">
-            <div style="display: flex; align-items: center; gap: 8px;">
-                <i class="fas fa-circle" style="color: #c164a1; font-size: 14px;"></i>
-                <span style="color: #313131; font-size: 11px;"><strong>C/D</strong> - Elevata</span>
-            </div>
-            <span style="color: #313131; font-weight: bold; font-size: 11px;">${cpcCount['C/D']}</span>
-        </div>
-        <div class="legend-item" style="display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 6px;">
-            <div style="display: flex; align-items: center; gap: 8px;">
-                <i class="fas fa-circle" style="color: #e74c3c; font-size: 14px;"></i>
-                <span style="color: #313131; font-size: 11px;"><strong>D</strong> - Estrema</span>
-            </div>
-            <span style="color: #313131; font-weight: bold; font-size: 11px;">${cpcCount.D}</span>
-        </div>
-        <div class="legend-item" style="display: flex; align-items: center; justify-content: space-between; gap: 8px;">
-            <div style="display: flex; align-items: center; gap: 8px;">
-                <i class="fas fa-circle" style="color: #434343; font-size: 14px;"></i>
-                <span style="color: #313131; font-size: 11px;"><strong>Ceppaia</strong></span>
-            </div>
-            <span style="color: #313131; font-weight: bold; font-size: 11px;">${cpcCount.Ceppaia}</span>
-        </div>
+        ${itemsHtml}
+        <div class="legend-mode-badge">${modeLabel}</div>
     `;
 }

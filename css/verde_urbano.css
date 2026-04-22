@@ -14,6 +14,55 @@ hr {
     margin-bottom: 20px;
 }
 
+/* Filter Accordion */
+.filter-accordion {
+    margin-bottom: 10px;
+    border: 1px solid #d0e8d8;
+    border-radius: 8px;
+    overflow: hidden;
+}
+.filter-accordion-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 9px 12px;
+    background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
+    color: white;
+    cursor: pointer;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-transform: uppercase;
+    -webkit-user-select: none;
+    user-select: none;
+    transition: background 0.2s;
+}
+.filter-accordion-header:hover {
+    background: linear-gradient(135deg, #1e8449 0%, #196F3D 100%);
+}
+.filter-accordion-header .accordion-label i {
+    margin-right: 6px;
+}
+.accordion-chevron {
+    font-size: 10px;
+    transition: transform 0.3s ease;
+}
+.filter-accordion.collapsed .accordion-chevron {
+    transform: rotate(-90deg);
+}
+.filter-accordion-body {
+    padding: 10px 8px 4px;
+    background: white;
+    overflow: hidden;
+    max-height: 2000px;
+    transition: max-height 0.35s ease, padding 0.2s ease;
+}
+.filter-accordion.collapsed .filter-accordion-body {
+    max-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
         .container {
             display: grid;
             grid-template-columns: 330px 1fr 330px;
@@ -441,6 +490,29 @@ hr {
             display: flex;
             align-items: center;
             gap: 10px;
+        }
+        .legend-item-clickable {
+            cursor: pointer;
+            border-radius: 4px;
+            padding: 3px 5px;
+            transition: background 0.15s, border-left 0.15s;
+        }
+        .legend-item-clickable:hover {
+            background: rgba(39, 174, 96, 0.12);
+        }
+        .legend-item-active {
+            background: rgba(39, 174, 96, 0.22);
+            border-left: 3px solid #27ae60;
+            padding-left: 4px;
+        }
+        .legend-mode-badge {
+            font-size: 9px;
+            color: #999;
+            text-align: right;
+            margin-top: 6px;
+            border-top: 1px solid #eee;
+            padding-top: 4px;
+            font-style: italic;
         }
         .legend-color {
             width: 20px;

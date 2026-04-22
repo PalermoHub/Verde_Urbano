@@ -252,122 +252,118 @@
                 </button>
             </div>
 
-            <h2><i class="fas fa-search"></i> Filtri</h2>
-
-<!-- Territorio -->
-
-            <div class="filter-group">
-                <label>Odonimo (Strada)</label>
-                <select id="odonimoFilter" onchange="applyFilters()">
-                    <option value="">Tutte le strade</option>
-                </select>
-                <div class="filter-info" id="odonimoInfo"></div>
+            <!-- Accordion: Analisi Territoriale -->
+            <div class="filter-accordion" id="accordion-territoriale">
+                <div class="filter-accordion-header" onclick="toggleAccordion('territoriale')">
+                    <span class="accordion-label"><i class="fas fa-map-location-dot"></i> Analisi Territoriale</span>
+                    <i class="fas fa-chevron-down accordion-chevron"></i>
+                </div>
+                <div class="filter-accordion-body">
+                    <div class="filter-group">
+                        <label>Odonimo (Strada)</label>
+                        <select id="odonimoFilter" onchange="applyFilters()">
+                            <option value="">Tutte le strade</option>
+                        </select>
+                        <div class="filter-info" id="odonimoInfo"></div>
+                    </div>
+                    <div class="filter-group">
+                        <label>Civico</label>
+                        <select id="civicoFilter" onchange="applyFilters()">
+                            <option value="">Tutti i civici</option>
+                        </select>
+                        <div class="filter-info" id="civicoInfo"></div>
+                    </div>
+                    <div class="filter-group">
+                        <label>Circoscrizione</label>
+                        <select id="circoscrizioneFilter" onchange="applyFilters()">
+                            <option value="">Tutte le circoscrizioni</option>
+                        </select>
+                        <div class="filter-info" id="circoscrizioneInfo"></div>
+                    </div>
+                    <div class="filter-group">
+                        <label>Quartiere</label>
+                        <select id="quartiereFilter" onchange="applyFilters()">
+                            <option value="">Tutti i quartieri</option>
+                        </select>
+                        <div class="filter-info" id="quartiereInfo"></div>
+                    </div>
+                    <div class="filter-group">
+                        <label>UPL</label>
+                        <select id="uplFilter" onchange="applyFilters()">
+                            <option value="">Tutte le UPL</option>
+                        </select>
+                        <div class="filter-info" id="uplInfo"></div>
+                    </div>
+                    <div class="filter-group">
+                        <label><i class="fas fa-tasks"></i> Fase Lavorazione</label>
+                        <select id="faseFilter" onchange="applyFilters()">
+                            <option value="">Tutte le fasi</option>
+                            <option value="fase1">Solo Fase 1 (Potatura/Abbattimento)</option>
+                            <option value="fase2">Con Fase 2 (Rimozione ceppo)</option>
+                            <option value="fase3">Con Fase 3 (Nuova pianta)</option>
+                            <!-- FASE 4 DISATTIVATA - Non rientra nei filtri e nel calcolo del costo finale -->
+                            <!-- <option value="fase4">Con Fase 4 (Pali tutori)</option> -->
+                        </select>
+                        <div class="filter-info" id="faseInfo"></div>
+                    </div>
+                </div>
             </div>
 
-            <div class="filter-group">
-                <label>Civico</label>
-                <select id="civicoFilter" onchange="applyFilters()">
-                    <option value="">Tutti i civici</option>
-                </select>
-                <div class="filter-info" id="civicoInfo"></div>
+            <!-- Accordion: Analisi Botanica -->
+            <div class="filter-accordion collapsed" id="accordion-botanica">
+                <div class="filter-accordion-header" onclick="toggleAccordion('botanica')">
+                    <span class="accordion-label"><i class="fas fa-leaf"></i> Analisi Botanica</span>
+                    <i class="fas fa-chevron-down accordion-chevron"></i>
+                </div>
+                <div class="filter-accordion-body">
+                    <div class="filter-group">
+                        <label>Specie Botanica</label>
+                        <select id="specieFilter" onchange="applyFilters()">
+                            <option value="">Tutte le specie</option>
+                        </select>
+                        <div class="filter-info" id="specieInfo"></div>
+                    </div>
+                    <div class="filter-group">
+                        <label>Stato Salute (CPC)</label>
+                        <select id="cpcFilter" onchange="applyFilters()">
+                            <option value="">Tutti</option>
+                            <option value="B">B - Bassa</option>
+                            <option value="C">C - Moderata</option>
+                            <option value="C/D">C/D - Elevata</option>
+                            <option value="D">D - Estrema</option>
+                            <option value="Ceppaia">Ceppaia</option>
+                        </select>
+                        <div class="filter-info" id="cpcInfo"></div>
+                    </div>
+                    <div class="filter-group">
+                        <label>Dimora</label>
+                        <select id="siteFilter" onchange="applyFilters()">
+                            <option value="">Tutti i siti</option>
+                        </select>
+                        <div class="filter-info" id="siteInfo"></div>
+                    </div>
+                    <div class="filter-group">
+                        <label>Altezza Minima (m)</label>
+                        <input type="range" id="minHeight" min="0" max="16" value="0" onchange="updateHeightLabel(); applyFilters()">
+                        <div class="filter-info">Min: <span id="minHeightLabel">0</span>m</div>
+                    </div>
+                    <div class="filter-group">
+                        <label>Diametro Minimo (cm)</label>
+                        <input type="range" id="minDiameter" min="0" max="137" value="0" onchange="updateDiameterLabel(); applyFilters()">
+                        <div class="filter-info">Min: <span id="minDiameterLabel">0</span>cm</div>
+                    </div>
+                    <div class="filter-group">
+                        <label><i class="fas fa-broom"></i> Necessità Pulizia Foglie</label>
+                        <select id="puliziaFilter" onchange="applyFilters()">
+                            <option value="">Tutti gli alberi</option>
+                            <option value="alta">Alta priorità (&gt;30% variazione)</option>
+                            <option value="media">Media priorità (15-30%)</option>
+                            <option value="bassa">Bassa priorità (&lt;15%)</option>
+                        </select>
+                        <div class="filter-info" id="puliziaInfo"></div>
+                    </div>
+                </div>
             </div>
-
-            <div class="filter-group">
-                <label>Circoscrizione</label>
-                <select id="circoscrizioneFilter" onchange="applyFilters()">
-                    <option value="">Tutte le circoscrizioni</option>
-                </select>
-                <div class="filter-info" id="circoscrizioneInfo"></div>
-            </div>
-
-            <div class="filter-group">
-                <label>Quartiere</label>
-                <select id="quartiereFilter" onchange="applyFilters()">
-                    <option value="">Tutti i quartieri</option>
-                </select>
-                <div class="filter-info" id="quartiereInfo"></div>
-            </div>
-
-            <div class="filter-group">
-                <label>UPL</label>
-                <select id="uplFilter" onchange="applyFilters()">
-                    <option value="">Tutte le UPL</option>
-                </select>
-                <div class="filter-info" id="uplInfo"></div>
-            </div>
-
-<hr>
-
-<!-- Alberi -->
-            <div class="filter-group">
-                <label>Specie Botanica</label>
-                <select id="specieFilter" onchange="applyFilters()">
-                    <option value="">Tutte le specie</option>
-                </select>
-                <div class="filter-info" id="specieInfo"></div>
-            </div>
-
-            <div class="filter-group">
-                <label>Stato Salute (CPC)</label>
-                <select id="cpcFilter" onchange="applyFilters()">
-                    <option value="">Tutti</option>
-                    <option value="B">B - Bassa</option>
-                    <option value="C">C - Moderata</option>
-                    <option value="C/D">C/D - Elevata</option>
-                    <option value="D">D - Estrema</option>
-                    <option value="Ceppaia">Ceppaia</option>
-                </select>
-                <div class="filter-info" id="cpcInfo"></div>
-            </div>
-
-            <div class="filter-group">
-                <label>Dimora</label>
-                <select id="siteFilter" onchange="applyFilters()">
-                    <option value="">Tutti i siti</option>
-                </select>
-                <div class="filter-info" id="siteInfo"></div>
-            </div>
-
-            <div class="filter-group">
-                <label>Altezza Minima (m)</label>
-                <input type="range" id="minHeight" min="0" max="16" value="0" onchange="updateHeightLabel(); applyFilters()">
-                <div class="filter-info">Min: <span id="minHeightLabel">0</span>m</div>
-            </div>
-
-            <div class="filter-group">
-                <label>Diametro Minimo (cm)</label>
-                <input type="range" id="minDiameter" min="0" max="137" value="0" onchange="updateDiameterLabel(); applyFilters()">
-                <div class="filter-info">Min: <span id="minDiameterLabel">0</span>cm</div>
-            </div>
-
-<hr>
-            <div class="filter-group">
-                <label><i class="fas fa-tasks"></i> Fase Lavorazione</label>
-                <select id="faseFilter" onchange="applyFilters()">
-                    <option value="">Tutte le fasi</option>
-                    <option value="fase1">Solo Fase 1 (Potatura/Abbattimento)</option>
-                    <option value="fase2">Con Fase 2 (Rimozione ceppo)</option>
-                    <option value="fase3">Con Fase 3 (Nuova pianta)</option>
-                    <!-- FASE 4 DISATTIVATA - Non rientra nei filtri e nel calcolo del costo finale -->
-                    <!-- <option value="fase4">Con Fase 4 (Pali tutori)</option> -->
-                </select>
-                <div class="filter-info" id="faseInfo"></div>
-            </div>
-
-<hr>
-
-            <div class="filter-group">
-                <label><i class="fas fa-broom"></i> Necessità Pulizia Foglie</label>
-                <select id="puliziaFilter" onchange="applyFilters()">
-                    <option value="">Tutti gli alberi</option>
-                    <option value="alta">Alta priorità (&gt;30% variazione)</option>
-                    <option value="media">Media priorità (15-30%)</option>
-                    <option value="bassa">Bassa priorità (&lt;15%)</option>
-                </select>
-                <div class="filter-info" id="puliziaInfo"></div>
-            </div>
-
-            <hr>
 
             <h2 style="margin-top: 25px;"><i class="fas fa-tools"></i> Cod. Lavorazione</h2>
             <div id="statLavorazione" style="font-size: 12px; color: #666;">
@@ -602,6 +598,13 @@
         window.addEventListener('scroll', highlightActiveSection);
         window.addEventListener('load', highlightActiveSection);
     })();
+    </script>
+
+    <!-- Accordion filtri -->
+    <script>
+    function toggleAccordion(id) {
+        document.getElementById('accordion-' + id).classList.toggle('collapsed');
+    }
     </script>
 
     <!-- Script per sticky header -->
