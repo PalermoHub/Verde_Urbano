@@ -281,6 +281,7 @@ function applyFilters() {
     updateMap();
     updateStats();
     updateCharts();
+    if (typeof updateURLFromFilters === 'function') updateURLFromFilters();
 }
 
 // Aggiorna il titolo della pagina con l'Odonimo selezionato

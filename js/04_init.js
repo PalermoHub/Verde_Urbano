@@ -51,6 +51,7 @@ document.addEventListener('DOMContentLoaded', async function() {
 
     console.log('📥 Step 6: Applicazione filtri...');
     if (window.updateLoaderStatus) window.updateLoaderStatus('<i class="fas fa-map-marker-alt"></i> Rendering mappa...');
+    if (typeof applyFiltersFromURL === 'function') applyFiltersFromURL();
     applyFilters();
     console.log('✅ Step 6 completato - filteredTrees:', filteredTrees.length);
 
