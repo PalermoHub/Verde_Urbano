@@ -652,7 +652,7 @@
         document.addEventListener('mousemove', function (e) {
             if (!dragging) return;
             const w = Math.min(MAX_W, Math.max(MIN_W, startWidth + e.clientX - startX));
-            container.style.gridTemplateColumns = w + 'px 1fr';
+            document.getElementById('sbWrapLeft').style.width = w + 'px';
         });
 
         document.addEventListener('mouseup', function () {
