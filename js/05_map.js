@@ -498,7 +498,7 @@ function updateLegendContent() {
     const viewportMode = !isAnyFilterActive();
     const sourceTrees = viewportMode ? getViewportTrees() : filteredTrees;
 
-    const cpcCount = { B: 0, C: 0, 'C/D': 0, D: 0, 'Ceppaia': 0 };
+    const cpcCount = { B: 0, C: 0, 'C/D': 0, D: 0, 'Ceppaia': 0, A: 0, 'Vuoto': 0, 'Verifica': 0, 'Non Clas': 0, 'No Interv': 0 };
     sourceTrees.forEach(function(t) {
         if (cpcCount.hasOwnProperty(t.cpc)) cpcCount[t.cpc]++;
     });
@@ -506,11 +506,16 @@ function updateLegendContent() {
     const activeCpc = document.getElementById('cpcFilter') ? document.getElementById('cpcFilter').value : '';
 
     const legendDefs = [
-        { key: 'B',       color: '#2cc15f', label: '<strong>B</strong> - Bassa'    },
-        { key: 'C',       color: '#f39c12', label: '<strong>C</strong> - Moderata' },
-        { key: 'C/D',     color: '#c164a1', label: '<strong>C/D</strong> - Elevata'},
-        { key: 'D',       color: '#e74c3c', label: '<strong>D</strong> - Estrema'  },
-        { key: 'Ceppaia', color: '#434343', label: '<strong>Ceppaia</strong>'       },
+        { key: 'A',        color: '#00ff00', label: '<strong>A</strong> - Trascurabile'    },
+        { key: 'B',        color: '#2cc15f', label: '<strong>B</strong> - Bassa'           },
+        { key: 'C',        color: '#f39c12', label: '<strong>C</strong> - Moderata'        },
+        { key: 'C/D',      color: '#c164a1', label: '<strong>C/D</strong> - Elevata'       },
+        { key: 'D',        color: '#e74c3c', label: '<strong>D</strong> - Estrema'         },
+        { key: 'Ceppaia',  color: '#434343', label: '<strong>Ceppaia</strong>'              },
+        { key: 'Vuoto',    color: '#ffff00', label: '<strong>Vuoto</strong> - Cercine vuoto'},
+        { key: 'Verifica', color: '#9fc5e8', label: '<strong>Verifica</strong> - Da verificare'},
+        { key: 'Non Clas', color: '#990000', label: '<strong>Non Clas</strong> - Non Classificato'},
+        { key: 'No Interv',color: '#f4cccc', label: '<strong>No Interv</strong> - Nessun Intervento'},
     ];
 
     const itemsHtml = legendDefs.map(function(item) {

@@ -13,5 +13,10 @@ const cpcColors = {
      'C': '#f39c12',
      'D': '#e74c3c',
      'C/D': '#c164a1',
-     'Ceppaia': '#434343'
+     'Ceppaia': '#434343',
+     'A': '#00ff00',
+     'Vuoto': '#ffff00',
+     'Verifica': '#9fc5e8',
+     'Non Clas': '#990000',
+     'No Interv': '#f4cccc'
 };

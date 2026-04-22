@@ -379,12 +379,6 @@
                         </div>
                     </div>
 
-                    <!-- Pulsanti azione -->
-                    <div class="sb-actions">
-                        <button onclick="applyFilters()"><i class="fas fa-check"></i> Applica</button>
-                        <button class="secondary" onclick="resetFilters()"><i class="fas fa-rotate-left"></i> Ripristina</button>
-                        <button class="btn-filtri-attivi" onclick="showActiveFilters()" title="Mostra i filtri attivi"><i class="fas fa-filter"></i> Filtri Attivi</button>
-                    </div>
                 </div>
 
                 <!-- Pane: Lavorazione -->
@@ -495,6 +489,13 @@
                             </div>
                         </div>
                     </div>
+                </div>
+
+                <!-- Pulsanti azione filtri (fuori dai pane, sempre in fondo) -->
+                <div class="sb-actions" id="sb-filtri-actions">
+                    <button onclick="applyFilters()"><i class="fas fa-check"></i> Applica</button>
+                    <button class="secondary" onclick="resetFilters()"><i class="fas fa-rotate-left"></i> Ripristina</button>
+                    <button class="btn-filtri-attivi" onclick="showActiveFilters()" title="Mostra i filtri attivi"><i class="fas fa-filter"></i> Filtri Attivi</button>
                 </div>
 
                 <!-- Footer -->
@@ -613,6 +614,7 @@
         document.querySelectorAll('#sidebarLeft .sb-tab-btn').forEach(b => b.classList.remove('active'));
         document.getElementById('sb-pane-' + tabId).classList.add('active');
         document.querySelector('#sidebarLeft .sb-tab-btn[data-tab="' + tabId + '"]').classList.add('active');
+        document.getElementById('sb-filtri-actions').style.display = tabId === 'filtri' ? 'flex' : 'none';
         if (tabId === 'dataviz' && typeof Chart !== 'undefined') {
             setTimeout(() => {
                 ['speciesChart','healthChart','siteChart','heightChart','seasonalLeavesChart'].forEach(id => {

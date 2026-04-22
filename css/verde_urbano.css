@@ -1140,8 +1140,7 @@ hr {
 .sb-actions {
     display: flex;
     gap: 6px;
-    padding: 8px 0 4px;
-    margin-top: auto;
+    padding: 8px 6px 4px;
     flex-shrink: 0;
 }
 .sb-actions button {
