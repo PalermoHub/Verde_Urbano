@@ -1,7 +1,7 @@
 // ===== MAPPA =====
 let initialView = {
     center: [38.1266,13.3476],
-    zoom: 14
+    zoom: 13
 };
 
 const CLUSTER_DISABLE_ZOOM = 16;
@@ -19,21 +19,21 @@ const BASEMAPS_CONFIG = [
       thumbnail: 'https://a.basemaps.cartocdn.com/light_all/2/2/1.png',
       layer: L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
           attribution: '© <a href="https://www.openstreetmap.org/copyright">OSM</a> © <a href="https://carto.com/">CARTO</a> · Elaborazione: <a href="https://www.linkedin.com/in/gbvitrano/" target="_blank" rel="noopener">@gbvitrano</a>',
-          minZoom: 14, maxZoom: 20, subdomains: 'abcd'
+          minZoom: 13, maxZoom: 19, subdomains: 'abcd'
       })
     },
     { key: 'ctr', label: 'CTC 2k Palermo', isDefault: false,
       thumbnail: 'img/ctc.jpg',
       layer: L.tileLayer('https://siciliahub.github.io/Tiles/ctr_pa_2k/{z}/{x}/{y}.png', {
           attribution: '© CTC 2k Palermo · Elaborazione: <a href="https://www.linkedin.com/in/gbvitrano/" target="_blank" rel="noopener">@gbvitrano</a>',
-          minZoom: 14, maxZoom: 20
+          minZoom: 13, maxZoom: 19
       })
     },
     { key: 'google_satellite', label: 'Google Satellite', isDefault: false,
       thumbnail: 'https://mt0.google.com/vt/lyrs=s&x=2&y=1&z=2',
       layer: L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
           attribution: '© <a href="https://maps.google.com">Google Maps</a> · Elaborazione: <a href="https://www.linkedin.com/in/gbvitrano/" target="_blank" rel="noopener">@gbvitrano</a>',
-          minZoom: 14, maxZoom: 20
+          minZoom: 13, maxZoom: 19
       })
     }
 ];
