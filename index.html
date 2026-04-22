@@ -242,7 +242,9 @@
                 <!-- Tab nav -->
                 <div class="sb-tab-btns">
                     <button class="sb-tab-btn active" data-tab="filtri" onclick="showSidebarTab('filtri')"><i class="fas fa-filter"></i> Filtri</button>
-                    <button class="sb-tab-btn" data-tab="statistiche" onclick="showSidebarTab('statistiche')"><i class="fas fa-tools"></i> Cod. lavorazione</button>
+                    <button class="sb-tab-btn" data-tab="lavorazione" onclick="showSidebarTab('lavorazione')"><i class="fas fa-tools"></i> Lavoraz.</button>
+                    <button class="sb-tab-btn" data-tab="statistiche" onclick="showSidebarTab('statistiche')"><i class="fas fa-chart-simple"></i> Statistiche</button>
+                    <button class="sb-tab-btn" data-tab="dataviz" onclick="showSidebarTab('dataviz')"><i class="fas fa-chart-bar"></i> DataViz</button>
                 </div>
 
                 <!-- Pane: Filtri -->
@@ -374,10 +376,17 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Pulsanti azione -->
+                    <div class="sb-actions">
+                        <button onclick="applyFilters()"><i class="fas fa-check"></i> Applica</button>
+                        <button class="secondary" onclick="resetFilters()"><i class="fas fa-rotate-left"></i> Ripristina</button>
+                        <button class="btn-filtri-attivi" onclick="showActiveFilters()" title="Mostra i filtri attivi"><i class="fas fa-filter"></i> Filtri Attivi</button>
+                    </div>
                 </div>
 
-                <!-- Pane: Statistiche -->
-                <div class="sb-pane" id="sb-pane-statistiche">
+                <!-- Pane: Lavorazione -->
+                <div class="sb-pane" id="sb-pane-lavorazione">
                     <div class="sb-section-title"><i class="fas fa-tools"></i> Cod. Lavorazione</div>
                     <div id="statLavorazione" style="font-size: 12px; color: #666;"></div>
                     <div class="sb-section-title" style="margin-top: 16px;"><i class="fas fa-euro-sign"></i> Costo Lavorazione</div>
@@ -390,10 +399,107 @@
                     <p style="font-size: 10px; font-style: italic;"><b>NOTA IMPORTANTE:</b> I costi indicati sono suscettibili di variazioni a causa di: modifiche in corso d'opera, variazione dei prezzi delle materie prime, esigenze progettuali non preventivate, ecc.</p>
                 </div>
 
+                <!-- Pane: Statistiche -->
+                <div class="sb-pane" id="sb-pane-statistiche">
+                    <div class="sb-section-title"><i class="fas fa-chart-simple"></i> Statistiche sulle Specie arboree</div>
+                    <div class="stats-box">
+                        <div class="stat-row">
+                            <span>Alberi Visualizzati</span>
+                            <span class="stat-value" id="statFiltered">0</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Totale Dataset</span>
+                            <span class="stat-value" id="statTotal">0</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Altezza Media</span>
+                            <span class="stat-value" id="statAvgHeight">-</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Diametro Medio</span>
+                            <span class="stat-value" id="statAvgDiameter">-</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Specie Presenti</span>
+                            <span class="stat-value" id="statSpecies">0</span>
+                        </div>
+                    </div>
+
+                    <div class="sb-section-title" style="margin-top: 16px;"><i class="fas fa-map-location-dot"></i> Statistiche sul Territorio</div>
+                    <div class="stats-box" style="background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);">
+                        <div class="stat-row">
+                            <span>Vie interessate dalla Rigenerazione <br> del Verde Urbano:</span>
+                            <span class="stat-value" style="font-size:30px" id="statTotalStrade">0</span>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <div style="font-weight: 600; margin-bottom: 8px; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 5px;">UPL</div>
+                            <div id="statAlberiPerUPL">-</div>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <div style="font-weight: 600; margin-bottom: 8px; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 5px;">Quartiere</div>
+                            <div id="statAlberiPerQuartiere">-</div>
+                        </div>
+                        <div style="margin-top: 15px;">
+                            <div style="font-weight: 600; margin-bottom: 8px; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 5px;">Circoscrizione</div>
+                            <div id="statAlberiPerCircoscrizione">-</div>
+                        </div>
+                    </div>
+
+                    <div class="sb-section-title" style="margin-top: 16px;"><i class="fas fa-leaf"></i> Benefici Ambientali</div>
+                    <img src="img/co2-albero.svg" width="100%" style="display: block; margin: 8px auto;" title="CO₂ assorbita - O₂ prodotto" alt="Benefici Ambientali">
+                    <div class="stats-box" style="background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);">
+                        <div class="stat-row">
+                            <span>Assorbimento CO₂ totale:</span>
+                            <span class="stat-value" id="statTotalCO2">0 kg/anno</span>
+                        </div>
+                        <div class="stat-row">
+                            <span>Produzione O₂ totale:</span>
+                            <span class="stat-value" id="statTotalO2">0 kg/anno</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pane: DataViz -->
+                <div class="sb-pane" id="sb-pane-dataviz">
+                    <div class="charts-container">
+                        <div class="chart-box">
+                            <h3><i class="fas fa-leaf"></i> Specie arboree principali</h3>
+                            <div class="chart-wrapper">
+                                <canvas id="speciesChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-box">
+                            <h3><i class="fas fa-tree"></i> Stato salute - Classe Propensione Cedimento - CPC</h3>
+                            <div class="chart-wrapper">
+                                <canvas id="healthChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-box">
+                            <h3><i class="fas fa-location-dot"></i> Dimora</h3>
+                            <div class="chart-wrapper">
+                                <canvas id="siteChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-box">
+                            <h3><i class="fas fa-chart-line"></i> Distribuzione altezze</h3>
+                            <div class="chart-wrapper">
+                                <canvas id="heightChart"></canvas>
+                            </div>
+                        </div>
+                        <div class="chart-box chart-box-full">
+                            <h3><i class="fas fa-seedling"></i> Foglie totali nelle stagioni</h3>
+                            <div class="chart-wrapper" style="height: 350px;">
+                                <canvas id="seasonalLeavesChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Footer -->
                 <div class="sb-footer">Accordo Quadro · CUP D71G23000050001</div>
 
             </div>
+            <div class="sb-resize-handle" id="sbResizeHandle"></div>
             <button class="sb-toggle" id="sidebarLeftToggle" onclick="toggleSidebarLeft()" title="Mostra/nascondi pannello">&#8249;</button>
         </div>
 
@@ -404,126 +510,6 @@
             </div>
         </div>
 
-        <!-- Sidebar Destra: Controlli e Grafici -->
-        <div class="sidebar sidebar-right">
-            <h2><i class="fas fa-sliders"></i> Controlli, Statistiche e DatyaViz</h2>
-
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 20px;">
-			<!-- Pulsanti -->
-                <button onclick="applyFilters()">✓ Applica</button>
-                <button class="secondary" onclick="resetFilters()">↺ Ripristina</button>
-
-                <button style="padding: 11px; background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; transition: all 0.3s;" onclick="showActiveFilters()" title="Mostra i filtri attivi">
-                    <i class="fas fa-filter"></i> Filtri Attivi
-                </button>
-                <button class="secondary" style="padding: 11px; font-size: 13px;" onclick="toggleFiltersSidebar()" title="Nascondi/Mostra filtri">
-                    <i class="fas fa-bars"></i> Toggle
-                </button>
-
-            <!--    <button style="padding: 11px; background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; transition: all 0.3s;" onclick="downloadRelazione()" title="Scarica la Relazione Tecnica">
-                    <i class="fas fa-file-pdf"></i> Relazione
-                </button>
-                <button style="padding: 11px; background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; transition: all 0.3s;" onclick="printMapPdf()" title="Stampa la mappa in PDF">
-                    <i class="fas fa-map"></i> Mappa PDF
-                </button> -->
-            </div>
-						
-
-
-
-            <h2 style="margin-top: 25px;"><i class="fas fa-chart-simple"></i> Statistiche sulle Specie arboree</h2>
-            <div class="stats-box">
-                <div class="stat-row">
-                    <span>Alberi Visualizzati</span>
-                    <span class="stat-value" id="statFiltered">0</span>
-                </div>
-                <div class="stat-row">
-                    <span>Totale Dataset</span>
-                    <span class="stat-value" id="statTotal">0</span>
-                </div>
-                <div class="stat-row">
-                    <span>Altezza Media</span>
-                    <span class="stat-value" id="statAvgHeight">-</span>
-                </div>
-                <div class="stat-row">
-                    <span>Diametro Medio</span>
-                    <span class="stat-value" id="statAvgDiameter">-</span>
-                </div>
-                <div class="stat-row">
-                    <span>Specie Presenti</span>
-                    <span class="stat-value" id="statSpecies">0</span>
-                </div>
-            </div>
-
-            <h2 style="margin-top: 25px;"><i class="fas fa-map-location-dot"></i> Statistiche sul Territorio</h2>
-            <div class="stats-box" style="background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);">
-                <div class="stat-row">
-                    <span>Vie interessate dalla Rigenerazione <br> del Verde Urbano:</span>
-                    <span class="stat-value" style="font-size:30px" id="statTotalStrade">0</span>
-                </div>
-                <div style="margin-top: 15px;">
-                    <div style="font-weight: 600; margin-bottom: 8px; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 5px;">UPL</div>
-                    <div id="statAlberiPerUPL">-</div>
-                </div>
-                <div style="margin-top: 15px;">
-                    <div style="font-weight: 600; margin-bottom: 8px; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 5px;">Quartiere</div>
-                    <div id="statAlberiPerQuartiere">-</div>
-                </div>
-                <div style="margin-top: 15px;">
-                    <div style="font-weight: 600; margin-bottom: 8px; font-size: 12px; border-bottom: 1px solid rgba(255,255,255,0.3); padding-bottom: 5px;">Circoscrizione</div>
-                    <div id="statAlberiPerCircoscrizione">-</div>
-                </div>
-            </div>
-
-            <h2 style="margin-top: 25px;"><i class="fas fa-leaf"></i> Benefici  Ambientali</h2>
-			<img src="img/co2-albero.svg" width="300" style="display: block; margin: 0 auto;" Title="CO₂ assorbita - O₂ prodotto" alt="Benefici Ambientali">
-            <div class="stats-box" style="background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);">
-                                <div class="stat-row">
-                    <span>Assorbimento CO₂ totale:</span>
-                    <span class="stat-value" id="statTotalCO2">0 kg/anno</span>
-                </div>
-				<div class="stat-row">
-                    <span>Produzione O₂ totale:</span>
-                    <span class="stat-value" id="statTotalO2">0 kg/anno</span>
-                </div>
-				 </div>
-            <h2><i class="fas fa-chart-bar"></i> DatyaViz</h2>
-            <div class="charts-container">
-			                <div class="chart-box">
-                    <h3><i class="fas fa-leaf"></i> Specie arboree principali</h3>
-                    <div class="chart-wrapper">
-                        <canvas id="speciesChart"></canvas>
-                    </div>
-                </div>	
-				
-                <div class="chart-box">
-                    <h3><i class="fas fa-tree"></i> Stato salute - Classe Propensione Cedimento - CPC</h3>
-                    <div class="chart-wrapper">
-                        <canvas id="healthChart"></canvas>
-                    </div>
-                </div>
-								
-                <div class="chart-box">
-                    <h3><i class="fas fa-location-dot"></i> Dimora</h3>
-                    <div class="chart-wrapper">
-                        <canvas id="siteChart"></canvas>
-                    </div>
-                </div>
-				                <div class="chart-box">
-                    <h3><i class="fas fa-chart-line"></i> Distribuzione altezze</h3>
-                    <div class="chart-wrapper">
-                        <canvas id="heightChart"></canvas>
-                    </div>
-                </div>
-
-				<div class="chart-box chart-box-full">
-                    <h3><i class="fas fa-seedling"></i> Foglie totali nelle stagioni</h3>
-                    <div class="chart-wrapper" style="height: 350px;">
-                        <canvas id="seasonalLeavesChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
     <!-- Modale Dettagli Albero -->
@@ -625,6 +611,14 @@
         document.querySelectorAll('#sidebarLeft .sb-tab-btn').forEach(b => b.classList.remove('active'));
         document.getElementById('sb-pane-' + tabId).classList.add('active');
         document.querySelector('#sidebarLeft .sb-tab-btn[data-tab="' + tabId + '"]').classList.add('active');
+        if (tabId === 'dataviz' && typeof Chart !== 'undefined') {
+            setTimeout(() => {
+                ['speciesChart','healthChart','siteChart','heightChart','seasonalLeavesChart'].forEach(id => {
+                    const c = Chart.getChart(id);
+                    if (c) c.resize();
+                });
+            }, 50);
+        }
     }
     function toggleSidebarLeft() {
         const container = document.querySelector('.container');
@@ -635,6 +629,38 @@
         sidebar.style.display = isHidden ? '' : 'none';
         btn.innerHTML = isHidden ? '&#8249;' : '&#8250;';
     }
+
+    (function () {
+        const handle = document.getElementById('sbResizeHandle');
+        const container = document.querySelector('.container');
+        const MIN_W = 200, MAX_W = 500;
+        let dragging = false, startX = 0, startWidth = 0;
+
+        handle.addEventListener('mousedown', function (e) {
+            if (container.classList.contains('sidebar-left-hidden')) return;
+            dragging = true;
+            startX = e.clientX;
+            startWidth = document.getElementById('sbWrapLeft').getBoundingClientRect().width;
+            handle.classList.add('dragging');
+            document.body.style.cursor = 'col-resize';
+            document.body.style.userSelect = 'none';
+            e.preventDefault();
+        });
+
+        document.addEventListener('mousemove', function (e) {
+            if (!dragging) return;
+            const w = Math.min(MAX_W, Math.max(MIN_W, startWidth + e.clientX - startX));
+            container.style.gridTemplateColumns = w + 'px 1fr';
+        });
+
+        document.addEventListener('mouseup', function () {
+            if (!dragging) return;
+            dragging = false;
+            handle.classList.remove('dragging');
+            document.body.style.cursor = '';
+            document.body.style.userSelect = '';
+        });
+    })();
     </script>
 
     <!-- Script per sticky header -->

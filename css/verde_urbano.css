@@ -65,7 +65,7 @@ hr {
 
         .container {
             display: grid;
-            grid-template-columns: 330px 1fr 330px;
+            grid-template-columns: 300px 1fr;
             gap: 0;
             padding: 0;
             width: 100%;
@@ -1133,8 +1133,8 @@ hr {
 }
 .sb-tab-btn {
     flex: 1;
-    padding: 9px 6px;
-    font-size: 12px;
+    padding: 7px 3px;
+    font-size: 10px;
     border: none;
     background: none;
     cursor: pointer;
@@ -1142,6 +1142,9 @@ hr {
     font-family: inherit;
     font-weight: 500;
     transition: color 0.15s;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .sb-tab-btn:hover {
     color: #27ae60;
@@ -1175,6 +1178,18 @@ hr {
     margin-top: 12px;
     padding-bottom: 4px;
     border-bottom: 1px solid #c8e6c9;
+}
+.sb-actions {
+    display: flex;
+    gap: 6px;
+    padding: 8px 0 4px;
+    margin-top: auto;
+    flex-shrink: 0;
+}
+.sb-actions button {
+    flex: 1;
+    padding: 9px 4px;
+    font-size: 12px;
 }
 .sb-footer {
     padding: 7px 14px;
@@ -1213,9 +1228,47 @@ hr {
     transform: translateY(-50%);
 }
 .container.sidebar-left-hidden {
-    grid-template-columns: 0px 1fr 330px !important;
+    grid-template-columns: 0px 1fr !important;
 }
 .container.sidebar-left-hidden .sb-wrap {
     overflow: visible;
     width: 0;
+}
+.sb-resize-handle {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 5px;
+    height: 100%;
+    cursor: col-resize;
+    z-index: 1001;
+    background: transparent;
+    transition: background 0.15s;
+}
+.sb-resize-handle:hover,
+.sb-resize-handle.dragging {
+    background: rgba(39, 174, 96, 0.35);
+}
+
+/* Sidebar destra: griglia controlli */
+.ctrl-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+.btn-filtri-attivi {
+    padding: 11px;
+    background: linear-gradient(135deg, #9b59b6 0%, #8e44ad 100%);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    font-size: 13px;
+    transition: all 0.3s;
+}
+.btn-toggle-sidebar {
+    padding: 11px;
+    font-size: 13px;
 }
