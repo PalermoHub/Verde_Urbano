@@ -8,7 +8,7 @@ const CLUSTER_DISABLE_ZOOM = 16;
 let pruneCluster = null;
 
 // Mappa CPC → indice categoria (ordine stabile)
-const CPC_KEYS = ['B', 'C', 'C/D', 'D', 'Ceppaia'];
+const CPC_KEYS = ['B', 'C', 'C/D', 'D', 'Ceppaia', 'A', 'Vuoto', 'Verifica', 'Non Clas', 'No Interv'];
 const CPC_CAT_COLORS = CPC_KEYS.map(k => cpcColors[k]);
 const CPC_VAL_TO_CAT = {};
 const CPC_CAT_TO_VAL = {};
