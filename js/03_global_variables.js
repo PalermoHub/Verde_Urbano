@@ -17,6 +17,6 @@ const cpcColors = {
      'A': '#00ff00',
      'Vuoto': '#ffff00',
      'Verifica': '#9fc5e8',
-     'Non Clas': '#990000',
+     'Non Class': '#990000',
      'No Interv': '#f4cccc'
 };

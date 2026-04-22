@@ -8,7 +8,7 @@ const CLUSTER_DISABLE_ZOOM = 16;
 let pruneCluster = null;
 
 // Mappa CPC → indice categoria (ordine stabile)
-const CPC_KEYS = ['B', 'C', 'C/D', 'D', 'Ceppaia', 'A', 'Vuoto', 'Verifica', 'Non Clas', 'No Interv'];
+const CPC_KEYS = ['B', 'C', 'C/D', 'D', 'Ceppaia', 'A', 'Vuoto', 'Verifica', 'Non Class', 'No Interv'];
 const CPC_CAT_COLORS = CPC_KEYS.map(k => cpcColors[k]);
 const CPC_VAL_TO_CAT = {};
 const CPC_CAT_TO_VAL = {};
@@ -498,7 +498,7 @@ function updateLegendContent() {
     const viewportMode = !isAnyFilterActive();
     const sourceTrees = viewportMode ? getViewportTrees() : filteredTrees;
 
-    const cpcCount = { B: 0, C: 0, 'C/D': 0, D: 0, 'Ceppaia': 0, A: 0, 'Vuoto': 0, 'Verifica': 0, 'Non Clas': 0, 'No Interv': 0 };
+    const cpcCount = { B: 0, C: 0, 'C/D': 0, D: 0, 'Ceppaia': 0, A: 0, 'Vuoto': 0, 'Verifica': 0, 'Non Class': 0, 'No Interv': 0 };
     sourceTrees.forEach(function(t) {
         if (cpcCount.hasOwnProperty(t.cpc)) cpcCount[t.cpc]++;
     });
@@ -514,7 +514,7 @@ function updateLegendContent() {
         { key: 'Ceppaia',  color: '#434343', label: '<strong>Ceppaia</strong>'              },
         { key: 'Vuoto',    color: '#ffff00', label: '<strong>Vuoto</strong> - Cercine vuoto'},
         { key: 'Verifica', color: '#9fc5e8', label: '<strong>Verifica</strong> - Da verificare'},
-        { key: 'Non Clas', color: '#990000', label: '<strong>Non Clas</strong> - Non Classificato'},
+        { key: 'Non Class', color: '#990000', label: '<strong>Non Class</strong> - Non Classificato'},
         { key: 'No Interv',color: '#f4cccc', label: '<strong>No Interv</strong> - Nessun Intervento'},
     ];
 
