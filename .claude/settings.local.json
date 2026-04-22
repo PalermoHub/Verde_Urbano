@@ -33,7 +33,10 @@
       "Bash(do echo \"Processing $file\")",
       "Bash(for file in il-progetto.html obiettivi.html fasi.html potatura.html radicali.html impianti.html sicurezza.html dati-economici.html)",
       "Bash(do grep -n \"Info button spostato nel banner\" \"$file\")",
-      "Bash(for file in il-progetto.html fasi.html potatura.html radicali.html impianti.html sicurezza.html dati-economici.html tavole.html gruppo.html)"
+      "Bash(for file in il-progetto.html fasi.html potatura.html radicali.html impianti.html sicurezza.html dati-economici.html tavole.html gruppo.html)",
+      "Bash(awk -F',' 'NR>1 {print $17}' \"D:/GitHub - Clone/SiciliaHub/Verde_Urbano/dati/17_query_web.csv\")",
+      "Bash(python -c ' *)",
+      "Bash(python *)"
     ]
   }
 }

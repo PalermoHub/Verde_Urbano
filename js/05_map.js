@@ -308,7 +308,19 @@ function addHomeButton() {
             button.title = 'Torna alla vista iniziale';
             L.DomEvent.on(button, 'click', function(e) {
                 L.DomEvent.preventDefault(e);
-                map.setView(initialView.center, initialView.zoom);
+                const source = (filteredTrees && filteredTrees.length) ? filteredTrees : allTrees;
+                const valid = source.filter(function(t) { return t.lat && t.lon; });
+                if (valid.length > 0) {
+                    const lats = valid.map(function(t) { return t.lat; });
+                    const lons = valid.map(function(t) { return t.lon; });
+                    map.fitBounds(
+                        [[Math.min.apply(null, lats), Math.min.apply(null, lons)],
+                         [Math.max.apply(null, lats), Math.max.apply(null, lons)]],
+                        { padding: [30, 30] }
+                    );
+                } else {
+                    map.setView(initialView.center, initialView.zoom);
+                }
             });
             return container;
         }
