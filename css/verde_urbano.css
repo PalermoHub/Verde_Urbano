@@ -736,7 +736,7 @@ hr {
                 min-width: 0;
             }
             .container.sidebar-left-hidden .sb-wrap {
-                transform: translateX(calc(-65vw + 26px));
+                transform: translateX(-65vw);
             }
             .sb-resize-handle { display: none; }
             .modal-tree-details {
@@ -1110,10 +1110,11 @@ hr {
     box-shadow: none;
 }
 .sb-tab-btn.active {
-    border-bottom: 2px solid #27ae60;
+    border-bottom: 3px solid #ff9900;
     margin-bottom: -2px;
     font-weight: 600;
     color: #27ae60;
+    border-radius: 0;
 }
 .sb-pane {
     display: none;
@@ -1186,7 +1187,7 @@ hr {
     transform: translateY(-50%);
 }
 .container.sidebar-left-hidden .sb-wrap {
-    transform: translateX(calc(-300px + 26px));
+    transform: translateX(-300px);
 }
 .sb-resize-handle {
     position: absolute;
