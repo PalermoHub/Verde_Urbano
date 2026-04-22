@@ -68,6 +68,7 @@ hr {
             height: calc(100svh - 267px);
             overflow: hidden;
             border-bottom: 2px solid #116534;
+            --sb-w: 300px;
         }
         .sidebar {
             background: white;
@@ -727,6 +728,7 @@ hr {
         @media (max-width: 768px) {
             .container {
                 height: calc(100svh - 220px);
+                --sb-w: 65vw;
             }
             .sb-wrap {
                 width: 65vw;
@@ -734,9 +736,6 @@ hr {
             }
             .sidebar.sidebar-left {
                 min-width: 0;
-            }
-            .container.sidebar-left-hidden .sb-wrap {
-                transform: translateX(-65vw);
             }
             .sb-resize-handle { display: none; }
             .modal-tree-details {
@@ -1187,7 +1186,7 @@ hr {
     transform: translateY(-50%);
 }
 .container.sidebar-left-hidden .sb-wrap {
-    transform: translateX(-300px);
+    transform: translateX(calc(-1 * var(--sb-w, 300px)));
 }
 .sb-resize-handle {
     position: absolute;
@@ -1203,6 +1202,16 @@ hr {
 .sb-resize-handle:hover,
 .sb-resize-handle.dragging {
     background: rgba(39, 174, 96, 0.35);
+}
+
+@media (min-width: 769px) {
+    .leaflet-left {
+        margin-left: var(--sb-w, 300px);
+        transition: margin-left 0.25s ease;
+    }
+    .container.sidebar-left-hidden .leaflet-left {
+        margin-left: 0;
+    }
 }
 
 /* Sidebar destra: griglia controlli */
