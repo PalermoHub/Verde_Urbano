@@ -16,6 +16,20 @@
             }
         }
 
+        // Aggiorna l'altezza del container mappa in base agli header visibili
+        function updateContainerHeight() {
+            const container = document.querySelector('.container');
+            if (!container) return;
+            const slimH = slimHeader && !slimHeader.classList.contains('hidden') ? slimHeader.offsetHeight : 0;
+            const mainH = mainHeader && !mainHeader.classList.contains('hidden') ? mainHeader.offsetHeight : 0;
+            const bannerH = projectBanner ? projectBanner.offsetHeight : 0;
+            const navH = navHeader ? navHeader.offsetHeight : 0;
+            document.documentElement.style.setProperty('--headers-height', (slimH + mainH + bannerH + navH) + 'px');
+        }
+
+        const isMapPage = !!document.querySelector('.container');
+        let headersSnapped = false;
+
         // Evidenzia la pagina attiva nella navigazione
         function highlightActivePage() {
             const currentPage = window.location.pathname.split('/').pop() || 'index.html';
@@ -34,12 +48,18 @@
         // Esegui all'avvio
         highlightActivePage();
         updateBannerHeight();
+        updateContainerHeight();
 
-        // Aggiorna altezza banner al resize della finestra
-        window.addEventListener('resize', updateBannerHeight);
+        // Aggiorna altezze al resize della finestra
+        window.addEventListener('resize', function() {
+            updateBannerHeight();
+            updateContainerHeight();
+        });
 
         // Scroll handler per header compatto
         window.addEventListener('scroll', function() {
+            if (isMapPage && headersSnapped) return;
+
             const scrollPosition = window.scrollY;
 
             if (scrollPosition > 50) {
@@ -52,13 +72,24 @@
                 // Sposta il livello 3 (navigazione) sotto il banner del progetto
                 navHeader.classList.add('scrolled');
 
-                // Aggiorna l'altezza del banner in caso di cambiamenti dinamici
+                // Aggiorna l'altezza del banner e del container
                 updateBannerHeight();
+                updateContainerHeight();
+
+                if (isMapPage) {
+                    headersSnapped = true;
+                    window.scrollTo(0, 0);
+                    requestAnimationFrame(() => {
+                        updateBannerHeight();
+                        updateContainerHeight();
+                    });
+                }
             } else {
                 // Mostra tutto
                 slimHeader.classList.remove('hidden');
                 mainHeader.classList.remove('hidden');
                 navHeader.classList.remove('scrolled');
+                updateContainerHeight();
             }
         });
 

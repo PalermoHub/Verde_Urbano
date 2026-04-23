@@ -186,7 +186,7 @@ hr {
 
         .container {
             position: relative;
-            height: calc(100svh - 267px);
+            height: calc(100svh - var(--headers-height, 267px));
             overflow: hidden;
             border-bottom: 2px solid #116534;
             --sb-w: 300px;
@@ -848,7 +848,7 @@ hr {
 
         @media (max-width: 768px) {
             .container {
-                height: calc(100svh - 220px);
+                height: calc(100svh - var(--headers-height, 220px));
                 --sb-w: 65vw;
             }
             .sb-wrap {
