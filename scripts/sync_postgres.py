@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Full sync: CSV dati/ → PostgreSQL/PostGIS 'palermo-verde-urbano'.
-Insert new rows, update changed rows, delete stale rows.
-01_query_rilievo_semplificato and 17_query_web get PostGIS geometry from Lat/Long."""
+Righe Google Sheets marcate con _source='google_sheets'.
+Righe da altre sorgenti (QGIS, ecc.) non vengono mai toccate.
+01_query_rilievo_semplificato e 17_query_web ricevono geometria PostGIS da Lat/Long."""
 
 import math
 import os
@@ -15,10 +16,12 @@ DATI_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), '..', 'dati'
 
 PG_CONNECTION = os.environ['PG_CONNECTION']  # postgresql://user:pass@host:5432/dbname
 
+SOURCE = 'google_sheets'
+
 # pk:             list of PK column names (after sanitization)
 # rename:         dict original→new applied before sanitization
 # geometry:       {'lat': col_name, 'lon': col_name} after sanitization
-# truncate_reload: True = TRUNCATE + INSERT (pivot/aggregation tables, no stable PK)
+# truncate_reload: True = delete google_sheets rows + INSERT (aggregation tables)
 TABLE_CONFIG = {
     '01_query_rilievo_semplificato': {
         'pk': ['targa'],
@@ -110,7 +113,6 @@ def clean_val(v):
 def read_csv(path: str, config: dict) -> pd.DataFrame:
     df = pd.read_csv(path, dtype=str, keep_default_na=False)
 
-    # Apply renames before sanitization
     df = df.rename(columns=config.get('rename', {}))
 
     # Drop unnamed columns that are entirely empty (trailing commas in header)
@@ -121,10 +123,9 @@ def read_csv(path: str, config: dict) -> pd.DataFrame:
     if drop_cols:
         df = df.drop(columns=drop_cols)
 
-    # Sanitize and deduplicate column names
     df.columns = dedupe_cols([sanitize_col(c) for c in df.columns])
 
-    # Replace empty strings with None (replace avoids float('nan') from df.where)
+    # replace avoids float('nan') that df.where() can introduce
     df = df.replace('', None)
 
     return df
@@ -146,6 +147,7 @@ def ensure_table(cur, table_name: str, df: pd.DataFrame, has_geom: bool, pk_cols
         col_defs = [f'"{c}" TEXT' for c in df.columns]
         if has_geom:
             col_defs.append('"geom" GEOMETRY(Point, 4326)')
+        col_defs.append(f'"_source" TEXT DEFAULT \'{SOURCE}\'')
         pk_clause = (
             f', PRIMARY KEY ({", ".join(f"{chr(34)}{c}{chr(34)}" for c in pk_cols)})'
             if pk_cols else ''
@@ -169,9 +171,13 @@ def ensure_table(cur, table_name: str, df: pd.DataFrame, has_geom: bool, pk_cols
             cur.execute(f'ALTER TABLE "{table_name}" ADD COLUMN "geom" GEOMETRY(Point, 4326)')
             cur.execute(f'CREATE INDEX ON "{table_name}" USING GIST (geom)')
             print(f'  Added geom column to {table_name}')
+        if '_source' not in existing:
+            cur.execute(f"ALTER TABLE \"{table_name}\" ADD COLUMN \"_source\" TEXT DEFAULT '{SOURCE}'")
+            print(f'  Added _source column to {table_name}')
 
 
 def delete_stale(cur, table_name: str, df: pd.DataFrame, pk_cols: list):
+    """Cancella solo le righe google_sheets il cui PK non è più nel CSV."""
     pk_rows = [
         tuple(clean_val(v) for v in row)
         for row in df[pk_cols].drop_duplicates().dropna(how='all').itertuples(index=False, name=None)
@@ -181,7 +187,7 @@ def delete_stale(cur, table_name: str, df: pd.DataFrame, pk_cols: list):
     col_refs = ', '.join(f'"{c}"' for c in pk_cols)
     execute_values(
         cur,
-        f'DELETE FROM "{table_name}" WHERE ({col_refs}) NOT IN (VALUES %s)',
+        f'DELETE FROM "{table_name}" WHERE "_source" = \'{SOURCE}\' AND ({col_refs}) NOT IN (VALUES %s)',
         pk_rows,
     )
     deleted = cur.rowcount
@@ -195,43 +201,44 @@ def sync_table(conn, table_name: str, df: pd.DataFrame, config: dict):
     truncate = config.get('truncate_reload', False)
     has_geom = bool(geom_cfg)
     cols = list(df.columns)
-    col_list = ', '.join(f'"{c}"' for c in cols)
 
     with conn.cursor() as cur:
         ensure_table(cur, table_name, df, has_geom, pk_cols)
         conn.commit()
 
         if truncate or not pk_cols:
-            cur.execute(f'TRUNCATE TABLE "{table_name}"')
-            rows = [tuple(clean_val(v) for v in row) for row in df.itertuples(index=False, name=None)]
+            # Cancella solo le righe di questa sorgente, lascia intatte le altre
+            cur.execute(f"DELETE FROM \"{table_name}\" WHERE \"_source\" = '{SOURCE}'")
+            col_list = ', '.join(f'"{c}"' for c in cols) + ', "_source"'
+            rows = [tuple(clean_val(v) for v in row) + (SOURCE,) for row in df.itertuples(index=False, name=None)]
             execute_values(cur, f'INSERT INTO "{table_name}" ({col_list}) VALUES %s', rows)
             conn.commit()
-            print(f'  {table_name}: truncate+reload, {len(rows)} rows')
+            print(f'  {table_name}: reload, {len(rows)} rows')
             return
 
-        # Deduplicate CSV rows by PK (source data may have duplicates)
+        # Deduplica per PK (il CSV potrebbe avere duplicati)
         before = len(df)
         df = df.drop_duplicates(subset=pk_cols, keep='last')
         if len(df) < before:
             print(f'  Dropped {before - len(df)} duplicate PK rows')
         cols = list(df.columns)
-        col_list = ', '.join(f'"{c}"' for c in cols)
 
-        # Build ON CONFLICT clause
         pk_str = ', '.join(f'"{c}"' for c in pk_cols)
         update_cols = [c for c in cols if c not in pk_cols]
 
+        # Aggiungi _source a ogni INSERT e UPDATE
+        col_list = ', '.join(f'"{c}"' for c in cols) + ', "_source"'
+        update_set_base = ', '.join(f'"{c}" = EXCLUDED."{c}"' for c in update_cols)
+        update_set_base += (', ' if update_cols else '') + '"_source" = EXCLUDED."_source"'
+
         if has_geom:
-            geom_update = ', "geom" = EXCLUDED."geom"'
-            update_set = (
-                ', '.join(f'"{c}" = EXCLUDED."{c}"' for c in update_cols) + geom_update
-                if update_cols else '"geom" = EXCLUDED."geom"'
-            )
+            update_set = update_set_base + ', "geom" = EXCLUDED."geom"'
             on_conflict = f'ON CONFLICT ({pk_str}) DO UPDATE SET {update_set}'
 
             col_list_geom = col_list + ', "geom"'
+            # row values: csv cols + _source + lon + lat
             template = (
-                '(' + ', '.join(['%s'] * len(cols)) +
+                '(' + ', '.join(['%s'] * (len(cols) + 1)) +
                 ', ST_SetSRID(ST_MakePoint(%s::double precision, %s::double precision), 4326))'
             )
             insert_sql = f'INSERT INTO "{table_name}" ({col_list_geom}) VALUES %s {on_conflict}'
@@ -243,7 +250,7 @@ def sync_table(conn, table_name: str, df: pd.DataFrame, config: dict):
 
             rows = []
             for row in df.itertuples(index=False, name=None):
-                vals = tuple(clean_val(v) for v in row)
+                vals = tuple(clean_val(v) for v in row) + (SOURCE,)
                 try:
                     lon = float(row[lon_idx]) if lon_idx is not None and row[lon_idx] not in (None, '') else None
                     lat = float(row[lat_idx]) if lat_idx is not None and row[lat_idx] not in (None, '') else None
@@ -253,17 +260,11 @@ def sync_table(conn, table_name: str, df: pd.DataFrame, config: dict):
 
             execute_values(cur, insert_sql, rows, template=template)
         else:
-            if update_cols:
-                update_set = ', '.join(f'"{c}" = EXCLUDED."{c}"' for c in update_cols)
-                on_conflict = f'ON CONFLICT ({pk_str}) DO UPDATE SET {update_set}'
-            else:
-                on_conflict = f'ON CONFLICT ({pk_str}) DO NOTHING'
-
+            on_conflict = f'ON CONFLICT ({pk_str}) DO UPDATE SET {update_set_base}'
             insert_sql = f'INSERT INTO "{table_name}" ({col_list}) VALUES %s {on_conflict}'
-            rows = [tuple(clean_val(v) for v in row) for row in df.itertuples(index=False, name=None)]
+            rows = [tuple(clean_val(v) for v in row) + (SOURCE,) for row in df.itertuples(index=False, name=None)]
             execute_values(cur, insert_sql, rows)
 
-        # Full sync: remove rows no longer in CSV
         delete_stale(cur, table_name, df, pk_cols)
 
         conn.commit()
