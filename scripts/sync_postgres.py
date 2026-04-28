@@ -174,6 +174,18 @@ def ensure_table(cur, table_name: str, df: pd.DataFrame, has_geom: bool, pk_cols
         if '_source' not in existing:
             cur.execute(f"ALTER TABLE \"{table_name}\" ADD COLUMN \"_source\" TEXT DEFAULT '{SOURCE}'")
             print(f'  Added _source column to {table_name}')
+        # Se la tabella è diventata truncate_reload, rimuovi eventuali PK rimasti
+        if not pk_cols:
+            cur.execute(
+                """SELECT constraint_name FROM information_schema.table_constraints
+                   WHERE table_schema = 'public' AND table_name = %s
+                   AND constraint_type = 'PRIMARY KEY'""",
+                (table_name,),
+            )
+            row = cur.fetchone()
+            if row:
+                cur.execute(f'ALTER TABLE "{table_name}" DROP CONSTRAINT "{row[0]}"')
+                print(f'  Removed PK constraint from {table_name}')
 
 
 def delete_stale(cur, table_name: str, df: pd.DataFrame, pk_cols: list):
@@ -215,6 +227,12 @@ def sync_table(conn, table_name: str, df: pd.DataFrame, config: dict):
             conn.commit()
             print(f'  {table_name}: reload, {len(rows)} rows')
             return
+
+        # Scarta righe con PK null (non inseribili con constraint NOT NULL)
+        null_mask = df[pk_cols].isnull().any(axis=1)
+        if null_mask.any():
+            print(f'  Skipped {null_mask.sum()} rows with NULL PK values')
+            df = df[~null_mask]
 
         # Deduplica per PK (il CSV potrebbe avere duplicati)
         before = len(df)
