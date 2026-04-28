@@ -37,7 +37,7 @@ jobs:
           declare -A SHEETS=(
             ["253723192"]="01_query_rilievo_semplificato"
             ["1617221218"]="02_quadrante"
-            ["1122783976"]="03_tavole"
+            ["404264429"]="03_tavole"
             ["641613516"]="04_foto"
             ["50914242"]="05_specie_arboree_palermo"
             ["52685852"]="06_elenco_prezzi_2024"
