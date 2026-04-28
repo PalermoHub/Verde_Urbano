@@ -2,6 +2,10 @@ Odonimo,CPC,count,%,legenda,colore
 Via Corazza Filippo,No Interv,16,53%,Nessun itervento,#f4cccc
 Via Corazza Filippo,Ceppaia,11,37%,Ceppaia,#434343
 Via Corazza Filippo,Verifica,3,10%,Da verficare,#9fc5e8
+Via Delle Croci,B,25,48%,B (bassa),#2cc15f
+Via Delle Croci,D,13,25%,D (estrema),#e74c3c
+Via Delle Croci,C,11,21%,C (moderata),#f39c12
+Via Delle Croci,C/D,3,6%,C/D (elevata),#c164a1
 Via Giusti Giuseppe,No Interv,98,71%,Nessun itervento,#f4cccc
 Via Giusti Giuseppe,Verifica,30,22%,Da verficare,#9fc5e8
 Via Giusti Giuseppe,Non Class,7,5%,Non Classificato,#990000
@@ -10,6 +14,11 @@ Via Pignatelli Aragona,B,32,67%,B (bassa),#2cc15f
 Via Pignatelli Aragona,C,8,17%,C (moderata),#f39c12
 Via Pignatelli Aragona,D,5,10%,D (estrema),#e74c3c
 Via Pignatelli Aragona,C/D,3,6%,C/D (elevata),#c164a1
+Via Principe Di Belmonte,B,53,54%,B (bassa),#2cc15f
+Via Principe Di Belmonte,C,19,19%,C (moderata),#f39c12
+Via Principe Di Belmonte,D,13,13%,D (estrema),#e74c3c
+Via Principe Di Belmonte,C/D,12,12%,C/D (elevata),#c164a1
+Via Principe Di Belmonte,Vuoto,2,2%,Cercine vuoto,#ffff00
 Via Rapisardi Mario,Ceppaia,19,32%,Ceppaia,#434343
 Via Rapisardi Mario,No Interv,18,30%,Nessun itervento,#f4cccc
 Via Rapisardi Mario,Verifica,17,28%,Da verficare,#9fc5e8

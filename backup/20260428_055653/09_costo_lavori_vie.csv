@@ -1,16 +1,23 @@
 Odonimo,Cod. lavorazione/elenco prezzi,count,costo,larg
 Via Corazza Filippo,,19,€0.00,0.2
 Via Corazza Filippo,SIC24_1.6.2,11,"€2,509.65",0.2
-Via Giusti Giuseppe,,128,€0.00,0.2
-Via Giusti Giuseppe,APL.017S,7,"€1,798.02",0.2
+Via Delle Croci,APL.026S,39,"€22,432.80",0.2
+Via Delle Croci,APL.018S,13,"€4,119.70",0.2
+Via Giusti Giuseppe,,128,€0.00,0.8
+Via Giusti Giuseppe,APL.017S,7,"€1,798.02",0.8
 Via Giusti Giuseppe,SIC24_1.6.2,3,€684.45,0.8
 Via Pignatelli Aragona,APL.026S,43,"€24,733.60",0.8
 Via Pignatelli Aragona,APL.018S,5,"€1,584.50",0.8
-Via Rapisardi Mario,,35,€0.00,0.8
-Via Rapisardi Mario,SIC24_1.6.2,19,"€4,334.85",0.8
-Via Rapisardi Mario,APL.017S,6,"€1,541.16",0.8
-Via Rizzo Ammiraglio - A,APL.026S,54,"€31,060.80",0.8
-Via Rizzo Ammiraglio - A,APL.018S,2,€633.80,0.8
+Via Principe Di Belmonte,APL.001S,51,"€9,377.37",0.8
+Via Principe Di Belmonte,APL.005S,33,"€6,140.31",0.8
+Via Principe Di Belmonte,APL.017S,12,"€3,082.32",0.8
+Via Principe Di Belmonte,NP00.15120509,2,"€1,365.50",
+Via Principe Di Belmonte,APL.016S,1,€165.88,
+Via Rapisardi Mario,,35,€0.00,
+Via Rapisardi Mario,SIC24_1.6.2,19,"€4,334.85",
+Via Rapisardi Mario,APL.017S,6,"€1,541.16",
+Via Rizzo Ammiraglio - A,APL.026S,54,"€31,060.80",
+Via Rizzo Ammiraglio - A,APL.018S,2,€633.80,
 Via Rizzo Ammiraglio - B,APL.026S,57,"€32,786.40",
 Via Rizzo Ammiraglio - B,APL.018S,2,€633.80,
 Via Rizzo Ammiraglio - B,APL.017S,1,€256.86,
