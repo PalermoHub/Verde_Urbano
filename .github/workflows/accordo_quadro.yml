@@ -2,13 +2,29 @@ name: Accordo Quadro - CUP D71G23000050001
 
 on:
   workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Modalità di esecuzione'
+        type: choice
+        options:
+          - completo
+          - solo-download
+          - solo-sync
+        default: completo
   schedule:
-    - cron: '00 17 * * *'  # Ogni giorno alle 6:00 UTC
+    - cron: '00 17 * * *'  # Ogni giorno alle 17:00 UTC (completo)
 
 jobs:
+
+  # ── BLOCCO 1: Download Google Sheets ─────────────────────────────────────
   download-sheets:
+    name: Download Google Sheets
+    if: >-
+      github.event_name == 'schedule' ||
+      github.event.inputs.mode == 'completo' ||
+      github.event.inputs.mode == 'solo-download'
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout branch main
         uses: actions/checkout@v4
@@ -30,10 +46,9 @@ jobs:
       - name: Download Google Sheets
         run: |
           mkdir -p dati
-          
+
           BASE_URL="https://docs.google.com/spreadsheets/d/e/2PACX-1vSunsI5HEZofRXsbtdjz7AJYYYlXhPVGwBVgvoFzlPY7c1G7MVvVkjTcT8sNWVfBTrx1QBj08ueBbYB/pub"
-          
-          # Array di gid e nomi file
+
           declare -A SHEETS=(
             ["253723192"]="01_query_rilievo_semplificato"
             ["1617221218"]="02_quadrante"
@@ -53,12 +68,12 @@ jobs:
             ["425906037"]="16_tot_foglie"
             ["1621206908"]="17_query_web"
           )
-          
+
           for gid in "${!SHEETS[@]}"; do
             filename="${SHEETS[$gid]}"
             echo "📥 Downloading $filename (gid: $gid)..."
             curl -sL "${BASE_URL}?gid=${gid}&single=true&output=csv" -o "dati/${filename}.csv"
-            
+
             if [ -s "dati/${filename}.csv" ]; then
               echo "   ✅ $filename.csv scaricato ($(wc -l < "dati/${filename}.csv") righe)"
             else
@@ -86,8 +101,16 @@ jobs:
             echo "✅ Modifiche pushate su main"
           fi
 
+  # ── BLOCCO 2: Sync → PostgreSQL/PostGIS ──────────────────────────────────
   sync-postgres:
-    needs: download-sheets
+    name: Sync → PostgreSQL/PostGIS
+    needs: [download-sheets]
+    # always() consente l'esecuzione anche se download-sheets è stato saltato (solo-sync)
+    if: >-
+      always() &&
+      (github.event_name == 'schedule' ||
+       github.event.inputs.mode == 'completo' ||
+       github.event.inputs.mode == 'solo-sync')
     runs-on: ubuntu-latest
 
     steps:

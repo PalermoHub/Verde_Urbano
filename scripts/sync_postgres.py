@@ -3,6 +3,7 @@
 Insert new rows, update changed rows, delete stale rows.
 01_query_rilievo_semplificato and 17_query_web get PostGIS geometry from Lat/Long."""
 
+import math
 import os
 import re
 import sys
@@ -46,7 +47,7 @@ TABLE_CONFIG = {
         'pk': ['odonimo', 'cpc'],
     },
     '09_costo_lavori_vie': {
-        'pk': ['odonimo', 'cod_lavorazione_elenco_prezzi'],
+        'truncate_reload': True,
     },
     '10_o2_co2': {
         'pk': ['odonimo', 'ambiente'],
@@ -99,7 +100,11 @@ def dedupe_cols(cols: list) -> list:
 
 
 def clean_val(v):
-    return None if (v is None or v == '') else v
+    if v is None or v == '':
+        return None
+    if isinstance(v, float) and math.isnan(v):
+        return None
+    return v
 
 
 def read_csv(path: str, config: dict) -> pd.DataFrame:
@@ -119,8 +124,8 @@ def read_csv(path: str, config: dict) -> pd.DataFrame:
     # Sanitize and deduplicate column names
     df.columns = dedupe_cols([sanitize_col(c) for c in df.columns])
 
-    # Replace empty strings with None
-    df = df.where(df != '', other=None)
+    # Replace empty strings with None (replace avoids float('nan') from df.where)
+    df = df.replace('', None)
 
     return df
 
@@ -203,6 +208,14 @@ def sync_table(conn, table_name: str, df: pd.DataFrame, config: dict):
             conn.commit()
             print(f'  {table_name}: truncate+reload, {len(rows)} rows')
             return
+
+        # Deduplicate CSV rows by PK (source data may have duplicates)
+        before = len(df)
+        df = df.drop_duplicates(subset=pk_cols, keep='last')
+        if len(df) < before:
+            print(f'  Dropped {before - len(df)} duplicate PK rows')
+        cols = list(df.columns)
+        col_list = ', '.join(f'"{c}"' for c in cols)
 
         # Build ON CONFLICT clause
         pk_str = ', '.join(f'"{c}"' for c in pk_cols)
