@@ -5,19 +5,36 @@ const doughnutCenterPlugin = {
     id: 'doughnutCenter',
     afterDraw(chart) {
         if (chart.config.type !== 'doughnut') return;
-        const total = chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
-        if (total === 0) return;
+        const cpcTotal = chart.data.datasets[0].data.reduce((a, b) => a + b, 0);
+        if (cpcTotal === 0) return;
+        const totalTrees = chart._totalTrees != null ? chart._totalTrees : cpcTotal;
+        const showSubline = totalTrees > cpcTotal;
         const { ctx, chartArea: { width, height, left, top } } = chart;
         const cx = left + width / 2, cy = top + height / 2;
         ctx.save();
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
-        ctx.font = 'bold 20px "Titillium Web", Arial, sans-serif';
-        ctx.fillStyle = '#1a1a1a';
-        ctx.fillText(total.toLocaleString('it-IT'), cx, cy - 9);
-        ctx.font = '9px "Titillium Web", Arial, sans-serif';
-        ctx.fillStyle = '#aaa';
-        ctx.fillText('ALBERI', cx, cy + 10);
+        if (showSubline) {
+            ctx.font = 'bold 20px "Titillium Web", Arial, sans-serif';
+            ctx.fillStyle = '#1a1a1a';
+            ctx.fillText(totalTrees.toLocaleString('it-IT'), cx, cy - 17);
+            ctx.font = '8px "Titillium Web", Arial, sans-serif';
+            ctx.fillStyle = '#aaa';
+            ctx.fillText('ALBERI', cx, cy - 4);
+            ctx.font = 'bold 20px "Titillium Web", Arial, sans-serif';
+            ctx.fillStyle = '#1a1a1a';
+            ctx.fillText(cpcTotal.toLocaleString('it-IT'), cx, cy + 9);
+            ctx.font = '8px "Titillium Web", Arial, sans-serif';
+            ctx.fillStyle = '#888';
+            ctx.fillText('con CPC', cx, cy + 22);
+        } else {
+            ctx.font = 'bold 20px "Titillium Web", Arial, sans-serif';
+            ctx.fillStyle = '#1a1a1a';
+            ctx.fillText(totalTrees.toLocaleString('it-IT'), cx, cy - 9);
+            ctx.font = '9px "Titillium Web", Arial, sans-serif';
+            ctx.fillStyle = '#aaa';
+            ctx.fillText('ALBERI', cx, cy + 10);
+        }
         ctx.restore();
     }
 };
@@ -210,10 +227,23 @@ function updateCharts() {
     treesToAnalyze.forEach(t => {
         if (cpcMap.hasOwnProperty(t.cpc)) cpcData[cpcMap[t.cpc]]++;
     });
+    const cpcTotal = cpcData.reduce((a, b) => a + b, 0);
+    const totalTrees = treesToAnalyze.length;
+    const cpcMissing = totalTrees - cpcTotal;
     if (chartsInstances.health) {
+        chartsInstances.health._totalTrees = totalTrees;
         chartsInstances.health.data.datasets[0].data = cpcData;
         chartsInstances.health.update();
         updateHealthLegend(cpcData);
+    }
+    const cpcNote = document.getElementById('healthChartNote');
+    if (cpcNote) {
+        if (cpcMissing > 0) {
+            cpcNote.textContent = cpcMissing.toLocaleString('it-IT') + ' alberi senza dato CPC';
+            cpcNote.style.display = 'block';
+        } else {
+            cpcNote.style.display = 'none';
+        }
     }
 
     /* Specie — lista classificata */

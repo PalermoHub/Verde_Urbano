@@ -1848,6 +1848,15 @@ hr {
     font-size: 9px;
     margin-left: 1px;
 }
+.chart-note-missing {
+    font-size: 12px;
+    color: #e67e22;
+    text-align: center;
+    padding: 4px 0 2px;
+    border-top: 1px dashed #f0e0d0;
+    margin-top: 6px;
+	font-weight: 600;
+}
 
 /* ══════════════════════════════════════════════
    TERRITORIO — ranked list stile uniforme
