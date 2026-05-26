@@ -29,6 +29,9 @@
 
             loader.classList.add('hidden');
             document.body.classList.remove('loading-active');
+            setTimeout(function() {
+                if (window.showTestAlert) window.showTestAlert();
+            }, 500);
         }
     }
 

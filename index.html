@@ -604,6 +604,26 @@
         </div>
     </div>
 
+    <!-- Modale Avviso Versione di Test -->
+    <div class="modal-overlay" id="testAlertModal">
+        <div class="modal" style="max-width:520px;">
+            <div class="modal-header" style="background:linear-gradient(135deg,#e67e22 0%,#d35400 100%);">
+                <h2><i class="fas fa-hard-hat"></i> Versione di test — solo uso interno</h2>
+                <button class="modal-close" onclick="closeTestAlert()" title="Chiudi">&#10005;</button>
+            </div>
+            <div class="modal-body">
+                <p>Questa webmap è ancora in fase di sviluppo. I dati sono stati georeferenziati in modo automatico e potrebbero contenere errori o imprecisioni.</p>
+                <p>Anche se sei arrivato qui tramite un motore di ricerca, questo spazio è riservato al gruppo di lavoro interno. Stiamo verificando i contenuti, testando le funzionalità e raccogliendo feedback prima del rilascio ufficiale. <br>Se fai parte del gruppo e noti qualcosa che non va, segnalacelo: è esattamente il tipo di aiuto di cui abbiamo bisogno.</p> <br>
+                <p><b>Se invece sei capitato qui per caso, ti chiediamo gentilmente di non utilizzare i dati presenti: non hanno valore legale e non costituiscono atti ufficiali.</b></p>
+                <div style="text-align:center;margin-top:24px;">
+                    <button onclick="closeTestAlert()" style="background:linear-gradient(135deg,#e67e22 0%,#d35400 100%);padding:12px 36px;font-size:14px;border-radius:8px;flex:0;">
+                        <i class="fas fa-check"></i> Ho capito
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Modale Filtri Attivi -->
     <div class="modal-overlay" id="activeFiltersModal">
         <div class="modal">
@@ -809,6 +829,23 @@
 
     <!-- Loader Script -->
     <script src="js/loader.js"></script>
+
+    <script>
+    function showTestAlert() {
+        var modal = document.getElementById('testAlertModal');
+        if (modal) {
+            modal.classList.add('active');
+            document.body.classList.add('modal-open');
+        }
+    }
+    function closeTestAlert() {
+        var modal = document.getElementById('testAlertModal');
+        if (modal) {
+            modal.classList.remove('active');
+            document.body.classList.remove('modal-open');
+        }
+    }
+    </script>
 
 </body>
 </html>
