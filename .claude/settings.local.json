@@ -36,7 +36,9 @@
       "Bash(for file in il-progetto.html fasi.html potatura.html radicali.html impianti.html sicurezza.html dati-economici.html tavole.html gruppo.html)",
       "Bash(awk -F',' 'NR>1 {print $17}' \"D:/GitHub - Clone/SiciliaHub/Verde_Urbano/dati/17_query_web.csv\")",
       "Bash(python -c ' *)",
-      "Bash(python *)"
+      "Bash(python *)",
+      "Bash(Select-String -Path \"D:\\\\GitHub - Clone\\\\SiciliaHub\\\\Verde_Urbano\\\\css\\\\verde_urbano.css\" -Pattern \"zoom-bar|addZoomBar|leaflet-right\")",
+      "Bash(Select-Object LineNumber, Line)"
     ]
   }
 }

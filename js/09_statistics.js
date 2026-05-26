@@ -23,27 +23,52 @@ function updateStats() {
     // Nota: I conteggi CPC sono ora gestiti nella legenda della mappa tramite updateLegendContent()
 
     // ===== NUOVA PARTE: Conteggio Cod. Lavorazione =====
-    const lavorazioneCount = {};
+    const lavorazioneMap = {};
+    let totalConLavorazione = 0;
     treesToAnalyze.forEach(t => {
-        lavorazioneCount[t.codice] = (lavorazioneCount[t.codice] || 0) + 1;
+        const cod = (t.codice && t.codice !== '-') ? t.codice : null;
+        if (!cod) return;
+        totalConLavorazione++;
+        if (!lavorazioneMap[cod]) {
+            lavorazioneMap[cod] = { count: 0, descrizione: t.descrizione || '' };
+        }
+        lavorazioneMap[cod].count++;
     });
 
-    // Ordina per frequenza decrescente
-    const sortedLavorazioni = Object.entries(lavorazioneCount)
-        .sort((a, b) => b[1] - a[1]);
+    const sortedLavorazioni = Object.entries(lavorazioneMap)
+        .sort((a, b) => b[1].count - a[1].count);
 
-    // Crea HTML per le lavorazioni
-    let lavorazioneHTML = '';
-    sortedLavorazioni.forEach(([cod, count]) => {
-        lavorazioneHTML += `
-            <div style="padding: 8px; margin-bottom: 8px; background: #f9f9f9; border-left: 3px solid #27ae60; border-radius: 4px;">
-                <strong>${cod}</strong>: <span style="color: #27ae60; font-weight: 700;">${count}</span>
-            </div>
-        `;
-    });
+    const tipiCount = sortedLavorazioni.length;
 
-    document.getElementById('statLavorazione').innerHTML = lavorazioneHTML ||
-        '<div style="padding: 8px; color: #999;">Nessun dato</div>';
+    // Hero card con totale tipi
+    const heroHTML = `<div class="terr-hero-row" style="border-left-color:#27ae60;margin-bottom:10px;">
+        <span><i class="fas fa-tools" style="color:#27ae60;margin-right:6px;"></i>Tipi di lavorazione</span>
+        <span class="terr-hero-value">${tipiCount}</span>
+    </div>`;
+
+    let listHTML = '';
+    if (sortedLavorazioni.length === 0) {
+        listHTML = '<div class="rl-empty"><i class="fas fa-hourglass-half"></i> Nessun dato disponibile</div>';
+    } else {
+        const maxCount = sortedLavorazioni[0][1].count || 1;
+        listHTML = '<div class="rl-items">' + sortedLavorazioni.map(([cod, { count, descrizione }], i) => {
+            const pct = (count / maxCount * 100).toFixed(1);
+            const desc = descrizione
+                ? (descrizione.length > 30 ? descrizione.substring(0, 30) + '…' : descrizione)
+                : '';
+            return `<div class="rl-item lav-item">
+                <span class="rl-rank">${i + 1}</span>
+                <div class="lav-label-wrap" title="${cod}${descrizione ? ' — ' + descrizione : ''}">
+                    <span class="rl-label">${cod}</span>
+                    ${desc ? `<span class="lav-desc">${desc}</span>` : ''}
+                </div>
+                <div class="rl-bar-wrap"><div class="rl-bar" style="width:${pct}%;background:#27ae60"></div></div>
+                <span class="rl-value">${count}</span>
+            </div>`;
+        }).join('') + '</div>';
+    }
+
+    document.getElementById('statLavorazione').innerHTML = heroHTML + listHTML;
 
     // ===== NUOVA PARTE: Calcoli ambientali e costi =====
     let totalO2 = 0;
@@ -79,24 +104,27 @@ function updateStats() {
         }
     });
 
-    // Formatta i dati per territorio come lista HTML
-    const formatTerritorioList = (data) => {
+    // Formatta i dati per territorio come ranked list (stile rl-item)
+    const formatTerritorioList = (data, color) => {
         const entries = Object.entries(data).sort((a, b) => b[1] - a[1]);
-        if (entries.length === 0) return '<div style="color: rgba(255,255,255,0.7); font-size: 11px;">Nessun dato disponibile</div>';
-
-        return entries.map(([nome, count], index) => {
-            const isLast = index === entries.length - 1;
-            const borderStyle = isLast ? '' : 'border-bottom: 1px solid rgba(255,255,255,0.2);';
-            return `<div style="padding: 4px 0; ${borderStyle} font-size: 11px;">
-                <strong>${nome}</strong>: ${count}
+        if (entries.length === 0) return '<div class="rl-empty"><i class="fas fa-hourglass-half"></i> Nessun dato disponibile</div>';
+        const max = entries[0][1] || 1;
+        return entries.map(([nome, count], i) => {
+            const pct = (count / max * 100).toFixed(1);
+            const display = nome.length > 22 ? nome.substring(0, 22) + '…' : nome;
+            return `<div class="rl-item">
+                <span class="rl-rank">${i + 1}</span>
+                <span class="rl-label" title="${nome}">${display}</span>
+                <div class="rl-bar-wrap"><div class="rl-bar" style="width:${pct}%;background:${color}"></div></div>
+                <span class="rl-value">${count}</span>
             </div>`;
         }).join('');
     };
 
     document.getElementById('statTotalStrade').textContent = strade.size;
-    document.getElementById('statAlberiPerUPL').innerHTML = formatTerritorioList(uplCount);
-    document.getElementById('statAlberiPerQuartiere').innerHTML = formatTerritorioList(quartiereCount);
-    document.getElementById('statAlberiPerCircoscrizione').innerHTML = formatTerritorioList(circoscrizioneCount);
+    document.getElementById('statAlberiPerUPL').innerHTML = formatTerritorioList(uplCount, '#3498db');
+    document.getElementById('statAlberiPerQuartiere').innerHTML = formatTerritorioList(quartiereCount, '#27ae60');
+    document.getElementById('statAlberiPerCircoscrizione').innerHTML = formatTerritorioList(circoscrizioneCount, '#e67e22');
 
     console.log('✅ Statistiche aggiornate con successo');
 }

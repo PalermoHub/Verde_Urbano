@@ -110,7 +110,7 @@ function _clusterTooltipHtml(cluster, catColors, catToVal) {
 }
 
 function initMap() {
-    map = L.map('map').setView(initialView.center, initialView.zoom);
+    map = L.map('map', { zoomControl: false }).setView(initialView.center, initialView.zoom);
 
     // ── Basemap gallery ────────────────────────────────────────────────────
     let activeBasemap = (BASEMAPS_CONFIG.find(function(b) { return b.isDefault; }) || BASEMAPS_CONFIG[0]).layer.addTo(map);
@@ -189,7 +189,7 @@ function initMap() {
         new L.Hash(map);
     }
 
-    addHomeButton();
+    addZoomBar();
     addCpcLegend();
     map.on('moveend', updateLegendContent);
 
@@ -297,35 +297,70 @@ function _buildPopupContent(tree) {
     `;
 }
 
-function addHomeButton() {
-    const HomeControl = L.Control.extend({
-        options: { position: 'topleft' },
-        onAdd: function(map) {
-            const container = L.DomUtil.create('div', 'leaflet-bar leaflet-control');
-            const button = L.DomUtil.create('a', 'leaflet-control-home', container);
-            button.innerHTML = '<i class="fas fa-home"></i>';
-            button.href = '#';
-            button.title = 'Torna alla vista iniziale';
-            L.DomEvent.on(button, 'click', function(e) {
-                L.DomEvent.preventDefault(e);
-                const source = (filteredTrees && filteredTrees.length) ? filteredTrees : allTrees;
-                const valid = source.filter(function(t) { return t.lat && t.lon; });
-                if (valid.length > 0) {
-                    const lats = valid.map(function(t) { return t.lat; });
-                    const lons = valid.map(function(t) { return t.lon; });
-                    map.fitBounds(
-                        [[Math.min.apply(null, lats), Math.min.apply(null, lons)],
-                         [Math.max.apply(null, lats), Math.max.apply(null, lons)]],
-                        { padding: [30, 30] }
-                    );
-                } else {
-                    map.setView(initialView.center, initialView.zoom);
-                }
-            });
-            return container;
+function addZoomBar() {
+    const el = document.createElement('div');
+    el.className = 'zoom-bar-control';
+    el.id = 'zoomBarControl';
+    const initZ = Math.min(18, Math.max(13, map.getZoom()));
+
+    el.innerHTML = `
+        <button class="zoom-bar-home" title="Torna alla vista iniziale">
+            <i class="fas fa-home"></i>
+        </button>
+        <div class="zoom-bar-sep"></div>
+        <i class="fas fa-magnifying-glass zoom-bar-icon-sm"></i>
+        <div class="zoom-bar-track-wrap">
+            <input type="range" class="zoom-bar-slider" id="zoomBarSlider"
+                   min="13" max="18" step="1" value="${initZ}">
+            <div class="zoom-bar-ticks">
+                <span>13</span><span>14</span><span>15</span>
+                <span>16</span><span>17</span><span>18</span>
+            </div>
+        </div>
+        <span class="zoom-bar-level" id="zoomBarLevel">${initZ}</span>
+    `;
+
+    document.getElementById('map').appendChild(el);
+    L.DomEvent.disableClickPropagation(el);
+    L.DomEvent.disableScrollPropagation(el);
+
+    function updateFill(slider) {
+        const pct = ((parseInt(slider.value) - 13) / 5) * 100;
+        slider.style.background =
+            `linear-gradient(to right,#27ae60 ${pct}%,#ddd ${pct}%)`;
+    }
+
+    const slider = document.getElementById('zoomBarSlider');
+    updateFill(slider);
+
+    el.querySelector('.zoom-bar-home').addEventListener('click', function() {
+        const source = (filteredTrees && filteredTrees.length) ? filteredTrees : allTrees;
+        const valid = source.filter(function(t) { return t.lat && t.lon; });
+        if (valid.length > 0) {
+            const lats = valid.map(function(t) { return t.lat; });
+            const lons = valid.map(function(t) { return t.lon; });
+            map.fitBounds(
+                [[Math.min.apply(null,lats), Math.min.apply(null,lons)],
+                 [Math.max.apply(null,lats), Math.max.apply(null,lons)]],
+                { padding: [30, 30] }
+            );
+        } else {
+            map.setView(initialView.center, initialView.zoom);
         }
     });
-    map.addControl(new HomeControl());
+
+    slider.addEventListener('input', function() {
+        map.setZoom(parseInt(this.value, 10));
+        updateFill(this);
+    });
+
+    map.on('zoomend', function() {
+        const z = map.getZoom();
+        const s = document.getElementById('zoomBarSlider');
+        const l = document.getElementById('zoomBarLevel');
+        if (s) { s.value = Math.min(18, Math.max(13, z)); updateFill(s); }
+        if (l) l.textContent = z;
+    });
 }
 
 function filterBySelectedTree(tree) {
