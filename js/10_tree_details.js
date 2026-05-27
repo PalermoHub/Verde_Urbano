@@ -17,6 +17,15 @@ function showTreeDetails(tree) {
 
     const info = document.getElementById('selectedTreeInfo');
     info.innerHTML = `
+        ${(tree.progetto && tree.progetto !== '-') || (tree.ordinativo && tree.ordinativo !== '-') ? `
+        <div class="detail-item" style="grid-column: 1/-1; padding: 12px; background: linear-gradient(135deg, #f3e5f5 0%, #fce4ec 100%); border-left: 4px solid #9b59b6; border-radius: 6px;">
+            <div class="detail-label" style="margin-bottom: 10px;"><i class="fas fa-folder-open"></i> PROGETTO</div>
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
+                ${tree.progetto && tree.progetto !== '-' ? `<div class="detail-item" style="margin: 0;"><div class="detail-label">Accordo Quadro</div><div class="detail-value">${tree.progetto}</div></div>` : ''}
+                ${tree.ordinativo && tree.ordinativo !== '-' ? `<div class="detail-item" style="margin: 0;"><div class="detail-label">Ordinativo</div><div class="detail-value">${tree.ordinativo}</div></div>` : ''}
+            </div>
+        </div>
+        ` : ''}
         <div class="detail-item"><div class="detail-label">ID</div><div class="detail-value">${tree.id}</div></div>
         <div class="detail-item"><div class="detail-label">Specie arborea</div><div class="detail-value">${tree.specie}</div></div>
         <div class="detail-item"><div class="detail-label">Dimora</div><div class="detail-value">${tree.sito}</div></div>

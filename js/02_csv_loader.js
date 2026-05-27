@@ -193,6 +193,7 @@ async function loadCSVData() {
                     'Quartiere': row['Quartiere'],
                     'Circoscrizione': row['Circoscrizione'],
                     'Progetto': row['Progetto'],
+                    'Ordinativo': row['Ordinativo'],
                     'tipo_foglia': row['tipo_foglia'],
                     'descrizione cpc': row['descrizione cpc'],
                     '# Primavera': row['# Primavera'],

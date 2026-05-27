@@ -239,6 +239,14 @@ function _buildPopupContent(tree) {
             <div style="background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%); color: white; padding: 10px; border-radius: 6px 6px 0 0; font-weight: bold; margin-bottom: 8px;">
                 <i class="fa fa-tree" aria-hidden="true"></i> Albero - ${tree.id}
             </div>
+            ${(tree.progetto && tree.progetto !== '-') || (tree.ordinativo && tree.ordinativo !== '-') ? `
+            <div style="background: #f3e5f5; padding: 8px; margin-bottom: 8px; border-radius: 4px; border-left: 3px solid #9b59b6;">
+                <div style="font-weight: bold; color: #9b59b6; margin-bottom: 4px;"><i class="fas fa-folder-open"></i> PROGETTO</div>
+                <table style="width: 100%; font-size: 11px;">
+                    ${tree.progetto && tree.progetto !== '-' ? `<tr><td style="padding: 3px; font-weight: bold;">Accordo quadro:</td><td style="padding: 3px;">${tree.progetto}</td></tr>` : ''}
+                    ${tree.ordinativo && tree.ordinativo !== '-' ? `<tr><td style="padding: 3px; font-weight: bold;">Ordinativo:</td><td style="padding: 3px;">${tree.ordinativo}</td></tr>` : ''}
+                </table>
+            </div>` : ''}
             <table style="width: 100%; border-collapse: collapse;">
                 <tr style="border-bottom: 1px solid #eee;">
                     <td style="padding: 6px; font-weight: bold; color: #313131;">Specie arborea:</td>

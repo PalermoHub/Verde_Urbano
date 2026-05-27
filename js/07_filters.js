@@ -1,18 +1,57 @@
 // ===== FILTRI =====
 
-// --- Multi-select Progetto ---
+// --- Multi-select Progetto (gerarchico con Ordinativi) ---
 function populateProgettoMultiSelect() {
     const progetti = [...new Set(allTrees.map(t => t.progetto).filter(p => p && p !== '-'))].sort();
     const container = document.getElementById('progettoOptions');
     if (!container) return;
     container.innerHTML = '';
+
     progetti.forEach(p => {
         const count = allTrees.filter(t => t.progetto === p).length;
+        const pEsc = p.replace(/"/g, '&quot;');
+
+        const ordinativi = [...new Set(
+            allTrees.filter(t => t.progetto === p && t.ordinativo && t.ordinativo !== '-').map(t => t.ordinativo)
+        )].sort();
+        const hasOrdinativi = ordinativi.length > 0;
+
+        const wrap = document.createElement('div');
+        wrap.className = 'progetto-item-wrap';
+
         const label = document.createElement('label');
         label.className = 'multi-select-item';
-        label.innerHTML = `<input type="checkbox" class="progetto-cb" value="${p.replace(/"/g, '&quot;')}" onchange="onProgettoChange()" checked><span class="progetto-opt-label" data-value="${p.replace(/"/g, '&quot;')}">${p} (${count})</span>`;
-        container.appendChild(label);
+        label.innerHTML = `
+            <input type="checkbox" class="progetto-cb" value="${pEsc}" onchange="onProgettoCbChange(this)" checked>
+            <span class="progetto-opt-label" data-value="${pEsc}">${p} (${count})</span>
+            ${hasOrdinativi ? `<button type="button" class="ordinativi-toggle-btn" onclick="toggleOrdinativiSubgroup(this,event)" title="Espandi ordinativi"><i class="fas fa-chevron-right"></i></button>` : ''}
+        `;
+        wrap.appendChild(label);
+
+        if (hasOrdinativi) {
+            const subGroup = document.createElement('div');
+            subGroup.className = 'ordinativi-subgroup';
+
+            const allOrdLabel = document.createElement('label');
+            allOrdLabel.className = 'multi-select-item ordinativo-all-item';
+            allOrdLabel.innerHTML = `<input type="checkbox" class="ordinativo-all-sub-cb" onchange="toggleAllOrdinativiForProgetto(this)" checked><span>Tutti gli ordinativi</span>`;
+            subGroup.appendChild(allOrdLabel);
+
+            ordinativi.forEach(o => {
+                const oCount = allTrees.filter(t => t.progetto === p && t.ordinativo === o).length;
+                const oEsc = o.replace(/"/g, '&quot;');
+                const oLabel = document.createElement('label');
+                oLabel.className = 'multi-select-item ordinativo-sub-item';
+                oLabel.innerHTML = `<input type="checkbox" class="ordinativo-sub-cb" value="${oEsc}" onchange="onOrdinativoSubCbChange(this)" checked><span class="ordinativo-sub-label">${o} (${oCount})</span>`;
+                subGroup.appendChild(oLabel);
+            });
+
+            wrap.appendChild(subGroup);
+        }
+
+        container.appendChild(wrap);
     });
+
     updateProgettoTriggerLabel();
 
     document.addEventListener('click', function(e) {
@@ -29,6 +68,72 @@ function populateProgettoMultiSelect() {
     }, { once: false });
 }
 
+function toggleOrdinativiSubgroup(btn, event) {
+    event.stopPropagation();
+    const wrap = btn.closest('.progetto-item-wrap');
+    const subGroup = wrap.querySelector('.ordinativi-subgroup');
+    const icon = btn.querySelector('i');
+    const isOpen = subGroup.classList.contains('open');
+    subGroup.classList.toggle('open', !isOpen);
+    icon.style.transform = isOpen ? '' : 'rotate(90deg)';
+}
+
+function onProgettoCbChange(cb) {
+    const wrap = cb.closest('.progetto-item-wrap');
+    const subCbs = wrap.querySelectorAll('.ordinativo-sub-cb');
+    const allSubCb = wrap.querySelector('.ordinativo-all-sub-cb');
+    subCbs.forEach(c => { c.checked = cb.checked; });
+    if (allSubCb) { allSubCb.checked = cb.checked; allSubCb.indeterminate = false; }
+    onProgettoChange();
+}
+
+function onOrdinativoSubCbChange(cb) {
+    const wrap = cb.closest('.progetto-item-wrap');
+    const allSubCbs = wrap.querySelectorAll('.ordinativo-sub-cb');
+    const checkedSubCbs = Array.from(allSubCbs).filter(c => c.checked);
+    const progettoCb = wrap.querySelector('.progetto-cb');
+    const allSubCb = wrap.querySelector('.ordinativo-all-sub-cb');
+    if (progettoCb) {
+        progettoCb.checked = checkedSubCbs.length > 0;
+        progettoCb.indeterminate = checkedSubCbs.length > 0 && checkedSubCbs.length < allSubCbs.length;
+    }
+    if (allSubCb) {
+        allSubCb.checked = checkedSubCbs.length === allSubCbs.length;
+        allSubCb.indeterminate = checkedSubCbs.length > 0 && checkedSubCbs.length < allSubCbs.length;
+    }
+    onProgettoChange();
+}
+
+function toggleAllOrdinativiForProgetto(cb) {
+    const wrap = cb.closest('.progetto-item-wrap');
+    wrap.querySelectorAll('.ordinativo-sub-cb').forEach(c => { c.checked = cb.checked; });
+    const progettoCb = wrap.querySelector('.progetto-cb');
+    if (progettoCb) { progettoCb.checked = cb.checked; progettoCb.indeterminate = false; }
+    onProgettoChange();
+}
+
+function getProgettoOrdinativoSelection() {
+    const wraps = document.querySelectorAll('.progetto-item-wrap');
+    if (wraps.length === 0) {
+        const result = {};
+        [...new Set(allTrees.map(t => t.progetto).filter(p => p && p !== '-'))].forEach(p => { result[p] = null; });
+        return result;
+    }
+    const result = {};
+    wraps.forEach(wrap => {
+        const progettoCb = wrap.querySelector('.progetto-cb');
+        if (!progettoCb || !progettoCb.value) return;
+        const subCbs = wrap.querySelectorAll('.ordinativo-sub-cb');
+        if (subCbs.length === 0) {
+            if (progettoCb.checked) result[progettoCb.value] = null;
+        } else {
+            const checked = Array.from(subCbs).filter(c => c.checked).map(c => c.value);
+            if (checked.length > 0) result[progettoCb.value] = new Set(checked);
+        }
+    });
+    return result;
+}
+
 function toggleProgettoDropdown() {
     const list = document.getElementById('progettoList');
     const trigger = document.getElementById('progettoTrigger');
@@ -40,7 +145,9 @@ function toggleProgettoDropdown() {
 }
 
 function toggleAllProgetti(cb) {
-    document.querySelectorAll('.progetto-cb').forEach(c => { c.checked = cb.checked; });
+    document.querySelectorAll('.progetto-cb').forEach(c => { c.checked = cb.checked; c.indeterminate = false; });
+    document.querySelectorAll('.ordinativo-sub-cb').forEach(c => { c.checked = cb.checked; });
+    document.querySelectorAll('.ordinativo-all-sub-cb').forEach(c => { c.checked = cb.checked; c.indeterminate = false; });
     updateProgettoTriggerLabel();
     applyFilters();
 }
@@ -49,28 +156,39 @@ function onProgettoChange() {
     const all = document.querySelectorAll('.progetto-cb');
     const checked = document.querySelectorAll('.progetto-cb:checked');
     const allCb = document.getElementById('progettoAll');
-    allCb.checked = all.length > 0 && all.length === checked.length;
-    allCb.indeterminate = checked.length > 0 && checked.length < all.length;
+    if (allCb) {
+        allCb.checked = all.length > 0 && all.length === checked.length;
+        allCb.indeterminate = checked.length > 0 && checked.length < all.length;
+    }
     updateProgettoTriggerLabel();
     applyFilters();
 }
 
 function updateProgettoTriggerLabel() {
-    const checked = document.querySelectorAll('.progetto-cb:checked');
-    const all = document.querySelectorAll('.progetto-cb');
     const labelEl = document.getElementById('progettoLabel');
     if (!labelEl) return;
-    if (checked.length === 0) {
+    const sel = getProgettoOrdinativoSelection();
+    const total = document.querySelectorAll('.progetto-cb').length;
+    const selCount = Object.keys(sel).length;
+    if (selCount === 0) {
         labelEl.textContent = 'Nessun progetto selezionato';
-    } else if (checked.length === all.length) {
-        labelEl.textContent = 'Tutti i progetti';
+    } else if (selCount === total) {
+        const hasPartial = Object.values(sel).some(v => v !== null);
+        labelEl.textContent = hasPartial ? 'Selezione parziale ordinativi' : 'Tutti i progetti';
     } else {
-        labelEl.textContent = `${checked.length} progett${checked.length === 1 ? 'o' : 'i'} selezionat${checked.length === 1 ? 'o' : 'i'}`;
+        labelEl.textContent = `${selCount} progett${selCount === 1 ? 'o' : 'i'} selezionat${selCount === 1 ? 'o' : 'i'}`;
     }
 }
 
 function getSelectedProgetti() {
-    return Array.from(document.querySelectorAll('.progetto-cb:checked')).map(c => c.value);
+    return Array.from(document.querySelectorAll('.progetto-item-wrap'))
+        .filter(wrap => {
+            const progettoCb = wrap.querySelector('.progetto-cb');
+            if (!progettoCb) return false;
+            if (progettoCb.checked) return true;
+            return Array.from(wrap.querySelectorAll('.ordinativo-sub-cb')).some(c => c.checked);
+        })
+        .map(wrap => wrap.querySelector('.progetto-cb').value);
 }
 
 function populateFilterSelects() {
@@ -232,15 +350,18 @@ function getCountForFilter(filterType, filterValue) {
     const circoscrizione = document.getElementById('circoscrizioneFilter').value;
     const pulizia = document.getElementById('puliziaFilter').value;
     const fase = document.getElementById('faseFilter').value;
-    const selectedP = getSelectedProgetti();
-
+    const progettoSel = getProgettoOrdinativoSelection();
     let testValue = filterValue;
 
     return allTrees.filter(tree => {
         let match = true;
 
-        if (filterType === 'progetto') match = match && tree.progetto === testValue;
-        else match = match && selectedP.includes(tree.progetto);
+        if (filterType === 'progetto') {
+            match = match && tree.progetto === filterValue;
+        } else {
+            const pSel = progettoSel[tree.progetto];
+            match = match && pSel !== undefined && (pSel === null || pSel.has(tree.ordinativo) || !tree.ordinativo || tree.ordinativo === '-');
+        }
 
         // Applica il filtro corrente che stiamo testando
         if (filterType === 'specie') match = match && tree.specie === testValue;
@@ -322,10 +443,11 @@ function applyFilters() {
     const circoscrizione = document.getElementById('circoscrizioneFilter').value;
     const pulizia = document.getElementById('puliziaFilter').value;
     const fase = document.getElementById('faseFilter').value;
-    const selectedP = getSelectedProgetti();
+    const progettoSel = getProgettoOrdinativoSelection();
 
     filteredTrees = allTrees.filter(tree => {
-        let match = selectedP.includes(tree.progetto) &&
+        const pSel = progettoSel[tree.progetto];
+        let match = pSel !== undefined && (pSel === null || pSel.has(tree.ordinativo) || !tree.ordinativo || tree.ordinativo === '-') &&
                (!specie || tree.specie === specie) &&
                (!cpc || tree.cpc === cpc) &&
                (!site || tree.sito === site) &&
@@ -422,9 +544,20 @@ function updateFilterCounts() {
     // Aggiorna i conteggi per le checkbox del progetto
     document.querySelectorAll('.progetto-cb').forEach(cb => {
         const count = getCountForFilter('progetto', cb.value);
-        const labelSpan = cb.parentElement.querySelector('.progetto-opt-label');
+        const wrap = cb.closest('.progetto-item-wrap');
+        const labelSpan = wrap ? wrap.querySelector('.progetto-opt-label') : null;
         if (labelSpan) labelSpan.textContent = `${cb.value} (${count})`;
         cb.disabled = count === 0;
+    });
+
+    // Aggiorna i conteggi per le checkbox ordinativo sub-item
+    document.querySelectorAll('.ordinativo-sub-cb').forEach(cb => {
+        const wrap = cb.closest('.progetto-item-wrap');
+        const progettoCb = wrap ? wrap.querySelector('.progetto-cb') : null;
+        const progettoVal = progettoCb ? progettoCb.value : '';
+        const count = allTrees.filter(t => t.progetto === progettoVal && t.ordinativo === cb.value).length;
+        const labelSpan = cb.parentElement.querySelector('.ordinativo-sub-label');
+        if (labelSpan) labelSpan.textContent = `${cb.value} (${count})`;
     });
 
     // Aggiorna i conteggi dinamici per le opzioni dei select
@@ -534,7 +667,9 @@ function resetFilters() {
     selectedTree = null;
     selectedMarker = null;
 
-    document.querySelectorAll('.progetto-cb').forEach(c => { c.checked = true; });
+    document.querySelectorAll('.progetto-cb').forEach(c => { c.checked = true; c.indeterminate = false; });
+    document.querySelectorAll('.ordinativo-sub-cb').forEach(c => { c.checked = true; });
+    document.querySelectorAll('.ordinativo-all-sub-cb').forEach(c => { c.checked = true; c.indeterminate = false; });
     const allCb = document.getElementById('progettoAll');
     if (allCb) { allCb.checked = true; allCb.indeterminate = false; }
     updateProgettoTriggerLabel();

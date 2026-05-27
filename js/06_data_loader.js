@@ -85,6 +85,7 @@ function loadData() {
                 })(),
                 data_lav_f4: props['Data lav. F4'] || '',
                 progetto: props['Progetto'] || '-',
+                ordinativo: props['Ordinativo'] || '-',
                 geouri: props['geouri'] || '',
                 lat: coords[1],
                 lon: coords[0]
