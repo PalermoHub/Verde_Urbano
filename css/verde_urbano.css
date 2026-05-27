@@ -1636,6 +1636,12 @@ hr {
     .container.sidebar-left-hidden .leaflet-left {
         margin-left: 0;
     }
+    .filter-chips-bar {
+        margin-left: var(--sb-w, 300px);
+    }
+    .container.sidebar-left-hidden .filter-chips-bar {
+        margin-left: 0;
+    }
 }
 
 /* Sidebar destra: griglia controlli */
@@ -1768,6 +1774,12 @@ hr {
         transition: margin-right 0.25s ease;
     }
     .container.sidebar-right-hidden .leaflet-right {
+        margin-right: 0;
+    }
+    .filter-chips-bar {
+        margin-right: var(--sb-w-right, 390px);
+    }
+    .container.sidebar-right-hidden .filter-chips-bar {
         margin-right: 0;
     }
 }
@@ -2422,6 +2434,7 @@ hr {
     border-bottom: 1px solid var(--pa-line, #e0e0e0);
     font-size: 12px;
     min-height: 40px;
+    transition: margin-left 0.25s ease, margin-right 0.25s ease;
 }
 .filter-chips-bar.has-chips { display: flex; }
 .filter-chips-bar .chips-leading {

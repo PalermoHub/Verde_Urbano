@@ -494,9 +494,6 @@ function applyFilters() {
     selectedTree = null;
     selectedMarker = null;
 
-    // Aggiorna i civici in base all'Odonimo selezionato
-    updateCiviciByOdonimo();
-
     const specie = document.getElementById('specieFilter').value;
     const cpc = document.getElementById('cpcFilter').value;
     const site = document.getElementById('siteFilter').value;
@@ -615,6 +612,107 @@ function updateFilterInfo() {
     safeSetText('faseInfo', faseValue ? `${filteredTrees.length} alberi` : '');
 }
 
+// ── Filtri a cascata ──────────────────────────────────────────────────────────
+function _getFilteredExcluding(excludeField) {
+    const specie = document.getElementById('specieFilter').value;
+    const cpc = document.getElementById('cpcFilter').value;
+    const site = document.getElementById('siteFilter').value;
+    const minHeight = parseFloat(document.getElementById('minHeight').value) || 0;
+    const maxHeightEl = document.getElementById('maxHeight');
+    const maxHeight = maxHeightEl ? parseFloat(maxHeightEl.value) : Infinity;
+    const minDiameter = parseFloat(document.getElementById('minDiameter').value) || 0;
+    const maxDiameterEl = document.getElementById('maxDiameter');
+    const maxDiameter = maxDiameterEl ? parseFloat(maxDiameterEl.value) : Infinity;
+    const odonimo = document.getElementById('odonimoFilter').value;
+    const civico = document.getElementById('civicoFilter').value;
+    const upl = document.getElementById('uplFilter').value;
+    const quartiere = document.getElementById('quartiereFilter').value;
+    const circoscrizione = document.getElementById('circoscrizioneFilter').value;
+    const pulizia = document.getElementById('puliziaFilter').value;
+    const fase = document.getElementById('faseFilter').value;
+    const progettoSel = getProgettoOrdinativoSelection();
+
+    return allTrees.filter(tree => {
+        const pSel = progettoSel[tree.progetto];
+        if (excludeField !== 'progetto') {
+            if (pSel === undefined) return false;
+            if (pSel !== null && tree.ordinativo && tree.ordinativo !== '-' && !pSel.has(tree.ordinativo)) return false;
+        }
+        if (excludeField !== 'specie' && specie && tree.specie !== specie) return false;
+        if (excludeField !== 'cpc' && cpc && tree.cpc !== cpc) return false;
+        if (excludeField !== 'site' && site && tree.sito !== site) return false;
+        if (excludeField !== 'odonimo' && odonimo && tree.odonimo !== odonimo) return false;
+        if (excludeField !== 'civico' && civico && tree.civico !== civico) return false;
+        if (excludeField !== 'upl' && upl && tree.upl !== upl) return false;
+        if (excludeField !== 'quartiere' && quartiere && tree.quartiere !== quartiere) return false;
+        if (excludeField !== 'circoscrizione' && circoscrizione && tree.circoscrizione !== circoscrizione) return false;
+        if (excludeField !== 'pulizia' && pulizia) {
+            const pct = calcolaPrioritaPulizia(tree);
+            if (pulizia === 'alta' && pct <= 30) return false;
+            if (pulizia === 'media' && (pct < 15 || pct > 30)) return false;
+            if (pulizia === 'bassa' && pct >= 15) return false;
+        }
+        if (excludeField !== 'fase' && fase) {
+            if (fase === 'fase2' && !tree.cod_lav_f2 && !tree.lavori_f2 && !tree.prezzo_f2 && !tree.data_lav_f2) return false;
+            if (fase === 'fase3' && !tree.cod_lav_f3 && !tree.lavori_f3 && !tree.prezzo_f3 && !tree.data_lav_f3) return false;
+        }
+        if (tree.altezza !== null && (tree.altezza < minHeight || tree.altezza > maxHeight)) return false;
+        if (tree.diametro !== null && (tree.diametro < minDiameter || tree.diametro > maxDiameter)) return false;
+        if (window.vuTimeSlider && typeof window.vuTimeSlider.passes === 'function') {
+            if (!window.vuTimeSlider.passes(tree)) return false;
+        }
+        return true;
+    });
+}
+
+function _rebuildDynamicSelect(selectId, excludeField, fieldFn, sortFn) {
+    const select = document.getElementById(selectId);
+    if (!select) return;
+    const currentValue = select.value;
+    const candidates = _getFilteredExcluding(excludeField);
+
+    const valueCounts = new Map();
+    candidates.forEach(tree => {
+        const val = fieldFn(tree);
+        if (val && val !== '-') valueCounts.set(val, (valueCounts.get(val) || 0) + 1);
+    });
+
+    while (select.options.length > 1) select.remove(1);
+
+    const entries = [...valueCounts.entries()].sort(
+        sortFn || ((a, b) => a[0].localeCompare(b[0]))
+    );
+    entries.forEach(([val, count]) => {
+        const opt = document.createElement('option');
+        opt.value = val;
+        opt.textContent = val + ' (' + count + ')';
+        select.appendChild(opt);
+    });
+
+    select.value = (currentValue && valueCounts.has(currentValue)) ? currentValue : '';
+}
+
+function _rebuildStaticSelect(selectId, excludeField, options, countFn) {
+    const select = document.getElementById(selectId);
+    if (!select) return;
+    const currentValue = select.value;
+    const candidates = _getFilteredExcluding(excludeField);
+
+    while (select.options.length > 1) select.remove(1);
+
+    options.forEach(function(item) {
+        const count = countFn(candidates, item.value);
+        if (count === 0) return;
+        const opt = document.createElement('option');
+        opt.value = item.value;
+        opt.textContent = item.label + ' (' + count + ')';
+        select.appendChild(opt);
+    });
+
+    const still = Array.from(select.options).some(o => o.value === currentValue);
+    select.value = (currentValue && still) ? currentValue : '';
+}
+
 function updateFilterCounts() {
     // Aggiorna i conteggi per le section progetto e card singole
     document.querySelectorAll('.progetto-cb').forEach(cb => {
@@ -644,105 +742,51 @@ function updateFilterCounts() {
         if (ordCard) ordCard.style.opacity = count === 0 ? '0.4' : '';
     });
 
-    // Aggiorna i conteggi dinamici per le opzioni dei select
-    const specieSelect = document.getElementById('specieFilter');
-    Array.from(specieSelect.options).forEach((opt, idx) => {
-        if (idx > 0) {
-            const count = getCountForFilter('specie', opt.value);
-            opt.textContent = `${opt.value} (${count})`;
-            opt.disabled = count === 0;
-        }
-    });
+    // Select dinamici a cascata
+    _rebuildDynamicSelect('specieFilter', 'specie', t => t.specie);
+    _rebuildDynamicSelect('siteFilter', 'site', t => t.sito);
+    _rebuildDynamicSelect('odonimoFilter', 'odonimo', t => t.odonimo);
+    _rebuildDynamicSelect('civicoFilter', 'civico', t => t.civico,
+        (a, b) => a[0].localeCompare(b[0], undefined, { numeric: true }));
+    _rebuildDynamicSelect('uplFilter', 'upl', t => t.upl);
+    _rebuildDynamicSelect('quartiereFilter', 'quartiere', t => t.quartiere);
+    _rebuildDynamicSelect('circoscrizioneFilter', 'circoscrizione', t => t.circoscrizione);
 
-    const siteSelect = document.getElementById('siteFilter');
-    Array.from(siteSelect.options).forEach((opt, idx) => {
-        if (idx > 0) {
-            const count = getCountForFilter('site', opt.value);
-            opt.textContent = `${opt.value} (${count})`;
-            opt.disabled = count === 0;
-        }
-    });
+    // Select statici a cascata
+    _rebuildStaticSelect('cpcFilter', 'cpc', [
+        { value: 'A',         label: 'A - Trascurabile' },
+        { value: 'B',         label: 'B - Bassa' },
+        { value: 'C',         label: 'C - Moderata' },
+        { value: 'C/D',       label: 'C/D - Elevata' },
+        { value: 'D',         label: 'D - Estrema' },
+        { value: 'Ceppaia',   label: 'Ceppaia' },
+        { value: 'Vuoto',     label: 'Vuoto - Cercine vuoto' },
+        { value: 'Verifica',  label: 'Verifica - Da verificare' },
+        { value: 'Non Class', label: 'Non Class - Non Classificato' },
+        { value: 'No Interv', label: 'No Interv - Nessun Intervento' }
+    ], (candidates, val) => candidates.filter(t => t.cpc === val).length);
 
-    const cpcSelect = document.getElementById('cpcFilter');
-    Array.from(cpcSelect.options).forEach((opt, idx) => {
-        if (idx > 0) {
-            const count = getCountForFilter('cpc', opt.value);
-            opt.disabled = count === 0;
-        }
-    });
+    _rebuildStaticSelect('puliziaFilter', 'pulizia', [
+        { value: 'alta',  label: 'Alta priorità (>30% variazione)' },
+        { value: 'media', label: 'Media priorità (15-30%)' },
+        { value: 'bassa', label: 'Bassa priorità (<15%)' }
+    ], (candidates, val) => candidates.filter(t => {
+        const pct = calcolaPrioritaPulizia(t);
+        if (val === 'alta')  return pct > 30;
+        if (val === 'media') return pct >= 15 && pct <= 30;
+        if (val === 'bassa') return pct < 15;
+        return false;
+    }).length);
 
-    // Aggiorna conteggi filtro pulizia
-    const puliziaSelect = document.getElementById('puliziaFilter');
-    Array.from(puliziaSelect.options).forEach((opt, idx) => {
-        if (idx > 0) {
-            const count = getCountForFilter('pulizia', opt.value);
-            const label = opt.value === 'alta' ? 'Alta priorità (>30% variazione)' :
-                         opt.value === 'media' ? 'Media priorità (15-30%)' :
-                         'Bassa priorità (<15%)';
-            opt.textContent = `${label} (${count})`;
-            opt.disabled = count === 0;
-        }
-    });
-
-    // Filtri territoriali
-    const odonimoSelect = document.getElementById('odonimoFilter');
-    Array.from(odonimoSelect.options).forEach((opt, idx) => {
-        if (idx > 0) {
-            const count = getCountForFilter('odonimo', opt.value);
-            opt.textContent = `${opt.value} (${count})`;
-            opt.disabled = count === 0;
-        }
-    });
-
-    const civicoSelect = document.getElementById('civicoFilter');
-    Array.from(civicoSelect.options).forEach((opt, idx) => {
-        if (idx > 0) {
-            const count = getCountForFilter('civico', opt.value);
-            opt.textContent = `${opt.value} (${count})`;
-            opt.disabled = count === 0;
-        }
-    });
-
-    const uplSelect = document.getElementById('uplFilter');
-    Array.from(uplSelect.options).forEach((opt, idx) => {
-        if (idx > 0) {
-            const count = getCountForFilter('upl', opt.value);
-            opt.textContent = `${opt.value} (${count})`;
-            opt.disabled = count === 0;
-        }
-    });
-
-    const quartiereSelect = document.getElementById('quartiereFilter');
-    Array.from(quartiereSelect.options).forEach((opt, idx) => {
-        if (idx > 0) {
-            const count = getCountForFilter('quartiere', opt.value);
-            opt.textContent = `${opt.value} (${count})`;
-            opt.disabled = count === 0;
-        }
-    });
-
-    const circoscrizioneSelect = document.getElementById('circoscrizioneFilter');
-    Array.from(circoscrizioneSelect.options).forEach((opt, idx) => {
-        if (idx > 0) {
-            const count = getCountForFilter('circoscrizione', opt.value);
-            opt.textContent = `${opt.value} (${count})`;
-            opt.disabled = count === 0;
-        }
-    });
-
-    // Aggiorna conteggi filtro fase
-    const faseSelect = document.getElementById('faseFilter');
-    Array.from(faseSelect.options).forEach((opt, idx) => {
-        if (idx > 0) {
-            const count = getCountForFilter('fase', opt.value);
-            const label = opt.value === 'fase1' ? 'Solo Fase 1 (Potatura/Abbattimento)' :
-                         opt.value === 'fase2' ? 'Con Fase 2 (Rimozione ceppo)' :
-                         opt.value === 'fase3' ? 'Con Fase 3 (Nuova pianta)' :
-                         // FASE 4 DISATTIVATA
-                         'Con Fase 4 (Pali tutori)';
-            opt.textContent = `${label} (${count})`;
-            opt.disabled = count === 0;
-        }
+    _rebuildStaticSelect('faseFilter', 'fase', [
+        { value: 'fase1', label: 'Solo Fase 1 (Potatura/Abbattimento)' },
+        { value: 'fase2', label: 'Con Fase 2 (Rimozione ceppo)' },
+        { value: 'fase3', label: 'Con Fase 3 (Nuova pianta)' }
+    ], (candidates, val) => {
+        if (val === 'fase1') return candidates.length;
+        if (val === 'fase2') return candidates.filter(t => t.cod_lav_f2 || t.lavori_f2 || t.prezzo_f2 || t.data_lav_f2).length;
+        if (val === 'fase3') return candidates.filter(t => t.cod_lav_f3 || t.lavori_f3 || t.prezzo_f3 || t.data_lav_f3).length;
+        return 0;
     });
 }
 
