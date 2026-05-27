@@ -236,7 +236,7 @@
     </script>
 
 
-    <div class="container">
+    <div class="container sidebar-right-hidden">
         <!-- Sidebar Sinistra: Filtri -->
         <div class="sb-wrap" id="sbWrapLeft">
             <div class="sidebar sidebar-left" id="sidebarLeft">
@@ -465,9 +465,9 @@
 
         <!-- Sidebar Destra: Statistiche + DataViz -->
         <div class="sb-wrap sb-wrap-right" id="sbWrapRight">
-            <button class="sb-toggle sb-toggle-right" id="sidebarRightToggle" onclick="toggleSidebarRight()" title="Mostra/nascondi pannello">&#8250;</button>
+            <button class="sb-toggle sb-toggle-right" id="sidebarRightToggle" onclick="toggleSidebarRight()" title="Mostra/nascondi pannello">&#8249;</button>
             <div class="sb-resize-handle sb-resize-handle-right" id="sbResizeHandleRight"></div>
-            <div class="sidebar sidebar-right-tabbed" id="sidebarRight">
+            <div class="sidebar sidebar-right-tabbed" id="sidebarRight" style="display:none">
 
                 <!-- Tab nav -->
                 <div class="sb-tab-btns">
@@ -729,6 +729,13 @@
         const sidebar = document.getElementById('sidebarLeft');
         const btn = document.getElementById('sidebarLeftToggle');
         const isHidden = container.classList.contains('sidebar-left-hidden');
+        if (window.innerWidth <= 768 && isHidden) {
+            if (!container.classList.contains('sidebar-right-hidden')) {
+                container.classList.add('sidebar-right-hidden');
+                document.getElementById('sidebarRight').style.display = 'none';
+                document.getElementById('sidebarRightToggle').innerHTML = '&#8249;';
+            }
+        }
         container.classList.toggle('sidebar-left-hidden');
         sidebar.style.display = isHidden ? '' : 'none';
         btn.innerHTML = isHidden ? '&#8249;' : '&#8250;';
@@ -738,22 +745,28 @@
         const sidebar = document.getElementById('sidebarRight');
         const btn = document.getElementById('sidebarRightToggle');
         const isHidden = container.classList.contains('sidebar-right-hidden');
+        if (window.innerWidth <= 768 && isHidden) {
+            if (!container.classList.contains('sidebar-left-hidden')) {
+                container.classList.add('sidebar-left-hidden');
+                document.getElementById('sidebarLeft').style.display = 'none';
+                document.getElementById('sidebarLeftToggle').innerHTML = '&#8250;';
+            }
+        }
         container.classList.toggle('sidebar-right-hidden');
         sidebar.style.display = isHidden ? '' : 'none';
         btn.innerHTML = isHidden ? '&#8250;' : '&#8249;';
     }
 
-    /* Inizializzazione mobile: right sidebar chiusa di default */
+    /* Mobile: sidebar sinistra chiusa di default */
     (function () {
         if (window.innerWidth <= 768) {
             const container = document.querySelector('.container');
-            const sidebar = document.getElementById('sidebarRight');
-            const btn = document.getElementById('sidebarRightToggle');
-            container.classList.add('sidebar-right-hidden');
-            sidebar.style.display = 'none';
-            btn.innerHTML = '&#8249;';
+            container.classList.add('sidebar-left-hidden');
+            document.getElementById('sidebarLeft').style.display = 'none';
+            document.getElementById('sidebarLeftToggle').innerHTML = '&#8250;';
         }
     })();
+
 
     /* Left resize handle */
     (function () {
