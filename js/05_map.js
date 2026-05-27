@@ -193,6 +193,15 @@ function initMap() {
     addCpcLegend();
     map.on('moveend', updateLegendContent);
 
+    map.on('popupopen', function(e) {
+        setTimeout(function() {
+            if (!e.popup._container) return;
+            var px = map.project(e.popup.getLatLng());
+            px.y -= e.popup._container.clientHeight / 2 + 10;
+            map.panTo(map.unproject(px), { animate: true, duration: 0.25 });
+        }, 0);
+    });
+
     map.on('click', function(e) {
         if (selectedTree) {
             let clickedOnMarker = false;
@@ -219,16 +228,20 @@ function initMap() {
 // ── Binding eventi per marker singolo nel cluster ──────────────────────────
 function _bindClusterMarkerEvents(leafletMarker, tree) {
     const popupContent = _buildPopupContent(tree);
-    leafletMarker.bindPopup(popupContent, { maxWidth: 400, className: 'custom-popup' });
 
     const tooltipContent = tree.id + ' - ' + (tree.odonimo || 'n/a')
         + (tree.civico && tree.civico !== '-' ? ', ' + tree.civico : '');
     leafletMarker.bindTooltip(tooltipContent, { permanent: false, direction: 'top', className: 'custom-tooltip' });
 
-    leafletMarker.on('click', function() {
+    leafletMarker.on('click', function(e) {
+        L.DomEvent.stopPropagation(e.originalEvent);
         if (!selectedTree || selectedTree.id !== tree.id) {
             filterBySelectedTree(tree);
         }
+        L.popup({ maxWidth: 400, className: 'custom-popup' })
+            .setLatLng([tree.lat, tree.lon])
+            .setContent(popupContent)
+            .openOn(map);
     });
 }
 
@@ -482,16 +495,20 @@ function updateMap(skipFitBounds) {
             }).addTo(map);
 
             marker.treeData = tree;
-            marker.bindPopup(_buildPopupContent(tree), { maxWidth: 400, className: 'custom-popup' });
 
             const tooltipContent = tree.id + ' - ' + (tree.odonimo || 'n/a')
                 + (tree.civico && tree.civico !== '-' ? ', ' + tree.civico : '');
             marker.bindTooltip(tooltipContent, { permanent: false, direction: 'top', className: 'custom-tooltip' });
 
             marker.on('click', function(e) {
+                L.DomEvent.stopPropagation(e.originalEvent);
                 if (!selectedTree || selectedTree.id !== tree.id) {
                     filterBySelectedTree(tree);
                 }
+                L.popup({ maxWidth: 400, className: 'custom-popup' })
+                    .setLatLng([tree.lat, tree.lon])
+                    .setContent(_buildPopupContent(tree))
+                    .openOn(map);
             });
 
             markers.push(marker);
