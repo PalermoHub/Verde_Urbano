@@ -1295,9 +1295,9 @@ hr {
 .sb-toggle {
     position: absolute;
     top: 50%;
-    right: -26px;
+    right: -12px;
     transform: translateY(-50%);
-    width: 26px;
+    width: 12px;
     height: 52px;
     z-index: 1002;
     background: #fff;
@@ -1426,10 +1426,10 @@ hr {
 .sb-toggle-right {
     position: absolute;
     top: 50%;
-    left: -26px;
+    left: -12px;
     right: auto;
     transform: translateY(-50%);
-    width: 26px;
+    width: 12px;
     height: 52px;
     z-index: 1002;
     background: #fff;
