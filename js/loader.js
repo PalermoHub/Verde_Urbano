@@ -7,6 +7,7 @@
     let targetCount = 0;
     let isDataLoaded = false;
     let currentProgress = 0;
+    let loaderHidden = false;
 
     // Show loader function
     function showLoader() {
@@ -19,8 +20,11 @@
 
     // Hide loader function
     function hideLoader() {
+        if (loaderHidden) return;
         const loader = document.getElementById('pageLoader');
         if (loader) {
+            loaderHidden = true;
+
             // Stop counting if still running
             if (countInterval) {
                 clearInterval(countInterval);
