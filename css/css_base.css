@@ -1,3 +1,49 @@
+        /* ===== DESIGN TOKENS ===== */
+        :root {
+            /* Scala verde istituzionale */
+            --pa-green-900: #0d4d28;
+            --pa-green-800: #116534;
+            --pa-green-700: #1e8449;
+            --pa-green-600: #229954;
+            --pa-green-500: #27ae60;
+            --pa-green-100: #d6efdd;
+            --pa-green-50:  #f0f9f4;
+
+            /* Neutri */
+            --pa-ink:       #1a1a1a;
+            --pa-ink-2:     #313131;
+            --pa-ink-3:     #555555;
+            --pa-mute:      #888888;
+            --pa-line:      #e0e0e0;
+            --pa-bg:        #f5f5f5;
+            --pa-card:      #ffffff;
+
+            /* Accenti semantici (NON CPC — i colori CPC restano in js/03_global_variables.js) */
+            --pa-warn:      #e67e22;
+            --pa-danger:    #c0392b;
+            --pa-info:      #2c7bbf;
+            --pa-cost:      #f39c12;
+
+            /* Tag/categoria semantici */
+            --pa-progetto:        #9b59b6;
+            --pa-progetto-dark:   #8e44ad;
+            --pa-progetto-bg:     #f3e5f5;
+            --pa-leaf-fall:       #ff9800;
+
+            /* Fasi lavorazione (NB: --pa-phase-f2 coincide cromaticamente con CPC C/D ma è un token indipendente) */
+            --pa-phase-f1:        var(--pa-warn);
+            --pa-phase-f2:        #c164a1;
+            --pa-phase-f3:        var(--pa-green-500);
+
+            /* Radius / shadow / spacing scale */
+            --r-sm: 4px;
+            --r-md: 8px;
+            --r-lg: 12px;
+            --sh-sm: 0 1px 2px rgba(0,0,0,.06);
+            --sh-md: 0 2px 8px rgba(0,0,0,.10);
+            --sh-lg: 0 4px 16px rgba(0,0,0,.12);
+        }
+
         /* RESET */
         * {
             margin: 0;
@@ -13,7 +59,7 @@
 
         /* ===== LIVELLO 1: SLIM HEADER (Blu) ===== */
         .slim-header {
-            background: #116534;
+            background: var(--pa-green-800);
             color: white;
             padding: 8px 0;
             font-size: 0.875rem;
@@ -60,7 +106,7 @@
 
         /* ===== LIVELLO 2: HEADER CENTRALE (Verde con Logo) ===== */
         .main-header {
-            background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
+            background: linear-gradient(135deg, var(--pa-green-500) 0%, var(--pa-green-700) 100%);
             color: white;
             padding: 15px 0;
            /* transition: all 0.3s ease;*/
@@ -143,7 +189,7 @@
 
         /* ===== LIVELLO 3: NAVIGAZIONE (Bianco) ===== */
         .nav-header {
-            background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
+            background: linear-gradient(135deg, var(--pa-green-500) 0%, var(--pa-green-700) 100%);
             border-bottom: 1px solid #dee2e6;
             position: sticky;
             top: 0;
@@ -190,7 +236,7 @@
 
         nav a:hover {
             background: #f5f6f7;
-            color: #27ae60;
+            color: var(--pa-green-500);
             border-bottom-color: #ff9900;
         }
 
@@ -215,7 +261,7 @@
  			}
 		
         .project-banner {
-            background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%);
+            background: linear-gradient(135deg, var(--pa-green-500) 0%, var(--pa-green-700) 100%);
             color: white;
             padding: 1rem 0;
             text-align: center;
@@ -261,18 +307,29 @@
             text-decoration: underline;
         }
 
-        /* DEMO Stamp */
+        /* BETA / DEMO badge — versione discreta uso interno */
         .demo-stamp {
             position: fixed;
-            top: 0;
-            right: 0;
-            background: #ff9800;
-            color: white;
-            padding: 5px 15px;
-            font-weight: bold;
+            top: 8px;
+            right: 8px;
+            background: var(--pa-warn, #e67e22);
+            color: #fff;
+            padding: 3px 10px;
+            font-size: 11px;
+            letter-spacing: 0.06em;
+            font-weight: 700;
+            text-transform: uppercase;
             z-index: 10000;
-            border-bottom-left-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+            border-radius: 999px;
+            box-shadow: var(--sh-sm, 0 1px 2px rgba(0,0,0,.15));
+            opacity: 0.92;
+        }
+        .demo-stamp::before {
+            content: "\f0c3";
+            font-family: "Font Awesome 6 Free";
+            font-weight: 900;
+            margin-right: 6px;
+            font-size: 10px;
         }
 
         /* CONTENUTO */
@@ -292,7 +349,7 @@
         }
 
         .test-box h3 {
-            color: #27ae60;
+            color: var(--pa-green-500);
             font-size: 2rem;
             margin-bottom: 1rem;
         }
@@ -307,7 +364,7 @@
 
         /* FOOTER */
         footer {
-            background: #116534;
+            background: var(--pa-green-800);
             color: white;
     padding: 0.2rem 0.2rem;
     /*margin-top: 0.8rem;*/
@@ -431,7 +488,7 @@
         }
 
         .footer-social a:hover {
-            color: #27ae60;
+            color: var(--pa-green-500);
             transform: scale(1.1);
         }
 

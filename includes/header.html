@@ -1,11 +1,11 @@
 <!-- DEMO Stamp -->
-    <div class="demo-stamp">DEMO!</div>
+    <div class="demo-stamp" title="Versione di test — uso interno">BETA</div>
 
     <!-- LIVELLO 1: SLIM HEADER (Blu) -->
     <div class="slim-header" id="slimHeader">
         <div class="slim-container">
             <div class="slim-left">
-                <a href="https://www.comune.palermo.it/" target="_blank"> 
+                <a href="https://www.comune.palermo.it/" title="Sito Istituzionale  Città di Palermo" target="_blank"> 
                     <img src="img/logo_pa_gb.svg" alt="Logo Comune di Palermo" class="header-logo">
                 </a>
             </div>
@@ -17,15 +17,14 @@
         <div class="main-container">
             <div class="logo-section" id="logoSection">
                 <div class="header-text">
-                    <h1>Area Politiche Ambientali, Transizione Ecologica e Rigenerazione del Verde</h1>
+                    <h1>Ufficio autonomo gestione verde urbano, agricoltura urbana e rapporti con RESET</h1>
                     <p></p>
                 </div>
             </div>
             <div class="header-actions">
-                <div class="info-icon" id="infoBtn" title="Informazioni su questa app">
+                <button type="button" class="info-icon" id="infoBtn" title="Informazioni su questa app" aria-label="Informazioni su questa app">
                     <i class="fas fa-circle-info"></i>
-                </div>
-
+                </button>
             </div>
         </div>
     </header>
@@ -41,16 +40,27 @@
                 </span>
                 <!-- BLOCCO 2: Visibile solo desktop (testo completo + link) -->
                 <span class="banner-text-extra">
-                    : Riqualificazione Stradale e Arredo della Città -
+                    : Riqualificazione Stradale e Arredo della Città &middot;
                     <a href="https://www.opencup.gov.it//portale/it/web/opencup/home/progetto/-/cup/D71G23000050001"
-                       target="_blank" title="Visualizza su OpenCUP">
+                       target="_blank" rel="noopener" title="Visualizza su OpenCUP"
+                       style="color:inherit;text-decoration:underline;text-underline-offset:2px;opacity:.92;">
                         Accordo Quadro - CUP D71G23000050001
                     </a>
                 </span>
             </h2>
-			<button class="menu-toggle" id="menuToggle" aria-label="Menu">
-                <i class="fas fa-bars"></i>
-            </button>
+			<div class="banner-actions">
+                <button class="compact-toggle" id="compactToggle" aria-label="Mostra/nascondi intestazione completa" title="Modalità compatta">
+                    <i class="fas fa-compress-alt"></i>
+                </button>
+                <button class="search-trigger" id="searchBtn" title="Cerca nel progetto (Ctrl+K)" aria-label="Apri ricerca">
+                    <i class="fas fa-search"></i>
+                    <span class="search-trigger-text">Cerca</span>
+                    <span class="search-trigger-shortcut">Ctrl+K</span>
+                </button>
+                <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
     </div>
 
@@ -60,7 +70,16 @@
             <nav>
                 <ul id="navMenu">
                     <li><a href="index.html"><i class="fas fa-map-location-dot"></i> Dashboard</a></li>
-                    <li><a href="il-progetto.html"><i class="fas fa-book-open"></i> Il Progetto</a></li>
+                    <li class="has-dropdown">
+                        <a href="il-progetto.html">
+                            <i class="fas fa-book-open"></i> Il Progetto
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="tavole.html"><i class="fa-regular fa-image"></i> Tavole di Progetto</a></li>
+							<li><a href="gruppo.html"><i class="fa-solid fa-people-group"></i></i> Gruppo di lavoro</a></li>							
+                        </ul>
+                    </li>
                     <li><a href="obiettivi.html"><i class="fas fa-bullseye"></i> Obiettivi e Finalità</a></li>
                     <li><a href="fasi.html"><i class="fas fa-tasks"></i> Fasi dell'Intervento</a></li>
                     <li><a href="potatura.html"><i class="fas fa-scissors"></i> Tipologie di Potatura</a></li>

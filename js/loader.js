@@ -228,7 +228,7 @@
                 clearInterval(countInterval);
             }
             hideLoader();
-        }, 12000);
+        }, 8000);
     }
 
     // Start loader when DOM is ready

@@ -22,8 +22,12 @@ function updateURLFromFilters() {
     if (specie) params.set('specie', specie);
     if (cpc) params.set('cpc', cpc);
     if (site) params.set('sito', site);
-    if (parseFloat(minHeight) > 0) params.set('altezza', minHeight);
-    if (parseFloat(minDiameter) > 0) params.set('diametro', minDiameter);
+    const maxHeightEl = document.getElementById('maxHeight');
+    const maxDiameterEl = document.getElementById('maxDiameter');
+    if (parseFloat(minHeight) > 0) params.set('altezza_min', minHeight);
+    if (maxHeightEl && parseFloat(maxHeightEl.value) < parseFloat(maxHeightEl.max)) params.set('altezza_max', maxHeightEl.value);
+    if (parseFloat(minDiameter) > 0) params.set('diametro_min', minDiameter);
+    if (maxDiameterEl && parseFloat(maxDiameterEl.value) < parseFloat(maxDiameterEl.max)) params.set('diametro_max', maxDiameterEl.value);
     if (odonimo) params.set('odonimo', odonimo);
     if (civico) params.set('civico', civico);
     if (upl) params.set('upl', upl);
@@ -43,8 +47,10 @@ function applyFiltersFromURL() {
     const specie = params.get('specie');
     const cpc = params.get('cpc');
     const site = params.get('sito');
-    const altezza = params.get('altezza');
-    const diametro = params.get('diametro');
+    const altezzaMin = params.get('altezza_min') || params.get('altezza');
+    const altezzaMax = params.get('altezza_max');
+    const diametroMin = params.get('diametro_min') || params.get('diametro');
+    const diametroMax = params.get('diametro_max');
     const odonimo = params.get('odonimo');
     const civico = params.get('civico');
     const upl = params.get('upl');
@@ -63,13 +69,17 @@ function applyFiltersFromURL() {
     if (specie) document.getElementById('specieFilter').value = specie;
     if (cpc) document.getElementById('cpcFilter').value = cpc;
     if (site) document.getElementById('siteFilter').value = site;
-    if (altezza) {
-        document.getElementById('minHeight').value = altezza;
-        updateHeightLabel();
-    }
-    if (diametro) {
-        document.getElementById('minDiameter').value = diametro;
-        updateDiameterLabel();
+    if (altezzaMin) document.getElementById('minHeight').value = altezzaMin;
+    var maxHEl = document.getElementById('maxHeight');
+    if (altezzaMax && maxHEl) maxHEl.value = altezzaMax;
+    if (diametroMin) document.getElementById('minDiameter').value = diametroMin;
+    var maxDEl = document.getElementById('maxDiameter');
+    if (diametroMax && maxDEl) maxDEl.value = diametroMax;
+    if (typeof syncDualRange === 'function') {
+        document.querySelectorAll('.dual-range__input--min').forEach(function(i){ syncDualRange(i); });
+    } else {
+        if (typeof updateHeightLabel === 'function') updateHeightLabel();
+        if (typeof updateDiameterLabel === 'function') updateDiameterLabel();
     }
     if (odonimo) {
         document.getElementById('odonimoFilter').value = odonimo;

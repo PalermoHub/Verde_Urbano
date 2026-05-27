@@ -1,6 +1,6 @@
 // ===== STATISTICHE =====
 function updateStats() {
-    console.log('📊 Aggiornamento statistiche...', {totalTrees: allTrees.length, filteredTrees: filteredTrees.length});
+    window.VU_DEBUG && console.log('📊 Aggiornamento statistiche...', {totalTrees: allTrees.length, filteredTrees: filteredTrees.length});
 
     // Se c'è un albero selezionato, usa solo quello per le statistiche
     const treesToAnalyze = selectedTree ? [selectedTree] : filteredTrees;
@@ -105,16 +105,19 @@ function updateStats() {
     });
 
     // Formatta i dati per territorio come ranked list (stile rl-item)
-    const formatTerritorioList = (data, color) => {
+    const formatTerritorioList = (data, color, filterKey) => {
         const entries = Object.entries(data).sort((a, b) => b[1] - a[1]);
         if (entries.length === 0) return '<div class="rl-empty"><i class="fas fa-hourglass-half"></i> Nessun dato disponibile</div>';
         const max = entries[0][1] || 1;
+        const escAttr = (s) => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
         return entries.map(([nome, count], i) => {
             const pct = (count / max * 100).toFixed(1);
             const display = nome.length > 22 ? nome.substring(0, 22) + '…' : nome;
-            return `<div class="rl-item">
+            const clickable = filterKey ? ` data-filter-key="${filterKey}" data-filter-value="${escAttr(nome)}" role="button" tabindex="0" title="Clicca per filtrare: ${escAttr(nome)}"` : '';
+            const klass = filterKey ? 'rl-item rl-item--clickable' : 'rl-item';
+            return `<div class="${klass}"${clickable}>
                 <span class="rl-rank">${i + 1}</span>
-                <span class="rl-label" title="${nome}">${display}</span>
+                <span class="rl-label">${display}</span>
                 <div class="rl-bar-wrap"><div class="rl-bar" style="width:${pct}%;background:${color}"></div></div>
                 <span class="rl-value">${count}</span>
             </div>`;
@@ -122,11 +125,11 @@ function updateStats() {
     };
 
     document.getElementById('statTotalStrade').textContent = strade.size;
-    document.getElementById('statAlberiPerUPL').innerHTML = formatTerritorioList(uplCount, '#3498db');
-    document.getElementById('statAlberiPerQuartiere').innerHTML = formatTerritorioList(quartiereCount, '#27ae60');
-    document.getElementById('statAlberiPerCircoscrizione').innerHTML = formatTerritorioList(circoscrizioneCount, '#e67e22');
+    document.getElementById('statAlberiPerUPL').innerHTML = formatTerritorioList(uplCount, '#3498db', 'uplFilter');
+    document.getElementById('statAlberiPerQuartiere').innerHTML = formatTerritorioList(quartiereCount, 'var(--pa-green-500)', 'quartiereFilter');
+    document.getElementById('statAlberiPerCircoscrizione').innerHTML = formatTerritorioList(circoscrizioneCount, '#e67e22', 'circoscrizioneFilter');
 
-    console.log('✅ Statistiche aggiornate con successo');
+    window.VU_DEBUG && console.log('✅ Statistiche aggiornate con successo');
 }
 
 // ===== FUNZIONE PER FORMATTARE VALUTA IN FORMATO ITALIANO =====

@@ -11,7 +11,7 @@ function downloadRelazione() {
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
-        console.log('✅ Download relazione tecnica avviato');
+        window.VU_DEBUG && console.log('✅ Download relazione tecnica avviato');
     } catch (error) {
         console.error('❌ Errore nel download:', error);
         alert('Errore nel download. Verifica che l\'URL sia corretto.');
@@ -151,7 +151,7 @@ function printMapPdf() {
 
                 pdf.save('Mappa_Viale_Emilia.pdf');
 
-                console.log('✅ Mappa stampata in PDF con layout landscape');
+                window.VU_DEBUG && console.log('✅ Mappa stampata in PDF con layout landscape');
 
                 // Rimuovi il contenitore temporaneo
                 document.body.removeChild(pdfContainer);

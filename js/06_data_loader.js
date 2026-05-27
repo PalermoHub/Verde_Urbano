@@ -93,9 +93,61 @@ function loadData() {
             allTrees.push(tree);
         });
 
+        // === DEMO ONLY === Inietta date fittizie F1/F2/F3 per attivare il time-slider
+        // Rimuovi questo blocco quando il CSV avrà date reali.
+        injectDemoDates(allTrees);
         filteredTrees = [...allTrees];
-        console.log(`✅ Caricati ${allTrees.length} alberi`);
+        window.VU_DEBUG && console.log(`✅ Caricati ${allTrees.length} alberi (date fittizie iniettate per demo)`);
     } catch (error) {
         console.error('❌ Errore caricamento:', error);
     }
+}
+
+
+// ===== DEMO ONLY: genera date fittizie F1/F2/F3 distribuite su 24 mesi =====
+function injectDemoDates(trees) {
+    if (!trees || !trees.length) return;
+    // Solo se le date sono effettivamente vuote (preserva dati reali)
+    const sample = trees.slice(0, 100).some(t => t.data_lav_f1);
+    if (sample) {
+        window.VU_DEBUG && console.log('Date reali presenti, salto iniezione demo');
+        return;
+    }
+    const baseStart = new Date(2024, 0, 15).getTime();  // 15 gen 2024
+    const baseEnd   = new Date(2026, 4, 1).getTime();   // 1 mag 2026
+    const span = baseEnd - baseStart;
+    function fmt(ts) {
+        const d = new Date(ts);
+        const dd = String(d.getDate()).padStart(2, '0');
+        const mm = String(d.getMonth() + 1).padStart(2, '0');
+        return dd + '/' + mm + '/' + d.getFullYear();
+    }
+    // Deterministic pseudo-random based on tree id for reproducibility
+    function hash(s) {
+        let h = 2166136261;
+        s = String(s);
+        for (let i = 0; i < s.length; i++) { h ^= s.charCodeAt(i); h = (h * 16777619) >>> 0; }
+        return h;
+    }
+    let injected = 0;
+    trees.forEach(tree => {
+        const h = hash(tree.id);
+        // ~80% degli alberi hanno F1
+        const hasF1 = (h % 100) < 80;
+        if (!hasF1) return;
+        const f1Start = baseStart + ((h % 1000) / 1000) * (span * 0.6);  // F1 nei primi 60% del periodo
+        tree.data_lav_f1 = fmt(f1Start);
+        // ~35% degli F1 ha anche F2 (rimozione ceppo)
+        if (((h >>> 8) % 100) < 35) {
+            const f2Date = f1Start + (5 + ((h >>> 4) % 60)) * 86400000; // 5-65 giorni dopo F1
+            tree.data_lav_f2 = fmt(Math.min(f2Date, baseEnd));
+        }
+        // ~25% degli F1 ha anche F3 (nuovo impianto)
+        if (((h >>> 16) % 100) < 25) {
+            const f3Date = f1Start + (40 + ((h >>> 10) % 180)) * 86400000; // 40-220 giorni dopo F1
+            tree.data_lav_f3 = fmt(Math.min(f3Date, baseEnd));
+        }
+        injected++;
+    });
+    window.VU_DEBUG && console.log('[demo] iniettate date su ' + injected + '/' + trees.length + ' alberi');
 }

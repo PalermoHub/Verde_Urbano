@@ -67,7 +67,7 @@
 
 .dropdown-menu a:hover {
     background: #f8f9fa;
-    color: #27ae60;
+    color: var(--pa-green-500);
     padding-left: 1.25rem;
 }
 
@@ -79,7 +79,7 @@
 
 /* Stile per pagina attiva nel dropdown */
 .dropdown-menu a.active {
-    color: #27ae60;
+    color: var(--pa-green-500);
     background: #f0f8f4;
     border-left: 4px solid #ff9900;
 }

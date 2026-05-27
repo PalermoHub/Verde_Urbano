@@ -404,7 +404,11 @@ function getCountForFilter(filterType, filterValue) {
     const cpc = document.getElementById('cpcFilter').value;
     const site = document.getElementById('siteFilter').value;
     const minHeight = parseFloat(document.getElementById('minHeight').value);
+    const maxHeightEl = document.getElementById('maxHeight');
+    const maxHeight = maxHeightEl ? parseFloat(maxHeightEl.value) : Infinity;
     const minDiameter = parseFloat(document.getElementById('minDiameter').value);
+    const maxDiameterEl = document.getElementById('maxDiameter');
+    const maxDiameter = maxDiameterEl ? parseFloat(maxDiameterEl.value) : Infinity;
     const odonimo = document.getElementById('odonimoFilter').value;
     const civico = document.getElementById('civicoFilter').value;
     const upl = document.getElementById('uplFilter').value;
@@ -478,8 +482,8 @@ function getCountForFilter(filterType, filterValue) {
             // else if (fase === 'fase4') match = match && (tree.cod_lav_f4 || tree.lavori_f4 || tree.prezzo_f4 || tree.data_lav_f4);
         }
 
-        match = match && (tree.altezza === null || tree.altezza >= minHeight);
-        match = match && (tree.diametro === null || tree.diametro >= minDiameter);
+        match = match && (tree.altezza === null || (tree.altezza >= minHeight && tree.altezza <= maxHeight));
+        match = match && (tree.diametro === null || (tree.diametro >= minDiameter && tree.diametro <= maxDiameter));
 
         return match;
     }).length;
@@ -497,7 +501,11 @@ function applyFilters() {
     const cpc = document.getElementById('cpcFilter').value;
     const site = document.getElementById('siteFilter').value;
     const minHeight = parseFloat(document.getElementById('minHeight').value);
+    const maxHeightEl_a = document.getElementById('maxHeight');
+    const maxHeight = maxHeightEl_a ? parseFloat(maxHeightEl_a.value) : Infinity;
     const minDiameter = parseFloat(document.getElementById('minDiameter').value);
+    const maxDiameterEl_a = document.getElementById('maxDiameter');
+    const maxDiameter = maxDiameterEl_a ? parseFloat(maxDiameterEl_a.value) : Infinity;
     const odonimo = document.getElementById('odonimoFilter').value;
     const civico = document.getElementById('civicoFilter').value;
     const upl = document.getElementById('uplFilter').value;
@@ -513,8 +521,8 @@ function applyFilters() {
                (!specie || tree.specie === specie) &&
                (!cpc || tree.cpc === cpc) &&
                (!site || tree.sito === site) &&
-               (tree.altezza === null || tree.altezza >= minHeight) &&
-               (tree.diametro === null || tree.diametro >= minDiameter) &&
+               (tree.altezza === null || (tree.altezza >= minHeight && tree.altezza <= maxHeight)) &&
+               (tree.diametro === null || (tree.diametro >= minDiameter && tree.diametro <= maxDiameter)) &&
                (!odonimo || tree.odonimo === odonimo) &&
                (!civico || tree.civico === civico) &&
                (!upl || tree.upl === upl) &&
@@ -538,6 +546,10 @@ function applyFilters() {
             // else if (fase === 'fase4') match = match && (tree.cod_lav_f4 || tree.lavori_f4 || tree.prezzo_f4 || tree.data_lav_f4);
         }
 
+        // Time-slider F1→F2→F3
+        if (match && window.vuTimeSlider && typeof window.vuTimeSlider.passes === 'function') {
+            match = window.vuTimeSlider.passes(tree);
+        }
         return match;
     });
 
@@ -548,6 +560,7 @@ function applyFilters() {
     updateStats();
     updateCharts();
     if (typeof updateURLFromFilters === 'function') updateURLFromFilters();
+    if (typeof renderFilterChips === 'function') renderFilterChips();
 }
 
 // Aggiorna il titolo della pagina con l'Odonimo selezionato
@@ -751,6 +764,11 @@ function resetFilters() {
     document.getElementById('siteFilter').value = '';
     document.getElementById('minHeight').value = '0';
     document.getElementById('minDiameter').value = '0';
+    var mxH = document.getElementById('maxHeight'); if (mxH) mxH.value = mxH.max;
+    var mxD = document.getElementById('maxDiameter'); if (mxD) mxD.value = mxD.max;
+    if (typeof syncDualRange === 'function') {
+        document.querySelectorAll('.dual-range__input--min').forEach(function(i){ syncDualRange(i); });
+    }
     document.getElementById('odonimoFilter').value = '';
     document.getElementById('civicoFilter').value = '';
     document.getElementById('uplFilter').value = '';
@@ -766,3 +784,45 @@ function resetFilters() {
 
     applyFilters();
 }
+
+
+// ===== DUAL-RANGE SLIDER SYNC =====
+function syncDualRange(input) {
+    const wrap = input.closest('.dual-range');
+    if (!wrap) return;
+    const min = wrap.querySelector('.dual-range__input--min');
+    const max = wrap.querySelector('.dual-range__input--max');
+    let vMin = parseFloat(min.value);
+    let vMax = parseFloat(max.value);
+    // Enforce min <= max while keeping the user's last touched handle as priority
+    const MIN_GAP = 0;
+    if (vMin > vMax) {
+        if (input === min) { max.value = vMin; vMax = vMin; }
+        else { min.value = vMax; vMin = vMax; }
+    }
+    const rangeMin = parseFloat(min.min);
+    const rangeMax = parseFloat(min.max);
+    const span = rangeMax - rangeMin || 1;
+    const leftPct = ((vMin - rangeMin) / span) * 100;
+    const rightPct = 100 - ((vMax - rangeMin) / span) * 100;
+    const highlight = wrap.querySelector('.dual-range__highlight');
+    if (highlight) {
+        highlight.style.left = leftPct + '%';
+        highlight.style.right = rightPct + '%';
+    }
+    // Update labels
+    if (min.id === 'minHeight') {
+        document.getElementById('minHeightLabel').textContent = vMin;
+        document.getElementById('maxHeightLabel').textContent = vMax;
+    } else if (min.id === 'minDiameter') {
+        document.getElementById('minDiameterLabel').textContent = vMin;
+        document.getElementById('maxDiameterLabel').textContent = vMax;
+    }
+}
+// Initialize highlights on DOM ready
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.dual-range').forEach(function(wrap) {
+        const min = wrap.querySelector('.dual-range__input--min');
+        if (min) syncDualRange(min);
+    });
+});

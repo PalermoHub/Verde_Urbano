@@ -14,30 +14,6 @@ const CPC_VAL_TO_CAT = {};
 const CPC_CAT_TO_VAL = {};
 CPC_KEYS.forEach(function(k, i) { CPC_VAL_TO_CAT[k] = i; CPC_CAT_TO_VAL[i] = k; });
 
-const BASEMAPS_CONFIG = [
-    { key: 'carto', label: 'CartoDB Chiaro', isDefault: true,
-      thumbnail: 'https://a.basemaps.cartocdn.com/light_all/2/2/1.png',
-      layer: L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
-          attribution: '© <a href="https://www.openstreetmap.org/copyright">OSM</a> © <a href="https://carto.com/">CARTO</a> · Elaborazione: <a href="https://www.linkedin.com/in/gbvitrano/" target="_blank" rel="noopener">@gbvitrano</a>',
-          minZoom: 13, maxZoom: 19, subdomains: 'abcd'
-      })
-    },
-    { key: 'ctr', label: 'CTC 2k Palermo', isDefault: false,
-      thumbnail: 'img/ctc.jpg',
-      layer: L.tileLayer('https://siciliahub.github.io/Tiles/ctr_pa_2k/{z}/{x}/{y}.png', {
-          attribution: '© CTC 2k Palermo · Elaborazione: <a href="https://www.linkedin.com/in/gbvitrano/" target="_blank" rel="noopener">@gbvitrano</a>',
-          minZoom: 13, maxZoom: 19
-      })
-    },
-    { key: 'google_satellite', label: 'Google Satellite', isDefault: false,
-      thumbnail: 'https://mt0.google.com/vt/lyrs=s&x=2&y=1&z=2',
-      layer: L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
-          attribution: '© <a href="https://maps.google.com">Google Maps</a> · Elaborazione: <a href="https://www.linkedin.com/in/gbvitrano/" target="_blank" rel="noopener">@gbvitrano</a>',
-          minZoom: 13, maxZoom: 19
-      })
-    }
-];
-
 // ── Icona ciambella SVG per cluster aggregato ──────────────────────────────
 function _buildDonutIcon(catColors, cluster) {
     const n     = cluster.population;
@@ -111,6 +87,30 @@ function _clusterTooltipHtml(cluster, catColors, catToVal) {
 
 function initMap() {
     map = L.map('map', { zoomControl: false }).setView(initialView.center, initialView.zoom);
+
+    const BASEMAPS_CONFIG = [
+        { key: 'carto', label: 'CartoDB Chiaro', isDefault: true,
+          thumbnail: 'https://a.basemaps.cartocdn.com/light_all/2/2/1.png',
+          layer: L.tileLayer('https://cartodb-basemaps-{s}.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png', {
+              attribution: '© <a href="https://www.openstreetmap.org/copyright">OSM</a> © <a href="https://carto.com/">CARTO</a> · Elaborazione: <a href="https://www.linkedin.com/in/gbvitrano/" target="_blank" rel="noopener">@gbvitrano</a>',
+              minZoom: 13, maxZoom: 19, subdomains: 'abcd'
+          })
+        },
+        { key: 'ctr', label: 'CTC 2k Palermo', isDefault: false,
+          thumbnail: 'img/ctc.jpg',
+          layer: L.tileLayer('https://siciliahub.github.io/Tiles/ctr_pa_2k/{z}/{x}/{y}.png', {
+              attribution: '© CTC 2k Palermo · Elaborazione: <a href="https://www.linkedin.com/in/gbvitrano/" target="_blank" rel="noopener">@gbvitrano</a>',
+              minZoom: 13, maxZoom: 19
+          })
+        },
+        { key: 'google_satellite', label: 'Google Satellite', isDefault: false,
+          thumbnail: 'https://mt0.google.com/vt/lyrs=s&x=2&y=1&z=2',
+          layer: L.tileLayer('https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}', {
+              attribution: '© <a href="https://maps.google.com">Google Maps</a> · Elaborazione: <a href="https://www.linkedin.com/in/gbvitrano/" target="_blank" rel="noopener">@gbvitrano</a>',
+              minZoom: 13, maxZoom: 19
+          })
+        }
+    ];
 
     // ── Basemap gallery ────────────────────────────────────────────────────
     let activeBasemap = (BASEMAPS_CONFIG.find(function(b) { return b.isDefault; }) || BASEMAPS_CONFIG[0]).layer.addTo(map);
@@ -213,7 +213,7 @@ function initMap() {
         updateLegendContent();
     });
 
-    console.log('✅ Mappa inizializzata');
+    window.VU_DEBUG && console.log('✅ Mappa inizializzata');
 }
 
 // ── Binding eventi per marker singolo nel cluster ──────────────────────────
@@ -234,72 +234,49 @@ function _bindClusterMarkerEvents(leafletMarker, tree) {
 
 // ── Costruisce il contenuto HTML del popup ─────────────────────────────────
 function _buildPopupContent(tree) {
+    const row = (label, value, valueClass) =>
+        `<tr><th>${label}</th><td${valueClass ? ' class="' + valueClass + '"' : ''}${valueClass === 'vu-popup__cpc' ? ' style="color:' + (cpcColors[tree.cpc] || '#666') + '"' : ''}>${value}</td></tr>`;
+    const projRow = (label, value) => `<tr><th>${label}</th><td>${value}</td></tr>`;
+    const hasProgetto = (tree.progetto && tree.progetto !== '-') || (tree.ordinativo && tree.ordinativo !== '-');
     return `
-        <div style="font-family: Arial, sans-serif; font-size: 12px; min-width: 280px;">
-            <div style="background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%); color: white; padding: 10px; border-radius: 6px 6px 0 0; font-weight: bold; margin-bottom: 8px;">
-                <i class="fa fa-tree" aria-hidden="true"></i> Albero - ${tree.id}
+        <div class="vu-popup">
+            <div class="vu-popup__header">
+                <i class="fa fa-tree" aria-hidden="true"></i> Albero — ${tree.id}
             </div>
-            ${(tree.progetto && tree.progetto !== '-') || (tree.ordinativo && tree.ordinativo !== '-') ? `
-            <div style="background: #f3e5f5; padding: 8px; margin-bottom: 8px; border-radius: 4px; border-left: 3px solid #9b59b6;">
-                <div style="font-weight: bold; color: #9b59b6; margin-bottom: 4px;"><i class="fas fa-folder-open"></i> PROGETTO</div>
-                <table style="width: 100%; font-size: 11px;">
-                    ${tree.progetto && tree.progetto !== '-' ? `<tr><td style="padding: 3px; font-weight: bold;">Accordo quadro:</td><td style="padding: 3px;">${tree.progetto}</td></tr>` : ''}
-                    ${tree.ordinativo && tree.ordinativo !== '-' ? `<tr><td style="padding: 3px; font-weight: bold;">Ordinativo:</td><td style="padding: 3px;">${tree.ordinativo}</td></tr>` : ''}
+            ${hasProgetto ? `
+            <div class="vu-popup__section vu-popup__section--progetto">
+                <div class="vu-popup__section-title"><i class="fas fa-folder-open"></i> Progetto</div>
+                <table class="vu-popup__mini">
+                    ${tree.progetto && tree.progetto !== '-' ? projRow('Accordo quadro:', tree.progetto) : ''}
+                    ${tree.ordinativo && tree.ordinativo !== '-' ? projRow('Ordinativo:', tree.ordinativo) : ''}
                 </table>
             </div>` : ''}
-            <table style="width: 100%; border-collapse: collapse;">
-                <tr style="border-bottom: 1px solid #eee;">
-                    <td style="padding: 6px; font-weight: bold; color: #313131;">Specie arborea:</td>
-                    <td style="padding: 6px;">${tree.specie}</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #eee;">
-                    <td style="padding: 6px; font-weight: bold; color: #313131;">Tipo foglia:</td>
-                    <td style="padding: 6px;">${tree.tipo_foglia}</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #eee;">
-                    <td style="padding: 6px; font-weight: bold; color: #313131;">Dimora:</td>
-                    <td style="padding: 6px;">${tree.sito}</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #eee;">
-                    <td style="padding: 6px; font-weight: bold; color: #313131;">Altezza:</td>
-                    <td style="padding: 6px;">${tree.altezza ? tree.altezza + ' m' : 'n/a'}</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #eee;">
-                    <td style="padding: 6px; font-weight: bold; color: #313131;">Diametro:</td>
-                    <td style="padding: 6px;">${tree.diametro ? tree.diametro + ' cm' : 'n/a'}</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #eee;">
-                    <td style="padding: 6px; font-weight: bold; color: #313131;">CPC:</td>
-                    <td style="padding: 6px; color: ${cpcColors[tree.cpc]}; font-weight: bold;">${tree.cpc}</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #eee;">
-                    <td style="padding: 6px; font-weight: bold; color: #313131;">Cod. lavorazione:</td>
-                    <td style="padding: 6px;">${tree.codice}</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #eee;">
-                    <td style="padding: 6px; font-weight: bold; color: #313131;">Tipo lavorazione:</td>
-                    <td style="padding: 6px;">${tree.descrizione}</td>
-                </tr>
-                <tr style="border-bottom: 1px solid #eee;">
-                    <td style="padding: 6px; font-weight: bold; color: #313131;">Prezzo unitario:</td>
-                    <td style="padding: 6px;">€ ${tree.prezzo.toFixed(2)}</td>
-                </tr>
+            <table class="vu-popup__table">
+                ${row('Specie arborea:', tree.specie || '—')}
+                ${row('Tipo foglia:',   tree.tipo_foglia || '—')}
+                ${row('Dimora:',        tree.sito || '—')}
+                ${row('Altezza:',       tree.altezza ? tree.altezza + ' m' : 'n/a')}
+                ${row('Diametro:',      tree.diametro ? tree.diametro + ' cm' : 'n/a')}
+                ${row('CPC:',           tree.cpc || '—', 'vu-popup__cpc')}
+                ${row('Cod. lavorazione:', tree.codice || '—')}
+                ${row('Tipo lavorazione:', tree.descrizione || '—')}
+                ${row('Prezzo unitario:',  '€ ' + (tree.prezzo || 0).toFixed(2))}
             </table>
-            <div style="background: #f8f9fa; padding: 8px; margin-top: 8px; border-radius: 4px; border-left: 3px solid #3498db;">
-                <div style="font-weight: bold; color: #3498db; margin-bottom: 4px;"><i class="fa fa-map-marker-alt"></i> LOCALIZZAZIONE</div>
-                <table style="width: 100%; font-size: 11px;">
-                    <tr><td style="padding: 3px; font-weight: bold;">Strada:</td><td style="padding: 3px;">${tree.odonimo || '-'}</td></tr>
-                    <tr><td style="padding: 3px; font-weight: bold;">Civico:</td><td style="padding: 3px;">${tree.civico || '-'}</td></tr>
-                    <tr><td style="padding: 3px; font-weight: bold;">UPL:</td><td style="padding: 3px;">${tree.upl || '-'}</td></tr>
-                    <tr><td style="padding: 3px; font-weight: bold;">Quartiere:</td><td style="padding: 3px;">${tree.quartiere || '-'}</td></tr>
-                    <tr><td style="padding: 3px; font-weight: bold;">Circoscrizione:</td><td style="padding: 3px;">${tree.circoscrizione || '-'}</td></tr>
+            <div class="vu-popup__section vu-popup__section--loc">
+                <div class="vu-popup__section-title"><i class="fa fa-map-marker-alt"></i> Localizzazione</div>
+                <table class="vu-popup__mini">
+                    ${projRow('Strada:', tree.odonimo || '-')}
+                    ${projRow('Civico:', tree.civico || '-')}
+                    ${projRow('UPL:', tree.upl || '-')}
+                    ${projRow('Quartiere:', tree.quartiere || '-')}
+                    ${projRow('Circoscrizione:', tree.circoscrizione || '-')}
                 </table>
             </div>
-            <div style="margin-top: 10px; display: flex; gap: 8px;">
-                <button onclick="showTreeDetailsFromPopup('${tree.id}')" title="Visualizza la scheda completa" style="flex: 1; padding: 10px; background: linear-gradient(135deg, #27ae60 0%, #1e8449 100%); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; display: flex; align-items: center; justify-content: center; gap: 8px;">
-                    <i class="fas fa-info-circle"></i><span>Scheda Completa</span>
+            <div class="vu-popup__actions">
+                <button class="vu-popup__btn vu-popup__btn--primary" onclick="showTreeDetailsFromPopup('${tree.id}')" title="Visualizza la scheda completa">
+                    <i class="fas fa-info-circle"></i><span>Scheda completa</span>
                 </button>
-                ${tree.geouri ? `<a href="${tree.geouri}" title="Naviga da Mobile" target="_blank" style="flex: 1; padding: 10px; background: linear-gradient(135deg, #3498db 0%, #2980b9 100%); color: white; border: none; border-radius: 6px; font-weight: 600; cursor: pointer; font-size: 13px; text-decoration: none; display: flex; align-items: center; justify-content: center; gap: 8px;"><i class="fas fa-map-marker-alt"></i><span>Naviga</span></a>` : ''}
+                ${tree.geouri ? `<a class="vu-popup__btn vu-popup__btn--nav" href="${tree.geouri}" target="_blank" rel="noopener" title="Naviga da Mobile"><i class="fas fa-route"></i><span>Naviga</span></a>` : ''}
             </div>
         </div>
     `;
@@ -312,8 +289,14 @@ function addZoomBar() {
     const initZ = Math.min(18, Math.max(13, map.getZoom()));
 
     el.innerHTML = `
-        <button class="zoom-bar-home" title="Torna alla vista iniziale">
+        <button class="zoom-bar-home" title="Torna alla vista iniziale" aria-label="Vista iniziale">
             <i class="fas fa-home"></i>
+        </button>
+        <button class="zoom-bar-locate" title="La mia posizione" aria-label="Centra mappa sulla mia posizione">
+            <i class="fas fa-location-crosshairs"></i>
+        </button>
+        <button class="zoom-bar-time" title="Periodo lavorazione (F1→F2→F3)" aria-label="Apri filtro periodo lavorazione" onclick="document.getElementById('vuTSToggle').click()">
+            <i class="fas fa-clock-rotate-left"></i>
         </button>
         <div class="zoom-bar-sep"></div>
         <i class="fas fa-magnifying-glass zoom-bar-icon-sm"></i>
@@ -340,6 +323,31 @@ function addZoomBar() {
 
     const slider = document.getElementById('zoomBarSlider');
     updateFill(slider);
+
+    // ── Locate me ──
+    let _userMarker = null;
+    let _userAcc = null;
+    const locateBtn = el.querySelector('.zoom-bar-locate');
+    if (locateBtn) {
+        locateBtn.addEventListener('click', function() {
+            locateBtn.classList.add('locating');
+            map.locate({ setView: true, maxZoom: 17, enableHighAccuracy: true, timeout: 10000 });
+        });
+        map.on('locationfound', function(ev) {
+            locateBtn.classList.remove('locating');
+            if (_userMarker) map.removeLayer(_userMarker);
+            if (_userAcc) map.removeLayer(_userAcc);
+            _userAcc = L.circle(ev.latlng, { radius: ev.accuracy, color: '#2c7bbf', weight: 1, fillOpacity: 0.08 }).addTo(map);
+            _userMarker = L.circleMarker(ev.latlng, {
+                radius: 8, color: '#fff', weight: 2,
+                fillColor: '#2c7bbf', fillOpacity: 1
+            }).addTo(map).bindPopup('Sei qui (precisione &plusmn;' + Math.round(ev.accuracy) + ' m)').openPopup();
+        });
+        map.on('locationerror', function(ev) {
+            locateBtn.classList.remove('locating');
+            alert('Impossibile ottenere la posizione: ' + ev.message);
+        });
+    }
 
     el.querySelector('.zoom-bar-home').addEventListener('click', function() {
         const source = (filteredTrees && filteredTrees.length) ? filteredTrees : allTrees;
@@ -382,7 +390,7 @@ function filterBySelectedTree(tree) {
     updateStats();
     updateCharts();
     updateMap();
-    console.log('🎯 Filtrato per albero selezionato:', tree.id);
+    window.VU_DEBUG && console.log('🎯 Filtrato per albero selezionato:', tree.id);
 }
 
 function clearSelectedTreeFilter() {
@@ -391,7 +399,7 @@ function clearSelectedTreeFilter() {
     const banner = document.getElementById('selectedTreeBanner');
     if (banner) banner.style.display = 'none';
     applyFilters();
-    console.log('🔄 Filtro albero selezionato rimosso');
+    window.VU_DEBUG && console.log('🔄 Filtro albero selezionato rimosso');
 }
 
 // ── Aggiorna dimensioni circleMarker (solo in modalità punto) ──────────────
@@ -508,6 +516,12 @@ function showTreeDetailsFromPopup(treeId) {
 
 // ── Legenda CPC ────────────────────────────────────────────────────────────
 let legendControl = null;
+let legendCollapsed = false;
+
+function toggleLegend() {
+    legendCollapsed = !legendCollapsed;
+    updateLegendContent();
+}
 
 function addCpcLegend() {
     const LegendControl = L.Control.extend({
@@ -561,16 +575,16 @@ function updateLegendContent() {
     const activeCpc = document.getElementById('cpcFilter') ? document.getElementById('cpcFilter').value : '';
 
     const legendDefs = [
-        { key: 'A',        color: '#00ff00', label: '<strong>A</strong> - Trascurabile'    },
-        { key: 'B',        color: '#2cc15f', label: '<strong>B</strong> - Bassa'           },
-        { key: 'C',        color: '#f39c12', label: '<strong>C</strong> - Moderata'        },
-        { key: 'C/D',      color: '#c164a1', label: '<strong>C/D</strong> - Elevata'       },
-        { key: 'D',        color: '#e74c3c', label: '<strong>D</strong> - Estrema'         },
-        { key: 'Ceppaia',  color: '#434343', label: '<strong>Ceppaia</strong>'              },
-        { key: 'Vuoto',    color: '#ffff00', label: '<strong>Vuoto</strong> - Cercine vuoto'},
-        { key: 'Verifica', color: '#9fc5e8', label: '<strong>Verifica</strong> - Da verificare'},
-        { key: 'Non Class', color: '#990000', label: '<strong>Non Class</strong> - Non Classificato'},
-        { key: 'No Interv',color: '#f4cccc', label: '<strong>No Interv</strong> - Nessun Intervento'},
+        { key: 'A',         color: '#00ff00', label: '<strong>A</strong> - Trascurabile',              tip: 'Classe A - Trascurabile'          },
+        { key: 'B',         color: '#2cc15f', label: '<strong>B</strong> - Bassa',                     tip: 'Classe B - Bassa'                 },
+        { key: 'C',         color: '#f39c12', label: '<strong>C</strong> - Moderata',                  tip: 'Classe C - Moderata'              },
+        { key: 'C/D',       color: '#c164a1', label: '<strong>C/D</strong> - Elevata',                 tip: 'Classe C/D - Elevata'             },
+        { key: 'D',         color: '#e74c3c', label: '<strong>D</strong> - Estrema',                   tip: 'Classe D - Estrema'               },
+        { key: 'Ceppaia',   color: '#434343', label: '<strong>Ceppaia</strong>',                        tip: 'Ceppaia'                          },
+        { key: 'Vuoto',     color: '#ffff00', label: '<strong>Vuoto</strong> - Cercine vuoto',          tip: 'Vuoto - Cercine vuoto'            },
+        { key: 'Verifica',  color: '#9fc5e8', label: '<strong>Verifica</strong> - Da verificare',       tip: 'Verifica - Da verificare'         },
+        { key: 'Non Class', color: '#990000', label: '<strong>Non Class</strong> - Non Classificato',   tip: 'Non Class - Non Classificato'     },
+        { key: 'No Interv', color: '#f4cccc', label: '<strong>No Interv</strong> - Nessun Intervento',  tip: 'No Interv - Nessun Intervento'    },
     ];
 
     const itemsHtml = legendDefs.map(function(item) {
@@ -587,11 +601,45 @@ function updateLegendContent() {
             + '</div>';
     }).join('');
 
+    const miniItemsHtml = legendDefs.map(function(item) {
+        const isActive = activeCpc === item.key;
+        const miniTip = item.tip + ' - ' + cpcCount[item.key];
+        return '<div class="legend-mini-item' + (isActive ? ' legend-mini-item-active' : '') + '"'
+            + ' onclick="filterByCpcLegend(\'' + item.key + '\')" title="' + miniTip + '">'
+            + '<i class="fas fa-circle" style="color:' + item.color + ';font-size:12px;flex-shrink:0;"></i>'
+            + '<span class="legend-mini-label">' + item.key + '</span>'
+            + '<span class="legend-mini-count">' + cpcCount[item.key] + '</span>'
+            + '</div>';
+    }).join('');
+
     const modeLabel = viewportMode
         ? '<i class="fas fa-eye"></i> Viewport'
         : '<i class="fas fa-filter"></i> Filtrati';
+    const modeLabelMini = viewportMode
+        ? '<i class="fas fa-eye" title="Viewport"></i>'
+        : '<i class="fas fa-filter" title="Filtrati"></i>';
 
-    container.innerHTML = '<h4><i class="fas fa-list-check"></i> Classificazione CPC</h4>'
+    const chevron = legendCollapsed ? 'fa-chevron-right' : 'fa-chevron-left';
+    const toggleTitle = legendCollapsed ? 'Espandi legenda' : 'Comprimi legenda';
+
+    container.innerHTML =
+        '<div class="legend-header">'
+        + '<h4 class="legend-title"><i class="fas fa-list-check"></i><span class="legend-title-full"> Classificazione </span> CPC</h4>'
+        + '<button class="legend-toggle-btn" onclick="toggleLegend()" title="' + toggleTitle + '">'
+        + '<i class="fas ' + chevron + '"></i></button>'
+        + '</div>'
+        + '<div class="legend-full-body">'
         + itemsHtml
-        + '<div class="legend-mode-badge">' + modeLabel + '</div>';
+        + '<div class="legend-mode-badge">' + modeLabel + '</div>'
+        + '</div>'
+        + '<div class="legend-mini-body">'
+        + miniItemsHtml
+        + '<div class="legend-mode-mini">' + modeLabelMini + '</div>'
+        + '</div>';
+
+    if (legendCollapsed) {
+        container.classList.add('legend-collapsed');
+    } else {
+        container.classList.remove('legend-collapsed');
+    }
 }

@@ -77,7 +77,7 @@ function renderSeasonalList(containerId, totals) {
 }
 
 /* Renderizza lista classificata come HTML (TOP TIPI style) */
-function renderRankedList(containerId, items, accentColor, maxItems) {
+function renderRankedList(containerId, items, accentColor, maxItems, filterKey) {
     const el = document.getElementById(containerId);
     if (!el) return;
     const top = items.slice(0, maxItems || 12);
@@ -86,6 +86,7 @@ function renderRankedList(containerId, items, accentColor, maxItems) {
         return;
     }
     const max = top[0][1] || 1;
+    const escAttr = (s) => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
     el.innerHTML = `
         <div class="rl-header">
             <span><i class="fas fa-arrow-trend-up"></i> Top (${items.length})</span>
@@ -95,9 +96,11 @@ function renderRankedList(containerId, items, accentColor, maxItems) {
         ${top.map(([name, count], i) => {
             const pct = (count / max * 100).toFixed(1);
             const display = name && name.length > 24 ? name.substring(0, 24) + '…' : (name || '—');
-            return `<div class="rl-item">
+            const clickable = (filterKey && name) ? ` data-filter-key="${filterKey}" data-filter-value="${escAttr(name)}" role="button" tabindex="0" title="Clicca per filtrare: ${escAttr(name)}"` : '';
+            const klass = (filterKey && name) ? 'rl-item rl-item--clickable' : 'rl-item';
+            return `<div class="${klass}"${clickable}>
                 <span class="rl-rank">${i + 1}</span>
-                <span class="rl-label" title="${name}">${display}</span>
+                <span class="rl-label">${display}</span>
                 <div class="rl-bar-wrap"><div class="rl-bar" style="width:${pct}%;background:${accentColor}"></div></div>
                 <span class="rl-value">${count}</span>
             </div>`;
@@ -124,7 +127,7 @@ function updateHealthLegend(data) {
 }
 
 function initCharts() {
-    console.log('📊 Inizializzazione grafici...');
+    window.VU_DEBUG && console.log('📊 Inizializzazione grafici...');
 
     /* Altezze — lista classificata HTML */
     renderRankedList('heightChart', [], '#52be80', 6);
@@ -168,7 +171,7 @@ function initCharts() {
     renderSeasonalList('seasonalLeavesChart', { primavera: 0, estate: 0, autunno: 0, inverno: 0 });
     updateSeasonalLeavesChart();
 
-    console.log('✅ Grafici inizializzati');
+    window.VU_DEBUG && console.log('✅ Grafici inizializzati');
 }
 
 /* Aggiorna lista foglie per singolo albero */
@@ -195,11 +198,11 @@ function updateSeasonalLeavesChart() {
         totals.inverno   += t.foglie_inverno   || 0;
     });
     renderSeasonalList('seasonalLeavesChart', totals);
-    console.log('📊 Foglie stagionali aggiornate');
+    window.VU_DEBUG && console.log('📊 Foglie stagionali aggiornate');
 }
 
 function updateCharts() {
-    console.log('📊 Aggiornamento grafici...');
+    window.VU_DEBUG && console.log('📊 Aggiornamento grafici...');
     const treesToAnalyze = selectedTree ? [selectedTree] : filteredTrees;
 
     /* Altezze — lista classificata */
@@ -251,17 +254,17 @@ function updateCharts() {
     treesToAnalyze.forEach(t => {
         if (t.specie) speciesCount[t.specie] = (speciesCount[t.specie] || 0) + 1;
     });
-    renderRankedList('speciesChart', Object.entries(speciesCount).sort((a, b) => b[1] - a[1]), '#27ae60', 12);
+    renderRankedList('speciesChart', Object.entries(speciesCount).sort((a, b) => b[1] - a[1]), 'var(--pa-green-500)', 12, 'specieFilter');
 
     /* Dimora — lista classificata */
     const siteCount = {};
     treesToAnalyze.forEach(t => {
         if (t.sito) siteCount[t.sito] = (siteCount[t.sito] || 0) + 1;
     });
-    renderRankedList('siteChart', Object.entries(siteCount).sort((a, b) => b[1] - a[1]), '#3498db', 10);
+    renderRankedList('siteChart', Object.entries(siteCount).sort((a, b) => b[1] - a[1]), '#3498db', 10, 'siteFilter');
 
     /* Foglie stagionali */
     updateSeasonalLeavesChart();
 
-    console.log('✅ Grafici aggiornati');
+    window.VU_DEBUG && console.log('✅ Grafici aggiornati');
 }

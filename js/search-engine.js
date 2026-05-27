@@ -22,10 +22,10 @@ class SearchEngine {
     async init() {
         if (this.initialized) return;
 
-        console.log('Inizializzazione motore di ricerca...');
+        window.VU_DEBUG && console.log('Inizializzazione motore di ricerca...');
         await this.indexAllPages();
         this.initialized = true;
-        console.log(`Indicizzazione completata: ${this.searchIndex.length} elementi`);
+        window.VU_DEBUG && console.log(`Indicizzazione completata: ${this.searchIndex.length} elementi`);
     }
 
     // Indicizza tutte le pagine del sito

@@ -1,3 +1,6 @@
+// Set to true to re-enable verbose console logs
+window.VU_DEBUG = false;
+
 // ===== VARIABILI GLOBALI (MODIFICA) =====
 let allTrees = [];
 let filteredTrees = [];

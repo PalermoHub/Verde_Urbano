@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
     <meta charset="UTF-8">
@@ -36,7 +36,7 @@
 </head>
 <body>
 <!-- DEMO Stamp -->
-    <div class="demo-stamp">DEMO!</div>
+    <div class="demo-stamp" title="Versione di test — uso interno">BETA</div>
 
     <!-- LIVELLO 1: SLIM HEADER (Blu) -->
     <div class="slim-header" id="slimHeader">
@@ -58,18 +58,18 @@
                     <p></p>
                 </div>
             </div>
-       <!--        <div class="header-actions">
-                <div class="info-icon" id="infoBtn" title="Informazioni su questa app">
+            <div class="header-actions">
+                <button type="button" class="info-icon" id="infoBtn" title="Informazioni su questa app" aria-label="Informazioni su questa app">
                     <i class="fas fa-circle-info"></i>
-                </div>
-            </div> -->
+                </button>
+            </div>
         </div>
     </header>
 
     <!-- Banner Progetto - SEMPRE VISIBILE -->
     <div class="project-banner" id="projectBanner">
-        <div class="banner">  
-<h2>
+        <div class="banner">
+            <h2>
                 <!-- BLOCCO 1: Sempre visibile (icona + titolo base) -->
                 <span class="banner-text-base">
                     <img src="img/trees.svg" alt="" height="36" class="banner-icon"/>
@@ -77,15 +77,19 @@
                 </span>
                 <!-- BLOCCO 2: Visibile solo desktop (testo completo + link) -->
                 <span class="banner-text-extra">
-                    : Riqualificazione Stradale e Arredo della Città -
+                    : Riqualificazione Stradale e Arredo della Città &middot;
                     <a href="https://www.opencup.gov.it//portale/it/web/opencup/home/progetto/-/cup/D71G23000050001"
-                       target="_blank" title="Visualizza su OpenCUP">
+                       target="_blank" rel="noopener" title="Visualizza su OpenCUP"
+                       style="color:inherit;text-decoration:underline;text-underline-offset:2px;opacity:.92;">
                         Accordo Quadro - CUP D71G23000050001
                     </a>
                 </span>
             </h2>
 			<div class="banner-actions">
-                <button class="search-trigger" id="searchBtn" title="Cerca nel progetto (Ctrl+K)">
+                <button class="compact-toggle" id="compactToggle" aria-label="Mostra/nascondi intestazione completa" title="Modalità compatta">
+                    <i class="fas fa-compress-alt"></i>
+                </button>
+                <button class="search-trigger" id="searchBtn" title="Cerca nel progetto (Ctrl+K)" aria-label="Apri ricerca">
                     <i class="fas fa-search"></i>
                     <span class="search-trigger-text">Cerca</span>
                     <span class="search-trigger-shortcut">Ctrl+K</span>
@@ -96,6 +100,7 @@
             </div>
         </div>
     </div>
+
     <!-- LIVELLO 3: NAVIGAZIONE - SEMPRE VISIBILE -->
     <div class="nav-header" id="navHeader">
         <div class="nav-container">
@@ -123,10 +128,10 @@
             </nav>
         </div>
     </div>
-	
-	<!-- Include Modale Info da file esterno 
+
+    <!-- Include Modale Info da file esterno -->
     <script>
-        fetch('includes/info-modal.html?v=' + Date.now())
+        fetch('includes/info-modal.html')
             .then(response => response.text())
             .then(data => {
                 document.body.insertAdjacentHTML('beforeend', data);
@@ -136,11 +141,17 @@
                 }
             })
             .catch(error => console.error('Errore caricamento modale:', error));
-    </script> -->
+    </script>
 
     <div class="page-container">
         <!-- Contenuto Principale -->
         <div class="page-main-content">
+            <nav class="breadcrumb" aria-label="Percorso di navigazione">
+                <ol>
+                    <li><a href="index.html"><i class="fas fa-map-location-dot"></i> Dashboard</a></li>
+                    <li aria-current="page">Tipologie di Potatura</li>
+                </ol>
+            </nav>
             <div class="page-header">
                 <h1><i class="fas fa-scissors"></i> Potatura Urbana: L'Arte di Prendersi Cura degli Alberi della Nostra Città</h1>
                 <p>Una guida semplice e chiara per i cittadini</p>
@@ -263,7 +274,7 @@
 
     <!-- Include Footer da file esterno -->
     <script>
-        fetch('includes/footer.html?v=' + Date.now())
+        fetch('includes/footer.html')
             .then(response => response.text())
             .then(data => {
                 document.body.insertAdjacentHTML('beforeend', data);

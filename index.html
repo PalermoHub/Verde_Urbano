@@ -25,13 +25,13 @@
    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
     <link rel="stylesheet" href="css/prunecluster.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/leaflet-hash@0.2.1/leaflet-hash.min.js"></script>
-    <script src="js/lib/PruneCluster.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet-hash@0.2.1/leaflet-hash.min.js" defer></script>
+    <script src="js/lib/PruneCluster.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js" defer></script>
    
        <!-- Meta tags per social sharing -->
     <meta property="og:url" content="https://palermohub.github.io/Verde_Urbano/">
@@ -46,14 +46,22 @@
     <meta name="twitter:description" content="Ufficio Autonomo Gestione Verde Urbano, Agricoltura Urbana e Rapporti con Re.Se.T.">
     <meta name="twitter:image" content="https://palermohub.github.io/Verde_Urbano/img/Social_Card.jpg">
    
- 	 <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-KHR1GHDRQS"></script>
+ 	 <!-- Google tag (gtag.js) — caricato solo dopo consenso -->
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-KHR1GHDRQS');
+  (function() {
+    var consent = null;
+    try { consent = localStorage.getItem('vu_cookie_consent'); } catch(e) {}
+    if (consent === 'yes') {
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-KHR1GHDRQS';
+      document.head.appendChild(s);
+      gtag('js', new Date());
+      gtag('config', 'G-KHR1GHDRQS');
+    }
+  })();
 </script>	   
    
 </head>
@@ -107,21 +115,7 @@
         <div class="loader-counter" id="loaderCounter">
             <i class="fas fa-seedling"></i> <span id="treeCount">0</span> alberi mappati
         </div>
-		<div class="loader-avviso">
-		<p><strong>Benvenuti nella demo del sito!</strong></p>
-<p>Questo sito è in fase di test e al momento è ad uso esclusivo del gruppo di lavoro per le valutazioni.</p> <br>
-        <p>In questa fase vogliamo:</p>
-        <ul>
-            <li>Verificare e aggiornare i contenuti;</li>
-            <li>Testare come funziona la struttura;</li>
-            <li>Individuare eventuali problemi;</li>
-            <li>Migliorare le prestazioni complessive;</li>
-        </ul><br>
-<p>Una volta completati questi controlli, il sito sarà integrato nel portale istituzionale e sarà disponibile per tutti gli utenti.</p>
-<br> <p><strong>Nota bene:</strong> durante la navigazione potrebbero verificarsi alcuni inconvenienti tecnici. La vostra collaborazione è preziosa per aiutarci a rendere il sito finale più efficiente e affidabile.</p><br>
-<p><strong>Grazie per il vostro contributo!</strong></p>
-		</div>
-        <div class="loader-details">
+		<div class="loader-details">
             <p id="loaderStatus">
                 <i class="fas fa-spinner fa-spin"></i> <span id="loaderStatusText">Inizializzazione...</span>
             </p>
@@ -131,7 +125,7 @@
 </div>
 
 <!-- DEMO Stamp -->
-    <div class="demo-stamp">DEMO!</div>
+    <div class="demo-stamp" title="Versione di test — uso interno">BETA</div>
 
     <!-- LIVELLO 1: SLIM HEADER (Blu) -->
     <div class="slim-header" id="slimHeader">
@@ -154,9 +148,9 @@
                 </div>
             </div>
             <div class="header-actions">
-                <div class="info-icon" id="infoBtn" title="Informazioni su questa app">
+                <button type="button" class="info-icon" id="infoBtn" title="Informazioni su questa app" aria-label="Informazioni su questa app">
                     <i class="fas fa-circle-info"></i>
-                </div>
+                </button>
             </div>
         </div>
     </header>
@@ -172,15 +166,19 @@
                 </span>
                 <!-- BLOCCO 2: Visibile solo desktop (testo completo + link) -->
                 <span class="banner-text-extra">
-                    : Riqualificazione Stradale e Arredo della Città   <!--  -
+                    : Riqualificazione Stradale e Arredo della Città &middot;
                     <a href="https://www.opencup.gov.it//portale/it/web/opencup/home/progetto/-/cup/D71G23000050001"
-                       target="_blank" title="Visualizza su OpenCUP">
+                       target="_blank" rel="noopener" title="Visualizza su OpenCUP"
+                       style="color:inherit;text-decoration:underline;text-underline-offset:2px;opacity:.92;">
                         Accordo Quadro - CUP D71G23000050001
-                    </a> -->
+                    </a>
                 </span>
             </h2>
 			<div class="banner-actions">
-                <button class="search-trigger" id="searchBtn" title="Cerca nel progetto (Ctrl+K)">
+                <button class="compact-toggle" id="compactToggle" aria-label="Mostra/nascondi intestazione completa" title="Modalità compatta">
+                    <i class="fas fa-compress-alt"></i>
+                </button>
+                <button class="search-trigger" id="searchBtn" title="Cerca nel progetto (Ctrl+K)" aria-label="Apri ricerca">
                     <i class="fas fa-search"></i>
                     <span class="search-trigger-text">Cerca</span>
                     <span class="search-trigger-shortcut">Ctrl+K</span>
@@ -223,7 +221,7 @@
 	
 	    <!-- Include Modale Info da file esterno -->
     <script>
-        fetch('includes/info-modal.html?v=' + Date.now())
+        fetch('includes/info-modal.html')
             .then(response => response.text())
             .then(data => {
                 document.body.insertAdjacentHTML('beforeend', data);
@@ -245,7 +243,7 @@
                 <div class="sb-tab-btns">
                     <button class="sb-tab-btn active" data-tab="filtri" onclick="showSidebarTab('filtri')"><i class="fas fa-filter"></i> Filtri</button>
                     <button class="sb-tab-btn" data-tab="lavorazione" onclick="showSidebarTab('lavorazione')"><i class="fas fa-tools"></i> Lavoraz.</button>
-                    <button class="sb-tab-btn" data-tab="progetti" onclick="showSidebarTab('progetti')"><i class="fas fa-folder-open"></i> Progetti</button>
+                    
                 </div>
 
                 <!-- Pane: Filtri -->
@@ -380,14 +378,24 @@
                                 <div class="filter-info" id="siteInfo"></div>
                             </div>
                             <div class="filter-group">
-                                <label>Altezza Minima (m)</label>
-                                <input type="range" id="minHeight" min="0" max="16" value="0" onchange="updateHeightLabel(); applyFilters()">
-                                <div class="filter-info">Min: <span id="minHeightLabel">0</span>m</div>
+                                <label>Altezza (m)</label>
+                                <div class="dual-range">
+                                    <div class="dual-range__track"></div>
+                                    <div class="dual-range__highlight" id="heightHighlight"></div>
+                                    <input type="range" id="minHeight" min="0" max="70" value="0" step="1" class="dual-range__input dual-range__input--min" oninput="syncDualRange(this); applyFilters()">
+                                    <input type="range" id="maxHeight" min="0" max="70" value="70" step="1" class="dual-range__input dual-range__input--max" oninput="syncDualRange(this); applyFilters()">
+                                </div>
+                                <div class="filter-info"><span id="minHeightLabel">0</span> &ndash; <span id="maxHeightLabel">70</span> m</div>
                             </div>
                             <div class="filter-group">
-                                <label>Diametro Minimo (cm)</label>
-                                <input type="range" id="minDiameter" min="0" max="137" value="0" onchange="updateDiameterLabel(); applyFilters()">
-                                <div class="filter-info">Min: <span id="minDiameterLabel">0</span>cm</div>
+                                <label>Diametro (cm)</label>
+                                <div class="dual-range">
+                                    <div class="dual-range__track"></div>
+                                    <div class="dual-range__highlight" id="diameterHighlight"></div>
+                                    <input type="range" id="minDiameter" min="0" max="300" value="0" step="1" class="dual-range__input dual-range__input--min" oninput="syncDualRange(this); applyFilters()">
+                                    <input type="range" id="maxDiameter" min="0" max="300" value="300" step="1" class="dual-range__input dual-range__input--max" oninput="syncDualRange(this); applyFilters()">
+                                </div>
+                                <div class="filter-info"><span id="minDiameterLabel">0</span> &ndash; <span id="maxDiameterLabel">300</span> cm</div>
                             </div>
                             <div class="filter-group">
                                 <label><i class="fas fa-broom"></i> Necessità Pulizia Foglie</label>
@@ -416,33 +424,17 @@
                     <p style="font-size: 10px; font-style: italic;"><b>NOTA IMPORTANTE:</b> I costi indicati sono suscettibili di variazioni a causa di: modifiche in corso d'opera, variazione dei prezzi delle materie prime, esigenze progettuali non preventivate, ecc.</p>
                 </div>
 
-                <!-- Pane: Progetti -->
-                <div class="sb-pane" id="sb-pane-progetti">
-                  <!--   <div class="sb-section-title"><i class="fas fa-folder-open"></i> Progetti</div> -->
-                    <ol class="progetti-list">
-                        <li>
-                            <div class="progetto-item">
-                                <div class="progetto-nome">Accordo Quadro - CUP D71G23000050001</div>
-                                <a href="https://www.opencup.gov.it//portale/it/web/opencup/home/progetto/-/cup/D71G23000050001"
-                                   target="_blank"
-                                   title="Accordo Quadro - CUP D71G23000050001"
-                                   class="progetto-link">
-                                    <i class="fas fa-external-link-alt"></i> Apri su OpenCUP
-                                </a>
-                            </div>
-                        </li>
-                    </ol>
-                </div>
+                
 
                 <!-- Pulsanti azione filtri (fuori dai pane, sempre in fondo) -->
                 <div class="sb-actions" id="sb-filtri-actions">
-                    <button onclick="applyFilters()"><i class="fas fa-check"></i> Applica</button>
-                    <button class="secondary" onclick="resetFilters()"><i class="fas fa-rotate-left"></i> Ripristina</button>
-                    <button class="btn-filtri-attivi" onclick="showActiveFilters()" title="Mostra i filtri attivi"><i class="fas fa-filter"></i> Filtri Attivi</button>
+                    <button onclick="applyFilters()" title="Applica i filtri"><i class="fas fa-check"></i> Applica</button>
+                    <button class="secondary" onclick="resetFilters()" title="Ripristina tutti i filtri"><i class="fas fa-rotate-left"></i> Ripristina</button>
+                    <button class="btn-filtri-attivi" onclick="exportFilteredTrees('csv')" title="Esporta CSV degli alberi visualizzati"><i class="fas fa-file-csv"></i> Esporta CSV</button>
                 </div>
 
                 <!-- Footer sidebar sx-->
-                <div class="sb-footer">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></div>
+                <div class="sb-footer">Comune di Palermo &middot; Verde Urbano</div>
 
             </div>
             <div class="sb-resize-handle" id="sbResizeHandle"></div>
@@ -451,8 +443,44 @@
 
         <!-- Area Centrale: Mappa -->
         <div class="main">
+            <!-- Chip filtri attivi (sopra la mappa) -->
+            <div id="activeFilterChips" class="filter-chips-bar" aria-live="polite" role="region" aria-label="Filtri attivi"></div>
             <div class="map-container">
                 <div id="map"></div>
+                <!-- Time-slider: ancorato in cima, sotto la zoom-bar -->
+                <div class="vu-ts" id="vuTimeslider" aria-hidden="true">
+                    <div class="vu-ts__head">
+                        <span class="vu-ts__title"><i class="fas fa-clock-rotate-left"></i> Lavorazione</span>
+                        <span class="vu-ts__range" id="vuTSRange">—</span>
+                        <div class="vu-ts__phases">
+                            <label><input type="checkbox" id="vuTSPhaseF1" checked><span class="vu-ts__phase vu-ts__phase--f1">F1</span></label>
+                            <label><input type="checkbox" id="vuTSPhaseF2" checked><span class="vu-ts__phase vu-ts__phase--f2">F2</span></label>
+                            <label><input type="checkbox" id="vuTSPhaseF3" checked><span class="vu-ts__phase vu-ts__phase--f3">F3</span></label>
+                        </div>
+                        <button class="vu-ts__btn" id="vuTSPlay" title="Anima il periodo" aria-label="Anima" disabled><i class="fas fa-play"></i></button>
+                        <button class="vu-ts__btn" id="vuTSReset" title="Reset periodo" aria-label="Reset"><i class="fas fa-rotate-left"></i></button>
+                        <button class="vu-ts__close" id="vuTSClose" title="Chiudi pannello" aria-label="Chiudi">×</button>
+                    </div>
+                    <div class="vu-ts__body">
+                        <div class="dual-range vu-ts__slider">
+                            <div class="dual-range__track"></div>
+                            <div class="dual-range__highlight" id="vuTSHL"></div>
+                            <input type="range" id="vuTSStart" min="0" max="100" value="0" step="1" class="dual-range__input dual-range__input--min" disabled>
+                            <input type="range" id="vuTSEnd"   min="0" max="100" value="100" step="1" class="dual-range__input dual-range__input--max" disabled>
+                        </div>
+                        <div class="vu-ts__legend">
+                            <span id="vuTSStartLabel">—</span>
+                            <span id="vuTSEndLabel">—</span>
+                        </div>
+                    </div>
+                    <div class="vu-ts__empty" id="vuTSEmpty">
+                        <i class="fas fa-circle-info"></i>
+                        Nessuna data di lavorazione presente nel dataset. Il filtro si attiverà automaticamente quando le colonne F1/F2/F3 verranno popolate.
+                    </div>
+                </div>
+                <button class="vu-ts-toggle" id="vuTSToggle" title="Periodo lavorazione" aria-controls="vuTimeslider" aria-expanded="false" style="display:none">
+                    <i class="fas fa-clock-rotate-left"></i>
+                </button>
             </div>
         </div>
 
@@ -576,7 +604,7 @@
                 </div>
 
                 <!-- Footer sidebar dx-->
-                <div class="sb-footer">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+                <div class="sb-footer">Dati filtrati in tempo reale</div>
 
             </div>
         </div>
@@ -588,7 +616,7 @@
         <div class="modal modal-tree-details">
             <div class="modal-header">
                 <h2><i class="fas fa-leaf"></i> Dettagli Albero</h2>
-                <button class="modal-close" onclick="closeTreeDetails()"><i class="fas fa-times"></i></button>
+                <button class="modal-close" onclick="closeTreeDetails()" aria-label="Chiudi dettagli albero"><i class="fas fa-times"></i></button>
             </div>
             <div class="modal-body">
                 <div id="selectedTreeInfo" class="details-grid">
@@ -623,7 +651,7 @@
         <div class="modal">
             <div class="modal-header">
                 <h2><i class="fas fa-filter"></i> Filtri Attivi</h2>
-                <button class="modal-close" onclick="closeActiveFilters()"><i class="fas fa-times"></i></button>
+                <button class="modal-close" onclick="closeActiveFilters()" aria-label="Chiudi filtri attivi"><i class="fas fa-times"></i></button>
             </div>
             <div class="modal-body">
                 <div id="activeFiltersContent">
@@ -652,10 +680,11 @@
 <script src="js/14_active_filters.js"></script>
 <script src="js/15_social_share.js"></script>
 <script src="js/16_url_routing.js"></script>
+<script src="js/17_timeslider.js"></script>
 
     <!-- Include Footer da file esterno -->
     <script>
-        fetch('includes/footer.html?v=' + Date.now())
+        fetch('includes/footer.html')
             .then(response => response.text())
             .then(data => {
                 document.body.insertAdjacentHTML('beforeend', data);
@@ -696,20 +725,41 @@
     <!-- Accordion filtri + sidebar tab + toggle -->
     <script>
     function toggleAccordion(id) {
-        document.getElementById('accordion-' + id).classList.toggle('collapsed');
+        const el = document.getElementById('accordion-' + id);
+        if (!el) return;
+        el.classList.toggle('collapsed');
+        try {
+            const key = 'vu_acc_' + id;
+            localStorage.setItem(key, el.classList.contains('collapsed') ? '1' : '0');
+        } catch(e) {}
     }
+    // Restore accordion state from localStorage
+    (function restoreAccordions() {
+        ['progetto','territoriale','botanica'].forEach(function(id) {
+            try {
+                const v = localStorage.getItem('vu_acc_' + id);
+                if (v === null) return;
+                const el = document.getElementById('accordion-' + id);
+                if (!el) return;
+                if (v === '1') el.classList.add('collapsed');
+                else el.classList.remove('collapsed');
+            } catch(e) {}
+        });
+    })();
     function showSidebarTab(tabId) {
         document.querySelectorAll('#sidebarLeft .sb-pane').forEach(p => p.classList.remove('active'));
         document.querySelectorAll('#sidebarLeft .sb-tab-btn').forEach(b => b.classList.remove('active'));
         document.getElementById('sb-pane-' + tabId).classList.add('active');
         document.querySelector('#sidebarLeft .sb-tab-btn[data-tab="' + tabId + '"]').classList.add('active');
         document.getElementById('sb-filtri-actions').style.display = tabId === 'filtri' ? 'flex' : 'none';
+        try { localStorage.setItem('vu_tab_left', tabId); } catch(e) {}
     }
     function showRightSidebarTab(tabId) {
         document.querySelectorAll('#sidebarRight .sb-pane').forEach(p => p.classList.remove('active'));
         document.querySelectorAll('#sidebarRight .sb-tab-btn').forEach(b => b.classList.remove('active'));
         document.getElementById('sb-pane-' + tabId).classList.add('active');
         document.querySelector('#sidebarRight .sb-tab-btn[data-tab="' + tabId + '"]').classList.add('active');
+        try { localStorage.setItem('vu_tab_right', tabId); } catch(e) {}
         if (tabId === 'dataviz' && typeof Chart !== 'undefined') {
             setTimeout(() => {
                 const c = Chart.getChart('healthChart');
@@ -760,6 +810,20 @@
         }
     })();
 
+
+    /* Restore sidebar tab state from localStorage */
+    (function restoreSidebarState() {
+        try {
+            const leftTab = localStorage.getItem('vu_tab_left');
+            if (leftTab && document.querySelector('#sidebarLeft .sb-tab-btn[data-tab="' + leftTab + '"]')) {
+                showSidebarTab(leftTab);
+            }
+            const rightTab = localStorage.getItem('vu_tab_right');
+            if (rightTab && document.querySelector('#sidebarRight .sb-tab-btn[data-tab="' + rightTab + '"]')) {
+                showRightSidebarTab(rightTab);
+            }
+        } catch(e) {}
+    })();
 
     /* Left resize handle */
     (function () {
@@ -834,6 +898,42 @@
     <!-- Script per sticky header -->
     <script src="js/header.js"></script>
 
+    <!-- Compact header toggle -->
+    <script>
+    (function() {
+        var btn = document.getElementById('compactToggle');
+        if (!btn) return;
+        var slim = document.getElementById('slimHeader');
+        var main = document.getElementById('mainHeader');
+        var KEY = 'vu_compact_mode';
+
+        function apply(on) {
+            if (!slim || !main) return;
+            slim.classList.toggle('hidden', on);
+            main.classList.toggle('hidden', on);
+            btn.classList.toggle('active', on);
+            btn.setAttribute('aria-pressed', on ? 'true' : 'false');
+            btn.title = on ? 'Mostra intestazione completa' : 'Modalità compatta';
+            var icon = btn.querySelector('i');
+            if (icon) icon.className = on ? 'fas fa-expand-alt' : 'fas fa-compress-alt';
+            if (typeof updateContainerHeight === 'function') {
+                requestAnimationFrame(updateContainerHeight);
+            } else {
+                window.dispatchEvent(new Event('resize'));
+            }
+        }
+
+        var saved = localStorage.getItem(KEY) === '1';
+        apply(saved);
+
+        btn.addEventListener('click', function() {
+            var next = !slim.classList.contains('hidden');
+            localStorage.setItem(KEY, next ? '1' : '0');
+            apply(next);
+        });
+    })();
+    </script>
+
     <!-- Loader Script -->
     <script src="js/loader.js"></script>
 
@@ -852,6 +952,46 @@
             document.body.classList.remove('modal-open');
         }
     }
+    </script>
+
+
+    <!-- Cookie consent banner (GDPR) -->
+    <div id="cookieBanner" class="cookie-banner" role="dialog" aria-label="Consenso cookie" hidden>
+        <div class="cookie-banner__text">
+            <strong><i class="fas fa-cookie-bite"></i> Cookie e statistiche d'uso</strong>
+            <p>Questo sito usa cookie tecnici per il suo funzionamento. Con il tuo consenso vengono usati anche cookie analitici (Google Analytics) per misurare l'uso del sito in forma aggregata e anonima.</p>
+        </div>
+        <div class="cookie-banner__actions">
+            <button type="button" id="cookieAcceptAll" class="cookie-btn cookie-btn--primary">Accetta tutti</button>
+            <button type="button" id="cookieReject" class="cookie-btn">Solo necessari</button>
+        </div>
+    </div>
+    <script>
+    (function() {
+        var KEY = 'vu_cookie_consent';
+        var banner = document.getElementById('cookieBanner');
+        var consent = null;
+        try { consent = localStorage.getItem(KEY); } catch(e) {}
+        if (consent === 'yes' || consent === 'no' || !banner) return;
+        function show() { banner.hidden = false; }
+        // delay slightly so it appears after the loader fades out
+        setTimeout(show, 1200);
+        document.getElementById('cookieAcceptAll').addEventListener('click', function() {
+            try { localStorage.setItem(KEY, 'yes'); } catch(e) {}
+            banner.hidden = true;
+            // Load gtag now
+            var s = document.createElement('script');
+            s.async = true;
+            s.src = 'https://www.googletagmanager.com/gtag/js?id=G-KHR1GHDRQS';
+            document.head.appendChild(s);
+            gtag('js', new Date());
+            gtag('config', 'G-KHR1GHDRQS');
+        });
+        document.getElementById('cookieReject').addEventListener('click', function() {
+            try { localStorage.setItem(KEY, 'no'); } catch(e) {}
+            banner.hidden = true;
+        });
+    })();
     </script>
 
 </body>

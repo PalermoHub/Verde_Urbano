@@ -47,10 +47,10 @@ function parseCSV(text) {
 // Funzione per caricare dati foglie stagionali
 async function loadSeasonalLeavesData() {
     try {
-        console.log('📥 Caricamento dati foglie stagionali...');
+        window.VU_DEBUG && console.log('📥 Caricamento dati foglie stagionali...');
 
         let csvText;
-        const cacheBuster = '?t=' + new Date().getTime();
+        const cacheBuster = '';
         try {
             const response = await fetch('dati/16_tot_foglie.csv' + cacheBuster);
             if (!response.ok) throw new Error('Fetch fallito');
@@ -98,7 +98,7 @@ async function loadSeasonalLeavesData() {
         }
 
         seasonalLeavesData = dataByStreet;
-        console.log('✅ Dati foglie stagionali caricati:', Object.keys(dataByStreet).length, 'vie');
+        window.VU_DEBUG && console.log('✅ Dati foglie stagionali caricati:', Object.keys(dataByStreet).length, 'vie');
         return true;
     } catch (error) {
         console.error('❌ Errore caricamento dati foglie:', error);
@@ -109,11 +109,11 @@ async function loadSeasonalLeavesData() {
 // Funzione per caricare CSV e convertire in GeoJSON
 async function loadCSVData() {
     try {
-        console.log('📥 Caricamento CSV in corso...');
+        window.VU_DEBUG && console.log('📥 Caricamento CSV in corso...');
 
         // Prova prima con fetch, poi fallback a XMLHttpRequest
         let csvText;
-        const cacheBuster = '?t=' + new Date().getTime();
+        const cacheBuster = '';
         try {
             const response = await fetch('dati/17_query_web.csv' + cacheBuster);
             if (!response.ok) throw new Error('Fetch fallito');
@@ -137,14 +137,14 @@ async function loadCSVData() {
         }
 
         const csvData = parseCSV(csvText);
-        console.log(`📊 Righe CSV parsate: ${csvData.length}`);
+        window.VU_DEBUG && console.log(`📊 Righe CSV parsate: ${csvData.length}`);
 
         // Debug: mostra i campi del primo albero
         if (csvData.length > 0) {
             const firstRow = csvData[0];
-            console.log('🔍 Campi primo albero:', Object.keys(firstRow));
-            console.log('🔍 Lat:', firstRow['Lat']);
-            console.log('🔍 Log:', firstRow['Log']);
+            window.VU_DEBUG && console.log('🔍 Campi primo albero:', Object.keys(firstRow));
+            window.VU_DEBUG && console.log('🔍 Lat:', firstRow['Lat']);
+            window.VU_DEBUG && console.log('🔍 Log:', firstRow['Log']);
         }
 
         const features = [];
@@ -214,7 +214,7 @@ async function loadCSVData() {
             features: features
         };
 
-        console.log(`✅ CSV caricato: ${features.length} alberi`);
+        window.VU_DEBUG && console.log(`✅ CSV caricato: ${features.length} alberi`);
         return true;
     } catch (error) {
         console.error('❌ Errore caricamento CSV:', error);
