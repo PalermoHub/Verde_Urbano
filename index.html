@@ -273,19 +273,12 @@
                         </div>
                         <div class="filter-accordion-body">
                             <div class="filter-group" id="progettoFilterGroup">
-                                <div class="multi-select-wrap" id="progettoMultiWrap">
-                                    <div class="multi-select-trigger" onclick="toggleProgettoDropdown()" id="progettoTrigger">
-                                        <span id="progettoLabel">Tutti i progetti</span>
-                                        <i class="fas fa-chevron-down" id="progettoChevron"></i>
-                                    </div>
-                                    <div class="multi-select-list" id="progettoList" style="display:none;">
-                                        <label class="multi-select-item multi-select-all-item">
-                                            <input type="checkbox" id="progettoAll" onchange="toggleAllProgetti(this)" checked>
-                                            <span>Seleziona tutti</span>
-                                        </label>
-                                        <div id="progettoOptions"></div>
-                                    </div>
-                                </div>
+                                <label class="progetto-all-toggle">
+                                    <input type="checkbox" id="progettoAll" onchange="toggleAllProgetti(this)" checked>
+                                    <span class="toggle-switch"></span>
+                                    <span>Seleziona / deseleziona tutti</span>
+                                </label>
+                                <div id="progettoOptions" class="progetto-cards-grid"></div>
                                 <div class="filter-info" id="progettoInfo"></div>
                             </div>
                         </div>
@@ -448,8 +441,8 @@
                     <button class="btn-filtri-attivi" onclick="showActiveFilters()" title="Mostra i filtri attivi"><i class="fas fa-filter"></i> Filtri Attivi</button>
                 </div>
 
-                <!-- Footer -->
-                <div class="sb-footer">by <a href="https://www.linkedin.com/in/gbvitrano/" target="_blank" rel="noopener">@gbvitrano</a></div>
+                <!-- Footer sidebar sx-->
+                <div class="sb-footer">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></div>
 
             </div>
             <div class="sb-resize-handle" id="sbResizeHandle"></div>
@@ -582,8 +575,8 @@
                     </div>
                 </div>
 
-                <!-- Footer -->
-                <div class="sb-footer">by <a href="https://www.linkedin.com/in/gbvitrano/" target="_blank" rel="noopener">@gbvitrano</a></div>
+                <!-- Footer sidebar dx-->
+                <div class="sb-footer">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
 
             </div>
         </div>
