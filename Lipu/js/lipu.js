@@ -1,3 +1,17 @@
+// FILTRI CONFIG
+const CAMPO={
+  circoscrizione:['Circoscrizione','circoscrizione','CIRCOSCRIZIONE'],
+  quartiere:['Quartiere','quartiere','QUARTIERE'],
+  upl:['UPL','upl','Upl'],
+  odonimo:['Odonimo','odonimo','Via','via','ODONIMO'],
+  genere:['Genere','genere','GENERE'],
+  nome_scientifico:['Nome scientifico','Nome_scientifico','nome_scientifico','NOME_SCIENTIFICO','Specie','specie']
+};
+const FORDER=['circoscrizione','quartiere','upl','odonimo','genere','nome_scientifico'];
+const FKEY={circoscrizione:'circ',quartiere:'quart',upl:'upl',odonimo:'odon',genere:'genere',nome_scientifico:'nome_sci'};
+const FDEFAULT={circoscrizione:'Tutte le circoscrizioni',quartiere:'Tutti i quartieri',upl:'Tutte le UPL',odonimo:'Tutte le strade',genere:'Tutti i generi',nome_scientifico:'Tutte le specie'};
+const FLABEL={circoscrizione:'Circ.',quartiere:'Quartiere',upl:'UPL',odonimo:'Strada',genere:'Genere',nome_scientifico:'Specie'};
+
 // CONFIG
 const CSV_OPERATORI='https://docs.google.com/spreadsheets/d/e/2PACX-1vR9A6NCjRN8wkbUoctx9W4p07kckFmqLwVaySZtPcEDGA5KAXD5_mXsnTSyS1IAaZay9eR-j5EbocDt/pub?gid=775899245&single=true&output=csv';
 const CSV_ISPEZIONI='https://docs.google.com/spreadsheets/d/e/2PACX-1vR9A6NCjRN8wkbUoctx9W4p07kckFmqLwVaySZtPcEDGA5KAXD5_mXsnTSyS1IAaZay9eR-j5EbocDt/pub?gid=921930186&single=true&output=csv';
@@ -9,6 +23,9 @@ let operatori=[],statoMap={},coordsMap={};
 let currentUser=null,currentProps=null,currentCoords=null;
 let checks={nido:null,richiami:null,andirivieni:null},esito=null,fotosBase64=[null,null,null];
 let map=null,pinBuffer='';
+let allFeats=[],allFeatsIds=new Set();
+let filtriAttivi={circoscrizione:'',quartiere:'',upl:'',odonimo:'',genere:'',nome_scientifico:''};
+let sidebarOpen=true;
 
 // CSV (solo operatori e ispezioni)
 function pLine(l){const o=[];let f='',q=false;for(let i=0;i<l.length;i++){const c=l[i];if(c==='"'){if(q&&l[i+1]==='"'){f+='"';i++;}else q=!q;}else if(c===','&&!q){o.push(f);f='';}else f+=c;}o.push(f);return o;}
@@ -53,7 +70,7 @@ function doLogout(){pinBuffer='';updDots();currentUser=null;const ls=document.ge
 function initMap(){
   const protocol=new pmtiles.Protocol();
   maplibregl.addProtocol('pmtiles',protocol.tile);
-  const pmUrl='pmtiles://'+new URL('dati/dati_alberi.pmtiles',document.baseURI).href;
+  const pmUrl='pmtiles://https://palermohub.github.io/Verde_Urbano/Lipu/dati/dati_alberi.pmtiles';
 
   map=new maplibregl.Map({
     container:'map',
@@ -93,23 +110,38 @@ function initMap(){
         }
       ]
     },
-    center:[13.358,38.119],zoom:13
+    center:[13.358,38.119],zoom:13,
+    hash:true,minZoom:12,maxZoom:17
   });
 
   map.addControl(new maplibregl.NavigationControl(),'top-right');
 
-  // Raccoglie coordinate da tiles man mano che caricano — aggiorna overlay ispezioni
-  map.on('idle',()=>{
+  function raccogliCoords(){
     const feats=map.querySourceFeatures('alberi',{sourceLayer:PMTILES_LAYER});
     let nuovi=false;
     feats.forEach(f=>{
       const id=String(f.properties['ID albero']||f.properties['ID_albero']||f.properties['id_albero']||'').trim();
-      if(id&&!coordsMap[id]&&f.geometry&&f.geometry.coordinates){
-        coordsMap[id]=f.geometry.coordinates;nuovi=true;
+      if(!id||!f.geometry||!f.geometry.coordinates)return;
+      if(!coordsMap[id])coordsMap[id]=f.geometry.coordinates;
+      if(!allFeatsIds.has(id)){
+        allFeatsIds.add(id);
+        allFeats.push({id,
+          circ:getF(f.properties,'circoscrizione'),
+          quart:getF(f.properties,'quartiere'),
+          upl:getF(f.properties,'upl'),
+          odon:getF(f.properties,'odonimo'),
+          genere:getF(f.properties,'genere'),
+          nome_sci:getF(f.properties,'nome_scientifico')
+        });
+        nuovi=true;
       }
     });
-    if(nuovi)updOverlay();
-  });
+    if(nuovi){updOverlay();updSidebar();}
+  }
+
+  map.on('idle',raccogliCoords);
+  map.on('moveend',raccogliCoords);
+  map.on('sourcedata',e=>{if(e.sourceId==='alberi'&&e.tile)raccogliCoords();});
 
   ['alberi-cerchi','overlay-cerchi'].forEach(l=>{
     map.on('click',l,apriClick);
@@ -131,7 +163,9 @@ function apriClick(e){
 function updOverlay(){
   if(!map||!map.getSource('overlay'))return;
   const C={ok:'#40916C',pending:'#E76F00',stop:'#C1121F'};
+  const fids=FORDER.some(c=>filtriAttivi[c])?getFilteredIds():null;
   const feats=Object.entries(statoMap).map(([id,s])=>{
+    if(fids&&!fids.has(id))return null;
     const c=coordsMap[id];if(!c)return null;
     return{type:'Feature',geometry:{type:'Point',coordinates:c},properties:{id_albero:id,colore:C[s]||'#aaa'}};
   }).filter(Boolean);
@@ -218,5 +252,82 @@ async function inviaScheda(){
 }
 
 function showToast(msg,type){const t=document.getElementById('toast');t.textContent=msg;t.className=type||'';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3500);}
+
+// SIDEBAR / FILTRI
+function getF(props,campo){for(const k of CAMPO[campo]){if(props[k]!==undefined&&props[k]!==null&&String(props[k]).trim()!=='')return String(props[k]).trim();}return '';}
+
+function getFilteredFeats(){
+  let f=allFeats;
+  FORDER.forEach(c=>{if(filtriAttivi[c])f=f.filter(x=>x[FKEY[c]]===filtriAttivi[c]);});
+  return f;
+}
+function getFilteredIds(){return new Set(getFilteredFeats().map(f=>f.id));}
+
+function cambiaFiltro(campo){
+  filtriAttivi[campo]=document.getElementById('f-'+campo).value;
+  updSidebar();applyFiltriMappa();
+}
+
+function resetFiltri(){
+  FORDER.forEach(c=>{filtriAttivi[c]='';});
+  updSidebar();applyFiltriMappa();
+}
+
+function removeFiltro(campo){
+  filtriAttivi[campo]='';
+  updSidebar();applyFiltriMappa();
+}
+
+function updSidebar(){
+  FORDER.forEach(c=>{
+    const sel=document.getElementById('f-'+c);if(!sel)return;
+    const cur=filtriAttivi[c];
+    // Faceted: opzioni = valori presenti con TUTTI gli altri filtri attivi (escludo me stesso)
+    let pool=allFeats;
+    FORDER.forEach(other=>{if(other!==c&&filtriAttivi[other])pool=pool.filter(f=>f[FKEY[other]]===filtriAttivi[other]);});
+    const vals=[...new Set(pool.map(f=>f[FKEY[c]]).filter(Boolean))].sort((a,b)=>a.localeCompare(b,'it'));
+    sel.innerHTML=`<option value="">${FDEFAULT[c]}</option>`;
+    vals.forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;if(v===cur)o.selected=true;sel.appendChild(o);});
+    sel.disabled=vals.length===0;
+    // Auto-invalida selezione se non più disponibile
+    if(cur&&!vals.includes(cur)){filtriAttivi[c]='';sel.value='';}
+  });
+  const hasF=FORDER.some(c=>filtriAttivi[c]);
+  const cnt=getFilteredFeats().length;
+  const tot=allFeats.length;
+  document.getElementById('fi-count').textContent=hasF?`${cnt} di ${tot} alberi`:`${tot} alberi`;
+  const resetBtn=document.getElementById('fi-reset');
+  resetBtn.style.display=hasF?'inline-block':'none';
+  const badges=document.getElementById('f-badges');
+  badges.innerHTML='';
+  FORDER.forEach(c=>{
+    if(!filtriAttivi[c])return;
+    const b=document.createElement('div');b.className='f-badge';
+    b.innerHTML=`<span>${FLABEL[c]}: ${filtriAttivi[c]}</span><button onclick="removeFiltro('${c}')" title="Rimuovi filtro">&times;</button>`;
+    badges.appendChild(b);
+  });
+}
+
+function applyFiltriMappa(){
+  if(!map)return;
+  const hasF=FORDER.some(c=>filtriAttivi[c]);
+  if(!hasF){map.setFilter('alberi-cerchi',null);}
+  else{
+    const conds=[];
+    FORDER.forEach(c=>{
+      if(!filtriAttivi[c])return;
+      const keys=CAMPO[c],val=filtriAttivi[c];
+      conds.push(keys.length===1?['==',['get',keys[0]],val]:['any',...keys.map(k=>['==',['get',k],val])]);
+    });
+    map.setFilter('alberi-cerchi',conds.length===1?conds[0]:['all',...conds]);
+  }
+  updOverlay();
+}
+
+function toggleSidebar(){
+  sidebarOpen=!sidebarOpen;
+  document.getElementById('sidebar').classList.toggle('collapsed',!sidebarOpen);
+  setTimeout(()=>map&&map.resize(),320);
+}
 
 init();

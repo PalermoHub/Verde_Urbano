@@ -34,6 +34,58 @@
     <button class="logout-btn" onclick="doLogout()">Esci</button>
   </div>
   <div class="main-content">
+    <div id="sidebar">
+      <div class="sb-header" onclick="toggleSidebar()">
+        <span class="sb-icon">&#9974;</span>
+        <span class="sb-ttl">Filtri</span>
+        <span class="sb-chev" id="sb-chev">&#8964;</span>
+      </div>
+      <div class="sb-body" id="sb-body">
+        <div class="fi-box">
+          <span class="fi-count" id="fi-count">Caricamento...</span>
+          <button class="fi-reset" id="fi-reset" onclick="resetFiltri()" style="display:none">Reset</button>
+        </div>
+        <div class="f-badges" id="f-badges"></div>
+        <div class="sb-section-hdr">&#9974; Analisi Territoriale</div>
+        <div class="fgroup">
+          <div class="flabel">Circoscrizione</div>
+          <select class="fsel" id="f-circoscrizione" onchange="cambiaFiltro('circoscrizione')">
+            <option value="">Tutte le circoscrizioni</option>
+          </select>
+        </div>
+        <div class="fgroup">
+          <div class="flabel">Quartiere</div>
+          <select class="fsel" id="f-quartiere" onchange="cambiaFiltro('quartiere')">
+            <option value="">Tutti i quartieri</option>
+          </select>
+        </div>
+        <div class="fgroup">
+          <div class="flabel">UPL</div>
+          <select class="fsel" id="f-upl" onchange="cambiaFiltro('upl')">
+            <option value="">Tutte le UPL</option>
+          </select>
+        </div>
+        <div class="fgroup">
+          <div class="flabel">Odonimo (Strada)</div>
+          <select class="fsel" id="f-odonimo" onchange="cambiaFiltro('odonimo')">
+            <option value="">Tutte le strade</option>
+          </select>
+        </div>
+        <div class="sb-section-hdr">&#127807; Botanica</div>
+        <div class="fgroup">
+          <div class="flabel">Genere</div>
+          <select class="fsel" id="f-genere" onchange="cambiaFiltro('genere')">
+            <option value="">Tutti i generi</option>
+          </select>
+        </div>
+        <div class="fgroup">
+          <div class="flabel">Nome scientifico</div>
+          <select class="fsel" id="f-nome_scientifico" onchange="cambiaFiltro('nome_scientifico')">
+            <option value="">Tutte le specie</option>
+          </select>
+        </div>
+      </div>
+    </div>
     <div id="map"></div>
     <div class="map-legend">
       <div class="legend-item"><div class="legend-dot" style="background:#40916C"></div> Ispezionato OK</div>
