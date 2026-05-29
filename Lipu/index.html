@@ -39,6 +39,10 @@
     <span class="topbar-logo">LIPU</span>
     <span class="topbar-title">Protocollo Tutela Faunistica</span>
     <span class="topbar-user" id="topbar-user"></span>
+    <button class="schede-btn" onclick="openMieSchede()" title="Le mie schede">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg>
+      Le mie schede
+    </button>
     <button class="logout-btn" onclick="doLogout()">Esci</button>
   </div>
   <div id="mob-backdrop" onclick="closeMobSidebar()"></div>
@@ -137,9 +141,9 @@
           <button class="panel-close" onclick="closePanel()">X</button>
         </div>
         <div id="p-pdf-wrap" style="display:none;padding:6px 16px 8px;border-top:1px solid #c8e6d0;">
-          <a id="p-pdf-link" href="#" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#2D6A4F;text-decoration:none;background:#e8f5e9;border:1px solid #a5d6a7;border-radius:6px;padding:4px 10px;">
+          <a id="p-pdf-link" href="#" target="_blank" rel="noopener" title="" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#2D6A4F;text-decoration:none;background:#e8f5e9;border:1px solid #a5d6a7;border-radius:6px;padding:4px 10px;">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
-            Scheda PDF
+            <span class="pdf-label">Scheda PDF</span>
           </a>
         </div>
       </div>
@@ -211,6 +215,23 @@
   </div>
 </div>
 <div id="toast"></div>
+
+<div id="modal-schede">
+  <div class="ms-backdrop" onclick="closeMieSchede()"></div>
+  <div class="ms-dialog">
+    <div class="ms-header">
+      <div>
+        <div class="ms-title">Le mie schede</div>
+        <div class="ms-subtitle" id="ms-count"></div>
+      </div>
+      <button class="ms-close" onclick="closeMieSchede()">&#x2715;</button>
+    </div>
+    <div class="ms-cols">
+      <span>Data</span><span>ID Albero</span><span>Esito</span><span>PDF</span>
+    </div>
+    <div class="ms-body" id="ms-body"></div>
+  </div>
+</div>
 
 <script src="https://unpkg.com/maplibre-gl@4/dist/maplibre-gl.js"></script>
 <script src="https://unpkg.com/pmtiles@3/dist/pmtiles.js"></script>

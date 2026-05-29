@@ -17,7 +17,7 @@ const APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbxQ4Qqmyee_rzLeU9
 const PMTILES_LAYER='dati_alberi';
 
 // STATO
-let statoMap={},tsMap={},coordsMap={};
+let statoMap={},tsMap={},coordsMap={},allIspezioni=[];
 let currentUser=null,currentProps=null,currentCoords=null;
 let checks={nido:null,richiami:null,andirivieni:null},esito=null,fotosBase64=[null,null,null];
 let map=null,pinBuffer='',selectedId=null;
@@ -42,6 +42,7 @@ async function init(){
       else if(x.esito==='SOSPENDERE')statoMap[id]='stop';
       else if(x.esito==='STATO DI NECESSITÀ')statoMap[id]='pending';
       if(x.timestamp)tsMap[id]=String(x.timestamp).trim();
+      allIspezioni.push(x);
     });
     document.getElementById('login-loading').textContent='';
   }catch(e){
@@ -269,8 +270,15 @@ function openScheda(id,props){
   document.getElementById('demo-banner').style.display=isDemo()?'block':'none';
   const pdfWrap=document.getElementById('p-pdf-wrap');
   const pdfLink=document.getElementById('p-pdf-link');
-  if(tsMap[id]){pdfLink.href=buildPdfUrl(id,tsMap[id]);pdfWrap.style.display='block';}
-  else{pdfWrap.style.display='none';}
+  if(tsMap[id]){
+    const ts=tsMap[id];
+    const d=new Date(ts);
+    const dataFmt=isNaN(d)?ts.slice(0,10):d.toLocaleDateString('it-IT',{day:'2-digit',month:'2-digit',year:'numeric'});
+    pdfLink.href=buildPdfUrl(id,ts);
+    pdfLink.title='Ispezione del '+dataFmt;
+    pdfLink.querySelector('span.pdf-label').textContent='Scheda PDF · '+dataFmt;
+    pdfWrap.style.display='block';
+  }else{pdfWrap.style.display='none';}
   document.getElementById('panel').classList.add('open');
   if(isMob())document.getElementById('app').classList.add('panel-open');
 }
@@ -400,6 +408,41 @@ function buildPdfUrl(id,ts){
   return'https://raw.githubusercontent.com/PalermoHub/Verde_Urbano/main/Lipu/schede_pdf/'+idSafe+'_'+tsF+'.pdf';
 }
 
+function openMieSchede(){
+  const opId=currentUser&&currentUser.id_operatore;
+  const mie=allIspezioni.filter(x=>x.id_operatore===opId).slice().reverse();
+  const ESITO_LABEL={'NEGATIVO':'Negativo','SOSPENDERE':'Sospendere','STATO DI NECESSITÀ':'Stato di necessità'};
+  const ESITO_CLS={'NEGATIVO':'ms-ok','SOSPENDERE':'ms-stop','STATO DI NECESSITÀ':'ms-pend'};
+  let rows='';
+  if(!mie.length){
+    rows='<div class="ms-empty">Nessuna scheda inviata.</div>';
+  }else{
+    mie.forEach(x=>{
+      const ts=x.timestamp||'';
+      const d=ts?new Date(ts):null;
+      const dataFmt=d&&!isNaN(d)?d.toLocaleDateString('it-IT',{day:'2-digit',month:'2-digit',year:'numeric'}):ts.slice(0,10);
+      const oraFmt=d&&!isNaN(d)?d.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'}):'';
+      const esito=x.esito||'-';
+      const cls=ESITO_CLS[esito]||'';
+      const label=ESITO_LABEL[esito]||esito;
+      const pdfHref=x.url_pdf||(ts?buildPdfUrl(x.id_albero,ts):'');
+      const pdfBtn=pdfHref
+        ?`<a href="${pdfHref}" target="_blank" rel="noopener" class="ms-pdf-btn" title="Apri scheda PDF">PDF</a>`
+        :`<span class="ms-pdf-btn ms-pdf-na">PDF</span>`;
+      rows+=`<div class="ms-row">
+        <div class="ms-cell ms-date"><div>${dataFmt}</div><div class="ms-ora">${oraFmt}</div></div>
+        <div class="ms-cell ms-id">${x.id_albero}</div>
+        <div class="ms-cell"><span class="ms-badge ${cls}">${label}</span></div>
+        <div class="ms-cell ms-pdf">${pdfBtn}</div>
+      </div>`;
+    });
+  }
+  document.getElementById('ms-body').innerHTML=rows;
+  document.getElementById('ms-count').textContent=mie.length+' scheda'+(mie.length===1?'':'e');
+  document.getElementById('modal-schede').classList.add('open');
+}
+function closeMieSchede(){document.getElementById('modal-schede').classList.remove('open');}
+
 // SIDEBAR / FILTRI
 function getF(props,campo){for(const k of CAMPO[campo]){if(props[k]!==undefined&&props[k]!==null&&String(props[k]).trim()!=='')return String(props[k]).trim();}return '';}
 
@@ -474,8 +517,10 @@ function applyFiltriMappa(){
   updLegend();
 }
 
+const STATI_ALL=new Set(['ok','pending','stop','non_ispez']);
 function toggleStato(s){
-  if(filtroStati.has(s))filtroStati.delete(s);else filtroStati.add(s);
+  if(filtroStati.size===1&&filtroStati.has(s)){filtroStati=new Set(STATI_ALL);}
+  else{filtroStati=new Set([s]);}
   applyFiltriMappa();
 }
 

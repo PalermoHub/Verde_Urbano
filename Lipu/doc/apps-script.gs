@@ -221,17 +221,24 @@ function getInitData() {
     const data = sheetIspez.getDataRange().getValues();
     if (data.length > 1) {
       const headers = data[0].map(h => String(h).trim().toLowerCase());
-      const idxId = headers.indexOf('id_albero');
+      const idxId   = headers.indexOf('id_albero');
       const idxEsito = headers.indexOf('esito');
-      const idxTs = headers.indexOf('timestamp');
+      const idxTs   = headers.indexOf('timestamp');
+      const idxOp   = headers.indexOf('id_operatore');
+      const idxPdf  = headers.indexOf('url_pdf');
 
       if (idxId !== -1 && idxEsito !== -1) {
         for (let i = 1; i < data.length; i++) {
           const id = String(data[i][idxId]).trim();
           const esito = String(data[i][idxEsito]).trim();
           if (id) {
-            const ts = idxTs !== -1 ? String(data[i][idxTs]).trim() : '';
-            ispezioni.push({ id_albero: id, esito: esito, timestamp: ts });
+            ispezioni.push({
+              id_albero:    id,
+              esito:        esito,
+              timestamp:    idxTs  !== -1 ? String(data[i][idxTs]).trim()  : '',
+              id_operatore: idxOp  !== -1 ? String(data[i][idxOp]).trim()  : '',
+              url_pdf:      idxPdf !== -1 ? String(data[i][idxPdf]).trim() : ''
+            });
           }
         }
       }
