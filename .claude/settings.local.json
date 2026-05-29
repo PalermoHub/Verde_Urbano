@@ -40,7 +40,10 @@
       "Bash(Select-String -Path \"D:\\\\GitHub - Clone\\\\SiciliaHub\\\\Verde_Urbano\\\\css\\\\verde_urbano.css\" -Pattern \"zoom-bar|addZoomBar|leaflet-right\")",
       "Bash(Select-Object LineNumber, Line)",
       "WebFetch(domain:doc-08-24-sheets.googleusercontent.com)",
-      "WebFetch(domain:docs.google.com)"
+      "WebFetch(domain:docs.google.com)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)"
     ]
   }
 }
