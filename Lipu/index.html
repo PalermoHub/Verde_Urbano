@@ -22,6 +22,7 @@
     <div class="pin-dots" id="pin-dots"></div>
     <div class="pin-pad" id="pin-pad"></div>
     <div class="pin-error" id="pin-error"></div>
+    <div class="pin-demo-hint">PIN demo&nbsp;&nbsp;<span class="pin-demo-num">12344</span></div>
   </div>
   <div class="login-loading" id="login-loading">Caricamento dati operatori...</div>
   <div id="demo-hint" style="display:none">
@@ -91,12 +92,32 @@
         </div>
       </div>
     </div>
-    <div id="map"></div>
-    <div class="map-legend">
-      <div class="legend-item"><div class="legend-dot" style="background:#40916C"></div> Ispezionato OK</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#E76F00"></div> Stato di necessita</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#C1121F"></div> Lavori sospesi</div>
-      <div class="legend-item"><div class="legend-dot" style="background:#aaa"></div> Non ispezionato</div>
+    <div id="map">
+      <div id="map-toolbar">
+        <button class="tb-btn" id="tb-home" title="Vista iniziale" onclick="tbHome()">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        </button>
+        <button class="tb-btn" id="tb-gps" title="La mia posizione" onclick="tbGps()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg>
+        </button>
+        <button class="tb-btn" id="tb-search" title="Cerca / Filtri" onclick="tbSearch()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button>
+        <div class="tb-divider"></div>
+        <div class="tb-zoom-wrap">
+          <div class="tb-zoom-inner">
+            <input type="range" id="tb-zoom" class="tb-zoom-slider" min="12" max="18" step="1" value="13" oninput="tbZoom(this.value)">
+            <div class="tb-zoom-marks"><span>12</span><span>13</span><span>14</span><span>15</span><span>16</span><span>17</span><span>18</span></div>
+          </div>
+          <span id="tb-zoom-val" class="tb-zoom-val">13</span>
+        </div>
+      </div>
+      <div class="map-legend" id="map-legend">
+        <div class="legend-item" data-stato="ok" onclick="toggleStato('ok')"><div class="legend-dot" style="background:#40916C"></div><span>Ispezionato OK</span><span class="legend-count" id="lc-ok"></span></div>
+        <div class="legend-item" data-stato="pending" onclick="toggleStato('pending')"><div class="legend-dot" style="background:#E76F00"></div><span>Stato di necessita</span><span class="legend-count" id="lc-pending"></span></div>
+        <div class="legend-item" data-stato="stop" onclick="toggleStato('stop')"><div class="legend-dot" style="background:#C1121F"></div><span>Lavori sospesi</span><span class="legend-count" id="lc-stop"></span></div>
+        <div class="legend-item" data-stato="non_ispez" onclick="toggleStato('non_ispez')"><div class="legend-dot" style="background:#aaa"></div><span>Non ispezionato</span><span class="legend-count" id="lc-non_ispez"></span></div>
+      </div>
     </div>
     <div id="panel">
       <div class="panel-header">
@@ -121,6 +142,15 @@
             <div class="field"><div class="field-label">Ora controllo</div><div class="field-val mono" id="p-ora">-</div></div>
           </div>
           <div class="field"><div class="field-label">Ubicazione</div><div class="field-val" id="p-via2">-</div></div>
+          <div class="field-row">
+            <div class="field"><div class="field-label">Altezza chioma [m]</div><div class="field-val mono" id="p-alt-chioma">-</div></div>
+            <div class="field"><div class="field-label">Altezza complessiva [m]</div><div class="field-val mono" id="p-alt-compl">-</div></div>
+          </div>
+          <div class="field-row">
+            <div class="field"><div class="field-label">Alt. base chioma [m]</div><div class="field-val mono" id="p-alt-base">-</div></div>
+            <div class="field"><div class="field-label">Diametro tronco [m]</div><div class="field-val mono" id="p-diam-tronco">-</div></div>
+          </div>
+          <div class="field"><div class="field-label">Area protezione chioma [m²]</div><div class="field-val mono" id="p-area-chioma">-</div></div>
         </div>
         <div class="section">
           <div class="section-title">2 - Dichiarazione operatore</div>

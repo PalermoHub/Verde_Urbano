@@ -22,9 +22,10 @@ const PMTILES_LAYER='dati_alberi';
 let operatori=[],statoMap={},coordsMap={};
 let currentUser=null,currentProps=null,currentCoords=null;
 let checks={nido:null,richiami:null,andirivieni:null},esito=null,fotosBase64=[null,null,null];
-let map=null,pinBuffer='';
+let map=null,pinBuffer='',selectedId=null;
 let allFeats=[],allFeatsIds=new Set();
 let filtriAttivi={circoscrizione:'',quartiere:'',upl:'',odonimo:'',genere:'',nome_scientifico:''};
+let filtroStati=new Set(['ok','pending','stop','non_ispez']);
 let sidebarOpen=true;
 
 // CSV (solo operatori e ispezioni)
@@ -119,7 +120,7 @@ function initMap(){
           paint:{
             'circle-radius':['interpolate',['linear'],['zoom'],
               0,5.5, 6,6, 10,7, 13,9, 15,11, 18,14],
-            'circle-color':'rgba(0,0,0,0)',
+            'circle-color':'#FFD600',
             'circle-stroke-width':2.5,
             'circle-stroke-color':'#1a3d2b',
             'circle-opacity':1
@@ -127,11 +128,16 @@ function initMap(){
         }
       ]
     },
-    center:[13.358,38.119],zoom:13,
-    hash:true,minZoom:12,maxZoom:17
+    center:[13.358,38.119],zoom:12,
+    hash:true,minZoom:12,maxZoom:18,
+    maxBounds:[[13.08,37.88],[13.58,38.35]]
   });
 
-  map.addControl(new maplibregl.NavigationControl(),'top-right');
+  map.on('zoom',()=>{
+    const z=Math.round(map.getZoom());
+    const sl=document.getElementById('tb-zoom');const vl=document.getElementById('tb-zoom-val');
+    if(sl)sl.value=z;if(vl)vl.textContent=z;
+  });
 
   function raccogliCoords(){
     const feats=map.querySourceFeatures('alberi',{sourceLayer:PMTILES_LAYER});
@@ -153,18 +159,37 @@ function initMap(){
         nuovi=true;
       }
     });
-    if(nuovi){updOverlay();updSidebar();}
+    if(nuovi){updOverlay();updSidebar();updLegend();}
   }
 
   map.on('idle',raccogliCoords);
   map.on('moveend',raccogliCoords);
   map.on('sourcedata',e=>{if(e.sourceId==='alberi'&&e.tile)raccogliCoords();});
 
+  const tooltip=new maplibregl.Popup({closeButton:false,closeOnClick:false,className:'map-tooltip',offset:10,maxWidth:'220px'});
+
   ['alberi-cerchi','overlay-cerchi'].forEach(l=>{
     map.on('click',l,apriClick);
-    map.on('mouseenter',l,()=>{map.getCanvas().style.cursor='pointer';});
-    map.on('mouseleave',l,()=>{map.getCanvas().style.cursor='';});
+    map.on('mouseenter',l,e=>{
+      map.getCanvas().style.cursor='pointer';
+      const {id,odon,quart}=getTooltipProps(e.features[0].properties);
+      tooltip.setLngLat(e.lngLat).setHTML(
+        `<div class="tt-id">Id: ${id}</div>`+
+        (odon?`<div class="tt-via">${odon}</div>`:'')+
+        (quart?`<div class="tt-quart">${quart}</div>`:'')
+      ).addTo(map);
+    });
+    map.on('mousemove',l,e=>{tooltip.setLngLat(e.lngLat);});
+    map.on('mouseleave',l,()=>{map.getCanvas().style.cursor='';tooltip.remove();});
   });
+}
+
+function getTooltipProps(fp){
+  const id=String(fp['ID albero']||fp['ID_albero']||fp['id_albero']||fp['id']||'').trim();
+  let odon=getProp(fp,['Odonimo','odonimo','Via','via']);
+  let quart=getProp(fp,['Quartiere','quartiere','QUARTIERE']);
+  if((!odon||!quart)&&id){const af=allFeats.find(x=>x.id===id);if(af){odon=odon||af.odon;quart=quart||af.quart;}}
+  return{id,odon,quart};
 }
 
 function apriClick(e){
@@ -172,10 +197,12 @@ function apriClick(e){
   const p=f.properties;
   const id=String(p['ID albero']||p['ID_albero']||p['id_albero']||p['id']||'').trim();
   if(!id)return;
+  if(selectedId===id&&document.getElementById('panel').classList.contains('open')){closePanel();return;}
   if(f.geometry&&f.geometry.coordinates){
     coordsMap[id]=f.geometry.coordinates;
     map.getSource('selected').setData({type:'Feature',geometry:f.geometry,properties:{}});
   }
+  selectedId=id;
   openScheda(id,p);
 }
 
@@ -185,6 +212,7 @@ function updOverlay(){
   const fids=FORDER.some(c=>filtriAttivi[c])?getFilteredIds():null;
   const feats=Object.entries(statoMap).map(([id,s])=>{
     if(fids&&!fids.has(id))return null;
+    if(!filtroStati.has(s))return null;
     const c=coordsMap[id];if(!c)return null;
     return{type:'Feature',geometry:{type:'Point',coordinates:c},properties:{id_albero:id,colore:C[s]||'#aaa'}};
   }).filter(Boolean);
@@ -204,6 +232,12 @@ function openScheda(id,props){
   document.getElementById('p-id').textContent=id;
   document.getElementById('p-specie2').textContent=specie||id;
   document.getElementById('p-via2').textContent=via;
+  const fv=v=>v||'-';
+  document.getElementById('p-alt-chioma').textContent=fv(getProp(props,['Altezza chioma [m]','Altezza chioma','altezza_chioma']));
+  document.getElementById('p-alt-compl').textContent=fv(getProp(props,['Altezza complessiva [m]','Altezza complessiva','altezza_complessiva']));
+  document.getElementById('p-alt-base').textContent=fv(getProp(props,['Altezza della base della chioma [m]','Altezza della base della chioma','altezza_base_chioma']));
+  document.getElementById('p-area-chioma').textContent=fv(getProp(props,['Area protezione chioma [m²]','Area protezione chioma [m2]','Area protezione chioma','area_protezione_chioma']));
+  document.getElementById('p-diam-tronco').textContent=fv(getProp(props,['Diametro tronco [m]','Diametro tronco','diametro_tronco']));
   document.getElementById('p-data').textContent=now.toLocaleDateString('it-IT');
   document.getElementById('p-ora').textContent=now.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'});
   document.getElementById('firma-op').value=currentUser.nome+' '+currentUser.cognome;
@@ -219,7 +253,7 @@ function openScheda(id,props){
 }
 function closePanel(){
   document.getElementById('panel').classList.remove('open');
-  currentProps=null;
+  currentProps=null;selectedId=null;
   if(map&&map.getSource('selected'))map.getSource('selected').setData({type:'FeatureCollection',features:[]});
 }
 
@@ -342,6 +376,8 @@ function updSidebar(){
 function applyFiltriMappa(){
   if(!map)return;
   const hasF=FORDER.some(c=>filtriAttivi[c]);
+  // alberi-cerchi (grigio): visibile solo se non_ispez attivo
+  map.setLayoutProperty('alberi-cerchi','visibility',filtroStati.has('non_ispez')?'visible':'none');
   if(!hasF){map.setFilter('alberi-cerchi',null);}
   else{
     const conds=[];
@@ -353,6 +389,29 @@ function applyFiltriMappa(){
     map.setFilter('alberi-cerchi',conds.length===1?conds[0]:['all',...conds]);
   }
   updOverlay();
+  updLegend();
+}
+
+function toggleStato(s){
+  if(filtroStati.has(s))filtroStati.delete(s);else filtroStati.add(s);
+  applyFiltriMappa();
+}
+
+function updLegend(){
+  const fids=FORDER.some(c=>filtriAttivi[c])?getFilteredIds():null;
+  const pool=fids?[...fids]:allFeats.map(f=>f.id);
+  ['ok','pending','stop'].forEach(s=>{
+    const cnt=pool.filter(id=>statoMap[id]===s).length;
+    const el=document.getElementById('lc-'+s);
+    if(el)el.textContent=cnt||'';
+  });
+  const niCnt=pool.filter(id=>!statoMap[id]).length;
+  const elNi=document.getElementById('lc-non_ispez');
+  if(elNi)elNi.textContent=niCnt||'';
+  ['ok','pending','stop','non_ispez'].forEach(s=>{
+    const item=document.querySelector(`.legend-item[data-stato="${s}"]`);
+    if(item)item.classList.toggle('inactive',!filtroStati.has(s));
+  });
 }
 
 function toggleSidebar(){
@@ -360,5 +419,16 @@ function toggleSidebar(){
   document.getElementById('sidebar').classList.toggle('collapsed',!sidebarOpen);
   setTimeout(()=>map&&map.resize(),320);
 }
+
+// TOOLBAR MAPPA
+function tbHome(){map&&map.flyTo({center:[13.35151,38.14277],zoom:12,bearing:0,pitch:0});}
+function tbGps(){
+  if(!navigator.geolocation){showToast('Geolocalizzazione non disponibile','error');return;}
+  navigator.geolocation.getCurrentPosition(pos=>{
+    map&&map.flyTo({center:[pos.coords.longitude,pos.coords.latitude],zoom:16});
+  },()=>showToast('Posizione non disponibile','error'));
+}
+function tbSearch(){if(!sidebarOpen)toggleSidebar();const el=document.getElementById('f-circoscrizione');if(el)el.focus();}
+function tbZoom(v){map&&map.setZoom(Number(v));}
 
 init();
