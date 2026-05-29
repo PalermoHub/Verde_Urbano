@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="it">
 <head>
 <meta charset="UTF-8">
@@ -25,8 +25,7 @@
     <div class="pin-dots" id="pin-dots"></div>
     <div class="pin-pad" id="pin-pad"></div>
     <div class="pin-error" id="pin-error"></div>
-    <div class="pin-demo-hint">PIN demo&nbsp;&nbsp;<span class="pin-demo-num">12344</span></div>
-  </div>
+   </div>
   <div class="login-loading" id="login-loading">Caricamento dati operatori...</div>
   <div id="demo-hint" style="display:none">
     <span class="demo-hint-label">Accesso demo</span>
@@ -190,7 +189,10 @@
           <div class="section-title">Firme</div>
           <div class="firma-row">
             <div class="firma-field"><div class="field-label">Operatore</div><input type="text" class="firma-input" id="firma-op" readonly></div>
-            <div class="firma-field"><div class="field-label">Capocantiere</div><input type="text" class="firma-input" id="firma-cap" placeholder="Nome e cognome" autocomplete="off" autocorrect="off" spellcheck="false"></div>
+            <div class="firma-field"><div class="field-label">PIN Capocantiere</div><input type="password" class="firma-input" id="firma-cap-pin" placeholder="Digitare PIN" autocomplete="off" oninput="validaFirmaCap(this.value)"></div>
+          </div>
+          <div class="firma-row" style="margin-top:10px">
+            <div class="firma-field"><div class="field-label">Firma Capocantiere</div><input type="text" class="firma-input" id="firma-cap" readonly placeholder="In attesa del PIN..."></div>
           </div>
         </div>
       </div>

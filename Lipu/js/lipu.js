@@ -13,12 +13,11 @@ const FDEFAULT={circoscrizione:'Tutte le circoscrizioni',quartiere:'Tutti i quar
 const FLABEL={circoscrizione:'Circ.',quartiere:'Quartiere',upl:'UPL',odonimo:'Strada',genere:'Genere',nome_scientifico:'Specie'};
 
 // CONFIG
-const CSV_ISPEZIONI='https://docs.google.com/spreadsheets/d/e/2PACX-1vR9A6NCjRN8wkbUoctx9W4p07kckFmqLwVaySZtPcEDGA5KAXD5_mXsnTSyS1IAaZay9eR-j5EbocDt/pub?gid=921930186&single=true&output=csv';
 const APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbxQ4Qqmyee_rzLeU9ayc9gWgTDHVkTD_fwP7XmqXfxyQ8ube2Aq-759KjnWe3t3DdqBgQ/exec';
 const PMTILES_LAYER='dati_alberi';
 
 // STATO
-let operatori=[],statoMap={},coordsMap={};
+let statoMap={},coordsMap={};
 let currentUser=null,currentProps=null,currentCoords=null;
 let checks={nido:null,richiami:null,andirivieni:null},esito=null,fotosBase64=[null,null,null];
 let map=null,pinBuffer='',selectedId=null;
@@ -27,29 +26,27 @@ let filtriAttivi={circoscrizione:'',quartiere:'',upl:'',odonimo:'',genere:'',nom
 let filtroStati=new Set(['ok','pending','stop','non_ispez']);
 let sidebarOpen=true;
 
-// CSV (solo operatori e ispezioni)
-function pLine(l){const o=[];let f='',q=false;for(let i=0;i<l.length;i++){const c=l[i];if(c==='"'){if(q&&l[i+1]==='"'){f+='"';i++;}else q=!q;}else if(c===','&&!q){o.push(f);f='';}else f+=c;}o.push(f);return o;}
-function pCSV(t){const ls=t.trim().split('\n');if(ls.length<2)return[];const h=pLine(ls[0]).map(x=>x.trim());return ls.slice(1).map(l=>Object.fromEntries(h.map((k,i)=>[k,(pLine(l)[i]||'').trim()]))).filter(r=>Object.values(r).some(v=>v!==''));}
-
-function getOpId(o){const k=Object.keys(o).find(k=>k.toLowerCase().replace(/[\s_]/g,'')==='idoperatore');return k?String(o[k]).trim():'';}
-function getOpPin(o){const k=Object.keys(o).find(k=>k.toLowerCase()==='pin');return k?String(o[k]).trim():'';}
-
 async function init(){
   buildPad();
   try{
-    const[a,b]=await Promise.all([fetch(CSV_OPERATORI),fetch(CSV_ISPEZIONI)]);
-    const tuttiOp=pCSV(await a.text());
-    operatori=tuttiOp.filter(r=>r.attivo==='SI');
-    const demo=tuttiOp.find(o=>getOpId(o).toUpperCase()==='OP-01');
-    if(demo){const pin=getOpPin(demo);if(pin){document.getElementById('demo-pin-val').textContent=pin;document.getElementById('demo-hint').style.display='flex';}}
-    pCSV(await b.text()).forEach(x=>{
+    const r=await fetch(APPS_SCRIPT_URL);
+    const d=await r.json();
+    if(d.status!=='ok')throw new Error(d.error||'Errore caricamento dati');
+    if(d.demoPin&&d.demoPin!=='—'){
+      document.getElementById('demo-pin-val').textContent=d.demoPin;
+      document.getElementById('demo-hint').style.display='flex';
+    }
+    (d.ispezioni||[]).forEach(x=>{
       const id=String(x.id_albero||'').trim();if(!id)return;
       if(x.esito==='NEGATIVO')statoMap[id]='ok';
       else if(x.esito==='SOSPENDERE')statoMap[id]='stop';
       else if(x.esito==='STATO DI NECESSITÀ')statoMap[id]='pending';
     });
     document.getElementById('login-loading').textContent='';
-  }catch(e){document.getElementById('login-loading').textContent='Errore caricamento - verifica connessione';}
+  }catch(e){
+    console.error(e);
+    document.getElementById('login-loading').textContent='Errore caricamento - verifica connessione';
+  }
 }
 
 // PIN
@@ -62,15 +59,33 @@ function buildPad(){
 }
 function hPin(k){if(k==='C'){pinBuffer='';updDots();return;}if(k==='OK'){chkPin();return;}pinBuffer+=String(k);updDots();}
 function updDots(){const c=document.getElementById('pin-dots');c.innerHTML='';const n=Math.max(pinBuffer.length,1);for(let i=0;i<n;i++){const d=document.createElement('div');d.className='pin-dot'+(i<pinBuffer.length?' filled':'');c.appendChild(d);}}
-function chkPin(){
-  if(!operatori.length){pinErr('Dati non ancora caricati...');return;}
-  const op=operatori.find(o=>String(o.pin).trim()===pinBuffer.trim());
-  if(op){currentUser=op;const ls=document.getElementById('login-screen');ls.style.transition='opacity .4s';ls.style.opacity='0';
-    setTimeout(()=>{ls.style.display='none';document.getElementById('topbar-user').textContent=op.nome+' '+op.cognome;document.getElementById('app').classList.add('visible');initMap();},400);
-  }else{pinErr('PIN non riconosciuto - riprova');pinBuffer='';updDots();}
+async function chkPin(){
+  const loading=document.getElementById('login-loading');
+  loading.textContent='Verifica PIN in corso...';
+  try{
+    const res=await fetch(APPS_SCRIPT_URL,{
+      method:'POST',
+      headers:{'Content-Type':'text/plain'},
+      body:JSON.stringify({action:'login',pin:pinBuffer.trim()})
+    });
+    const d=await res.json();
+    loading.textContent='';
+    if(d.status==='ok'){
+      currentUser=d.operator;
+      const ls=document.getElementById('login-screen');ls.style.transition='opacity .4s';ls.style.opacity='0';
+      setTimeout(()=>{ls.style.display='none';document.getElementById('topbar-user').textContent=currentUser.nome+' '+currentUser.cognome;document.getElementById('app').classList.add('visible');initMap();},400);
+    }else{
+      pinErr(d.error||'PIN non riconosciuto - riprova');
+      pinBuffer='';updDots();
+    }
+  }catch(err){
+    loading.textContent='';
+    pinErr('Errore di connessione al server');
+    pinBuffer='';updDots();
+  }
 }
 function pinErr(m){const e=document.getElementById('pin-error');e.textContent=m;setTimeout(()=>{e.textContent='';},2500);}
-function isDemo(){return currentUser&&getOpId(currentUser).toUpperCase()==='OP-01';}
+function isDemo(){return currentUser&&String(currentUser.id_operatore||'').toUpperCase()==='OP-01';}
 function doLogout(){pinBuffer='';updDots();currentUser=null;closeMobSidebar();closePanel();const ls=document.getElementById('login-screen');ls.style.display='flex';ls.style.opacity='1';document.getElementById('app').classList.remove('visible');}
 
 // MAPPA
@@ -241,6 +256,9 @@ function openScheda(id,props){
   document.getElementById('p-ora').textContent=now.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'});
   document.getElementById('firma-op').value=currentUser.nome+' '+currentUser.cognome;
   document.getElementById('firma-cap').value='';
+  document.getElementById('firma-cap-pin').value='';
+  document.getElementById('firma-cap').placeholder='In attesa del PIN...';
+  document.getElementById('firma-cap').style.borderColor='';
   checks={nido:null,richiami:null,andirivieni:null};esito=null;fotosBase64=[null,null,null];
   document.getElementById('p-note').value='';
   ['nido','richiami','andirivieni'].forEach(k=>rndrChk(k));
@@ -264,10 +282,62 @@ function rndrChk(k){const v=checks[k];document.getElementById('chk-'+k).classNam
 function selectEsito(e){esito=e;['neg','urg','stop'].forEach(k=>{document.getElementById('esito-'+k).className='esito-opt'+(k===e?' selected-'+k:'');});updBtn();}
 function updBtn(){
   const ok=esito!==null&&checks.nido!==null&&checks.richiami!==null&&checks.andirivieni!==null;
+  const cap=document.getElementById('firma-cap').value.trim();
   const demo=isDemo();
-  document.getElementById('btn-invia').disabled=!ok||demo;
-  document.getElementById('send-note').textContent=demo?'':'Compila esito e tutti e 3 i controlli per procedere';
-  if(ok&&!demo)document.getElementById('send-note').textContent='Dati pronti - aggiungi firma capocantiere e invia';
+  const pronto = ok && cap !== '';
+  // Abilitiamo il pulsante visualmente anche in demo per consentire il test della UI!
+  document.getElementById('btn-invia').disabled=!pronto;
+  if(demo){
+    document.getElementById('send-note').textContent='Modalità DEMO – premi Invia per testare';
+  }else if(!ok){
+    document.getElementById('send-note').textContent='Compila esito e tutti e 3 i controlli per procedere';
+  }else if(!cap){
+    document.getElementById('send-note').textContent='Inserisci il PIN del Capocantiere per firmare';
+  }else{
+    document.getElementById('send-note').textContent='Dati pronti per l\'invio';
+  }
+}
+
+let capVerifying=false;
+async function validaFirmaCap(pin){
+  const cleanPin=pin.trim();
+  const capField=document.getElementById('firma-cap');
+  const pinField=document.getElementById('firma-cap-pin');
+  if(cleanPin.length!==5){
+    capField.value='';
+    capField.placeholder='In attesa del PIN (5 cifre)...';
+    capField.style.borderColor='';
+    updBtn();
+    return;
+  }
+  if(capVerifying)return;
+  capVerifying=true;
+  capField.placeholder='Verifica in corso...';
+  capField.value='';
+  try{
+    const res=await fetch(APPS_SCRIPT_URL,{
+      method:'POST',
+      headers:{'Content-Type':'text/plain'},
+      body:JSON.stringify({action:'login',pin:cleanPin})
+    });
+    const d=await res.json();
+    capVerifying=false;
+    if(d.status==='ok'){
+      const op=d.operator;
+      capField.value=op.nome+' '+op.cognome;
+      capField.style.borderColor='var(--green-light)';
+      pinField.blur();
+    }else{
+      capField.value='';
+      capField.placeholder=d.error||'PIN non valido';
+      capField.style.borderColor='var(--red)';
+    }
+  }catch(err){
+    capVerifying=false;
+    capField.placeholder='Errore di connessione';
+    capField.style.borderColor='var(--red)';
+  }
+  updBtn();
 }
 
 // FOTO
