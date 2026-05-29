@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LIPU · Protocollo Tutela Faunistica — Demo</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green: #2D6A4F;
+  --green-light: #40916C;
+  --green-pale: #D8F3DC;
+  --green-xpale: #F0FFF4;
+  --amber: #E76F00;
+  --amber-pale: #FFF3E0;
+  --red: #C1121F;
+  --red-pale: #FFECEC;
+  --blue: #1B4F72;
+  --gray-900: #1a1a18;
+  --gray-700: #3d3d38;
+  --gray-500: #7a7a72;
+  --gray-300: #c8c8be;
+  --gray-100: #f2f2ee;
+  --gray-50: #f8f8f5;
+  --white: #ffffff;
+  --font: 'IBM Plex Sans', sans-serif;
+  --mono: 'IBM Plex Mono', monospace;
+  --radius: 6px;
+  --shadow: 0 2px 12px rgba(0,0,0,0.10);
+  --shadow-lg: 0 8px 32px rgba(0,0,0,0.16);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: var(--font); background: var(--gray-50); color: var(--gray-900); height: 100vh; overflow: hidden; }
+
+/* ── LOGIN ─────────────────────────────────────────── */
+#login-screen {
+  position: fixed; inset: 0; z-index: 9999;
+  background: var(--green);
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 0;
+}
+.login-logo {
+  font-family: var(--mono);
+  font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+  color: rgba(255,255,255,0.55); margin-bottom: 8px;
+}
+.login-title {
+  font-size: 22px; font-weight: 600; color: #fff;
+  text-align: center; line-height: 1.3; margin-bottom: 4px;
+}
+.login-sub {
+  font-size: 13px; color: rgba(255,255,255,0.6);
+  margin-bottom: 40px; text-align: center;
+}
+.pin-wrap {
+  background: rgba(255,255,255,0.10);
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  padding: 28px 32px;
+  display: flex; flex-direction: column; align-items: center; gap: 16px;
+  width: 280px;
+}
+.pin-label { font-size: 12px; color: rgba(255,255,255,0.7); letter-spacing: 0.12em; text-transform: uppercase; }
+.pin-dots { display: flex; gap: 10px; }
+.pin-dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  border: 2px solid rgba(255,255,255,0.4);
+  background: transparent;
+  transition: background 0.15s, border-color 0.15s;
+}
+.pin-dot.filled { background: #fff; border-color: #fff; }
+.pin-pad { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; width: 100%; }
+.pin-btn {
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.18);
+  border-radius: var(--radius); color: #fff; font-family: var(--mono);
+  font-size: 18px; font-weight: 500; padding: 12px;
+  cursor: pointer; transition: background 0.12s;
+}
+.pin-btn:hover { background: rgba(255,255,255,0.22); }
+.pin-btn:active { background: rgba(255,255,255,0.30); }
+.pin-error { font-size: 12px; color: #ffb3b3; height: 16px; }
+.demo-hint {
+  margin-top: 20px; font-size: 12px; color: rgba(255,255,255,0.45);
+  font-family: var(--mono);
+}
+
+/* ── LAYOUT PRINCIPALE ─────────────────────────────── */
+#app { display: none; height: 100vh; flex-direction: column; }
+#app.visible { display: flex; }
+
+.topbar {
+  height: 48px; background: var(--green); display: flex;
+  align-items: center; padding: 0 16px; gap: 12px;
+  flex-shrink: 0; z-index: 1000;
+}
+.topbar-logo { font-family: var(--mono); font-size: 11px; letter-spacing: 0.15em; color: rgba(255,255,255,0.7); text-transform: uppercase; }
+.topbar-title { font-size: 14px; font-weight: 500; color: #fff; flex: 1; }
+.topbar-user { font-family: var(--mono); font-size: 11px; color: rgba(255,255,255,0.6); }
+.logout-btn {
+  background: rgba(255,255,255,0.12); border: 1px solid rgba(255,255,255,0.2);
+  color: rgba(255,255,255,0.8); font-size: 11px; font-family: var(--mono);
+  padding: 4px 10px; border-radius: 4px; cursor: pointer;
+  letter-spacing: 0.05em;
+}
+
+.main-content { display: flex; flex: 1; overflow: hidden; }
+
+/* ── MAPPA ─────────────────────────────────────────── */
+#map { flex: 1; }
+
+/* Marker custom */
+.tree-marker {
+  width: 32px; height: 32px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 15px; cursor: pointer;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+  transition: transform 0.15s;
+}
+.tree-marker:hover { transform: scale(1.15); }
+.tm-ok { background: var(--green-light); }
+.tm-pending { background: var(--amber); }
+.tm-stop { background: var(--red); }
+.tm-new { background: var(--gray-300); }
+
+/* Popup Leaflet custom */
+.leaflet-popup-content-wrapper {
+  border-radius: 8px !important;
+  box-shadow: var(--shadow-lg) !important;
+  padding: 0 !important;
+  overflow: hidden;
+}
+.leaflet-popup-content { margin: 0 !important; min-width: 220px; }
+.popup-inner { padding: 14px 16px; }
+.popup-id { font-family: var(--mono); font-size: 10px; color: var(--gray-500); letter-spacing: 0.1em; }
+.popup-specie { font-size: 15px; font-weight: 600; color: var(--gray-900); margin: 2px 0 4px; }
+.popup-via { font-size: 12px; color: var(--gray-500); }
+.popup-status { display: inline-block; margin-top: 8px; font-size: 11px; font-family: var(--mono);
+  padding: 2px 8px; border-radius: 3px; text-transform: uppercase; letter-spacing: 0.08em; }
+.popup-btn {
+  display: block; width: 100%; margin-top: 12px;
+  background: var(--green); color: #fff; border: none;
+  padding: 10px; border-radius: 5px; font-family: var(--font);
+  font-size: 13px; font-weight: 500; cursor: pointer;
+  text-align: center; transition: background 0.15s;
+}
+.popup-btn:hover { background: var(--green-light); }
+
+/* ── PANNELLO SCHEDA ───────────────────────────────── */
+#panel {
+  width: 380px; background: var(--white);
+  border-left: 1px solid var(--gray-100);
+  display: flex; flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+  flex-shrink: 0; overflow: hidden;
+  box-shadow: -4px 0 24px rgba(0,0,0,0.08);
+}
+#panel.open { transform: translateX(0); }
+
+.panel-header {
+  background: var(--green); padding: 16px 16px 14px;
+  flex-shrink: 0;
+}
+.panel-header-top { display: flex; align-items: flex-start; justify-content: space-between; }
+.panel-doc { font-family: var(--mono); font-size: 10px; color: rgba(255,255,255,0.55); letter-spacing: 0.12em; margin-bottom: 4px; }
+.panel-tree-name { font-size: 17px; font-weight: 600; color: #fff; line-height: 1.2; }
+.panel-tree-via { font-size: 12px; color: rgba(255,255,255,0.65); margin-top: 3px; }
+.panel-close {
+  background: rgba(255,255,255,0.15); border: none; color: #fff;
+  width: 28px; height: 28px; border-radius: 5px; cursor: pointer;
+  font-size: 16px; display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0; margin-left: 8px;
+}
+.panel-close:hover { background: rgba(255,255,255,0.25); }
+
+.panel-body { flex: 1; overflow-y: auto; padding: 16px; }
+
+/* Sezioni scheda */
+.section { margin-bottom: 20px; }
+.section-title {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gray-500);
+  border-bottom: 1px solid var(--gray-100);
+  padding-bottom: 6px; margin-bottom: 12px;
+}
+
+/* Campi anagrafica (readonly) */
+.field-row { display: flex; gap: 10px; margin-bottom: 10px; }
+.field { flex: 1; }
+.field-label { font-size: 10px; font-family: var(--mono); color: var(--gray-500); letter-spacing: 0.08em; margin-bottom: 3px; text-transform: uppercase; }
+.field-val {
+  background: var(--gray-50); border: 1px solid var(--gray-100);
+  border-radius: var(--radius); padding: 8px 10px;
+  font-size: 13px; color: var(--gray-700); font-weight: 500;
+}
+.field-val.mono { font-family: var(--mono); font-size: 12px; }
+
+/* Checkbox booleani */
+.check-item {
+  display: flex; align-items: center; gap: 10px;
+  padding: 10px 12px; border-radius: var(--radius);
+  border: 1px solid var(--gray-100); margin-bottom: 8px;
+  cursor: pointer; transition: border-color 0.15s, background 0.15s;
+  user-select: none;
+}
+.check-item:hover { border-color: var(--gray-300); }
+.check-item.yes { border-color: #f5c518; background: #fffde7; }
+.check-item.no { border-color: #a8d5b5; background: var(--green-xpale); }
+.check-box {
+  width: 20px; height: 20px; border-radius: 4px;
+  border: 2px solid var(--gray-300); display: flex; align-items: center;
+  justify-content: center; flex-shrink: 0; font-size: 12px;
+  transition: all 0.15s;
+}
+.check-item.yes .check-box { border-color: #e6a817; background: #f5c518; color: #fff; }
+.check-item.no .check-box { border-color: var(--green-light); background: var(--green-light); color: #fff; }
+.check-text { font-size: 13px; flex: 1; line-height: 1.3; }
+.check-yn { font-family: var(--mono); font-size: 11px; font-weight: 600; margin-left: auto; }
+.check-item.yes .check-yn { color: #c17f00; }
+.check-item.no .check-yn { color: var(--green); }
+
+/* Esito */
+.esito-options { display: flex; flex-direction: column; gap: 8px; }
+.esito-opt {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 10px 12px; border-radius: var(--radius);
+  border: 2px solid var(--gray-100); cursor: pointer;
+  transition: all 0.15s; user-select: none;
+}
+.esito-opt:hover { border-color: var(--gray-300); }
+.esito-opt.selected-neg { border-color: var(--green); background: var(--green-xpale); }
+.esito-opt.selected-stop { border-color: var(--red); background: var(--red-pale); }
+.esito-opt.selected-urg { border-color: var(--amber); background: var(--amber-pale); }
+.esito-radio {
+  width: 16px; height: 16px; border-radius: 50%; border: 2px solid var(--gray-300);
+  display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px;
+}
+.esito-opt.selected-neg .esito-radio { border-color: var(--green); background: var(--green); }
+.esito-opt.selected-stop .esito-radio { border-color: var(--red); background: var(--red); }
+.esito-opt.selected-urg .esito-radio { border-color: var(--amber); background: var(--amber); }
+.esito-radio::after { content: ''; width: 6px; height: 6px; border-radius: 50%; background: #fff; display: none; }
+.esito-opt.selected-neg .esito-radio::after,
+.esito-opt.selected-stop .esito-radio::after,
+.esito-opt.selected-urg .esito-radio::after { display: block; }
+.esito-tag { font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+.esito-opt.selected-neg .esito-tag { color: var(--green); }
+.esito-opt.selected-stop .esito-tag { color: var(--red); }
+.esito-opt.selected-urg .esito-tag { color: var(--amber); }
+.esito-desc { font-size: 11px; color: var(--gray-500); margin-top: 2px; line-height: 1.4; }
+
+/* Note */
+.note-area {
+  width: 100%; border: 1px solid var(--gray-100); border-radius: var(--radius);
+  padding: 10px; font-family: var(--font); font-size: 13px;
+  color: var(--gray-700); resize: vertical; min-height: 72px;
+  background: var(--gray-50); transition: border-color 0.15s;
+}
+.note-area:focus { outline: none; border-color: var(--green-light); background: #fff; }
+
+/* Foto upload */
+.foto-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.foto-slot {
+  aspect-ratio: 1; border-radius: var(--radius);
+  border: 2px dashed var(--gray-300); display: flex; flex-direction: column;
+  align-items: center; justify-content: center; cursor: pointer;
+  transition: border-color 0.15s, background 0.15s; overflow: hidden;
+  position: relative; background: var(--gray-50);
+}
+.foto-slot:hover { border-color: var(--green-light); background: var(--green-xpale); }
+.foto-slot.has-img { border-style: solid; border-color: var(--gray-300); }
+.foto-slot img { width: 100%; height: 100%; object-fit: cover; position: absolute; inset: 0; }
+.foto-slot input { display: none; }
+.foto-icon { font-size: 20px; color: var(--gray-300); }
+.foto-label { font-size: 10px; color: var(--gray-400); margin-top: 4px; font-family: var(--mono); }
+.foto-remove {
+  position: absolute; top: 4px; right: 4px;
+  background: rgba(0,0,0,0.55); color: #fff; border: none;
+  width: 20px; height: 20px; border-radius: 3px; cursor: pointer;
+  font-size: 11px; display: none; align-items: center; justify-content: center;
+}
+.foto-slot.has-img .foto-remove { display: flex; }
+
+/* Firme */
+.firma-row { display: flex; gap: 10px; }
+.firma-field { flex: 1; }
+.firma-input {
+  width: 100%; border: 1px solid var(--gray-100); border-radius: var(--radius);
+  padding: 9px 10px; font-family: var(--font); font-size: 13px;
+  background: var(--gray-50); transition: border-color 0.15s;
+}
+.firma-input:focus { outline: none; border-color: var(--green-light); background: #fff; }
+
+/* Panel footer */
+.panel-footer {
+  padding: 14px 16px; border-top: 1px solid var(--gray-100);
+  background: var(--white); flex-shrink: 0;
+}
+.btn-invia {
+  width: 100%; padding: 13px; background: var(--green);
+  color: #fff; border: none; border-radius: var(--radius);
+  font-family: var(--font); font-size: 14px; font-weight: 600;
+  cursor: pointer; transition: background 0.15s; letter-spacing: 0.02em;
+}
+.btn-invia:hover { background: var(--green-light); }
+.btn-invia:disabled { background: var(--gray-300); cursor: default; }
+.send-note { font-size: 11px; color: var(--gray-500); text-align: center; margin-top: 6px; font-family: var(--mono); }
+
+/* ── TOAST ─────────────────────────────────────────── */
+#toast {
+  position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(80px);
+  background: var(--gray-900); color: #fff; padding: 12px 20px;
+  border-radius: 8px; font-size: 13px; font-family: var(--mono);
+  z-index: 9999; transition: transform 0.3s cubic-bezier(0.4,0,0.2,1);
+  box-shadow: var(--shadow-lg); white-space: nowrap;
+}
+#toast.show { transform: translateX(-50%) translateY(0); }
+#toast.success { background: var(--green); }
+#toast.error { background: var(--red); }
+
+/* ── BADGE MAPPA ───────────────────────────────────── */
+.map-legend {
+  position: absolute; bottom: 24px; left: 16px; z-index: 1000;
+  background: rgba(255,255,255,0.95); border-radius: 8px;
+  padding: 10px 14px; box-shadow: var(--shadow); font-size: 11px;
+  font-family: var(--mono); line-height: 1.8;
+  border: 1px solid var(--gray-100);
+}
+.legend-item { display: flex; align-items: center; gap: 8px; }
+.legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+
+/* Scrollbar sottile */
+.panel-body::-webkit-scrollbar { width: 4px; }
+.panel-body::-webkit-scrollbar-track { background: transparent; }
+.panel-body::-webkit-scrollbar-thumb { background: var(--gray-200); border-radius: 2px; }
+</style>
+</head>
+<body>
+
+<!-- LOGIN -->
+<div id="login-screen">
+  <div class="login-logo">LIPU · Comune di Palermo</div>
+  <div class="login-title">Protocollo di Tutela Faunistica</div>
+  <div class="login-sub">Ispezione alberi prima del taglio</div>
+  <div class="pin-wrap">
+    <div class="pin-label">Inserisci PIN operatore</div>
+    <div class="pin-dots">
+      <div class="pin-dot" id="d0"></div>
+      <div class="pin-dot" id="d1"></div>
+      <div class="pin-dot" id="d2"></div>
+      <div class="pin-dot" id="d3"></div>
+    </div>
+    <div class="pin-pad" id="pin-pad"></div>
+    <div class="pin-error" id="pin-error"></div>
+  </div>
+  <div class="demo-hint">PIN demo: 1234</div>
+</div>
+
+<!-- APP -->
+<div id="app">
+  <div class="topbar">
+    <span class="topbar-logo">LIPU</span>
+    <span class="topbar-title">Protocollo Tutela Faunistica — Demo</span>
+    <span class="topbar-user" id="topbar-user"></span>
+    <button class="logout-btn" onclick="doLogout()">Esci</button>
+  </div>
+  <div class="main-content">
+    <div id="map"></div>
+
+    <!-- LEGENDA -->
+    <div class="map-legend">
+      <div class="legend-item"><div class="legend-dot" style="background:#40916C"></div> Ispezionato OK</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#E76F00"></div> In attesa</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#C1121F"></div> Lavori sospesi</div>
+      <div class="legend-item"><div class="legend-dot" style="background:#aaa"></div> Non ancora ispezionato</div>
+    </div>
+
+    <!-- PANNELLO SCHEDA -->
+    <div id="panel">
+      <div class="panel-header">
+        <div class="panel-header-top">
+          <div>
+            <div class="panel-doc">ALLEGATO OBBLIGATORIO · N. AREG/745882/2026</div>
+            <div class="panel-tree-name" id="p-specie">—</div>
+            <div class="panel-tree-via" id="p-via">—</div>
+          </div>
+          <button class="panel-close" onclick="closePanel()">✕</button>
+        </div>
+      </div>
+      <div class="panel-body">
+
+        <!-- 1. ANAGRAFICA -->
+        <div class="section">
+          <div class="section-title">1 · Anagrafica della pianta</div>
+          <div class="field-row">
+            <div class="field">
+              <div class="field-label">ID Albero</div>
+              <div class="field-val mono" id="p-id">—</div>
+            </div>
+            <div class="field">
+              <div class="field-label">Data</div>
+              <div class="field-val mono" id="p-data">—</div>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field">
+              <div class="field-label">Specie</div>
+              <div class="field-val" id="p-specie2">—</div>
+            </div>
+            <div class="field">
+              <div class="field-label">Ora controllo</div>
+              <div class="field-val mono" id="p-ora">—</div>
+            </div>
+          </div>
+          <div class="field">
+            <div class="field-label">Ubicazione</div>
+            <div class="field-val" id="p-via2">—</div>
+          </div>
+        </div>
+
+        <!-- 2. DICHIARAZIONE -->
+        <div class="section">
+          <div class="section-title">2 · Dichiarazione operatore</div>
+          <div class="check-item" id="chk-nido" onclick="toggleCheck('nido')">
+            <div class="check-box" id="cb-nido"></div>
+            <div class="check-text">Nidi strutturati, uova o piccoli (pulli) visibili</div>
+            <div class="check-yn" id="cy-nido">—</div>
+          </div>
+          <div class="check-item" id="chk-richiami" onclick="toggleCheck('richiami')">
+            <div class="check-box" id="cb-richiami"></div>
+            <div class="check-text">Richiami o pigolii percepibili dalla chioma o cavità</div>
+            <div class="check-yn" id="cy-richiami">—</div>
+          </div>
+          <div class="check-item" id="chk-andirivieni" onclick="toggleCheck('andirivieni')">
+            <div class="check-box" id="cb-andirivieni"></div>
+            <div class="check-text">Andirivieni continuo di adulti con cibo nel becco</div>
+            <div class="check-yn" id="cy-andirivieni">—</div>
+          </div>
+        </div>
+
+        <!-- 3. ESITO -->
+        <div class="section">
+          <div class="section-title">3 · Esito dell'esame</div>
+          <div class="esito-options">
+            <div class="esito-opt" id="esito-neg" onclick="selectEsito('neg')">
+              <div class="esito-radio"></div>
+              <div>
+                <div class="esito-tag">Esito negativo</div>
+                <div class="esito-desc">Nessuna presenza di nidi o pigolii. Si procede al taglio.</div>
+              </div>
+            </div>
+            <div class="esito-opt" id="esito-urg" onclick="selectEsito('urg')">
+              <div class="esito-radio"></div>
+              <div>
+                <div class="esito-tag">Stato di necessità (art. 54 c.p.)</div>
+                <div class="esito-desc">Nido presente ma pianta in Classe D — pericolo imminente. Procedura d'urgenza con autorizzazione D.L.</div>
+              </div>
+            </div>
+            <div class="esito-opt" id="esito-stop" onclick="selectEsito('stop')">
+              <div class="esito-radio"></div>
+              <div>
+                <div class="esito-tag">⚠ Sospendere i lavori</div>
+                <div class="esito-desc">Nido attivo rilevato, nessun pericolo imminente. Stop ai lavori sulla singola pianta.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- NOTE -->
+        <div class="section">
+          <div class="section-title">Note</div>
+          <textarea class="note-area" id="p-note" placeholder="Note aggiuntive (facoltative)…"></textarea>
+        </div>
+
+        <!-- FOTO -->
+        <div class="section">
+          <div class="section-title">Documentazione fotografica</div>
+          <div class="foto-grid">
+            <div class="foto-slot" id="fs-0" onclick="triggerFoto(0)">
+              <input type="file" id="fi-0" accept="image/*" onchange="loadFoto(0,this)">
+              <div class="foto-icon">📷</div>
+              <div class="foto-label">Foto 1</div>
+              <button class="foto-remove" onclick="removeFoto(event,0)">✕</button>
+            </div>
+            <div class="foto-slot" id="fs-1" onclick="triggerFoto(1)">
+              <input type="file" id="fi-1" accept="image/*" onchange="loadFoto(1,this)">
+              <div class="foto-icon">📷</div>
+              <div class="foto-label">Foto 2</div>
+              <button class="foto-remove" onclick="removeFoto(event,1)">✕</button>
+            </div>
+            <div class="foto-slot" id="fs-2" onclick="triggerFoto(2)">
+              <input type="file" id="fi-2" accept="image/*" onchange="loadFoto(2,this)">
+              <div class="foto-icon">📷</div>
+              <div class="foto-label">Foto 3</div>
+              <button class="foto-remove" onclick="removeFoto(event,2)">✕</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- FIRME -->
+        <div class="section">
+          <div class="section-title">Firme</div>
+          <div class="firma-row">
+            <div class="firma-field">
+              <div class="field-label">Operatore</div>
+              <input type="text" class="firma-input" id="firma-op" placeholder="Nome e cognome">
+            </div>
+            <div class="firma-field">
+              <div class="field-label">Capocantiere</div>
+              <input type="text" class="firma-input" id="firma-cap" placeholder="Nome e cognome">
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /panel-body -->
+      <div class="panel-footer">
+        <button class="btn-invia" id="btn-invia" onclick="inviaScheda()">Invia scheda</button>
+        <div class="send-note" id="send-note">Compila esito e firme per procedere</div>
+      </div>
+    </div><!-- /panel -->
+
+  </div><!-- /main-content -->
+</div><!-- /app -->
+
+<div id="toast"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+// ─── DATI DEMO (alberi palermitani fittizi) ──────────────────────────
+const ALBERI = [
+  { id:'PA-0042', specie:'Ficus macrophylla', via:'Piazza Castelnuovo', lat:38.1184, lon:13.3558, stato:'pending' },
+  { id:'PA-0117', specie:'Pinus pinea', via:'Viale della Libertà, 90', lat:38.1262, lon:13.3580, stato:'new' },
+  { id:'PA-0203', specie:'Jacaranda mimosifolia', via:'Via Libertà, 55', lat:38.1310, lon:13.3612, stato:'ok' },
+  { id:'PA-0318', specie:'Ceratonia siliqua', via:'Via Roma, 210', lat:38.1140, lon:13.3620, stato:'stop' },
+  { id:'PA-0455', specie:'Platanus x hispanica', via:'Piazza Verdi', lat:38.1160, lon:13.3568, stato:'new' },
+  { id:'PA-0521', specie:'Quercus ilex', via:'Via Notarbartolo, 14', lat:38.1330, lon:13.3540, stato:'ok' },
+  { id:'PA-0638', specie:'Tipuana tipu', via:'Viale Croce Rossa', lat:38.1290, lon:13.3650, stato:'pending' },
+  { id:'PA-0712', specie:'Eucalyptus camaldulensis', via:'Via Imperatore Federico', lat:38.1080, lon:13.3510, stato:'new' },
+  { id:'PA-0844', specie:'Melia azedarach', via:'Piazza Politeama', lat:38.1196, lon:13.3549, stato:'new' },
+  { id:'PA-0956', specie:'Cupressus sempervirens', via:'Via Dante, 33', lat:38.1220, lon:13.3490, stato:'stop' },
+];
+
+const PIN = '1234';
+let pinBuffer = '';
+let currentAlbero = null;
+let checks = { nido: null, richiami: null, andirivieni: null };
+let esito = null;
+let map = null;
+let markers = {};
+
+// ─── PIN LOGIN ───────────────────────────────────────────────────────
+const pad = document.getElementById('pin-pad');
+[1,2,3,4,5,6,7,8,9,'✕',0,'→'].forEach(k => {
+  const btn = document.createElement('button');
+  btn.className = 'pin-btn';
+  btn.textContent = k;
+  btn.onclick = () => handlePin(k);
+  pad.appendChild(btn);
+});
+
+function handlePin(k) {
+  if (k === '✕') { pinBuffer = ''; updateDots(); return; }
+  if (k === '→') { checkPin(); return; }
+  if (pinBuffer.length >= 4) return;
+  pinBuffer += k;
+  updateDots();
+  if (pinBuffer.length === 4) setTimeout(checkPin, 120);
+}
+
+function updateDots() {
+  for (let i = 0; i < 4; i++) {
+    document.getElementById('d'+i).classList.toggle('filled', i < pinBuffer.length);
+  }
+}
+
+function checkPin() {
+  if (pinBuffer === PIN) {
+    document.getElementById('login-screen').style.opacity = '0';
+    document.getElementById('login-screen').style.transition = 'opacity 0.4s';
+    setTimeout(() => {
+      document.getElementById('login-screen').style.display = 'none';
+      document.getElementById('topbar-user').textContent = 'Operatore Demo';
+      document.getElementById('app').classList.add('visible');
+      initMap();
+    }, 400);
+  } else {
+    document.getElementById('pin-error').textContent = 'PIN errato — riprova';
+    pinBuffer = '';
+    updateDots();
+    setTimeout(() => document.getElementById('pin-error').textContent = '', 2000);
+  }
+}
+
+function doLogout() {
+  pinBuffer = '';
+  updateDots();
+  document.getElementById('app').classList.remove('visible');
+  document.getElementById('login-screen').style.display = 'flex';
+  document.getElementById('login-screen').style.opacity = '1';
+}
+
+// ─── MAPPA ───────────────────────────────────────────────────────────
+function initMap() {
+  map = L.map('map', { zoomControl: true }).setView([38.1190, 13.358], 14);
+
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '© OpenStreetMap © CartoDB',
+    subdomains: 'abcd', maxZoom: 19
+  }).addTo(map);
+
+  ALBERI.forEach(a => {
+    const icon = makeIcon(a.stato);
+    const m = L.marker([a.lat, a.lon], { icon })
+      .addTo(map)
+      .bindPopup(makePopup(a), { maxWidth: 260 });
+    markers[a.id] = m;
+    m.on('popupopen', () => {});
+  });
+}
+
+function makeIcon(stato) {
+  const colors = { ok:'#40916C', pending:'#E76F00', stop:'#C1121F', new:'#aaa' };
+  const emojis = { ok:'🌳', pending:'⏳', stop:'🚫', new:'🌿' };
+  const color = colors[stato] || '#aaa';
+  const emoji = emojis[stato] || '🌿';
+  return L.divIcon({
+    html: `<div class="tree-marker" style="background:${color}">${emoji}</div>`,
+    className: '', iconSize: [32,32], iconAnchor: [16,16], popupAnchor: [0,-18]
+  });
+}
+
+function makePopup(a) {
+  const stati = {
+    ok: ['#D8F3DC','#2D6A4F','OK — Ispezionato'],
+    pending: ['#FFF3E0','#E76F00','In attesa di ispezione'],
+    stop: ['#FFECEC','#C1121F','⚠ Lavori sospesi'],
+    new: ['#F2F2EE','#666','Non ancora ispezionato']
+  };
+  const [bg, col, label] = stati[a.stato] || stati.new;
+  return `<div class="popup-inner">
+    <div class="popup-id">${a.id}</div>
+    <div class="popup-specie">${a.specie}</div>
+    <div class="popup-via">${a.via}</div>
+    <span class="popup-status" style="background:${bg};color:${col}">${label}</span>
+    <button class="popup-btn" onclick="openScheda('${a.id}')">📋 Compila scheda</button>
+  </div>`;
+}
+
+// ─── SCHEDA ──────────────────────────────────────────────────────────
+function openScheda(id) {
+  currentAlbero = ALBERI.find(a => a.id === id);
+  if (!currentAlbero) return;
+
+  const now = new Date();
+  const data = now.toLocaleDateString('it-IT');
+  const ora = now.toLocaleTimeString('it-IT', { hour:'2-digit', minute:'2-digit' });
+
+  document.getElementById('p-specie').textContent = currentAlbero.specie;
+  document.getElementById('p-via').textContent = currentAlbero.via;
+  document.getElementById('p-id').textContent = currentAlbero.id;
+  document.getElementById('p-specie2').textContent = currentAlbero.specie;
+  document.getElementById('p-via2').textContent = currentAlbero.via;
+  document.getElementById('p-data').textContent = data;
+  document.getElementById('p-ora').textContent = ora;
+
+  // reset form
+  checks = { nido: null, richiami: null, andirivieni: null };
+  esito = null;
+  document.getElementById('p-note').value = '';
+  document.getElementById('firma-op').value = '';
+  document.getElementById('firma-cap').value = '';
+  ['nido','richiami','andirivieni'].forEach(k => renderCheck(k));
+  ['neg','urg','stop'].forEach(e => document.getElementById('esito-'+e).className = 'esito-opt');
+  [0,1,2].forEach(i => { document.getElementById('fs-'+i).className = 'foto-slot'; });
+  updateBtnState();
+
+  // chiudi popup e apri pannello
+  if (map) map.closePopup();
+  document.getElementById('panel').classList.add('open');
+}
+
+function closePanel() {
+  document.getElementById('panel').classList.remove('open');
+  currentAlbero = null;
+}
+
+// ─── CHECKBOX ────────────────────────────────────────────────────────
+function toggleCheck(key) {
+  checks[key] = checks[key] === null ? true : checks[key] === true ? false : null;
+  renderCheck(key);
+  updateBtnState();
+}
+
+function renderCheck(key) {
+  const item = document.getElementById('chk-'+key);
+  const box = document.getElementById('cb-'+key);
+  const yn = document.getElementById('cy-'+key);
+  const v = checks[key];
+  item.className = 'check-item' + (v === true ? ' yes' : v === false ? ' no' : '');
+  box.textContent = v === true ? '✓' : v === false ? '✓' : '';
+  yn.textContent = v === true ? 'SÌ' : v === false ? 'NO' : '—';
+}
+
+// ─── ESITO ───────────────────────────────────────────────────────────
+function selectEsito(e) {
+  esito = e;
+  ['neg','urg','stop'].forEach(k => {
+    document.getElementById('esito-'+k).className = 'esito-opt' + (k === e ? ' selected-'+k : '');
+  });
+  updateBtnState();
+}
+
+// ─── FOTO ────────────────────────────────────────────────────────────
+function triggerFoto(i) {
+  document.getElementById('fi-'+i).click();
+}
+
+function loadFoto(i, input) {
+  const file = input.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = e => {
+    const slot = document.getElementById('fs-'+i);
+    slot.className = 'foto-slot has-img';
+    let img = slot.querySelector('img');
+    if (!img) { img = document.createElement('img'); slot.appendChild(img); }
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+}
+
+function removeFoto(ev, i) {
+  ev.stopPropagation();
+  const slot = document.getElementById('fs-'+i);
+  slot.className = 'foto-slot';
+  const img = slot.querySelector('img');
+  if (img) img.remove();
+  document.getElementById('fi-'+i).value = '';
+}
+
+// ─── STATO PULSANTE INVIA ────────────────────────────────────────────
+function updateBtnState() {
+  const btn = document.getElementById('btn-invia');
+  const note = document.getElementById('send-note');
+  const ok = esito !== null &&
+    checks.nido !== null && checks.richiami !== null && checks.andirivieni !== null;
+  btn.disabled = !ok;
+  note.textContent = ok ? 'Dati pronti — aggiungi le firme e invia' : 'Compila esito e tutti e 3 i controlli per procedere';
+}
+
+// ─── INVIA (simulato) ─────────────────────────────────────────────────
+function inviaScheda() {
+  const firmaOp = document.getElementById('firma-op').value.trim();
+  const firmaCap = document.getElementById('firma-cap').value.trim();
+  if (!firmaOp || !firmaCap) {
+    showToast('Inserisci entrambe le firme', 'error'); return;
+  }
+
+  const btn = document.getElementById('btn-invia');
+  btn.disabled = true;
+  btn.textContent = 'Invio in corso…';
+
+  // Simula chiamata Apps Script
+  setTimeout(() => {
+    // Aggiorna stato albero nella demo
+    const col = { neg:'ok', urg:'pending', stop:'stop' };
+    if (currentAlbero) {
+      currentAlbero.stato = col[esito] || 'ok';
+      if (markers[currentAlbero.id]) {
+        markers[currentAlbero.id].setIcon(makeIcon(currentAlbero.stato));
+      }
+    }
+    const msgs = {
+      neg: '✓ Scheda inviata — si procede al taglio',
+      stop: '⚠ Scheda inviata — lavori sospesi',
+      urg: '⚡ Scheda inviata — attesa autorizzazione D.L.'
+    };
+    showToast(msgs[esito] || '✓ Scheda inviata', 'success');
+    btn.textContent = '✓ Inviata';
+    setTimeout(() => closePanel(), 1800);
+  }, 1200);
+}
+
+// ─── TOAST ───────────────────────────────────────────────────────────
+function showToast(msg, type='') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = type ? type : '';
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3500);
+}
+</script>
+</body>
+</html>
