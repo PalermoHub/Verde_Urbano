@@ -25,7 +25,7 @@ const HEADERS_ISPEZIONI = [
   'timestamp', 'id_albero', 'id_operatore', 'nome_operatore', 'ruolo_operatore',
   'ora_controllo', 'nido_visibile', 'richiami', 'andirivieni', 'esito',
   'note', 'firma_operatore', 'firma_capocantiere',
-  'url_foto_1', 'url_foto_2', 'url_foto_3'
+  'url_foto_1', 'url_foto_2', 'url_foto_3', 'url_pdf'
 ];
 
 // ─── ENTRY POINT ──────────────────────────────────────────────────────────────
@@ -75,6 +75,12 @@ function processIspezione(data) {
     fotoUrls.push(url || '');
   }
 
+  // URL del PDF predittivo (generato dal workflow ~2 min dopo)
+  const props  = PropertiesService.getScriptProperties();
+  const repo   = props.getProperty('GITHUB_REPO')   || 'PalermoHub/Verde_Urbano';
+  const branch = props.getProperty('GITHUB_BRANCH') || 'main';
+  const pdfUrl = 'https://raw.githubusercontent.com/' + repo + '/' + branch + '/Lipu/schede_pdf/' + idSafe + '_' + ts + '.pdf';
+
   const row = [
     data.timestamp        || new Date().toISOString(),
     data.id_albero        || '',
@@ -91,7 +97,8 @@ function processIspezione(data) {
     data.firma_capocantiere || '',
     fotoUrls[0] || '',
     fotoUrls[1] || '',
-    fotoUrls[2] || ''
+    fotoUrls[2] || '',
+    pdfUrl
   ];
   sheet.appendRow(row);
 
@@ -99,6 +106,8 @@ function processIspezione(data) {
   const jsonData = {
     timestamp:          data.timestamp        || new Date().toISOString(),
     id_albero:          data.id_albero        || '',
+    specie:             data.specie           || '',
+    via:                data.via              || '',
     id_operatore:       data.id_operatore     || '',
     nome_operatore:     data.nome_operatore   || '',
     ruolo_operatore:    data.ruolo_operatore  || '',

@@ -2,6 +2,7 @@
 """
 LIPU - Genera schede PDF ispezioni alberi
 Legge i file JSON in Lipu/schede_pdf/ e genera il PDF corrispondente se mancante.
+Font DejaVu per supporto completo caratteri italiani (à, è, é, ì, ò, ù).
 """
 import glob
 import json
@@ -14,9 +15,17 @@ from fpdf import FPDF
 PDF_DIR  = 'Lipu/schede_pdf'
 FOTO_DIR = 'Lipu/foto'
 
+# Font DejaVu (installati con fonts-dejavu-core su Ubuntu)
+FONT_DIR    = '/usr/share/fonts/truetype/dejavu'
+FONT_R      = os.path.join(FONT_DIR, 'DejaVuSans.ttf')
+FONT_B      = os.path.join(FONT_DIR, 'DejaVuSans-Bold.ttf')
+FONT_I      = os.path.join(FONT_DIR, 'DejaVuSans-Oblique.ttf')
+FONT_FAMILY = 'DejaVu'
+
 GREEN   = (45, 106, 79)
 WHITE   = (255, 255, 255)
 GRAY_BG = (242, 242, 238)
+GRAY_BD = (200, 200, 190)
 DARK    = (26, 26, 24)
 MUTED   = (122, 122, 114)
 RED     = (193, 18, 31)
@@ -47,29 +56,38 @@ def build_pdf(row: dict) -> bytes:
     pdf.set_auto_page_break(auto=True, margin=15)
     pdf.add_page()
     pdf.set_margins(15, 15, 15)
+
+    # Registra font Unicode
+    pdf.add_font(FONT_FAMILY, style='',  fname=FONT_R)
+    pdf.add_font(FONT_FAMILY, style='B', fname=FONT_B)
+    pdf.add_font(FONT_FAMILY, style='I', fname=FONT_I)
+
     W = pdf.epw
 
-    # Header
+    # ── Header ──────────────────────────────────────────────
     pdf.set_fill_color(*GREEN)
     pdf.set_text_color(*WHITE)
-    pdf.set_font('Helvetica', 'B', 13)
-    pdf.cell(W, 9, 'LIPU - PROTOCOLLO TUTELA FAUNISTICA',
+    pdf.set_font(FONT_FAMILY, 'B', 13)
+    pdf.cell(W, 9, 'LIPU · PROTOCOLLO TUTELA FAUNISTICA',
              fill=True, align='C', new_x='LMARGIN', new_y='NEXT')
-    pdf.set_font('Helvetica', 'I', 9)
+    pdf.set_font(FONT_FAMILY, 'I', 9)
     pdf.cell(W, 6, 'SCHEDA DI ISPEZIONE ALBERI PRIMA DEL TAGLIO',
              fill=True, align='C', new_x='LMARGIN', new_y='NEXT')
     pdf.ln(4)
 
     def section(title):
         pdf.set_fill_color(*GRAY_BG)
+        pdf.set_draw_color(*GRAY_BD)
         pdf.set_text_color(*GREEN)
-        pdf.set_font('Helvetica', 'B', 10)
-        pdf.cell(W, 7, title, fill=True, new_x='LMARGIN', new_y='NEXT')
+        pdf.set_font(FONT_FAMILY, 'B', 10)
+        pdf.cell(W, 7, title, fill=True, border=1,
+                 new_x='LMARGIN', new_y='NEXT')
         pdf.ln(1)
 
     def field_pair(lbl1, val1, lbl2=None, val2=None):
         half = W / 2 - 1
-        pdf.set_font('Helvetica', '', 7)
+        # etichette
+        pdf.set_font(FONT_FAMILY, '', 7)
         pdf.set_text_color(*MUTED)
         if lbl2:
             pdf.cell(half, 4, lbl1)
@@ -77,7 +95,8 @@ def build_pdf(row: dict) -> bytes:
             pdf.cell(half, 4, lbl2, new_x='LMARGIN', new_y='NEXT')
         else:
             pdf.cell(W, 4, lbl1, new_x='LMARGIN', new_y='NEXT')
-        pdf.set_font('Helvetica', 'B', 10)
+        # valori
+        pdf.set_font(FONT_FAMILY, 'B', 10)
         pdf.set_text_color(*DARK)
         if lbl2:
             pdf.cell(half, 6, str(val1 or '-'))
@@ -87,37 +106,41 @@ def build_pdf(row: dict) -> bytes:
             pdf.cell(W, 6, str(val1 or '-'), new_x='LMARGIN', new_y='NEXT')
         pdf.ln(2)
 
-    # 1 - Anagrafica
+    # ── 1 · Anagrafica ──────────────────────────────────────
     ts = row.get('timestamp', '')
     data_str = ts.split('T')[0] if 'T' in ts else ts[:10]
-    section(' 1 - ANAGRAFICA DELLA PIANTA')
+    section(' 1 · ANAGRAFICA DELLA PIANTA')
     field_pair('ID Albero', row.get('id_albero', ''),
-               'Data Ispezione', data_str)
-    field_pair('Ora controllo', row.get('ora_controllo', ''),
-               'Operatore', row.get('nome_operatore', ''))
+               'Data ispezione', data_str)
+    field_pair('Specie', row.get('specie', ''),
+               'Ora controllo', row.get('ora_controllo', ''))
+    field_pair('Ubicazione', row.get('via', ''))
+    field_pair('Operatore', row.get('nome_operatore', ''),
+               'Ruolo', row.get('ruolo_operatore', ''))
 
-    # 2 - Dichiarazione
-    section(' 2 - DICHIARAZIONE OPERATORE')
+    # ── 2 · Dichiarazione ───────────────────────────────────
+    section(' 2 · DICHIARAZIONE OPERATORE')
     checks = [
-        ('Nidi strutturati, uova o piccoli (pulli) visibili nella chioma o cavita',
+        ('Nidi strutturati, uova o piccoli (pulli) visibili nella chioma o cavità',
          row.get('nido_visibile', '-')),
-        ('Richiami o pigolii percepibili provenienti dalla chioma o cavita',
+        ('Richiami o pigolii percepibili provenienti dalla chioma o cavità',
          row.get('richiami', '-')),
         ('Andirivieni continuo di adulti con cibo nel becco verso la chioma',
          row.get('andirivieni', '-')),
     ]
     for label, val in checks:
-        pdf.set_font('Helvetica', '', 9)
+        pdf.set_font(FONT_FAMILY, '', 9)
         pdf.set_text_color(*DARK)
-        pdf.cell(W - 16, 6, label)
+        pdf.cell(W - 18, 6, label)
         c = ORANGE if val == 'Si' else GREEN
         pdf.set_text_color(*c)
-        pdf.set_font('Helvetica', 'B', 9)
-        pdf.cell(16, 6, str(val or '-'), align='R', new_x='LMARGIN', new_y='NEXT')
+        pdf.set_font(FONT_FAMILY, 'B', 9)
+        pdf.cell(18, 6, str(val or '-'), align='R',
+                 new_x='LMARGIN', new_y='NEXT')
     pdf.ln(2)
 
-    # 3 - Esito
-    section(" 3 - ESITO DELL'ESAME")
+    # ── 3 · Esito ────────────────────────────────────────────
+    section(" 3 · ESITO DELL'ESAME")
     esito = row.get('esito', '-')
     if esito == 'SOSPENDERE':
         c = RED
@@ -126,24 +149,24 @@ def build_pdf(row: dict) -> bytes:
     else:
         c = ORANGE
     pdf.set_text_color(*c)
-    pdf.set_font('Helvetica', 'B', 13)
+    pdf.set_font(FONT_FAMILY, 'B', 13)
     pdf.cell(W, 9, esito or '-', align='C', new_x='LMARGIN', new_y='NEXT')
     pdf.ln(2)
 
-    # Note
+    # ── Note ─────────────────────────────────────────────────
     section(' NOTE AGGIUNTIVE')
-    pdf.set_font('Helvetica', '', 9)
+    pdf.set_font(FONT_FAMILY, '', 9)
     pdf.set_text_color(*DARK)
     pdf.multi_cell(W, 5, row.get('note', '') or 'Nessuna nota aggiuntiva.',
                    new_x='LMARGIN', new_y='NEXT')
     pdf.ln(2)
 
-    # Firme
+    # ── Firme ────────────────────────────────────────────────
     section(' FIRME DI CONVALIDA')
     field_pair('Firma Operatore', row.get('firma_operatore', ''),
                'Firma Capocantiere', row.get('firma_capocantiere', ''))
 
-    # Foto
+    # ── Foto ─────────────────────────────────────────────────
     id_s = id_safe(row.get('id_albero', ''))
     ts_f = ts_to_fname(ts)
     foto_paths = find_foto(id_s, ts_f)
@@ -177,7 +200,7 @@ def main():
 
     count = 0
     for json_path in json_files:
-        pdf_path = json_path[:-5] + '.pdf'  # sostituisce .json con .pdf
+        pdf_path = json_path[:-5] + '.pdf'
 
         if os.path.exists(pdf_path):
             print(f'  Esiste: {pdf_path}')
