@@ -13,7 +13,6 @@ const FDEFAULT={circoscrizione:'Tutte le circoscrizioni',quartiere:'Tutti i quar
 const FLABEL={circoscrizione:'Circ.',quartiere:'Quartiere',upl:'UPL',odonimo:'Strada',genere:'Genere',nome_scientifico:'Specie'};
 
 // CONFIG
-const CSV_OPERATORI='https://docs.google.com/spreadsheets/d/e/2PACX-1vR9A6NCjRN8wkbUoctx9W4p07kckFmqLwVaySZtPcEDGA5KAXD5_mXsnTSyS1IAaZay9eR-j5EbocDt/pub?gid=775899245&single=true&output=csv';
 const CSV_ISPEZIONI='https://docs.google.com/spreadsheets/d/e/2PACX-1vR9A6NCjRN8wkbUoctx9W4p07kckFmqLwVaySZtPcEDGA5KAXD5_mXsnTSyS1IAaZay9eR-j5EbocDt/pub?gid=921930186&single=true&output=csv';
 const APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbxQ4Qqmyee_rzLeU9ayc9gWgTDHVkTD_fwP7XmqXfxyQ8ube2Aq-759KjnWe3t3DdqBgQ/exec';
 const PMTILES_LAYER='dati_alberi';
