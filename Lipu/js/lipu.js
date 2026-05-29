@@ -75,7 +75,7 @@ async function chkPin(){
     if(d.status==='ok'){
       currentUser=d.operator;
       const ls=document.getElementById('login-screen');ls.style.transition='opacity .4s';ls.style.opacity='0';
-      setTimeout(()=>{ls.style.display='none';document.getElementById('topbar-user').textContent=currentUser.nome+' '+currentUser.cognome;document.getElementById('app').classList.add('visible');initMap();},400);
+      setTimeout(()=>{ls.style.display='none';const tu=document.getElementById('topbar-user');tu.innerHTML='<i class="fa-solid fa-user"></i>';tu.title=currentUser.nome+' '+currentUser.cognome;document.getElementById('app').classList.add('visible');initMap();},400);
     }else{
       pinErr(d.error||'PIN non riconosciuto - riprova');
       pinBuffer='';updDots();
