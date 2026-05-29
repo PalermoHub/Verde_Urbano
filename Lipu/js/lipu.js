@@ -31,11 +31,17 @@ let sidebarOpen=true;
 function pLine(l){const o=[];let f='',q=false;for(let i=0;i<l.length;i++){const c=l[i];if(c==='"'){if(q&&l[i+1]==='"'){f+='"';i++;}else q=!q;}else if(c===','&&!q){o.push(f);f='';}else f+=c;}o.push(f);return o;}
 function pCSV(t){const ls=t.trim().split('\n');if(ls.length<2)return[];const h=pLine(ls[0]).map(x=>x.trim());return ls.slice(1).map(l=>Object.fromEntries(h.map((k,i)=>[k,(pLine(l)[i]||'').trim()]))).filter(r=>Object.values(r).some(v=>v!==''));}
 
+function getOpId(o){const k=Object.keys(o).find(k=>k.toLowerCase().replace(/[\s_]/g,'')==='idoperatore');return k?String(o[k]).trim():'';}
+function getOpPin(o){const k=Object.keys(o).find(k=>k.toLowerCase()==='pin');return k?String(o[k]).trim():'';}
+
 async function init(){
   buildPad();
   try{
     const[a,b]=await Promise.all([fetch(CSV_OPERATORI),fetch(CSV_ISPEZIONI)]);
-    operatori=pCSV(await a.text()).filter(r=>r.attivo==='SI');
+    const tuttiOp=pCSV(await a.text());
+    operatori=tuttiOp.filter(r=>r.attivo==='SI');
+    const demo=tuttiOp.find(o=>getOpId(o).toUpperCase()==='OP-01');
+    if(demo){const pin=getOpPin(demo);if(pin){document.getElementById('demo-pin-val').textContent=pin;document.getElementById('demo-hint').style.display='flex';}}
     pCSV(await b.text()).forEach(x=>{
       const id=String(x.id_albero||'').trim();if(!id)return;
       if(x.esito==='NEGATIVO')statoMap[id]='ok';
@@ -64,6 +70,7 @@ function chkPin(){
   }else{pinErr('PIN non riconosciuto - riprova');pinBuffer='';updDots();}
 }
 function pinErr(m){const e=document.getElementById('pin-error');e.textContent=m;setTimeout(()=>{e.textContent='';},2500);}
+function isDemo(){return currentUser&&getOpId(currentUser).toUpperCase()==='OP-01';}
 function doLogout(){pinBuffer='';updDots();currentUser=null;const ls=document.getElementById('login-screen');ls.style.display='flex';ls.style.opacity='1';document.getElementById('app').classList.remove('visible');closePanel();}
 
 // MAPPA
@@ -80,7 +87,8 @@ function initMap(){
       sources:{
         carto:{type:'raster',tiles:['https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png'],tileSize:256,attribution:'© OpenStreetMap © CartoDB'},
         alberi:{type:'vector',url:pmUrl},
-        overlay:{type:'geojson',data:{type:'FeatureCollection',features:[]}}
+        overlay:{type:'geojson',data:{type:'FeatureCollection',features:[]}},
+        selected:{type:'geojson',data:{type:'FeatureCollection',features:[]}}
       },
       layers:[
         {id:'basemap',type:'raster',source:'carto'},
@@ -89,11 +97,10 @@ function initMap(){
           minzoom:0,
           paint:{
             'circle-radius':['interpolate',['linear'],['zoom'],
-              0,2, 6,3, 10,5, 13,8, 15,11, 18,16],
+              0,1.5, 6,2, 10,3, 13,5, 15,7, 18,10],
             'circle-color':'#888888',
-            'circle-stroke-width':['interpolate',['linear'],['zoom'],0,0.5,10,1.5,14,2],
-            'circle-stroke-color':'#ffffff',
-            'circle-opacity':0.85
+            'circle-stroke-width':0,
+            'circle-opacity':0.8
           }
         },
         {
@@ -101,11 +108,21 @@ function initMap(){
           minzoom:0,
           paint:{
             'circle-radius':['interpolate',['linear'],['zoom'],
-              0,2, 6,3, 10,5, 13,8, 15,11, 18,16],
+              0,1.5, 6,2, 10,3, 13,5, 15,7, 18,10],
             'circle-color':['get','colore'],
-            'circle-stroke-width':['interpolate',['linear'],['zoom'],0,0.5,10,1.5,14,2],
-            'circle-stroke-color':'#ffffff',
-            'circle-opacity':0.95
+            'circle-stroke-width':0,
+            'circle-opacity':1
+          }
+        },
+        {
+          id:'selected-cerchio',type:'circle',source:'selected',
+          paint:{
+            'circle-radius':['interpolate',['linear'],['zoom'],
+              0,5.5, 6,6, 10,7, 13,9, 15,11, 18,14],
+            'circle-color':'rgba(0,0,0,0)',
+            'circle-stroke-width':2.5,
+            'circle-stroke-color':'#1a3d2b',
+            'circle-opacity':1
           }
         }
       ]
@@ -155,8 +172,10 @@ function apriClick(e){
   const p=f.properties;
   const id=String(p['ID albero']||p['ID_albero']||p['id_albero']||p['id']||'').trim();
   if(!id)return;
-  // salva coordinate per overlay futuro
-  if(f.geometry&&f.geometry.coordinates)coordsMap[id]=f.geometry.coordinates;
+  if(f.geometry&&f.geometry.coordinates){
+    coordsMap[id]=f.geometry.coordinates;
+    map.getSource('selected').setData({type:'Feature',geometry:f.geometry,properties:{}});
+  }
   openScheda(id,p);
 }
 
@@ -195,15 +214,26 @@ function openScheda(id,props){
   ['neg','urg','stop'].forEach(x=>{document.getElementById('esito-'+x).className='esito-opt';});
   [0,1,2].forEach(i=>{const s=document.getElementById('fs-'+i);s.className='foto-slot';const img=s.querySelector('img');if(img)img.remove();document.getElementById('fi-'+i).value='';});
   updBtn();
+  document.getElementById('demo-banner').style.display=isDemo()?'block':'none';
   document.getElementById('panel').classList.add('open');
 }
-function closePanel(){document.getElementById('panel').classList.remove('open');currentProps=null;}
+function closePanel(){
+  document.getElementById('panel').classList.remove('open');
+  currentProps=null;
+  if(map&&map.getSource('selected'))map.getSource('selected').setData({type:'FeatureCollection',features:[]});
+}
 
 // FORM
 function toggleCheck(k){checks[k]=checks[k]===null?true:checks[k]===true?false:null;rndrChk(k);updBtn();}
 function rndrChk(k){const v=checks[k];document.getElementById('chk-'+k).className='check-item'+(v===true?' yes':v===false?' no':'');document.getElementById('cb-'+k).textContent=v!==null?'v':'';document.getElementById('cy-'+k).textContent=v===true?'SI':v===false?'NO':'-';}
 function selectEsito(e){esito=e;['neg','urg','stop'].forEach(k=>{document.getElementById('esito-'+k).className='esito-opt'+(k===e?' selected-'+k:'');});updBtn();}
-function updBtn(){const ok=esito!==null&&checks.nido!==null&&checks.richiami!==null&&checks.andirivieni!==null;document.getElementById('btn-invia').disabled=!ok;document.getElementById('send-note').textContent=ok?'Dati pronti - aggiungi firma capocantiere e invia':'Compila esito e tutti e 3 i controlli per procedere';}
+function updBtn(){
+  const ok=esito!==null&&checks.nido!==null&&checks.richiami!==null&&checks.andirivieni!==null;
+  const demo=isDemo();
+  document.getElementById('btn-invia').disabled=!ok||demo;
+  document.getElementById('send-note').textContent=demo?'':'Compila esito e tutti e 3 i controlli per procedere';
+  if(ok&&!demo)document.getElementById('send-note').textContent='Dati pronti - aggiungi firma capocantiere e invia';
+}
 
 // FOTO
 function triggerFoto(i){document.getElementById('fi-'+i).click();}
@@ -213,6 +243,7 @@ function removeFoto(ev,i){ev.stopPropagation();const s=document.getElementById('
 
 // INVIA
 async function inviaScheda(){
+  if(isDemo()){showToast('Modalità DEMO – invio non disponibile','error');return;}
   const cap=document.getElementById('firma-cap').value.trim();
   if(!cap){showToast('Inserisci la firma del capocantiere','error');return;}
   const btn=document.getElementById('btn-invia');btn.disabled=true;btn.textContent='Invio in corso...';

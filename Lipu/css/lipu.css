@@ -22,6 +22,11 @@ body{font-family:var(--font);background:var(--gray-50);color:var(--gray-900);hei
 .pin-btn:hover{background:rgba(255,255,255,.22)}.pin-btn:active{background:rgba(255,255,255,.30)}
 .pin-error{font-size:12px;color:#ffb3b3;height:16px;text-align:center}
 .login-loading{margin-top:16px;font-size:12px;color:rgba(255,255,255,.55);font-family:var(--mono);min-height:16px}
+#demo-hint{margin-top:18px;background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.18);border-radius:8px;padding:10px 20px;display:flex;align-items:center;gap:10px;font-family:var(--mono)}
+.demo-hint-label{font-size:10px;color:rgba(255,255,255,.55);letter-spacing:.12em;text-transform:uppercase}
+.demo-hint-sep{color:rgba(255,255,255,.3);font-size:14px}
+.demo-hint-pin{font-size:24px;font-weight:500;color:#fff;letter-spacing:.25em}
+#demo-banner{background:#fffbeb;border-top:2px solid #f5c518;padding:8px 16px;font-family:var(--mono);font-size:10px;color:#92670a;text-align:center;letter-spacing:.1em;text-transform:uppercase;flex-shrink:0}
 #app{display:none;height:100vh;flex-direction:column}
 #app.visible{display:flex}
 .topbar{height:48px;background:var(--green);display:flex;align-items:center;padding:0 16px;gap:12px;flex-shrink:0;z-index:1000}
