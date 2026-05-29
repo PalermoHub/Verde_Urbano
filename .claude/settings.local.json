@@ -38,7 +38,9 @@
       "Bash(python -c ' *)",
       "Bash(python *)",
       "Bash(Select-String -Path \"D:\\\\GitHub - Clone\\\\SiciliaHub\\\\Verde_Urbano\\\\css\\\\verde_urbano.css\" -Pattern \"zoom-bar|addZoomBar|leaflet-right\")",
-      "Bash(Select-Object LineNumber, Line)"
+      "Bash(Select-Object LineNumber, Line)",
+      "WebFetch(domain:doc-08-24-sheets.googleusercontent.com)",
+      "WebFetch(domain:docs.google.com)"
     ]
   }
 }
