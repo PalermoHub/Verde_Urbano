@@ -592,6 +592,18 @@ function tbGps(){
     map&&map.flyTo({center:[pos.coords.longitude,pos.coords.latitude],zoom:16});
   },()=>showToast('Posizione non disponibile','error'));
 }
+function tbFullscreen(){
+  if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(()=>{});}
+  else{document.exitFullscreen();}
+}
+document.addEventListener('fullscreenchange',()=>{
+  const btn=document.getElementById('tb-fs');if(!btn)return;
+  const fs=!!document.fullscreenElement;
+  btn.title=fs?'Esci da schermo intero':'Schermo intero';
+  document.getElementById('tb-fs-svg').innerHTML=fs
+    ?'<polyline points="4 14 10 14 10 20"/><polyline points="20 10 14 10 14 4"/><line x1="10" y1="14" x2="3" y2="21"/><line x1="21" y1="3" x2="14" y2="10"/>'
+    :'<polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/>';
+});
 function tbSearch(){
   if(isMob()){toggleSidebar();return;}
   if(!sidebarOpen)toggleSidebar();
