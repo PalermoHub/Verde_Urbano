@@ -1,0 +1,46 @@
+name: LIPU · Genera schede PDF
+
+on:
+  # Si avvia dopo il workflow resize, così le foto sono già ottimizzate
+  # e lo Sheet ha avuto tempo di ricevere la riga dall'Apps Script
+  workflow_run:
+    workflows: ["LIPU · Ridimensiona foto ispezioni"]
+    types: [completed]
+    branches: [main]
+
+jobs:
+  genera-pdf:
+    runs-on: ubuntu-latest
+    # Procede solo se il workflow precedente è andato a buon fine
+    if: github.event.workflow_run.conclusion == 'success'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Installa dipendenze
+        run: pip install fpdf2 requests
+
+      - name: Genera PDF mancanti
+        env:
+          SHEET_CSV_URL: "https://docs.google.com/spreadsheets/d/e/2PACX-1vR9A6NCjRN8wkbUoctx9W4p07kckFmqLwVaySZtPcEDGA5KAXD5_mXsnTSyS1IAaZay9eR-j5EbocDt/pub?gid=921930186&single=true&output=csv"
+        run: python Lipu/scripts/genera_pdf.py
+
+      - name: Commit PDF generati
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add Lipu/schede_pdf/
+          if git diff --staged --quiet; then
+            echo "Nessun nuovo PDF da generare"
+          else
+            git commit -m "[pdf] genera schede ispezione LIPU"
+            git push
+          fi
