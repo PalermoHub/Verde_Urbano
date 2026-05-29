@@ -95,11 +95,37 @@ function processIspezione(data) {
   ];
   sheet.appendRow(row);
 
+  // Commette un JSON con i dati ispezione — usato dal workflow GitHub Actions per generare il PDF
+  const jsonData = {
+    timestamp:          data.timestamp        || new Date().toISOString(),
+    id_albero:          data.id_albero        || '',
+    id_operatore:       data.id_operatore     || '',
+    nome_operatore:     data.nome_operatore   || '',
+    ruolo_operatore:    data.ruolo_operatore  || '',
+    ora_controllo:      data.ora_controllo    || '',
+    nido_visibile:      data.nido_visibile    || '',
+    richiami:           data.richiami         || '',
+    andirivieni:        data.andirivieni      || '',
+    esito:              data.esito            || '',
+    note:               data.note             || '',
+    firma_operatore:    data.firma_operatore  || '',
+    firma_capocantiere: data.firma_capocantiere || '',
+    url_foto_1:         fotoUrls[0] || '',
+    url_foto_2:         fotoUrls[1] || '',
+    url_foto_3:         fotoUrls[2] || ''
+  };
+  const jsonPath = 'Lipu/schede_pdf/' + idSafe + '_' + ts + '.json';
+  commitFileGitHub(jsonPath, Utilities.base64Encode(JSON.stringify(jsonData, null, 2)), 'dati ispezione ' + jsonPath);
+
   return { fotoUrls };
 }
 
 // ─── GITHUB API ───────────────────────────────────────────────────────────────
 function commitFotoGitHub(path, base64content) {
+  return commitFileGitHub(path, base64content, 'foto ispezione ' + path);
+}
+
+function commitFileGitHub(path, base64content, message) {
   const props  = PropertiesService.getScriptProperties();
   const token  = props.getProperty('GITHUB_TOKEN');
   const repo   = props.getProperty('GITHUB_REPO')   || 'PalermoHub/Verde_Urbano';
@@ -124,7 +150,7 @@ function commitFotoGitHub(path, base64content) {
   } catch (e) { /* file non esiste, procedi */ }
 
   const body = {
-    message: 'foto ispezione ' + path,
+    message: message,
     content: base64content,
     branch: branch
   };

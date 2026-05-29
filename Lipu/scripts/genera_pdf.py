@@ -1,18 +1,17 @@
 #!/usr/bin/env python3
 """
 LIPU - Genera schede PDF ispezioni alberi
-Legge i dati da Google Sheets (CSV) e genera PDF per le ispezioni mancanti.
+Legge i file JSON in Lipu/schede_pdf/ e genera il PDF corrispondente se mancante.
 """
-import csv
-import io
+import glob
+import json
 import os
 import re
 import sys
-import requests
+
 from fpdf import FPDF
 
-SHEET_CSV_URL = os.environ.get('SHEET_CSV_URL', '')
-PDF_DIR = 'Lipu/schede_pdf'
+PDF_DIR  = 'Lipu/schede_pdf'
 FOTO_DIR = 'Lipu/foto'
 
 GREEN   = (45, 106, 79)
@@ -169,28 +168,16 @@ def build_pdf(row: dict) -> bytes:
 
 
 def main():
-    if not SHEET_CSV_URL:
-        print('SHEET_CSV_URL non impostato', file=sys.stderr)
-        sys.exit(1)
-
     os.makedirs(PDF_DIR, exist_ok=True)
 
-    print('Scarico dati da Google Sheets...')
-    resp = requests.get(SHEET_CSV_URL, timeout=30)
-    resp.raise_for_status()
-    content = resp.content.decode('utf-8-sig')
+    json_files = sorted(glob.glob(os.path.join(PDF_DIR, '*.json')))
+    if not json_files:
+        print('Nessun file JSON trovato — nessun PDF da generare.')
+        return
 
-    reader = csv.DictReader(io.StringIO(content))
     count = 0
-    for row in reader:
-        ts = row.get('timestamp', '').strip()
-        id_albero = row.get('id_albero', '').strip()
-        if not ts or not id_albero:
-            continue
-
-        id_s = id_safe(id_albero)
-        ts_f = ts_to_fname(ts)
-        pdf_path = os.path.join(PDF_DIR, f'{id_s}_{ts_f}.pdf')
+    for json_path in json_files:
+        pdf_path = json_path[:-5] + '.pdf'  # sostituisce .json con .pdf
 
         if os.path.exists(pdf_path):
             print(f'  Esiste: {pdf_path}')
@@ -198,6 +185,8 @@ def main():
 
         print(f'  Genero: {pdf_path}')
         try:
+            with open(json_path, 'r', encoding='utf-8') as f:
+                row = json.load(f)
             pdf_bytes = build_pdf(row)
             with open(pdf_path, 'wb') as f:
                 f.write(pdf_bytes)
