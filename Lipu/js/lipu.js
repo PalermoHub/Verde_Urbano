@@ -498,6 +498,20 @@ function updSidebar(){
   });
 }
 
+function fitBoundsToVisible(){
+  const feats=getFilteredFeats();
+  const bounds=new maplibregl.LngLatBounds();
+  let count=0;
+  feats.forEach(f=>{
+    const c=coordsMap[f.id];if(!c)return;
+    const stato=statoMap[f.id]||'non_ispez';
+    if(!filtroStati.has(stato))return;
+    bounds.extend(c);count++;
+  });
+  if(count===0)return;
+  map.fitBounds(bounds,{padding:60,maxZoom:17,duration:600});
+}
+
 function applyFiltriMappa(){
   if(!map)return;
   const hasF=FORDER.some(c=>filtriAttivi[c]);
@@ -515,6 +529,7 @@ function applyFiltriMappa(){
   }
   updOverlay();
   updLegend();
+  fitBoundsToVisible();
 }
 
 const STATI_ALL=new Set(['ok','pending','stop','non_ispez']);
