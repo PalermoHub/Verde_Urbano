@@ -2,7 +2,10 @@
 <html lang="it">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <title>LIPU · Protocollo Tutela Faunistica</title>
 <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@4/dist/maplibre-gl.css"/>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,6 +42,7 @@
     <span class="topbar-user" id="topbar-user"></span>
     <button class="logout-btn" onclick="doLogout()">Esci</button>
   </div>
+  <div id="mob-backdrop" onclick="closeMobSidebar()"></div>
   <div class="main-content">
     <div id="sidebar">
       <div class="sb-header" onclick="toggleSidebar()">
@@ -93,6 +97,10 @@
       </div>
     </div>
     <div id="map">
+      <button id="mob-filter-fab" onclick="toggleSidebar()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+        <span>Filtri</span>
+      </button>
       <div id="map-toolbar">
         <button class="tb-btn" id="tb-home" title="Vista iniziale" onclick="tbHome()">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
@@ -182,7 +190,7 @@
           <div class="section-title">Firme</div>
           <div class="firma-row">
             <div class="firma-field"><div class="field-label">Operatore</div><input type="text" class="firma-input" id="firma-op" readonly></div>
-            <div class="firma-field"><div class="field-label">Capocantiere</div><input type="text" class="firma-input" id="firma-cap" placeholder="Nome e cognome"></div>
+            <div class="firma-field"><div class="field-label">Capocantiere</div><input type="text" class="firma-input" id="firma-cap" placeholder="Nome e cognome" autocomplete="off" autocorrect="off" spellcheck="false"></div>
           </div>
         </div>
       </div>
