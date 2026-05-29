@@ -25,7 +25,7 @@ const HEADERS_ISPEZIONI = [
   'timestamp', 'id_albero', 'id_operatore', 'nome_operatore', 'ruolo_operatore',
   'ora_controllo', 'nido_visibile', 'richiami', 'andirivieni', 'esito',
   'note', 'firma_operatore', 'firma_capocantiere',
-  'url_foto_1', 'url_foto_2', 'url_foto_3', 'url_pdf'
+  'url_foto_1', 'url_foto_2', 'url_foto_3'
 ];
 
 // ─── ENTRY POINT ──────────────────────────────────────────────────────────────
@@ -75,25 +75,6 @@ function processIspezione(data) {
     fotoUrls.push(url || '');
   }
 
-  // Genera ed esporta il PDF della Scheda Stampa su GitHub
-  let pdfUrl = '';
-  try {
-    popolaSchedaStampa(ss, data, fotoUrls);
-    SpreadsheetApp.flush(); // Forza il salvataggio immediato delle modifiche nel foglio prima dell'export
-    
-    // Esporta la Scheda stampa in PDF
-    const sheetStampa = ss.getSheetByName('Scheda stampa');
-    const pdfBlob = exportSheetAsPdf(ss.getId(), sheetStampa.getSheetId());
-    
-    // Upload del PDF su GitHub nella cartella schede_pdf
-    const base64Pdf = Utilities.base64Encode(pdfBlob.getBytes());
-    const pdfPath = 'Lipu/schede_pdf/' + idSafe + '_' + ts + '.pdf';
-    pdfUrl = commitFotoGitHub(pdfPath, base64Pdf) || '';
-  } catch (err) {
-    Logger.log("Errore durante la creazione/caricamento del PDF: " + err.message);
-  }
-
-  // Scrivi riga nel foglio ispezioni (compreso il link al PDF)
   const row = [
     data.timestamp        || new Date().toISOString(),
     data.id_albero        || '',
@@ -110,8 +91,7 @@ function processIspezione(data) {
     data.firma_capocantiere || '',
     fotoUrls[0] || '',
     fotoUrls[1] || '',
-    fotoUrls[2] || '',
-    pdfUrl
+    fotoUrls[2] || ''
   ];
   sheet.appendRow(row);
 
@@ -208,13 +188,15 @@ function getInitData() {
       const headers = data[0].map(h => String(h).trim().toLowerCase());
       const idxId = headers.indexOf('id_albero');
       const idxEsito = headers.indexOf('esito');
-      
+      const idxTs = headers.indexOf('timestamp');
+
       if (idxId !== -1 && idxEsito !== -1) {
         for (let i = 1; i < data.length; i++) {
           const id = String(data[i][idxId]).trim();
           const esito = String(data[i][idxEsito]).trim();
           if (id) {
-            ispezioni.push({ id_albero: id, esito: esito });
+            const ts = idxTs !== -1 ? String(data[i][idxTs]).trim() : '';
+            ispezioni.push({ id_albero: id, esito: esito, timestamp: ts });
           }
         }
       }
@@ -311,200 +293,3 @@ function findColumnIndex(headers, possibleNames) {
   return -1;
 }
 
-// Popola automaticamente la Scheda stampa in tempo reale con un layout professionale
-function popolaSchedaStampa(ss, data, fotoUrls) {
-  let sheet = ss.getSheetByName('Scheda stampa');
-  if (!sheet) {
-    sheet = ss.insertSheet('Scheda stampa');
-  }
-  
-  sheet.clear();
-  
-  // Unisce/separa tutte le celle esistenti per ricominciare da un foglio pulito ed evitare conflitti di celle unite
-  try {
-    const maxRows = sheet.getMaxRows();
-    const maxCols = sheet.getMaxColumns();
-    sheet.getRange(1, 1, maxRows, maxCols).breakApart();
-  } catch (err) {
-    Logger.log("Errore breakApart: " + err.message);
-  }
-  
-  sheet.showSheet(); // Rende visibile se nascosto
-  
-  // Imposta larghezza colonne per rendere la stampa pulita (4 colonne principali)
-  sheet.setColumnWidth(1, 150);
-  sheet.setColumnWidth(2, 180);
-  sheet.setColumnWidth(3, 150);
-  sheet.setColumnWidth(4, 180);
-  
-  // Gridlines visibili
-  sheet.setGridlines(true);
-  
-  // 1. Titolo principale
-  sheet.getRange('A1:D1').merge().setValue('LIPU · PROTOCOLLO TUTELA FAUNISTICA')
-    .setFontFamily('Arial').setFontSize(14).setFontWeight('bold')
-    .setFontColor('#ffffff').setBackground('#2D6A4F').setHorizontalAlignment('center').setVerticalAlignment('middle');
-  sheet.getRange('A2:D2').merge().setValue('SCHEDA DI ISPEZIONE ALBERI PRIMA DEL TAGLIO')
-    .setFontFamily('Arial').setFontSize(10).setFontItalic(true)
-    .setFontColor('#ffffff').setBackground('#2D6A4F').setHorizontalAlignment('center').setVerticalAlignment('middle');
-  
-  sheet.setRowHeight(1, 30);
-  sheet.setRowHeight(2, 20);
-  
-  // Utilità per creare intestazioni di sezione
-  function createSectionHeader(row, title) {
-    sheet.getRange(row, 1, 1, 4).merge().setValue(title)
-      .setFontFamily('Arial').setFontSize(11).setFontWeight('bold')
-      .setFontColor('#2D6A4F').setBackground('#f2f2ee').setVerticalAlignment('middle')
-      .setBorder(true, true, true, true, false, false, '#c8c8be', SpreadsheetApp.BorderStyle.SOLID);
-    sheet.setRowHeight(row, 24);
-  }
-  
-  function setField(row, colLabel, label, colVal, val, isBold) {
-    sheet.getRange(row, colLabel).setValue(label)
-      .setFontFamily('Arial').setFontSize(9).setFontColor('#7a7a72').setFontWeight('bold').setVerticalAlignment('middle');
-    const cellVal = sheet.getRange(row, colVal).setValue(val)
-      .setFontFamily('Arial').setFontSize(10).setFontColor('#1a1a18').setVerticalAlignment('middle');
-    if (isBold) cellVal.setFontWeight('bold');
-    sheet.getRange(row, colLabel, 1, 2).setBorder(true, true, true, true, false, false, '#f2f2ee', SpreadsheetApp.BorderStyle.SOLID);
-  }
-
-  // Sezione 1: Anagrafica
-  createSectionHeader(4, ' 1 - ANAGRAFICA DELLA PIANTA');
-  setField(5, 1, 'ID Albero:', 2, data.id_albero || '-', true);
-  setField(5, 3, 'Data Ispezione:', 4, data.timestamp ? data.timestamp.split('T')[0] : new Date().toLocaleDateString('it-IT'));
-  
-  setField(6, 1, 'Specie Pianta:', 2, data.specie || '-');
-  setField(6, 3, 'Ora Controllo:', 4, data.ora_controllo || '-');
-  
-  sheet.getRange(7, 1).setValue('Ubicazione:')
-    .setFontFamily('Arial').setFontSize(9).setFontColor('#7a7a72').setFontWeight('bold').setVerticalAlignment('middle');
-  sheet.getRange('B7:D7').merge().setValue(data.via || '-')
-    .setFontFamily('Arial').setFontSize(10).setFontColor('#1a1a18').setVerticalAlignment('middle');
-  sheet.getRange(7, 1, 1, 4).setBorder(true, true, true, true, false, false, '#f2f2ee', SpreadsheetApp.BorderStyle.SOLID);
-  sheet.setRowHeight(7, 22);
-  
-  // Sezione 2: Dichiarazione
-  createSectionHeader(9, ' 2 - DICHIARAZIONE OPERATORE');
-  
-  function setCheckRow(row, label, val) {
-    sheet.getRange(row, 1, 1, 3).merge().setValue(label)
-      .setFontFamily('Arial').setFontSize(10).setFontColor('#3d3d38').setVerticalAlignment('middle');
-    const cellVal = sheet.getRange(row, 4).setValue(val)
-      .setFontFamily('Arial').setFontSize(10).setFontWeight('bold').setHorizontalAlignment('center').setVerticalAlignment('middle');
-    
-    if (val === 'Si') {
-      cellVal.setFontColor('#c17f00').setBackground('#fffde7');
-    } else {
-      cellVal.setFontColor('#2D6A4F').setBackground('#F0FFF4');
-    }
-    sheet.getRange(row, 1, 1, 4).setBorder(true, true, true, true, false, false, '#f2f2ee', SpreadsheetApp.BorderStyle.SOLID);
-    sheet.setRowHeight(row, 22);
-  }
-  
-  setCheckRow(10, 'Nidi strutturati, uova o piccoli (pulli) visibili nella chioma o cavità', data.nido_visibile || '-');
-  setCheckRow(11, 'Richiami o pigolii percepibili provenienti dalla chioma o cavità', data.richiami || '-');
-  setCheckRow(12, 'Andirivieni continuo di adulti con cibo nel becco verso la chioma', data.andirivieni || '-');
-  
-  // Sezione 3: Esito
-  createSectionHeader(14, " 3 - ESITO DELL'ESAME");
-  sheet.getRange('A15:C15').merge().setValue("Esito finale dell'ispezione ed azione da intraprendere:")
-    .setFontFamily('Arial').setFontSize(10).setFontWeight('bold').setFontColor('#3d3d38').setVerticalAlignment('middle');
-  
-  const esitoCell = sheet.getRange(15, 4).setValue(data.esito || '-')
-    .setFontFamily('Arial').setFontSize(10).setFontWeight('bold').setHorizontalAlignment('center').setVerticalAlignment('middle');
-  
-  if (data.esito === 'SOSPENDERE') {
-    esitoCell.setFontColor('#C1121F').setBackground('#FFECEC');
-  } else if (data.esito === 'NEGATIVO') {
-    esitoCell.setFontColor('#2D6A4F').setBackground('#F0FFF4');
-  } else {
-    esitoCell.setFontColor('#E76F00').setBackground('#FFF3E0');
-  }
-  sheet.getRange(15, 1, 1, 4).setBorder(true, true, true, true, false, false, '#f2f2ee', SpreadsheetApp.BorderStyle.SOLID);
-  sheet.setRowHeight(15, 26);
-  
-  // Sezione 4: Note
-  createSectionHeader(17, ' NOTE AGGIUNTIVE');
-  sheet.getRange('A18:D18').merge().setValue(data.note || 'Nessuna nota aggiuntiva inserita.')
-    .setFontFamily('Arial').setFontSize(10).setFontColor('#3d3d38').setWrap(true).setVerticalAlignment('top');
-  sheet.getRange(18, 1, 1, 4).setBorder(true, true, true, true, false, false, '#f2f2ee', SpreadsheetApp.BorderStyle.SOLID);
-  sheet.setRowHeight(18, 50);
-  
-  // Sezione 5: Firme
-  createSectionHeader(20, ' FIRME DI CONVALIDA');
-  setField(21, 1, 'Firma Operatore:', 2, data.firma_operatore || '-', true);
-  setField(21, 3, 'Firma Capocantiere:', 4, data.firma_capocantiere || '-', true);
-  sheet.setRowHeight(21, 24);
-  
-  // Sezione 6: Foto
-  createSectionHeader(23, ' DOCUMENTAZIONE FOTOGRAFICA');
-  sheet.setRowHeight(23, 24);
-  
-  // Uniamo celle per le immagini
-  sheet.getRange('A24:B31').merge();
-  sheet.getRange('C24:D31').merge();
-  sheet.getRange('A33:B40').merge();
-  sheet.getRange('C33:D40').merge();
-  
-  function applyPhoto(rangeStr, url, label) {
-    const r = sheet.getRange(rangeStr);
-    r.setHorizontalAlignment('center').setVerticalAlignment('middle');
-    if (url) {
-      r.setFormula('=IMAGE("' + url + '")');
-    } else {
-      r.setValue(label).setFontFamily('Arial').setFontSize(9).setFontColor('#c8c8be').setBackground('#f8f8f5');
-    }
-    r.setBorder(true, true, true, true, false, false, '#c8c8be', SpreadsheetApp.BorderStyle.SOLID);
-  }
-  
-  applyPhoto('A24:B31', fotoUrls[0] || null, 'Foto 1 non caricata');
-  applyPhoto('C24:D31', fotoUrls[1] || null, 'Foto 2 non caricata');
-  applyPhoto('A33:B40', fotoUrls[2] || null, 'Foto 3 non caricata');
-  
-  sheet.getRange('C33:D40').setValue('PROTOCOLLO LIPU\nTutela della Fauna Selvatica\nComune di Palermo')
-    .setFontFamily('Arial').setFontSize(9).setFontWeight('bold').setFontItalic(true).setFontColor('#7a7a72')
-    .setHorizontalAlignment('center').setVerticalAlignment('middle').setBackground('#f8f8f5')
-    .setBorder(true, true, true, true, false, false, '#c8c8be', SpreadsheetApp.BorderStyle.SOLID);
-    
-  // Impostiamo l'altezza delle righe per le foto per renderle quadrate
-  for (let r = 24; r <= 31; r++) sheet.setRowHeight(r, 20);
-  sheet.setRowHeight(32, 10);
-  for (let r = 33; r <= 40; r++) sheet.setRowHeight(r, 20);
-}
-
-// Esporta un singolo foglio specifico come file PDF in modo programmato
-function exportSheetAsPdf(ssId, sheetId) {
-  const url = "https://docs.google.com/spreadsheets/d/" + ssId + "/export?";
-  const exportOptions = {
-    exportFormat: "pdf",
-    format: "pdf",
-    size: "A4",
-    portrait: "true",
-    fitw: "true",
-    gridlines: "false",
-    printtitle: "false",
-    sheetnames: "false",
-    fzr: "false",
-    gid: sheetId
-  };
-  
-  const urlParts = [];
-  for (let key in exportOptions) {
-    urlParts.push(key + "=" + exportOptions[key]);
-  }
-  const exportUrl = url + urlParts.join("&");
-  
-  const response = UrlFetchApp.fetch(exportUrl, {
-    headers: {
-      'Authorization': 'Bearer ' +  ScriptApp.getOAuthToken(),
-    },
-    muteHttpExceptions: true
-  });
-  
-  if (response.getResponseCode() !== 200) {
-    throw new Error("Errore nel download del PDF da Google Sheets (Codice: " + response.getResponseCode() + ")");
-  }
-  
-  return response.getBlob();
-}

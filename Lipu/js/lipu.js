@@ -17,7 +17,7 @@ const APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbxQ4Qqmyee_rzLeU9
 const PMTILES_LAYER='dati_alberi';
 
 // STATO
-let statoMap={},coordsMap={};
+let statoMap={},tsMap={},coordsMap={};
 let currentUser=null,currentProps=null,currentCoords=null;
 let checks={nido:null,richiami:null,andirivieni:null},esito=null,fotosBase64=[null,null,null];
 let map=null,pinBuffer='',selectedId=null;
@@ -41,6 +41,7 @@ async function init(){
       if(x.esito==='NEGATIVO')statoMap[id]='ok';
       else if(x.esito==='SOSPENDERE')statoMap[id]='stop';
       else if(x.esito==='STATO DI NECESSITÀ')statoMap[id]='pending';
+      if(x.timestamp)tsMap[id]=String(x.timestamp).trim();
     });
     document.getElementById('login-loading').textContent='';
   }catch(e){
@@ -266,6 +267,10 @@ function openScheda(id,props){
   [0,1,2].forEach(i=>{const s=document.getElementById('fs-'+i);s.className='foto-slot';const img=s.querySelector('img');if(img)img.remove();document.getElementById('fi-'+i).value='';});
   updBtn();
   document.getElementById('demo-banner').style.display=isDemo()?'block':'none';
+  const pdfWrap=document.getElementById('p-pdf-wrap');
+  const pdfLink=document.getElementById('p-pdf-link');
+  if(tsMap[id]){pdfLink.href=buildPdfUrl(id,tsMap[id]);pdfWrap.style.display='block';}
+  else{pdfWrap.style.display='none';}
   document.getElementById('panel').classList.add('open');
   if(isMob())document.getElementById('app').classList.add('panel-open');
 }
@@ -388,6 +393,12 @@ async function inviaScheda(){
 }
 
 function showToast(msg,type){const t=document.getElementById('toast');t.textContent=msg;t.className=type||'';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3500);}
+
+function buildPdfUrl(id,ts){
+  const idSafe=id.replace(/\s+/g,'_');
+  const tsF=ts.replace(/[:.]/g,'-').replace('T','_').slice(0,19);
+  return'https://raw.githubusercontent.com/PalermoHub/Verde_Urbano/main/Lipu/schede_pdf/'+idSafe+'_'+tsF+'.pdf';
+}
 
 // SIDEBAR / FILTRI
 function getF(props,campo){for(const k of CAMPO[campo]){if(props[k]!==undefined&&props[k]!==null&&String(props[k]).trim()!=='')return String(props[k]).trim();}return '';}
