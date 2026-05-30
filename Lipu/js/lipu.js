@@ -710,8 +710,9 @@ function updStatsSidebar(){
     const sp=new Set(filtered.map(function(f){return f.nome_sci;}).filter(Boolean));
     elSpec.textContent=sp.size;
   }
-  function countBy(field){
+  function countBy(field,base){
     const m={};
+    (base||[]).forEach(function(f){const v=f[field];if(v)m[v]=m[v]||0;});
     filtered.forEach(function(f){const v=f[field];if(v)m[v]=(m[v]||0)+1;});
     return Object.entries(m).map(function(e){return{label:e[0],count:e[1]};}).sort(function(a,b){return b.count-a.count;});
   }
@@ -722,7 +723,7 @@ function updStatsSidebar(){
   }
   updRankList('ss-upl',countBy('upl'));
   updRankList('ss-quart',countBy('quart'));
-  updRankList('ss-circ',countBy('circ'));
+  updRankList('ss-circ',countBy('circ',allFeats),8);
   const counts={ok:0,pending:0,stop:0,non_ispez:0};
   filtered.forEach(function(f){
     const s=statoMap[f.id]||'non_ispez';
