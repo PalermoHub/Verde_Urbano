@@ -6,18 +6,45 @@ Font DejaVu per supporto completo caratteri italiani (à, è, é, ì, ò, ù).
 Uso: python genera_pdf.py [--force|-f] per rigenerare PDF esistenti.
 """
 import glob
+import io
 import json
 import os
 import re
 import sys
 
 from fpdf import FPDF
+from PIL import Image as PilImage
+
+# ── Impostazioni foto ────────────────────────────────────────────────────────
+FOTO_MAX_PX  = 1350   # max lato lungo px (900 * 1.5 = +50% risoluzione)
+FOTO_QUALITY = 65     # qualità JPEG (55→65 per immagini più grandi)
+FOTO_COLS    = 1      # colonne per pagina (1 = +50% rispetto al precedente 2)
+FOTO_GAP_X   = 8      # mm gap orizzontale tra colonne
+FOTO_GAP_Y   = 10     # mm gap verticale tra righe
+# ─────────────────────────────────────────────────────────────────────────────
+
+
+def compress_image(fpath: str) -> io.BytesIO:
+    """Apre un'immagine, la ridimensiona e restituisce BytesIO JPEG compresso."""
+    with PilImage.open(fpath) as img:
+        img = img.convert('RGB')
+        w, h = img.size
+        if max(w, h) > FOTO_MAX_PX:
+            scale = FOTO_MAX_PX / max(w, h)
+            img = img.resize((int(w * scale), int(h * scale)), PilImage.LANCZOS)
+        buf = io.BytesIO()
+        img.save(buf, format='JPEG', quality=FOTO_QUALITY, optimize=True)
+        buf.seek(0)
+    return buf
 
 PDF_DIR  = 'Lipu/schede_pdf'
 FOTO_DIR = 'Lipu/foto'
 
-# Font DejaVu (installati con fonts-dejavu-core su Ubuntu)
-FONT_DIR    = '/usr/share/fonts/truetype/dejavu'
+# Font DejaVu (Linux: fonts-dejavu-core; Windows: C:\Windows\Fonts)
+if sys.platform == 'win32':
+    FONT_DIR = r'C:\Windows\Fonts'
+else:
+    FONT_DIR = '/usr/share/fonts/truetype/dejavu'
 FONT_R      = os.path.join(FONT_DIR, 'DejaVuSans.ttf')
 FONT_B      = os.path.join(FONT_DIR, 'DejaVuSans-Bold.ttf')
 FONT_I      = os.path.join(FONT_DIR, 'DejaVuSans-Oblique.ttf')
@@ -44,7 +71,12 @@ def ts_to_fname(ts: str) -> str:
 
 
 def find_foto(id_s: str, ts_f: str) -> list:
+    # 1) Prova prima il match esatto timestamp
     folder = os.path.join(FOTO_DIR, f'{id_s}_{ts_f}')
+    if not os.path.isdir(folder):
+        # 2) Fallback: cerca qualsiasi cartella che inizia con "{id_s}_"
+        candidates = sorted(glob.glob(os.path.join(FOTO_DIR, f'{id_s}_*')))
+        folder = candidates[0] if candidates else folder
     paths = []
     for i in range(1, 4):
         p = os.path.join(folder, f'foto_{i}.jpg')
@@ -197,38 +229,54 @@ def build_pdf(row: dict) -> bytes:
     if avail:
         pdf.add_page()
         draw_header(pdf)
-        W = pdf.epw
+        W    = pdf.epw
+        PH   = pdf.h - pdf.b_margin   # y massima utilizzabile
+        CAP  = 5                       # mm altezza didascalia + gap sotto
         section(' 8 · DOCUMENTAZIONE FOTOGRAFICA')
 
-        iw = (W - 8) / 2   # larghezza foto (2 per riga)
-        ih = iw * 0.75      # altezza proporzionale 4:3
-        gap_x = 8
-        gap_y = 8
-        y0 = pdf.get_y() + 2
+        # Larghezza foto: FOTO_COLS colonne
+        iw = (W - FOTO_GAP_X * (FOTO_COLS - 1)) / FOTO_COLS
+        ih = iw * 0.75   # aspect ratio 4:3
 
-        for idx, (num, fpath) in enumerate(avail):
-            total = len(avail)
-            row_n = idx // 2
-            col   = idx % 2
+        # Se ih troppo grande per pagina, riduce proporzionalmente
+        avail_h_page = PH - pdf.get_y() - 4  # spazio disponibile da qui a fondo
+        rows_per_page = max(1, int(avail_h_page / (ih + FOTO_GAP_Y + CAP)))
+        max_ih = (avail_h_page - rows_per_page * (FOTO_GAP_Y + CAP)) / rows_per_page
+        if ih > max_ih:
+            ih = max_ih
+            iw = ih / 0.75
 
-            # Ultima foto sola → centrata
-            if idx == total - 1 and total % 2 == 1:
-                x = 15 + (W - iw) / 2
-            else:
-                x = 15 + col * (iw + gap_x)
+        col = 0   # colonna corrente
+        for num, fpath in avail:
+            # Se nuova riga e non c'è spazio: nuova pagina
+            if col == 0:
+                y = pdf.get_y() + 2
+                if y + ih + CAP > PH:
+                    pdf.add_page()
+                    draw_header(pdf)
+                    section(' 8 · DOCUMENTAZIONE FOTOGRAFICA (segue)')
+                    y = pdf.get_y() + 2
 
-            y = y0 + row_n * (ih + gap_y + 6)
+            # Posizione x
+            x = 15 + col * (iw + FOTO_GAP_X)
 
             try:
-                pdf.image(fpath, x=x, y=y, w=iw, h=ih, keep_aspect_ratio=True)
+                buf = compress_image(fpath)
+                pdf.image(buf, x=x, y=y, w=iw, h=ih, keep_aspect_ratio=True)
             except Exception as e:
                 print(f'  Attenzione foto {fpath}: {e}', file=sys.stderr)
 
-            # Didascalia sotto la foto
+            # Didascalia
             pdf.set_xy(x, y + ih + 1)
             pdf.set_font(FONT_FAMILY, 'I', 7)
             pdf.set_text_color(*MUTED)
             pdf.cell(iw, 4, f'Foto {num}', align='C')
+
+            col += 1
+            if col >= FOTO_COLS:
+                # Fine riga: avanza y
+                pdf.set_xy(15, y + ih + CAP + FOTO_GAP_Y)
+                col = 0
 
     return bytes(pdf.output())
 

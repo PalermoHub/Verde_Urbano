@@ -20,13 +20,13 @@ jobs:
       - name: Installa ImageMagick
         run: sudo apt-get install -y imagemagick
 
-      - name: Ridimensiona immagini (max 1200px, qualità 85%)
+      - name: Ridimensiona immagini (max 1024px, qualità 85%)
         run: |
           find Lipu/foto -name '*.jpg' -o -name '*.jpeg' -o -name '*.JPG' -o -name '*.JPEG' | while read f; do
             W=$(identify -format "%w" "$f" 2>/dev/null || echo 0)
             H=$(identify -format "%h" "$f" 2>/dev/null || echo 0)
-            if [ "$W" -gt 1200 ] || [ "$H" -gt 1200 ]; then
-              mogrify -resize '1200x1200>' -quality 85 "$f"
+            if [ "$W" -gt 1024 ] || [ "$H" -gt 1024 ]; then
+              mogrify -resize '1024x1024>' -quality 85 "$f"
               echo "Ridimensionata: $f (${W}x${H})"
             else
               echo "OK già piccola: $f (${W}x${H})"
