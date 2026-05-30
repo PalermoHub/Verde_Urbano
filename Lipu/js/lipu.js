@@ -15,7 +15,7 @@ const FLABEL={circoscrizione:'Circ.',quartiere:'Quartiere',upl:'UPL',odonimo:'St
 const CLUSTER_MAX_ZOOM=15;
 const CL_C={ok:'#40916C',pending:'#E76F00',stop:'#C1121F',non_ispez:'#aaa'};
 const CL_KEYS=['ok','pending','stop','non_ispez'];
-const CL_LABELS={ok:'OK',pending:'Necessità',stop:'Sospesi',non_ispez:'Non ispez.'};
+const CL_LABELS={ok:'Ispezionato OK',pending:'Stato di necessità',stop:'Lavori sospesi',non_ispez:'Non ispezionato'};
 
 // CONFIG
 const APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbxQ4Qqmyee_rzLeU9ayc9gWgTDHVkTD_fwP7XmqXfxyQ8ube2Aq-759KjnWe3t3DdqBgQ/exec';
