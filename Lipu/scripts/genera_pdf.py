@@ -3,6 +3,7 @@
 LIPU - Genera schede PDF ispezioni alberi
 Legge i file JSON in Lipu/schede_pdf/ e genera il PDF corrispondente se mancante.
 Font DejaVu per supporto completo caratteri italiani (à, è, é, ì, ò, ù).
+Uso: python genera_pdf.py [--force|-f] per rigenerare PDF esistenti.
 """
 import glob
 import json
@@ -54,28 +55,26 @@ def find_foto(id_s: str, ts_f: str) -> list:
 def build_pdf(row: dict) -> bytes:
     pdf = FPDF(orientation='P', unit='mm', format='A4')
     pdf.set_auto_page_break(auto=True, margin=15)
-    pdf.add_page()
     pdf.set_margins(15, 15, 15)
 
-    # Registra font Unicode
     pdf.add_font(FONT_FAMILY, style='',  fname=FONT_R)
     pdf.add_font(FONT_FAMILY, style='B', fname=FONT_B)
     pdf.add_font(FONT_FAMILY, style='I', fname=FONT_I)
 
-    W = pdf.epw
-
-    # ── Header ──────────────────────────────────────────────
-    pdf.set_fill_color(*GREEN)
-    pdf.set_text_color(*WHITE)
-    pdf.set_font(FONT_FAMILY, 'B', 13)
-    pdf.cell(W, 9, 'LIPU · PROTOCOLLO TUTELA FAUNISTICA',
-             fill=True, align='C', new_x='LMARGIN', new_y='NEXT')
-    pdf.set_font(FONT_FAMILY, 'I', 9)
-    pdf.cell(W, 6, 'SCHEDA DI ISPEZIONE ALBERI PRIMA DEL TAGLIO',
-             fill=True, align='C', new_x='LMARGIN', new_y='NEXT')
-    pdf.ln(4)
+    def draw_header(pdf_obj):
+        W = pdf_obj.epw
+        pdf_obj.set_fill_color(*GREEN)
+        pdf_obj.set_text_color(*WHITE)
+        pdf_obj.set_font(FONT_FAMILY, 'B', 13)
+        pdf_obj.cell(W, 9, 'LIPU · PROTOCOLLO TUTELA FAUNISTICA',
+                     fill=True, align='C', new_x='LMARGIN', new_y='NEXT')
+        pdf_obj.set_font(FONT_FAMILY, 'I', 9)
+        pdf_obj.cell(W, 6, 'SCHEDA DI ISPEZIONE ALBERI PRIMA DEL TAGLIO',
+                     fill=True, align='C', new_x='LMARGIN', new_y='NEXT')
+        pdf_obj.ln(4)
 
     def section(title):
+        W = pdf.epw
         pdf.set_fill_color(*GRAY_BG)
         pdf.set_draw_color(*GRAY_BD)
         pdf.set_text_color(*GREEN)
@@ -85,8 +84,8 @@ def build_pdf(row: dict) -> bytes:
         pdf.ln(1)
 
     def field_pair(lbl1, val1, lbl2=None, val2=None):
+        W = pdf.epw
         half = W / 2 - 1
-        # etichette
         pdf.set_font(FONT_FAMILY, '', 7)
         pdf.set_text_color(*MUTED)
         if lbl2:
@@ -95,7 +94,6 @@ def build_pdf(row: dict) -> bytes:
             pdf.cell(half, 4, lbl2, new_x='LMARGIN', new_y='NEXT')
         else:
             pdf.cell(W, 4, lbl1, new_x='LMARGIN', new_y='NEXT')
-        # valori
         pdf.set_font(FONT_FAMILY, 'B', 10)
         pdf.set_text_color(*DARK)
         if lbl2:
@@ -106,37 +104,43 @@ def build_pdf(row: dict) -> bytes:
             pdf.cell(W, 6, str(val1 or '-'), new_x='LMARGIN', new_y='NEXT')
         pdf.ln(2)
 
-    # ── 1 · Anagrafica ──────────────────────────────────────
     ts = row.get('timestamp', '')
     data_str = ts.split('T')[0] if 'T' in ts else ts[:10]
-    section(' 1 · ANAGRAFICA DELLA PIANTA')
-    field_pair('ID Albero', row.get('id_albero', ''),
-               'Data ispezione', data_str)
-    field_pair('Specie', row.get('specie', ''),
-               'Ora controllo', row.get('ora_controllo', ''))
-    field_pair('Ubicazione', row.get('via', ''))
+
+    # ── PAGINA 1 ────────────────────────────────────────────────────────────
+    pdf.add_page()
+    draw_header(pdf)
+    W = pdf.epw
+
+    # 1 · Dati operatore
+    section(' 1 · DATI OPERATORE')
     field_pair('Operatore', row.get('nome_operatore', ''),
                'Ruolo', row.get('ruolo_operatore', ''))
+    field_pair('Data ispezione', data_str,
+               'Ora controllo', row.get('ora_controllo', ''))
 
-    # ── 2 · Dati territorio ─────────────────────────────────
-    section(' 2 · DATI TERRITORIO')
-    lat = row.get('lat_albero', '')
-    lon = row.get('lon_albero', '')
-    lat_str = f'{float(lat):.6f}' if lat else '-'
-    lon_str = f'{float(lon):.6f}' if lon else '-'
-    field_pair('Latitudine', lat_str, 'Longitudine', lon_str)
-    field_pair('Circoscrizione', row.get('circoscrizione', '') or '-',
-               'Quartiere', row.get('quartiere', '') or '-')
-    field_pair('UPL', row.get('upl', '') or '-')
-
-    # ── 3 · Dati botanici ───────────────────────────────────
-    section(' 3 · DATI BOTANICI')
+    # 2 · Anagrafica albero
+    section(' 2 · ANAGRAFICA ALBERO')
+    field_pair('ID Albero', row.get('id_albero', ''),
+               'Specie', row.get('specie', ''))
     field_pair('Altezza complessiva [m]',
                row.get('altezza_complessiva', '') or '-',
                'Altezza base chioma [m]',
                row.get('altezza_base_chioma', '') or '-')
 
-    # ── 4 · Dichiarazione ───────────────────────────────────
+    # 3 · Dati territorio
+    section(' 3 · DATI TERRITORIO')
+    lat = row.get('lat_albero', '')
+    lon = row.get('lon_albero', '')
+    lat_str = f'{float(lat):.6f}' if lat else '-'
+    lon_str = f'{float(lon):.6f}' if lon else '-'
+    field_pair('Latitudine', lat_str, 'Longitudine', lon_str)
+    field_pair('Ubicazione', row.get('via', ''))
+    field_pair('Circoscrizione', row.get('circoscrizione', '') or '-',
+               'Quartiere', row.get('quartiere', '') or '-')
+    field_pair('UPL', row.get('upl', '') or '-')
+
+    # 4 · Dichiarazione operatore
     section(' 4 · DICHIARAZIONE OPERATORE')
     checks = [
         ('Nidi strutturati, uova o piccoli (pulli) visibili nella chioma o cavità',
@@ -157,7 +161,7 @@ def build_pdf(row: dict) -> bytes:
                  new_x='LMARGIN', new_y='NEXT')
     pdf.ln(2)
 
-    # ── 5 · Esito ────────────────────────────────────────────
+    # 5 · Esito
     section(" 5 · ESITO DELL'ESAME")
     esito = row.get('esito', '-')
     if esito == 'SOSPENDERE':
@@ -171,44 +175,66 @@ def build_pdf(row: dict) -> bytes:
     pdf.cell(W, 9, esito or '-', align='C', new_x='LMARGIN', new_y='NEXT')
     pdf.ln(2)
 
-    # ── Note ─────────────────────────────────────────────────
-    section(' NOTE AGGIUNTIVE')
+    # 6 · Note aggiuntive
+    section(' 6 · NOTE AGGIUNTIVE')
     pdf.set_font(FONT_FAMILY, '', 9)
     pdf.set_text_color(*DARK)
     pdf.multi_cell(W, 5, row.get('note', '') or 'Nessuna nota aggiuntiva.',
                    new_x='LMARGIN', new_y='NEXT')
     pdf.ln(2)
 
-    # ── Firme ────────────────────────────────────────────────
-    section(' FIRME DI CONVALIDA')
+    # 7 · Firme di convalida
+    section(' 7 · FIRME DI CONVALIDA')
     field_pair('Firma Operatore', row.get('firma_operatore', ''),
                'Firma Capocantiere', row.get('firma_capocantiere', ''))
 
-    # ── Foto ─────────────────────────────────────────────────
+    # ── PAGINA 2: Documentazione fotografica ────────────────────────────────
     id_s = id_safe(row.get('id_albero', ''))
     ts_f = ts_to_fname(ts)
     foto_paths = find_foto(id_s, ts_f)
-    avail = [(i, p) for i, p in enumerate(foto_paths) if p]
+    avail = [(i + 1, p) for i, p in enumerate(foto_paths) if p]
 
     if avail:
-        section(' DOCUMENTAZIONE FOTOGRAFICA')
-        y0 = pdf.get_y()
-        iw = (W - 4) / 2
-        ih = iw * 0.75
-        for idx, (_, fpath) in enumerate(avail):
-            col = idx % 2
+        pdf.add_page()
+        draw_header(pdf)
+        W = pdf.epw
+        section(' 8 · DOCUMENTAZIONE FOTOGRAFICA')
+
+        iw = (W - 8) / 2   # larghezza foto (2 per riga)
+        ih = iw * 0.75      # altezza proporzionale 4:3
+        gap_x = 8
+        gap_y = 8
+        y0 = pdf.get_y() + 2
+
+        for idx, (num, fpath) in enumerate(avail):
+            total = len(avail)
             row_n = idx // 2
-            x = 15 + col * (iw + 4)
-            y = y0 + row_n * (ih + 4)
+            col   = idx % 2
+
+            # Ultima foto sola → centrata
+            if idx == total - 1 and total % 2 == 1:
+                x = 15 + (W - iw) / 2
+            else:
+                x = 15 + col * (iw + gap_x)
+
+            y = y0 + row_n * (ih + gap_y + 6)
+
             try:
                 pdf.image(fpath, x=x, y=y, w=iw, h=ih, keep_aspect_ratio=True)
             except Exception as e:
                 print(f'  Attenzione foto {fpath}: {e}', file=sys.stderr)
 
+            # Didascalia sotto la foto
+            pdf.set_xy(x, y + ih + 1)
+            pdf.set_font(FONT_FAMILY, 'I', 7)
+            pdf.set_text_color(*MUTED)
+            pdf.cell(iw, 4, f'Foto {num}', align='C')
+
     return bytes(pdf.output())
 
 
 def main():
+    force = '--force' in sys.argv or '-f' in sys.argv
     os.makedirs(PDF_DIR, exist_ok=True)
 
     json_files = sorted(glob.glob(os.path.join(PDF_DIR, '*.json')))
@@ -220,7 +246,7 @@ def main():
     for json_path in json_files:
         pdf_path = json_path[:-5] + '.pdf'
 
-        if os.path.exists(pdf_path):
+        if os.path.exists(pdf_path) and not force:
             print(f'  Esiste: {pdf_path}')
             continue
 

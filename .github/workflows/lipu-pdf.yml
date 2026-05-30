@@ -3,7 +3,10 @@ name: LIPU · Genera schede PDF
 on:
   push:
     branches: [main]
-    paths: ['Lipu/schede_pdf/**.json']
+    paths:
+      - 'Lipu/schede_pdf/**.json'
+      - 'Lipu/scripts/genera_pdf.py'
+  workflow_dispatch:
 
 jobs:
   genera-pdf:
