@@ -118,8 +118,26 @@ def build_pdf(row: dict) -> bytes:
     field_pair('Operatore', row.get('nome_operatore', ''),
                'Ruolo', row.get('ruolo_operatore', ''))
 
-    # ── 2 · Dichiarazione ───────────────────────────────────
-    section(' 2 · DICHIARAZIONE OPERATORE')
+    # ── 2 · Dati territorio ─────────────────────────────────
+    section(' 2 · DATI TERRITORIO')
+    lat = row.get('lat_albero', '')
+    lon = row.get('lon_albero', '')
+    lat_str = f'{float(lat):.6f}' if lat else '-'
+    lon_str = f'{float(lon):.6f}' if lon else '-'
+    field_pair('Latitudine', lat_str, 'Longitudine', lon_str)
+    field_pair('Circoscrizione', row.get('circoscrizione', '') or '-',
+               'Quartiere', row.get('quartiere', '') or '-')
+    field_pair('UPL', row.get('upl', '') or '-')
+
+    # ── 3 · Dati botanici ───────────────────────────────────
+    section(' 3 · DATI BOTANICI')
+    field_pair('Altezza complessiva [m]',
+               row.get('altezza_complessiva', '') or '-',
+               'Altezza base chioma [m]',
+               row.get('altezza_base_chioma', '') or '-')
+
+    # ── 4 · Dichiarazione ───────────────────────────────────
+    section(' 4 · DICHIARAZIONE OPERATORE')
     checks = [
         ('Nidi strutturati, uova o piccoli (pulli) visibili nella chioma o cavità',
          row.get('nido_visibile', '-')),
@@ -139,8 +157,8 @@ def build_pdf(row: dict) -> bytes:
                  new_x='LMARGIN', new_y='NEXT')
     pdf.ln(2)
 
-    # ── 3 · Esito ────────────────────────────────────────────
-    section(" 3 · ESITO DELL'ESAME")
+    # ── 5 · Esito ────────────────────────────────────────────
+    section(" 5 · ESITO DELL'ESAME")
     esito = row.get('esito', '-')
     if esito == 'SOSPENDERE':
         c = RED

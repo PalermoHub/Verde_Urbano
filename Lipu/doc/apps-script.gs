@@ -22,7 +22,10 @@ const SHEET_ALBERI    = 'Dati alberi';
 const SHEET_OPERATORI = 'Gestione operatori';
 
 const HEADERS_ISPEZIONI = [
-  'timestamp', 'id_albero', 'lat_albero', 'lon_albero', 'id_operatore', 'nome_operatore', 'ruolo_operatore',
+  'timestamp', 'id_albero', 'lat_albero', 'lon_albero',
+  'circoscrizione', 'quartiere', 'upl',
+  'altezza_complessiva', 'altezza_base_chioma',
+  'id_operatore', 'nome_operatore', 'ruolo_operatore',
   'ora_controllo', 'nido_visibile', 'richiami', 'andirivieni', 'esito',
   'note', 'firma_operatore', 'firma_capocantiere',
   'url_foto_1', 'url_foto_2', 'url_foto_3', 'url_pdf'
@@ -86,6 +89,11 @@ function processIspezione(data) {
     data.id_albero        || '',
     data.lat_albero       || '',
     data.lon_albero       || '',
+    data.circoscrizione   || '',
+    data.quartiere        || '',
+    data.upl              || '',
+    data.altezza_complessiva || '',
+    data.altezza_base_chioma || '',
     data.id_operatore     || '',
     data.nome_operatore   || '',
     data.ruolo_operatore  || '',
@@ -107,24 +115,31 @@ function processIspezione(data) {
 
   // Commette un JSON con i dati ispezione — usato dal workflow GitHub Actions per generare il PDF
   const jsonData = {
-    timestamp:          data.timestamp        || new Date().toISOString(),
-    id_albero:          data.id_albero        || '',
-    specie:             data.specie           || '',
-    via:                data.via              || '',
-    id_operatore:       data.id_operatore     || '',
-    nome_operatore:     data.nome_operatore   || '',
-    ruolo_operatore:    data.ruolo_operatore  || '',
-    ora_controllo:      data.ora_controllo    || '',
-    nido_visibile:      data.nido_visibile    || '',
-    richiami:           data.richiami         || '',
-    andirivieni:        data.andirivieni      || '',
-    esito:              data.esito            || '',
-    note:               data.note             || '',
-    firma_operatore:    data.firma_operatore  || '',
-    firma_capocantiere: data.firma_capocantiere || '',
-    url_foto_1:         fotoUrls[0] || '',
-    url_foto_2:         fotoUrls[1] || '',
-    url_foto_3:         fotoUrls[2] || ''
+    timestamp:           data.timestamp        || new Date().toISOString(),
+    id_albero:           data.id_albero        || '',
+    lat_albero:          data.lat_albero       || '',
+    lon_albero:          data.lon_albero       || '',
+    circoscrizione:      data.circoscrizione   || '',
+    quartiere:           data.quartiere        || '',
+    upl:                 data.upl              || '',
+    altezza_complessiva: data.altezza_complessiva || '',
+    altezza_base_chioma: data.altezza_base_chioma || '',
+    specie:              data.specie           || '',
+    via:                 data.via              || '',
+    id_operatore:        data.id_operatore     || '',
+    nome_operatore:      data.nome_operatore   || '',
+    ruolo_operatore:     data.ruolo_operatore  || '',
+    ora_controllo:       data.ora_controllo    || '',
+    nido_visibile:       data.nido_visibile    || '',
+    richiami:            data.richiami         || '',
+    andirivieni:         data.andirivieni      || '',
+    esito:               data.esito            || '',
+    note:                data.note             || '',
+    firma_operatore:     data.firma_operatore  || '',
+    firma_capocantiere:  data.firma_capocantiere || '',
+    url_foto_1:          fotoUrls[0] || '',
+    url_foto_2:          fotoUrls[1] || '',
+    url_foto_3:          fotoUrls[2] || ''
   };
   const jsonPath = 'Lipu/schede_pdf/' + idSafe + '_' + ts + '.json';
   commitFileGitHub(jsonPath, Utilities.base64Encode(JSON.stringify(jsonData, null, 2)), 'dati ispezione ' + jsonPath);
