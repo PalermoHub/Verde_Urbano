@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-05-30T08:57:26.043Z",
+  "id_albero": "700",
+  "specie": "Chamaerops humilis",
+  "via": "Via Barcarello",
+  "id_operatore": "OP-03",
+  "nome_operatore": "Giovan Battista Vitrano",
+  "ruolo_operatore": "Operatore",
+  "ora_controllo": "10:56",
+  "nido_visibile": "Si",
+  "richiami": "No",
+  "andirivieni": "No",
+  "esito": "STATO DI NECESSIT?",
+  "note": "Integer sem nisi, volutpat et bibendum ac, pharetra et nulla. Nulla dictum eros at elit aliquet, pulvinar vulputate enim tincidunt. Vivamus iaculis dictum lacus in aliquam.",
+  "firma_operatore": "Giovan Battista Vitrano",
+  "firma_capocantiere": "Mario Bianchi",
+  "url_foto_1": "https://raw.githubusercontent.com/PalermoHub/Verde_Urbano/main/Lipu/foto/700_2026-05-30_08-57-26/foto_1.jpg",
+  "url_foto_2": "https://raw.githubusercontent.com/PalermoHub/Verde_Urbano/main/Lipu/foto/700_2026-05-30_08-57-26/foto_2.jpg",
+  "url_foto_3": "https://raw.githubusercontent.com/PalermoHub/Verde_Urbano/main/Lipu/foto/700_2026-05-30_08-57-26/foto_3.jpg"
+}
