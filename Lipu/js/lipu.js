@@ -391,6 +391,8 @@ async function inviaScheda(){
     id_operatore:currentUser.id_operatore,
     nome_operatore:currentUser.nome+' '+currentUser.cognome,
     ruolo_operatore:currentUser.ruolo,
+    lat_albero:coordsMap[id]?coordsMap[id][1]:'',
+    lon_albero:coordsMap[id]?coordsMap[id][0]:'',
     ora_controllo:document.getElementById('p-ora').textContent,
     nido_visibile:checks.nido===true?'Si':'No',
     richiami:checks.richiami===true?'Si':'No',

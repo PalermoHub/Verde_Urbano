@@ -22,7 +22,7 @@ const SHEET_ALBERI    = 'Dati alberi';
 const SHEET_OPERATORI = 'Gestione operatori';
 
 const HEADERS_ISPEZIONI = [
-  'timestamp', 'id_albero', 'id_operatore', 'nome_operatore', 'ruolo_operatore',
+  'timestamp', 'id_albero', 'lat_albero', 'lon_albero', 'id_operatore', 'nome_operatore', 'ruolo_operatore',
   'ora_controllo', 'nido_visibile', 'richiami', 'andirivieni', 'esito',
   'note', 'firma_operatore', 'firma_capocantiere',
   'url_foto_1', 'url_foto_2', 'url_foto_3', 'url_pdf'
@@ -84,6 +84,8 @@ function processIspezione(data) {
   const row = [
     data.timestamp        || new Date().toISOString(),
     data.id_albero        || '',
+    data.lat_albero       || '',
+    data.lon_albero       || '',
     data.id_operatore     || '',
     data.nome_operatore   || '',
     data.ruolo_operatore  || '',
@@ -101,6 +103,7 @@ function processIspezione(data) {
     pdfUrl
   ];
   sheet.appendRow(row);
+  exportIspezioniCSV(sheet);
 
   // Commette un JSON con i dati ispezione — usato dal workflow GitHub Actions per generare il PDF
   const jsonData = {
@@ -324,6 +327,21 @@ function verifyLogin(pin) {
   }
   
   return { status: 'error', error: 'PIN non valido' };
+}
+
+// Esporta il foglio ispezioni come CSV e lo committa su GitHub
+function exportIspezioniCSV(sheet) {
+  const data = sheet.getDataRange().getValues();
+  const csv = data.map(row =>
+    row.map(cell => {
+      const s = String(cell);
+      return (s.includes(',') || s.includes('"') || s.includes('\n'))
+        ? '"' + s.replace(/"/g, '""') + '"'
+        : s;
+    }).join(',')
+  ).join('\n');
+  const b64 = Utilities.base64Encode(csv, Utilities.Charset.UTF_8);
+  commitFileGitHub('Lipu/dati/ispezioni.csv', b64, 'aggiorna ispezioni.csv');
 }
 
 // Trova la colonna corrispondente cercando diverse varianti comuni
