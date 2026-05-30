@@ -208,6 +208,11 @@ function initMap(){
     map.on('mousemove',l,e=>{tooltip.setLngLat(e.lngLat);});
     map.on('mouseleave',l,()=>{map.getCanvas().style.cursor='';tooltip.remove();});
   });
+
+  map.on('click',e=>{
+    const feats=map.queryRenderedFeatures(e.point,{layers:['alberi-cerchi','overlay-cerchi']});
+    if(feats.length===0&&selectedId)closePanel();
+  });
 }
 
 function getTooltipProps(fp){
@@ -573,26 +578,20 @@ function isMob(){return window.innerWidth<=640;}
 function closeMobSidebar(){
   document.getElementById('sidebar').classList.remove('mob-open');
   document.getElementById('mob-backdrop').classList.remove('show');
-  updFab(false);
   setTimeout(()=>map&&map.resize(),320);
-}
-
-function updFab(open){
-  const fab=document.getElementById('mob-filter-fab');if(!fab)return;
-  fab.classList.toggle('active',open);
-  fab.querySelector('span').textContent=open?'Chiudi':'Filtri';
 }
 
 function toggleSidebar(){
   if(isMob()){
     const open=document.getElementById('sidebar').classList.toggle('mob-open');
     document.getElementById('mob-backdrop').classList.toggle('show',open);
-    updFab(open);
     setTimeout(()=>map&&map.resize(),320);
     return;
   }
   sidebarOpen=!sidebarOpen;
   document.getElementById('sidebar').classList.toggle('collapsed',!sidebarOpen);
+  const fbtn=document.getElementById('filter-toggle-btn');
+  if(fbtn)fbtn.classList.toggle('active',sidebarOpen);
   setTimeout(()=>map&&map.resize(),320);
 }
 

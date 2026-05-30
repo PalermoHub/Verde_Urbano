@@ -68,11 +68,12 @@
     <span class="topbar-user" id="topbar-user"></span>
     <button class="schede-btn" onclick="openMieSchede()" title="Le mie schede">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg>
-      Le mie schede
+    </button>
+    <button class="stats-toggle-btn active" id="filter-toggle-btn" onclick="toggleSidebar()" title="Pannello filtri">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
     </button>
     <button class="stats-toggle-btn" id="stats-toggle-btn" onclick="toggleStatsSidebar()" title="Pannello statistiche">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 18V11M12 18V6M17 18V14"/></svg>
-      <span>Statistiche</span>
     </button>
     <button class="logout-btn" onclick="doLogout()">Esci</button>
   </div>
@@ -80,9 +81,9 @@
   <div class="main-content">
     <div id="sidebar">
       <div class="sb-header" onclick="toggleSidebar()">
-        <span class="sb-icon">&#9974;</span>
+        <svg class="sb-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
         <span class="sb-ttl">Filtri</span>
-        <span class="sb-chev" id="sb-chev">&#8964;</span>
+        <div class="sb-switch" id="sb-chev"><span class="sb-switch-track"><span class="sb-switch-thumb"></span></span></div>
       </div>
       <div class="sb-body" id="sb-body">
         <div class="fi-box">
@@ -131,10 +132,7 @@
       </div>
     </div>
     <div id="map">
-      <button id="mob-filter-fab" onclick="toggleSidebar()">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
-        <span>Filtri</span>
-      </button>
+
       <div id="map-toolbar">
         <button class="tb-btn" id="tb-home" title="Vista iniziale" onclick="tbHome()">
           <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
@@ -188,7 +186,7 @@
       <div class="ss-head">
         <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.75)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 18V11M12 18V6M17 18V14"/></svg>
         <span class="ss-head-ttl">Statistiche</span>
-        <button class="ss-head-close" onclick="toggleStatsSidebar()" title="Chiudi">&times;</button>
+        <div class="ss-switch" onclick="toggleStatsSidebar()" title="Chiudi"><span class="ss-switch-track"><span class="ss-switch-thumb"></span></span></div>
       </div>
       <div class="ss-body">
         <div class="ss-hero">
