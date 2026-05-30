@@ -33,6 +33,7 @@ function switchBasemap(key){
 
 // STATO
 let statoMap={},tsMap={},coordsMap={},allIspezioni=[];
+let _ispezioniTs=new Set(); // dedup guard: evita duplicati CSV+AppsScript
 let currentUser=null,currentProps=null,currentCoords=null;
 let checks={nido:null,richiami:null,andirivieni:null},esito=null,fotosBase64=[null,null,null];
 let map=null,pinBuffer='',selectedId=null;
@@ -162,8 +163,62 @@ function _syncLayerVisibility(){
   map.setLayoutProperty('overlay-cerchi','visibility',cluster?'none':'visible');
 }
 
+function _parseCsv(text){
+  const lines=text.trim().split('\n');
+  if(lines.length<2)return[];
+  const headers=lines[0].split(',').map(h=>h.trim());
+  const out=[];
+  for(let i=1;i<lines.length;i++){
+    const vals=[];let cur='',inQ=false;
+    const line=lines[i];
+    for(let j=0;j<line.length;j++){
+      const ch=line[j];
+      if(ch==='"'){inQ=!inQ;}
+      else if(ch===','&&!inQ){vals.push(cur.trim());cur='';}
+      else cur+=ch;
+    }
+    vals.push(cur.trim());
+    const obj={};
+    headers.forEach((h,k)=>{obj[h]=vals[k]||'';});
+    out.push(obj);
+  }
+  return out;
+}
+
+async function _loadIspezioniCsv(){
+  try{
+    const r=await fetch('dati/ispezioni.csv');
+    if(!r.ok)return;
+    const rows=_parseCsv(await r.text());
+    let nuovi=false;
+    rows.forEach(row=>{
+      const id=String(row.id_albero||'').trim();if(!id)return;
+      const ts=String(row.timestamp||'').trim();
+      if(ts&&_ispezioniTs.has(ts))return;
+      if(ts)_ispezioniTs.add(ts);
+      const esito=String(row.esito||'').trim();
+      if(esito==='NEGATIVO')statoMap[id]='ok';
+      else if(esito==='SOSPENDERE')statoMap[id]='stop';
+      else if(esito==='STATO DI NECESSITÀ')statoMap[id]='pending';
+      if(ts)tsMap[id]=ts;
+      allIspezioni.push({
+        timestamp:ts,
+        id_albero:id,
+        id_operatore:String(row['id_operatore']||'').trim(),
+        nome_operatore:String(row.nome_operatore||'').trim(),
+        ruolo_operatore:String(row.ruolo_operatore||'').trim(),
+        esito:esito,
+        url_pdf:String(row.url_pdf||'').trim()
+      });
+      nuovi=true;
+    });
+    if(nuovi&&map){updOverlay();updClusterSource();}
+  }catch(e){/* silenzioso - CSV opzionale */}
+}
+
 async function init(){
   buildPad();
+  _loadIspezioniCsv(); // carica CSV in parallelo, non bloccante
   try{
     const r=await fetch(APPS_SCRIPT_URL);
     const d=await r.json();
@@ -174,6 +229,9 @@ async function init(){
     }
     (d.ispezioni||[]).forEach(x=>{
       const id=String(x.id_albero||'').trim();if(!id)return;
+      const ts=String(x.timestamp||'').trim();
+      if(ts&&_ispezioniTs.has(ts))return; // già nel CSV
+      if(ts)_ispezioniTs.add(ts);
       if(x.esito==='NEGATIVO')statoMap[id]='ok';
       else if(x.esito==='SOSPENDERE')statoMap[id]='stop';
       else if(x.esito==='STATO DI NECESSITÀ')statoMap[id]='pending';
