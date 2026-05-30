@@ -15,6 +15,16 @@ const FLABEL={circoscrizione:'Circ.',quartiere:'Quartiere',upl:'UPL',odonimo:'St
 // CONFIG
 const APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbxQ4Qqmyee_rzLeU9ayc9gWgTDHVkTD_fwP7XmqXfxyQ8ube2Aq-759KjnWe3t3DdqBgQ/exec';
 const PMTILES_LAYER='dati_alberi';
+const BASEMAPS={
+  carto:    ['https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png'],
+  ctc:      ['https://siciliahub.github.io/Tiles/ctr_pa_2k/{z}/{x}/{y}.png'],
+  satellite:['https://mt1.google.com/vt/lyrs=s&x={x}&y={y}&z={z}']
+};
+function switchBasemap(key){
+  if(!map||!BASEMAPS[key])return;
+  map.getSource('carto').setTiles(BASEMAPS[key]);
+  document.querySelectorAll('#bm-gallery .bm-item').forEach(el=>el.classList.toggle('active',el.dataset.key===key));
+}
 
 // STATO
 let statoMap={},tsMap={},coordsMap={},allIspezioni=[];

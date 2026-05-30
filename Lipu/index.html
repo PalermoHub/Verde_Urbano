@@ -136,12 +136,13 @@
         <button class="tb-btn" id="tb-gps" title="La mia posizione" onclick="tbGps()">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/></svg>
         </button>
-        <button class="tb-btn" id="tb-search" title="Cerca / Filtri" onclick="tbSearch()">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        </button>
-        <button class="tb-btn" id="tb-fs" title="Schermo intero" onclick="tbFullscreen()">
+		        <button class="tb-btn" id="tb-fs" title="Schermo intero" onclick="tbFullscreen()">
           <svg id="tb-fs-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
         </button>
+    <!--    <button class="tb-btn" id="tb-search" title="Cerca / Filtri" onclick="tbSearch()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </button> -->
+
         <div class="tb-divider"></div>
         <div class="tb-zoom-wrap">
           <div class="tb-zoom-inner">
@@ -156,6 +157,20 @@
         <div class="legend-item" data-stato="pending" onclick="toggleStato('pending')"><div class="legend-dot" style="background:#E76F00"></div><span>Stato di necessita</span><span class="legend-count" id="lc-pending"></span></div>
         <div class="legend-item" data-stato="stop" onclick="toggleStato('stop')"><div class="legend-dot" style="background:#C1121F"></div><span>Lavori sospesi</span><span class="legend-count" id="lc-stop"></span></div>
         <div class="legend-item" data-stato="non_ispez" onclick="toggleStato('non_ispez')"><div class="legend-dot" style="background:#aaa"></div><span>Non ispezionato</span><span class="legend-count" id="lc-non_ispez"></span></div>
+      </div>
+      <div class="bm-gallery" id="bm-gallery">
+        <div class="bm-item bm-square active" data-key="carto" onclick="switchBasemap('carto')" title="CartoDB Chiaro">
+          <img class="bm-thumb" src="https://a.basemaps.cartocdn.com/light_all/2/2/1.png" alt="CartoDB">
+          <span class="bm-label">CartoDB Chiaro</span>
+        </div>
+        <div class="bm-item bm-square" data-key="ctc" onclick="switchBasemap('ctc')" title="CTC 2k Palermo">
+          <img class="bm-thumb" src="img/ctc.jpg" alt="CTC">
+          <span class="bm-label">CTC 2k Palermo</span>
+        </div>
+        <div class="bm-item bm-square" data-key="satellite" onclick="switchBasemap('satellite')" title="Google Satellite">
+          <img class="bm-thumb" src="https://mt0.google.com/vt/lyrs=s&x=2&y=1&z=2" alt="Satellite">
+          <span class="bm-label">Google Satellite</span>
+        </div>
       </div>
     </div>
     <div id="panel">
