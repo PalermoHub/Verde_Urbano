@@ -112,6 +112,13 @@ function updateClusterMarkers(){
     });
     _clusterMarkers.push(new maplibregl.Marker({element:el,anchor:'center'}).setLngLat(f.geometry.coordinates).addTo(map));
   });
+  map.querySourceFeatures('cluster-src',{filter:['!=','cluster',true]}).forEach(f=>{
+    const stato=f.properties.stato||'non_ispez';
+    const col=CL_C[stato]||'#aaa';
+    const el=document.createElement('div');
+    el.style.cssText=`width:10px;height:10px;border-radius:50%;background:${col};border:1.5px solid #fff;box-shadow:0 1px 3px rgba(0,0,0,.3);pointer-events:none`;
+    _clusterMarkers.push(new maplibregl.Marker({element:el,anchor:'center'}).setLngLat(f.geometry.coordinates).addTo(map));
+  });
 }
 
 function _syncLayerVisibility(){
@@ -214,7 +221,7 @@ function initMap(){
               0,1.5, 6,2, 10,3, 13,5, 15,7, 18,10],
             'circle-color':'#888888',
             'circle-stroke-width':0,
-            'circle-opacity':0.8
+            'circle-opacity':0
           }
         },
         {
