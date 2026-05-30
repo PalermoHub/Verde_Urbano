@@ -276,6 +276,9 @@ function openScheda(id,props){
   document.getElementById('firma-cap-pin').value='';
   document.getElementById('firma-cap').placeholder='In attesa del PIN...';
   document.getElementById('firma-cap').style.borderColor='';
+  const isCur=currentUser.ruolo==='Curiosone';
+  document.getElementById('firma-cap-pin-wrap').style.display=isCur?'none':'';
+  document.getElementById('firma-cap-val-row').style.display=isCur?'none':'';
   checks={nido:null,richiami:null,andirivieni:null};esito=null;fotosBase64=[null,null,null];
   document.getElementById('p-note').value='';
   ['nido','richiami','andirivieni'].forEach(k=>rndrChk(k));
@@ -312,14 +315,14 @@ function updBtn(){
   const ok=esito!==null&&checks.nido!==null&&checks.richiami!==null&&checks.andirivieni!==null;
   const cap=document.getElementById('firma-cap').value.trim();
   const demo=isDemo();
-  const pronto = ok && cap !== '';
-  // Abilitiamo il pulsante visualmente anche in demo per consentire il test della UI!
+  const isCur=currentUser&&currentUser.ruolo==='Curiosone';
+  const pronto = ok && (isCur || cap !== '');
   document.getElementById('btn-invia').disabled=!pronto;
   if(demo){
     document.getElementById('send-note').textContent='Modalità DEMO – premi Invia per testare';
   }else if(!ok){
     document.getElementById('send-note').textContent='Compila esito e tutti e 3 i controlli per procedere';
-  }else if(!cap){
+  }else if(!isCur&&!cap){
     document.getElementById('send-note').textContent='Inserisci il PIN del Capocantiere per firmare';
   }else{
     document.getElementById('send-note').textContent='Dati pronti per l\'invio';
@@ -377,8 +380,9 @@ function removeFoto(ev,i){ev.stopPropagation();const s=document.getElementById('
 // INVIA
 async function inviaScheda(){
   if(isDemo()){showToast('Modalità DEMO – invio non disponibile','error');return;}
-  const cap=document.getElementById('firma-cap').value.trim();
-  if(!cap){showToast('Inserisci la firma del capocantiere','error');return;}
+  const isCur=currentUser&&currentUser.ruolo==='Curiosone';
+  const cap=isCur?'':document.getElementById('firma-cap').value.trim();
+  if(!isCur&&!cap){showToast('Inserisci la firma del capocantiere','error');return;}
   const btn=document.getElementById('btn-invia');btn.disabled=true;btn.textContent='Invio in corso...';
   const EL={neg:'NEGATIVO',stop:'SOSPENDERE',urg:'STATO DI NECESSITÀ'};
   const p=currentProps||{};
