@@ -445,7 +445,6 @@ input,select,textarea{-webkit-tap-highlight-color:transparent}
 .ss-rank-empty{font-size:11px;color:var(--gray-400);font-family:var(--mono)}
 
 /* Doughnut */
-.ss-donut-wrap{display:flex;justify-content:center;margin:8px 0}
 #ss-donut{width:120px;height:120px;display:block}
 .donut-center-val{
   font-size:18px;font-weight:700;fill:var(--green);font-family:var(--font);
@@ -581,6 +580,35 @@ input,select,textarea{-webkit-tap-highlight-color:transparent}
 .mi-text{font-size:13px;line-height:1.65;color:var(--gray-700);margin:0}
 .mi-link{color:var(--green);font-weight:600;text-decoration:none}
 .mi-link:hover{text-decoration:underline}
+
+/* ── Stats sidebar: filtri interattivi ─────────────────────── */
+.ss-rank-clickable{border-radius:4px;transition:background .12s;padding:2px 5px;margin:0 -5px 4px;cursor:pointer}
+.ss-rank-clickable:hover{background:var(--green-xpale)}
+.ss-rank-clickable:last-child{margin-bottom:-2px}
+.ss-rank-active{background:var(--green-xpale);border-left:3px solid var(--green-light);padding-left:5px!important}
+.ss-rank-active .ss-rank-label{color:var(--green);font-weight:600}
+.ss-rank-bar-active{background:var(--green)!important}
+.ss-rank-active .ss-rank-count{color:var(--green);font-weight:700}
+
+.donut-legend-item{transition:background .12s;border-radius:4px;padding:3px 5px;margin:0 -5px}
+.donut-legend-item:hover{background:var(--gray-50)}
+.donut-legend-item.donut-active{background:var(--green-xpale)}
+.donut-legend-item.donut-active .donut-lbl{color:var(--green);font-weight:600}
+.donut-legend-item.donut-active .donut-cnt{color:var(--green);font-weight:700}
+
+.ss-seg{transition:opacity .12s}
+.ss-seg:hover{filter:brightness(1.1);opacity:1!important}
+
+.ss-donut-wrap{position:relative;display:flex;justify-content:center;margin:8px 0}
+#ss-donut-tip{
+  position:absolute;bottom:-2px;left:50%;transform:translateX(-50%);
+  background:rgba(26,26,24,.9);color:#fff;
+  border-radius:5px;padding:5px 9px;font-family:var(--mono);font-size:10px;
+  white-space:nowrap;pointer-events:none;opacity:0;transition:opacity .15s;
+  display:flex;align-items:center;gap:6px;z-index:10;
+}
+#ss-donut-tip.show{opacity:1}
+#ss-donut-tip .tip-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0;border:1px solid rgba(255,255,255,.3)}
 
 @media(max-width:640px){
   #modal-cerca{padding:0;align-items:flex-end}

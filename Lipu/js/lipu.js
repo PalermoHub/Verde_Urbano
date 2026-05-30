@@ -861,42 +861,78 @@ function toggleStatsSidebar(){
   }
 }
 
-function updRankList(id,items,maxItems){
+function updRankList(id,items,maxItems,filtroKey){
   maxItems=maxItems||5;
   const el=document.getElementById(id);if(!el)return;
   if(!items.length){el.innerHTML='<div class="ss-rank-empty">Nessun dato</div>';return;}
   const top=items.slice(0,maxItems);
   const maxVal=top[0].count;
+  const active=filtroKey?filtriAttivi[filtroKey]:'';
   el.innerHTML=top.map(function(d){
     const pct=maxVal>0?Math.round(d.count/maxVal*100):0;
-    return'<div class="ss-rank-row">'+
+    const isActive=active&&active===d.label;
+    const safeLabel=d.label.replace(/\\/g,'\\\\').replace(/'/g,"\\'");
+    const clickAttr=filtroKey?' onclick="setStatFilter(\''+filtroKey+'\',\''+safeLabel+'\')"':'';
+    return'<div class="ss-rank-row'+(isActive?' ss-rank-active':'')+(filtroKey?' ss-rank-clickable':'')+(filtroKey?'':'')+'"'+clickAttr+'>'+
       '<span class="ss-rank-label" title="'+d.label+'">'+d.label+'</span>'+
-      '<div class="ss-rank-bar-wrap"><div class="ss-rank-bar" style="width:'+pct+'%"></div></div>'+
+      '<div class="ss-rank-bar-wrap"><div class="ss-rank-bar'+(isActive?' ss-rank-bar-active':'')+'" style="width:'+pct+'%"></div></div>'+
       '<span class="ss-rank-count">'+d.count+'</span>'+
       '</div>';
   }).join('');
+}
+
+function setStatFilter(campo,valore){
+  filtriAttivi[campo]=filtriAttivi[campo]===valore?'':valore;
+  const sel=document.getElementById('f-'+campo);
+  if(sel)sel.value=filtriAttivi[campo];
+  updSidebar();applyFiltriMappa();updateURL();
+}
+
+function _showDonutTip(label,val,pct,color){
+  const tip=document.getElementById('ss-donut-tip');if(!tip)return;
+  tip.querySelector('.tip-dot').style.background=color;
+  tip.querySelector('.tip-lbl').textContent=label+': '+val+' ('+pct+'%)';
+  tip.classList.add('show');
+}
+function _hideDonutTip(){
+  const tip=document.getElementById('ss-donut-tip');if(tip)tip.classList.remove('show');
 }
 
 function updDonut(counts){
   const total=SS_ORDER.reduce(function(s,k){return s+(counts[k]||0);},0);
   const svg=document.getElementById('ss-donut');if(!svg)return;
   svg.querySelectorAll('.ss-seg').forEach(function(e){e.remove();});
-  const g=svg.querySelector('g');
-  let prev=0;
+  const CX=60,CY=60,RO=54,RI=36;
+  const firstText=svg.querySelector('text');
   if(total>0){
+    let a=-Math.PI/2;
     SS_ORDER.forEach(function(s){
       const val=counts[s]||0;if(!val)return;
-      const len=(val/total)*SS_C;
-      const c=document.createElementNS('http://www.w3.org/2000/svg','circle');
-      c.setAttribute('class','ss-seg');
-      c.setAttribute('cx','60');c.setAttribute('cy','60');c.setAttribute('r','45');
-      c.setAttribute('fill','none');
-      c.setAttribute('stroke',SS_COLORS[s]);
-      c.setAttribute('stroke-width','18');
-      c.setAttribute('stroke-dasharray',len+' '+(SS_C-len));
-      c.setAttribute('stroke-dashoffset',SS_C-prev);
-      g.appendChild(c);
-      prev+=len;
+      const sweep=(val/total)*2*Math.PI;
+      const end=a+sweep;
+      const lg=sweep>Math.PI?1:0;
+      const ox1=(CX+RO*Math.cos(a)).toFixed(2),oy1=(CY+RO*Math.sin(a)).toFixed(2);
+      const ox2=(CX+RO*Math.cos(end)).toFixed(2),oy2=(CY+RO*Math.sin(end)).toFixed(2);
+      const ix1=(CX+RI*Math.cos(a)).toFixed(2),iy1=(CY+RI*Math.sin(a)).toFixed(2);
+      const ix2=(CX+RI*Math.cos(end)).toFixed(2),iy2=(CY+RI*Math.sin(end)).toFixed(2);
+      const path=document.createElementNS('http://www.w3.org/2000/svg','path');
+      path.setAttribute('class','ss-seg');
+      path.setAttribute('data-stato',s);
+      path.setAttribute('d',
+        'M '+ox1+' '+oy1+' A '+RO+' '+RO+' 0 '+lg+' 1 '+ox2+' '+oy2+
+        ' L '+ix2+' '+iy2+' A '+RI+' '+RI+' 0 '+lg+' 0 '+ix1+' '+iy1+' Z');
+      path.setAttribute('fill',SS_COLORS[s]);
+      path.setAttribute('stroke','#fff');
+      path.setAttribute('stroke-width','1.5');
+      path.style.cursor='pointer';
+      // dim if this stato is filtered out
+      if(!filtroStati.has(s))path.style.opacity='0.3';
+      const pct=Math.round(val/total*100);
+      path.addEventListener('mouseenter',function(){_showDonutTip(SS_LABELS[s],val,pct,SS_COLORS[s]);});
+      path.addEventListener('mouseleave',function(){_hideDonutTip();});
+      path.addEventListener('click',function(){toggleStato(s);});
+      if(firstText)svg.insertBefore(path,firstText);else svg.appendChild(path);
+      a=end;
     });
   }
   const inspected=(counts.ok||0)+(counts.pending||0)+(counts.stop||0);
@@ -906,7 +942,8 @@ function updDonut(counts){
   const legend=document.getElementById('ss-donut-legend');if(!legend)return;
   legend.innerHTML=SS_ORDER.map(function(s){
     const val=counts[s]||0;
-    return'<div class="donut-legend-item">'+
+    const isActive=filtroStati.size===1&&filtroStati.has(s);
+    return'<div class="donut-legend-item'+(isActive?' donut-active':'')+'" onclick="toggleStato(\''+s+'\')" style="cursor:pointer">'+
       '<div class="donut-dot" style="background:'+SS_COLORS[s]+'"></div>'+
       '<span class="donut-lbl">'+SS_LABELS[s]+'</span>'+
       '<span class="donut-cnt">'+val+'</span>'+
@@ -938,9 +975,10 @@ function updStatsSidebar(){
     const vie=new Set(filtered.map(function(f){return f.odon;}).filter(Boolean));
     elVie.textContent=vie.size;
   }
-  updRankList('ss-upl',countBy('upl'));
-  updRankList('ss-quart',countBy('quart'));
-  updRankList('ss-circ',countBy('circ',allFeats),8);
+  updRankList('ss-species-rank',countBy('nome_sci'),10,'nome_scientifico');
+  updRankList('ss-upl',countBy('upl'),5,'upl');
+  updRankList('ss-quart',countBy('quart'),5,'quartiere');
+  updRankList('ss-circ',countBy('circ',allFeats),8,'circoscrizione');
   const counts={ok:0,pending:0,stop:0,non_ispez:0};
   filtered.forEach(function(f){
     const s=statoMap[f.id]||'non_ispez';
