@@ -88,6 +88,9 @@
       <button class="stats-toggle-btn" id="stats-toggle-btn" onclick="toggleStatsSidebar()" title="Pannello statistiche">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 18V11M12 18V6M17 18V14"/></svg>
       </button>
+      <button class="stats-toggle-btn" onclick="openInfoModal()" title="Informazioni">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="8"/><line x1="12" y1="12" x2="12" y2="16"/></svg>
+      </button>
       <button class="logout-btn" onclick="doLogout()">Esci</button>
     </div>
   </div>
@@ -368,7 +371,7 @@
       <div>
         <div class="mc-lbl">Circoscrizione</div>
         <div class="mc-ac-wrap">
-          <input type="text" class="mc-inp" id="mcs-circoscrizione" placeholder="es. Prima Circ." autocomplete="off" oninput="mcInput('circoscrizione',this.value)" onfocus="mcFocus('circoscrizione')" onblur="mcBlur('circoscrizione')">
+          <input type="text" class="mc-inp" id="mcs-circoscrizione" placeholder="es. III" autocomplete="off" oninput="mcInput('circoscrizione',this.value)" onfocus="mcFocus('circoscrizione')" onblur="mcBlur('circoscrizione')">
           <div class="mc-drop" id="mcd-circoscrizione"></div>
         </div>
       </div>
@@ -382,7 +385,7 @@
       <div>
         <div class="mc-lbl">UPL</div>
         <div class="mc-ac-wrap">
-          <input type="text" class="mc-inp" id="mcs-upl" placeholder="es. UPL 1" autocomplete="off" oninput="mcInput('upl',this.value)" onfocus="mcFocus('upl')" onblur="mcBlur('upl')">
+          <input type="text" class="mc-inp" id="mcs-upl" placeholder="es. UPL" autocomplete="off" oninput="mcInput('upl',this.value)" onfocus="mcFocus('upl')" onblur="mcBlur('upl')">
           <div class="mc-drop" id="mcd-upl"></div>
         </div>
       </div>
@@ -410,7 +413,7 @@
       <div>
         <div class="mc-lbl">Operatore</div>
         <div class="mc-ac-wrap">
-          <input type="text" class="mc-inp" id="mcs-operatore" placeholder="es. Mario Rossi" autocomplete="off" oninput="mcInput('operatore',this.value)" onfocus="mcFocus('operatore')" onblur="mcBlur('operatore')">
+          <input type="text" class="mc-inp" id="mcs-operatore" placeholder="es. Leonardo Barbieri" autocomplete="off" oninput="mcInput('operatore',this.value)" onfocus="mcFocus('operatore')" onblur="mcBlur('operatore')">
           <div class="mc-drop" id="mcd-operatore"></div>
         </div>
       </div>
@@ -421,6 +424,20 @@
     </div>
     <div class="mc-results" id="mc-results">
       <div class="mc-empty">Inserisci uno o più criteri per cercare</div>
+    </div>
+  </div>
+</div>
+
+<div id="modal-info">
+  <div class="mi-backdrop" onclick="closeInfoModal()"></div>
+  <div class="mi-dialog">
+    <div class="mi-header">
+      <div class="mi-title">Informazioni</div>
+      <button class="mi-close" onclick="closeInfoModal()"><span class="ss-switch-track"><span class="ss-switch-thumb"></span></span></button>
+    </div>
+    <div class="mi-body">
+      <div class="mi-section-title">Sviluppo tecnico</div>
+      <p class="mi-text">Web app progettata e sviluppata da <a href="https://www.linkedin.com/in/gbvitrano/" target="_blank" rel="noopener" class="mi-link">@gbvitrano</a> in collaborazione con <a href="https://claude.ai" target="_blank" rel="noopener" class="mi-link">Claude AI (Anthropic)</a> e <a href="https://gemini.google.com" target="_blank" rel="noopener" class="mi-link">Gemini</a> che hanno affiancato le scelte architetturali, l'ottimizzazione del codice e lo sviluppo delle funzionalità di visualizzazione geospaziale.</p>
     </div>
   </div>
 </div>

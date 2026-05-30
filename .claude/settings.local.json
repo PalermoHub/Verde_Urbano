@@ -47,7 +47,10 @@
       "Bash(git commit *)",
       "Bash(Select-String -Path \"D:\\\\GitHub - Clone\\\\SiciliaHub\\\\Verde_Urbano\\\\Lipu\\\\css\\\\lipu.css\" -Pattern \"map-legend|bm-gallery|map-tooltip\")",
       "Bash(Select-Object -First 5)",
-      "Bash(Format-Table LineNumber, Line -AutoSize)"
+      "Bash(Format-Table LineNumber, Line -AutoSize)",
+      "Bash(Get-Content \"D:\\\\GitHub - Clone\\\\SiciliaHub\\\\Verde_Urbano\\\\Lipu\\\\js\\\\lipu.js\")",
+      "Bash(Measure-Object -Line)",
+      "PowerShell(\\(Get-Content \"D:\\\\GitHub - Clone\\\\SiciliaHub\\\\Verde_Urbano\\\\Lipu\\\\js\\\\lipu.js\" | Measure-Object -Line\\).Lines)"
     ]
   }
 }

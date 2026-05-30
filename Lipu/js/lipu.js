@@ -1126,8 +1126,12 @@ function jumpToTree(id){
   }
 }
 
+function openInfoModal(){document.getElementById('modal-info').classList.add('open');}
+function closeInfoModal(){document.getElementById('modal-info').classList.remove('open');}
+
 document.addEventListener('keydown',e=>{
   if(e.key!=='Escape')return;
+  if(document.getElementById('modal-info').classList.contains('open')){closeInfoModal();return;}
   if(document.getElementById('modal-cerca').classList.contains('open')){closeSearchModal();return;}
   if(document.getElementById('modal-schede').classList.contains('open')){closeMieSchede();}
 });
