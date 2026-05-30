@@ -214,10 +214,16 @@ input,select,textarea{-webkit-tap-highlight-color:transparent}
   .check-item{min-height:52px;padding:12px 14px}
   .legend-item{padding:6px 4px;min-height:36px}
   .esito-opt{padding:12px 14px}
-  .fi-reset{padding:6px 12px;font-size:11px}
+  .fi-reset{padding:6px 12px;font-size:9px}
 
-  /* Prevenzione zoom iOS su focus (font < 16px) */
-  .fsel,.firma-input,.note-area{font-size:16px!important}
+  /* Prevenzione zoom iOS su focus — viewport user-scalable=no copre il caso */
+  .firma-input,.note-area{font-size:16px!important}
+
+  /* Filtri -20% */
+  .flabel{font-size:8px}
+  .fsel{font-size:10px!important}
+  .fi-count{font-size:9px}
+  .f-badge{font-size:8px}
   .note-area{resize:none}
 
   /* Scroll momentum */
