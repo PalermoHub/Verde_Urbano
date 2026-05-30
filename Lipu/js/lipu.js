@@ -899,4 +899,179 @@ function updStatsSidebar(){
   }
 })();
 
+// ── Cerca Albero ──────────────────────────────────────────────
+const MC_FIELDS=['id_albero','circoscrizione','quartiere','upl','genere','nome_scientifico','odonimo','operatore'];
+const MC_FKEY={id_albero:'id',circoscrizione:'circ',quartiere:'quart',upl:'upl',genere:'genere',nome_scientifico:'nome_sci',odonimo:'odon',operatore:null};
+
+let _mcState={id_albero:'',circoscrizione:'',quartiere:'',upl:'',genere:'',nome_scientifico:'',odonimo:'',operatore:''};
+
+function _mcEsc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/'/g,'&#39;');}
+
+function _mcHighlight(raw,query){
+  const i=raw.toLowerCase().indexOf(query.toLowerCase());
+  const safe=_mcEsc(raw);
+  if(i<0)return safe;
+  const e=i+query.length;
+  return _mcEsc(raw.slice(0,i))+'<strong>'+_mcEsc(raw.slice(i,e))+'</strong>'+_mcEsc(raw.slice(e));
+}
+
+function _mcGetSuggestions(field,query){
+  const q=query.toLowerCase();
+  let pool=[];
+  if(field==='id_albero')pool=allFeats.map(f=>f.id);
+  else if(field==='circoscrizione')pool=allFeats.map(f=>f.circ);
+  else if(field==='quartiere')pool=allFeats.map(f=>f.quart);
+  else if(field==='upl')pool=allFeats.map(f=>f.upl);
+  else if(field==='genere')pool=allFeats.map(f=>f.genere);
+  else if(field==='nome_scientifico')pool=allFeats.map(f=>f.nome_sci);
+  else if(field==='odonimo')pool=allFeats.map(f=>f.odon);
+  else if(field==='operatore')pool=allIspezioni.map(x=>x.nome_operatore);
+  return[...new Set(pool.filter(v=>v&&v.toLowerCase().includes(q)))].sort().slice(0,10);
+}
+
+function _mcShowSuggest(field,query){
+  const drop=document.getElementById('mcd-'+field);if(!drop)return;
+  const sug=_mcGetSuggestions(field,query);
+  if(!sug.length){drop.classList.remove('open');return;}
+  drop.innerHTML=sug.map(v=>
+    `<div class="mc-drop-item" data-v="${_mcEsc(v)}" data-f="${field}" onmousedown="mcSelectSuggest(this)">${_mcHighlight(v,query)}</div>`
+  ).join('');
+  drop.classList.add('open');
+}
+
+function _mcHideSuggest(field){
+  const drop=document.getElementById('mcd-'+field);
+  if(drop)drop.classList.remove('open');
+}
+
+function mcInput(field,value){
+  _mcState[field]=value;
+  if(value.length>=3)_mcShowSuggest(field,value);
+  else _mcHideSuggest(field);
+  _mcRunSearch();
+}
+
+function mcFocus(field){
+  const val=_mcState[field];
+  if(val.length>=3)_mcShowSuggest(field,val);
+}
+
+function mcBlur(field){
+  setTimeout(()=>_mcHideSuggest(field),150);
+}
+
+function mcSelectSuggest(el){
+  const field=el.dataset.f,value=el.dataset.v;
+  _mcState[field]=value;
+  const inp=document.getElementById('mcs-'+field);
+  if(inp)inp.value=value;
+  _mcHideSuggest(field);
+  _mcRunSearch();
+}
+
+function _mcRunSearch(){
+  const hasAny=MC_FIELDS.some(f=>_mcState[f].trim());
+  const resetBtn=document.getElementById('mc-reset-btn');
+  const countEl=document.getElementById('mc-results-count');
+  const resultsEl=document.getElementById('mc-results');
+  if(resetBtn)resetBtn.style.display=hasAny?'inline-block':'none';
+  if(!hasAny){
+    if(countEl)countEl.textContent='Inserisci un criterio di ricerca';
+    if(resultsEl)resultsEl.innerHTML='<div class="mc-empty">Inserisci uno o più criteri per cercare</div>';
+    return;
+  }
+  let res=allFeats;
+  if(_mcState.id_albero.trim()){const v=_mcState.id_albero.trim().toLowerCase();res=res.filter(f=>f.id.toLowerCase().includes(v));}
+  if(_mcState.circoscrizione.trim()){const v=_mcState.circoscrizione.trim().toLowerCase();res=res.filter(f=>(f.circ||'').toLowerCase().includes(v));}
+  if(_mcState.quartiere.trim()){const v=_mcState.quartiere.trim().toLowerCase();res=res.filter(f=>(f.quart||'').toLowerCase().includes(v));}
+  if(_mcState.upl.trim()){const v=_mcState.upl.trim().toLowerCase();res=res.filter(f=>(f.upl||'').toLowerCase().includes(v));}
+  if(_mcState.genere.trim()){const v=_mcState.genere.trim().toLowerCase();res=res.filter(f=>(f.genere||'').toLowerCase().includes(v));}
+  if(_mcState.nome_scientifico.trim()){const v=_mcState.nome_scientifico.trim().toLowerCase();res=res.filter(f=>(f.nome_sci||'').toLowerCase().includes(v));}
+  if(_mcState.odonimo.trim()){const v=_mcState.odonimo.trim().toLowerCase();res=res.filter(f=>(f.odon||'').toLowerCase().includes(v));}
+  if(_mcState.operatore.trim()){
+    const v=_mcState.operatore.trim().toLowerCase();
+    const ids=new Set(allIspezioni.filter(x=>(x.nome_operatore||'').toLowerCase().includes(v)).map(x=>String(x.id_albero||'').trim()));
+    res=res.filter(f=>ids.has(f.id));
+  }
+  const total=res.length;
+  const shown=res.slice(0,50);
+  if(countEl){
+    countEl.textContent=total===0?'Nessun albero trovato':
+      total<=50?total+' alber'+(total===1?'o trovato':'i trovati'):
+      'Primi 50 di '+total+' alberi';
+  }
+  if(!shown.length){
+    if(resultsEl)resultsEl.innerHTML='<div class="mc-empty">Nessun albero corrisponde ai criteri</div>';
+    return;
+  }
+  if(resultsEl){
+    resultsEl.innerHTML=shown.map(f=>{
+      const specie=f.nome_sci||f.genere||'—';
+      const via=f.odon||f.quart||'—';
+      const col=CL_C[statoMap[f.id]||'non_ispez']||'#aaa';
+      return`<div class="mc-result-item" data-id="${_mcEsc(f.id)}" onclick="jumpToTree(this.dataset.id)">
+        <div class="mc-res-dot" style="background:${col}"></div>
+        <div class="mc-res-id">${_mcEsc(f.id)}</div>
+        <div class="mc-res-body">
+          <div class="mc-res-specie">${_mcEsc(specie)}</div>
+          <div class="mc-res-via">${_mcEsc(via)}</div>
+        </div>
+        <div class="mc-res-arrow">&#8250;</div>
+      </div>`;
+    }).join('');
+  }
+}
+
+function mcReset(){
+  MC_FIELDS.forEach(f=>{
+    _mcState[f]='';
+    const inp=document.getElementById('mcs-'+f);
+    if(inp)inp.value='';
+    _mcHideSuggest(f);
+  });
+  _mcRunSearch();
+}
+
+function openSearchModal(){
+  document.getElementById('modal-cerca').classList.add('open');
+  setTimeout(()=>{const el=document.getElementById('mcs-id_albero');if(el)el.focus();},100);
+}
+
+function closeSearchModal(){
+  document.getElementById('modal-cerca').classList.remove('open');
+  MC_FIELDS.forEach(f=>_mcHideSuggest(f));
+}
+
+function jumpToTree(id){
+  closeSearchModal();
+  const feat=allFeats.find(f=>f.id===id);
+  if(!feat)return;
+  selectedId=id;
+  const coords=coordsMap[id];
+  const props={
+    'ID albero':id,'ID_albero':id,'id_albero':id,
+    'Circoscrizione':feat.circ,'CIRCOSCRIZIONE':feat.circ,
+    'Quartiere':feat.quart,'QUARTIERE':feat.quart,
+    'UPL':feat.upl,'upl':feat.upl,
+    'Odonimo':feat.odon,'odonimo':feat.odon,
+    'Genere':feat.genere,'genere':feat.genere,
+    'Nome scientifico':feat.nome_sci,'nome_scientifico':feat.nome_sci
+  };
+  if(coords){
+    map.flyTo({center:coords,zoom:Math.max(map.getZoom(),17),duration:800});
+    if(map.getSource('selected'))map.getSource('selected').setData({type:'Feature',geometry:{type:'Point',coordinates:coords},properties:{}});
+    openScheda(id,props);
+  }else{
+    _pendingUrlId=id;
+    showToast('Localizzazione albero in corso...','');
+    map.flyTo({center:[13.358,38.119],zoom:14,duration:800});
+  }
+}
+
+document.addEventListener('keydown',e=>{
+  if(e.key!=='Escape')return;
+  if(document.getElementById('modal-cerca').classList.contains('open')){closeSearchModal();return;}
+  if(document.getElementById('modal-schede').classList.contains('open')){closeMieSchede();}
+});
+
 init();

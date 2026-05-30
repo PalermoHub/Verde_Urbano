@@ -474,3 +474,93 @@ input,select,textarea{-webkit-tap-highlight-color:transparent}
   #stats-sidebar.ss-open{transform:translateX(0)}
   #stats-sidebar.ss-hidden{transform:translateX(105%)}
 }
+
+/* ── Modal Cerca Albero ────────────────────────────────────── */
+#modal-cerca{display:none;position:fixed;inset:0;z-index:9000;align-items:center;justify-content:center;padding:16px}
+#modal-cerca.open{display:flex}
+.mc-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.45)}
+.mc-dialog{
+  position:relative;background:#fff;border-radius:10px;
+  box-shadow:var(--shadow-lg);width:min(640px,100%);
+  max-height:90vh;display:flex;flex-direction:column;overflow:hidden;
+}
+.mc-header{
+  background:var(--green);padding:14px 16px;
+  display:flex;align-items:flex-start;justify-content:space-between;
+  gap:8px;flex-shrink:0;
+}
+.mc-title{font-size:15px;font-weight:600;color:#fff}
+.mc-sub{font-family:var(--mono);font-size:10px;color:rgba(255,255,255,.6);margin-top:3px;min-height:14px}
+.mc-close{
+  background:rgba(255,255,255,.15);border:none;color:#fff;
+  width:26px;height:26px;border-radius:5px;cursor:pointer;font-size:15px;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;
+}
+.mc-close:hover{background:rgba(255,255,255,.25)}
+.mc-fields-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:10px 14px;
+  padding:14px 16px;border-bottom:1px solid var(--gray-100);
+  flex-shrink:0;overflow-y:auto;max-height:calc(min(280px,42vh));
+}
+.mc-lbl{
+  font-family:var(--mono);font-size:10px;letter-spacing:.08em;
+  text-transform:uppercase;color:var(--gray-500);margin-bottom:4px;
+}
+.mc-ac-wrap{position:relative}
+.mc-inp{
+  width:100%;border:1px solid var(--gray-300);border-radius:var(--radius);
+  padding:7px 9px;font-family:var(--font);font-size:13px;
+  color:var(--gray-700);background:var(--white);transition:border-color .15s;
+}
+.mc-inp:focus{outline:none;border-color:var(--green-light);background:#fff}
+.mc-inp::placeholder{color:var(--gray-400)}
+.mc-drop{
+  position:absolute;top:100%;left:0;right:0;z-index:300;
+  background:#fff;border:1px solid var(--gray-300);border-radius:var(--radius);
+  box-shadow:0 4px 16px rgba(0,0,0,.14);max-height:180px;overflow-y:auto;
+  display:none;margin-top:2px;
+}
+.mc-drop.open{display:block}
+.mc-drop-item{
+  padding:7px 10px;font-size:12px;color:var(--gray-700);
+  cursor:pointer;border-bottom:1px solid var(--gray-100);
+}
+.mc-drop-item:last-child{border-bottom:none}
+.mc-drop-item:hover,.mc-drop-item:active{background:var(--green-xpale);color:var(--green)}
+.mc-drop-item strong{font-weight:700;color:var(--green)}
+.mc-results-hdr{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:8px 16px;background:var(--gray-50);border-bottom:1px solid var(--gray-100);
+  flex-shrink:0;
+}
+#mc-results-count{font-family:var(--mono);font-size:11px;color:var(--gray-500);font-weight:500}
+.mc-reset-btn{
+  background:none;border:1px solid var(--gray-300);border-radius:4px;
+  color:var(--gray-500);font-size:10px;font-family:var(--mono);padding:2px 8px;cursor:pointer;
+}
+.mc-reset-btn:hover{border-color:var(--red);color:var(--red)}
+.mc-results{flex:1;overflow-y:auto;min-height:80px}
+.mc-result-item{
+  display:flex;align-items:center;gap:10px;
+  padding:10px 16px;border-bottom:1px solid var(--gray-100);
+  cursor:pointer;transition:background .12s;user-select:none;
+}
+.mc-result-item:last-child{border-bottom:none}
+.mc-result-item:hover{background:var(--green-xpale)}
+.mc-res-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0;border:1.5px solid rgba(0,0,0,.1)}
+.mc-res-id{
+  font-family:var(--mono);font-size:11px;font-weight:600;
+  color:var(--green);min-width:68px;flex-shrink:0;
+}
+.mc-res-body{flex:1;overflow:hidden;min-width:0}
+.mc-res-specie{font-size:13px;font-weight:500;color:var(--gray-900);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mc-res-via{font-size:11px;color:var(--gray-500);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:1px}
+.mc-res-arrow{color:var(--gray-400);flex-shrink:0;font-size:16px;line-height:1}
+.mc-empty{padding:32px;text-align:center;color:var(--gray-400);font-size:13px;font-family:var(--mono)}
+
+@media(max-width:640px){
+  #modal-cerca{padding:0;align-items:flex-end}
+  .mc-dialog{border-radius:12px 12px 0 0;width:100%;max-height:92dvh}
+  .mc-fields-grid{grid-template-columns:1fr;max-height:calc(min(220px,36dvh))}
+  .mc-inp{font-size:16px!important}
+}

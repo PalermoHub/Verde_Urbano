@@ -66,6 +66,9 @@
     <span class="topbar-logo">LIPU</span>
     <span class="topbar-title">Protocollo Tutela Faunistica</span>
     <span class="topbar-user" id="topbar-user"></span>
+    <button class="stats-toggle-btn" id="search-btn-top" onclick="openSearchModal()" title="Cerca albero">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
     <button class="schede-btn" onclick="openMieSchede()" title="Le mie schede">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg>
     </button>
@@ -330,6 +333,84 @@
       <span>Data</span><span>ID Albero</span><span>Esito</span><span>PDF</span>
     </div>
     <div class="ms-body" id="ms-body"></div>
+  </div>
+</div>
+
+<div id="modal-cerca">
+  <div class="mc-backdrop" onclick="closeSearchModal()"></div>
+  <div class="mc-dialog">
+    <div class="mc-header">
+      <div>
+        <div class="mc-title">Cerca Albero</div>
+        <div class="mc-sub" id="mc-sub">Inserisci uno o più criteri di ricerca</div>
+      </div>
+      <button class="mc-close" onclick="closeSearchModal()">&#x2715;</button>
+    </div>
+    <div class="mc-fields-grid">
+      <div>
+        <div class="mc-lbl">ID Albero</div>
+        <div class="mc-ac-wrap">
+          <input type="text" class="mc-inp" id="mcs-id_albero" placeholder="es. 12345" autocomplete="off" oninput="mcInput('id_albero',this.value)" onfocus="mcFocus('id_albero')" onblur="mcBlur('id_albero')">
+          <div class="mc-drop" id="mcd-id_albero"></div>
+        </div>
+      </div>
+      <div>
+        <div class="mc-lbl">Circoscrizione</div>
+        <div class="mc-ac-wrap">
+          <input type="text" class="mc-inp" id="mcs-circoscrizione" placeholder="es. Prima Circ." autocomplete="off" oninput="mcInput('circoscrizione',this.value)" onfocus="mcFocus('circoscrizione')" onblur="mcBlur('circoscrizione')">
+          <div class="mc-drop" id="mcd-circoscrizione"></div>
+        </div>
+      </div>
+      <div>
+        <div class="mc-lbl">Quartiere</div>
+        <div class="mc-ac-wrap">
+          <input type="text" class="mc-inp" id="mcs-quartiere" placeholder="es. Pallavicino" autocomplete="off" oninput="mcInput('quartiere',this.value)" onfocus="mcFocus('quartiere')" onblur="mcBlur('quartiere')">
+          <div class="mc-drop" id="mcd-quartiere"></div>
+        </div>
+      </div>
+      <div>
+        <div class="mc-lbl">UPL</div>
+        <div class="mc-ac-wrap">
+          <input type="text" class="mc-inp" id="mcs-upl" placeholder="es. UPL 1" autocomplete="off" oninput="mcInput('upl',this.value)" onfocus="mcFocus('upl')" onblur="mcBlur('upl')">
+          <div class="mc-drop" id="mcd-upl"></div>
+        </div>
+      </div>
+      <div>
+        <div class="mc-lbl">Genere</div>
+        <div class="mc-ac-wrap">
+          <input type="text" class="mc-inp" id="mcs-genere" placeholder="es. Ficus" autocomplete="off" oninput="mcInput('genere',this.value)" onfocus="mcFocus('genere')" onblur="mcBlur('genere')">
+          <div class="mc-drop" id="mcd-genere"></div>
+        </div>
+      </div>
+      <div>
+        <div class="mc-lbl">Nome scientifico</div>
+        <div class="mc-ac-wrap">
+          <input type="text" class="mc-inp" id="mcs-nome_scientifico" placeholder="es. Ficus microcarpa" autocomplete="off" oninput="mcInput('nome_scientifico',this.value)" onfocus="mcFocus('nome_scientifico')" onblur="mcBlur('nome_scientifico')">
+          <div class="mc-drop" id="mcd-nome_scientifico"></div>
+        </div>
+      </div>
+      <div>
+        <div class="mc-lbl">Odonimo</div>
+        <div class="mc-ac-wrap">
+          <input type="text" class="mc-inp" id="mcs-odonimo" placeholder="es. Via Roma" autocomplete="off" oninput="mcInput('odonimo',this.value)" onfocus="mcFocus('odonimo')" onblur="mcBlur('odonimo')">
+          <div class="mc-drop" id="mcd-odonimo"></div>
+        </div>
+      </div>
+      <div>
+        <div class="mc-lbl">Operatore</div>
+        <div class="mc-ac-wrap">
+          <input type="text" class="mc-inp" id="mcs-operatore" placeholder="es. Mario Rossi" autocomplete="off" oninput="mcInput('operatore',this.value)" onfocus="mcFocus('operatore')" onblur="mcBlur('operatore')">
+          <div class="mc-drop" id="mcd-operatore"></div>
+        </div>
+      </div>
+    </div>
+    <div class="mc-results-hdr">
+      <span id="mc-results-count">Inserisci un criterio di ricerca</span>
+      <button class="mc-reset-btn" id="mc-reset-btn" onclick="mcReset()" style="display:none">Azzera</button>
+    </div>
+    <div class="mc-results" id="mc-results">
+      <div class="mc-empty">Inserisci uno o più criteri per cercare</div>
+    </div>
   </div>
 </div>
 
