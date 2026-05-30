@@ -102,8 +102,9 @@ function updateClusterMarkers(){
     const p=f.properties,el=document.createElement('div');
     el.className='lipu-cluster';
     el.innerHTML=_buildLipuDonut(p);
-    const ttLines=CL_KEYS.map(k=>p[k]>0?`${CL_LABELS[k]}: ${p[k]}`:null).filter(Boolean);
-    if(ttLines.length)el.title=(p.point_count||'')+' alberi\n'+ttLines.join('\n');
+    const tot=p.point_count||CL_KEYS.reduce((s,k)=>s+(Number(p[k])||0),0);
+    const ttLines=CL_KEYS.map(k=>{const c=Number(p[k])||0;return c?`${CL_LABELS[k]}: ${c} (${Math.round(c/tot*100)}%)`:null;}).filter(Boolean);
+    if(ttLines.length)el.title=tot+' alberi\n'+ttLines.join('\n');
     el.addEventListener('click',e=>{
       e.stopPropagation();
       map.getSource('cluster-src').getClusterExpansionZoom(p.cluster_id)
@@ -296,6 +297,7 @@ function initMap(){
   ['alberi-cerchi','overlay-cerchi'].forEach(l=>{
     map.on('click',l,apriClick);
     map.on('mouseenter',l,e=>{
+      if(map.getZoom()<=CLUSTER_MAX_ZOOM)return;
       map.getCanvas().style.cursor='pointer';
       const {id,odon,quart}=getTooltipProps(e.features[0].properties);
       tooltip.setLngLat(e.lngLat).setHTML(
@@ -304,7 +306,7 @@ function initMap(){
         (quart?`<div class="tt-quart">${quart}</div>`:'')
       ).addTo(map);
     });
-    map.on('mousemove',l,e=>{tooltip.setLngLat(e.lngLat);});
+    map.on('mousemove',l,e=>{if(map.getZoom()<=CLUSTER_MAX_ZOOM)return;tooltip.setLngLat(e.lngLat);});
     map.on('mouseleave',l,()=>{map.getCanvas().style.cursor='';tooltip.remove();});
   });
 
