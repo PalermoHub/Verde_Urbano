@@ -40,7 +40,7 @@ let allFeats=[],allFeatsIds=new Set();
 let filtriAttivi={circoscrizione:'',quartiere:'',upl:'',odonimo:'',genere:'',nome_scientifico:''};
 let filtroStati=new Set(['ok','pending','stop','non_ispez']);
 let sidebarOpen=true;
-let _clusterMarkers=[],_clusterRaf=null;
+let _clusterMarkers=[],_clusterRaf=null,_clusterTooltip=null;
 
 // ── Cluster donut ─────────────────────────────────────────────────────────
 function _buildLipuDonut(props){
@@ -103,8 +103,13 @@ function updateClusterMarkers(){
     el.className='lipu-cluster';
     el.innerHTML=_buildLipuDonut(p);
     const tot=p.point_count||CL_KEYS.reduce((s,k)=>s+(Number(p[k])||0),0);
-    const ttLines=CL_KEYS.map(k=>{const c=Number(p[k])||0;return c?`${CL_LABELS[k]}: ${c} (${Math.round(c/tot*100)}%)`:null;}).filter(Boolean);
-    if(ttLines.length)el.title=tot+' alberi\n'+ttLines.join('\n');
+    const ttRows=CL_KEYS.map(k=>{const c=Number(p[k])||0;return c?`<div class="tt-cl-row"><span class="tt-cl-dot" style="background:${CL_C[k]}"></span>${CL_LABELS[k]}: ${c} (${Math.round(c/tot*100)}%)</div>`:null;}).filter(Boolean);
+    if(_clusterTooltip){
+      el.addEventListener('mouseenter',()=>{
+        _clusterTooltip.setLngLat(f.geometry.coordinates).setHTML(`<div class="tt-id">${tot} alberi</div>${ttRows.join('')}`).addTo(map);
+      });
+      el.addEventListener('mouseleave',()=>_clusterTooltip.remove());
+    }
     el.addEventListener('click',e=>{
       e.stopPropagation();
       map.getSource('cluster-src').getClusterExpansionZoom(p.cluster_id)
@@ -293,6 +298,7 @@ function initMap(){
   map.on('sourcedata',e=>{if(e.sourceId==='cluster-src'&&e.isSourceLoaded)scheduleClusterUpdate();});
 
   const tooltip=new maplibregl.Popup({closeButton:false,closeOnClick:false,className:'map-tooltip',offset:10,maxWidth:'220px'});
+  _clusterTooltip=new maplibregl.Popup({closeButton:false,closeOnClick:false,className:'map-tooltip',offset:26,maxWidth:'200px'});
 
   ['alberi-cerchi','overlay-cerchi'].forEach(l=>{
     map.on('click',l,apriClick);
