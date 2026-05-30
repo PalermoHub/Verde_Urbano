@@ -506,6 +506,7 @@ function updSidebar(){
     b.innerHTML=`<span>${FLABEL[c]}: ${filtriAttivi[c]}</span><button onclick="removeFiltro('${c}')" title="Rimuovi filtro">&times;</button>`;
     badges.appendChild(b);
   });
+  updStatsSidebar();
 }
 
 function fitBoundsToVisible(){
@@ -564,6 +565,7 @@ function updLegend(){
     const item=document.querySelector(`.legend-item[data-stato="${s}"]`);
     if(item)item.classList.toggle('inactive',!filtroStati.has(s));
   });
+  updStatsSidebar();
 }
 
 function isMob(){return window.innerWidth<=640;}
@@ -620,5 +622,120 @@ function tbSearch(){
   const el=document.getElementById('f-circoscrizione');if(el)el.focus();
 }
 function tbZoom(v){map&&map.setZoom(Number(v));}
+
+// ── Stats Sidebar destra ──────────────────────────────────────
+const SS_C = 2 * Math.PI * 45;
+const SS_COLORS = {ok:'#40916C',pending:'#E76F00',stop:'#C1121F',non_ispez:'#9a9a90'};
+const SS_LABELS = {ok:'Ispezionato OK',pending:'Stato di necessità',stop:'Lavori sospesi',non_ispez:'Non ispezionato'};
+const SS_ORDER = ['ok','pending','stop','non_ispez'];
+
+function toggleStatsSidebar(){
+  const el=document.getElementById('stats-sidebar');
+  const btn=document.getElementById('stats-toggle-btn');
+  if(isMob()){
+    const open=el.classList.toggle('ss-open');
+    btn.classList.toggle('active',open);
+    setTimeout(()=>map&&map.resize(),320);
+  }else{
+    const nowHidden=el.classList.toggle('ss-hidden');
+    btn.classList.toggle('active',!nowHidden);
+    setTimeout(()=>map&&map.resize(),320);
+  }
+}
+
+function updRankList(id,items,maxItems){
+  maxItems=maxItems||5;
+  const el=document.getElementById(id);if(!el)return;
+  if(!items.length){el.innerHTML='<div class="ss-rank-empty">Nessun dato</div>';return;}
+  const top=items.slice(0,maxItems);
+  const maxVal=top[0].count;
+  el.innerHTML=top.map(function(d){
+    const pct=maxVal>0?Math.round(d.count/maxVal*100):0;
+    return'<div class="ss-rank-row">'+
+      '<span class="ss-rank-label" title="'+d.label+'">'+d.label+'</span>'+
+      '<div class="ss-rank-bar-wrap"><div class="ss-rank-bar" style="width:'+pct+'%"></div></div>'+
+      '<span class="ss-rank-count">'+d.count+'</span>'+
+      '</div>';
+  }).join('');
+}
+
+function updDonut(counts){
+  const total=SS_ORDER.reduce(function(s,k){return s+(counts[k]||0);},0);
+  const svg=document.getElementById('ss-donut');if(!svg)return;
+  svg.querySelectorAll('.ss-seg').forEach(function(e){e.remove();});
+  const g=svg.querySelector('g');
+  let prev=0;
+  if(total>0){
+    SS_ORDER.forEach(function(s){
+      const val=counts[s]||0;if(!val)return;
+      const len=(val/total)*SS_C;
+      const c=document.createElementNS('http://www.w3.org/2000/svg','circle');
+      c.setAttribute('class','ss-seg');
+      c.setAttribute('cx','60');c.setAttribute('cy','60');c.setAttribute('r','45');
+      c.setAttribute('fill','none');
+      c.setAttribute('stroke',SS_COLORS[s]);
+      c.setAttribute('stroke-width','18');
+      c.setAttribute('stroke-dasharray',len+' '+(SS_C-len));
+      c.setAttribute('stroke-dashoffset',SS_C-prev);
+      g.appendChild(c);
+      prev+=len;
+    });
+  }
+  const inspected=(counts.ok||0)+(counts.pending||0)+(counts.stop||0);
+  const pct=total>0?Math.round(inspected/total*100):0;
+  const pctEl=document.getElementById('ss-donut-pct');
+  if(pctEl)pctEl.textContent=pct+'%';
+  const legend=document.getElementById('ss-donut-legend');if(!legend)return;
+  legend.innerHTML=SS_ORDER.map(function(s){
+    const val=counts[s]||0;
+    return'<div class="donut-legend-item">'+
+      '<div class="donut-dot" style="background:'+SS_COLORS[s]+'"></div>'+
+      '<span class="donut-lbl">'+SS_LABELS[s]+'</span>'+
+      '<span class="donut-cnt">'+val+'</span>'+
+      '</div>';
+  }).join('');
+}
+
+function updStatsSidebar(){
+  if(!allFeats.length)return;
+  const hasF=FORDER.some(function(c){return filtriAttivi[c];});
+  const filtered=hasF?getFilteredFeats():allFeats;
+  const elTot=document.getElementById('ss-total');
+  const elFilt=document.getElementById('ss-filtered');
+  const elSpec=document.getElementById('ss-species');
+  if(elTot)elTot.textContent=allFeats.length;
+  if(elFilt)elFilt.textContent=filtered.length;
+  if(elSpec){
+    const sp=new Set(filtered.map(function(f){return f.nome_sci;}).filter(Boolean));
+    elSpec.textContent=sp.size;
+  }
+  function countBy(field){
+    const m={};
+    filtered.forEach(function(f){const v=f[field];if(v)m[v]=(m[v]||0)+1;});
+    return Object.entries(m).map(function(e){return{label:e[0],count:e[1]};}).sort(function(a,b){return b.count-a.count;});
+  }
+  const elVie=document.getElementById('ss-vie');
+  if(elVie){
+    const vie=new Set(filtered.map(function(f){return f.odon;}).filter(Boolean));
+    elVie.textContent=vie.size;
+  }
+  updRankList('ss-upl',countBy('upl'));
+  updRankList('ss-quart',countBy('quart'));
+  updRankList('ss-circ',countBy('circ'));
+  const counts={ok:0,pending:0,stop:0,non_ispez:0};
+  filtered.forEach(function(f){
+    const s=statoMap[f.id]||'non_ispez';
+    if(counts[s]!==undefined)counts[s]++;else counts.non_ispez++;
+  });
+  updDonut(counts);
+}
+
+/* Stats sidebar: attiva su desktop di default, chiusa su mobile */
+(function(){
+  if(!isMob()){
+    const btn=document.getElementById('stats-toggle-btn');
+    if(btn)btn.classList.add('active');
+  }
+})();
 
 init();

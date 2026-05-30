@@ -42,8 +42,10 @@
 <body>
 
 <div id="login-screen">
-  <div class="login-logo">LIPU · Comune di Palermo</div>
-  <div class="login-title">Protocollo di Tutela Faunistica</div>
+  <div class="login-institution">Comune di Palermo</div>
+  <div class="login-dept">Ufficio autonomo gestione verde urbano,<br>agricoltura urbana e rapporti con RESET</div>
+  <div class="login-project">Rigenerazione del Verde Urbano di Palermo:<br>Riqualificazione Stradale e Arredo della Città</div>
+  <div class="login-logo">LIPU · Protocollo di Tutela Faunistica</div>
   <div class="login-sub">Ispezione alberi prima del taglio</div>
   <div class="pin-wrap">
     <div class="pin-label">Inserisci PIN operatore</div>
@@ -67,6 +69,10 @@
     <button class="schede-btn" onclick="openMieSchede()" title="Le mie schede">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/><line x1="9" y1="17" x2="13" y2="17"/></svg>
       Le mie schede
+    </button>
+    <button class="stats-toggle-btn" id="stats-toggle-btn" onclick="toggleStatsSidebar()" title="Pannello statistiche">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 18V11M12 18V6M17 18V14"/></svg>
+      <span>Statistiche</span>
     </button>
     <button class="logout-btn" onclick="doLogout()">Esci</button>
   </div>
@@ -139,11 +145,10 @@
 		        <button class="tb-btn" id="tb-fs" title="Schermo intero" onclick="tbFullscreen()">
           <svg id="tb-fs-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 3 21 3 21 9"/><polyline points="9 21 3 21 3 15"/><line x1="21" y1="3" x2="14" y2="10"/><line x1="3" y1="21" x2="10" y2="14"/></svg>
         </button>
-    <!--    <button class="tb-btn" id="tb-search" title="Cerca / Filtri" onclick="tbSearch()">
+		  <div class="tb-divider"></div>
+     <button class="tb-btn" id="tb-search" title="Zoom" onclick="tbSearch()">
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
-        </button> -->
-
-        <div class="tb-divider"></div>
+        </button> 
         <div class="tb-zoom-wrap">
           <div class="tb-zoom-inner">
             <input type="range" id="tb-zoom" class="tb-zoom-slider" min="12" max="18" step="1" value="13" oninput="tbZoom(this.value)">
@@ -153,6 +158,10 @@
         </div>
       </div>
       <div class="map-legend" id="map-legend">
+        <div class="legend-title">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+          Stato Ispezione
+        </div>
         <div class="legend-item" data-stato="ok" onclick="toggleStato('ok')"><div class="legend-dot" style="background:#40916C"></div><span>Ispezionato OK</span><span class="legend-count" id="lc-ok"></span></div>
         <div class="legend-item" data-stato="pending" onclick="toggleStato('pending')"><div class="legend-dot" style="background:#E76F00"></div><span>Stato di necessita</span><span class="legend-count" id="lc-pending"></span></div>
         <div class="legend-item" data-stato="stop" onclick="toggleStato('stop')"><div class="legend-dot" style="background:#C1121F"></div><span>Lavori sospesi</span><span class="legend-count" id="lc-stop"></span></div>
@@ -173,6 +182,56 @@
         </div>
       </div>
     </div>
+
+    <!-- Sidebar destra: Statistiche -->
+    <div id="stats-sidebar">
+      <div class="ss-head">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.75)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 18V11M12 18V6M17 18V14"/></svg>
+        <span class="ss-head-ttl">Statistiche</span>
+        <button class="ss-head-close" onclick="toggleStatsSidebar()" title="Chiudi">&times;</button>
+      </div>
+      <div class="ss-body">
+        <div class="ss-hero">
+          <div class="ss-hero-val" id="ss-total">—</div>
+          <div class="ss-hero-lbl">Alberi nel dataset</div>
+        </div>
+        <div class="ss-mini-grid">
+          <div class="ss-mini-card">
+            <div class="ss-mini-val" id="ss-filtered">—</div>
+            <div class="ss-mini-lbl">Filtrati</div>
+          </div>
+          <div class="ss-mini-card">
+            <div class="ss-mini-val" id="ss-species">—</div>
+            <div class="ss-mini-lbl">Specie</div>
+          </div>
+        </div>
+        <div class="ss-via-row">
+          <span class="ss-via-label">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M3 17l6-6 4 4 8-8"/></svg>
+            Vie interessate
+          </span>
+          <span class="ss-via-count" id="ss-vie">—</span>
+        </div>
+        <div class="ss-section-hdr">&#9974; UPL</div>
+        <div class="ss-rank-box"><div id="ss-upl"></div></div>
+        <div class="ss-section-hdr">&#127961; Quartiere</div>
+        <div class="ss-rank-box"><div id="ss-quart"></div></div>
+        <div class="ss-section-hdr">&#128506; Circoscrizione</div>
+        <div class="ss-rank-box"><div id="ss-circ"></div></div>
+        <div class="ss-section-hdr">&#9685; Stato Ispezioni</div>
+        <div class="ss-donut-wrap">
+          <svg id="ss-donut" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <g transform="rotate(-90 60 60)">
+              <circle cx="60" cy="60" r="45" fill="none" stroke="#f2f2ee" stroke-width="18"/>
+            </g>
+            <text x="60" y="55" text-anchor="middle" dominant-baseline="middle" class="donut-center-val" id="ss-donut-pct">—</text>
+            <text x="60" y="70" text-anchor="middle" dominant-baseline="middle" class="donut-center-sub">ispezionati</text>
+          </svg>
+        </div>
+        <div id="ss-donut-legend" class="ss-donut-legend"></div>
+      </div>
+    </div>
+
     <div id="panel">
       <div class="panel-header">
         <div class="panel-header-top">
