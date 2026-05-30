@@ -41,6 +41,33 @@ let filtriAttivi={circoscrizione:'',quartiere:'',upl:'',odonimo:'',genere:'',nom
 let filtroStati=new Set(['ok','pending','stop','non_ispez']);
 let sidebarOpen=true;
 let _clusterMarkers=[],_clusterRaf=null,_clusterTooltip=null;
+let _urlReady=false,_pendingUrlId=null;
+
+// ── URL Routing ───────────────────────────────────────────────────────────
+function encodeURLState(){
+  if(!map)return'';
+  const c=map.getCenter();
+  const p=new URLSearchParams();
+  p.set('z',map.getZoom().toFixed(1));
+  p.set('lat',c.lat.toFixed(5));
+  p.set('lng',c.lng.toFixed(5));
+  if(selectedId)p.set('id',selectedId);
+  const all4=['ok','pending','stop','non_ispez'];
+  if(!all4.every(s=>filtroStati.has(s)))p.set('stato',[...filtroStati].join(','));
+  FORDER.forEach(f=>{if(filtriAttivi[f])p.set(FKEY[f],filtriAttivi[f]);});
+  return p.toString();
+}
+function updateURL(){if(!_urlReady)return;history.replaceState(null,'','#'+encodeURLState());}
+function applyURLState(){
+  const hash=location.hash.slice(1);if(!hash)return;
+  const p=new URLSearchParams(hash);
+  const z=parseFloat(p.get('z')),lat=parseFloat(p.get('lat')),lng=parseFloat(p.get('lng'));
+  if(!isNaN(z)&&!isNaN(lat)&&!isNaN(lng))map.jumpTo({center:[lng,lat],zoom:z});
+  const stato=p.get('stato');
+  if(stato){const v=['ok','pending','stop','non_ispez'];filtroStati=new Set(stato.split(',').filter(s=>v.includes(s)));}
+  FORDER.forEach(f=>{const val=p.get(FKEY[f]);if(val)filtriAttivi[f]=val;});
+  _pendingUrlId=p.get('id')||null;
+}
 
 // ── Cluster donut ─────────────────────────────────────────────────────────
 function _buildLipuDonut(props){
@@ -287,14 +314,26 @@ function initMap(){
       }
     });
     if(nuovi){updOverlay();updSidebar();updLegend();updClusterSource();}
+    if(_pendingUrlId&&allFeatsIds.has(_pendingUrlId)){
+      const f=feats.find(f=>String(f.properties['ID albero']||f.properties['ID_albero']||f.properties['id_albero']||'').trim()===_pendingUrlId);
+      if(f){const id=_pendingUrlId;_pendingUrlId=null;selectedId=id;if(f.geometry)map.getSource('selected').setData({type:'Feature',geometry:f.geometry,properties:{}});openScheda(id,f.properties);}
+    }
   }
 
   map.on('idle',raccogliCoords);
   map.on('moveend',raccogliCoords);
   map.on('sourcedata',e=>{if(e.sourceId==='alberi'&&e.tile)raccogliCoords();});
-  map.on('load',()=>{_syncLayerVisibility();});
-  map.on('zoomend',()=>{_syncLayerVisibility();scheduleClusterUpdate();});
-  map.on('moveend',scheduleClusterUpdate);
+  map.on('load',()=>{_syncLayerVisibility();applyURLState();applyFiltriMappa();_urlReady=true;});
+  map.on('zoomend',()=>{_syncLayerVisibility();scheduleClusterUpdate();updateURL();});
+  map.on('moveend',()=>{scheduleClusterUpdate();updateURL();});
+  window.addEventListener('hashchange',()=>{
+    _urlReady=false;
+    filtriAttivi={circoscrizione:'',quartiere:'',upl:'',odonimo:'',genere:'',nome_scientifico:''};
+    filtroStati=new Set(STATI_ALL);
+    if(selectedId)closePanel();
+    applyURLState();applyFiltriMappa();updOverlay();updClusterSource();
+    _urlReady=true;
+  });
   map.on('sourcedata',e=>{if(e.sourceId==='cluster-src'&&e.isSourceLoaded)scheduleClusterUpdate();});
 
   const tooltip=new maplibregl.Popup({closeButton:false,closeOnClick:false,className:'map-tooltip',offset:10,maxWidth:'220px'});
@@ -408,12 +447,14 @@ function openScheda(id,props){
   }else{pdfWrap.style.display='none';}
   document.getElementById('panel').classList.add('open');
   if(isMob())document.getElementById('app').classList.add('panel-open');
+  updateURL();
 }
 function closePanel(){
   document.getElementById('panel').classList.remove('open');
   document.getElementById('app').classList.remove('panel-open');
   currentProps=null;selectedId=null;
   if(map&&map.getSource('selected'))map.getSource('selected').setData({type:'FeatureCollection',features:[]});
+  updateURL();
 }
 
 // FORM
@@ -585,17 +626,17 @@ function getFilteredIds(){return new Set(getFilteredFeats().map(f=>f.id));}
 
 function cambiaFiltro(campo){
   filtriAttivi[campo]=document.getElementById('f-'+campo).value;
-  updSidebar();applyFiltriMappa();
+  updSidebar();applyFiltriMappa();updateURL();
 }
 
 function resetFiltri(){
   FORDER.forEach(c=>{filtriAttivi[c]='';});
-  updSidebar();applyFiltriMappa();
+  updSidebar();applyFiltriMappa();updateURL();
 }
 
 function removeFiltro(campo){
   filtriAttivi[campo]='';
-  updSidebar();applyFiltriMappa();
+  updSidebar();applyFiltriMappa();updateURL();
 }
 
 function updSidebar(){
@@ -667,7 +708,7 @@ const STATI_ALL=new Set(['ok','pending','stop','non_ispez']);
 function toggleStato(s){
   if(filtroStati.size===1&&filtroStati.has(s)){filtroStati=new Set(STATI_ALL);}
   else{filtroStati=new Set([s]);}
-  applyFiltriMappa();
+  applyFiltriMappa();updateURL();
 }
 
 function updLegend(){
