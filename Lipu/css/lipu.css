@@ -242,8 +242,8 @@ input,select,textarea{-webkit-tap-highlight-color:transparent}
   .bm-item{width:34px;height:34px;border-width:2px;border-radius:4px}
   .bm-label{font-size:7px}
 
-  /* Toolbar su schermi stretti: -30% */
-  #map-toolbar{padding:5px 8px;gap:0;max-width:calc(100vw - 24px);transform:translateX(-50%) scale(0.7);transform-origin:top center}
+  /* Toolbar su schermi stretti: -20% */
+  #map-toolbar{padding:5px 8px;gap:0;max-width:calc(100vw - 24px);transform:translateX(-50%) scale(0.8);transform-origin:top center}
   .tb-zoom-slider{width:90px}
   .tb-zoom-marks{width:90px}
   .tb-zoom-val{font-size:15px;min-width:20px}
