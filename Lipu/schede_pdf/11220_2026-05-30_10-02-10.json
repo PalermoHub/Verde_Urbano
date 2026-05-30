@@ -1,0 +1,20 @@
+{
+  "timestamp": "2026-05-30T10:02:10.550Z",
+  "id_albero": "11220",
+  "specie": "Cupressus sempervirens",
+  "via": "Viale Diana",
+  "id_operatore": "OP-04",
+  "nome_operatore": "Emilio Di Grisitina",
+  "ruolo_operatore": "Operatore",
+  "ora_controllo": "11:59",
+  "nido_visibile": "No",
+  "richiami": "Si",
+  "andirivieni": "Si",
+  "esito": "SOSPENDERE",
+  "note": "Nido di Passera scopaiola (prunella modularis) con andirivieni continuo di esemplari maschi.",
+  "firma_operatore": "Emilio Di Grisitina",
+  "firma_capocantiere": "Mario Bianchi",
+  "url_foto_1": "https://raw.githubusercontent.com/PalermoHub/Verde_Urbano/main/Lipu/foto/11220_2026-05-30_10-02-10/foto_1.jpg",
+  "url_foto_2": "",
+  "url_foto_3": ""
+}
