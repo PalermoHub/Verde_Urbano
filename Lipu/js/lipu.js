@@ -12,6 +12,11 @@ const FKEY={circoscrizione:'circ',quartiere:'quart',upl:'upl',odonimo:'odon',gen
 const FDEFAULT={circoscrizione:'Tutte le circoscrizioni',quartiere:'Tutti i quartieri',upl:'Tutte le UPL',odonimo:'Tutte le strade',genere:'Tutti i generi',nome_scientifico:'Tutte le specie'};
 const FLABEL={circoscrizione:'Circ.',quartiere:'Quartiere',upl:'UPL',odonimo:'Strada',genere:'Genere',nome_scientifico:'Specie'};
 
+const CLUSTER_MAX_ZOOM=15;
+const CL_C={ok:'#40916C',pending:'#E76F00',stop:'#C1121F',non_ispez:'#aaa'};
+const CL_KEYS=['ok','pending','stop','non_ispez'];
+const CL_LABELS={ok:'OK',pending:'Necessità',stop:'Sospesi',non_ispez:'Non ispez.'};
+
 // CONFIG
 const APPS_SCRIPT_URL='https://script.google.com/macros/s/AKfycbxQ4Qqmyee_rzLeU9ayc9gWgTDHVkTD_fwP7XmqXfxyQ8ube2Aq-759KjnWe3t3DdqBgQ/exec';
 const PMTILES_LAYER='dati_alberi';
@@ -35,6 +40,87 @@ let allFeats=[],allFeatsIds=new Set();
 let filtriAttivi={circoscrizione:'',quartiere:'',upl:'',odonimo:'',genere:'',nome_scientifico:''};
 let filtroStati=new Set(['ok','pending','stop','non_ispez']);
 let sidebarOpen=true;
+let _clusterMarkers=[],_clusterRaf=null;
+
+// ── Cluster donut ─────────────────────────────────────────────────────────
+function _buildLipuDonut(props){
+  const counts=CL_KEYS.map(k=>Number(props[k])||0);
+  const n=counts.reduce((s,v)=>s+v,0);
+  if(!n)return'';
+  const SZ=44,CX=22,CY=22,OR=20,IR=11;
+  let paths='';
+  if(counts.filter(v=>v>0).length>1){
+    let a=-Math.PI/2;
+    counts.forEach((count,idx)=>{
+      if(!count)return;
+      const sw=(count/n)*2*Math.PI,end=a+sw,lg=sw>Math.PI?1:0;
+      const c0=Math.cos(a),s0=Math.sin(a),c1=Math.cos(end),s1=Math.sin(end);
+      const col=CL_C[CL_KEYS[idx]];
+      paths+=`<path d="M ${(CX+OR*c0).toFixed(2)} ${(CY+OR*s0).toFixed(2)} A ${OR} ${OR} 0 ${lg} 1 ${(CX+OR*c1).toFixed(2)} ${(CY+OR*s1).toFixed(2)} L ${(CX+IR*c1).toFixed(2)} ${(CY+IR*s1).toFixed(2)} A ${IR} ${IR} 0 ${lg} 0 ${(CX+IR*c0).toFixed(2)} ${(CY+IR*s0).toFixed(2)} Z" fill="${col}" stroke="#fff" stroke-width="0.8"/>`;
+      a=end;
+    });
+  }else{
+    const idx=counts.findIndex(v=>v>0);
+    const col=idx>=0?CL_C[CL_KEYS[idx]]:'#aaa';
+    paths=`<circle cx="${CX}" cy="${CY}" r="${OR}" fill="${col}"/><circle cx="${CX}" cy="${CY}" r="${IR}" fill="white"/>`;
+  }
+  const fs=n>99?8:10;
+  return`<svg width="${SZ}" height="${SZ}" viewBox="0 0 ${SZ} ${SZ}" xmlns="http://www.w3.org/2000/svg">${paths}<text x="${CX}" y="${CY+4}" text-anchor="middle" font-family="Arial,sans-serif" font-size="${fs}" font-weight="bold" fill="#333">${n}</text></svg>`;
+}
+
+function buildClusterGeoJSON(){
+  const hasF=FORDER.some(c=>filtriAttivi[c]);
+  const fids=hasF?getFilteredIds():null;
+  const features=[];
+  allFeats.forEach(f=>{
+    if(fids&&!fids.has(f.id))return;
+    const stato=statoMap[f.id]||'non_ispez';
+    if(!filtroStati.has(stato))return;
+    const c=coordsMap[f.id];if(!c)return;
+    features.push({type:'Feature',geometry:{type:'Point',coordinates:c},properties:{id:f.id,stato}});
+  });
+  return{type:'FeatureCollection',features};
+}
+
+function updClusterSource(){
+  if(!map||!map.getSource('cluster-src'))return;
+  map.getSource('cluster-src').setData(buildClusterGeoJSON());
+  scheduleClusterUpdate();
+}
+
+function scheduleClusterUpdate(){
+  if(_clusterRaf)cancelAnimationFrame(_clusterRaf);
+  _clusterRaf=requestAnimationFrame(()=>{_clusterRaf=null;updateClusterMarkers();});
+}
+
+function updateClusterMarkers(){
+  _clusterMarkers.forEach(m=>m.remove());
+  _clusterMarkers=[];
+  if(!map||map.getZoom()>CLUSTER_MAX_ZOOM)return;
+  const feats=map.querySourceFeatures('cluster-src',{filter:['==','cluster',true]});
+  feats.forEach(f=>{
+    const p=f.properties,el=document.createElement('div');
+    el.className='lipu-cluster';
+    el.innerHTML=_buildLipuDonut(p);
+    const ttLines=CL_KEYS.map(k=>p[k]>0?`${CL_LABELS[k]}: ${p[k]}`:null).filter(Boolean);
+    if(ttLines.length)el.title=(p.point_count||'')+' alberi\n'+ttLines.join('\n');
+    el.addEventListener('click',e=>{
+      e.stopPropagation();
+      map.getSource('cluster-src').getClusterExpansionZoom(p.cluster_id)
+        .then(z=>map.easeTo({center:f.geometry.coordinates,zoom:Math.min(z+0.5,18)}))
+        .catch(()=>{});
+    });
+    _clusterMarkers.push(new maplibregl.Marker({element:el,anchor:'center'}).setLngLat(f.geometry.coordinates).addTo(map));
+  });
+}
+
+function _syncLayerVisibility(){
+  if(!map)return;
+  const cluster=map.getZoom()<=CLUSTER_MAX_ZOOM;
+  map.setPaintProperty('alberi-cerchi','circle-opacity',
+    cluster?0:(filtroStati.has('non_ispez')?0.8:0));
+  map.setLayoutProperty('overlay-cerchi','visibility',cluster?'none':'visible');
+}
 
 async function init(){
   buildPad();
@@ -115,7 +201,8 @@ function initMap(){
         carto:{type:'raster',tiles:['https://a.basemaps.cartocdn.com/light_all/{z}/{x}/{y}@2x.png'],tileSize:256,attribution:'© OpenStreetMap © CartoDB'},
         alberi:{type:'vector',url:pmUrl},
         overlay:{type:'geojson',data:{type:'FeatureCollection',features:[]}},
-        selected:{type:'geojson',data:{type:'FeatureCollection',features:[]}}
+        selected:{type:'geojson',data:{type:'FeatureCollection',features:[]}},
+        'cluster-src':{type:'geojson',data:{type:'FeatureCollection',features:[]},cluster:true,clusterMaxZoom:CLUSTER_MAX_ZOOM,clusterRadius:60,clusterProperties:{ok:['+',['case',['==',['get','stato'],'ok'],1,0]],pending:['+',['case',['==',['get','stato'],'pending'],1,0]],stop:['+',['case',['==',['get','stato'],'stop'],1,0]],non_ispez:['+',['case',['==',['get','stato'],'non_ispez'],1,0]]}}
       },
       layers:[
         {id:'basemap',type:'raster',source:'carto'},
@@ -151,7 +238,8 @@ function initMap(){
             'circle-stroke-color':'#1a3d2b',
             'circle-opacity':1
           }
-        }
+        },
+        {id:'cluster-invis',type:'circle',source:'cluster-src',filter:['==','cluster',true],paint:{'circle-radius':0,'circle-opacity':0}}
       ]
     },
     center:[13.358,38.119],zoom:12,
@@ -185,12 +273,16 @@ function initMap(){
         nuovi=true;
       }
     });
-    if(nuovi){updOverlay();updSidebar();updLegend();}
+    if(nuovi){updOverlay();updSidebar();updLegend();updClusterSource();}
   }
 
   map.on('idle',raccogliCoords);
   map.on('moveend',raccogliCoords);
   map.on('sourcedata',e=>{if(e.sourceId==='alberi'&&e.tile)raccogliCoords();});
+  map.on('load',()=>{_syncLayerVisibility();});
+  map.on('zoomend',()=>{_syncLayerVisibility();scheduleClusterUpdate();});
+  map.on('moveend',scheduleClusterUpdate);
+  map.on('sourcedata',e=>{if(e.sourceId==='cluster-src'&&e.isSourceLoaded)scheduleClusterUpdate();});
 
   const tooltip=new maplibregl.Popup({closeButton:false,closeOnClick:false,className:'map-tooltip',offset:10,maxWidth:'220px'});
 
@@ -224,6 +316,8 @@ function getTooltipProps(fp){
 }
 
 function apriClick(e){
+  if(map&&map.getZoom()<=CLUSTER_MAX_ZOOM)return;
+  if(e.features[0]?.layer?.id==='alberi-cerchi'&&!filtroStati.has('non_ispez'))return;
   const f=e.features[0];
   const p=f.properties;
   const id=String(p['ID albero']||p['ID_albero']||p['id_albero']||p['id']||'').trim();
@@ -413,7 +507,7 @@ async function inviaScheda(){
     const d=await r.json();
     if(d.status!=='ok')throw new Error(d.error||'Errore sconosciuto');
     statoMap[id]={neg:'ok',stop:'stop',urg:'pending'}[esito];
-    updOverlay();
+    updOverlay();updClusterSource();
     const msgs={neg:'Scheda inviata - si procede al taglio',stop:'Scheda inviata - lavori sospesi',urg:'Scheda inviata - attesa autorizzazione D.L.'};
     showToast(msgs[esito]||'Scheda inviata','success');
     btn.textContent='Inviata';
@@ -537,8 +631,6 @@ function fitBoundsToVisible(){
 function applyFiltriMappa(){
   if(!map)return;
   const hasF=FORDER.some(c=>filtriAttivi[c]);
-  // alberi-cerchi (grigio): visibile solo se non_ispez attivo
-  map.setLayoutProperty('alberi-cerchi','visibility',filtroStati.has('non_ispez')?'visible':'none');
   if(!hasF){map.setFilter('alberi-cerchi',null);}
   else{
     const conds=[];
@@ -551,6 +643,8 @@ function applyFiltriMappa(){
   }
   updOverlay();
   updLegend();
+  _syncLayerVisibility();
+  updClusterSource();
   fitBoundsToVisible();
 }
 

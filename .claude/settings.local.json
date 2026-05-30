@@ -44,7 +44,10 @@
       "Bash(git add *)",
       "Bash(git commit -m ' *)",
       "Bash(git push *)",
-      "Bash(git commit *)"
+      "Bash(git commit *)",
+      "Bash(Select-String -Path \"D:\\\\GitHub - Clone\\\\SiciliaHub\\\\Verde_Urbano\\\\Lipu\\\\css\\\\lipu.css\" -Pattern \"map-legend|bm-gallery|map-tooltip\")",
+      "Bash(Select-Object -First 5)",
+      "Bash(Format-Table LineNumber, Line -AutoSize)"
     ]
   }
 }

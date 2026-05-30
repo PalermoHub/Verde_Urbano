@@ -75,6 +75,9 @@ body{font-family:var(--font);background:var(--gray-50);color:var(--gray-900);hei
 .fsel:disabled{opacity:.45;cursor:default}
 #map{flex:1}
 .maplibregl-ctrl-attrib{font-size:10px!important}
+.lipu-cluster{cursor:pointer;user-select:none}
+.lipu-cluster svg{display:block;filter:drop-shadow(0 1px 3px rgba(0,0,0,.25));transition:filter .15s}
+.lipu-cluster:hover svg{filter:drop-shadow(0 2px 6px rgba(0,0,0,.4)) brightness(1.05)}
 .map-legend{position:absolute;bottom:24px;left:16px;z-index:1000;background:rgba(255,255,255,.95);border-radius:8px;padding:8px 12px;box-shadow:var(--shadow);font-size:11px;font-family:var(--mono);line-height:1;border:1px solid var(--gray-100)}
 .legend-title{display:flex;align-items:center;gap:5px;font-size:10px;font-weight:700;color:var(--green);letter-spacing:.1em;text-transform:uppercase;margin-bottom:6px;padding-bottom:5px;border-bottom:1px solid var(--gray-100)}
 .legend-title svg{flex-shrink:0;stroke:var(--green)}
