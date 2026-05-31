@@ -440,7 +440,11 @@
     </div>
     <div class="mc-results-hdr">
       <span id="mc-results-count">Inserisci un criterio di ricerca</span>
-      <button class="mc-reset-btn" id="mc-reset-btn" onclick="mcReset()" style="display:none">Azzera</button>
+      <div style="display:flex;gap:6px;align-items:center">
+        <button class="mc-reset-btn" id="mc-reset-btn" onclick="mcReset()" style="display:none">Azzera</button>
+        <button class="mc-reset-btn" id="mc-lista-btn" onclick="mcEsportaLista(false)" title="Genera lista stampabile di tutti gli alberi">📋 Lista</button>
+        <button class="mc-reset-btn" onclick="mcEsportaLista(true)" title="Genera lista solo alberi con scheda PDF">📄 Solo PDF</button>
+      </div>
     </div>
     <div class="mc-results" id="mc-results">
       <div class="mc-empty">Inserisci uno o più criteri per cercare</div>
@@ -456,7 +460,27 @@
       <button class="mi-close" onclick="closeInfoModal()"><span class="ss-switch-track"><span class="ss-switch-thumb"></span></span></button>
     </div>
     <div class="mi-body">
-      <div class="mi-section-title">Sviluppo tecnico</div>
+      <div class="mi-section-title">🌳 Una nuova app per proteggere gli uccelli prima di tagliare gli alberi</div>
+      <p class="mi-text">Prima di abbattere o potare un albero in città, bisogna accertarsi che non ci siano nidi attivi. È questo il senso del Protocollo di Tutela Faunistica della LIPU, e ora il Comune di Palermo ha uno strumento digitale dedicato per gestirlo sul campo.</p>
+      <p class="mi-text">La webapp <strong>LIPU · Ispezione alberi prima del taglio</strong> è pensata per gli operatori delle ditte che lavorano al progetto di rigenerazione del verde urbano. Prima di intervenire su un albero, il capocantiere effettua un'ispezione visiva e risponde a tre domande precise: ci sono nidi con uova o piccoli? Si sentono richiami o pigolii? Gli adulti vanno e vengono con cibo nel becco?</p>
+      <p class="mi-text">A seconda delle risposte, l'app guida verso uno di tre esiti: via libera al taglio, stato di necessità (nido presente ma pericolo imminente, si procede comunque), oppure sospensione dei lavori se il nido è attivo e non c'è urgenza.</p>
+      <p class="mi-text">La scheda viene compilata direttamente su smartphone con foto allegate e firma digitale del capocantiere e inviata come documento tracciabile. Sulla mappa si può vedere in tempo reale lo stato di ispezione di ogni albero nel dataset, filtrandolo per circoscrizione, quartiere, specie botanica e strada.</p>
+      <p class="mi-text">Chi vuole esplorare i dati senza credenziali può accedere in <strong>modalità Umarell</strong>: solo visualizzazione, senza possibilità di inviare schede.</p>
+      <p class="mi-text">Un piccolo tassello di una città che prova a fare le cose con un po' più di attenzione agli alberi, e a chi ci abita.</p>
+	  <br>
+	  <hr>
+	  <br>
+      <div class="mi-section-title"><b>Disclaimer</b></div>
+      <p class="mi-text">I contenuti presenti in questa webapp, compresi testi ed elementi grafici, hanno carattere puramente informativo e divulgativo. Non sono presenti dati personali o sensibili. Si precisa che questi materiali non costituiscono documenti ufficiali né hanno alcun valore legale. Per consultare la documentazione ufficiale e legalmente vincolante, si prega di fare riferimento agli atti definitivi allegati alle relative deliberazioni degli organi competenti.</p>
+	  	  <br>
+	  <hr>
+	  <br>
+      <div class="mi-section-title"><b>Licenza</b></div>
+      <p class="mi-text">I contenuti di questa applicazione sono rilasciati sotto licenza <a href="https://creativecommons.org/licenses/by/4.0/deed.it" target="_blank" rel="noopener" class="mi-link">CC BY 4.0 – Attribuzione 4.0 Internazionale</a>. Sei libero di condividere e adattare il materiale per qualsiasi scopo, anche commerciale, a condizione di citare adeguatamente la fonte.</p>
+	  	  <br>
+	  <hr>
+	  <br>
+      <div class="mi-section-title"><b>Sviluppo tecnico</b></div>
       <p class="mi-text">Web app progettata e sviluppata da <a href="https://www.linkedin.com/in/gbvitrano/" target="_blank" rel="noopener" class="mi-link">@gbvitrano</a> in collaborazione con <a href="https://claude.ai" target="_blank" rel="noopener" class="mi-link">Claude AI (Anthropic)</a> e <a href="https://gemini.google.com" target="_blank" rel="noopener" class="mi-link">Gemini</a> che hanno affiancato le scelte architetturali, l'ottimizzazione del codice e lo sviluppo delle funzionalità di visualizzazione geospaziale.</p>
     </div>
   </div>

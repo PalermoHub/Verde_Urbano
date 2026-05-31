@@ -207,6 +207,7 @@ async function _loadIspezioniCsv(){
         id_operatore:String(row['id_operatore']||'').trim(),
         nome_operatore:String(row.nome_operatore||'').trim(),
         ruolo_operatore:String(row.ruolo_operatore||'').trim(),
+        ditta_operatore:String(row.ditta_operatore||'').trim(),
         esito:esito,
         url_pdf:String(row.url_pdf||'').trim()
       });
@@ -1067,17 +1068,7 @@ function mcSelectSuggest(el){
   _mcRunSearch();
 }
 
-function _mcRunSearch(){
-  const hasAny=MC_FIELDS.some(f=>_mcState[f].trim());
-  const resetBtn=document.getElementById('mc-reset-btn');
-  const countEl=document.getElementById('mc-results-count');
-  const resultsEl=document.getElementById('mc-results');
-  if(resetBtn)resetBtn.style.display=hasAny?'inline-block':'none';
-  if(!hasAny){
-    if(countEl)countEl.textContent='Inserisci un criterio di ricerca';
-    if(resultsEl)resultsEl.innerHTML='<div class="mc-empty">Inserisci uno o più criteri per cercare</div>';
-    return;
-  }
+function _mcFilterResults(){
   let res=allFeats;
   if(_mcState.id_albero.trim()){const v=_mcState.id_albero.trim().toLowerCase();res=res.filter(f=>f.id.toLowerCase().includes(v));}
   if(_mcState.circoscrizione.trim()){const v=_mcState.circoscrizione.trim().toLowerCase();res=res.filter(f=>(f.circ||'').toLowerCase().includes(v));}
@@ -1091,6 +1082,21 @@ function _mcRunSearch(){
     const ids=new Set(allIspezioni.filter(x=>(x.nome_operatore||'').toLowerCase().includes(v)).map(x=>String(x.id_albero||'').trim()));
     res=res.filter(f=>ids.has(f.id));
   }
+  return res;
+}
+
+function _mcRunSearch(){
+  const hasAny=MC_FIELDS.some(f=>_mcState[f].trim());
+  const resetBtn=document.getElementById('mc-reset-btn');
+  const countEl=document.getElementById('mc-results-count');
+  const resultsEl=document.getElementById('mc-results');
+  if(resetBtn)resetBtn.style.display=hasAny?'inline-block':'none';
+  if(!hasAny){
+    if(countEl)countEl.textContent='Inserisci un criterio di ricerca';
+    if(resultsEl)resultsEl.innerHTML='<div class="mc-empty">Inserisci uno o più criteri per cercare</div>';
+    return;
+  }
+  const res=_mcFilterResults();
   const total=res.length;
   const shown=res.slice(0,50);
   if(countEl){
@@ -1128,6 +1134,92 @@ function mcReset(){
     _mcHideSuggest(f);
   });
   _mcRunSearch();
+}
+
+function mcEsportaLista(soloConPdf=false){
+  const hasAny=MC_FIELDS.some(f=>_mcState[f].trim());
+  let src=hasAny?_mcFilterResults():allFeats;
+  // Costruisce mappa id→ultima ispezione prima del filtro soloConPdf
+  const ispMap={};
+  allIspezioni.forEach(x=>{
+    const id=String(x.id_albero||'').trim();
+    if(!ispMap[id]||x.timestamp>ispMap[id].timestamp)ispMap[id]=x;
+  });
+  if(soloConPdf)src=src.filter(f=>ispMap[f.id]&&ispMap[f.id].url_pdf);
+  const STATO_LABEL={ok:'✅ Negativo – via libera',stop:'🚫 Sospendere',pending:'⚠️ Stato di necessità',non_ispez:'— Non ispezionato'};
+  const filtriAttivi=MC_FIELDS.filter(f=>_mcState[f].trim()).map(f=>`<strong>${f.replace(/_/g,' ')}</strong>: ${_mcEsc(_mcState[f])}`).join(' · ');
+  const now=new Date().toLocaleString('it-IT');
+  const rows=src.map((f,i)=>{
+    const stato=statoMap[f.id]||'non_ispez';
+    const isp=ispMap[f.id]||{};
+    const pdf=isp.url_pdf||'';
+    const pdfLink=pdf?`<a href="${pdf}" target="_blank" rel="noopener">📄 PDF</a>`:'—';
+    const data=isp.timestamp?(isp.timestamp.split('T')[0]):'—';
+    const ditta=isp.ditta_operatore||'—';
+    const op=isp.nome_operatore||'—';
+    const bg=i%2===0?'#f8f9f8':'#fff';
+    const statoColor={ok:'#40916C',stop:'#C1121F',pending:'#E76F00',non_ispez:'#999'}[stato]||'#999';
+    return`<tr style="background:${bg}">
+      <td style="text-align:center;font-weight:600">${_mcEsc(f.id)}</td>
+      <td>${_mcEsc(f.nome_sci||f.genere||'—')}</td>
+      <td>${_mcEsc(f.odon||'—')}</td>
+      <td>${_mcEsc(f.circ||'—')}</td>
+      <td>${_mcEsc(f.quart||'—')}</td>
+      <td style="color:${statoColor};font-weight:600;white-space:nowrap">${STATO_LABEL[stato]}</td>
+      <td>${data}</td>
+      <td>${_mcEsc(ditta)}</td>
+      <td>${_mcEsc(op)}</td>
+      <td style="text-align:center">${pdfLink}</td>
+    </tr>`;
+  }).join('');
+  const titolo=soloConPdf?'LIPU · Schede PDF ispezioni':'LIPU · Lista alberi censiti';
+  const html=`<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8">
+<title>${titolo}</title>
+<style>
+  body{font-family:'Segoe UI',Arial,sans-serif;font-size:13px;color:#222;margin:20px}
+  h1{color:#2D6A4F;font-size:18px;margin:0 0 4px}
+  .sub{color:#666;font-size:12px;margin:0 0 16px}
+  table{border-collapse:collapse;width:100%}
+  th{background:#2D6A4F;color:#fff;padding:7px 10px;text-align:left;font-size:12px;cursor:pointer;user-select:none;white-space:nowrap}
+  th:hover{background:#245a3a}
+  th.sort-asc::after{content:' ▲';font-size:10px}
+  th.sort-desc::after{content:' ▼';font-size:10px}
+  td{padding:6px 10px;border-bottom:1px solid #e8ede8;vertical-align:middle}
+  a{color:#2D6A4F;text-decoration:none}
+  a:hover{text-decoration:underline}
+  @media print{body{margin:10px}button{display:none}}
+</style></head><body>
+<h1>${soloConPdf?'📄 LIPU · Schede PDF ispezioni':'🌳 LIPU · Lista alberi censiti'}</h1>
+<p class="sub">Generata il ${now}${filtriAttivi?' · Filtri: '+filtriAttivi:' · Tutti gli alberi censiti'} · ${src.length} alberi</p>
+<button onclick="window.print()" style="margin-bottom:14px;padding:6px 14px;background:#2D6A4F;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:13px">🖨️ Stampa / Salva PDF</button>
+<table id="tbl">
+<thead><tr>
+  <th onclick="sortTable(0)">ID</th><th onclick="sortTable(1)">Specie</th><th onclick="sortTable(2)">Odonimo</th><th onclick="sortTable(3)">Circ.</th><th onclick="sortTable(4)">Quartiere</th><th onclick="sortTable(5)">Stato</th><th onclick="sortTable(6)">Data ispezione</th><th onclick="sortTable(7)">Ditta</th><th onclick="sortTable(8)">Operatore</th><th>Scheda PDF</th>
+</tr></thead>
+<tbody>${rows}</tbody>
+</table>
+<script>
+let _sortCol=-1,_sortAsc=true;
+function sortTable(col){
+  const tbl=document.getElementById('tbl');
+  const tbody=tbl.querySelector('tbody');
+  const ths=tbl.querySelectorAll('th');
+  if(_sortCol===col){_sortAsc=!_sortAsc;}else{_sortCol=col;_sortAsc=true;}
+  ths.forEach((th,i)=>{th.className=i===col?(_sortAsc?'sort-asc':'sort-desc'):''});
+  const rows=[...tbody.querySelectorAll('tr')];
+  rows.sort((a,b)=>{
+    const av=a.cells[col]?a.cells[col].textContent.trim():'';
+    const bv=b.cells[col]?b.cells[col].textContent.trim():'';
+    const an=parseFloat(av),bn=parseFloat(bv);
+    const cmp=(!isNaN(an)&&!isNaN(bn))?(an-bn):av.localeCompare(bv,'it');
+    return _sortAsc?cmp:-cmp;
+  });
+  rows.forEach((r,i)=>{r.style.background=i%2===0?'#f8f9f8':'#fff';tbody.appendChild(r);});
+}
+<\/script>
+</body></html>`;
+  const w=window.open('','_blank');
+  if(w){w.document.write(html);w.document.close();}
 }
 
 function openSearchModal(){
