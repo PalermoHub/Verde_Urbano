@@ -80,7 +80,7 @@
 }
 
 .image-popup-nav {
-    position: absolute;
+    position: fixed;
     top: 50%;
     transform: translateY(-50%);
     background: rgba(255,255,255,0.15);
@@ -95,21 +95,23 @@
     align-items: center;
     justify-content: center;
     transition: background 0.2s, border-color 0.2s;
-    z-index: 10002;
+    z-index: 10012;
 }
 
 .image-popup-nav:hover:not(:disabled) {
     background: rgba(255,255,255,0.3);
     border-color: #fff;
+    transform: translateY(-50%);
 }
 
 .image-popup-nav:disabled {
     opacity: 0.25;
     cursor: default;
+    transform: translateY(-50%);
 }
 
-.image-popup-prev { left: -56px; }
-.image-popup-next { right: -56px; }
+.image-popup-prev { left: 20px; }
+.image-popup-next { right: 20px; }
 
 .image-popup-counter {
     position: absolute;

@@ -36,11 +36,11 @@
         img.alt = 'Immagine ingrandita';
 
         content.appendChild(closeBtn);
-        content.appendChild(prevBtn);
         content.appendChild(img);
-        content.appendChild(nextBtn);
         content.appendChild(counter);
+        overlay.appendChild(prevBtn);
         overlay.appendChild(content);
+        overlay.appendChild(nextBtn);
         document.body.appendChild(overlay);
 
         return overlay;
