@@ -313,17 +313,29 @@ function _populateLipuModal(row, json) {
     document.getElementById('lm-firma-op').textContent      = _get(d, 'firma_operatore')       !== '—' ? d.firma_operatore       : (row.firma_operatore || '—');
     document.getElementById('lm-firma-cap').textContent     = _get(d, 'firma_capocantiere')    !== '—' ? d.firma_capocantiere    : (row.firma_capocantiere || '—');
 
-    // Foto 1
-    const foto1   = (d.url_foto_1 || row.url_foto_1 || '').trim();
-    const fotoEl  = document.getElementById('lm-foto1');
-    const fotoWrp = document.getElementById('lm-foto-wrap');
-    if (foto1) {
-        fotoEl.src             = foto1;
-        fotoEl.style.display   = 'block';
-        fotoWrp.style.display  = 'block';
+    // Foto 1-3 in griglia miniature
+    const fotos = [
+        (d.url_foto_1 || row.url_foto_1 || '').trim(),
+        (d.url_foto_2 || row.url_foto_2 || '').trim(),
+        (d.url_foto_3 || row.url_foto_3 || '').trim()
+    ].filter(Boolean);
+    const fotoGrid = document.getElementById('lm-foto-grid');
+    const fotoWrp  = document.getElementById('lm-foto-wrap');
+    fotoGrid.innerHTML = '';
+    if (fotos.length) {
+        fotos.slice(0, 3).forEach(function(url, i) {
+            const img = document.createElement('img');
+            img.src       = url;
+            img.alt       = 'Foto ispezione ' + (i + 1);
+            img.className = 'lipu-foto-thumb';
+            img.addEventListener('click', function() {
+                if (typeof openImageGallery === 'function') openImageGallery(fotos, i);
+            });
+            fotoGrid.appendChild(img);
+        });
+        fotoWrp.style.display = 'block';
     } else {
-        fotoEl.style.display   = 'none';
-        fotoWrp.style.display  = 'none';
+        fotoWrp.style.display = 'none';
     }
 
     // PDF
@@ -337,6 +349,8 @@ function _populateLipuModal(row, json) {
     }
 
     // Apri modale
+    const tog = document.getElementById('lipuModalToggle');
+    if (tog) tog.checked = true;
     document.getElementById('lipuDetailModal').classList.add('active');
 
     // Assicura che la sidebar destra sia aperta (modale la copre dall'interno)
@@ -348,6 +362,8 @@ function _populateLipuModal(row, json) {
 
 function closeLipuModal() {
     document.getElementById('lipuDetailModal').classList.remove('active');
+    const tog = document.getElementById('lipuModalToggle');
+    if (tog) tog.checked = false;
 }
 
 // ── Toggle layer ────────────────────────────────────────────────────────────

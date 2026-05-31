@@ -428,6 +428,10 @@
                                     <div class="lipu-leg-item lipu-leg-btn" data-stato="ok"      onclick="toggleLipuStato('ok')">      <span class="lipu-leg-dot" style="background:#40916C"></span>Ispezionato OK</div>
                                     <div class="lipu-leg-item lipu-leg-btn" data-stato="pending" onclick="toggleLipuStato('pending')"> <span class="lipu-leg-dot" style="background:#E76F00"></span>Stato di necessità</div>
                                     <div class="lipu-leg-item lipu-leg-btn" data-stato="stop"    onclick="toggleLipuStato('stop')">    <span class="lipu-leg-dot" style="background:#C1121F"></span>Lavori sospesi</div>
+                                    <div class="lipu-disclaimer">
+                                        <i class="fas fa-circle-info"></i>
+                                        <strong>Disclaimer</strong> — I dati geografici e botanici degli alberi provengono dal patrimonio arboreo reale del Comune di Palermo. I dati relativi agli operatori, alle ditte esecutrici e agli esiti delle ispezioni faunistiche sono generati sinteticamente da Claude AI a puro scopo dimostrativo. Non hanno alcun valore legale, amministrativo o probatorio.
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -519,9 +523,10 @@
                             <div class="lipu-modal-specie" id="lm-specie">—</div>
                             <div class="lipu-modal-via" id="lm-via">—</div>
                         </div>
-                        <button class="lipu-modal-close" onclick="closeLipuModal()" title="Chiudi">
-                            <i class="fas fa-times"></i>
-                        </button>
+                        <label class="lipu-modal-toggle" title="Chiudi scheda">
+                            <input type="checkbox" id="lipuModalToggle" checked onchange="if(!this.checked) closeLipuModal()">
+                            <span class="lipu-toggle-track"><span class="lipu-toggle-thumb"></span></span>
+                        </label>
                     </div>
                     <div class="lipu-modal-esito-row">
                         <span class="lipu-modal-id" id="lm-id">#—</span>
@@ -533,7 +538,7 @@
                 </div>
                 <div class="lipu-modal-body">
                     <div id="lm-foto-wrap" class="lipu-foto-wrap" style="display:none;">
-                        <img id="lm-foto1" src="" alt="Foto ispezione" class="lipu-foto">
+                        <div class="lipu-foto-grid" id="lm-foto-grid"></div>
                     </div>
                     <div class="lipu-section">
                         <div class="lipu-section-title">1 · Anagrafica</div>
@@ -859,6 +864,7 @@
 <script src="js/16_url_routing.js"></script>
 <script src="js/17_timeslider.js"></script>
 <script src="js/18_lipu_layer.js"></script>
+<script src="js/image-popup.js"></script>
 
     <!-- Include Footer da file esterno -->
     <script>
