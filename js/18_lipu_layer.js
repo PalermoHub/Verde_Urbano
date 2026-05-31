@@ -503,6 +503,11 @@ async function updateLipuStatsSidebar() {
     const daIspez = Math.max(0, totalPMT - lipuData.length);
     const elDaIspez = document.getElementById('ls-da-ispez');
     if (elDaIspez) elDaIspez.textContent = daIspez.toLocaleString('it-IT');
+    const pctIspez = totalPMT > 0 ? Math.round(lipuData.length / totalPMT * 100) : 0;
+    const elFill = document.getElementById('ls-progress-fill');
+    const elPct  = document.getElementById('ls-progress-pct');
+    if (elFill) elFill.style.width = pctIspez + '%';
+    if (elPct)  elPct.textContent  = pctIspez + '%';
 
     // Mini cards
     _setEl('ls-ok',      counts.ok);

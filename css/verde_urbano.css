@@ -398,7 +398,7 @@ hr {
             overflow: hidden;
             border-bottom: 2px solid var(--pa-green-800);
             --sb-w: 300px;
-            --sb-w-right: 420px;
+            --sb-w-right: 390px;
         }
         .sidebar {
             background: white;
@@ -1717,10 +1717,11 @@ hr {
 .sidebar-right-tabbed {
     display: flex;
     flex-direction: column;
-    overflow: visible;
+    overflow: hidden;
     background: #f1f8f1;
     padding: 0;
     flex: 1;
+    min-width: 0;
     height: 100%;
     box-shadow: -2px 0 8px rgba(0,0,0,0.12);
 }
@@ -1844,6 +1845,7 @@ hr {
     box-shadow: 0 1px 5px rgba(0,0,0,0.09);
     overflow: hidden;
     min-height: 72px;
+	
 }
 .stat-mini-icon {
     font-size: 15px;
@@ -3182,3 +3184,207 @@ hr {
 
 /* Stato attivo del bottone time in toolbar quando il pannello è aperto */
 .zoom-bar-time.is-active i { color: var(--pa-green-700, #1e8449); }
+
+/* ── LIPU Tab: hero, KPI, stato, progress ──────────────────────────────── */
+.lipu-kpi-row {
+    display: flex;
+    gap: 8px;
+    margin-top: 4px;
+}
+.lipu-kpi {
+    flex: 1;
+    background: #fff;
+    border-radius: 6px;
+    padding: 8px 6px;
+    text-align: center;
+    border-top: 3px solid #ccc;
+}
+.lipu-kpi-total { border-top-color: #2D6A4F; }
+.lipu-kpi-green  { border-top-color: #40916C; }
+.lipu-kpi-orange { border-top-color: #E76F00; }
+.lipu-kpi-val {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a1a;
+    line-height: 1.1;
+}
+.lipu-kpi-lbl {
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: .06em;
+    color: #777;
+    margin-top: 2px;
+}
+.lipu-progress-wrap {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+}
+.lipu-progress-bar {
+    flex: 1;
+    height: 8px;
+    background: #e8f5e9;
+    border-radius: 4px;
+    overflow: hidden;
+}
+.lipu-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #40916C, #2D6A4F);
+    border-radius: 4px;
+    transition: width .4s ease;
+}
+.lipu-progress-pct {
+    font-size: 11px;
+    font-weight: 700;
+    color: #2D6A4F;
+    min-width: 30px;
+    text-align: right;
+}
+.lipu-stato-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+.lipu-stato-card {
+    background: #f9f9f9;
+    border-radius: 6px;
+    border-top: 3px solid #ccc;
+    padding: 8px 6px;
+    text-align: center;
+}
+.lipu-stato-card i {
+    font-size: 14px;
+    opacity: .8;
+}
+.lipu-stato-val {
+    font-size: 18px;
+    font-weight: 700;
+    color: #1a1a1a;
+    margin: 3px 0 2px;
+    line-height: 1;
+}
+.lipu-stato-lbl {
+    font-size: 8.5px;
+    text-transform: uppercase;
+    letter-spacing: .05em;
+    color: #777;
+    line-height: 1.3;
+}
+
+/* ── LIPU Ispezioni Layer ───────────────────────────────────────────────── */
+.lipu-leg-item{display:flex;align-items:center;gap:6px;font-size:11px;color:#444;margin-bottom:3px;}
+.lipu-leg-dot{display:inline-block;width:10px;height:10px;border-radius:50%;border:1.5px solid rgba(0,0,0,.15);flex-shrink:0;}
+.lipu-leg-btn{cursor:pointer;padding:3px 6px;border-radius:5px;transition:background .15s,opacity .15s,box-shadow .15s;user-select:none;margin-bottom:1px;}
+.lipu-leg-btn:hover{background:rgba(0,0,0,.06);}
+.lipu-leg-btn.lipu-leg-active{background:rgba(39,174,96,.12);box-shadow:inset 0 0 0 1.5px rgba(39,174,96,.45);font-weight:600;}
+.lipu-leg-btn.lipu-leg-inactive{opacity:.3;}
+.lipu-leg-btn.lipu-leg-inactive .lipu-leg-dot{filter:grayscale(1);}
+
+/* Tooltip Leaflet */
+.lipu-tooltip-wrap.leaflet-tooltip{padding:0!important;background:transparent!important;border:none!important;box-shadow:none!important;}
+.lipu-tt-inner{background:rgba(24,24,24,.92);color:#fff;border-radius:6px;padding:7px 10px;font-size:12px;font-family:'Titillium Web',sans-serif;min-width:140px;line-height:1.5;}
+.lipu-tt-id{font-size:10px;color:#aaa;}
+.lipu-tt-specie{font-weight:700;margin:2px 0;}
+.lipu-tt-loc{font-size:11px;color:#ccc;margin-bottom:4px;}
+.lipu-tt-esito{font-size:11px;font-weight:700;}
+.lipu-tt-ok{color:#74c69d;}
+.lipu-tt-pending{color:#ffb347;}
+.lipu-tt-stop{color:#ff6b6b;}
+
+/* Modale dettaglio LIPU dentro sbWrapRight */
+.lipu-modal{display:none;flex-direction:column;position:absolute;inset:0;z-index:20;background:#fff;overflow:hidden;}
+.lipu-modal.active{display:flex;}
+.lipu-modal-hdr{background:linear-gradient(135deg,#2D6A4F 0%,#1B4332 100%);color:#fff;flex-shrink:0;}
+.lipu-modal-hdr-top{display:flex;justify-content:space-between;align-items:flex-start;padding:12px 14px 4px;}
+.lipu-modal-tag{font-size:9px;font-weight:700;letter-spacing:.08em;color:rgba(255,255,255,.65);text-transform:uppercase;margin-bottom:3px;}
+.lipu-modal-specie{font-size:15px;font-weight:700;line-height:1.3;}
+.lipu-modal-via{font-size:11px;color:rgba(255,255,255,.72);margin-top:2px;}
+.lipu-modal-close{background:rgba(255,255,255,.15);border:none;color:#fff;width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-left:8px;}
+.lipu-modal-close:hover{background:rgba(255,255,255,.3);}
+.lipu-modal-esito-row{display:flex;align-items:center;gap:10px;padding:0 14px 6px;}
+.lipu-modal-id{font-size:11px;font-weight:700;color:rgba(255,255,255,.75);font-family:monospace;}
+.lipu-modal-esito{font-size:12px;font-weight:700;}
+.lipu-modal-esito.lm-ok{color:#74c69d;}
+.lipu-modal-esito.lm-pending{color:#ffb347;}
+.lipu-modal-esito.lm-stop{color:#ff8080;}
+.lipu-pdf-btn{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:#2D6A4F;text-decoration:none;background:#e8f5e9;border:1px solid #a5d6a7;border-radius:5px;padding:3px 9px;margin:0 14px 8px;}
+.lipu-pdf-btn:hover{background:#c8e6c9;}
+.lipu-modal-body{flex:1;overflow-y:auto;padding:0;}
+.lipu-foto-wrap{padding:10px 12px 2px;}
+.lipu-foto{width:100%;max-height:190px;object-fit:cover;border-radius:6px;border:1px solid #e0e0e0;display:block;}
+.lipu-section{padding:8px 12px 6px;border-bottom:1px solid #f0f0f0;}
+.lipu-section-title{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#2D6A4F;margin-bottom:6px;}
+.lipu-field-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 10px;}
+.lipu-field{display:flex;flex-direction:column;gap:1px;}
+.lf-lbl{font-size:9px;color:#999;text-transform:uppercase;letter-spacing:.05em;}
+.lf-val{font-size:12px;font-weight:600;color:#333;}
+.lipu-check-row{display:flex;justify-content:space-between;align-items:center;padding:4px 0;font-size:12px;border-bottom:1px solid #f5f5f5;}
+.lc-lbl{color:#555;}
+.lc-val{font-weight:700;color:#2D6A4F;}
+.lf-note{font-size:12px;color:#444;font-style:italic;line-height:1.5;min-height:20px;}
+
+/* ── Accordion LIPU: tono verde tenue ───────────────────────────────────── */
+#accordion-lipu {
+    border-color: var(--pa-green-500);
+    background: var(--pa-green-100);
+}
+#accordion-lipu .filter-accordion-header {
+    background: linear-gradient(135deg, var(--pa-green-100) 0%, #c8e6d4 100%);
+    border-bottom-color: var(--pa-green-500);
+    border-left: 4px solid var(--pa-green-700);
+    border-radius: 7px 7px 0 0;
+}
+#accordion-lipu.collapsed .filter-accordion-header {
+    border-radius: 7px;
+}
+#accordion-lipu .filter-accordion-header:hover {
+    background: linear-gradient(135deg, #b8dfc7 0%, #c8e6d4 100%);
+}
+#accordion-lipu .filter-accordion-header .accordion-label {
+    color: var(--pa-green-900);
+    font-weight: 700;
+}
+#accordion-lipu .filter-accordion-header .accordion-label i {
+    color: var(--pa-green-700);
+}
+#accordion-lipu .filter-accordion-body {
+    background: #e8f5ee;
+    border-top: 1px solid var(--pa-green-500);
+}
+
+/* ── LIPU Stats Pane (sidebar destra) ───────────────────────────────────── */
+.sb-tab-btn-lipu.active { color: #2D6A4F !important; }
+#sb-pane-lipu-stats { padding-right: 10px; overflow-x: hidden; box-sizing: border-box; }
+#sb-pane-lipu-stats .stat-hero-card,
+#sb-pane-lipu-stats .stat-mini-grid,
+#sb-pane-lipu-stats .stat-mini-card,
+#sb-pane-lipu-stats .terr-hero-row,
+#sb-pane-lipu-stats .terr-sub-card,
+#sb-pane-lipu-stats .chart-box,
+#sb-pane-lipu-stats .rl-item,
+#sb-pane-lipu-stats .rl-label { box-sizing: border-box; min-width: 0; }
+#sb-pane-lipu-stats .chart-wrapper { height: 160px !important; width: 100%; }
+#sb-pane-lipu-stats .stat-mini-grid { grid-template-columns: 1fr 1fr 1fr; }
+
+/* Nuovo markup: constrain larghezza al pane */
+#sb-pane-lipu-stats .charts-container { width: 100%; max-width: 100%; box-sizing: border-box; }
+#sb-pane-lipu-stats .charts-container > * { width: 100%; box-sizing: border-box; min-width: 0; }
+#sb-pane-lipu-stats .lipu-kpi-row,
+#sb-pane-lipu-stats .lipu-stato-grid { width: 100%; box-sizing: border-box; }
+#sb-pane-lipu-stats .lipu-kpi-row > .stat-mini-card { flex: 1; min-width: 0; }
+#sb-pane-lipu-stats .lipu-kpi,
+#sb-pane-lipu-stats .lipu-stato-card { box-sizing: border-box; min-width: 0; overflow: hidden; }
+#sb-pane-lipu-stats .lipu-kpi-val { font-size: 16px; }
+#sb-pane-lipu-stats .lipu-stato-val { font-size: 15px; }
+#sb-pane-lipu-stats .lipu-kpi-lbl,
+#sb-pane-lipu-stats .lipu-stato-lbl { font-size: 8px; }
+
+@media (max-width: 768px) {
+    #sb-pane-lipu-stats .lipu-kpi-val { font-size: 14px; }
+    #sb-pane-lipu-stats .lipu-kpi-lbl { font-size: 7px; }
+    #sb-pane-lipu-stats .lipu-stato-val { font-size: 13px; }
+    #sb-pane-lipu-stats .lipu-stato-lbl { font-size: 7px; }
+    #sb-pane-lipu-stats .lipu-kpi { padding: 6px 4px; }
+    #sb-pane-lipu-stats .lipu-stato-card { padding: 6px 4px; }
+}

@@ -17,102 +17,7 @@
 	<link rel="stylesheet" href="css/dropdown-menu.css">
 	<link rel="stylesheet" href="css/search.css">
 	<link rel="stylesheet" href="css/image-popup.css">
-<style>
-/* ── LIPU Ispezioni Layer ───────────────────────────────────────────────── */
-.lipu-leg-item{display:flex;align-items:center;gap:6px;font-size:11px;color:#444;margin-bottom:3px;}
-.lipu-leg-dot{display:inline-block;width:10px;height:10px;border-radius:50%;border:1.5px solid rgba(0,0,0,.15);flex-shrink:0;}
-.lipu-leg-btn{cursor:pointer;padding:3px 6px;border-radius:5px;transition:background .15s,opacity .15s,box-shadow .15s;user-select:none;margin-bottom:1px;}
-.lipu-leg-btn:hover{background:rgba(0,0,0,.06);}
-.lipu-leg-btn.lipu-leg-active{background:rgba(39,174,96,.12);box-shadow:inset 0 0 0 1.5px rgba(39,174,96,.45);font-weight:600;}
-.lipu-leg-btn.lipu-leg-inactive{opacity:.3;}
-.lipu-leg-btn.lipu-leg-inactive .lipu-leg-dot{filter:grayscale(1);}
 
-/* Tooltip Leaflet */
-.lipu-tooltip-wrap.leaflet-tooltip{padding:0!important;background:transparent!important;border:none!important;box-shadow:none!important;}
-.lipu-tt-inner{background:rgba(24,24,24,.92);color:#fff;border-radius:6px;padding:7px 10px;font-size:12px;font-family:'Titillium Web',sans-serif;min-width:140px;line-height:1.5;}
-.lipu-tt-id{font-size:10px;color:#aaa;}
-.lipu-tt-specie{font-weight:700;margin:2px 0;}
-.lipu-tt-loc{font-size:11px;color:#ccc;margin-bottom:4px;}
-.lipu-tt-esito{font-size:11px;font-weight:700;}
-.lipu-tt-ok{color:#74c69d;}
-.lipu-tt-pending{color:#ffb347;}
-.lipu-tt-stop{color:#ff6b6b;}
-
-/* Modale dettaglio LIPU dentro sbWrapRight */
-.lipu-modal{display:none;flex-direction:column;position:absolute;inset:0;z-index:20;background:#fff;overflow:hidden;}
-.lipu-modal.active{display:flex;}
-.lipu-modal-hdr{background:linear-gradient(135deg,#2D6A4F 0%,#1B4332 100%);color:#fff;flex-shrink:0;}
-.lipu-modal-hdr-top{display:flex;justify-content:space-between;align-items:flex-start;padding:12px 14px 4px;}
-.lipu-modal-tag{font-size:9px;font-weight:700;letter-spacing:.08em;color:rgba(255,255,255,.65);text-transform:uppercase;margin-bottom:3px;}
-.lipu-modal-specie{font-size:15px;font-weight:700;line-height:1.3;}
-.lipu-modal-via{font-size:11px;color:rgba(255,255,255,.72);margin-top:2px;}
-.lipu-modal-close{background:rgba(255,255,255,.15);border:none;color:#fff;width:26px;height:26px;border-radius:50%;cursor:pointer;font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-left:8px;}
-.lipu-modal-close:hover{background:rgba(255,255,255,.3);}
-.lipu-modal-esito-row{display:flex;align-items:center;gap:10px;padding:0 14px 6px;}
-.lipu-modal-id{font-size:11px;font-weight:700;color:rgba(255,255,255,.75);font-family:monospace;}
-.lipu-modal-esito{font-size:12px;font-weight:700;}
-.lipu-modal-esito.lm-ok{color:#74c69d;}
-.lipu-modal-esito.lm-pending{color:#ffb347;}
-.lipu-modal-esito.lm-stop{color:#ff8080;}
-.lipu-pdf-btn{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:#2D6A4F;text-decoration:none;background:#e8f5e9;border:1px solid #a5d6a7;border-radius:5px;padding:3px 9px;margin:0 14px 8px;}
-.lipu-pdf-btn:hover{background:#c8e6c9;}
-.lipu-modal-body{flex:1;overflow-y:auto;padding:0;}
-.lipu-foto-wrap{padding:10px 12px 2px;}
-.lipu-foto{width:100%;max-height:190px;object-fit:cover;border-radius:6px;border:1px solid #e0e0e0;display:block;}
-.lipu-section{padding:8px 12px 6px;border-bottom:1px solid #f0f0f0;}
-.lipu-section-title{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#2D6A4F;margin-bottom:6px;}
-.lipu-field-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 10px;}
-.lipu-field{display:flex;flex-direction:column;gap:1px;}
-.lf-lbl{font-size:9px;color:#999;text-transform:uppercase;letter-spacing:.05em;}
-.lf-val{font-size:12px;font-weight:600;color:#333;}
-.lipu-check-row{display:flex;justify-content:space-between;align-items:center;padding:4px 0;font-size:12px;border-bottom:1px solid #f5f5f5;}
-.lc-lbl{color:#555;}
-.lc-val{font-weight:700;color:#2D6A4F;}
-.lf-note{font-size:12px;color:#444;font-style:italic;line-height:1.5;min-height:20px;}
-
-/* ── Accordion LIPU: tono verde tenue ───────────────────────────────────── */
-#accordion-lipu {
-    border-color: var(--pa-green-500);
-    background: var(--pa-green-100);
-}
-#accordion-lipu .filter-accordion-header {
-    background: linear-gradient(135deg, var(--pa-green-100) 0%, #c8e6d4 100%);
-    border-bottom-color: var(--pa-green-500);
-    border-left: 4px solid var(--pa-green-700);
-    border-radius: 7px 7px 0 0;
-}
-#accordion-lipu.collapsed .filter-accordion-header {
-    border-radius: 7px;
-}
-#accordion-lipu .filter-accordion-header:hover {
-    background: linear-gradient(135deg, #b8dfc7 0%, #c8e6d4 100%);
-}
-#accordion-lipu .filter-accordion-header .accordion-label {
-    color: var(--pa-green-900);
-    font-weight: 700;
-}
-#accordion-lipu .filter-accordion-header .accordion-label i {
-    color: var(--pa-green-700);
-}
-#accordion-lipu .filter-accordion-body {
-    background: #e8f5ee;
-    border-top: 1px solid var(--pa-green-500);
-}
-
-/* ── LIPU Stats Pane (sidebar destra) ───────────────────────────────────── */
-.sb-tab-btn-lipu.active { color: #2D6A4F !important; }
-#sb-pane-lipu-stats { padding-right: 10px; overflow-x: hidden; box-sizing: border-box; }
-#sb-pane-lipu-stats .stat-hero-card,
-#sb-pane-lipu-stats .stat-mini-grid,
-#sb-pane-lipu-stats .stat-mini-card,
-#sb-pane-lipu-stats .terr-hero-row,
-#sb-pane-lipu-stats .terr-sub-card,
-#sb-pane-lipu-stats .chart-box,
-#sb-pane-lipu-stats .rl-item,
-#sb-pane-lipu-stats .rl-label { box-sizing: border-box; min-width: 0; }
-#sb-pane-lipu-stats .chart-wrapper { height: 200px !important; width: 100%; }
-#sb-pane-lipu-stats .stat-mini-grid { grid-template-columns: 1fr 1fr 1fr; }
-</style>
 	<link rel="stylesheet" href="css/social-share.css">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -785,59 +690,94 @@
 
                 <!-- Pane: LIPU Statistiche -->
                 <div class="sb-pane" id="sb-pane-lipu-stats">
-                    <!-- Hero -->
-                    <div class="stat-hero-card">
-                        <div class="stat-hero-icon-wrap"><i class="fas fa-dove"></i></div>
-                        <div class="stat-hero-value" id="ls-total">—</div>
-                        <div class="stat-hero-label">Alberi nel dataset LIPU</div>
-                    </div>
-                    <!-- Riga: ispezionati / da ispezionare -->
-                    <div class="terr-hero-row" style="border-left-color:#2D6A4F;margin-bottom:6px;">
-                        <span><i class="fas fa-dove" style="color:#2D6A4F"></i> Alberi ispezionati LIPU</span>
-                        <span class="terr-hero-value" id="ls-ispezionati" style="color:#2D6A4F">—</span>
-                    </div>
-                    <div class="terr-hero-row" style="border-left-color:#e67e22;margin-bottom:8px;">
-                        <span><i class="fas fa-hourglass-half" style="color:#e67e22"></i> Da ispezionare</span>
-                        <span class="terr-hero-value" id="ls-da-ispez" style="color:#e67e22">—</span>
-                    </div>
-                    <!-- Mini grid: 4 stati ispezione -->
-                    <div class="stat-mini-grid">
-                        <div class="stat-mini-card">
-                            <i class="fas fa-check-circle stat-mini-icon" style="color:#40916C"></i>
-                            <div class="stat-mini-value" id="ls-ok">—</div>
-                            <div class="stat-mini-label">OK</div>
-                            <div class="stat-mini-accent" style="background:#40916C"></div>
+                    <div class="charts-container">
+
+                        <!-- Hero riepilogo -->
+                        <div class="chart-box lipu-hero-box">
+                            <h3><i class="fas fa-dove"></i> LIPU · Protocollo Tutela Faunistica</h3>
+                            <div class="lipu-kpi-row">
+                                <div class="stat-mini-card">
+                                    <i class="fas fa-tree stat-mini-icon" style="color:#2D6A4F"></i>
+                                    <div class="stat-mini-value" id="ls-total">—</div>
+                                    <div class="stat-mini-label">Alberi dataset</div>
+                                    <div class="stat-mini-accent" style="background:#2D6A4F"></div>
+                                </div>
+                                <div class="stat-mini-card">
+                                    <i class="fas fa-dove stat-mini-icon" style="color:#40916C"></i>
+                                    <div class="stat-mini-value" id="ls-ispezionati">—</div>
+                                    <div class="stat-mini-label">Ispezionati</div>
+                                    <div class="stat-mini-accent" style="background:#40916C"></div>
+                                </div>
+                                <div class="stat-mini-card">
+                                    <i class="fas fa-hourglass-half stat-mini-icon" style="color:#9A9A90"></i>
+                                    <div class="stat-mini-value" id="ls-da-ispez">—</div>
+                                    <div class="stat-mini-label">Da ispez.</div>
+                                    <div class="stat-mini-accent" style="background:#9A9A90"></div>
+                                </div>
+                            </div>
+                            <!-- Barra progresso ispezioni -->
+                            <div class="lipu-progress-wrap">
+                                <div class="lipu-progress-bar">
+                                    <div class="lipu-progress-fill" id="ls-progress-fill" style="width:0%"></div>
+                                </div>
+                                <div class="lipu-progress-pct" id="ls-progress-pct">0%</div>
+                            </div>
                         </div>
-                        <div class="stat-mini-card">
-                            <i class="fas fa-triangle-exclamation stat-mini-icon" style="color:#E76F00"></i>
-                            <div class="stat-mini-value" id="ls-pending">—</div>
-                            <div class="stat-mini-label">Necessità</div>
-                            <div class="stat-mini-accent" style="background:#E76F00"></div>
+
+                        <!-- Stato ispezioni: 3 mini KPI + donut -->
+                        <div class="chart-box">
+                            <h3><i class="fas fa-chart-pie"></i> Stato Ispezioni</h3>
+                            <div class="lipu-stato-grid">
+                                <div class="stat-mini-card">
+                                    <i class="fas fa-check-circle stat-mini-icon" style="color:#40916C"></i>
+                                    <div class="stat-mini-value" id="ls-ok">—</div>
+                                    <div class="stat-mini-label">Ispezionato OK</div>
+                                    <div class="stat-mini-accent" style="background:#40916C"></div>
+                                </div>
+                                <div class="stat-mini-card">
+                                    <i class="fas fa-triangle-exclamation stat-mini-icon" style="color:#E76F00"></i>
+                                    <div class="stat-mini-value" id="ls-pending">—</div>
+                                    <div class="stat-mini-label">Necessità</div>
+                                    <div class="stat-mini-accent" style="background:#E76F00"></div>
+                                </div>
+                                <div class="stat-mini-card">
+                                    <i class="fas fa-hand stat-mini-icon" style="color:#C1121F"></i>
+                                    <div class="stat-mini-value" id="ls-stop">—</div>
+                                    <div class="stat-mini-label">Sospesi</div>
+                                    <div class="stat-mini-accent" style="background:#C1121F"></div>
+                                </div>
+                            </div>
+                            <div class="chart-wrapper" style="height:160px;margin-top:12px;">
+                                <canvas id="lipuStatsDonut"></canvas>
+                            </div>
+                            <div id="ls-donut-legend" class="donut-legend"></div>
                         </div>
-                        <div class="stat-mini-card">
-                            <i class="fas fa-hand stat-mini-icon" style="color:#C1121F"></i>
-                            <div class="stat-mini-value" id="ls-stop">—</div>
-                            <div class="stat-mini-label">Sospesi</div>
-                            <div class="stat-mini-accent" style="background:#C1121F"></div>
+
+                        <!-- Top Specie -->
+                        <div class="chart-box">
+                            <h3><i class="fas fa-leaf"></i> Top Specie</h3>
+                            <div id="ls-species-rank" class="rl-chart-container"></div>
                         </div>
+
+                        <!-- UPL -->
+                        <div class="chart-box">
+                            <h3><i class="fas fa-map-pin"></i> UPL</h3>
+                            <div id="ls-upl-rank" class="rl-chart-container"></div>
+                        </div>
+
+                        <!-- Quartiere -->
+                        <div class="chart-box">
+                            <h3><i class="fas fa-city"></i> Quartiere</h3>
+                            <div id="ls-quart-rank" class="rl-chart-container"></div>
+                        </div>
+
+                        <!-- Circoscrizione -->
+                        <div class="chart-box">
+                            <h3><i class="fas fa-map"></i> Circoscrizione</h3>
+                            <div id="ls-circ-rank" class="rl-chart-container"></div>
+                        </div>
+
                     </div>
-                    <!-- Donut stato ispezioni -->
-                    <div class="stat-section-header"><i class="fas fa-chart-pie"></i> Stato Ispezioni</div>
-                    <div class="chart-box">
-                        <div class="chart-wrapper" style="height:160px;">
-                            <canvas id="lipuStatsDonut"></canvas>
-                        </div>
-                        <div id="ls-donut-legend" class="donut-legend"></div>
-                    </div>
-                    <!-- Rankings territoriali -->
-                    <div class="stat-section-header"><i class="fas fa-leaf"></i> Top Specie</div>
-                    <div class="terr-sub-card"><div id="ls-species-rank" class="rl-items"></div></div>
-                    <div class="stat-section-header"><i class="fas fa-map-pin"></i> UPL</div>
-                    <div class="terr-sub-card"><div id="ls-upl-rank" class="rl-items"></div></div>
-                    <div class="stat-section-header"><i class="fas fa-city"></i> Quartiere</div>
-                    <div class="terr-sub-card"><div id="ls-quart-rank" class="rl-items"></div></div>
-                    <div class="stat-section-header"><i class="fas fa-map"></i> Circoscrizione</div>
-                    <div class="terr-sub-card"><div id="ls-circ-rank" class="rl-items"></div></div>
                 </div>
 
                 <!-- Footer sidebar dx-->
