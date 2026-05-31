@@ -270,7 +270,7 @@ async function chkPin(){
     if(d.status==='ok'){
       currentUser=d.operator;
       const ls=document.getElementById('login-screen');ls.style.transition='opacity .4s';ls.style.opacity='0';
-      setTimeout(()=>{ls.style.display='none';const tu=document.getElementById('topbar-user');tu.innerHTML='<i class="fa-solid fa-user"></i>';tu.title=currentUser.nome+' '+currentUser.cognome;document.getElementById('app').classList.add('visible');initMap();},400);
+      setTimeout(()=>{ls.style.display='none';const tu=document.getElementById('topbar-user');tu.innerHTML='<i class="fa-solid fa-user"></i>';tu.title=currentUser.nome+' '+currentUser.cognome;document.getElementById('app').classList.add('visible');initMap();showDisclaimer();},400);
     }else{
       pinErr(d.error||'PIN non riconosciuto - riprova');
       pinBuffer='';updDots();
@@ -284,6 +284,8 @@ async function chkPin(){
 function pinErr(m){const e=document.getElementById('pin-error');e.textContent=m;setTimeout(()=>{e.textContent='';},2500);}
 function isDemo(){return currentUser&&String(currentUser.id_operatore||'').toUpperCase()==='OP-01';}
 function doLogout(){pinBuffer='';updDots();currentUser=null;closeMobSidebar();closePanel();const ls=document.getElementById('login-screen');ls.style.display='flex';ls.style.opacity='1';document.getElementById('app').classList.remove('visible');}
+function showDisclaimer(){const m=document.getElementById('disclaimer-modal');if(m)m.style.display='flex';}
+function closeDisclaimer(){const m=document.getElementById('disclaimer-modal');if(m)m.style.display='none';}
 
 // MAPPA
 function initMap(){

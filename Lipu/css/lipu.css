@@ -626,3 +626,19 @@ input,select,textarea{-webkit-tap-highlight-color:transparent}
   .mc-results{flex:1;min-height:0}
   .mc-inp{font-size:16px!important}
 }
+
+/* badge DEMO in topbar */
+.topbar-badge-demo{display:inline-flex;align-items:center;background:#f5c518;color:#5a4500;font-family:var(--mono);font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:2px 7px;border-radius:20px;align-self:flex-start;flex-shrink:0;line-height:1.4}
+
+/* disclaimer modal */
+#disclaimer-modal{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;padding:16px}
+.disc-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.6)}
+.disc-dialog{position:relative;background:#fff;border-radius:10px;max-width:500px;width:100%;max-height:80vh;display:flex;flex-direction:column;box-shadow:0 12px 40px rgba(0,0,0,.25)}
+.disc-header{padding:18px 20px 14px;border-bottom:1px solid var(--gray-100);display:flex;align-items:center;gap:10px}
+.disc-title{font-size:16px;font-weight:700;color:var(--gray-900)}
+.disc-body{padding:16px 20px;overflow-y:auto;font-size:13px;line-height:1.65;color:var(--gray-700);flex:1;display:flex;flex-direction:column;gap:10px}
+.disc-body p{margin:0}
+.disc-highlight{background:#fff8e1;border-left:3px solid var(--amber);padding:10px 14px;border-radius:0 6px 6px 0;font-size:12px;color:#7a5800;line-height:1.55}
+.disc-footer{padding:14px 20px;border-top:1px solid var(--gray-100);display:flex;justify-content:flex-end}
+.disc-ok-btn{background:var(--green);color:#fff;border:none;border-radius:6px;padding:9px 22px;font-size:13px;font-weight:600;cursor:pointer;font-family:var(--font);transition:background .15s}
+.disc-ok-btn:hover{background:var(--green-light)}
