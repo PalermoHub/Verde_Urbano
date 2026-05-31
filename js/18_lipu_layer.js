@@ -82,6 +82,7 @@ let lipuLayerVisible = false;
 let lipuLoaded       = false;
 let lipuData         = [];
 let lipuFiltriStati  = new Set(); // vuoto = mostra tutti; non-vuoto = mostra solo quelli nel set
+let _lipuPendingTf   = null;      // valori territoriali catturati prima che applyFilters li resetti
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 
@@ -149,6 +150,7 @@ async function _loadLipuCSV() {
 // ── Filtri territoriali dalla sidebar principale ─────────────────────────────
 
 function _getLipuTerritoryFilters() {
+    if (_lipuPendingTf) return _lipuPendingTf;
     return {
         circoscrizione: (document.getElementById('circoscrizioneFilter') || {}).value || '',
         quartiere:      (document.getElementById('quartiereFilter')      || {}).value || '',
@@ -371,14 +373,11 @@ function closeLipuModal() {
 // ── Opzioni LIPU nei select territoriali con cascade ────────────────────────
 
 function _lipuSelectData(excludeField) {
-    // Ritorna lipuData filtrato per tutti i campi tranne excludeField
-    const circ  = (document.getElementById('circoscrizioneFilter') || {}).value || '';
-    const quart = (document.getElementById('quartiereFilter')      || {}).value || '';
-    const upl   = (document.getElementById('uplFilter')            || {}).value || '';
+    const tf = _getLipuTerritoryFilters();
     return lipuData.filter(function(row) {
-        if (excludeField !== 'circoscrizione' && circ  && row.Circoscrizione !== circ)  return false;
-        if (excludeField !== 'quartiere'      && quart && row.Quartiere      !== quart) return false;
-        if (excludeField !== 'upl'            && upl   && row.UPL            !== upl)   return false;
+        if (excludeField !== 'circoscrizione' && tf.circoscrizione && row.Circoscrizione !== tf.circoscrizione) return false;
+        if (excludeField !== 'quartiere'      && tf.quartiere      && row.Quartiere      !== tf.quartiere)      return false;
+        if (excludeField !== 'upl'            && tf.upl            && row.UPL            !== tf.upl)            return false;
         return true;
     });
 }
@@ -433,11 +432,18 @@ function _addLipuOptionsToSelects() {
     const orig = window.applyFilters;
     if (typeof orig !== 'function') return;
     window.applyFilters = function() {
+        // Cattura i valori territoriali PRIMA che _rebuildDynamicSelect li resetti
+        _lipuPendingTf = {
+            circoscrizione: (document.getElementById('circoscrizioneFilter') || {}).value || '',
+            quartiere:      (document.getElementById('quartiereFilter')      || {}).value || '',
+            upl:            (document.getElementById('uplFilter')            || {}).value || ''
+        };
         orig.apply(this, arguments);
         if (lipuLayerVisible && lipuLoaded) {
             _renderLipuMarkers();
             updateLipuStatsSidebar();
         }
+        _lipuPendingTf = null;
     };
 })();
 
@@ -513,16 +519,20 @@ async function updateLipuStatsSidebar() {
         else                                counts.non_ispez++;
     });
 
+    const hasTerrFilter = !!(tf.circoscrizione || tf.quartiere || tf.upl);
+
     // Hero: totale dal PMTiles LIPU
     const pmTotal = await _fetchLipuPMTilesTotal();
     const totalPMT = pmTotal !== null ? pmTotal : lipuData.length;
     const elTot = document.getElementById('ls-total');
     if (elTot) elTot.textContent = totalPMT.toLocaleString('it-IT');
-    _setEl('ls-ispezionati', lipuData.length.toLocaleString('it-IT'));
-    const daIspez = Math.max(0, totalPMT - lipuData.length);
+    _setEl('ls-ispezionati', filtered.length.toLocaleString('it-IT'));
+    const daIspez = hasTerrFilter ? '—' : Math.max(0, totalPMT - lipuData.length).toLocaleString('it-IT');
     const elDaIspez = document.getElementById('ls-da-ispez');
-    if (elDaIspez) elDaIspez.textContent = daIspez.toLocaleString('it-IT');
-    const pctIspez = totalPMT > 0 ? Math.round(lipuData.length / totalPMT * 100) : 0;
+    if (elDaIspez) elDaIspez.textContent = daIspez;
+    const pctIspez = hasTerrFilter
+        ? (lipuData.length > 0 ? Math.round(filtered.length / lipuData.length * 100) : 0)
+        : (totalPMT > 0 ? Math.round(lipuData.length / totalPMT * 100) : 0);
     const elFill = document.getElementById('ls-progress-fill');
     const elPct  = document.getElementById('ls-progress-pct');
     if (elFill) elFill.style.width = pctIspez + '%';
@@ -545,27 +555,37 @@ async function updateLipuStatsSidebar() {
             id: 'lipuCenter',
             afterDraw: function(chart) {
                 if (chart.config.type !== 'doughnut') return;
-                const total = chart._lipuTotal || 0;
-                const insp  = chart._lipuInspected || 0;
-                if (!total) return;
+                const total      = chart._lipuTotal || 0;
+                const insp       = chart._lipuInspected || 0;
+                const isFiltered = chart._lipuFiltered || false;
+                if (!total && !insp) return;
                 const { ctx, chartArea: { width, height, left, top } } = chart;
                 const cx = left + width / 2, cy = top + height / 2;
                 ctx.save();
                 ctx.textAlign = 'center';
                 ctx.textBaseline = 'middle';
-                const daIspez = Math.max(0, total - insp);
-                ctx.font = 'bold 18px "Titillium Web", Arial, sans-serif';
-                ctx.fillStyle = '#1a1a1a';
-                ctx.fillText(total.toLocaleString('it-IT'), cx, cy - 14);
-                ctx.font = '8px "Titillium Web", Arial, sans-serif';
-                ctx.fillStyle = '#aaa';
-                ctx.fillText('ALBERI TOTALI', cx, cy - 2);
-                ctx.font = 'bold 14px "Titillium Web", Arial, sans-serif';
-                ctx.fillStyle = '#e67e22';
-                ctx.fillText(daIspez.toLocaleString('it-IT'), cx, cy + 11);
-                ctx.font = '8px "Titillium Web", Arial, sans-serif';
-                ctx.fillStyle = '#888';
-                ctx.fillText('da ispezionare', cx, cy + 23);
+                if (isFiltered) {
+                    ctx.font = 'bold 18px "Titillium Web", Arial, sans-serif';
+                    ctx.fillStyle = '#1a1a1a';
+                    ctx.fillText(insp.toLocaleString('it-IT'), cx, cy - 8);
+                    ctx.font = '8px "Titillium Web", Arial, sans-serif';
+                    ctx.fillStyle = '#aaa';
+                    ctx.fillText('ISPEZIONI', cx, cy + 6);
+                } else {
+                    const daIspez = Math.max(0, total - insp);
+                    ctx.font = 'bold 18px "Titillium Web", Arial, sans-serif';
+                    ctx.fillStyle = '#1a1a1a';
+                    ctx.fillText(total.toLocaleString('it-IT'), cx, cy - 14);
+                    ctx.font = '8px "Titillium Web", Arial, sans-serif';
+                    ctx.fillStyle = '#aaa';
+                    ctx.fillText('ALBERI TOTALI', cx, cy - 2);
+                    ctx.font = 'bold 14px "Titillium Web", Arial, sans-serif';
+                    ctx.fillStyle = '#e67e22';
+                    ctx.fillText(daIspez.toLocaleString('it-IT'), cx, cy + 11);
+                    ctx.font = '8px "Titillium Web", Arial, sans-serif';
+                    ctx.fillStyle = '#888';
+                    ctx.fillText('da ispezionare', cx, cy + 23);
+                }
                 ctx.restore();
             }
         };
@@ -593,8 +613,9 @@ async function updateLipuStatsSidebar() {
             },
             plugins: [lipuCenterPlugin]
         });
-        _lipuDonutChart._lipuTotal     = totalPMT;
-        _lipuDonutChart._lipuInspected = lipuData.length;
+        _lipuDonutChart._lipuTotal     = hasTerrFilter ? filtered.length : totalPMT;
+        _lipuDonutChart._lipuInspected = filtered.length;
+        _lipuDonutChart._lipuFiltered  = hasTerrFilter;
         _lipuDonutChart.update();
         // Resize dopo breve delay: gestisce il caso mobile in cui il canvas
         // viene creato mentre la sidebar ha display:none (dimensioni 0×0).
