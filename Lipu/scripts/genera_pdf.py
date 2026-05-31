@@ -217,6 +217,7 @@ def build_pdf(row: dict) -> bytes:
 
     # 7 · Firme di convalida
     section(' 7 · FIRME DI CONVALIDA')
+    field_pair('Ditta', row.get('ditta_operatore', '') or '-')
     field_pair('Firma Operatore', row.get('firma_operatore', ''),
                'Firma Capocantiere', row.get('firma_capocantiere', ''))
 

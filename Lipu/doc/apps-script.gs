@@ -22,10 +22,10 @@ const SHEET_ALBERI    = 'Dati alberi';
 const SHEET_OPERATORI = 'Gestione operatori';
 
 const HEADERS_ISPEZIONI = [
-  'timestamp', 'id_albero', 'lat_albero', 'lon_albero',
+  'timestamp', 'id_albero', 'specie', 'lat_albero', 'lon_albero',
   'circoscrizione', 'quartiere', 'upl',
   'altezza_complessiva', 'altezza_base_chioma',
-  'id_operatore', 'nome_operatore', 'ruolo_operatore',
+  'id_operatore', 'nome_operatore', 'ruolo_operatore', 'ditta_operatore',
   'ora_controllo', 'nido_visibile', 'richiami', 'andirivieni', 'esito',
   'note', 'firma_operatore', 'firma_capocantiere',
   'url_foto_1', 'url_foto_2', 'url_foto_3', 'url_pdf'
@@ -87,6 +87,7 @@ function processIspezione(data) {
   const row = [
     data.timestamp        || new Date().toISOString(),
     data.id_albero        || '',
+    data.specie           || '',
     data.lat_albero       || '',
     data.lon_albero       || '',
     data.circoscrizione   || '',
@@ -97,6 +98,7 @@ function processIspezione(data) {
     data.id_operatore     || '',
     data.nome_operatore   || '',
     data.ruolo_operatore  || '',
+    data.ditta_operatore  || '',
     data.ora_controllo    || '',
     data.nido_visibile    || '',
     data.richiami         || '',
@@ -129,6 +131,7 @@ function processIspezione(data) {
     id_operatore:        data.id_operatore     || '',
     nome_operatore:      data.nome_operatore   || '',
     ruolo_operatore:     data.ruolo_operatore  || '',
+    ditta_operatore:     data.ditta_operatore  || '',
     ora_controllo:       data.ora_controllo    || '',
     nido_visibile:       data.nido_visibile    || '',
     richiami:            data.richiami         || '',
@@ -311,6 +314,7 @@ function verifyLogin(pin) {
   const idxNome = findColumnIndex(headers, ['nome', 'name']);
   const idxCognome = findColumnIndex(headers, ['cognome', 'surname']);
   const idxRuolo = findColumnIndex(headers, ['ruolo', 'role']);
+  const idxDitta = findColumnIndex(headers, ['ditta', 'azienda', 'company']);
   const idxAttivo = findColumnIndex(headers, ['attivo', 'active', 'abilitato']);
   
   if (idxPin === -1) {
@@ -334,7 +338,8 @@ function verifyLogin(pin) {
         id_operatore: idxId !== -1 ? String(data[i][idxId]).trim() : '',
         nome: idxNome !== -1 ? String(data[i][idxNome]).trim() : '',
         cognome: idxCognome !== -1 ? String(data[i][idxCognome]).trim() : '',
-        ruolo: idxRuolo !== -1 ? String(data[i][idxRuolo]).trim() : ''
+        ruolo: idxRuolo !== -1 ? String(data[i][idxRuolo]).trim() : '',
+        ditta: idxDitta !== -1 ? String(data[i][idxDitta]).trim() : ''
       };
       
       return { status: 'ok', operator: operator };

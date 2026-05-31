@@ -139,6 +139,7 @@ def main():
             'id_operatore':        str(row.get('id_operatore ', row.get('id_operatore', ''))).strip(),
             'nome_operatore':      str(row.get('nome_operatore', '')).strip(),
             'ruolo_operatore':     str(row.get('ruolo_operatore', '')).strip(),
+            'ditta_operatore':     str(row.get('ditta_operatore', '')).strip(),
             'ora_controllo':       ora,
             'nido_visibile':       str(row.get('nido_visibile', '')).strip(),
             'richiami':            str(row.get('richiami', '')).strip(),

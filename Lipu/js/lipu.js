@@ -477,6 +477,7 @@ function openScheda(id,props){
   document.getElementById('p-diam-tronco').textContent=fv(getProp(props,['Diametro tronco [m]','Diametro tronco','diametro_tronco']));
   document.getElementById('p-data').textContent=now.toLocaleDateString('it-IT');
   document.getElementById('p-ora').textContent=now.toLocaleTimeString('it-IT',{hour:'2-digit',minute:'2-digit'});
+  document.getElementById('firma-ditta').value=currentUser.ditta||'';
   document.getElementById('firma-op').value=currentUser.nome+' '+currentUser.cognome;
   document.getElementById('firma-cap').value='';
   document.getElementById('firma-cap-pin').value='';
@@ -603,6 +604,7 @@ async function inviaScheda(){
     id_operatore:currentUser.id_operatore,
     nome_operatore:currentUser.nome+' '+currentUser.cognome,
     ruolo_operatore:currentUser.ruolo,
+    ditta_operatore:currentUser.ditta||'',
     lat_albero:coordsMap[id]?coordsMap[id][1]:'',
     lon_albero:coordsMap[id]?coordsMap[id][0]:'',
     circoscrizione:getProp(p,['Circoscrizione','circoscrizione','CIRCOSCRIZIONE']),
