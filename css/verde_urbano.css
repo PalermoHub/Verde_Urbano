@@ -3322,8 +3322,9 @@ hr {
 .lipu-foto-grid{display:flex;gap:6px;}
 .lipu-foto-thumb{flex:1;min-width:0;height:90px;object-fit:cover;border-radius:6px;border:1px solid #e0e0e0;cursor:zoom-in;transition:opacity .2s,transform .2s;}
 .lipu-foto-thumb:hover{opacity:.82;transform:scale(1.04);}
-.lipu-section{padding:8px 12px 6px;border-bottom:1px solid #f0f0f0;}
-.lipu-section-title{font-size:9.5px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;color:#2D6A4F;margin-bottom:6px;}
+.lipu-section{padding:10px 20px 10px 10px; position:relative;}
+.lipu-section::after{content:'';position:absolute;bottom:0;left:10px;right:8px;height:2px;background:#f0f0f0;}
+.lipu-section-title{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:#333333;background:#f1f1ed;margin:-4px -12px 8px 0px;padding:5px 12px; border-radius: 4px;}
 .lipu-field-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px 10px;}
 .lipu-field{display:flex;flex-direction:column;gap:1px;}
 .lf-lbl{font-size:9px;color:#999;text-transform:uppercase;letter-spacing:.05em;}
@@ -3397,3 +3398,43 @@ hr {
     #sb-pane-lipu-stats .lipu-kpi { padding: 6px 4px; }
     #sb-pane-lipu-stats .lipu-stato-card { padding: 6px 4px; }
 }
+
+/* ── Bottone lista alberi LIPU ──────────────────────────────────────────────── */
+.lipu-lista-btn{display:flex;align-items:center;gap:6px;width:100%;padding:7px 10px;margin-top:8px;background:#2D6A4F;color:#fff;border:none;border-radius:6px;font-size:11px;font-weight:600;cursor:pointer;text-transform:uppercase;letter-spacing:.05em;transition:background .15s;}
+.lipu-lista-btn:hover{background:#1b4332;}
+.lipu-lista-btn i{font-size:11px;}
+
+/* ── Modale lista alberi LIPU ───────────────────────────────────────────────── */
+.llm-overlay{display:none;position:fixed;inset:0;z-index:10003;align-items:center;justify-content:center;}
+.llm-overlay.active{display:flex;}
+.llm-backdrop{position:absolute;inset:0;background:rgba(0,0,0,.45);}
+.llm-dialog{position:relative;background:#fff;border-radius:10px;box-shadow:0 8px 40px rgba(0,0,0,.22);width:92vw;max-width:900px;max-height:85vh;display:flex;flex-direction:column;overflow:hidden;}
+.llm-header{display:flex;align-items:flex-start;justify-content:space-between;padding:14px 18px 12px;border-bottom:1px solid #e0ebe0;background:#f6faf6;flex-shrink:0;}
+.llm-title{font-size:14px;font-weight:700;color:#2D6A4F;display:flex;align-items:center;gap:6px;}
+.llm-title i{font-size:13px;}
+.llm-subtitle{font-size:11px;color:#888;margin-top:3px;}
+.llm-close{background:none;border:none;font-size:22px;cursor:pointer;color:#888;padding:0 4px;line-height:1;transition:color .1s;}
+.llm-close:hover{color:#222;}
+.llm-table-wrap{overflow:auto;flex:1;}
+.llm-table{width:100%;border-collapse:collapse;font-size:12px;}
+.llm-th{padding:8px 10px;text-align:left;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:#fff;background:#2D6A4F;border-bottom:2px solid #1b4332;cursor:pointer;white-space:nowrap;user-select:none;position:sticky;top:0;z-index:1;}
+.llm-th:hover{background:#1b4332;}
+.llm-th-pdf{cursor:default;}
+.llm-th-pdf:hover{background:#2D6A4F;}
+.llm-arr{font-size:9px;color:#a8d5b5;margin-left:2px;}
+.llm-row{cursor:pointer;transition:background .1s;}
+.llm-row:hover td{background:#edf7ed;}
+.llm-row:nth-child(even) .llm-td{background:#fafcfa;}
+.llm-row:nth-child(even):hover td{background:#edf7ed;}
+.llm-td{padding:6px 10px;border-bottom:1px solid #f0f0f0;color:#333;vertical-align:middle;}
+.llm-td-id{font-weight:700;color:#2D6A4F;font-family:monospace;font-size:11px;}
+.llm-td-specie{font-style:italic;}
+.llm-td-data{white-space:nowrap;color:#666;font-size:11px;}
+.llm-esito{display:inline-block;padding:2px 8px;border-radius:10px;font-size:10px;font-weight:700;white-space:nowrap;}
+.llm-esito.lm-ok{background:#e8f5e9;color:#2D6A4F;}
+.llm-esito.lm-pending{background:#fff3e0;color:#c15a00;}
+.llm-esito.lm-stop{background:#fdecea;color:#C1121F;}
+.llm-td-pdf{text-align:center;width:36px;}
+.llm-pdf-link{color:#C1121F;font-size:15px;transition:color .1s;text-decoration:none;}
+.llm-pdf-link:hover{color:#8b0000;}
+@media(max-width:600px){.llm-dialog{width:100vw;max-width:100vw;max-height:100vh;border-radius:0;}.llm-table{font-size:11px;}}

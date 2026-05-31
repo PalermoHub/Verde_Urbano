@@ -715,3 +715,89 @@ function toggleLipuLayer(checked) {
         updateLipuStatsSidebar();
     }
 }
+
+// ── Modale lista alberi ──────────────────────────────────────────────────────
+
+let _llmSortCol = 'id_albero';
+let _llmSortDir = 'asc';
+let _llmData    = [];
+
+function openLipuListModal() {
+    if (!lipuLoaded || !lipuData.length) return;
+    _llmSortCol = 'id_albero';
+    _llmSortDir = 'asc';
+    _renderLipuList();
+    document.getElementById('lipuListModal').classList.add('active');
+}
+
+function closeLipuListModal() {
+    document.getElementById('lipuListModal').classList.remove('active');
+}
+
+function lipuListSort(col) {
+    if (_llmSortCol === col) {
+        _llmSortDir = _llmSortDir === 'asc' ? 'desc' : 'asc';
+    } else {
+        _llmSortCol = col;
+        _llmSortDir = 'asc';
+    }
+    _renderLipuList();
+}
+
+function lipuListRowClick(idx) {
+    const row = _llmData[idx];
+    if (!row) return;
+    closeLipuListModal();
+    _openLipuModal(row);
+}
+
+function _renderLipuList() {
+    const sortCols = ['id_albero', 'specie', 'timestamp', 'Quartiere', 'UPL', 'esito', 'nome_operatore'];
+
+    _llmData = lipuData.slice().sort(function(a, b) {
+        let va = a[_llmSortCol] || '';
+        let vb = b[_llmSortCol] || '';
+        if (_llmSortCol === 'id_albero') {
+            va = parseInt(va) || 0; vb = parseInt(vb) || 0;
+            return _llmSortDir === 'asc' ? va - vb : vb - va;
+        }
+        if (_llmSortCol === 'timestamp') {
+            va = new Date(va).getTime() || 0; vb = new Date(vb).getTime() || 0;
+            return _llmSortDir === 'asc' ? va - vb : vb - va;
+        }
+        va = va.toString().toLowerCase(); vb = vb.toString().toLowerCase();
+        if (va < vb) return _llmSortDir === 'asc' ? -1 : 1;
+        if (va > vb) return _llmSortDir === 'asc' ? 1 : -1;
+        return 0;
+    });
+
+    const countEl = document.getElementById('llm-count');
+    if (countEl) countEl.textContent = _llmData.length + ' ispezioni';
+
+    sortCols.forEach(function(col) {
+        const el = document.getElementById('llm-arr-' + col);
+        if (!el) return;
+        el.textContent = col === _llmSortCol ? (_llmSortDir === 'asc' ? '▲' : '▼') : '';
+    });
+
+    const tbody = document.getElementById('llm-tbody');
+    if (!tbody) return;
+    tbody.innerHTML = _llmData.map(function(row, i) {
+        const esito  = (row.esito || '').trim();
+        const label  = _lipuLabel(esito);
+        const eClass = _lipuEsitoClass(esito);
+        const date   = _lipuFormatDate(row.timestamp).split(' ')[0];
+        return '<tr class="llm-row" onclick="lipuListRowClick(' + i + ')">'
+            + '<td class="llm-td llm-td-id">' + (row.id_albero || '—') + '</td>'
+            + '<td class="llm-td llm-td-specie">' + (row.specie || '—') + '</td>'
+            + '<td class="llm-td llm-td-data">' + date + '</td>'
+            + '<td class="llm-td">' + (row.Quartiere || '—') + '</td>'
+            + '<td class="llm-td">' + (row.UPL || '—') + '</td>'
+            + '<td class="llm-td"><span class="llm-esito ' + eClass + '">' + label + '</span></td>'
+            + '<td class="llm-td">' + (row.nome_operatore || '—') + '</td>'
+            + '<td class="llm-td llm-td-pdf" onclick="event.stopPropagation()">'
+            + (row.url_pdf ? '<a class="llm-pdf-link" href="' + row.url_pdf + '" target="_blank" rel="noopener" title="Apri scheda PDF"><i class="fas fa-file-pdf"></i></a>' : '—')
+            + '</td>'
+            + '</tr>';
+    }).join('');
+}
