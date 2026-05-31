@@ -572,6 +572,9 @@ async function updateLipuStatsSidebar() {
         _lipuDonutChart._lipuTotal     = totalPMT;
         _lipuDonutChart._lipuInspected = lipuData.length;
         _lipuDonutChart.update();
+        // Resize dopo breve delay: gestisce il caso mobile in cui il canvas
+        // viene creato mentre la sidebar ha display:none (dimensioni 0×0).
+        setTimeout(function() { if (_lipuDonutChart) _lipuDonutChart.resize(); }, 120);
     }
     // Legenda donut (stile donut-legend esistente)
     const legendEl = document.getElementById('ls-donut-legend');

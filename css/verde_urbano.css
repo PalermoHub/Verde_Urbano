@@ -1505,6 +1505,7 @@ hr {
 }
 .sb-tab-btn {
     flex: 1;
+    min-width: 0;
     padding: 7px 3px;
     font-size: 14px;
     border: none;
@@ -2262,7 +2263,7 @@ hr {
         height: 100%;
         width: 80vw;
         max-width: 80vw;
-        z-index: 9990;
+        z-index: 10002;
     }
     .container.sidebar-left-hidden .sb-wrap:not(.sb-wrap-right) {
         transform: translateX(-80vw);
@@ -2279,7 +2280,7 @@ hr {
         height: 100%;
         width: 80vw;
         max-width: 80vw;
-        z-index: 9990;
+        z-index: 10002;
     }
     .container.sidebar-right-hidden .sb-wrap-right {
         transform: translateX(80vw);
@@ -2287,6 +2288,14 @@ hr {
     .sb-toggle-right {
         width: 20px;
         height: 64px;
+    }
+    /* Tab bar: solo icone su mobile (testo non entra con 3 tab) */
+    .sb-tab-btn {
+        font-size: 0;
+        padding: 10px 3px;
+    }
+    .sb-tab-btn i {
+        font-size: 16px;
     }
 }
 

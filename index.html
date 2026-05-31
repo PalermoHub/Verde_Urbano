@@ -1042,6 +1042,15 @@
         container.classList.toggle('sidebar-right-hidden');
         sidebar.style.display = isHidden ? '' : 'none';
         btn.innerHTML = isHidden ? '&#8250;' : '&#8249;';
+        // Resize chart quando la sidebar si apre (canvas poteva essere 0×0 se creato con display:none)
+        if (isHidden && typeof Chart !== 'undefined') {
+            setTimeout(function() {
+                ['healthChart', 'lipuStatsDonut'].forEach(function(id) {
+                    const c = Chart.getChart(id);
+                    if (c) c.resize();
+                });
+            }, 50);
+        }
     }
 
     /* Mobile: entrambe le sidebar chiuse di default */
