@@ -581,6 +581,14 @@ function updateLegendContent() {
     const container = document.getElementById('map-legend-cpc');
     if (!container) return;
 
+    // Nasconde la legenda quando nessun progetto è selezionato (nessun albero visibile)
+    if (typeof filteredTrees !== 'undefined' && filteredTrees.length === 0 &&
+        typeof allTrees !== 'undefined' && allTrees.length > 0) {
+        container.style.display = 'none';
+        return;
+    }
+    container.style.display = '';
+
     const viewportMode = !isAnyFilterActive();
     const sourceTrees = viewportMode ? getViewportTrees() : filteredTrees;
 

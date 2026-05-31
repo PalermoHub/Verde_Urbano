@@ -14,6 +14,10 @@ hr {
     margin-bottom: 20px;
 }
 
+.leaflet-right .leaflet-control {
+    margin-right: 5px! important;
+}
+
 /* Filter Accordion */
 .filter-accordion {
     margin-bottom: 8px;
@@ -394,7 +398,7 @@ hr {
             overflow: hidden;
             border-bottom: 2px solid var(--pa-green-800);
             --sb-w: 300px;
-            --sb-w-right: 390px;
+            --sb-w-right: 420px;
         }
         .sidebar {
             background: white;
@@ -1672,7 +1676,7 @@ hr {
 .basemap-gallery.bm-horizontal { flex-direction: row; }
 .leaflet-right .basemap-gallery.bm-horizontal { flex-direction: row-reverse; }
 .bm-item {
-    width: 56px; height: 56px; border: 2px solid rgba(255,255,255,.85);
+    width: 45px; height: 45px; border: 2px solid rgba(255,255,255,.85);
     overflow: hidden; cursor: pointer; position: relative; flex-shrink: 0;
     box-shadow: 0 1px 5px rgba(0,0,0,.35); background: #d0d0d0;
     display: none; transition: border-color .15s;

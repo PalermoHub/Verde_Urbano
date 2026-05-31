@@ -50,7 +50,9 @@
       "Bash(Format-Table LineNumber, Line -AutoSize)",
       "Bash(Get-Content \"D:\\\\GitHub - Clone\\\\SiciliaHub\\\\Verde_Urbano\\\\Lipu\\\\js\\\\lipu.js\")",
       "Bash(Measure-Object -Line)",
-      "PowerShell(\\(Get-Content \"D:\\\\GitHub - Clone\\\\SiciliaHub\\\\Verde_Urbano\\\\Lipu\\\\js\\\\lipu.js\" | Measure-Object -Line\\).Lines)"
+      "PowerShell(\\(Get-Content \"D:\\\\GitHub - Clone\\\\SiciliaHub\\\\Verde_Urbano\\\\Lipu\\\\js\\\\lipu.js\" | Measure-Object -Line\\).Lines)",
+      "Bash(mkdir -p \"D:/GitHub - Clone/SiciliaHub/Verde_Urbano/.claude\")",
+      "mcp__Claude_Preview__preview_start"
     ]
   }
 }
