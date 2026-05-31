@@ -558,6 +558,29 @@ function applyFilters() {
     updateCharts();
     if (typeof updateURLFromFilters === 'function') updateURLFromFilters();
     if (typeof renderFilterChips === 'function') renderFilterChips();
+    _syncRightSidebarTabs();
+}
+
+function _syncRightSidebarTabs() {
+    const hasData = getSelectedProgetti().length > 0;
+    ['statistiche', 'dataviz'].forEach(function(tabId) {
+        const btn  = document.querySelector('#sidebarRight .sb-tab-btn[data-tab="' + tabId + '"]');
+        const pane = document.getElementById('sb-pane-' + tabId);
+        if (!btn) return;
+        btn.style.display = hasData ? '' : 'none';
+        if (!hasData && pane && pane.classList.contains('active')) {
+            pane.classList.remove('active');
+            btn.classList.remove('active');
+            const lipuBtn = document.getElementById('sb-tab-btn-lipu');
+            if (lipuBtn && lipuBtn.style.display !== 'none') {
+                if (typeof showRightSidebarTab === 'function') showRightSidebarTab('lipu-stats');
+            }
+        }
+    });
+    if (hasData) {
+        const hasActive = document.querySelector('#sidebarRight .sb-pane.active');
+        if (!hasActive && typeof showRightSidebarTab === 'function') showRightSidebarTab('dataviz');
+    }
 }
 
 // Aggiorna il titolo della pagina con l'Odonimo selezionato

@@ -477,12 +477,15 @@ function _showLipuStatsTab() {
 
 function _hideLipuStatsTab() {
     const btn = document.getElementById('sb-tab-btn-lipu');
-    if (btn) btn.style.display = 'none';
-    // Torna al tab DataViz
-    const active = document.querySelector('#sidebarRight .sb-pane.active');
-    if (active && active.id === 'sb-pane-lipu-stats') {
-        if (typeof showRightSidebarTab === 'function') showRightSidebarTab('dataviz');
-    }
+    if (btn) { btn.style.display = 'none'; btn.classList.remove('active'); }
+    const lipuPane = document.getElementById('sb-pane-lipu-stats');
+    if (lipuPane) lipuPane.classList.remove('active');
+    // Fallback al primo tab visibile
+    const fallback = ['dataviz', 'statistiche'].find(function(id) {
+        const b = document.querySelector('#sidebarRight .sb-tab-btn[data-tab="' + id + '"]');
+        return b && b.style.display !== 'none';
+    });
+    if (fallback && typeof showRightSidebarTab === 'function') showRightSidebarTab(fallback);
 }
 
 async function updateLipuStatsSidebar() {
@@ -670,6 +673,7 @@ function toggleLipuLayer(checked) {
             .then(function(data) {
                 lipuData   = data;
                 lipuLoaded = true;
+                if (!lipuLayerVisible) return; // utente ha spento il layer durante il caricamento
                 _addLipuOptionsToSelects();
                 _renderLipuMarkers();
                 _showLipuStatsTab();

@@ -1021,8 +1021,9 @@
                 showSidebarTab(leftTab);
             }
             const rightTab = localStorage.getItem('vu_tab_right');
-            if (rightTab && document.querySelector('#sidebarRight .sb-tab-btn[data-tab="' + rightTab + '"]')) {
-                showRightSidebarTab(rightTab);
+            if (rightTab) {
+                const rightBtn = document.querySelector('#sidebarRight .sb-tab-btn[data-tab="' + rightTab + '"]');
+                if (rightBtn && rightBtn.style.display !== 'none') showRightSidebarTab(rightTab);
             }
         } catch(e) {}
     })();
