@@ -52,7 +52,10 @@
       "Bash(Measure-Object -Line)",
       "PowerShell(\\(Get-Content \"D:\\\\GitHub - Clone\\\\SiciliaHub\\\\Verde_Urbano\\\\Lipu\\\\js\\\\lipu.js\" | Measure-Object -Line\\).Lines)",
       "Bash(mkdir -p \"D:/GitHub - Clone/SiciliaHub/Verde_Urbano/.claude\")",
-      "mcp__Claude_Preview__preview_start"
+      "mcp__Claude_Preview__preview_start",
+      "Bash(Select-String -Path \"D:\\\\GitHub - Clone\\\\SiciliaHub\\\\Verde_Urbano\\\\index - Copia.html\" -Pattern \"^</script>$|^</body>$\")",
+      "Bash(Select-Object -First 10 LineNumber, Line)",
+      "PowerShell(\\(Get-Content \"D:\\\\GitHub - Clone\\\\SiciliaHub\\\\Verde_Urbano\\\\index - Copia.html\"\\).Count)"
     ]
   }
 }

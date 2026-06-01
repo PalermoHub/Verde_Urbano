@@ -129,6 +129,19 @@ function updateStats() {
     document.getElementById('statAlberiPerQuartiere').innerHTML = formatTerritorioList(quartiereCount, 'var(--pa-green-500)', 'quartiereFilter');
     document.getElementById('statAlberiPerCircoscrizione').innerHTML = formatTerritorioList(circoscrizioneCount, '#e67e22', 'circoscrizioneFilter');
 
+    // Mostra il tab Lavoraz. solo se ci sono alberi dell'accordo quadro nel risultato filtrato
+    const hasAccordoQuadro = treesToAnalyze.some(t => t.progetto && t.progetto !== '-');
+    const lavTab = document.querySelector('#sidebarRight .sb-tab-btn[data-tab="lavorazione"]');
+    if (lavTab) {
+        lavTab.style.display = hasAccordoQuadro ? '' : 'none';
+        if (!hasAccordoQuadro) {
+            const pane = document.getElementById('sb-pane-lavorazione');
+            if (pane && pane.classList.contains('active')) {
+                if (typeof showRightSidebarTab === 'function') showRightSidebarTab('dataviz');
+            }
+        }
+    }
+
     window.VU_DEBUG && console.log('✅ Statistiche aggiornate con successo');
 }
 

@@ -38,10 +38,18 @@ function populateProgettoMultiSelect() {
             header.className = 'progetto-section-header';
             header.style.setProperty('--section-color', color);
             header.innerHTML = `
+                <label class="progetto-header-toggle" onclick="event.stopPropagation()">
+                    <input type="checkbox" class="progetto-header-switch" checked>
+                    <span class="toggle-switch"></span>
+                </label>
                 <span class="progetto-section-dot" style="background:${color}"></span>
                 <span class="progetto-section-name" title="${pEsc}">${p}</span>
                 <span class="progetto-section-count">${count}</span>
             `;
+            header.querySelector('.progetto-header-switch').addEventListener('change', function(e) {
+                e.stopPropagation();
+                toggleProgettoCard(wrap);
+            });
             header.addEventListener('click', () => toggleProgettoCard(wrap));
             wrap.appendChild(header);
 
@@ -69,7 +77,7 @@ function populateProgettoMultiSelect() {
                 ordCard.style.setProperty('--ord-color', color);
                 ordCard.innerHTML = `
                     <div class="ordinativo-card-name" title="${o.replace(/"/g,'&quot;')}">${o}</div>
-                    <div class="ordinativo-card-count">${oCount} alberi</div>
+                    <div class="ordinativo-card-count">${oCount}</div>
                 `;
                 ordCard.addEventListener('click', () => toggleOrdinativoCard(cardWrap));
                 cardWrap.appendChild(ordCard);
@@ -107,6 +115,9 @@ function toggleProgettoCard(wrap) {
     // Progetto con ordinativi: sync tutte le card ordinativo
     wrap.querySelectorAll('.ordinativo-sub-cb').forEach(c => { c.checked = cb.checked; });
     wrap.querySelectorAll('.ordinativo-card').forEach(c => c.classList.toggle('selected', cb.checked));
+    // Sync switch visuale
+    const sw = wrap.querySelector('.progetto-header-switch');
+    if (sw) { sw.checked = cb.checked; sw.indeterminate = false; }
     _updateSectionHeaderState(wrap);
     _syncProgettoAllCheckbox();
     applyFilters();
@@ -141,6 +152,11 @@ function _updateSectionHeaderState(wrap) {
     header.classList.toggle('partial', checkedCount > 0 && checkedCount < allSubCbs.length);
     header.classList.toggle('none', checkedCount === 0);
     header.classList.toggle('all', checkedCount === allSubCbs.length);
+    const sw = header.querySelector('.progetto-header-switch');
+    if (sw) {
+        sw.checked = checkedCount > 0;
+        sw.indeterminate = checkedCount > 0 && checkedCount < allSubCbs.length;
+    }
 }
 
 function _syncProgettoAllCheckbox() {
@@ -168,6 +184,8 @@ function onProgettoCbChange(cb) {
     if (card) card.classList.toggle('selected', cb.checked);
     wrap.querySelectorAll('.ordinativo-sub-cb').forEach(c => { c.checked = cb.checked; });
     wrap.querySelectorAll('.ordinativo-card').forEach(c => c.classList.toggle('selected', cb.checked));
+    const sw = wrap && wrap.querySelector('.progetto-header-switch');
+    if (sw) { sw.checked = cb.checked; sw.indeterminate = false; }
     _updateSectionHeaderState(wrap);
     _syncProgettoAllCheckbox();
     applyFilters();
@@ -777,7 +795,7 @@ function updateFilterCounts() {
         const count = allTrees.filter(t => t.progetto === progettoVal && t.ordinativo === cb.value).length;
         const cardWrap = cb.closest('.ordinativo-card-wrap');
         const countEl = cardWrap ? cardWrap.querySelector('.ordinativo-card-count') : null;
-        if (countEl) countEl.textContent = `${count} alberi`;
+        if (countEl) countEl.textContent = count;
         const ordCard = cardWrap ? cardWrap.querySelector('.ordinativo-card') : null;
         if (ordCard) ordCard.style.opacity = count === 0 ? '0.4' : '';
     });
@@ -840,6 +858,7 @@ function resetFilters() {
     document.querySelectorAll('.ordinativo-sub-cb').forEach(c => { c.checked = true; });
     document.querySelectorAll('.ordinativo-card').forEach(card => { card.classList.add('selected'); card.style.opacity = ''; });
     document.querySelectorAll('.progetto-section-header').forEach(h => { h.style.opacity = ''; h.classList.remove('partial','none'); h.classList.add('all'); });
+    document.querySelectorAll('.progetto-header-switch').forEach(sw => { sw.checked = true; sw.indeterminate = false; });
     const allCb = document.getElementById('progettoAll');
     if (allCb) { allCb.checked = true; allCb.indeterminate = false; }
 

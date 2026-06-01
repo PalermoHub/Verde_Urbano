@@ -1,0 +1,2359 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Demo Filtri Moderni — Verde Urbano</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+/* ── Reset & base ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+:root {
+    --green:   #2e7d32;
+    --green-l: #e8f5e9;
+    --accent:  #1b5e20;
+    --blue:    #1565c0;
+    --blue-l:  #e3f2fd;
+    --orange:  #e65100;
+    --red:     #c62828;
+    --gray1:   #f5f5f5;
+    --gray2:   #e0e0e0;
+    --gray3:   #9e9e9e;
+    --gray4:   #424242;
+    --white:   #ffffff;
+    --shadow:  0 2px 12px rgba(0,0,0,.10);
+    --shadow-lg: 0 8px 32px rgba(0,0,0,.16);
+    --radius:  10px;
+    --radius-sm: 6px;
+    --font: 'Titillium Web', sans-serif;
+}
+body { font-family: var(--font); background: #eef2f0; color: var(--gray4); min-height: 100vh; }
+
+/* ── Header ── */
+.demo-header {
+    background: var(--green);
+    color: #fff;
+    padding: 18px 32px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.2);
+}
+.demo-header h1 { font-size: 1.2rem; font-weight: 700; }
+.demo-header p  { font-size: .8rem; opacity: .8; margin-top: 2px; }
+.demo-header .badge {
+    margin-left: auto;
+    background: rgba(255,255,255,.18);
+    border: 1px solid rgba(255,255,255,.3);
+    border-radius: 20px;
+    padding: 4px 14px;
+    font-size: .72rem;
+    font-weight: 600;
+    letter-spacing: .5px;
+}
+
+/* ── Tab selector (stile) ── */
+.style-tabs {
+    display: flex;
+    gap: 0;
+    background: var(--white);
+    border-bottom: 2px solid var(--gray2);
+    padding: 0 32px;
+    overflow-x: auto;
+}
+.style-tab {
+    padding: 14px 22px;
+    cursor: pointer;
+    font-size: .85rem;
+    font-weight: 600;
+    color: var(--gray3);
+    border-bottom: 3px solid transparent;
+    margin-bottom: -2px;
+    white-space: nowrap;
+    transition: color .2s, border-color .2s;
+}
+.style-tab:hover { color: var(--green); }
+.style-tab.active { color: var(--green); border-bottom-color: var(--green); }
+
+/* ── Content wrapper ── */
+.demo-body { padding: 32px; }
+.style-panel { display: none; }
+.style-panel.active { display: block; }
+
+/* ── Shared card ── */
+.demo-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+}
+.demo-card-header {
+    background: var(--gray1);
+    border-bottom: 1px solid var(--gray2);
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: .8rem;
+    color: var(--gray3);
+}
+.demo-card-header strong { color: var(--gray4); font-size: .9rem; }
+.layout-2col { display: grid; grid-template-columns: 300px 1fr; gap: 24px; }
+@media(max-width:900px) { .layout-2col { grid-template-columns: 1fr; } }
+
+/* ── STILE 1: Chips + Searchable Select ── */
+.chips-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--gray2);
+    background: var(--gray1);
+}
+.chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: .78rem;
+    font-weight: 600;
+    border: 1.5px solid transparent;
+    cursor: pointer;
+    transition: all .18s;
+    user-select: none;
+}
+.chip-group-label {
+    font-size: .7rem;
+    font-weight: 700;
+    color: var(--gray3);
+    letter-spacing: .6px;
+    text-transform: uppercase;
+    align-self: center;
+    padding: 0 4px;
+}
+.chip.inactive { background: var(--white); border-color: var(--gray2); color: var(--gray3); }
+.chip.inactive:hover { border-color: var(--green); color: var(--green); }
+.chip.c-green  { background: var(--green-l); border-color: #a5d6a7; color: var(--green); }
+.chip.c-blue   { background: var(--blue-l); border-color: #90caf9; color: var(--blue); }
+.chip.c-orange { background: #fff3e0; border-color: #ffcc80; color: var(--orange); }
+.chip.c-red    { background: #ffebee; border-color: #ef9a9a; color: var(--red); }
+.chip.c-gray   { background: #f5f5f5; border-color: #bdbdbd; color: #616161; }
+.chip .chip-x { font-size: .65rem; opacity: .6; }
+.chip .chip-x:hover { opacity: 1; }
+
+.chips-sidebar { padding: 0; }
+.cs-section { border-bottom: 1px solid var(--gray2); }
+.cs-section-hd {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 20px;
+    cursor: pointer;
+    background: var(--white);
+    transition: background .15s;
+}
+.cs-section-hd:hover { background: var(--gray1); }
+.cs-section-hd .icon { width: 28px; height: 28px; border-radius: 8px; display: grid; place-items: center; font-size: .8rem; flex-shrink: 0; }
+.cs-section-hd .icon.green  { background: var(--green-l); color: var(--green); }
+.cs-section-hd .icon.blue   { background: var(--blue-l); color: var(--blue); }
+.cs-section-hd .icon.orange { background: #fff3e0; color: var(--orange); }
+.cs-section-hd .lbl { flex: 1; font-size: .85rem; font-weight: 600; }
+.cs-section-hd .cnt { font-size: .7rem; background: var(--green); color: #fff; border-radius: 10px; padding: 2px 8px; display: none; }
+.cs-section-hd .cnt.vis { display: inline; }
+.cs-section-hd .chev { color: var(--gray3); font-size: .7rem; transition: transform .2s; }
+.cs-section-hd.open .chev { transform: rotate(180deg); }
+.cs-section-body { display: none; padding: 12px 20px 16px; background: var(--gray1); }
+.cs-section-body.open { display: block; }
+
+/* Searchable select */
+.search-select-wrap { position: relative; }
+.search-select-input {
+    width: 100%;
+    padding: 8px 36px 8px 12px;
+    border: 1.5px solid var(--gray2);
+    border-radius: var(--radius-sm);
+    font-size: .83rem;
+    font-family: var(--font);
+    background: var(--white);
+    cursor: pointer;
+    transition: border-color .2s;
+    outline: none;
+}
+.search-select-input:focus { border-color: var(--green); }
+.search-select-icon {
+    position: absolute; right: 10px; top: 50%; transform: translateY(-50%);
+    color: var(--gray3); pointer-events: none; font-size: .75rem;
+}
+.search-select-dropdown {
+    position: absolute; z-index: 100; width: 100%;
+    background: var(--white); border: 1.5px solid var(--green);
+    border-radius: var(--radius-sm); box-shadow: var(--shadow-lg);
+    margin-top: 4px; display: none;
+    max-height: 220px; overflow: hidden;
+}
+.search-select-dropdown.open { display: flex; flex-direction: column; }
+.search-select-search {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--gray2);
+    position: sticky; top: 0; background: var(--white);
+}
+.search-select-search input {
+    width: 100%; border: 1px solid var(--gray2); border-radius: 4px;
+    padding: 5px 8px; font-size: .8rem; font-family: var(--font); outline: none;
+}
+.search-select-search input:focus { border-color: var(--green); }
+.search-select-list { overflow-y: auto; flex: 1; }
+.ss-option {
+    padding: 8px 12px; font-size: .82rem; cursor: pointer;
+    transition: background .12s;
+}
+.ss-option:hover { background: var(--green-l); color: var(--green); }
+.ss-option.selected { background: var(--green-l); color: var(--green); font-weight: 600; }
+.ss-option .ss-count { float: right; font-size: .7rem; color: var(--gray3); background: var(--gray2); border-radius: 10px; padding: 1px 6px; }
+.ss-option.selected .ss-count { background: #a5d6a7; color: var(--green); }
+
+/* Range slider ── stile 1 */
+.range-wrap { padding: 4px 0; }
+.range-labels { display: flex; justify-content: space-between; font-size: .75rem; color: var(--gray3); margin-bottom: 6px; }
+.range-inputs { position: relative; height: 28px; }
+.range-track { position: absolute; top: 50%; transform: translateY(-50%); left: 0; right: 0; height: 4px; background: var(--gray2); border-radius: 2px; }
+.range-fill { position: absolute; top: 50%; transform: translateY(-50%); height: 4px; background: var(--green); border-radius: 2px; left: 0; right: 0; }
+.range-inputs input[type=range] {
+    position: absolute; width: 100%; top: 50%; transform: translateY(-50%);
+    -webkit-appearance: none; appearance: none; background: transparent; pointer-events: none;
+}
+.range-inputs input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none; width: 16px; height: 16px;
+    border-radius: 50%; background: var(--white); border: 2px solid var(--green);
+    box-shadow: 0 1px 4px rgba(0,0,0,.2); pointer-events: all; cursor: pointer;
+}
+.range-val { display: flex; gap: 6px; margin-top: 6px; }
+.range-val input {
+    flex: 1; padding: 4px 6px; border: 1px solid var(--gray2); border-radius: 4px;
+    font-size: .78rem; font-family: var(--font); text-align: center; outline: none;
+}
+.range-val input:focus { border-color: var(--green); }
+
+/* Mock map */
+.mock-map {
+    background: linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 40%, #81c784 100%);
+    border-radius: var(--radius-sm);
+    min-height: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--green);
+    font-size: 2.5rem;
+    font-weight: 700;
+    opacity: .6;
+    position: relative;
+    overflow: hidden;
+}
+.mock-map::after {
+    content: 'Mappa';
+    position: absolute;
+    bottom: 16px;
+    right: 20px;
+    font-size: .8rem;
+    font-weight: 600;
+    opacity: .5;
+}
+.active-chips-bar {
+    padding: 10px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    min-height: 44px;
+    align-items: center;
+    border-bottom: 1px solid var(--gray2);
+}
+.active-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    background: var(--green-l);
+    border: 1px solid #a5d6a7;
+    color: var(--green);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: .75rem;
+    font-weight: 600;
+}
+.active-chip button {
+    background: none; border: none; cursor: pointer; color: inherit;
+    opacity: .6; font-size: .7rem; padding: 0; line-height: 1;
+}
+.active-chip button:hover { opacity: 1; }
+.no-active { font-size: .75rem; color: var(--gray3); }
+.btn-reset-all {
+    margin-left: auto;
+    background: none; border: 1px solid var(--gray2); border-radius: 20px;
+    padding: 3px 10px; font-size: .73rem; color: var(--gray3); cursor: pointer;
+    font-family: var(--font); transition: all .15s;
+}
+.btn-reset-all:hover { border-color: var(--red); color: var(--red); }
+
+/* ── STILE 2: Panel Card con segmented pills ── */
+.panel2 { padding: 0; }
+.p2-group { padding: 16px 20px; border-bottom: 1px solid var(--gray2); }
+.p2-label {
+    font-size: .7rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .6px; color: var(--gray3); margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px;
+}
+.p2-label i { color: var(--green); }
+.p2-label .badge2 {
+    margin-left: auto; background: var(--green-l); color: var(--green);
+    border-radius: 10px; padding: 1px 8px; font-size: .68rem; font-weight: 700;
+}
+.pills-row { display: flex; flex-wrap: wrap; gap: 6px; }
+.pill {
+    padding: 5px 12px; border-radius: 20px; font-size: .78rem; font-weight: 600;
+    border: 1.5px solid var(--gray2); background: var(--white); color: var(--gray4);
+    cursor: pointer; transition: all .15s; user-select: none;
+}
+.pill:hover { border-color: var(--green); color: var(--green); }
+.pill.on { border-color: currentColor; }
+.pill.on.cB  { background: #e8f5e9; color: #2e7d32; border-color: #a5d6a7; }
+.pill.on.cC  { background: #fff3e0; color: #e65100; border-color: #ffcc80; }
+.pill.on.cCD { background: #fce4ec; color: #ad1457; border-color: #f48fb1; }
+.pill.on.cD  { background: #ffebee; color: #c62828; border-color: #ef9a9a; }
+.pill.on.cK  { background: #f3e5f5; color: #6a1b9a; border-color: #ce93d8; }
+.pill.on.cA  { background: #e0f7fa; color: #006064; border-color: #80deea; }
+
+.p2-select {
+    width: 100%; padding: 9px 32px 9px 12px; border: 1.5px solid var(--gray2);
+    border-radius: var(--radius-sm); font-size: .84rem; font-family: var(--font);
+    appearance: none; -webkit-appearance: none; background: var(--white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%239e9e9e'/%3E%3C/svg%3E") no-repeat right 12px center;
+    cursor: pointer; outline: none; color: var(--gray4); transition: border-color .2s;
+}
+.p2-select:focus { border-color: var(--green); }
+
+.p2-search-wrap { position: relative; }
+.p2-search-wrap input {
+    width: 100%; padding: 8px 36px 8px 12px; border: 1.5px solid var(--gray2);
+    border-radius: var(--radius-sm); font-size: .83rem; font-family: var(--font);
+    outline: none; background: var(--white); transition: border-color .2s;
+}
+.p2-search-wrap input:focus { border-color: var(--green); }
+.p2-search-icon { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); color: var(--gray3); font-size: .8rem; pointer-events: none; }
+.p2-search-clear { position: absolute; right: 10px; top: 50%; transform: translateY(-50%); color: var(--gray3); font-size: .8rem; cursor: pointer; background: none; border: none; display: none; }
+.p2-search-wrap input:not(:placeholder-shown) + .p2-search-icon { display: none; }
+.p2-search-wrap input:not(:placeholder-shown) ~ .p2-search-clear { display: block; }
+
+.toggle-row { display: flex; align-items: center; gap: 10px; }
+.toggle-sw { width: 38px; height: 20px; background: var(--gray2); border-radius: 10px; position: relative; cursor: pointer; flex-shrink: 0; transition: background .2s; }
+.toggle-sw.on { background: var(--green); }
+.toggle-sw::after { content: ''; position: absolute; width: 14px; height: 14px; background: #fff; border-radius: 50%; top: 3px; left: 3px; transition: left .2s; box-shadow: 0 1px 3px rgba(0,0,0,.2); }
+.toggle-sw.on::after { left: 21px; }
+.toggle-label { font-size: .83rem; color: var(--gray4); }
+.toggle-sub { font-size: .73rem; color: var(--gray3); margin-top: 2px; }
+
+/* STILE 2 sidebar preview */
+.p2-sidebar { display: flex; flex-direction: column; gap: 0; }
+.p2-sum {
+    background: var(--green); color: #fff; padding: 14px 20px;
+    display: flex; align-items: center; gap: 12px;
+}
+.p2-sum .num { font-size: 1.6rem; font-weight: 700; }
+.p2-sum .sub { font-size: .75rem; opacity: .8; }
+
+/* ── STILE 3: Command palette ── */
+.cmd-wrap {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+.cmd-input-wrap {
+    position: relative;
+}
+.cmd-input {
+    width: 100%; padding: 14px 48px 14px 48px;
+    border: 2px solid var(--green);
+    border-radius: 12px; font-size: 1rem; font-family: var(--font);
+    outline: none; box-shadow: 0 4px 20px rgba(46,125,50,.15);
+    background: var(--white);
+}
+.cmd-input:focus { box-shadow: 0 4px 24px rgba(46,125,50,.25); }
+.cmd-icon-l { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--green); font-size: 1rem; }
+.cmd-icon-r { position: absolute; right: 16px; top: 50%; transform: translateY(-50%); font-size: .75rem; color: var(--gray3); border: 1px solid var(--gray2); border-radius: 4px; padding: 2px 6px; font-family: monospace; }
+
+.cmd-results {
+    background: var(--white); border-radius: var(--radius);
+    box-shadow: var(--shadow-lg); overflow: hidden;
+    border: 1px solid var(--gray2);
+}
+.cmd-group-title {
+    padding: 8px 16px; font-size: .68rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .8px; color: var(--gray3); background: var(--gray1);
+    border-bottom: 1px solid var(--gray2);
+}
+.cmd-item {
+    display: flex; align-items: center; gap: 12px; padding: 10px 16px;
+    cursor: pointer; transition: background .12s; border-bottom: 1px solid var(--gray2);
+}
+.cmd-item:last-child { border-bottom: none; }
+.cmd-item:hover, .cmd-item.sel { background: var(--green-l); }
+.cmd-item .ci-icon {
+    width: 32px; height: 32px; border-radius: 8px;
+    display: grid; place-items: center; font-size: .85rem; flex-shrink: 0;
+}
+.cmd-item .ci-text { flex: 1; }
+.cmd-item .ci-text strong { display: block; font-size: .85rem; }
+.cmd-item .ci-text span  { font-size: .75rem; color: var(--gray3); }
+.cmd-item .ci-badge {
+    font-size: .7rem; background: var(--gray2); color: var(--gray4);
+    border-radius: 10px; padding: 2px 8px;
+}
+.cmd-item.sel .ci-badge { background: var(--green-l); color: var(--green); }
+
+.cmd-active-row {
+    display: flex; flex-wrap: wrap; gap: 6px; min-height: 38px; align-items: center;
+}
+.cmd-active-label { font-size: .72rem; color: var(--gray3); font-weight: 600; text-transform: uppercase; letter-spacing: .5px; }
+.cmd-chip {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 4px 10px; border-radius: 20px; font-size: .75rem; font-weight: 600;
+    cursor: pointer; transition: all .12s;
+}
+.cmd-chip.green  { background: var(--green-l); color: var(--green); border: 1px solid #a5d6a7; }
+.cmd-chip.blue   { background: var(--blue-l); color: var(--blue); border: 1px solid #90caf9; }
+.cmd-chip.orange { background: #fff3e0; color: var(--orange); border: 1px solid #ffcc80; }
+.cmd-chip.red    { background: #ffebee; color: var(--red); border: 1px solid #ef9a9a; }
+.cmd-chip i { font-size: .65rem; }
+.cmd-shortcuts {
+    display: flex; gap: 16px; font-size: .72rem; color: var(--gray3);
+    padding: 8px 16px; background: var(--gray1); border-top: 1px solid var(--gray2);
+}
+.cmd-shortcuts kbd {
+    background: var(--white); border: 1px solid var(--gray2); border-radius: 3px;
+    padding: 1px 5px; font-size: .7rem; color: var(--gray4);
+}
+
+/* ── STILE 4: Floating filter bar (topbar) ── */
+.topbar-demo {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+.topbar {
+    background: var(--white); border-radius: var(--radius);
+    box-shadow: var(--shadow); padding: 12px 16px;
+    display: flex; flex-wrap: wrap; gap: 8px; align-items: center;
+}
+.tb-sep { width: 1px; height: 28px; background: var(--gray2); margin: 0 4px; }
+.tb-btn {
+    display: inline-flex; align-items: center; gap: 7px;
+    padding: 7px 14px; border-radius: 8px;
+    border: 1.5px solid var(--gray2); background: var(--white);
+    font-size: .8rem; font-weight: 600; color: var(--gray4);
+    cursor: pointer; transition: all .15s; font-family: var(--font);
+    position: relative;
+}
+.tb-btn:hover { border-color: var(--green); color: var(--green); background: var(--green-l); }
+.tb-btn.active { border-color: var(--green); background: var(--green-l); color: var(--green); }
+.tb-btn .tb-cnt {
+    background: var(--green); color: #fff; border-radius: 10px;
+    padding: 0 5px; font-size: .65rem; font-weight: 700;
+}
+.tb-btn .tb-chev { font-size: .6rem; color: var(--gray3); }
+.tb-btn.active .tb-chev { color: var(--green); }
+.tb-search {
+    flex: 1; min-width: 160px;
+    display: flex; align-items: center; gap: 8px;
+    background: var(--gray1); border: 1.5px solid var(--gray2);
+    border-radius: 8px; padding: 7px 12px;
+    transition: border-color .2s;
+}
+.tb-search:focus-within { border-color: var(--green); background: var(--white); }
+.tb-search i { color: var(--gray3); font-size: .8rem; }
+.tb-search input { border: none; background: transparent; font-size: .82rem; font-family: var(--font); outline: none; flex: 1; color: var(--gray4); }
+.tb-dropdown {
+    position: absolute; top: calc(100% + 8px); left: 0; z-index: 200;
+    background: var(--white); border: 1.5px solid var(--green);
+    border-radius: var(--radius); box-shadow: var(--shadow-lg);
+    min-width: 220px; padding: 8px 0; display: none;
+}
+.tb-dropdown.open { display: block; }
+.tb-dd-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 14px; cursor: pointer; font-size: .82rem;
+    transition: background .12s;
+}
+.tb-dd-item:hover { background: var(--green-l); color: var(--green); }
+.tb-dd-item input[type=checkbox] { accent-color: var(--green); width: 14px; height: 14px; }
+.tb-dd-item .tb-dd-cnt { margin-left: auto; font-size: .7rem; color: var(--gray3); }
+.tb-dd-divider { height: 1px; background: var(--gray2); margin: 4px 0; }
+
+.topbar-map {
+    background: linear-gradient(135deg, #c8e6c9 0%, #a5d6a7 40%, #81c784 100%);
+    border-radius: var(--radius); min-height: 320px;
+    display: flex; align-items: center; justify-content: center;
+    color: rgba(27,94,32,.4); font-size: 5rem;
+    box-shadow: var(--shadow);
+}
+
+/* ── Stile description ── */
+.style-desc {
+    background: var(--green-l); border-left: 4px solid var(--green);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 12px 16px; margin-bottom: 20px;
+    font-size: .83rem; line-height: 1.6;
+}
+.style-desc strong { color: var(--green); }
+
+/* ── Utility ── */
+.mt8  { margin-top: 8px; }
+.mt12 { margin-top: 12px; }
+.tag-note { font-size: .73rem; color: var(--gray3); margin-top: 6px; }
+
+/* ══ STILE 5: Bottom Drawer ══════════════════════════════════════════════ */
+.drawer-demo { position: relative; min-height: 480px; display: flex; flex-direction: column; gap: 16px; }
+.drawer-mock-map {
+    background: linear-gradient(135deg,#c8e6c9 0%,#a5d6a7 40%,#81c784 100%);
+    border-radius: var(--radius); flex: 1; min-height: 340px;
+    display: flex; align-items: flex-end; justify-content: center;
+    padding-bottom: 24px; position: relative; overflow: hidden;
+}
+.drawer-fab {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--white); border: none; border-radius: 24px;
+    box-shadow: 0 4px 20px rgba(0,0,0,.22); padding: 12px 22px;
+    font-size: .88rem; font-weight: 700; color: var(--gray4);
+    cursor: pointer; font-family: var(--font); transition: box-shadow .2s;
+    position: relative; z-index: 2;
+}
+.drawer-fab:hover { box-shadow: 0 6px 28px rgba(0,0,0,.28); }
+.drawer-fab .fab-badge {
+    background: var(--green); color: #fff; border-radius: 10px;
+    padding: 1px 7px; font-size: .7rem;
+}
+/* Chips overlay mappa */
+.map-chips-overlay {
+    position: absolute; top: 14px; left: 50%; transform: translateX(-50%);
+    display: flex; gap: 6px; flex-wrap: wrap; justify-content: center;
+    pointer-events: none; z-index: 2;
+}
+.map-chip-ov {
+    background: rgba(255,255,255,.92); border-radius: 20px;
+    padding: 4px 12px; font-size: .75rem; font-weight: 600;
+    color: var(--green); border: 1px solid rgba(255,255,255,.6);
+    box-shadow: 0 1px 6px rgba(0,0,0,.12); pointer-events: all;
+    cursor: pointer; backdrop-filter: blur(4px);
+}
+/* Drawer overlay */
+.drawer-overlay {
+    position: fixed; inset: 0; background: rgba(0,0,0,.45);
+    z-index: 300; opacity: 0; pointer-events: none;
+    transition: opacity .3s;
+}
+.drawer-overlay.open { opacity: 1; pointer-events: all; }
+.drawer-sheet {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: var(--white); border-radius: 20px 20px 0 0;
+    box-shadow: 0 -8px 40px rgba(0,0,0,.2);
+    max-height: 82vh; display: flex; flex-direction: column;
+    transform: translateY(100%); transition: transform .35s cubic-bezier(.32,1,.41,1);
+    z-index: 301;
+}
+.drawer-sheet.open { transform: translateY(0); }
+.drawer-handle {
+    width: 40px; height: 4px; background: var(--gray2);
+    border-radius: 2px; margin: 12px auto 0; flex-shrink: 0;
+}
+.drawer-header {
+    display: flex; align-items: center; gap: 12px;
+    padding: 14px 20px 12px; border-bottom: 1px solid var(--gray2); flex-shrink: 0;
+}
+.drawer-header strong { font-size: 1rem; flex: 1; }
+.drawer-close {
+    background: var(--gray1); border: none; width: 30px; height: 30px;
+    border-radius: 50%; cursor: pointer; font-size: .8rem; color: var(--gray3);
+    display: grid; place-items: center;
+}
+.drawer-close:hover { background: var(--gray2); color: var(--gray4); }
+.drawer-body { overflow-y: auto; flex: 1; padding: 16px 20px; display: flex; flex-direction: column; gap: 16px; }
+.drawer-section-title {
+    font-size: .7rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .7px; color: var(--gray3); margin-bottom: 8px;
+}
+.drawer-pills { display: flex; flex-wrap: wrap; gap: 6px; }
+.drawer-pill {
+    padding: 6px 14px; border-radius: 20px; font-size: .8rem; font-weight: 600;
+    border: 1.5px solid var(--gray2); background: var(--white); color: var(--gray4);
+    cursor: pointer; transition: all .15s;
+}
+.drawer-pill.on { background: var(--green-l); border-color: #a5d6a7; color: var(--green); }
+.drawer-footer {
+    padding: 14px 20px; border-top: 1px solid var(--gray2);
+    display: flex; gap: 10px; flex-shrink: 0;
+}
+.drawer-apply {
+    flex: 1; background: var(--green); color: #fff; border: none;
+    border-radius: var(--radius-sm); padding: 12px; font-size: .9rem;
+    font-weight: 700; cursor: pointer; font-family: var(--font);
+    transition: background .15s;
+}
+.drawer-apply:hover { background: var(--accent); }
+.drawer-reset {
+    background: var(--gray1); border: 1px solid var(--gray2); border-radius: var(--radius-sm);
+    padding: 12px 16px; font-size: .85rem; color: var(--gray3); cursor: pointer;
+    font-family: var(--font);
+}
+.drawer-select {
+    width: 100%; padding: 9px 32px 9px 12px; border: 1.5px solid var(--gray2);
+    border-radius: var(--radius-sm); font-size: .84rem; font-family: var(--font);
+    appearance: none; -webkit-appearance: none;
+    background: var(--white) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%239e9e9e'/%3E%3C/svg%3E") no-repeat right 12px center;
+    cursor: pointer; outline: none; color: var(--gray4); transition: border-color .2s;
+}
+.drawer-select:focus { border-color: var(--green); }
+
+/* ══ STILE 6: Faceted 2 colonne ═════════════════════════════════════════ */
+.faceted-wrap { display: grid; grid-template-columns: 320px 1fr; gap: 24px; }
+@media(max-width:900px){ .faceted-wrap { grid-template-columns: 1fr; } }
+.faceted-panel { display: flex; flex-direction: column; min-height: 480px; }
+.faceted-inner { display: grid; grid-template-columns: 148px 1fr; flex: 1; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
+.faceted-cats { background: var(--gray1); border-right: 1px solid var(--gray2); display: flex; flex-direction: column; }
+.faceted-cat {
+    padding: 13px 14px; cursor: pointer; font-size: .83rem; font-weight: 600;
+    color: var(--gray3); border-bottom: 1px solid var(--gray2);
+    display: flex; align-items: center; gap: 8px; transition: all .15s;
+    position: relative;
+}
+.faceted-cat:hover { color: var(--green); background: var(--green-l); }
+.faceted-cat.active { color: var(--green); background: var(--white); font-weight: 700; }
+.faceted-cat.active::after {
+    content: ''; position: absolute; right: 0; top: 0; bottom: 0;
+    width: 3px; background: var(--green); border-radius: 2px 0 0 2px;
+}
+.faceted-cat .fc-cnt {
+    margin-left: auto; font-size: .68rem; background: var(--green);
+    color: #fff; border-radius: 10px; padding: 1px 6px; display: none;
+}
+.faceted-cat .fc-cnt.vis { display: inline; }
+.faceted-opts { background: var(--white); overflow-y: auto; display: flex; flex-direction: column; }
+.faceted-pane { display: none; flex-direction: column; padding: 12px; gap: 2px; }
+.faceted-pane.active { display: flex; }
+.faceted-pane-hd {
+    font-size: .68rem; font-weight: 700; text-transform: uppercase;
+    letter-spacing: .7px; color: var(--gray3); padding: 6px 8px 10px;
+    border-bottom: 1px solid var(--gray2); margin-bottom: 4px;
+}
+.fo-item {
+    display: flex; align-items: center; gap: 10px; padding: 8px 8px;
+    border-radius: var(--radius-sm); cursor: pointer; transition: background .12s;
+}
+.fo-item:hover { background: var(--green-l); }
+.fo-item input[type=checkbox] { accent-color: var(--green); width: 15px; height: 15px; flex-shrink: 0; }
+.fo-item .fo-label { flex: 1; font-size: .83rem; }
+.fo-item .fo-bar-wrap { width: 60px; height: 4px; background: var(--gray2); border-radius: 2px; }
+.fo-item .fo-bar { height: 100%; background: var(--green); border-radius: 2px; }
+.fo-item .fo-cnt { font-size: .72rem; color: var(--gray3); min-width: 32px; text-align: right; }
+.fo-item.disabled { opacity: .38; pointer-events: none; }
+.fo-search {
+    padding: 8px; border-bottom: 1px solid var(--gray2); position: sticky; top: 0; background: var(--white);
+}
+.fo-search input {
+    width: 100%; border: 1px solid var(--gray2); border-radius: var(--radius-sm);
+    padding: 6px 10px; font-size: .8rem; font-family: var(--font); outline: none;
+}
+.fo-search input:focus { border-color: var(--green); }
+.faceted-summary {
+    background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow);
+    padding: 14px 18px; margin-bottom: 0;
+    display: flex; align-items: center; gap: 14px;
+}
+.faceted-summary .fs-num { font-size: 1.5rem; font-weight: 700; color: var(--green); }
+.faceted-summary .fs-lbl { font-size: .78rem; color: var(--gray3); }
+.faceted-right { display: flex; flex-direction: column; gap: 14px; }
+
+/* ══ STILE 7: Overlay mappa ══════════════════════════════════════════════ */
+.ov-demo { position: relative; min-height: 480px; }
+.ov-map {
+    background: linear-gradient(135deg,#c8e6c9 0%,#a5d6a7 40%,#81c784 100%);
+    border-radius: var(--radius); min-height: 480px; position: relative;
+    overflow: visible; box-shadow: var(--shadow);
+}
+.ov-bar {
+    position: absolute; top: 14px; left: 14px; right: 14px;
+    display: flex; align-items: center; gap: 6px; flex-wrap: wrap;
+    z-index: 10;
+}
+.ov-search {
+    display: flex; align-items: center; gap: 6px;
+    background: rgba(255,255,255,.95); border-radius: 24px;
+    padding: 8px 14px; box-shadow: 0 2px 12px rgba(0,0,0,.18);
+    flex: 1; min-width: 160px; backdrop-filter: blur(6px);
+}
+.ov-search i { color: var(--gray3); font-size: .85rem; }
+.ov-search input {
+    border: none; background: transparent; font-size: .83rem;
+    font-family: var(--font); outline: none; flex: 1; color: var(--gray4);
+}
+.ov-chip-btn {
+    display: inline-flex; align-items: center; gap: 6px;
+    background: rgba(255,255,255,.95); border: none; border-radius: 24px;
+    padding: 8px 14px; font-size: .8rem; font-weight: 700;
+    color: var(--gray4); cursor: pointer; font-family: var(--font);
+    box-shadow: 0 2px 12px rgba(0,0,0,.18); transition: all .15s;
+    backdrop-filter: blur(6px); position: relative; white-space: nowrap;
+}
+.ov-chip-btn:hover { background: rgba(255,255,255,1); }
+.ov-chip-btn.on { background: var(--green); color: #fff; }
+.ov-chip-btn .ov-cnt { font-size: .65rem; background: rgba(255,255,255,.3); border-radius: 10px; padding: 0 5px; }
+.ov-chip-btn.on .ov-cnt { background: rgba(255,255,255,.25); }
+/* Dropdown sopra la mappa */
+.ov-dropdown {
+    position: absolute; top: calc(100% + 8px); left: 0;
+    background: rgba(255,255,255,.97); border-radius: var(--radius);
+    box-shadow: 0 8px 32px rgba(0,0,0,.22); min-width: 220px;
+    backdrop-filter: blur(8px); display: none; z-index: 20; padding: 6px 0;
+    border: 1px solid rgba(255,255,255,.6);
+}
+.ov-dropdown.open { display: block; }
+.ov-dd-item {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 14px; font-size: .82rem; cursor: pointer; transition: background .12s;
+}
+.ov-dd-item:hover { background: var(--green-l); color: var(--green); }
+.ov-dd-item input[type=checkbox] { accent-color: var(--green); }
+.ov-dd-cnt { margin-left: auto; font-size: .7rem; color: var(--gray3); }
+/* Info box in basso */
+.ov-info {
+    position: absolute; bottom: 14px; left: 14px;
+    background: rgba(255,255,255,.92); border-radius: var(--radius-sm);
+    padding: 10px 14px; box-shadow: var(--shadow); backdrop-filter: blur(6px);
+    font-size: .8rem; color: var(--gray4); z-index: 10;
+}
+.ov-info strong { color: var(--green); font-size: 1.1rem; }
+
+/* ══ STILE 8: Accordion live ════════════════════════════════════════════ */
+.live-wrap { display: grid; grid-template-columns: 300px 1fr; gap: 24px; }
+@media(max-width:900px){ .live-wrap { grid-template-columns: 1fr; } }
+.live-sidebar { background: var(--white); border-radius: var(--radius); box-shadow: var(--shadow); overflow: hidden; }
+.live-header { background: var(--green); color: #fff; padding: 14px 18px; display: flex; align-items: center; gap: 10px; }
+.live-header .lh-count { font-size: 1.4rem; font-weight: 700; }
+.live-header .lh-label { font-size: .75rem; opacity: .8; }
+.live-acc { border-bottom: 1px solid var(--gray2); }
+.live-acc-hd {
+    display: flex; align-items: center; gap: 10px; padding: 11px 16px;
+    cursor: pointer; transition: background .15s;
+}
+.live-acc-hd:hover { background: var(--gray1); }
+.live-acc-hd .la-icon { color: var(--green); width: 20px; text-align: center; font-size: .85rem; }
+.live-acc-hd .la-label { flex: 1; font-size: .85rem; font-weight: 600; }
+.live-acc-hd .la-active { font-size: .7rem; color: var(--green); font-weight: 700; display: none; }
+.live-acc-hd .la-active.vis { display: inline; }
+.live-acc-hd .la-chev { color: var(--gray3); font-size: .7rem; transition: transform .2s; }
+.live-acc-hd.open .la-chev { transform: rotate(180deg); }
+.live-acc-body { display: none; padding: 8px 14px 14px; background: var(--gray1); }
+.live-acc-body.open { display: block; }
+/* Opzioni con barra progress e conteggio */
+.lo-item {
+    display: flex; align-items: center; gap: 8px; padding: 6px 4px;
+    border-radius: var(--radius-sm); cursor: pointer; transition: background .12s;
+}
+.lo-item:hover:not(.lo-zero) { background: var(--green-l); }
+.lo-item input[type=checkbox] { accent-color: var(--green); flex-shrink: 0; }
+.lo-item .lo-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.lo-item .lo-label { flex: 1; font-size: .82rem; }
+.lo-item .lo-progress { width: 50px; height: 3px; background: var(--gray2); border-radius: 2px; }
+.lo-item .lo-fill  { height: 100%; border-radius: 2px; background: var(--green); transition: width .4s; }
+.lo-item .lo-count { font-size: .72rem; color: var(--gray3); min-width: 38px; text-align: right; font-weight: 600; }
+.lo-item.lo-zero { opacity: .35; cursor: not-allowed; }
+.lo-item.lo-zero .lo-fill { background: var(--gray3); }
+.lo-item.lo-zero .lo-count { color: var(--gray3); }
+.live-reset {
+    display: block; width: calc(100% - 28px); margin: 10px 14px;
+    background: none; border: 1px solid var(--gray2); border-radius: var(--radius-sm);
+    padding: 8px; font-size: .78rem; color: var(--gray3); cursor: pointer;
+    font-family: var(--font); transition: all .15s;
+}
+.live-reset:hover { border-color: var(--red); color: var(--red); }
+
+/* ══ STILE 9: Topbar + Cerca Smart ════════════════════════════════════════ */
+.smart-topbar {
+    display: flex; align-items: center; gap: 8px;
+    background: #fff; padding: 10px 16px;
+    box-shadow: 0 2px 8px rgba(0,0,0,.12);
+    border-bottom: 1px solid var(--gray2);
+    flex-wrap: wrap;
+}
+.smart-search-wrap { position: relative; flex: 1; min-width: 180px; }
+.smart-input {
+    width: 100%; border: 1.5px solid var(--gray2); border-radius: 24px;
+    padding: 8px 14px 8px 36px; font-size: .88rem; font-family: var(--font);
+    outline: none; transition: border-color .2s; background: var(--gray1);
+}
+.smart-input:focus { border-color: var(--green); background: #fff; }
+.smart-search-icon {
+    position: absolute; left: 12px; top: 50%; transform: translateY(-50%);
+    color: var(--gray3); font-size: .85rem; pointer-events: none;
+}
+.smart-dropdown {
+    display: none; position: absolute; top: calc(100% + 6px); left: 0; right: 0;
+    background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-lg);
+    max-height: 300px; overflow-y: auto; z-index: 200;
+    border: 1px solid var(--gray2);
+}
+.smart-dropdown.open { display: block; }
+.smart-dd-cat {
+    padding: 8px 14px 4px; font-size: .68rem; font-weight: 700;
+    letter-spacing: .8px; text-transform: uppercase; color: var(--gray3);
+    border-top: 1px solid var(--gray2);
+}
+.smart-dd-cat:first-child { border-top: none; }
+.smart-dd-item {
+    display: flex; align-items: center; gap: 10px; padding: 9px 14px;
+    cursor: pointer; transition: background .12s; font-size: .84rem;
+}
+.smart-dd-item:hover, .smart-dd-item.focused { background: var(--green-l); }
+.smart-dd-item .si-icon { width: 20px; text-align: center; font-size: .8rem; color: var(--gray3); }
+.smart-dd-item .si-badge {
+    margin-left: auto; font-size: .68rem; padding: 2px 7px;
+    border-radius: 10px; font-weight: 700;
+}
+.si-badge.strada { background: var(--green-l); color: var(--green); }
+.si-badge.specie { background: var(--blue-l); color: var(--blue); }
+.si-badge.zona   { background: #fff3e0; color: var(--orange); }
+.si-badge.cpc    { background: #ffebee; color: var(--red); }
+.smart-btn {
+    position: relative; display: inline-flex; align-items: center; gap: 6px;
+    padding: 8px 14px; border-radius: 22px; border: 1.5px solid var(--gray2);
+    background: var(--gray1); font-family: var(--font); font-size: .82rem;
+    font-weight: 600; cursor: pointer; white-space: nowrap; transition: all .15s;
+    color: var(--gray4);
+}
+.smart-btn:hover { border-color: var(--green); color: var(--green); }
+.smart-btn.active { background: var(--green); color: #fff; border-color: var(--green); }
+.smart-btn .sb-badge {
+    background: var(--orange); color: #fff; border-radius: 50%; width: 18px; height: 18px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: .65rem; font-weight: 700; margin-left: 2px;
+}
+.smart-proj-dd {
+    display: none; position: absolute; top: calc(100% + 6px); left: 0;
+    background: #fff; border-radius: var(--radius); box-shadow: var(--shadow-lg);
+    border: 1px solid var(--gray2); min-width: 200px; z-index: 200; padding: 6px 0;
+}
+.smart-proj-dd.open { display: block; }
+.smart-proj-item {
+    display: flex; align-items: center; gap: 10px; padding: 9px 14px;
+    cursor: pointer; font-size: .84rem; transition: background .12s;
+}
+.smart-proj-item:hover { background: var(--green-l); }
+.smart-proj-item input[type=checkbox] { accent-color: var(--green); }
+.smart-proj-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+.smart-chips-bar {
+    display: flex; flex-wrap: wrap; gap: 6px; padding: 10px 16px;
+    background: var(--gray1); border-bottom: 1px solid var(--gray2);
+    min-height: 46px; align-items: center;
+}
+.smart-chip {
+    display: inline-flex; align-items: center; gap: 6px;
+    padding: 5px 10px; border-radius: 16px; font-size: .76rem; font-weight: 600;
+}
+.smart-chip i.fa-times { cursor: pointer; opacity: .7; font-size: .65rem; }
+.smart-chip i.fa-times:hover { opacity: 1; }
+.smart-chip.strada { background: var(--green-l); color: var(--green); border: 1px solid #a5d6a7; }
+.smart-chip.specie { background: var(--blue-l); color: var(--blue); border: 1px solid #90caf9; }
+.smart-chip.zona   { background: #fff3e0; color: var(--orange); border: 1px solid #ffcc80; }
+.smart-chip.cpc    { background: #ffebee; color: var(--red); border: 1px solid #ef9a9a; }
+.smart-no-chips { font-size: .78rem; color: var(--gray3); font-style: italic; }
+.smart-drawer-overlay {
+    display: none; position: fixed; inset: 0; background: rgba(0,0,0,.35); z-index: 300;
+}
+.smart-drawer-overlay.open { display: block; }
+.smart-drawer {
+    position: fixed; bottom: 0; left: 0; right: 0;
+    background: #fff; border-radius: var(--radius) var(--radius) 0 0;
+    box-shadow: 0 -4px 24px rgba(0,0,0,.18); z-index: 301;
+    padding: 20px 24px 32px;
+    transform: translateY(100%); transition: transform .28s cubic-bezier(.4,0,.2,1);
+    max-width: 520px; margin: 0 auto;
+}
+.smart-drawer.open { transform: translateY(0); }
+.smart-drawer-handle { width: 40px; height: 4px; background: var(--gray2); border-radius: 2px; margin: 0 auto 18px; }
+.smart-drawer h3 { font-size: .95rem; font-weight: 700; margin-bottom: 18px; display: flex; align-items: center; gap: 8px; }
+.smart-range-group { margin-bottom: 18px; }
+.smart-range-group label {
+    font-size: .82rem; font-weight: 600; display: flex; justify-content: space-between; margin-bottom: 6px;
+}
+.smart-range-group label span { color: var(--green); font-weight: 700; }
+.smart-range { width: 100%; accent-color: var(--green); }
+.smart-toggle-row {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 10px 0; border-top: 1px solid var(--gray2);
+}
+.smart-toggle-label { font-size: .84rem; font-weight: 600; }
+.smart-toggle-sub { font-size: .75rem; color: var(--gray3); display: block; }
+.smart-toggle-switch {
+    width: 42px; height: 24px; background: var(--gray2); border-radius: 12px; cursor: pointer;
+    position: relative; transition: background .2s; border: none; flex-shrink: 0;
+}
+.smart-toggle-switch.on { background: var(--green); }
+.smart-toggle-switch::after {
+    content: ''; position: absolute; top: 3px; left: 3px;
+    width: 18px; height: 18px; border-radius: 50%; background: #fff;
+    transition: transform .2s; box-shadow: 0 1px 3px rgba(0,0,0,.2);
+}
+.smart-toggle-switch.on::after { transform: translateX(18px); }
+.smart-drawer-apply {
+    width: 100%; margin-top: 20px; padding: 12px;
+    background: var(--green); color: #fff; border: none; border-radius: var(--radius-sm);
+    font-family: var(--font); font-size: .88rem; font-weight: 700; cursor: pointer;
+    transition: background .15s;
+}
+.smart-drawer-apply:hover { background: var(--accent); }
+.smart-map-mock {
+    height: 300px; background: #c8e6c9;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='60' height='60'%3E%3Crect width='60' height='60' fill='%23c8e6c9'/%3E%3Cpath d='M0 30 Q30 15 60 30' stroke='%23a5d6a7' fill='none' stroke-width='1.5'/%3E%3Cpath d='M30 0 Q15 30 30 60' stroke='%23a5d6a7' fill='none' stroke-width='1.5'/%3E%3C/svg%3E");
+    display: flex; align-items: center; justify-content: center; position: relative;
+}
+.smart-map-hint {
+    background: rgba(255,255,255,.88); border-radius: var(--radius-sm);
+    padding: 14px 20px; text-align: center; font-size: .82rem;
+    box-shadow: var(--shadow); backdrop-filter: blur(4px); line-height: 1.6;
+}
+.smart-result-count {
+    position: absolute; bottom: 14px; right: 14px;
+    background: rgba(255,255,255,.92); border-radius: var(--radius-sm);
+    padding: 8px 14px; font-size: .8rem; box-shadow: var(--shadow);
+}
+.smart-result-count strong { color: var(--green); font-size: 1.05rem; }
+
+/* ── Responsive ── */
+@media(max-width:700px) {
+    .demo-body { padding: 16px; }
+    .style-tabs { padding: 0 12px; }
+    .demo-header { padding: 14px 16px; }
+    .layout-2col { gap: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Header -->
+<div class="demo-header">
+    <div>
+        <h1><i class="fas fa-filter"></i> Demo Filtri Moderni</h1>
+        <p>Verde Urbano Palermo — confronto stili UI</p>
+    </div>
+    <div class="badge">9 stili</div>
+</div>
+
+<!-- Style tabs -->
+<div class="style-tabs">
+    <div class="style-tab active" onclick="showStyle(0)">① Chips + Searchable</div>
+    <div class="style-tab" onclick="showStyle(1)">② Pill Segmented</div>
+    <div class="style-tab" onclick="showStyle(2)">③ Command Palette</div>
+    <div class="style-tab" onclick="showStyle(3)">④ Floating Topbar</div>
+    <div class="style-tab" onclick="showStyle(4)">⑤ Bottom Drawer</div>
+    <div class="style-tab" onclick="showStyle(5)">⑥ Faceted 2 colonne</div>
+    <div class="style-tab" onclick="showStyle(6)">⑦ Overlay mappa</div>
+    <div class="style-tab" onclick="showStyle(7)">⑧ Accordion live</div>
+    <div class="style-tab" onclick="showStyle(8)">⑨ Topbar + Cerca Smart</div>
+</div>
+
+<div class="demo-body">
+
+<!-- ══════════════════════════════════════════════════ STILE 1 ══ -->
+<div class="style-panel active" id="sp0">
+    <div class="style-desc">
+        <strong>① Chips + Searchable Select</strong> — Sidebar con sezioni collassabili; i <code>&lt;select&gt;</code> nativi vengono sostituiti da dropdown con ricerca inline. I filtri attivi compaiono come chip rimovibili sopra la mappa.
+    </div>
+    <div class="layout-2col">
+        <!-- Sidebar -->
+        <div class="demo-card chips-sidebar">
+
+            <!-- Header sidebar -->
+            <div class="demo-card-header">
+                <strong><i class="fas fa-filter" style="color:var(--green)"></i> Filtri</strong>
+                <button onclick="resetAll1()" style="margin-left:auto;background:none;border:none;font-size:.75rem;color:var(--gray3);cursor:pointer;font-family:var(--font)"><i class="fas fa-rotate-left"></i> Reset</button>
+            </div>
+
+            <!-- Sezione: Progetto -->
+            <div class="cs-section">
+                <div class="cs-section-hd open" onclick="toggleCS(this)" id="cs-progetto">
+                    <div class="icon green"><i class="fas fa-folder-open"></i></div>
+                    <span class="lbl">Progetto</span>
+                    <span class="cnt vis" id="cnt-progetto">3</span>
+                    <i class="fas fa-chevron-down chev"></i>
+                </div>
+                <div class="cs-section-body open" id="body-progetto">
+                    <div class="chips-bar" style="padding:0;gap:6px;flex-wrap:wrap;">
+                        <div class="chip c-green" data-filter="prog" data-val="Lotto A" onclick="toggleChip1(this)">
+                            <i class="fas fa-circle" style="font-size:.45rem"></i> Lotto A <span class="chip-x"><i class="fas fa-times"></i></span>
+                        </div>
+                        <div class="chip c-blue" data-filter="prog" data-val="Lotto B" onclick="toggleChip1(this)">
+                            <i class="fas fa-circle" style="font-size:.45rem"></i> Lotto B <span class="chip-x"><i class="fas fa-times"></i></span>
+                        </div>
+                        <div class="chip c-orange" data-filter="prog" data-val="Lotto C" onclick="toggleChip1(this)">
+                            <i class="fas fa-circle" style="font-size:.45rem"></i> Lotto C <span class="chip-x"><i class="fas fa-times"></i></span>
+                        </div>
+                        <div class="chip inactive" data-filter="prog" data-val="Lotto D" onclick="toggleChip1(this)">
+                            <i class="fas fa-circle" style="font-size:.45rem"></i> Lotto D
+                        </div>
+                        <div class="chip inactive" data-filter="prog" data-val="Lotto E" onclick="toggleChip1(this)">
+                            <i class="fas fa-circle" style="font-size:.45rem"></i> Lotto E
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sezione: Analisi Territoriale -->
+            <div class="cs-section">
+                <div class="cs-section-hd open" onclick="toggleCS(this)" id="cs-terr">
+                    <div class="icon blue"><i class="fas fa-map-location-dot"></i></div>
+                    <span class="lbl">Analisi Territoriale</span>
+                    <span class="cnt" id="cnt-terr"></span>
+                    <i class="fas fa-chevron-down chev"></i>
+                </div>
+                <div class="cs-section-body open" id="body-terr">
+                    <div style="display:flex;flex-direction:column;gap:10px;">
+                        <!-- Odonimo searchable -->
+                        <div>
+                            <div class="p2-label" style="margin-bottom:6px;"><i class="fas fa-road"></i> Odonimo (Strada)</div>
+                            <div class="search-select-wrap" id="ss-odonimo">
+                                <input class="search-select-input" readonly value="" placeholder="Tutte le strade" onclick="toggleSS('ss-odonimo')" id="ssi-odonimo">
+                                <i class="fas fa-chevron-down search-select-icon"></i>
+                                <div class="search-select-dropdown" id="ssd-odonimo">
+                                    <div class="search-select-search"><input type="text" placeholder="Cerca strada…" oninput="filterSSOpts('ssd-odonimo', this.value)"></div>
+                                    <div class="search-select-list">
+                                        <div class="ss-option" onclick="selectSS('ss-odonimo','ssi-odonimo','Viale Regione Siciliana','1.240')">Viale Regione Siciliana <span class="ss-count">1.240</span></div>
+                                        <div class="ss-option" onclick="selectSS('ss-odonimo','ssi-odonimo','Via Libertà','847')">Via Libertà <span class="ss-count">847</span></div>
+                                        <div class="ss-option" onclick="selectSS('ss-odonimo','ssi-odonimo','Viale Strasburgo','612')">Viale Strasburgo <span class="ss-count">612</span></div>
+                                        <div class="ss-option" onclick="selectSS('ss-odonimo','ssi-odonimo','Via Dante','388')">Via Dante <span class="ss-count">388</span></div>
+                                        <div class="ss-option" onclick="selectSS('ss-odonimo','ssi-odonimo','Via Maqueda','271')">Via Maqueda <span class="ss-count">271</span></div>
+                                        <div class="ss-option" onclick="selectSS('ss-odonimo','ssi-odonimo','Viale della Croce Rossa','198')">Viale della Croce Rossa <span class="ss-count">198</span></div>
+                                        <div class="ss-option" onclick="selectSS('ss-odonimo','ssi-odonimo','Via Notarbartolo','154')">Via Notarbartolo <span class="ss-count">154</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Circoscrizione -->
+                        <div>
+                            <div class="p2-label" style="margin-bottom:6px;"><i class="fas fa-map"></i> Circoscrizione</div>
+                            <div class="search-select-wrap" id="ss-circ">
+                                <input class="search-select-input" readonly value="" placeholder="Tutte" onclick="toggleSS('ss-circ')" id="ssi-circ">
+                                <i class="fas fa-chevron-down search-select-icon"></i>
+                                <div class="search-select-dropdown" id="ssd-circ">
+                                    <div class="search-select-list">
+                                        <div class="ss-option" onclick="selectSS('ss-circ','ssi-circ','I — Palermo Centro','834')">I — Palermo Centro <span class="ss-count">834</span></div>
+                                        <div class="ss-option" onclick="selectSS('ss-circ','ssi-circ','II — Resuttana','641')">II — Resuttana <span class="ss-count">641</span></div>
+                                        <div class="ss-option" onclick="selectSS('ss-circ','ssi-circ','III — Uditore','512')">III — Uditore <span class="ss-count">512</span></div>
+                                        <div class="ss-option" onclick="selectSS('ss-circ','ssi-circ','IV — Libertà','489')">IV — Libertà <span class="ss-count">489</span></div>
+                                        <div class="ss-option" onclick="selectSS('ss-circ','ssi-circ','V — Zisa','372')">V — Zisa <span class="ss-count">372</span></div>
+                                        <div class="ss-option" onclick="selectSS('ss-circ','ssi-circ','VI — Noce','318')">VI — Noce <span class="ss-count">318</span></div>
+                                        <div class="ss-option" onclick="selectSS('ss-circ','ssi-circ','VII — Villagrazia','244')">VII — Villagrazia <span class="ss-count">244</span></div>
+                                        <div class="ss-option" onclick="selectSS('ss-circ','ssi-circ','VIII — Settecannoli','198')">VIII — Settecannoli <span class="ss-count">198</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- UPL -->
+                        <div>
+                            <div class="p2-label" style="margin-bottom:6px;"><i class="fas fa-layer-group"></i> UPL</div>
+                            <div class="search-select-wrap" id="ss-upl">
+                                <input class="search-select-input" readonly value="" placeholder="Tutte le UPL" onclick="toggleSS('ss-upl')" id="ssi-upl">
+                                <i class="fas fa-chevron-down search-select-icon"></i>
+                                <div class="search-select-dropdown" id="ssd-upl">
+                                    <div class="search-select-list">
+                                        <div class="ss-option" onclick="selectSS('ss-upl','ssi-upl','UPL 1','410')">UPL 1 <span class="ss-count">410</span></div>
+                                        <div class="ss-option" onclick="selectSS('ss-upl','ssi-upl','UPL 2','388')">UPL 2 <span class="ss-count">388</span></div>
+                                        <div class="ss-option" onclick="selectSS('ss-upl','ssi-upl','UPL 3','352')">UPL 3 <span class="ss-count">352</span></div>
+                                        <div class="ss-option" onclick="selectSS('ss-upl','ssi-upl','UPL 4','290')">UPL 4 <span class="ss-count">290</span></div>
+                                        <div class="ss-option" onclick="selectSS('ss-upl','ssi-upl','UPL 5','248')">UPL 5 <span class="ss-count">248</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sezione: Botanica -->
+            <div class="cs-section">
+                <div class="cs-section-hd" onclick="toggleCS(this)" id="cs-bot">
+                    <div class="icon orange"><i class="fas fa-leaf"></i></div>
+                    <span class="lbl">Analisi Botanica</span>
+                    <span class="cnt" id="cnt-bot"></span>
+                    <i class="fas fa-chevron-down chev"></i>
+                </div>
+                <div class="cs-section-body" id="body-bot">
+                    <!-- Specie -->
+                    <div>
+                        <div class="p2-label" style="margin-bottom:6px;"><i class="fas fa-seedling"></i> Specie Botanica</div>
+                        <div class="search-select-wrap" id="ss-specie">
+                            <input class="search-select-input" readonly value="" placeholder="Tutte le specie" onclick="toggleSS('ss-specie')" id="ssi-specie">
+                            <i class="fas fa-chevron-down search-select-icon"></i>
+                            <div class="search-select-dropdown" id="ssd-specie">
+                                <div class="search-select-search"><input type="text" placeholder="Cerca specie…" oninput="filterSSOpts('ssd-specie', this.value)"></div>
+                                <div class="search-select-list">
+                                    <div class="ss-option" onclick="selectSS('ss-specie','ssi-specie','Ficus microcarpa','1.284')">Ficus microcarpa <span class="ss-count">1.284</span></div>
+                                    <div class="ss-option" onclick="selectSS('ss-specie','ssi-specie','Platanus × acerifolia','982')">Platanus × acerifolia <span class="ss-count">982</span></div>
+                                    <div class="ss-option" onclick="selectSS('ss-specie','ssi-specie','Jacaranda mimosifolia','741')">Jacaranda mimosifolia <span class="ss-count">741</span></div>
+                                    <div class="ss-option" onclick="selectSS('ss-specie','ssi-specie','Phoenix canariensis','534')">Phoenix canariensis <span class="ss-count">534</span></div>
+                                    <div class="ss-option" onclick="selectSS('ss-specie','ssi-specie','Washingtonia robusta','421')">Washingtonia robusta <span class="ss-count">421</span></div>
+                                    <div class="ss-option" onclick="selectSS('ss-specie','ssi-specie','Tipuana tipu','318')">Tipuana tipu <span class="ss-count">318</span></div>
+                                    <div class="ss-option" onclick="selectSS('ss-specie','ssi-specie','Eucalyptus camaldulensis','276')">Eucalyptus camaldulensis <span class="ss-count">276</span></div>
+                                    <div class="ss-option" onclick="selectSS('ss-specie','ssi-specie','Pinus pinea','214')">Pinus pinea <span class="ss-count">214</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Altezza range -->
+                    <div class="mt12">
+                        <div class="p2-label" style="margin-bottom:6px;"><i class="fas fa-ruler-vertical"></i> Altezza (m)</div>
+                        <div class="range-wrap">
+                            <div class="range-inputs" id="ri-h">
+                                <div class="range-track"></div>
+                                <div class="range-fill" id="rf-h"></div>
+                                <input type="range" id="rmin-h" min="0" max="70" value="0" step="1" oninput="updateRange('h')">
+                                <input type="range" id="rmax-h" min="0" max="70" value="70" step="1" oninput="updateRange('h')">
+                            </div>
+                            <div class="range-val">
+                                <input type="number" id="rv-min-h" value="0" min="0" max="70" oninput="syncRangeFromInput('h','min',this.value)">
+                                <input type="number" id="rv-max-h" value="70" min="0" max="70" oninput="syncRangeFromInput('h','max',this.value)">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Preview area (mock mappa + active chips) -->
+        <div style="display:flex;flex-direction:column;gap:12px;">
+            <div class="demo-card">
+                <div class="demo-card-header"><strong>Filtri attivi</strong></div>
+                <div class="active-chips-bar" id="active-chips1">
+                    <span class="active-chip"><i class="fas fa-folder-open"></i> Lotto A <button onclick="removeActive1('Lotto A','prog')"><i class="fas fa-times"></i></button></span>
+                    <span class="active-chip"><i class="fas fa-folder-open"></i> Lotto B <button onclick="removeActive1('Lotto B','prog')"><i class="fas fa-times"></i></button></span>
+                    <span class="active-chip"><i class="fas fa-folder-open"></i> Lotto C <button onclick="removeActive1('Lotto C','prog')"><i class="fas fa-times"></i></button></span>
+                    <button class="btn-reset-all" onclick="resetAll1()"><i class="fas fa-rotate-left"></i> Reset tutto</button>
+                </div>
+            </div>
+            <div class="mock-map"><i class="fas fa-map"></i></div>
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ STILE 2 ══ -->
+<div class="style-panel" id="sp1">
+    <div class="style-desc">
+        <strong>② Pill Segmented</strong> — Il filtro CPC (Stato Salute) diventa un gruppo di pill colorati cliccabili. I <code>&lt;select&gt;</code> sono sostituiti da input con ricerca integrata. Ogni sezione ha un contatore live dei filtri applicati.
+    </div>
+    <div class="layout-2col">
+        <div class="demo-card p2-sidebar">
+            <div class="p2-sum">
+                <div><div class="num">3.842</div><div class="sub">alberi visualizzati</div></div>
+                <i class="fas fa-tree" style="font-size:2rem;margin-left:auto;opacity:.4"></i>
+            </div>
+
+            <!-- Progetto -->
+            <div class="p2-group">
+                <div class="p2-label"><i class="fas fa-folder-open"></i> Progetto <span class="badge2">5 lotti</span></div>
+                <div class="pills-row">
+                    <div class="pill on cB" onclick="this.classList.toggle('on');this.classList.toggle('cB')">Lotto A</div>
+                    <div class="pill on cB" onclick="this.classList.toggle('on');this.classList.toggle('cB')">Lotto B</div>
+                    <div class="pill on cB" onclick="this.classList.toggle('on');this.classList.toggle('cB')">Lotto C</div>
+                    <div class="pill" onclick="this.classList.toggle('on');this.classList.toggle('cB')">Lotto D</div>
+                    <div class="pill" onclick="this.classList.toggle('on');this.classList.toggle('cB')">Lotto E</div>
+                </div>
+            </div>
+
+            <!-- Stato salute CPC — pill colorati -->
+            <div class="p2-group">
+                <div class="p2-label"><i class="fas fa-heart-pulse"></i> Stato Salute (CPC)</div>
+                <div class="pills-row">
+                    <div class="pill on cA" onclick="this.classList.toggle('on');this.classList.toggle('cA')" title="Trascurabile">A</div>
+                    <div class="pill on cB" onclick="this.classList.toggle('on');this.classList.toggle('cB')" title="Bassa">B</div>
+                    <div class="pill on cC" onclick="this.classList.toggle('on');this.classList.toggle('cC')" title="Moderata">C</div>
+                    <div class="pill on cCD" onclick="this.classList.toggle('on');this.classList.toggle('cCD')" title="Elevata">C/D</div>
+                    <div class="pill on cD" onclick="this.classList.toggle('on');this.classList.toggle('cD')" title="Estrema">D</div>
+                    <div class="pill on cK" onclick="this.classList.toggle('on');this.classList.toggle('cK')" title="Ceppaia">Cep.</div>
+                    <div class="pill" onclick="this.classList.toggle('on');this.classList.toggle('cA')" title="Vuoto">Vuoto</div>
+                </div>
+                <p class="tag-note"><i class="fas fa-circle-info"></i> Clicca per attivare / disattivare</p>
+            </div>
+
+            <!-- Odonimo con ricerca -->
+            <div class="p2-group">
+                <div class="p2-label"><i class="fas fa-road"></i> Odonimo (Strada)</div>
+                <div class="p2-search-wrap">
+                    <input type="text" placeholder="Cerca o seleziona una strada…" oninput="">
+                    <i class="fas fa-search p2-search-icon"></i>
+                    <button class="p2-search-clear" onclick="this.previousElementSibling.previousElementSibling.value='';this.style.display='none'"><i class="fas fa-times"></i></button>
+                </div>
+                <div style="margin-top:8px;display:flex;flex-wrap:wrap;gap:5px;font-size:.75rem;">
+                    <span style="color:var(--gray3)">Recenti:</span>
+                    <span style="cursor:pointer;color:var(--blue);text-decoration:underline">Viale Regione Siciliana</span>
+                    <span style="cursor:pointer;color:var(--blue);text-decoration:underline">Via Libertà</span>
+                </div>
+            </div>
+
+            <!-- Circoscrizione select styled -->
+            <div class="p2-group">
+                <div class="p2-label"><i class="fas fa-map"></i> Circoscrizione</div>
+                <select class="p2-select">
+                    <option value="">Tutte le circoscrizioni</option>
+                    <option>I — Palermo Centro</option>
+                    <option>II — Resuttana</option>
+                    <option>III — Uditore</option>
+                    <option>IV — Libertà</option>
+                    <option>V — Zisa</option>
+                    <option>VI — Noce</option>
+                    <option>VII — Villagrazia</option>
+                    <option>VIII — Settecannoli</option>
+                </select>
+            </div>
+
+            <!-- LIPU toggle -->
+            <div class="p2-group">
+                <div class="p2-label"><i class="fas fa-dove"></i> LIPU Ispezioni</div>
+                <div class="toggle-row">
+                    <div class="toggle-sw" id="tw2" onclick="this.classList.toggle('on')"></div>
+                    <div>
+                        <div class="toggle-label">Mostra strato LIPU</div>
+                        <div class="toggle-sub">Alberi ispezionati · Protocollo Tutela Faunistica</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:12px;">
+            <div class="mock-map" style="flex:1"><i class="fas fa-map"></i></div>
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ STILE 3 ══ -->
+<div class="style-panel" id="sp2">
+    <div class="style-desc">
+        <strong>③ Command Palette</strong> — Un unico campo di ricerca universale filtra per strada, quartiere, specie, CPC. I risultati appaiono categorizzati. Ideale per utenti avanzati che conoscono i dati.
+    </div>
+    <div class="cmd-wrap">
+        <div class="cmd-input-wrap">
+            <i class="fas fa-magnifying-glass cmd-icon-l"></i>
+            <input class="cmd-input" id="cmd-input" type="text" placeholder="Cerca per strada, specie, CPC, quartiere…" oninput="cmdFilter(this.value)" onkeydown="cmdKey(event)" autofocus>
+            <span class="cmd-icon-r">ESC</span>
+        </div>
+
+        <div class="demo-card cmd-results" id="cmd-results">
+            <!-- Strade -->
+            <div class="cmd-group-title"><i class="fas fa-road"></i> Strade</div>
+            <div class="cmd-item" data-type="strada" data-val="Viale Regione Siciliana" onclick="cmdSelect(this)">
+                <div class="ci-icon" style="background:var(--blue-l);color:var(--blue)"><i class="fas fa-road"></i></div>
+                <div class="ci-text"><strong>Viale Regione Siciliana</strong><span>Palermo Centro · I Circoscrizione</span></div>
+                <span class="ci-badge">1.240</span>
+            </div>
+            <div class="cmd-item" data-type="strada" data-val="Via Libertà" onclick="cmdSelect(this)">
+                <div class="ci-icon" style="background:var(--blue-l);color:var(--blue)"><i class="fas fa-road"></i></div>
+                <div class="ci-text"><strong>Via Libertà</strong><span>Palermo · IV Circoscrizione</span></div>
+                <span class="ci-badge">847</span>
+            </div>
+            <div class="cmd-item" data-type="strada" data-val="Viale Strasburgo" onclick="cmdSelect(this)">
+                <div class="ci-icon" style="background:var(--blue-l);color:var(--blue)"><i class="fas fa-road"></i></div>
+                <div class="ci-text"><strong>Viale Strasburgo</strong><span>Palermo · II Circoscrizione</span></div>
+                <span class="ci-badge">612</span>
+            </div>
+            <!-- Specie -->
+            <div class="cmd-group-title"><i class="fas fa-leaf"></i> Specie botaniche</div>
+            <div class="cmd-item" data-type="specie" data-val="Ficus microcarpa" onclick="cmdSelect(this)">
+                <div class="ci-icon" style="background:#e8f5e9;color:#2e7d32"><i class="fas fa-tree"></i></div>
+                <div class="ci-text"><strong>Ficus microcarpa</strong><span>Moraceae · sempreverde</span></div>
+                <span class="ci-badge">1.284</span>
+            </div>
+            <div class="cmd-item" data-type="specie" data-val="Platanus × acerifolia" onclick="cmdSelect(this)">
+                <div class="ci-icon" style="background:#e8f5e9;color:#2e7d32"><i class="fas fa-tree"></i></div>
+                <div class="ci-text"><strong>Platanus × acerifolia</strong><span>Platanaceae · deciduo</span></div>
+                <span class="ci-badge">982</span>
+            </div>
+            <div class="cmd-item" data-type="specie" data-val="Jacaranda mimosifolia" onclick="cmdSelect(this)">
+                <div class="ci-icon" style="background:#e8f5e9;color:#2e7d32"><i class="fas fa-tree"></i></div>
+                <div class="ci-text"><strong>Jacaranda mimosifolia</strong><span>Bignoniaceae · deciduo</span></div>
+                <span class="ci-badge">741</span>
+            </div>
+            <!-- CPC -->
+            <div class="cmd-group-title"><i class="fas fa-heart-pulse"></i> Stato salute (CPC)</div>
+            <div class="cmd-item" data-type="cpc" data-val="B — Bassa" onclick="cmdSelect(this)">
+                <div class="ci-icon" style="background:#e8f5e9;color:#2e7d32"><i class="fas fa-circle-check"></i></div>
+                <div class="ci-text"><strong>B — Bassa</strong><span>Propensione al cedimento bassa</span></div>
+                <span class="ci-badge">2.104</span>
+            </div>
+            <div class="cmd-item" data-type="cpc" data-val="C — Moderata" onclick="cmdSelect(this)">
+                <div class="ci-icon" style="background:#fff3e0;color:#e65100"><i class="fas fa-circle-exclamation"></i></div>
+                <div class="ci-text"><strong>C — Moderata</strong><span>Richiede monitoraggio</span></div>
+                <span class="ci-badge">988</span>
+            </div>
+            <div class="cmd-item" data-type="cpc" data-val="D — Estrema" onclick="cmdSelect(this)">
+                <div class="ci-icon" style="background:#ffebee;color:#c62828"><i class="fas fa-triangle-exclamation"></i></div>
+                <div class="ci-text"><strong>D — Estrema</strong><span>Intervento urgente</span></div>
+                <span class="ci-badge">312</span>
+            </div>
+
+            <div class="cmd-shortcuts">
+                <span><kbd>↑↓</kbd> naviga</span>
+                <span><kbd>↵</kbd> seleziona</span>
+                <span><kbd>ESC</kbd> chiudi</span>
+            </div>
+        </div>
+
+        <!-- Filtri attivi -->
+        <div class="demo-card" style="padding:14px 18px;">
+            <div style="font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.6px;color:var(--gray3);margin-bottom:10px;">Filtri attivi</div>
+            <div class="cmd-active-row" id="cmd-active">
+                <span class="no-active" id="no-active-msg">Nessun filtro attivo — cerca qualcosa sopra</span>
+            </div>
+        </div>
+
+        <div class="mock-map" style="min-height:260px"><i class="fas fa-map"></i></div>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ STILE 4 ══ -->
+<div class="style-panel" id="sp3">
+    <div class="style-desc">
+        <strong>④ Floating Topbar</strong> — I filtri escono dalla sidebar e diventano una barra orizzontale sopra la mappa. Ogni pulsante apre un mini-dropdown. Massimizza lo spazio mappa. Ideale su desktop wide.
+    </div>
+    <div class="topbar-demo">
+        <div class="topbar">
+            <!-- Ricerca -->
+            <div class="tb-search">
+                <i class="fas fa-magnifying-glass"></i>
+                <input type="text" placeholder="Cerca strada o albero…">
+            </div>
+            <div class="tb-sep"></div>
+            <!-- Progetto -->
+            <div style="position:relative">
+                <button class="tb-btn active" id="tb-prog-btn" onclick="toggleDD('dd-prog','tb-prog-btn')">
+                    <i class="fas fa-folder-open"></i> Progetto
+                    <span class="tb-cnt">3</span>
+                    <i class="fas fa-chevron-down tb-chev"></i>
+                </button>
+                <div class="tb-dropdown" id="dd-prog">
+                    <div class="tb-dd-item"><input type="checkbox" checked> Lotto A <span class="tb-dd-cnt">1.024</span></div>
+                    <div class="tb-dd-item"><input type="checkbox" checked> Lotto B <span class="tb-dd-cnt">987</span></div>
+                    <div class="tb-dd-item"><input type="checkbox" checked> Lotto C <span class="tb-dd-cnt">842</span></div>
+                    <div class="tb-dd-item"><input type="checkbox"> Lotto D <span class="tb-dd-cnt">634</span></div>
+                    <div class="tb-dd-item"><input type="checkbox"> Lotto E <span class="tb-dd-cnt">355</span></div>
+                    <div class="tb-dd-divider"></div>
+                    <div class="tb-dd-item" style="font-size:.75rem;color:var(--gray3)"><i class="fas fa-check-double"></i> Seleziona tutti</div>
+                </div>
+            </div>
+            <!-- Circoscrizione -->
+            <div style="position:relative">
+                <button class="tb-btn" id="tb-circ-btn" onclick="toggleDD('dd-circ','tb-circ-btn')">
+                    <i class="fas fa-map"></i> Zona
+                    <i class="fas fa-chevron-down tb-chev"></i>
+                </button>
+                <div class="tb-dropdown" id="dd-circ">
+                    <div class="tb-dd-item"><input type="checkbox"> I — Centro</div>
+                    <div class="tb-dd-item"><input type="checkbox"> II — Resuttana</div>
+                    <div class="tb-dd-item"><input type="checkbox"> III — Uditore</div>
+                    <div class="tb-dd-item"><input type="checkbox"> IV — Libertà</div>
+                    <div class="tb-dd-item"><input type="checkbox"> V — Zisa</div>
+                    <div class="tb-dd-item"><input type="checkbox"> VI — Noce</div>
+                    <div class="tb-dd-item"><input type="checkbox"> VII — Villagrazia</div>
+                    <div class="tb-dd-item"><input type="checkbox"> VIII — Settecannoli</div>
+                </div>
+            </div>
+            <!-- CPC -->
+            <div style="position:relative">
+                <button class="tb-btn" id="tb-cpc-btn" onclick="toggleDD('dd-cpc','tb-cpc-btn')">
+                    <i class="fas fa-heart-pulse"></i> Salute
+                    <i class="fas fa-chevron-down tb-chev"></i>
+                </button>
+                <div class="tb-dropdown" id="dd-cpc">
+                    <div class="tb-dd-item"><input type="checkbox" checked> <span style="color:#006064;font-weight:600">A</span> — Trascurabile</div>
+                    <div class="tb-dd-item"><input type="checkbox" checked> <span style="color:#2e7d32;font-weight:600">B</span> — Bassa</div>
+                    <div class="tb-dd-item"><input type="checkbox" checked> <span style="color:#e65100;font-weight:600">C</span> — Moderata</div>
+                    <div class="tb-dd-item"><input type="checkbox" checked> <span style="color:#ad1457;font-weight:600">C/D</span> — Elevata</div>
+                    <div class="tb-dd-item"><input type="checkbox" checked> <span style="color:#c62828;font-weight:600">D</span> — Estrema</div>
+                    <div class="tb-dd-item"><input type="checkbox"> Ceppaia</div>
+                    <div class="tb-dd-item"><input type="checkbox"> Vuoto</div>
+                </div>
+            </div>
+            <!-- Specie -->
+            <div style="position:relative">
+                <button class="tb-btn" id="tb-specie-btn" onclick="toggleDD('dd-specie','tb-specie-btn')">
+                    <i class="fas fa-leaf"></i> Specie
+                    <i class="fas fa-chevron-down tb-chev"></i>
+                </button>
+                <div class="tb-dropdown" id="dd-specie">
+                    <div class="tb-dd-item" style="padding:6px 14px;"><input type="text" placeholder="Cerca specie…" style="border:1px solid var(--gray2);border-radius:4px;padding:4px 8px;font-size:.78rem;width:100%;font-family:var(--font);outline:none;"></div>
+                    <div class="tb-dd-divider"></div>
+                    <div class="tb-dd-item"><input type="checkbox"> Ficus microcarpa <span class="tb-dd-cnt">1.284</span></div>
+                    <div class="tb-dd-item"><input type="checkbox"> Platanus × acerifolia <span class="tb-dd-cnt">982</span></div>
+                    <div class="tb-dd-item"><input type="checkbox"> Jacaranda mimosifolia <span class="tb-dd-cnt">741</span></div>
+                    <div class="tb-dd-item"><input type="checkbox"> Phoenix canariensis <span class="tb-dd-cnt">534</span></div>
+                    <div class="tb-dd-item"><input type="checkbox"> Washingtonia robusta <span class="tb-dd-cnt">421</span></div>
+                </div>
+            </div>
+            <!-- LIPU -->
+            <button class="tb-btn" id="tb-lipu-btn" onclick="this.classList.toggle('active')">
+                <i class="fas fa-dove"></i> LIPU
+            </button>
+            <div class="tb-sep"></div>
+            <button class="tb-btn" style="color:var(--gray3)" onclick="">
+                <i class="fas fa-rotate-left"></i> Reset
+            </button>
+        </div>
+
+        <!-- Mock mappa fullwidth -->
+        <div class="topbar-map">
+            <i class="fas fa-map"></i>
+        </div>
+
+        <div class="demo-card" style="padding:12px 18px;">
+            <p style="font-size:.8rem;color:var(--gray3);line-height:1.6">
+                <i class="fas fa-circle-info" style="color:var(--blue)"></i>
+                In questo layout la sidebar scompare: la mappa occupa tutto lo spazio disponibile. I filtri attivi possono comparire come chips sopra la mappa (overlay) oppure in un pannello laterale opzionale che si apre solo al click su <em>"Tutti i filtri"</em>.
+            </p>
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ STILE 5 ══ -->
+<div class="style-panel" id="sp4">
+    <div class="style-desc">
+        <strong>⑤ Bottom Drawer (mobile-first)</strong> — Pulsante flottante sulla mappa apre un pannello che sale da sotto con overlay. I filtri attivi compaiono come chip trasparenti sovrapposti alla mappa. Funziona su desktop come bottom sheet centrato.
+    </div>
+    <div class="drawer-demo">
+        <div class="drawer-mock-map">
+            <!-- chips overlay -->
+            <div class="map-chips-overlay">
+                <span class="map-chip-ov"><i class="fas fa-folder-open"></i> Lotto A</span>
+                <span class="map-chip-ov"><i class="fas fa-folder-open"></i> Lotto B</span>
+                <span class="map-chip-ov"><i class="fas fa-leaf"></i> Ficus microcarpa</span>
+            </div>
+            <i class="fas fa-map" style="font-size:4rem;color:rgba(27,94,32,.25);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)"></i>
+            <button class="drawer-fab" onclick="openDrawer()">
+                <i class="fas fa-sliders"></i> Filtri
+                <span class="fab-badge">3</span>
+                <i class="fas fa-chevron-up" style="font-size:.7rem;color:var(--gray3)"></i>
+            </button>
+        </div>
+
+        <!-- Overlay -->
+        <div class="drawer-overlay" id="drawerOverlay" onclick="closeDrawer()"></div>
+
+        <!-- Sheet -->
+        <div class="drawer-sheet" id="drawerSheet">
+            <div class="drawer-handle"></div>
+            <div class="drawer-header">
+                <i class="fas fa-sliders" style="color:var(--green)"></i>
+                <strong>Filtri</strong>
+                <button class="drawer-close" onclick="closeDrawer()"><i class="fas fa-times"></i></button>
+            </div>
+            <div class="drawer-body">
+                <!-- Progetto -->
+                <div>
+                    <div class="drawer-section-title"><i class="fas fa-folder-open"></i> Progetto</div>
+                    <div class="drawer-pills">
+                        <div class="drawer-pill on" onclick="this.classList.toggle('on')">Lotto A</div>
+                        <div class="drawer-pill on" onclick="this.classList.toggle('on')">Lotto B</div>
+                        <div class="drawer-pill" onclick="this.classList.toggle('on')">Lotto C</div>
+                        <div class="drawer-pill" onclick="this.classList.toggle('on')">Lotto D</div>
+                        <div class="drawer-pill" onclick="this.classList.toggle('on')">Lotto E</div>
+                    </div>
+                </div>
+                <!-- Zona -->
+                <div>
+                    <div class="drawer-section-title"><i class="fas fa-map"></i> Circoscrizione</div>
+                    <select class="drawer-select">
+                        <option value="">Tutte le circoscrizioni</option>
+                        <option>I — Palermo Centro</option>
+                        <option>II — Resuttana</option>
+                        <option>III — Uditore</option>
+                        <option>IV — Libertà</option>
+                        <option>V — Zisa</option>
+                        <option>VI — Noce</option>
+                        <option>VII — Villagrazia</option>
+                        <option>VIII — Settecannoli</option>
+                    </select>
+                </div>
+                <!-- Specie -->
+                <div>
+                    <div class="drawer-section-title"><i class="fas fa-leaf"></i> Specie Botanica</div>
+                    <select class="drawer-select">
+                        <option value="">Tutte le specie</option>
+                        <option selected>Ficus microcarpa</option>
+                        <option>Platanus × acerifolia</option>
+                        <option>Jacaranda mimosifolia</option>
+                        <option>Phoenix canariensis</option>
+                        <option>Washingtonia robusta</option>
+                        <option>Tipuana tipu</option>
+                    </select>
+                </div>
+                <!-- CPC -->
+                <div>
+                    <div class="drawer-section-title"><i class="fas fa-heart-pulse"></i> Stato Salute (CPC)</div>
+                    <div class="drawer-pills">
+                        <div class="drawer-pill on" onclick="this.classList.toggle('on')" style="border-color:#a5d6a7;background:var(--green-l);color:var(--green)">B</div>
+                        <div class="drawer-pill on" onclick="this.classList.toggle('on')" style="border-color:#ffcc80;background:#fff3e0;color:var(--orange)">C</div>
+                        <div class="drawer-pill on" onclick="this.classList.toggle('on')" style="border-color:#ef9a9a;background:#ffebee;color:var(--red)">D</div>
+                        <div class="drawer-pill" onclick="this.classList.toggle('on')">C/D</div>
+                        <div class="drawer-pill" onclick="this.classList.toggle('on')">Ceppaia</div>
+                        <div class="drawer-pill" onclick="this.classList.toggle('on')">Vuoto</div>
+                    </div>
+                </div>
+                <!-- LIPU -->
+                <div>
+                    <div class="drawer-section-title"><i class="fas fa-dove"></i> LIPU Ispezioni</div>
+                    <div style="display:flex;align-items:center;gap:10px;">
+                        <div class="toggle-sw" onclick="this.classList.toggle('on')"></div>
+                        <span style="font-size:.84rem;">Mostra strato LIPU</span>
+                    </div>
+                </div>
+            </div>
+            <div class="drawer-footer">
+                <button class="drawer-reset"><i class="fas fa-rotate-left"></i> Reset</button>
+                <button class="drawer-apply" onclick="closeDrawer()"><i class="fas fa-check"></i> Applica filtri</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ STILE 6 ══ -->
+<div class="style-panel" id="sp5">
+    <div class="style-desc">
+        <strong>⑥ Faceted a due colonne</strong> — Colonna sinistra: categorie con icona e contatore attivi. Colonna destra: opzioni della categoria selezionata con checkbox, barra proporzionale e conteggio live. Stile Amazon/Algolia.
+    </div>
+    <div class="faceted-wrap">
+        <!-- Pannello filtri -->
+        <div class="faceted-panel">
+            <div class="faceted-inner">
+                <!-- Categorie -->
+                <div class="faceted-cats">
+                    <div class="faceted-cat active" onclick="showFacetPane('progetto',this)">
+                        <i class="fas fa-folder-open"></i> Progetto
+                        <span class="fc-cnt vis" id="fc-cnt-progetto">3</span>
+                    </div>
+                    <div class="faceted-cat" onclick="showFacetPane('zona',this)">
+                        <i class="fas fa-map"></i> Zona
+                        <span class="fc-cnt" id="fc-cnt-zona"></span>
+                    </div>
+                    <div class="faceted-cat" onclick="showFacetPane('specie',this)">
+                        <i class="fas fa-leaf"></i> Specie
+                        <span class="fc-cnt" id="fc-cnt-specie"></span>
+                    </div>
+                    <div class="faceted-cat" onclick="showFacetPane('cpc',this)">
+                        <i class="fas fa-heart-pulse"></i> CPC
+                        <span class="fc-cnt" id="fc-cnt-cpc"></span>
+                    </div>
+                    <div class="faceted-cat" onclick="showFacetPane('fase',this)">
+                        <i class="fas fa-tasks"></i> Fase
+                        <span class="fc-cnt" id="fc-cnt-fase"></span>
+                    </div>
+                    <div class="faceted-cat" onclick="showFacetPane('lipu',this)">
+                        <i class="fas fa-dove"></i> LIPU
+                        <span class="fc-cnt" id="fc-cnt-lipu"></span>
+                    </div>
+                </div>
+                <!-- Opzioni -->
+                <div class="faceted-opts">
+                    <!-- Progetto -->
+                    <div class="faceted-pane active" id="fp-progetto">
+                        <div class="faceted-pane-hd">Seleziona lotti</div>
+                        <div class="fo-item" onclick="toggleFO(this,'progetto')"><input type="checkbox" checked><span class="fo-label">Lotto A</span><div class="fo-bar-wrap"><div class="fo-bar" style="width:100%"></div></div><span class="fo-cnt">1.024</span></div>
+                        <div class="fo-item" onclick="toggleFO(this,'progetto')"><input type="checkbox" checked><span class="fo-label">Lotto B</span><div class="fo-bar-wrap"><div class="fo-bar" style="width:96%"></div></div><span class="fo-cnt">987</span></div>
+                        <div class="fo-item" onclick="toggleFO(this,'progetto')"><input type="checkbox" checked><span class="fo-label">Lotto C</span><div class="fo-bar-wrap"><div class="fo-bar" style="width:82%"></div></div><span class="fo-cnt">842</span></div>
+                        <div class="fo-item" onclick="toggleFO(this,'progetto')"><input type="checkbox"><span class="fo-label">Lotto D</span><div class="fo-bar-wrap"><div class="fo-bar" style="width:62%"></div></div><span class="fo-cnt">634</span></div>
+                        <div class="fo-item" onclick="toggleFO(this,'progetto')"><input type="checkbox"><span class="fo-label">Lotto E</span><div class="fo-bar-wrap"><div class="fo-bar" style="width:35%"></div></div><span class="fo-cnt">355</span></div>
+                    </div>
+                    <!-- Zona -->
+                    <div class="faceted-pane" id="fp-zona">
+                        <div class="fo-search"><input type="text" placeholder="Cerca zona…" oninput="filterFO('fp-zona',this.value)"></div>
+                        <div class="faceted-pane-hd">Circoscrizione</div>
+                        <div class="fo-item" onclick="toggleFO(this,'zona')"><input type="checkbox"><span class="fo-label">I — Palermo Centro</span><span class="fo-cnt">834</span></div>
+                        <div class="fo-item" onclick="toggleFO(this,'zona')"><input type="checkbox"><span class="fo-label">II — Resuttana</span><span class="fo-cnt">641</span></div>
+                        <div class="fo-item" onclick="toggleFO(this,'zona')"><input type="checkbox"><span class="fo-label">III — Uditore</span><span class="fo-cnt">512</span></div>
+                        <div class="fo-item" onclick="toggleFO(this,'zona')"><input type="checkbox"><span class="fo-label">IV — Libertà</span><span class="fo-cnt">489</span></div>
+                        <div class="fo-item" onclick="toggleFO(this,'zona')"><input type="checkbox"><span class="fo-label">V — Zisa</span><span class="fo-cnt">372</span></div>
+                        <div class="fo-item" onclick="toggleFO(this,'zona')"><input type="checkbox"><span class="fo-label">VI — Noce</span><span class="fo-cnt">318</span></div>
+                        <div class="fo-item" onclick="toggleFO(this,'zona')"><input type="checkbox"><span class="fo-label">VII — Villagrazia</span><span class="fo-cnt">244</span></div>
+                        <div class="fo-item" onclick="toggleFO(this,'zona')"><input type="checkbox"><span class="fo-label">VIII — Settecannoli</span><span class="fo-cnt">198</span></div>
+                    </div>
+                    <!-- Specie -->
+                    <div class="faceted-pane" id="fp-specie">
+                        <div class="fo-search"><input type="text" placeholder="Cerca specie…" oninput="filterFO('fp-specie',this.value)"></div>
+                        <div class="faceted-pane-hd">Specie botaniche</div>
+                        <div class="fo-item" onclick="toggleFO(this,'specie')"><input type="checkbox"><span class="fo-label">Ficus microcarpa</span><span class="fo-cnt">1.284</span></div>
+                        <div class="fo-item" onclick="toggleFO(this,'specie')"><input type="checkbox"><span class="fo-label">Platanus × acerifolia</span><span class="fo-cnt">982</span></div>
+                        <div class="fo-item" onclick="toggleFO(this,'specie')"><input type="checkbox"><span class="fo-label">Jacaranda mimosifolia</span><span class="fo-cnt">741</span></div>
+                        <div class="fo-item" onclick="toggleFO(this,'specie')"><input type="checkbox"><span class="fo-label">Phoenix canariensis</span><span class="fo-cnt">534</span></div>
+                        <div class="fo-item" onclick="toggleFO(this,'specie')"><input type="checkbox"><span class="fo-label">Washingtonia robusta</span><span class="fo-cnt">421</span></div>
+                        <div class="fo-item" onclick="toggleFO(this,'specie')"><input type="checkbox"><span class="fo-label">Tipuana tipu</span><span class="fo-cnt">318</span></div>
+                        <div class="fo-item" onclick="toggleFO(this,'specie')"><input type="checkbox"><span class="fo-label">Eucalyptus camaldulensis</span><span class="fo-cnt">276</span></div>
+                        <div class="fo-item" onclick="toggleFO(this,'specie')"><input type="checkbox"><span class="fo-label">Pinus pinea</span><span class="fo-cnt">214</span></div>
+                    </div>
+                    <!-- CPC -->
+                    <div class="faceted-pane" id="fp-cpc">
+                        <div class="faceted-pane-hd">Propensione al cedimento</div>
+                        <div class="fo-item" onclick="toggleFO(this,'cpc')"><input type="checkbox"><span class="lo-dot" style="background:#006064"></span><span class="fo-label">A — Trascurabile</span><span class="fo-cnt">412</span></div>
+                        <div class="fo-item" onclick="toggleFO(this,'cpc')"><input type="checkbox"><span class="lo-dot" style="background:#2e7d32"></span><span class="fo-label">B — Bassa</span><span class="fo-cnt">2.104</span></div>
+                        <div class="fo-item" onclick="toggleFO(this,'cpc')"><input type="checkbox"><span class="lo-dot" style="background:#e65100"></span><span class="fo-label">C — Moderata</span><span class="fo-cnt">988</span></div>
+                        <div class="fo-item" onclick="toggleFO(this,'cpc')"><input type="checkbox"><span class="lo-dot" style="background:#ad1457"></span><span class="fo-label">C/D — Elevata</span><span class="fo-cnt">441</span></div>
+                        <div class="fo-item" onclick="toggleFO(this,'cpc')"><input type="checkbox"><span class="lo-dot" style="background:#c62828"></span><span class="fo-label">D — Estrema</span><span class="fo-cnt">312</span></div>
+                        <div class="fo-item" onclick="toggleFO(this,'cpc')"><input type="checkbox"><span class="lo-dot" style="background:#434343"></span><span class="fo-label">Ceppaia</span><span class="fo-cnt">198</span></div>
+                        <div class="fo-item" onclick="toggleFO(this,'cpc')"><input type="checkbox"><span class="lo-dot" style="background:#f1c40f"></span><span class="fo-label">Vuoto</span><span class="fo-cnt">87</span></div>
+                    </div>
+                    <!-- Fase -->
+                    <div class="faceted-pane" id="fp-fase">
+                        <div class="faceted-pane-hd">Fase lavorazione</div>
+                        <div class="fo-item" onclick="toggleFO(this,'fase')"><input type="checkbox"><span class="fo-label">Fase 1 — Potatura/Abbattimento</span><span class="fo-cnt">3.842</span></div>
+                        <div class="fo-item" onclick="toggleFO(this,'fase')"><input type="checkbox"><span class="fo-label">Fase 2 — Rimozione ceppo</span><span class="fo-cnt">1.204</span></div>
+                        <div class="fo-item" onclick="toggleFO(this,'fase')"><input type="checkbox"><span class="fo-label">Fase 3 — Nuova pianta</span><span class="fo-cnt">812</span></div>
+                    </div>
+                    <!-- LIPU -->
+                    <div class="faceted-pane" id="fp-lipu">
+                        <div class="faceted-pane-hd">Esito ispezione LIPU</div>
+                        <div class="fo-item" onclick="toggleFO(this,'lipu')"><input type="checkbox"><span class="lo-dot" style="background:#40916c"></span><span class="fo-label">Ispezionato OK</span><span class="fo-cnt">1.847</span></div>
+                        <div class="fo-item" onclick="toggleFO(this,'lipu')"><input type="checkbox"><span class="lo-dot" style="background:#e76f00"></span><span class="fo-label">Stato di necessità</span><span class="fo-cnt">312</span></div>
+                        <div class="fo-item" onclick="toggleFO(this,'lipu')"><input type="checkbox"><span class="lo-dot" style="background:#c1121f"></span><span class="fo-label">Lavori sospesi</span><span class="fo-cnt">87</span></div>
+                        <div class="fo-item lo-zero"><input type="checkbox" disabled><span class="lo-dot" style="background:#9e9e9e"></span><span class="fo-label">Non ispezionato</span><span class="fo-cnt">0</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Riepilogo + mappa -->
+        <div class="faceted-right">
+            <div class="faceted-summary">
+                <div><div class="fs-num" id="f6-count">2.853</div><div class="fs-lbl">alberi visualizzati</div></div>
+                <i class="fas fa-tree" style="font-size:2rem;color:var(--green);opacity:.3;margin-left:auto"></i>
+                <button style="background:none;border:1px solid var(--gray2);border-radius:20px;padding:5px 12px;font-size:.75rem;color:var(--gray3);cursor:pointer;font-family:var(--font)" onclick="resetFaceted()"><i class="fas fa-rotate-left"></i> Reset</button>
+            </div>
+            <div class="mock-map" style="flex:1;min-height:300px"><i class="fas fa-map"></i></div>
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ STILE 7 ══ -->
+<div class="style-panel" id="sp6">
+    <div class="style-desc">
+        <strong>⑦ Filtri overlay sulla mappa</strong> — Nessuna sidebar. Una barra di chip glassmorphism fluttua sopra la mappa; ogni chip apre un mini-dropdown. Contatore alberi nell'angolo. Mappa a pieno schermo.
+    </div>
+    <div class="ov-demo">
+        <div class="ov-map">
+            <i class="fas fa-map" style="font-size:5rem;color:rgba(27,94,32,.2);position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)"></i>
+
+            <!-- Barra filtri overlay -->
+            <div class="ov-bar">
+                <!-- Search -->
+                <div class="ov-search">
+                    <i class="fas fa-magnifying-glass"></i>
+                    <input type="text" placeholder="Cerca strada…">
+                </div>
+                <!-- Progetto -->
+                <div style="position:relative">
+                    <button class="ov-chip-btn on" id="ov-prog-btn" onclick="toggleOvDD('ov-dd-prog','ov-prog-btn')">
+                        <i class="fas fa-folder-open"></i> Progetto
+                        <span class="ov-cnt">3</span>
+                        <i class="fas fa-chevron-down" style="font-size:.6rem;opacity:.7"></i>
+                    </button>
+                    <div class="ov-dropdown" id="ov-dd-prog">
+                        <div class="ov-dd-item"><input type="checkbox" checked> Lotto A <span class="ov-dd-cnt">1.024</span></div>
+                        <div class="ov-dd-item"><input type="checkbox" checked> Lotto B <span class="ov-dd-cnt">987</span></div>
+                        <div class="ov-dd-item"><input type="checkbox" checked> Lotto C <span class="ov-dd-cnt">842</span></div>
+                        <div class="ov-dd-item"><input type="checkbox"> Lotto D <span class="ov-dd-cnt">634</span></div>
+                        <div class="ov-dd-item"><input type="checkbox"> Lotto E <span class="ov-dd-cnt">355</span></div>
+                    </div>
+                </div>
+                <!-- Zona -->
+                <div style="position:relative">
+                    <button class="ov-chip-btn" id="ov-zona-btn" onclick="toggleOvDD('ov-dd-zona','ov-zona-btn')">
+                        <i class="fas fa-map"></i> Zona
+                        <i class="fas fa-chevron-down" style="font-size:.6rem;opacity:.5"></i>
+                    </button>
+                    <div class="ov-dropdown" id="ov-dd-zona">
+                        <div class="ov-dd-item"><input type="checkbox"> I — Centro <span class="ov-dd-cnt">834</span></div>
+                        <div class="ov-dd-item"><input type="checkbox"> II — Resuttana <span class="ov-dd-cnt">641</span></div>
+                        <div class="ov-dd-item"><input type="checkbox"> III — Uditore <span class="ov-dd-cnt">512</span></div>
+                        <div class="ov-dd-item"><input type="checkbox"> IV — Libertà <span class="ov-dd-cnt">489</span></div>
+                        <div class="ov-dd-item"><input type="checkbox"> V — Zisa <span class="ov-dd-cnt">372</span></div>
+                        <div class="ov-dd-item"><input type="checkbox"> VI — Noce <span class="ov-dd-cnt">318</span></div>
+                    </div>
+                </div>
+                <!-- CPC -->
+                <div style="position:relative">
+                    <button class="ov-chip-btn" id="ov-cpc-btn" onclick="toggleOvDD('ov-dd-cpc','ov-cpc-btn')">
+                        <i class="fas fa-heart-pulse"></i> Salute
+                        <i class="fas fa-chevron-down" style="font-size:.6rem;opacity:.5"></i>
+                    </button>
+                    <div class="ov-dropdown" id="ov-dd-cpc">
+                        <div class="ov-dd-item"><input type="checkbox" checked> <b style="color:#2e7d32">B</b> — Bassa <span class="ov-dd-cnt">2.104</span></div>
+                        <div class="ov-dd-item"><input type="checkbox" checked> <b style="color:#e65100">C</b> — Moderata <span class="ov-dd-cnt">988</span></div>
+                        <div class="ov-dd-item"><input type="checkbox"> <b style="color:#ad1457">C/D</b> — Elevata <span class="ov-dd-cnt">441</span></div>
+                        <div class="ov-dd-item"><input type="checkbox"> <b style="color:#c62828">D</b> — Estrema <span class="ov-dd-cnt">312</span></div>
+                    </div>
+                </div>
+                <!-- LIPU -->
+                <button class="ov-chip-btn" id="ov-lipu-btn" onclick="this.classList.toggle('on')">
+                    <i class="fas fa-dove"></i> LIPU
+                </button>
+                <!-- Reset -->
+                <button class="ov-chip-btn" onclick="" style="background:rgba(255,255,255,.85)">
+                    <i class="fas fa-rotate-left" style="color:var(--gray3)"></i>
+                </button>
+            </div>
+
+            <!-- Info box -->
+            <div class="ov-info">
+                <strong>2.853</strong> alberi visibili<br>
+                <span style="color:var(--gray3);font-size:.72rem">3 filtri attivi</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ STILE 8 ══ -->
+<div class="style-panel" id="sp7">
+    <div class="style-desc">
+        <strong>⑧ Accordion con conteggi live</strong> — Stesso layout accordion attuale, ma ogni opzione mostra una barra proporzionale + conteggio. Le opzioni a 0 risultati sono automaticamente disabilitate e grigie. Minimo cambiamento, massimo feedback.
+    </div>
+    <div class="live-wrap">
+        <div class="live-sidebar">
+            <!-- Header con totale -->
+            <div class="live-header">
+                <div><div class="lh-count" id="live-count">3.842</div><div class="lh-label">alberi visualizzati</div></div>
+                <i class="fas fa-tree" style="font-size:1.8rem;margin-left:auto;opacity:.4"></i>
+            </div>
+
+            <!-- Progetto -->
+            <div class="live-acc">
+                <div class="live-acc-hd open" onclick="toggleLiveAcc(this)">
+                    <i class="fas fa-folder-open la-icon"></i>
+                    <span class="la-label">Progetto</span>
+                    <span class="la-active vis" id="la-a-prog">3 attivi</span>
+                    <i class="fas fa-chevron-down la-chev"></i>
+                </div>
+                <div class="live-acc-body open">
+                    <div class="lo-item" onclick="toggleLO(this,'prog')"><input type="checkbox" checked><span class="fo-label">Lotto A</span><div class="lo-progress"><div class="lo-fill" style="width:100%"></div></div><span class="lo-count">1.024</span></div>
+                    <div class="lo-item" onclick="toggleLO(this,'prog')"><input type="checkbox" checked><span class="fo-label">Lotto B</span><div class="lo-progress"><div class="lo-fill" style="width:96%"></div></div><span class="lo-count">987</span></div>
+                    <div class="lo-item" onclick="toggleLO(this,'prog')"><input type="checkbox" checked><span class="fo-label">Lotto C</span><div class="lo-progress"><div class="lo-fill" style="width:82%"></div></div><span class="lo-count">842</span></div>
+                    <div class="lo-item" onclick="toggleLO(this,'prog')"><input type="checkbox"><span class="fo-label">Lotto D</span><div class="lo-progress"><div class="lo-fill" style="width:62%"></div></div><span class="lo-count">634</span></div>
+                    <div class="lo-item" onclick="toggleLO(this,'prog')"><input type="checkbox"><span class="fo-label">Lotto E</span><div class="lo-progress"><div class="lo-fill" style="width:35%"></div></div><span class="lo-count">355</span></div>
+                </div>
+            </div>
+
+            <!-- CPC -->
+            <div class="live-acc">
+                <div class="live-acc-hd open" onclick="toggleLiveAcc(this)">
+                    <i class="fas fa-heart-pulse la-icon"></i>
+                    <span class="la-label">Stato Salute (CPC)</span>
+                    <span class="la-active" id="la-a-cpc"></span>
+                    <i class="fas fa-chevron-down la-chev"></i>
+                </div>
+                <div class="live-acc-body open">
+                    <div class="lo-item" onclick="toggleLO(this,'cpc')"><input type="checkbox"><span class="lo-dot" style="background:#006064"></span><span class="fo-label">A — Trascurabile</span><div class="lo-progress"><div class="lo-fill" style="width:20%;background:#006064"></div></div><span class="lo-count">412</span></div>
+                    <div class="lo-item" onclick="toggleLO(this,'cpc')"><input type="checkbox"><span class="lo-dot" style="background:#2e7d32"></span><span class="fo-label">B — Bassa</span><div class="lo-progress"><div class="lo-fill" style="width:100%;background:#2e7d32"></div></div><span class="lo-count">2.104</span></div>
+                    <div class="lo-item" onclick="toggleLO(this,'cpc')"><input type="checkbox"><span class="lo-dot" style="background:#e65100"></span><span class="fo-label">C — Moderata</span><div class="lo-progress"><div class="lo-fill" style="width:47%;background:#e65100"></div></div><span class="lo-count">988</span></div>
+                    <div class="lo-item" onclick="toggleLO(this,'cpc')"><input type="checkbox"><span class="lo-dot" style="background:#ad1457"></span><span class="fo-label">C/D — Elevata</span><div class="lo-progress"><div class="lo-fill" style="width:21%;background:#ad1457"></div></div><span class="lo-count">441</span></div>
+                    <div class="lo-item" onclick="toggleLO(this,'cpc')"><input type="checkbox"><span class="lo-dot" style="background:#c62828"></span><span class="fo-label">D — Estrema</span><div class="lo-progress"><div class="lo-fill" style="width:15%;background:#c62828"></div></div><span class="lo-count">312</span></div>
+                    <div class="lo-item" onclick="toggleLO(this,'cpc')"><input type="checkbox"><span class="lo-dot" style="background:#434343"></span><span class="fo-label">Ceppaia</span><div class="lo-progress"><div class="lo-fill" style="width:10%;background:#434343"></div></div><span class="lo-count">198</span></div>
+                    <div class="lo-item lo-zero"><input type="checkbox" disabled><span class="lo-dot" style="background:#9e9e9e"></span><span class="fo-label">Vuoto</span><div class="lo-progress"><div class="lo-fill lo-fill" style="width:0%"></div></div><span class="lo-count">0</span></div>
+                </div>
+            </div>
+
+            <!-- Zona -->
+            <div class="live-acc">
+                <div class="live-acc-hd" onclick="toggleLiveAcc(this)">
+                    <i class="fas fa-map la-icon"></i>
+                    <span class="la-label">Zona territoriale</span>
+                    <span class="la-active" id="la-a-zona"></span>
+                    <i class="fas fa-chevron-down la-chev"></i>
+                </div>
+                <div class="live-acc-body">
+                    <div class="lo-item" onclick="toggleLO(this,'zona')"><input type="checkbox"><span class="fo-label">I — Palermo Centro</span><div class="lo-progress"><div class="lo-fill" style="width:100%"></div></div><span class="lo-count">834</span></div>
+                    <div class="lo-item" onclick="toggleLO(this,'zona')"><input type="checkbox"><span class="fo-label">II — Resuttana</span><div class="lo-progress"><div class="lo-fill" style="width:77%"></div></div><span class="lo-count">641</span></div>
+                    <div class="lo-item" onclick="toggleLO(this,'zona')"><input type="checkbox"><span class="fo-label">III — Uditore</span><div class="lo-progress"><div class="lo-fill" style="width:61%"></div></div><span class="lo-count">512</span></div>
+                    <div class="lo-item" onclick="toggleLO(this,'zona')"><input type="checkbox"><span class="fo-label">IV — Libertà</span><div class="lo-progress"><div class="lo-fill" style="width:59%"></div></div><span class="lo-count">489</span></div>
+                    <div class="lo-item" onclick="toggleLO(this,'zona')"><input type="checkbox"><span class="fo-label">V — Zisa</span><div class="lo-progress"><div class="lo-fill" style="width:45%"></div></div><span class="lo-count">372</span></div>
+                    <div class="lo-item" onclick="toggleLO(this,'zona')"><input type="checkbox"><span class="fo-label">VI — Noce</span><div class="lo-progress"><div class="lo-fill" style="width:38%"></div></div><span class="lo-count">318</span></div>
+                </div>
+            </div>
+
+            <!-- Specie -->
+            <div class="live-acc">
+                <div class="live-acc-hd" onclick="toggleLiveAcc(this)">
+                    <i class="fas fa-leaf la-icon"></i>
+                    <span class="la-label">Specie Botanica</span>
+                    <span class="la-active" id="la-a-specie"></span>
+                    <i class="fas fa-chevron-down la-chev"></i>
+                </div>
+                <div class="live-acc-body">
+                    <div class="lo-item" onclick="toggleLO(this,'specie')"><input type="checkbox"><span class="fo-label">Ficus microcarpa</span><div class="lo-progress"><div class="lo-fill" style="width:100%"></div></div><span class="lo-count">1.284</span></div>
+                    <div class="lo-item" onclick="toggleLO(this,'specie')"><input type="checkbox"><span class="fo-label">Platanus × acerifolia</span><div class="lo-progress"><div class="lo-fill" style="width:76%"></div></div><span class="lo-count">982</span></div>
+                    <div class="lo-item" onclick="toggleLO(this,'specie')"><input type="checkbox"><span class="fo-label">Jacaranda mimosifolia</span><div class="lo-progress"><div class="lo-fill" style="width:58%"></div></div><span class="lo-count">741</span></div>
+                    <div class="lo-item" onclick="toggleLO(this,'specie')"><input type="checkbox"><span class="fo-label">Phoenix canariensis</span><div class="lo-progress"><div class="lo-fill" style="width:42%"></div></div><span class="lo-count">534</span></div>
+                    <div class="lo-item lo-zero"><input type="checkbox" disabled><span class="fo-label">Washingtonia robusta</span><div class="lo-progress"><div class="lo-fill" style="width:0%"></div></div><span class="lo-count">0</span></div>
+                </div>
+            </div>
+
+            <button class="live-reset" onclick="resetLive()"><i class="fas fa-rotate-left"></i> Azzera tutti i filtri</button>
+        </div>
+
+        <div style="display:flex;flex-direction:column;gap:12px;">
+            <div class="mock-map" style="flex:1;min-height:300px"><i class="fas fa-map"></i></div>
+        </div>
+    </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════════════════ -->
+<!-- STILE 9: Topbar + Cerca Smart                                        -->
+<div class="style-panel" id="sp8">
+  <div class="demo-card">
+    <div class="demo-card-header">
+      <i class="fas fa-magnifying-glass-chart"></i>
+      <strong>⑨ Topbar + Cerca Smart</strong>
+      <span style="margin-left:auto;font-size:.75rem;color:var(--gray3)">
+        Topbar compatto + typeahead 3&nbsp;caratteri → suggerimenti categorizzati
+      </span>
+    </div>
+
+    <!-- Topbar -->
+    <div class="smart-topbar">
+      <div class="smart-search-wrap">
+        <i class="fas fa-search smart-search-icon"></i>
+        <input type="text" class="smart-input" id="smart-input"
+          placeholder="Cerca strada, specie, zona, CPC…"
+          oninput="smartSearch(this.value)"
+          onfocus="smartSearch(this.value)"
+          onkeydown="smartKey(event)">
+        <div class="smart-dropdown" id="smart-dd"></div>
+      </div>
+
+      <div style="position:relative">
+        <button class="smart-btn active" id="smart-proj-btn" onclick="toggleSmartProj()">
+          <i class="fas fa-project-diagram"></i> Progetto
+          <span class="sb-badge" id="smart-proj-count">3</span>
+        </button>
+        <div class="smart-proj-dd" id="smart-proj-dd">
+          <label class="smart-proj-item"><input type="checkbox" checked onchange="updateSmartProj()"> <span class="smart-proj-dot" style="background:#4caf50"></span> Lotto A</label>
+          <label class="smart-proj-item"><input type="checkbox" checked onchange="updateSmartProj()"> <span class="smart-proj-dot" style="background:#2196f3"></span> Lotto B</label>
+          <label class="smart-proj-item"><input type="checkbox" checked onchange="updateSmartProj()"> <span class="smart-proj-dot" style="background:#ff9800"></span> Lotto C</label>
+          <label class="smart-proj-item"><input type="checkbox" onchange="updateSmartProj()"> <span class="smart-proj-dot" style="background:#e91e63"></span> Lotto D</label>
+          <label class="smart-proj-item"><input type="checkbox" onchange="updateSmartProj()"> <span class="smart-proj-dot" style="background:#9c27b0"></span> Lotto E</label>
+        </div>
+      </div>
+
+      <button class="smart-btn" id="smart-lipu-btn" onclick="toggleSmartLipu()">
+        <i class="fas fa-binoculars"></i> LIPU
+      </button>
+
+      <button class="smart-btn" id="smart-avanzati-btn" onclick="openSmartDrawer()">
+        <i class="fas fa-sliders"></i> Avanzati
+      </button>
+    </div>
+
+    <!-- Chips filtri attivi -->
+    <div class="smart-chips-bar" id="smart-chips-bar">
+      <span class="smart-no-chips" id="smart-no-chips">Nessun filtro attivo — cerca o seleziona dalla topbar</span>
+    </div>
+
+    <!-- Mock mappa -->
+    <div class="smart-map-mock">
+      <div class="smart-map-hint">
+        <i class="fas fa-tree" style="color:var(--green);font-size:1.5rem"></i><br>
+        <strong id="smart-count" style="font-size:1.3rem;color:var(--green)">2.305</strong> alberi visibili<br>
+        <small style="color:var(--gray3)">Lotti A, B, C — scrivi 3 caratteri per filtrare</small>
+      </div>
+      <div class="smart-result-count">
+        <strong id="smart-count2">2.305</strong> risultati
+      </div>
+    </div>
+  </div>
+
+  <!-- Drawer Avanzati -->
+  <div class="smart-drawer-overlay" id="smart-drawer-overlay" onclick="closeSmartDrawer()"></div>
+  <div class="smart-drawer" id="smart-drawer">
+    <div class="smart-drawer-handle"></div>
+    <h3><i class="fas fa-sliders" style="color:var(--green)"></i> Filtri Avanzati</h3>
+
+    <div class="smart-range-group">
+      <label>Altezza (m) <span id="val-altezza">0 – 25</span></label>
+      <input type="range" class="smart-range" min="0" max="40" value="25"
+        oninput="updateSmartRange('altezza', this.value, 0, 'm')">
+    </div>
+    <div class="smart-range-group">
+      <label>Diametro chioma (m) <span id="val-diam">0 – 12</span></label>
+      <input type="range" class="smart-range" min="0" max="20" value="12"
+        oninput="updateSmartRange('diam', this.value, 0, 'm')">
+    </div>
+    <div class="smart-range-group">
+      <label>Circonferenza tronco (cm) <span id="val-circ">0 – 150</span></label>
+      <input type="range" class="smart-range" min="0" max="400" value="150"
+        oninput="updateSmartRange('circ', this.value, 0, 'cm')">
+    </div>
+
+    <div class="smart-toggle-row">
+      <div>
+        <span class="smart-toggle-label">Solo LIPU ispezioni</span>
+        <span class="smart-toggle-sub">Mostra solo alberi con ispezione LIPU</span>
+      </div>
+      <button class="smart-toggle-switch" onclick="this.classList.toggle('on')"></button>
+    </div>
+    <div class="smart-toggle-row">
+      <div>
+        <span class="smart-toggle-label">Pulizia base eseguita</span>
+        <span class="smart-toggle-sub">Filtra per attività di pulizia completata</span>
+      </div>
+      <button class="smart-toggle-switch" onclick="this.classList.toggle('on')"></button>
+    </div>
+    <div class="smart-toggle-row">
+      <div>
+        <span class="smart-toggle-label">Fase di analisi attiva</span>
+        <span class="smart-toggle-sub">Solo alberi in fase di analisi in corso</span>
+      </div>
+      <button class="smart-toggle-switch" onclick="this.classList.toggle('on')"></button>
+    </div>
+
+    <button class="smart-drawer-apply" onclick="applySmartDrawer()">
+      <i class="fas fa-check"></i>&nbsp; Applica filtri avanzati
+    </button>
+  </div>
+</div>
+
+</div><!-- /demo-body -->
+
+<script>
+// ── Tab stili ──────────────────────────────────────────────────────────────
+function showStyle(idx) {
+    document.querySelectorAll('.style-tab').forEach((t,i) => t.classList.toggle('active', i===idx));
+    document.querySelectorAll('.style-panel').forEach((p,i) => p.classList.toggle('active', i===idx));
+}
+
+// ── Stile 1: collapsible sections ─────────────────────────────────────────
+function toggleCS(hd) {
+    hd.classList.toggle('open');
+    const body = document.getElementById(hd.id.replace('cs-','body-'));
+    if (body) body.classList.toggle('open');
+}
+
+// ── Stile 1: chip toggle ──────────────────────────────────────────────────
+function toggleChip1(chip) {
+    const isActive = !chip.classList.contains('inactive');
+    if (isActive) {
+        chip.className = 'chip inactive';
+        removeActive1(chip.dataset.val, chip.dataset.filter);
+    } else {
+        chip.className = 'chip c-green';
+        chip.innerHTML = `<i class="fas fa-circle" style="font-size:.45rem"></i> ${chip.dataset.val} <span class="chip-x"><i class="fas fa-times"></i></span>`;
+        addActive1(chip.dataset.val, chip.dataset.filter);
+    }
+    updateCnt1();
+}
+const active1 = {prog:['Lotto A','Lotto B','Lotto C'], strada:[], circ:[], specie:[]};
+function addActive1(val, cat) { if (!active1[cat]) active1[cat]=[]; if (!active1[cat].includes(val)) active1[cat].push(val); renderActive1(); }
+function removeActive1(val, cat) { if (active1[cat]) active1[cat] = active1[cat].filter(v=>v!==val); renderActive1(); updateCnt1(); }
+function renderActive1() {
+    const bar = document.getElementById('active-chips1');
+    const all = Object.entries(active1).flatMap(([cat,vals]) => vals.map(v=>({cat,v})));
+    bar.innerHTML = all.length
+        ? all.map(({cat,v}) => `<span class="active-chip"><i class="fas fa-filter"></i> ${v} <button onclick="removeActive1('${v}','${cat}')"><i class="fas fa-times"></i></button></span>`).join('')
+          + `<button class="btn-reset-all" onclick="resetAll1()"><i class="fas fa-rotate-left"></i> Reset tutto</button>`
+        : `<span class="no-active">Nessun filtro attivo</span>`;
+}
+function updateCnt1() {
+    const n = active1.prog.length;
+    const el = document.getElementById('cnt-progetto');
+    if (n > 0) { el.textContent = n; el.classList.add('vis'); } else { el.textContent=''; el.classList.remove('vis'); }
+}
+function resetAll1() {
+    Object.keys(active1).forEach(k => active1[k]=[]);
+    document.querySelectorAll('#sp0 .chip').forEach(c => {
+        const v = c.dataset.val || c.textContent.trim();
+        c.className = 'chip inactive';
+        c.innerHTML = `<i class="fas fa-circle" style="font-size:.45rem"></i> ${c.dataset.val}`;
+    });
+    ['ssi-odonimo','ssi-circ','ssi-upl','ssi-specie'].forEach(id => {
+        const el = document.getElementById(id); if (el) el.value='';
+    });
+    renderActive1(); updateCnt1();
+}
+
+// ── Stile 1: searchable select ────────────────────────────────────────────
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.search-select-wrap')) {
+        document.querySelectorAll('.search-select-dropdown.open').forEach(d => d.classList.remove('open'));
+    }
+});
+function toggleSS(wrapId) {
+    const dd = document.getElementById('ssd-' + wrapId.replace('ss-',''));
+    const wasOpen = dd.classList.contains('open');
+    document.querySelectorAll('.search-select-dropdown.open').forEach(d => d.classList.remove('open'));
+    if (!wasOpen) dd.classList.add('open');
+}
+function selectSS(wrapId, inputId, val, cnt) {
+    document.getElementById(inputId).value = val;
+    document.getElementById('ssd-' + wrapId.replace('ss-','')).classList.remove('open');
+    const cat = wrapId.replace('ss-','');
+    active1[cat] = [val];
+    renderActive1();
+    updateCntSection('cnt-terr', ['strada','circ','upl']);
+    updateCntSection('cnt-bot', ['specie']);
+}
+function updateCntSection(cntId, cats) {
+    const n = cats.reduce((s,c) => s + (active1[c]||[]).length, 0);
+    const el = document.getElementById(cntId); if (!el) return;
+    if (n>0) { el.textContent=n; el.classList.add('vis'); } else { el.textContent=''; el.classList.remove('vis'); }
+}
+function filterSSOpts(ddId, q) {
+    const dd = document.getElementById(ddId);
+    dd.querySelectorAll('.ss-option').forEach(opt => {
+        opt.style.display = opt.textContent.toLowerCase().includes(q.toLowerCase()) ? '' : 'none';
+    });
+}
+
+// ── Stile 1: range slider ─────────────────────────────────────────────────
+function updateRange(k) {
+    let mn = +document.getElementById('rmin-'+k).value;
+    let mx = +document.getElementById('rmax-'+k).value;
+    const max = +document.getElementById('rmax-'+k).max;
+    if (mn > mx) { mn=mx; document.getElementById('rmin-'+k).value=mn; }
+    document.getElementById('rv-min-'+k).value = mn;
+    document.getElementById('rv-max-'+k).value = mx;
+    const pL = mn/max*100, pR = mx/max*100;
+    document.getElementById('rf-'+k).style.left  = pL+'%';
+    document.getElementById('rf-'+k).style.right = (100-pR)+'%';
+}
+function syncRangeFromInput(k, side, val) {
+    const el = document.getElementById('r'+side+'-'+k);
+    el.value = val; updateRange(k);
+}
+updateRange('h');
+
+// ── Stile 3: command palette ──────────────────────────────────────────────
+const cmdActive = [];
+let cmdIdx = -1;
+function cmdFilter(q) {
+    q = q.toLowerCase().trim();
+    document.querySelectorAll('.cmd-item').forEach(item => {
+        const match = !q || item.querySelector('strong').textContent.toLowerCase().includes(q)
+                          || (item.querySelector('span') && item.querySelector('span').textContent.toLowerCase().includes(q));
+        item.style.display = match ? '' : 'none';
+    });
+    document.querySelectorAll('.cmd-group-title').forEach(hd => {
+        const next = hd.nextElementSibling;
+        let hasVis = false;
+        let el = next;
+        while (el && !el.classList.contains('cmd-group-title') && !el.classList.contains('cmd-shortcuts')) {
+            if (el.classList.contains('cmd-item') && el.style.display !== 'none') hasVis=true;
+            el = el.nextElementSibling;
+        }
+        hd.style.display = hasVis ? '' : 'none';
+    });
+}
+function cmdSelect(item) {
+    const val = item.dataset.val;
+    const type = item.dataset.type;
+    if (cmdActive.find(x=>x.val===val)) return;
+    cmdActive.push({val,type});
+    renderCmdActive();
+    document.getElementById('cmd-input').value = '';
+    cmdFilter('');
+    item.classList.add('sel');
+}
+const typeColors = {strada:'blue', specie:'green', cpc:'orange', circ:'green'};
+function renderCmdActive() {
+    const bar = document.getElementById('cmd-active');
+    const msg = document.getElementById('no-active-msg');
+    if (!cmdActive.length) {
+        bar.innerHTML = ''; bar.appendChild(msg); msg.style.display='';
+        return;
+    }
+    msg.style.display='none';
+    bar.innerHTML = cmdActive.map((x,i) =>
+        `<span class="cmd-chip ${typeColors[x.type]||'green'}">${x.val} <i class="fas fa-times" onclick="removeCmdActive(${i})"></i></span>`
+    ).join('');
+}
+function removeCmdActive(i) {
+    const val = cmdActive[i].val;
+    cmdActive.splice(i,1);
+    document.querySelectorAll('.cmd-item').forEach(it => { if (it.dataset.val===val) it.classList.remove('sel'); });
+    renderCmdActive();
+}
+function cmdKey(e) {
+    const items = [...document.querySelectorAll('.cmd-item:not([style*="display: none"])')];
+    if (e.key==='ArrowDown') { cmdIdx=Math.min(cmdIdx+1,items.length-1); items.forEach((it,i)=>it.classList.toggle('sel',i===cmdIdx)); e.preventDefault(); }
+    else if (e.key==='ArrowUp') { cmdIdx=Math.max(cmdIdx-1,0); items.forEach((it,i)=>it.classList.toggle('sel',i===cmdIdx)); e.preventDefault(); }
+    else if (e.key==='Enter' && cmdIdx>=0) { cmdSelect(items[cmdIdx]); cmdIdx=-1; }
+    else if (e.key==='Escape') { document.getElementById('cmd-input').value=''; cmdFilter(''); cmdIdx=-1; }
+}
+
+// ── Stile 4: topbar dropdown ──────────────────────────────────────────────
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.tb-btn') && !e.target.closest('.tb-dropdown')) {
+        document.querySelectorAll('.tb-dropdown.open').forEach(d=>{ d.classList.remove('open'); });
+    }
+});
+function toggleDD(ddId, btnId) {
+    const dd = document.getElementById(ddId);
+    const wasOpen = dd.classList.contains('open');
+    document.querySelectorAll('.tb-dropdown.open').forEach(d=>d.classList.remove('open'));
+    if (!wasOpen) { dd.classList.add('open'); }
+}
+
+// ── Stile 5: Bottom Drawer ────────────────────────────────────────────────
+function openDrawer() {
+    document.getElementById('drawerOverlay').classList.add('open');
+    document.getElementById('drawerSheet').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+function closeDrawer() {
+    document.getElementById('drawerOverlay').classList.remove('open');
+    document.getElementById('drawerSheet').classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+// ── Stile 6: Faceted ─────────────────────────────────────────────────────
+function showFacetPane(id, catEl) {
+    document.querySelectorAll('.faceted-pane').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.faceted-cat').forEach(c => c.classList.remove('active'));
+    document.getElementById('fp-' + id).classList.add('active');
+    catEl.classList.add('active');
+}
+const foActive = {progetto:3, zona:0, specie:0, cpc:0, fase:0, lipu:0};
+function toggleFO(item, cat) {
+    const cb = item.querySelector('input[type=checkbox]');
+    cb.checked = !cb.checked;
+    foActive[cat] = item.closest('.faceted-pane').querySelectorAll('input:checked').length;
+    const cnt = document.getElementById('fc-cnt-'+cat);
+    if (cnt) { cnt.textContent = foActive[cat]||''; cnt.classList.toggle('vis', foActive[cat]>0); }
+    updateF6Count();
+}
+function filterFO(paneId, q) {
+    document.querySelectorAll('#'+paneId+' .fo-item').forEach(it => {
+        it.style.display = it.querySelector('.fo-label').textContent.toLowerCase().includes(q.toLowerCase()) ? '' : 'none';
+    });
+}
+function updateF6Count() {
+    const n = 3842 - (foActive.zona?500:0) - (foActive.specie?300:0) - (foActive.cpc?200:0);
+    document.getElementById('f6-count').textContent = n.toLocaleString('it-IT');
+}
+function resetFaceted() {
+    document.querySelectorAll('#sp5 input[type=checkbox]').forEach(cb => cb.checked = false);
+    Object.keys(foActive).forEach(k => foActive[k]=0);
+    document.querySelectorAll('.fc-cnt').forEach(el => { el.textContent=''; el.classList.remove('vis'); });
+    document.getElementById('f6-count').textContent = '3.842';
+}
+
+// ── Stile 7: Overlay dropdown ─────────────────────────────────────────────
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.ov-chip-btn') && !e.target.closest('.ov-dropdown')) {
+        document.querySelectorAll('.ov-dropdown.open').forEach(d => d.classList.remove('open'));
+    }
+});
+function toggleOvDD(ddId, btnId) {
+    const dd = document.getElementById(ddId);
+    const wasOpen = dd.classList.contains('open');
+    document.querySelectorAll('.ov-dropdown.open').forEach(d => d.classList.remove('open'));
+    if (!wasOpen) dd.classList.add('open');
+}
+
+// ── Stile 9: Topbar + Cerca Smart ────────────────────────────────────────
+const smartData = [
+    {type:'strada', val:'Via Libertà',            icon:'fa-road'},
+    {type:'strada', val:'Viale Regione Siciliana', icon:'fa-road'},
+    {type:'strada', val:'Via Dante',               icon:'fa-road'},
+    {type:'strada', val:'Corso Calatafimi',        icon:'fa-road'},
+    {type:'strada', val:'Via Resuttana',           icon:'fa-road'},
+    {type:'strada', val:'Corso dei Mille',         icon:'fa-road'},
+    {type:'specie', val:'Ficus microcarpa',        icon:'fa-leaf'},
+    {type:'specie', val:'Ficus benjamina',         icon:'fa-leaf'},
+    {type:'specie', val:'Phoenix dactylifera',     icon:'fa-leaf'},
+    {type:'specie', val:'Jacaranda mimosifolia',   icon:'fa-leaf'},
+    {type:'specie', val:'Platanus acerifolia',     icon:'fa-leaf'},
+    {type:'specie', val:'Washingtonia robusta',    icon:'fa-leaf'},
+    {type:'zona',   val:'I Centro Storico',        icon:'fa-map-marker-alt'},
+    {type:'zona',   val:'II Libertà',              icon:'fa-map-marker-alt'},
+    {type:'zona',   val:'III Noce',                icon:'fa-map-marker-alt'},
+    {type:'zona',   val:'IV Resuttana',            icon:'fa-map-marker-alt'},
+    {type:'zona',   val:'V Zisa',                  icon:'fa-map-marker-alt'},
+    {type:'zona',   val:'VIII Palagonia',          icon:'fa-map-marker-alt'},
+    {type:'cpc',    val:'A — Ottimo',              icon:'fa-star'},
+    {type:'cpc',    val:'B — Buono',               icon:'fa-circle-check'},
+    {type:'cpc',    val:'C — Mediocre',            icon:'fa-triangle-exclamation'},
+    {type:'cpc',    val:'D — Estrema urgenza',     icon:'fa-circle-exclamation'},
+    {type:'cpc',    val:'Ceppaia',                 icon:'fa-xmark'},
+];
+const smartTypeLbl = {strada:'Strade', specie:'Specie', zona:'Zone', cpc:'CPC'};
+let smartActive = [];
+let smartDDIdx = -1;
+
+function smartSearch(q) {
+    const dd = document.getElementById('smart-dd');
+    if (!q || q.length < 3) { dd.classList.remove('open'); return; }
+    const lq = q.toLowerCase();
+    const hits = smartData.filter(d =>
+        d.val.toLowerCase().includes(lq) &&
+        !smartActive.some(a => a.val === d.val)
+    );
+    if (!hits.length) { dd.classList.remove('open'); return; }
+    const byType = {};
+    hits.forEach(h => { (byType[h.type] = byType[h.type]||[]).push(h); });
+    let html = '';
+    Object.keys(byType).forEach(t => {
+        html += `<div class="smart-dd-cat">${smartTypeLbl[t]||t}</div>`;
+        byType[t].slice(0,4).forEach(d => {
+            const esc = d.val.replace(/'/g,"&#39;");
+            html += `<div class="smart-dd-item" data-val="${esc}" data-type="${d.type}"
+                onclick="smartSelect('${esc}','${d.type}')">
+                <i class="fas ${d.icon} si-icon"></i>
+                <span>${smartHL(d.val, q)}</span>
+                <span class="si-badge ${d.type}">${smartTypeLbl[d.type]}</span>
+            </div>`;
+        });
+    });
+    dd.innerHTML = html;
+    dd.classList.add('open');
+    smartDDIdx = -1;
+}
+
+function smartHL(text, q) {
+    const re = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'gi');
+    return text.replace(re, '<mark style="background:#fff176;border-radius:2px;padding:0 1px">$1</mark>');
+}
+
+function smartSelect(val, type) {
+    if (!smartActive.some(a => a.val === val)) {
+        smartActive.push({type, val});
+        renderSmartChips();
+        updateSmartCount();
+    }
+    document.getElementById('smart-input').value = '';
+    document.getElementById('smart-dd').classList.remove('open');
+    smartDDIdx = -1;
+}
+
+function renderSmartChips() {
+    const bar = document.getElementById('smart-chips-bar');
+    const noMsg = document.getElementById('smart-no-chips');
+    bar.querySelectorAll('.smart-chip').forEach(c => c.remove());
+    if (!smartActive.length) { noMsg.style.display = ''; return; }
+    noMsg.style.display = 'none';
+    smartActive.forEach((a, i) => {
+        const span = document.createElement('span');
+        span.className = 'smart-chip ' + a.type;
+        span.innerHTML = `${a.val} <i class="fas fa-times" onclick="removeSmartChip(${i})"></i>`;
+        bar.appendChild(span);
+    });
+}
+
+function removeSmartChip(i) {
+    smartActive.splice(i, 1);
+    renderSmartChips();
+    updateSmartCount();
+}
+
+function smartKey(e) {
+    const dd = document.getElementById('smart-dd');
+    if (!dd.classList.contains('open')) return;
+    const items = [...dd.querySelectorAll('.smart-dd-item')];
+    if (e.key === 'ArrowDown') {
+        smartDDIdx = Math.min(smartDDIdx+1, items.length-1);
+        items.forEach((it,i) => it.classList.toggle('focused', i===smartDDIdx));
+        e.preventDefault();
+    } else if (e.key === 'ArrowUp') {
+        smartDDIdx = Math.max(smartDDIdx-1, 0);
+        items.forEach((it,i) => it.classList.toggle('focused', i===smartDDIdx));
+        e.preventDefault();
+    } else if (e.key === 'Enter' && smartDDIdx >= 0) {
+        const it = items[smartDDIdx];
+        if (it) smartSelect(it.dataset.val, it.dataset.type);
+        e.preventDefault();
+    } else if (e.key === 'Escape') {
+        dd.classList.remove('open');
+        document.getElementById('smart-input').value = '';
+        smartDDIdx = -1;
+    }
+}
+
+document.addEventListener('click', function(e) {
+    if (!e.target.closest('.smart-search-wrap')) {
+        const dd = document.getElementById('smart-dd');
+        if (dd) dd.classList.remove('open');
+    }
+    if (!e.target.closest('#smart-proj-btn') && !e.target.closest('#smart-proj-dd')) {
+        const pdd = document.getElementById('smart-proj-dd');
+        if (pdd) pdd.classList.remove('open');
+    }
+});
+
+function toggleSmartProj() {
+    document.getElementById('smart-proj-dd').classList.toggle('open');
+}
+
+function updateSmartProj() {
+    const n = document.querySelectorAll('#smart-proj-dd input:checked').length;
+    document.getElementById('smart-proj-count').textContent = n;
+    document.getElementById('smart-proj-btn').classList.toggle('active', n > 0);
+    updateSmartCount();
+}
+
+function toggleSmartLipu() {
+    const btn = document.getElementById('smart-lipu-btn');
+    btn.classList.toggle('active');
+    updateSmartCount();
+}
+
+function openSmartDrawer() {
+    document.getElementById('smart-drawer-overlay').classList.add('open');
+    document.getElementById('smart-drawer').classList.add('open');
+}
+
+function closeSmartDrawer() {
+    document.getElementById('smart-drawer-overlay').classList.remove('open');
+    document.getElementById('smart-drawer').classList.remove('open');
+}
+
+function updateSmartRange(id, val, min, unit) {
+    document.getElementById('val-'+id).textContent = min + ' – ' + val + ' ' + unit;
+}
+
+function applySmartDrawer() {
+    closeSmartDrawer();
+    updateSmartCount();
+}
+
+function updateSmartCount() {
+    const projN = document.querySelectorAll('#smart-proj-dd input:checked').length;
+    const lipuOn = document.getElementById('smart-lipu-btn')?.classList.contains('active');
+    const base = Math.round(3842 * projN / 5);
+    const filtered = base - smartActive.length * 130 - (lipuOn ? 900 : 0);
+    const n = Math.max(filtered, 8).toLocaleString('it-IT');
+    const el1 = document.getElementById('smart-count');
+    const el2 = document.getElementById('smart-count2');
+    if (el1) el1.textContent = n;
+    if (el2) el2.textContent = n;
+}
+
+// ── Stile 8: Accordion live ───────────────────────────────────────────────
+function toggleLiveAcc(hd) {
+    hd.classList.toggle('open');
+    hd.nextElementSibling.classList.toggle('open');
+}
+const loActive = {prog:3, cpc:0, zona:0, specie:0};
+function toggleLO(item, cat) {
+    const cb = item.querySelector('input[type=checkbox]');
+    cb.checked = !cb.checked;
+    loActive[cat] = item.closest('.live-acc-body').querySelectorAll('input:checked').length;
+    const el = document.getElementById('la-a-'+cat);
+    if (el) { el.textContent = loActive[cat] ? loActive[cat]+' attivi' : ''; el.classList.toggle('vis', loActive[cat]>0); }
+    const total = 3842 - (loActive.cpc?180:0) - (loActive.zona?400:0) - (loActive.specie?250:0);
+    document.getElementById('live-count').textContent = total.toLocaleString('it-IT');
+}
+function resetLive() {
+    document.querySelectorAll('#sp7 input[type=checkbox]:not(:disabled)').forEach(cb => cb.checked = false);
+    Object.keys(loActive).forEach(k => loActive[k]=0);
+    document.querySelectorAll('.la-active').forEach(el => { el.textContent=''; el.classList.remove('vis'); });
+    document.getElementById('live-count').textContent = '3.842';
+}
+</script>
+</body>
+</html>

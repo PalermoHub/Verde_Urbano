@@ -39,13 +39,13 @@
     <meta property="og:type" content="website">
     <meta property="og:title" content="Rigenerazione del Verde Urbano di Palermo: Riqualificazione Stradale e Arredo della Città - Accordo Quadro - CUP D71G23000050001">
     <meta property="og:description" content="Ufficio Autonomo Gestione Verde Urbano, Agricoltura Urbana e Rapporti con Re.Se.T.">
-    <meta property="og:image" content="https://palermohub.github.io/Verde_Urbano/img/Social_Card_01.jpg">
+    <meta property="og:image" content="https://palermohub.github.io/Verde_Urbano/img/Social_Card.jpg">
     <meta name="twitter:card" content="summary_large_image">
     <meta property="twitter:domain" content="palermohub.opendatasicilia.it">
     <meta property="twitter:url" content="https://palermohub.github.io/Verde_Urbano/">
     <meta name="twitter:title" content="Rigenerazione del Verde Urbano di Palermo: Riqualificazione Stradale e Arredo della Città Accordo Quadro - CUP D71G23000050001">
     <meta name="twitter:description" content="Ufficio Autonomo Gestione Verde Urbano, Agricoltura Urbana e Rapporti con Re.Se.T.">
-    <meta name="twitter:image" content="https://palermohub.github.io/Verde_Urbano/img/Social_Card_01.jpg">
+    <meta name="twitter:image" content="https://palermohub.github.io/Verde_Urbano/img/Social_Card.jpg">
    
  	 <!-- Google tag (gtag.js) — caricato solo dopo consenso -->
 <script>
@@ -65,199 +65,6 @@
   })();
 </script>	   
    
-<!-- ══ VU Smart Topbar CSS ══════════════════════════════════════════════ -->
-<style>
-:root {
-    --vust-green:  #2e7d32;
-    --vust-greenl: #e8f5e9;
-    --vust-blue:   #1565c0;
-    --vust-bluel:  #e3f2fd;
-    --vust-orange: #e65100;
-    --vust-red:    #c62828;
-    --vust-g1:     #f5f5f5;
-    --vust-g2:     #e0e0e0;
-    --vust-g3:     #9e9e9e;
-    --vust-g4:     #424242;
-}
-#vu-smart-topbar {
-    background: #fff;
-    border-bottom: 2px solid var(--vust-g2);
-    box-shadow: 0 2px 6px rgba(0,0,0,.10);
-    flex-shrink: 0;
-    position: relative;
-    z-index: 2500;
-    overflow: visible;
-}
-.vust-inner {
-    display: flex; align-items: center; gap: 8px;
-    padding: 6px 12px; flex-wrap: wrap;
-}
-.vust-search-wrap {
-    position: relative; flex: 1; min-width: 180px;
-}
-.vust-input {
-    width: 100%; border: 1.5px solid var(--vust-g2); border-radius: 22px;
-    padding: 8px 34px 8px 34px; font-size: .86rem;
-    font-family: 'Titillium Web', sans-serif;
-    outline: none; transition: border-color .2s; background: var(--vust-g1);
-}
-.vust-input:focus { border-color: var(--vust-green); background: #fff; box-shadow: 0 0 0 3px rgba(46,125,50,.1); }
-.vust-search-icon {
-    position: absolute; left: 11px; top: 50%; transform: translateY(-50%);
-    color: var(--vust-g3); font-size: .82rem; pointer-events: none;
-}
-.vust-input-clear {
-    position: absolute; right: 9px; top: 50%; transform: translateY(-50%);
-    background: none; border: none; cursor: pointer; color: var(--vust-g3);
-    padding: 3px; line-height: 1; font-size: .8rem;
-}
-.vust-input-clear:hover { color: var(--vust-g4); }
-.vust-dropdown {
-    display: none; position: absolute; top: calc(100% + 5px); left: 0; right: 0;
-    background: #fff; border-radius: 8px; box-shadow: 0 8px 28px rgba(0,0,0,.15);
-    max-height: 300px; overflow-y: auto; z-index: 700; border: 1px solid var(--vust-g2);
-}
-.vust-dropdown.open { display: block; }
-.vust-dd-cat {
-    padding: 7px 14px 3px; font-size: .66rem; font-weight: 700;
-    letter-spacing: .8px; text-transform: uppercase; color: var(--vust-g3);
-    border-top: 1px solid var(--vust-g2); position: sticky; top: 0; background: #fff;
-}
-.vust-dd-cat:first-child { border-top: none; }
-.vust-dd-item {
-    display: flex; align-items: center; gap: 9px; padding: 8px 14px;
-    cursor: pointer; transition: background .12s; font-size: .83rem;
-}
-.vust-dd-item:hover, .vust-dd-item.focused { background: var(--vust-greenl); }
-.vust-dd-icon { width: 18px; text-align: center; font-size: .78rem; color: var(--vust-g3); flex-shrink: 0; }
-.vust-dd-text { flex: 1; }
-.vust-dd-badge {
-    font-size: .64rem; padding: 2px 7px; border-radius: 10px; font-weight: 700; flex-shrink: 0;
-}
-.vust-dd-badge.strada { background: var(--vust-greenl); color: var(--vust-green); }
-.vust-dd-badge.specie { background: var(--vust-bluel);  color: var(--vust-blue);  }
-.vust-dd-badge.zona   { background: #fff3e0; color: var(--vust-orange); }
-.vust-dd-badge.cpc    { background: #ffebee; color: var(--vust-red); }
-.vust-dd-empty { padding: 14px; text-align: center; color: var(--vust-g3); font-size: .8rem; font-style: italic; }
-/* Topbar buttons */
-.vust-btn-wrap { position: relative; }
-.vust-btn {
-    display: inline-flex; align-items: center; gap: 6px;
-    padding: 7px 13px; border-radius: 20px; border: 1.5px solid var(--vust-g2);
-    background: var(--vust-g1); font-family: 'Titillium Web', sans-serif;
-    font-size: .8rem; font-weight: 600; cursor: pointer; white-space: nowrap;
-    transition: all .15s; color: var(--vust-g4); flex-shrink: 0;
-}
-.vust-btn:hover { border-color: var(--vust-green); color: var(--vust-green); }
-.vust-btn.active { background: var(--vust-green); color: #fff; border-color: var(--vust-green); }
-.vust-btn.has-filter { border-color: var(--vust-green); color: var(--vust-green); background: var(--vust-greenl); }
-.vust-badge {
-    background: var(--vust-orange); color: #fff; border-radius: 50%;
-    width: 17px; height: 17px; display: inline-flex; align-items: center;
-    justify-content: center; font-size: .60rem; font-weight: 700; flex-shrink: 0;
-}
-/* Progetto dropdown */
-.vust-prog-dd {
-    display: none; position: absolute; top: calc(100% + 10px); right: 0px;
-    background: #fff; border-radius: 8px; box-shadow: 0 8px 28px rgba(0,0,0,.15);
-    border: 1px solid var(--vust-g2); min-width: 240px; max-width: 320px; z-index: 700;
-}
-.vust-prog-dd.open { display: block; }
-.vust-prog-dd-inner { max-height: 260px; overflow-y: auto; padding: 6px 0; }
-.vust-prog-item {
-    display: flex; align-items: center; gap: 9px; padding: 8px 14px;
-    cursor: pointer; font-size: .83rem; transition: background .12s; user-select: none;
-}
-.vust-prog-item:hover { background: var(--vust-greenl); }
-.vust-prog-item input[type=checkbox] { accent-color: var(--vust-green); flex-shrink: 0; }
-.vust-prog-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
-.vust-prog-name { flex: 1; font-weight: 600; }
-.vust-prog-count { font-size: .7rem; color: var(--vust-g3); }
-.vust-prog-dd-footer {
-    border-top: 1px solid var(--vust-g2);  padding: 7px 12px; display: flex; gap: 8px;
-}
-.vust-prog-dd-footer button {
-    flex: 1; padding: 5px; border-radius: 5px; border: 1px solid var(--vust-g2);
-    /*background: var(--vust-g1);*/ font-family: 'Titillium Web', sans-serif;
-    font-size: .76rem; cursor: pointer; transition: all .12s;
-}
-
-.vust-prog-dd-footer button:hover { border-color: var(--vust-green); color: var(--vust-green); }
-/* Toggle switch nei vust-prog-item */
-.vust-prog-item input[type=checkbox] { position:absolute; opacity:0; width:0; height:0; pointer-events:none; }
-.vust-prog-item input[type=checkbox]:checked + .toggle-switch { background: var(--vust-green); }
-.vust-prog-item input[type=checkbox]:checked + .toggle-switch::after { transform: translateX(16px); }
-/* Avanzati drawer */
-.vust-drawer-overlay {
-    display: none; position: fixed; inset: 0; background: rgba(0,0,0,.35); z-index: 800;
-    backdrop-filter: blur(2px);
-}
-.vust-drawer-overlay.open { display: block; }
-.vust-drawer {
-    position: fixed; bottom: 0; left: 0; right: 0;
-    background: #fff; border-radius: 12px 12px 0 0;
-    box-shadow: 0 -4px 24px rgba(0,0,0,.18); z-index: 801;
-    transform: translateY(100%); transition: transform .28s cubic-bezier(.4,0,.2,1);
-    max-width: 350px; margin: 0 auto; max-height: 85vh; overflow-y: auto;
-}
-.vust-drawer.open { transform: translateY(0); }
-.vust-drawer-handle { width: 40px; height: 4px; background: var(--vust-g2); border-radius: 2px; margin: 10px auto 0; }
-.vust-drawer-header {
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 12px 18px; border-bottom: 1px solid var(--vust-g2);
-}
-.vust-drawer-header h3 { font-size: .92rem; font-weight: 700; display: flex; align-items: center; gap: 8px; margin: 0; }
-.vust-drawer-close { background: none; border: none; cursor: pointer; color: var(--vust-g3); font-size: .95rem; padding: 4px; }
-.vust-drawer-group { padding: 13px 18px; border-bottom: 1px solid var(--vust-g2); }
-.vust-drawer-label {
-    display: flex; align-items: center; justify-content: space-between;
-    font-size: .8rem; font-weight: 600; margin-bottom: 7px; color: var(--vust-g4);
-    gap: 6px;
-}
-.vust-val-badge {
-    background: var(--vust-green); color: #fff; border-radius: 10px;
-    padding: 1px 8px; font-size: .7rem; font-weight: 700; flex-shrink: 0;
-}
-.vust-drawer-select {
-    width: 100%; padding: 8px 10px; border: 1.5px solid var(--vust-g2); border-radius: 7px;
-    font-family: 'Titillium Web', sans-serif; font-size: .83rem; background: #fff; outline: none;
-}
-.vust-drawer-select:focus { border-color: var(--vust-green); }
-.vust-drawer-range { width: 100%; accent-color: var(--vust-green); }
-.vust-drawer-footer { display: flex; gap: 10px; padding: 13px 18px; }
-.vust-drawer-reset {
-    flex: 1; padding: 9px; border: 1.5px solid var(--vust-g2); border-radius: 7px;
-    background: none; font-family: 'Titillium Web', sans-serif; font-size: .82rem;
-    cursor: pointer; color: var(--vust-g4); transition: all .15s;
-}
-.vust-drawer-reset:hover { border-color: var(--vust-red); color: var(--vust-red); }
-.vust-drawer-apply {
-    flex: 1.5; padding: 9px; border: none; border-radius: 7px;
-    background: var(--vust-green); color: #fff;
-    font-family: 'Titillium Web', sans-serif; font-size: .82rem; font-weight: 700;
-    cursor: pointer; transition: background .15s;
-}
-.vust-drawer-apply:hover { background: #1b5e20; }
-@media(max-width:600px) {
-    .vust-btn span:not(.vust-badge) { display: none; }
-    .vust-btn { padding: 7px 10px; }
-    .vust-inner { gap: 6px; padding: 7px 10px; }
-}
-/* Topbar segue le sidebar: si restringe quando le sidebar sono aperte */
-@media (min-width: 769px) {
-    #vu-smart-topbar {
-        margin-left: var(--sb-w, 300px);
-        margin-right: var(--sb-w-right, 390px);
-        transition: margin-left 0.25s ease, margin-right 0.25s ease;
-    }
-    .container.sidebar-left-hidden #vu-smart-topbar {
-        margin-left: 0;
-    }
-    .container.sidebar-right-hidden #vu-smart-topbar {
-        margin-right: 0;
-    }
-}
-</style>
 </head>
 <body>
 <!-- Page Loader -->
@@ -360,13 +167,13 @@
                 </span>
                 <!-- BLOCCO 2: Visibile solo desktop (testo completo + link) -->
                 <span class="banner-text-extra">
-                    : Riqualificazione Stradale e Arredo della Città <!-- &middot;
+                    : Riqualificazione Stradale e Arredo della Città &middot;
                     <a href="https://www.opencup.gov.it//portale/it/web/opencup/home/progetto/-/cup/D71G23000050001"
                        target="_blank" rel="noopener" title="Visualizza su OpenCUP"
                        style="color:inherit;text-decoration:underline;text-underline-offset:2px;opacity:.92;">
                         Accordo Quadro - CUP D71G23000050001
                     </a>
-                </span> -->
+                </span>
             </h2>
 			<div class="banner-actions">
                 <button class="compact-toggle" id="compactToggle" aria-label="Mostra/nascondi intestazione completa" title="Modalità compatta">
@@ -430,12 +237,13 @@
 
     <div class="container">
         <!-- Sidebar Sinistra: Filtri -->
-        <div class="sb-wrap" id="sbWrapLeft" style="display:none">
+        <div class="sb-wrap" id="sbWrapLeft">
             <div class="sidebar sidebar-left" id="sidebarLeft">
 
                 <!-- Tab nav -->
                 <div class="sb-tab-btns">
                     <button class="sb-tab-btn active" data-tab="filtri" onclick="showSidebarTab('filtri')"><i class="fas fa-filter"></i> Filtri</button>
+                    <button class="sb-tab-btn" data-tab="lavorazione" onclick="showSidebarTab('lavorazione')"><i class="fas fa-tools"></i> Lavoraz.</button>
                     
                 </div>
 
@@ -461,6 +269,11 @@
                         </div>
                         <div class="filter-accordion-body">
                             <div class="filter-group" id="progettoFilterGroup">
+                                <label class="progetto-all-toggle">
+                                    <input type="checkbox" id="progettoAll" onchange="toggleAllProgetti(this)" checked>
+                                    <span class="toggle-switch"></span>
+                                    <span>Seleziona / deseleziona tutti</span>
+                                </label>
                                 <div id="progettoOptions" class="progetto-cards-grid"></div>
                                 <div class="filter-info" id="progettoInfo"></div>
                             </div>
@@ -627,6 +440,17 @@
 
                 </div>
 
+                <!-- Pane: Lavorazione -->
+                <div class="sb-pane" id="sb-pane-lavorazione">
+                    <div class="sb-section-title"><i class="fas fa-tools"></i> Cod. Lavorazione</div>
+                    <div id="statLavorazione" style="font-size: 12px; color: #666;"></div>
+                    <div class="sb-section-title" style="margin-top: 16px;"><i class="fas fa-euro-sign"></i> Costo Lavorazione</div>
+                    <div class="terr-hero-row" style="border-left-color:#f39c12;">
+                        <span><i class="fas fa-euro-sign" style="color:#f39c12;margin-right:6px;"></i>Costo totale lavorazioni</span>
+                        <span class="lav-cost-value" id="statTotalWorkingCost">0 €</span>
+                    </div>
+                    <p style="font-size: 10px; font-style: italic;"><b>NOTA IMPORTANTE:</b> I costi indicati sono suscettibili di variazioni a causa di: modifiche in corso d'opera, variazione dei prezzi delle materie prime, esigenze progettuali non preventivate, ecc.</p>
+                </div>
 
                 
 
@@ -634,6 +458,7 @@
                 <div class="sb-actions" id="sb-filtri-actions">
                     <button onclick="applyFilters()" title="Applica i filtri"><i class="fas fa-check"></i> Applica</button>
                     <button class="secondary" onclick="resetFilters()" title="Ripristina tutti i filtri"><i class="fas fa-rotate-left"></i> Ripristina</button>
+                    <button class="btn-filtri-attivi" disabled title="Esporta CSV non disponibile"><i class="fas fa-file-csv"></i> Esporta CSV</button>
                 </div>
 
                 <!-- Footer sidebar sx-->
@@ -641,93 +466,11 @@
 
             </div>
             <div class="sb-resize-handle" id="sbResizeHandle"></div>
-         <!--   <button class="sb-toggle" id="sidebarLeftToggle" onclick="toggleSidebarLeft()" title="Mostra/nascondi pannello">&#8249;</button> -->
+            <button class="sb-toggle" id="sidebarLeftToggle" onclick="toggleSidebarLeft()" title="Mostra/nascondi pannello">&#8249;</button>
         </div>
 
         <!-- Area Centrale: Mappa -->
         <div class="main">
-            <!-- Smart Topbar ─────────────────────────────────────────── -->
-            <div id="vu-smart-topbar">
-              <div class="vust-inner">
-                <!-- Smart search -->
-                <div class="vust-search-wrap">
-                  <i class="fas fa-search vust-search-icon"></i>
-                  <input type="text" id="vust-input" class="vust-input"
-                    placeholder="Cerca strada, specie, circoscrizione, Quartiere, Unità di primo  livello, CPC…"
-                    oninput="vuSmartSearch(this.value)"
-                    onfocus="vuSmartSearch(this.value)"
-                    onkeydown="vuSmartKey(event)"
-                    autocomplete="off">
-                  <button class="vust-input-clear" id="vust-input-clear" onclick="vuSmartClear()" title="Cancella" style="display:none">
-                    <i class="fas fa-times"></i>
-                  </button>
-                  <div class="vust-dropdown" id="vust-dd"></div>
-                </div>
-                <!-- Progetto -->
-                <div class="vust-btn-wrap" id="vust-prog-wrap">
-                  <button class="vust-btn active" id="vust-prog-btn" onclick="vuToggleProgettoDD()" title="Filtra per ordinativi">
-                    <i class="fas fa-layer-group"></i>
-                    <span>Ordinativo</span>
-                    <span class="vust-badge" id="vust-prog-badge" style="display:none">0</span>
-                  </button>
-                  <div class="vust-prog-dd" id="vust-prog-dd">
-                    <div class="vust-prog-dd-inner" id="vust-prog-dd-inner">
-                      <div style="padding:12px;font-size:.78rem;color:var(--vust-g3)"><i class="fas fa-spinner fa-spin"></i> Caricamento…</div>
-                    </div>
-                    <div class="vust-prog-dd-footer">
-                      <button onclick="vuSelectAllProgetti(true)"><i class="fas fa-check-double"></i> Tutti</button>
-                      <button onclick="vuSelectAllProgetti(false)"><i class="fas fa-times"></i> Nessuno</button>
-                    </div>
-                  </div>
-                </div>
-                <!-- LIPU -->
-                <div class="vust-btn-wrap" id="vust-lipu-wrap">
-                  <button class="vust-btn" id="vust-lipu-btn" onclick="vuOpenLipuDD()" title="Legenda e impostazioni LIPU Ispezioni">
-                    <i class="fas fa-dove"></i>
-                    <span>LIPU</span>
-                  </button>
-                  <div class="vust-prog-dd" id="vust-lipu-dd" style="min-width:270px;max-width:300px;">
-                    <div style="padding:9px 13px 7px;border-bottom:1px solid var(--vust-g2);display:flex;align-items:center;justify-content:space-between;">
-                      <span style="font-size:.8rem;font-weight:700;color:var(--vust-g4);display:flex;align-items:center;gap:6px;"><i class="fas fa-dove" style="color:#40916C"></i> LIPU Ispezioni</span>
-                      <button onclick="vuCloseLipuDD()" style="background:none;border:none;cursor:pointer;color:var(--vust-g3);font-size:.85rem;padding:2px 4px;line-height:1;" title="Chiudi"><span class="toggle-switch"></span></button>
-                    </div>
-                <div style="padding:10px 13px 12px;">
-                <!--          <label class="progetto-all-toggle" style="margin-bottom:4px;">
-                        <input type="checkbox" id="lipuPopupToggle" onchange="vuLipuPopupToggle(this.checked)">
-                        <span class="toggle-switch"></span>
-                        <span style="font-size:.82rem;font-weight:600;">Mostra strato LIPU</span>
-                      </label> -->
-                      <div style="margin:3px 0 9px;font-size:11px;color:#888;font-style:italic;">Alberi ispezionati · Protocollo Tutela Faunistica LIPU</div>
-                      <div class="lipu-leg-item lipu-leg-btn" data-stato="ok"      onclick="toggleLipuStato('ok')">      <span class="lipu-leg-dot" style="background:#40916C"></span>Ispezionato OK</div>
-                      <div class="lipu-leg-item lipu-leg-btn" data-stato="pending" onclick="toggleLipuStato('pending')"> <span class="lipu-leg-dot" style="background:#E76F00"></span>Stato di necessità</div>
-                      <div class="lipu-leg-item lipu-leg-btn" data-stato="stop"    onclick="toggleLipuStato('stop')">    <span class="lipu-leg-dot" style="background:#C1121F"></span>Lavori sospesi</div>
-                      <button class="lipu-lista-btn" style="margin-top:8px;" onclick="openLipuListModal();vuCloseLipuDD()"><i class="fas fa-list"></i> Lista alberi ispezionati</button>
-                      <div class="lipu-disclaimer" style="margin-top:8px;">
-                        <i class="fas fa-circle-info"></i>
-                        <strong>Disclaimer</strong> — I dati geografici e botanici degli alberi provengono dal patrimonio arboreo reale del Comune di Palermo. I dati relativi agli operatori, alle ditte esecutrici e agli esiti delle ispezioni faunistiche sono generati sinteticamente da Claude AI a puro scopo dimostrativo. Non hanno alcun valore legale, amministrativo o probatorio.
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <!-- Avanzati -->
-                <button class="vust-btn" id="vust-avanzati-btn" onclick="vuOpenAvanzati()" title="Filtri avanzati (CPC, Fase, Pulizia, Dimensioni)">
-                  <i class="fas fa-sliders"></i>
-                  <span>Avanzati</span>
-                  <span class="vust-badge" id="vust-adv-badge" style="display:none">0</span>
-                </button>
-                <!-- Esporta CSV -->
-                <button class="vust-btn" id="vust-csv-btn" disabled title="Esporta CSV non disponibile">
-                  <i class="fas fa-file-csv"></i>
-                  <span>CSV</span>
-                </button>
-                <!-- Pannello classico -->
-              <!--  <button class="vust-btn" id="vust-sidebar-btn" onclick="toggleSidebarLeft()" title="Mostra/nascondi pannello filtri">
-                  <i class="fas fa-table-columns"></i>
-                  <span>Pannello</span> 
-                </button>-->
-              </div>
-            </div>
-
             <!-- Chip filtri attivi (sopra la mappa) -->
             <div id="activeFilterChips" class="filter-chips-bar" aria-live="polite" role="region" aria-label="Filtri attivi"></div>
             <div class="map-container">
@@ -841,7 +584,6 @@
                 <div class="sb-tab-btns">
                     <button class="sb-tab-btn" data-tab="statistiche" onclick="showRightSidebarTab('statistiche')"><i class="fas fa-chart-simple"></i> Statistiche</button>
                     <button class="sb-tab-btn active" data-tab="dataviz" onclick="showRightSidebarTab('dataviz')"><i class="fas fa-chart-bar"></i> DataViz</button>
-                    <button class="sb-tab-btn" data-tab="lavorazione" onclick="showRightSidebarTab('lavorazione')" style="display:none"><i class="fas fa-tools"></i> Lavoraz.</button>
                     <button class="sb-tab-btn sb-tab-btn-lipu" id="sb-tab-btn-lipu" data-tab="lipu-stats" onclick="showRightSidebarTab('lipu-stats')" style="display:none"><i class="fas fa-dove"></i> LIPU</button>
                 </div>
 
@@ -950,18 +692,6 @@
                             <div id="seasonalLeavesChart" class="sl-chart-container"></div>
                         </div>
                     </div>
-                </div>
-
-                <!-- Pane: Lavorazione -->
-                <div class="sb-pane" id="sb-pane-lavorazione">
-                    <div class="sb-section-title"><i class="fas fa-tools"></i> Cod. Lavorazione</div>
-                    <div id="statLavorazione" style="font-size: 12px; color: #666;"></div>
-                    <div class="sb-section-title" style="margin-top: 16px;"><i class="fas fa-euro-sign"></i> Costo Lavorazione</div>
-                    <div class="terr-hero-row" style="border-left-color:#f39c12;">
-                        <span><i class="fas fa-euro-sign" style="color:#f39c12;margin-right:6px;"></i>Costo totale lavorazioni</span>
-                        <span class="lav-cost-value" id="statTotalWorkingCost">0 €</span>
-                    </div>
-                    <p style="font-size: 10px; font-style: italic;"><b>NOTA IMPORTANTE:</b> I costi indicati sono suscettibili di variazioni a causa di: modifiche in corso d'opera, variazione dei prezzi delle materie prime, esigenze progettuali non preventivate, ecc.</p>
                 </div>
 
                 <!-- Pane: LIPU Statistiche -->
@@ -1084,7 +814,7 @@
         <div class="modal" style="max-width:520px;">
             <div class="modal-header" style="background:linear-gradient(135deg,#e67e22 0%,#d35400 100%);">
                 <h2><i class="fas fa-hard-hat"></i> Versione di test — solo uso interno</h2>
-                <button class="modal-close" onclick="closeTestAlert()" title="Chiudi"><span class="toggle-switch"></span></button>
+                <button class="modal-close" onclick="closeTestAlert()" title="Chiudi">&#10005;</button>
             </div>
             <div class="modal-body">
                 <p>Questa webmap è ancora in fase di sviluppo. I dati sono stati georeferenziati in modo automatico e potrebbero contenere errori o imprecisioni.</p>
@@ -1143,70 +873,6 @@
             </table>
         </div>
     </div>
-</div>
-
-<!-- ══ VU Avanzati Drawer ═════════════════════════════════════════════════ -->
-<div class="vust-drawer-overlay" id="vust-drawer-overlay" onclick="vuCloseAvanzati()"></div>
-<div class="vust-drawer" id="vust-drawer">
-  <div class="vust-drawer-handle"></div>
-  <div class="vust-drawer-header">
-    <h3><i class="fas fa-sliders" style="color:var(--vust-green)"></i> Filtri Avanzati</h3>
-    <button class="vust-drawer-close" onclick="vuCloseAvanzati()" title="Chiudi"><i class="fas fa-times"></i></button>
-  </div>
-  <div class="vust-drawer-group">
-    <label class="vust-drawer-label"><span><i class="fas fa-circle-half-stroke"></i> Stato Salute (CPC)</span></label>
-    <select class="vust-drawer-select" id="vust-cpc-sel" onchange="vuBridgeFilter('cpcFilter',this.value)">
-      <option value="">Tutti</option>
-      <option value="A">A — Trascurabile</option>
-      <option value="B">B — Bassa</option>
-      <option value="C">C — Moderata</option>
-      <option value="C/D">C/D — Elevata</option>
-      <option value="D">D — Estrema</option>
-      <option value="Ceppaia">Ceppaia</option>
-      <option value="Vuoto">Vuoto — Cercine vuoto</option>
-      <option value="Verifica">Verifica — Da verificare</option>
-      <option value="Non Class">Non Class</option>
-      <option value="No Interv">No Interv</option>
-    </select>
-  </div>
-  <div class="vust-drawer-group">
-    <label class="vust-drawer-label"><span><i class="fas fa-tasks"></i> Fase Lavorazione</span></label>
-    <select class="vust-drawer-select" id="vust-fase-sel" onchange="vuBridgeFilter('faseFilter',this.value)">
-      <option value="">Tutte le fasi</option>
-      <option value="fase1">Solo Fase 1 (Potatura/Abbattimento)</option>
-      <option value="fase2">Con Fase 2 (Rimozione ceppo)</option>
-      <option value="fase3">Con Fase 3 (Nuova pianta)</option>
-    </select>
-  </div>
-  <div class="vust-drawer-group">
-    <label class="vust-drawer-label"><span><i class="fas fa-broom"></i> Necessità Pulizia Foglie</span></label>
-    <select class="vust-drawer-select" id="vust-pulizia-sel" onchange="vuBridgeFilter('puliziaFilter',this.value)">
-      <option value="">Tutti gli alberi</option>
-      <option value="alta">Alta priorità (&gt;30% variazione)</option>
-      <option value="media">Media priorità (15-30%)</option>
-      <option value="bassa">Bassa priorità (&lt;15%)</option>
-    </select>
-  </div>
-  <div class="vust-drawer-group">
-    <label class="vust-drawer-label">
-      <span><i class="fas fa-ruler-vertical"></i> Altezza minima (m)</span>
-      <span class="vust-val-badge" id="vust-h-val">0</span>
-    </label>
-    <input type="range" class="vust-drawer-range" id="vust-h-range" min="0" max="70" value="0" step="1"
-      oninput="vuBridgeRange('minHeight',this.value,'vust-h-val','m')">
-  </div>
-  <div class="vust-drawer-group">
-    <label class="vust-drawer-label">
-      <span><i class="fas fa-circle-dot"></i> Diametro minimo (cm)</span>
-      <span class="vust-val-badge" id="vust-d-val">0</span>
-    </label>
-    <input type="range" class="vust-drawer-range" id="vust-d-range" min="0" max="300" value="0" step="1"
-      oninput="vuBridgeRange('minDiameter',this.value,'vust-d-val','cm')">
-  </div>
-  <div class="vust-drawer-footer">
-    <button class="vust-drawer-reset" onclick="vuResetAvanzati()"><i class="fas fa-rotate-left"></i> Ripristina</button>
-    <button class="vust-drawer-apply" onclick="vuCloseAvanzati()"><i class="fas fa-check"></i> Applica</button>
-  </div>
 </div>
 
 <script src="js/search-engine.js"></script>
@@ -1522,387 +1188,6 @@
     }
     </script>
 
-<!-- ══ VU Smart Topbar JS ════════════════════════════════════════════════ -->
-<script>
-(function() {
-    'use strict';
-    var PROG_COLORS = ['#27ae60','#3498db','#9b59b6','#e67e22','#e74c3c','#1abc9c','#f39c12','#16a085'];
-    var TYPE_LBL  = {strada:'Strade', specie:'Specie', zona:'Zone', cpc:'CPC'};
-    var TYPE_ICON = {strada:'fa-road', specie:'fa-leaf', zona:'fa-map-marker-alt', cpc:'fa-circle-half-stroke'};
-    var vuDDIdx = -1;
-
-    /* ── Hook populateFilterSelects to rebuild Progetto dropdown ────────── */
-    var _origPFS = window.populateFilterSelects;
-    window.populateFilterSelects = function() {
-        if (_origPFS) _origPFS.apply(this, arguments);
-        setTimeout(vuBuildProgettoDropdown, 80);
-    };
-
-    /* ── Smart Search ────────────────────────────────────────────────────── */
-    window.vuSmartSearch = function(q) {
-        var dd = document.getElementById('vust-dd');
-        var clrBtn = document.getElementById('vust-input-clear');
-        if (clrBtn) clrBtn.style.display = q ? '' : 'none';
-        var lq = q ? q.toLowerCase() : null; // null = browse mode (mostra tutto disponibile)
-        var byType = {};
-        function addHit(type, val, display) {
-            if (!byType[type]) byType[type] = [];
-            if (byType[type].length < 5) byType[type].push({val: val, display: display});
-        }
-        function matches(text) { return !lq || text.toLowerCase().includes(lq); }
-        document.querySelectorAll('#odonimoFilter option').forEach(function(o) {
-            if (o.value && matches(o.text)) addHit('strada', o.value, o.text);
-        });
-        document.querySelectorAll('#specieFilter option').forEach(function(o) {
-            if (o.value && matches(o.text)) addHit('specie', o.value, o.text);
-        });
-        document.querySelectorAll('#circoscrizioneFilter option').forEach(function(o) {
-            if (o.value && matches(o.text)) addHit('zona', o.value, o.text);
-        });
-        [{val:'A',lbl:'A - Trascurabile'},{val:'B',lbl:'B - Bassa'},{val:'C',lbl:'C - Moderata'},
-         {val:'C/D',lbl:'C/D - Elevata'},{val:'D',lbl:'D - Estrema'},{val:'Ceppaia',lbl:'Ceppaia'},
-         {val:'Vuoto',lbl:'Vuoto - Cercine vuoto'},{val:'Verifica',lbl:'Verifica - Da verificare'}
-        ].forEach(function(o) {
-            if (matches(o.lbl)) addHit('cpc', o.val, o.lbl);
-        });
-        var types = Object.keys(byType);
-        if (!types.length) {
-            if (lq) {
-                dd.innerHTML = '<div class="vust-dd-empty"><i class="fas fa-search"></i> Nessun risultato per "' + vuEsc(q) + '"</div>';
-                dd.classList.add('open');
-            } else {
-                dd.classList.remove('open');
-            }
-            vuDDIdx = -1; return;
-        }
-        var html = '';
-        types.forEach(function(type) {
-            html += '<div class="vust-dd-cat">' + (TYPE_LBL[type]||type) + '</div>';
-            byType[type].forEach(function(item) {
-                var v = item.val.replace(/'/g,"&#39;").replace(/"/g,'&quot;');
-                var display = lq ? vuHL(item.display, q) : vuEsc(item.display);
-                html += '<div class="vust-dd-item" data-val="' + v + '" data-type="' + type + '"'
-                      + ' onclick="vuSmartSelect(\'' + type + '\',\'' + v + '\')">'
-                      + '<i class="fas ' + (TYPE_ICON[type]||'fa-tag') + ' vust-dd-icon"></i>'
-                      + '<span class="vust-dd-text">' + display + '</span>'
-                      + '<span class="vust-dd-badge ' + type + '">' + (TYPE_LBL[type]||type) + '</span>'
-                      + '</div>';
-            });
-        });
-        dd.innerHTML = html;
-        dd.classList.add('open');
-        vuDDIdx = -1;
-    };
-
-    function vuHL(text, q) {
-        var re = new RegExp('(' + q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&') + ')', 'gi');
-        return text.replace(re, '<mark style="background:#fff176;border-radius:2px;padding:0 1px">$1</mark>');
-    }
-    function vuEsc(s) { return String(s).replace(/[&<>"']/g, function(c){return({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]);}); }
-
-    window.vuSmartSelect = function(type, val) {
-        var selectMap = {strada:'odonimoFilter', specie:'specieFilter', zona:'circoscrizioneFilter', cpc:'cpcFilter'};
-        var el = document.getElementById(selectMap[type]);
-        if (el) { el.value = val; if (typeof applyFilters === 'function') applyFilters(); }
-        var inp = document.getElementById('vust-input');
-        if (inp) { inp.value = ''; inp.focus(); }
-        vuDDIdx = -1;
-        // Mostra subito le opzioni disponibili dopo il filtro applicato (cascade)
-        vuSmartSearch('');
-    };
-
-    window.vuSmartClear = function() {
-        var inp = document.getElementById('vust-input');
-        if (inp) inp.value = '';
-        document.getElementById('vust-dd').classList.remove('open');
-        document.getElementById('vust-input-clear').style.display = 'none';
-    };
-
-    window.vuSmartKey = function(e) {
-        var dd = document.getElementById('vust-dd');
-        if (!dd.classList.contains('open')) return;
-        var items = Array.from(dd.querySelectorAll('.vust-dd-item'));
-        if (e.key === 'ArrowDown') {
-            vuDDIdx = Math.min(vuDDIdx+1, items.length-1);
-            items.forEach(function(it,i){ it.classList.toggle('focused', i===vuDDIdx); });
-            e.preventDefault();
-        } else if (e.key === 'ArrowUp') {
-            vuDDIdx = Math.max(vuDDIdx-1, 0);
-            items.forEach(function(it,i){ it.classList.toggle('focused', i===vuDDIdx); });
-            e.preventDefault();
-        } else if (e.key === 'Enter' && vuDDIdx >= 0) {
-            var it = items[vuDDIdx];
-            if (it) vuSmartSelect(it.dataset.type, it.dataset.val);
-            e.preventDefault();
-        } else if (e.key === 'Escape') {
-            dd.classList.remove('open');
-            document.getElementById('vust-input').value = '';
-            vuDDIdx = -1;
-        }
-    };
-
-    /* Close dropdowns on outside click */
-    document.addEventListener('click', function(e) {
-        if (!e.target.closest('.vust-search-wrap')) {
-            var dd = document.getElementById('vust-dd');
-            if (dd) dd.classList.remove('open');
-        }
-        if (!e.target.closest('#vust-prog-wrap')) {
-            var pdd = document.getElementById('vust-prog-dd');
-            if (pdd) pdd.classList.remove('open');
-        }
-    });
-
-    /* ── Progetto dropdown ──────────────────────────────────────────────── */
-    window.vuBuildProgettoDropdown = function() {
-        var wraps = document.querySelectorAll('#progettoOptions .progetto-item-wrap');
-        var inner = document.getElementById('vust-prog-dd-inner');
-        if (!inner || !wraps.length) return;
-        inner.innerHTML = '';
-        wraps.forEach(function(wrap, idx) {
-            var progCb = wrap.querySelector('.progetto-cb');
-            if (!progCb) return;
-            var progName = progCb.value;
-            var color = PROG_COLORS[idx % PROG_COLORS.length];
-            var sectionHdr = wrap.querySelector('.progetto-section-header');
-            if (sectionHdr) {
-                var c = sectionHdr.style.getPropertyValue('--section-color');
-                if (c) color = c;
-            } else {
-                var card = wrap.querySelector('.progetto-card');
-                if (card) { var c2 = card.style.getPropertyValue('--prog-color'); if (c2) color = c2; }
-            }
-            var ordWraps = wrap.querySelectorAll('.ordinativo-card-wrap');
-            if (ordWraps.length > 0) {
-                /* Intestazione gruppo (non cliccabile) */
-                var groupHdr = document.createElement('div');
-                groupHdr.style.cssText = 'padding:7px 14px 3px;font-size:.66rem;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--vust-g3);/*border-top:1px solid var(--vust-g2);*/display:flex;align-items:center;gap:5px;';
-                var cupMatch = progName.match(/CUP\s+([A-Z0-9]+)/i);
-                var progLabel = cupMatch
-                    ? '<a href="https://www.opencup.gov.it//portale/it/web/opencup/home/progetto/-/cup/' + cupMatch[1] + '" target="_blank" rel="noopener" title="Visualizza su OpenCUP" style="color:inherit;text-decoration:underline;text-underline-offset:2px;opacity:.85;">' + vuEsc(progName) + '</a>'
-                    : vuEsc(progName);
-                groupHdr.innerHTML = '<span style="display:inline-block;width:8px;height:8px;border-radius:50%;background:' + color + ';flex-shrink:0;"></span>' + progLabel;
-                inner.appendChild(groupHdr);
-                /* Una voce per ogni ordinativo */
-                ordWraps.forEach(function(ordWrap) {
-                    var ordCb = ordWrap.querySelector('.ordinativo-sub-cb');
-                    if (!ordCb) return;
-                    var ordName = ordCb.value;
-                    var count = typeof allTrees !== 'undefined' ? allTrees.filter(function(t){ return t.ordinativo === ordName; }).length : 0;
-                    var item = document.createElement('label');
-                    item.className = 'vust-prog-item';
-                    item.style.paddingLeft = '24px';
-                    var esc = ordName.replace(/'/g,"&#39;").replace(/"/g,'&quot;');
-                    item.innerHTML = '<input type="checkbox" ' + (ordCb.checked ? 'checked' : '')
-                        + ' onchange="vuOrdinativoItemChange(this,\'' + esc + '\')">'
-                        + '<span class="toggle-switch" style="flex-shrink:0;margin-right:4px;"></span>'
-                        + '<span class="vust-prog-dot" style="background:' + color + '"></span>'
-                        + '<span class="vust-prog-name">' + vuEsc(ordName) + '</span>'
-                        + '<span class="vust-prog-count">' + count.toLocaleString('it-IT') + '</span>';
-                    inner.appendChild(item);
-                });
-            } else {
-                /* Progetto senza ordinativi: voce singola */
-                var count = typeof allTrees !== 'undefined' ? allTrees.filter(function(t){ return t.progetto === progName; }).length : 0;
-                var item = document.createElement('label');
-                item.className = 'vust-prog-item';
-                var esc = progName.replace(/'/g,"&#39;").replace(/"/g,'&quot;');
-                item.innerHTML = '<input type="checkbox" ' + (progCb.checked ? 'checked' : '')
-                    + ' onchange="vuProgettoItemChange(this,\'' + esc + '\')">'
-                    + '<span class="toggle-switch" style="flex-shrink:0;margin-right:4px;"></span>'
-                    + '<span class="vust-prog-dot" style="background:' + color + '"></span>'
-                    + '<span class="vust-prog-name">' + vuEsc(progName) + '</span>'
-                    + '<span class="vust-prog-count">' + count.toLocaleString('it-IT') + '</span>';
-                inner.appendChild(item);
-            }
-        });
-        vuUpdateProgettoBtn();
-    };
-
-    /* Sync ordinativo singolo dal topbar */
-    window.vuOrdinativoItemChange = function(topbarCb, ordinativoName) {
-        document.querySelectorAll('#progettoOptions .ordinativo-card-wrap').forEach(function(cardWrap) {
-            var cb = cardWrap.querySelector('.ordinativo-sub-cb');
-            if (!cb || cb.value !== ordinativoName) return;
-            cb.checked = topbarCb.checked;
-            var card = cardWrap.querySelector('.ordinativo-card');
-            if (card) card.classList.toggle('selected', cb.checked);
-            var wrap = cardWrap.closest('.progetto-item-wrap');
-            if (wrap) {
-                var allSubCbs = wrap.querySelectorAll('.ordinativo-sub-cb');
-                var checkedCount = Array.from(allSubCbs).filter(function(c){ return c.checked; }).length;
-                var progCb = wrap.querySelector('.progetto-cb');
-                if (progCb) {
-                    progCb.checked = checkedCount > 0;
-                    progCb.indeterminate = checkedCount > 0 && checkedCount < allSubCbs.length;
-                }
-                if (typeof _updateSectionHeaderState === 'function') _updateSectionHeaderState(wrap);
-            }
-            if (typeof _syncProgettoAllCheckbox === 'function') _syncProgettoAllCheckbox();
-            if (typeof applyFilters === 'function') applyFilters();
-        });
-        vuUpdateProgettoBtn();
-    };
-
-    /* Fallback per progetti senza ordinativi */
-    window.vuProgettoItemChange = function(topbarCb, progettoName) {
-        document.querySelectorAll('#progettoOptions .progetto-item-wrap').forEach(function(wrap) {
-            var cb = wrap.querySelector('.progetto-cb');
-            if (cb && cb.value === progettoName) {
-                cb.checked = topbarCb.checked;
-                var card = wrap.querySelector('.progetto-card');
-                if (card) card.classList.toggle('selected', cb.checked);
-                if (typeof _syncProgettoAllCheckbox === 'function') _syncProgettoAllCheckbox();
-                if (typeof applyFilters === 'function') applyFilters();
-            }
-        });
-        vuUpdateProgettoBtn();
-    };
-
-    window.vuSelectAllProgetti = function(checked) {
-        var allBtn = document.getElementById('progettoAll');
-        if (allBtn) { allBtn.checked = checked; if (typeof toggleAllProgetti === 'function') toggleAllProgetti(allBtn); }
-        document.querySelectorAll('#vust-prog-dd-inner input[type=checkbox]').forEach(function(cb){ cb.checked = checked; });
-        vuUpdateProgettoBtn();
-    };
-
-    window.vuToggleProgettoDD = function() {
-        document.getElementById('vust-prog-dd').classList.toggle('open');
-    };
-
-    function vuUpdateProgettoBtn() {
-        var ordCbs = document.querySelectorAll('#progettoOptions .ordinativo-sub-cb');
-        var total, checked;
-        if (ordCbs.length > 0) {
-            total   = ordCbs.length;
-            checked = Array.from(ordCbs).filter(function(c){ return c.checked; }).length;
-        } else {
-            total   = document.querySelectorAll('#progettoOptions .progetto-cb').length;
-            checked = Array.from(document.querySelectorAll('#progettoOptions .progetto-cb')).filter(function(c){ return c.checked; }).length;
-        }
-        var badge = document.getElementById('vust-prog-badge');
-        var btn   = document.getElementById('vust-prog-btn');
-        if (!badge || !btn) return;
-        var hasFilter = total > 0 && checked < total;
-        badge.textContent = checked;
-        badge.style.display = hasFilter ? '' : 'none';
-        btn.classList.toggle('has-filter', hasFilter);
-        btn.classList.toggle('active', !hasFilter);
-    }
-
-    /* ── LIPU ─────────────────────────────────────────────────────────────── */
-    window.vuOpenLipuDD = function() {
-        var cb = document.getElementById('lipuLayerToggle');
-        if (!cb) return;
-        /* toggle layer */
-        var newState = !cb.checked;
-        cb.checked = newState;
-        cb.dispatchEvent(new Event('change'));
-        /* aggiorna stile pulsante */
-        var btn = document.getElementById('vust-lipu-btn');
-        if (btn) btn.classList.toggle('active', newState);
-        /* apre dropdown quando si attiva, chiude quando si spegne */
-        var dd = document.getElementById('vust-lipu-dd');
-        if (!dd) return;
-        document.querySelectorAll('.vust-prog-dd.open').forEach(function(el) { el.classList.remove('open'); });
-        if (newState) dd.classList.add('open');
-    };
-    window.vuCloseLipuDD = function() {
-        var dd = document.getElementById('vust-lipu-dd');
-        if (dd) dd.classList.remove('open');
-    };
-    window.vuLipuPopupToggle = function(checked) {
-        var cb = document.getElementById('lipuLayerToggle');
-        if (cb) { cb.checked = checked; cb.dispatchEvent(new Event('change')); }
-        var btn = document.getElementById('vust-lipu-btn');
-        if (btn) btn.classList.toggle('active', checked);
-    };
-    /* chiude dropdown LIPU al click fuori */
-    document.addEventListener('click', function(e) {
-        var wrap = document.getElementById('vust-lipu-wrap');
-        if (wrap && !wrap.contains(e.target)) vuCloseLipuDD();
-    });
-
-    /* ── Avanzati drawer ──────────────────────────────────────────────────── */
-    window.vuOpenAvanzati = function() {
-        /* Sync drawer with current hidden filter values */
-        [['vust-cpc-sel','cpcFilter'],['vust-fase-sel','faseFilter'],['vust-pulizia-sel','puliziaFilter']].forEach(function(pair) {
-            var src = document.getElementById(pair[1]);
-            var dst = document.getElementById(pair[0]);
-            if (src && dst) dst.value = src.value;
-        });
-        var mh = document.getElementById('minHeight'), vhr = document.getElementById('vust-h-range'), hvl = document.getElementById('vust-h-val');
-        if (mh && vhr) { vhr.value = mh.value; if (hvl) hvl.textContent = mh.value; }
-        var md = document.getElementById('minDiameter'), vdr = document.getElementById('vust-d-range'), dvl = document.getElementById('vust-d-val');
-        if (md && vdr) { vdr.value = md.value; if (dvl) dvl.textContent = md.value; }
-        document.getElementById('vust-drawer-overlay').classList.add('open');
-        document.getElementById('vust-drawer').classList.add('open');
-    };
-
-    window.vuCloseAvanzati = function() {
-        document.getElementById('vust-drawer-overlay').classList.remove('open');
-        document.getElementById('vust-drawer').classList.remove('open');
-    };
-
-    window.vuBridgeFilter = function(targetId, value) {
-        var el = document.getElementById(targetId);
-        if (!el) return;
-        el.value = value;
-        if (typeof applyFilters === 'function') applyFilters();
-        vuUpdateAdvBadge();
-    };
-
-    window.vuBridgeRange = function(targetId, value, labelId, unit) {
-        var el = document.getElementById(targetId);
-        if (el) el.value = value;
-        var lbl = document.getElementById(labelId);
-        if (lbl) lbl.textContent = value;
-        if (typeof syncDualRange === 'function' && el) syncDualRange(el);
-        if (typeof applyFilters === 'function') applyFilters();
-        vuUpdateAdvBadge();
-    };
-
-    function vuUpdateAdvBadge() {
-        var cpc  = document.getElementById('cpcFilter')    ? document.getElementById('cpcFilter').value    : '';
-        var fase = document.getElementById('faseFilter')   ? document.getElementById('faseFilter').value   : '';
-        var pul  = document.getElementById('puliziaFilter') ? document.getElementById('puliziaFilter').value : '';
-        var minH = parseFloat((document.getElementById('minHeight')    || {value:0}).value) || 0;
-        var minD = parseFloat((document.getElementById('minDiameter')  || {value:0}).value) || 0;
-        var n = [cpc, fase, pul].filter(function(v){ return v; }).length + (minH > 0 ? 1 : 0) + (minD > 0 ? 1 : 0);
-        var badge = document.getElementById('vust-adv-badge');
-        var btn   = document.getElementById('vust-avanzati-btn');
-        if (badge) { badge.textContent = n; badge.style.display = n ? '' : 'none'; }
-        if (btn) btn.classList.toggle('has-filter', n > 0);
-    }
-
-    window.vuResetAvanzati = function() {
-        ['cpcFilter','faseFilter','puliziaFilter'].forEach(function(id) {
-            var el = document.getElementById(id); if (el) el.value = '';
-        });
-        ['vust-cpc-sel','vust-fase-sel','vust-pulizia-sel'].forEach(function(id) {
-            var el = document.getElementById(id); if (el) el.value = '';
-        });
-        var mh = document.getElementById('minHeight');
-        if (mh) { mh.value = 0; if (typeof syncDualRange === 'function') syncDualRange(mh); }
-        var md = document.getElementById('minDiameter');
-        if (md) { md.value = 0; if (typeof syncDualRange === 'function') syncDualRange(md); }
-        var vhr = document.getElementById('vust-h-range'); if (vhr) vhr.value = 0;
-        var vdr = document.getElementById('vust-d-range'); if (vdr) vdr.value = 0;
-        var hvl = document.getElementById('vust-h-val'); if (hvl) hvl.textContent = '0';
-        var dvl = document.getElementById('vust-d-val'); if (dvl) dvl.textContent = '0';
-        if (typeof applyFilters === 'function') applyFilters();
-        vuUpdateAdvBadge();
-    };
-
-    /* ── Hide left sidebar by default (all screen sizes) ──────────────────── */
-    (function() {
-        var container = document.querySelector('.container');
-        if (!container) return;
-        container.classList.add('sidebar-left-hidden');
-    })();
-
-})();
-</script>
 
     <!-- Cookie consent banner (GDPR) -->
     <div id="cookieBanner" class="cookie-banner" role="dialog" aria-label="Consenso cookie" hidden>

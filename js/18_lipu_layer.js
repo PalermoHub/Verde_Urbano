@@ -176,12 +176,11 @@ function toggleLipuStato(stato) {
 function _updateLipuLegendUI() {
     const hasFilter = lipuFiltriStati.size > 0;
     ['ok', 'pending', 'stop'].forEach(function(stato) {
-        const el = document.querySelector('.lipu-leg-btn[data-stato="' + stato + '"]');
-        if (!el) return;
         const active = lipuFiltriStati.has(stato);
-        // inattivo solo se c'è un filtro attivo E questo stato non è selezionato
-        el.classList.toggle('lipu-leg-inactive', hasFilter && !active);
-        el.classList.toggle('lipu-leg-active',   active);
+        document.querySelectorAll('.lipu-leg-btn[data-stato="' + stato + '"]').forEach(function(el) {
+            el.classList.toggle('lipu-leg-inactive', hasFilter && !active);
+            el.classList.toggle('lipu-leg-active',   active);
+        });
     });
 }
 
@@ -189,6 +188,14 @@ function _updateLipuLegendUI() {
 
 function _renderLipuMarkers() {
     if (typeof map === 'undefined' || !map) return;
+
+    // Pane dedicato sopra markerPane (600) così i click non vengono
+    // intercettati dai div PruneCluster che si trovano sullo stesso pane.
+    if (!map.getPane('lipuPane')) {
+        map.createPane('lipuPane');
+        map.getPane('lipuPane').style.zIndex = 625;
+        map.getPane('lipuPane').style.pointerEvents = 'auto';
+    }
 
     if (lipuLayerGroup) {
         if (map.hasLayer(lipuLayerGroup)) map.removeLayer(lipuLayerGroup);
@@ -221,7 +228,7 @@ function _renderLipuMarkers() {
             color:       '#fff',
             weight:      1.5,
             fillOpacity: 0.9,
-            pane:        'markerPane'
+            pane:        'lipuPane'
         });
 
         const ttHtml = '<div class="lipu-tt-inner">'
