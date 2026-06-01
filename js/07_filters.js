@@ -608,7 +608,7 @@ function _syncRightSidebarTabs() {
     });
     if (hasData) {
         const container = document.querySelector('.container');
-        if (container && container.classList.contains('sidebar-right-hidden')) {
+        if (container && container.classList.contains('sidebar-right-hidden') && window.innerWidth > 768) {
             if (typeof toggleSidebarRight === 'function') toggleSidebarRight();
         }
         const hasActive = document.querySelector('#sidebarRight .sb-pane.active');

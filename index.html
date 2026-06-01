@@ -710,7 +710,7 @@
                   </div>
                 </div>
                 <!-- Avanzati -->
-                <button class="vust-btn" id="vust-avanzati-btn" onclick="vuOpenAvanzati()" title="Filtri avanzati (CPC, Fase, Pulizia, Dimensioni)">
+                <button class="vust-btn" id="vust-avanzati-btn" onclick="vuToggleAvanzati()" title="Filtri avanzati (CPC, Fase, Pulizia, Dimensioni)">
                   <i class="fas fa-sliders"></i>
                   <span>Avanzati</span>
                   <span class="vust-badge" id="vust-adv-badge" style="display:none">0</span>
@@ -1837,11 +1837,24 @@
         if (md && vdr) { vdr.value = md.value; if (dvl) dvl.textContent = md.value; }
         document.getElementById('vust-drawer-overlay').classList.add('open');
         document.getElementById('vust-drawer').classList.add('open');
+        var btn = document.getElementById('vust-avanzati-btn');
+        if (btn) btn.classList.add('active');
     };
 
     window.vuCloseAvanzati = function() {
         document.getElementById('vust-drawer-overlay').classList.remove('open');
         document.getElementById('vust-drawer').classList.remove('open');
+        var btn = document.getElementById('vust-avanzati-btn');
+        if (btn) btn.classList.remove('active');
+    };
+
+    window.vuToggleAvanzati = function() {
+        var drawer = document.getElementById('vust-drawer');
+        if (drawer && drawer.classList.contains('open')) {
+            vuCloseAvanzati();
+        } else {
+            vuOpenAvanzati();
+        }
     };
 
     window.vuBridgeFilter = function(targetId, value) {

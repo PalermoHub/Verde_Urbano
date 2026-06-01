@@ -533,7 +533,7 @@ function showTreeDetailsFromPopup(treeId) {
 
 // ── Legenda CPC ────────────────────────────────────────────────────────────
 let legendControl = null;
-let legendCollapsed = false;
+let legendCollapsed = window.innerWidth <= 768;
 
 function toggleLegend() {
     legendCollapsed = !legendCollapsed;

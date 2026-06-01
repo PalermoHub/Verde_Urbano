@@ -2280,7 +2280,7 @@ hr {
 }
 
 @media (max-width: 768px) {
-    /* Sidebar sinistra: position fixed per uscire dall'overflow:hidden del container */
+    /* Sidebar sinistra: position fixed, nascosta di default su mobile */
     .sb-wrap:not(.sb-wrap-right) {
         position: fixed;
         top: 0;
@@ -2289,15 +2289,16 @@ hr {
         width: 80vw;
         max-width: 80vw;
         z-index: 10002;
+        transform: translateX(-80vw); /* chiusa di default */
     }
-    .container.sidebar-left-hidden .sb-wrap:not(.sb-wrap-right) {
-        transform: translateX(-80vw);
+    .container:not(.sidebar-left-hidden) .sb-wrap:not(.sb-wrap-right) {
+        transform: translateX(0); /* aperta solo quando esplicitamente mostrata */
     }
     .sb-toggle {
         width: 20px;
         height: 64px;
     }
-    /* Sidebar destra: position fixed */
+    /* Sidebar destra: position fixed, nascosta di default su mobile */
     .sb-wrap-right {
         position: fixed;
         top: 0;
@@ -2306,9 +2307,10 @@ hr {
         width: 80vw;
         max-width: 80vw;
         z-index: 10002;
+        transform: translateX(80vw); /* chiusa di default */
     }
-    .container.sidebar-right-hidden .sb-wrap-right {
-        transform: translateX(80vw);
+    .container:not(.sidebar-right-hidden) .sb-wrap-right {
+        transform: translateX(0); /* aperta solo quando esplicitamente mostrata */
     }
     .sb-toggle-right {
         width: 20px;
