@@ -478,6 +478,10 @@ let _lipuDonutChart = null;
 function _showLipuStatsTab() {
     const btn = document.getElementById('sb-tab-btn-lipu');
     if (btn) btn.style.display = '';
+    const container = document.querySelector('.container');
+    if (container && container.classList.contains('sidebar-right-hidden')) {
+        if (typeof toggleSidebarRight === 'function') toggleSidebarRight();
+    }
     if (typeof showRightSidebarTab === 'function') showRightSidebarTab('lipu-stats');
 }
 
@@ -492,6 +496,7 @@ function _hideLipuStatsTab() {
         return b && b.style.display !== 'none';
     });
     if (fallback && typeof showRightSidebarTab === 'function') showRightSidebarTab(fallback);
+    else if (typeof _maybeCloseRightSidebar === 'function') _maybeCloseRightSidebar();
 }
 
 async function updateLipuStatsSidebar() {
