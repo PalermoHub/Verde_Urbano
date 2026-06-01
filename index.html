@@ -139,18 +139,19 @@
 .vust-dd-badge.zona   { background: #fff3e0; color: var(--vust-orange); }
 .vust-dd-badge.cpc    { background: #ffebee; color: var(--vust-red); }
 .vust-dd-empty { padding: 14px; text-align: center; color: var(--vust-g3); font-size: .8rem; font-style: italic; }
-/* Topbar buttons */
+/* Topbar buttons — conformità visiva con .sb-tab-btn sidebar */
 .vust-btn-wrap { position: relative; }
 .vust-btn {
     display: inline-flex; align-items: center; gap: 6px;
-    padding: 7px 13px; border-radius: 20px; border: 1.5px solid var(--vust-g2);
-    background: var(--vust-g1); font-family: 'Titillium Web', sans-serif;
-    font-size: .8rem; font-weight: 600; cursor: pointer; white-space: nowrap;
-    transition: all .15s; color: var(--vust-g4); flex-shrink: 0;
+    padding: 8px 10px 5px; border-radius: 0;
+    border: none; border-bottom: 3px solid transparent;
+    background: none; font-family: 'Titillium Web', sans-serif;
+    font-size: .83rem; font-weight: 500; cursor: pointer; white-space: nowrap;
+    transition: color .15s, border-color .15s; color: #555; flex-shrink: 0;
 }
-.vust-btn:hover { border-color: var(--vust-green); color: var(--vust-green); }
-.vust-btn.active { background: var(--vust-green); color: #fff; border-color: var(--vust-green); }
-.vust-btn.has-filter { border-color: var(--vust-green); color: var(--vust-green); background: var(--vust-greenl); }
+.vust-btn:hover { color: var(--vust-green); }
+.vust-btn.active { border-bottom-color: #ff9900; font-weight: 600; color: var(--vust-green); }
+.vust-btn.has-filter { border-bottom-color: #ff9900; color: var(--vust-green); }
 .vust-badge {
     background: var(--vust-orange); color: #fff; border-radius: 50%;
     width: 17px; height: 17px; display: inline-flex; align-items: center;
@@ -240,7 +241,7 @@
 .vust-drawer-apply:hover { background: #1b5e20; }
 @media(max-width:600px) {
     .vust-btn span:not(.vust-badge) { display: none; }
-    .vust-btn { padding: 7px 10px; }
+    .vust-btn { padding: 8px 8px 5px; }
     .vust-inner { gap: 6px; padding: 7px 10px; }
 }
 /* Topbar segue le sidebar: si restringe quando le sidebar sono aperte */
@@ -1760,8 +1761,7 @@
     };
 
     window.vuSelectAllProgetti = function(checked) {
-        var allBtn = document.getElementById('progettoAll');
-        if (allBtn) { allBtn.checked = checked; if (typeof toggleAllProgetti === 'function') toggleAllProgetti(allBtn); }
+        if (typeof toggleAllProgetti === 'function') toggleAllProgetti({ checked: checked });
         document.querySelectorAll('#vust-prog-dd-inner input[type=checkbox]').forEach(function(cb){ cb.checked = checked; });
         vuUpdateProgettoBtn();
     };
