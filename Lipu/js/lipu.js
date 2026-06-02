@@ -1151,7 +1151,19 @@ function mcEsportaLista(soloConPdf=false){
   const STATO_LABEL={ok:'✅ Negativo – via libera',stop:'🚫 Sospendere',pending:'⚠️ Stato di necessità',non_ispez:'— Non ispezionato'};
   const filtriAttivi=MC_FIELDS.filter(f=>_mcState[f].trim()).map(f=>`<strong>${f.replace(/_/g,' ')}</strong>: ${_mcEsc(_mcState[f])}`).join(' · ');
   const now=new Date().toLocaleString('it-IT');
-  const rows=src.map((f,i)=>{
+  const titolo=soloConPdf?'LIPU · Schede PDF ispezioni':'LIPU · Lista alberi censiti';
+  const isDark=document.documentElement.classList.contains('dark');
+  const darkStyle=isDark?`
+  body{background:#1a1410!important;color:rgba(245,240,232,.92)!important}
+  h1{color:#d4820a!important}.sub{color:rgba(245,240,232,.45)!important}
+  th{background:#7a4e00!important}th:hover{background:#5c3a00!important}
+  td{border-bottom-color:rgba(255,255,255,.07)!important}
+  a{color:#d4820a!important}
+  .print-btn{background:#7a4e00!important}
+  `:'';
+  const rowBgEven=isDark?'#1f1a14':'#ede7d9';
+  const rowBgOdd=isDark?'#1a1410':'#f5f0e8';
+  const rowsHtml=src.map((f,i)=>{
     const stato=statoMap[f.id]||'non_ispez';
     const isp=ispMap[f.id]||{};
     const pdf=isp.url_pdf||'';
@@ -1159,7 +1171,7 @@ function mcEsportaLista(soloConPdf=false){
     const data=isp.timestamp?(isp.timestamp.split('T')[0]):'—';
     const ditta=isp.ditta_operatore||'—';
     const op=isp.nome_operatore||'—';
-    const bg=i%2===0?'#f8f9f8':'#fff';
+    const bg=i%2===0?rowBgEven:rowBgOdd;
     const statoColor={ok:'#40916C',stop:'#C1121F',pending:'#E76F00',non_ispez:'#999'}[stato]||'#999';
     return`<tr style="background:${bg}">
       <td style="text-align:center;font-weight:600">${_mcEsc(f.id)}</td>
@@ -1174,34 +1186,37 @@ function mcEsportaLista(soloConPdf=false){
       <td style="text-align:center">${pdfLink}</td>
     </tr>`;
   }).join('');
-  const titolo=soloConPdf?'LIPU · Schede PDF ispezioni':'LIPU · Lista alberi censiti';
   const html=`<!DOCTYPE html><html lang="it"><head><meta charset="UTF-8">
 <title>${titolo}</title>
 <style>
-  body{font-family:'Segoe UI',Arial,sans-serif;font-size:13px;color:#222;margin:20px}
-  h1{color:#2D6A4F;font-size:18px;margin:0 0 4px}
-  .sub{color:#666;font-size:12px;margin:0 0 16px}
+  body{font-family:'Titillium Web',Arial,sans-serif;font-size:13px;color:#3d2f1e;background:#f5f0e8;margin:20px}
+  h1{color:#d4820a;font-size:18px;margin:0 0 4px;font-weight:700}
+  .sub{color:rgba(61,47,30,.55);font-size:12px;margin:0 0 16px;font-family:'Courier New',monospace}
   table{border-collapse:collapse;width:100%}
-  th{background:#2D6A4F;color:#fff;padding:7px 10px;text-align:left;font-size:12px;cursor:pointer;user-select:none;white-space:nowrap}
-  th:hover{background:#245a3a}
+  th{background:#d4820a;color:#fff;padding:7px 10px;text-align:left;font-size:12px;cursor:pointer;user-select:none;white-space:nowrap;font-family:'Courier New',monospace;letter-spacing:.06em}
+  th:hover{background:#b8700a}
   th.sort-asc::after{content:' ▲';font-size:10px}
   th.sort-desc::after{content:' ▼';font-size:10px}
-  td{padding:6px 10px;border-bottom:1px solid #e8ede8;vertical-align:middle}
-  a{color:#2D6A4F;text-decoration:none}
+  td{padding:6px 10px;border-bottom:1px solid #e8e2d6;vertical-align:middle}
+  a{color:#d4820a;text-decoration:none}
   a:hover{text-decoration:underline}
-  @media print{body{margin:10px}button{display:none}}
+  .print-btn{margin-bottom:14px;padding:6px 14px;background:#d4820a;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:13px}
+  .print-btn:hover{background:#b8700a}
+  @media print{body{margin:10px;background:#fff}.print-btn{display:none}}
+  ${darkStyle}
 </style></head><body>
 <h1>${soloConPdf?'📄 LIPU · Schede PDF ispezioni':'🌳 LIPU · Lista alberi censiti'}</h1>
 <p class="sub">Generata il ${now}${filtriAttivi?' · Filtri: '+filtriAttivi:' · Tutti gli alberi censiti'} · ${src.length} alberi</p>
-<button onclick="window.print()" style="margin-bottom:14px;padding:6px 14px;background:#2D6A4F;color:#fff;border:none;border-radius:4px;cursor:pointer;font-size:13px">🖨️ Stampa / Salva PDF</button>
+<button class="print-btn" onclick="window.print()">🖨️ Stampa / Salva PDF</button>
 <table id="tbl">
 <thead><tr>
   <th onclick="sortTable(0)">ID</th><th onclick="sortTable(1)">Specie</th><th onclick="sortTable(2)">Odonimo</th><th onclick="sortTable(3)">Circ.</th><th onclick="sortTable(4)">Quartiere</th><th onclick="sortTable(5)">Stato</th><th onclick="sortTable(6)">Data ispezione</th><th onclick="sortTable(7)">Ditta</th><th onclick="sortTable(8)">Operatore</th><th>Scheda PDF</th>
 </tr></thead>
-<tbody>${rows}</tbody>
+<tbody>${rowsHtml}</tbody>
 </table>
 <script>
 let _sortCol=-1,_sortAsc=true;
+const _evenBg='${rowBgEven}',_oddBg='${rowBgOdd}';
 function sortTable(col){
   const tbl=document.getElementById('tbl');
   const tbody=tbl.querySelector('tbody');
@@ -1216,12 +1231,25 @@ function sortTable(col){
     const cmp=(!isNaN(an)&&!isNaN(bn))?(an-bn):av.localeCompare(bv,'it');
     return _sortAsc?cmp:-cmp;
   });
-  rows.forEach((r,i)=>{r.style.background=i%2===0?'#f8f9f8':'#fff';tbody.appendChild(r);});
+  rows.forEach((r,i)=>{r.style.background=i%2===0?_evenBg:_oddBg;tbody.appendChild(r);});
 }
 <\/script>
 </body></html>`;
-  const w=window.open('','_blank');
-  if(w){w.document.write(html);w.document.close();}
+  const blob=new Blob([html],{type:'text/html'});
+  const blobUrl=URL.createObjectURL(blob);
+  const frame=document.getElementById('ml-frame');
+  if(frame._blobUrl)URL.revokeObjectURL(frame._blobUrl);
+  frame._blobUrl=blobUrl;
+  frame.src=blobUrl;
+  document.getElementById('ml-title').textContent=titolo;
+  document.getElementById('modal-lista').classList.add('open');
+}
+
+function closeListaModal(){
+  const m=document.getElementById('modal-lista');
+  if(m)m.classList.remove('open');
+  const frame=document.getElementById('ml-frame');
+  if(frame&&frame._blobUrl){URL.revokeObjectURL(frame._blobUrl);frame._blobUrl=null;frame.src='about:blank';}
 }
 
 function openSearchModal(){

@@ -13,6 +13,9 @@
   function setPage(page) {
     if (!isMobile()) return;
 
+    // Tap tab già attivo → torna alla mappa
+    if (page === current && page !== 'mappa') page = 'mappa';
+
     var prev = current;
     current = page;
     document.body.setAttribute('data-page', page);
@@ -53,7 +56,7 @@
       case 'schede':
         var ms = document.getElementById('modal-schede');
         if (ms) ms.classList.add('open');
-        if (typeof loadMieSchede === 'function') loadMieSchede();
+        if (typeof openMieSchede === 'function') openMieSchede();
         break;
     }
   }
