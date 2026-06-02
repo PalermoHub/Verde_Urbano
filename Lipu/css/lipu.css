@@ -888,3 +888,12 @@ html.dark .bottom-nav   { background: #1a1410; border-top-color: rgba(255,255,25
 html.dark #login-screen { background: #1a1410; }
 html.dark .pin-wrap     { background: #1f1a14; border-color: rgba(255,255,255,0.1); box-shadow: none; }
 html.dark .pin-btn      { background: #15110d; border-color: rgba(255,255,255,0.1); color: var(--ink); }
+
+/* Mappa scura: invert canvas MapLibre */
+html.dark .maplibregl-canvas { filter: invert(1) hue-rotate(180deg); }
+/* Counter-invert marker HTML (cluster) e controlli sopra la canvas */
+html.dark .lipu-cluster      { filter: invert(1) hue-rotate(180deg); }
+html.dark .maplibregl-ctrl-group { filter: invert(1) hue-rotate(180deg); }
+/* Legenda e tooltip già scuri — solo testo */
+html.dark .legend-item       { color: var(--ink); }
+html.dark .legend-count      { color: rgba(245,240,232,0.5); }
