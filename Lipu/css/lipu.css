@@ -967,4 +967,9 @@ html.dark .tb-divider        { background: rgba(255,255,255,0.1); }
 html.dark .tb-zoom-slider    { background: rgba(255,255,255,0.15); }
 html.dark .tb-zoom-marks span{ color: rgba(245,240,232,0.4); }
 html.dark .tb-btn:hover      { background: rgba(212,130,10,0.2); }
-html.dark .fi-box { background: #1a1410; }
+html.dark .fi-box { background: #1a1410; border: 1px solid rgba(255,255,255,0.1); }
+html.dark .ss-hero { background: #1a1410; border: 1px solid rgba(255,255,255,0.1); }
+html.dark .ss-rank-box { background: #1a1410; border: 1px solid rgba(255,255,255,0.1);}
+html.dark .ss-mini-card  { background: #1a1410; border: 1px solid rgba(255,255,255,0.1);}
+html.dark .ss-via-row  { background: #1a1410; border: 1px solid rgba(255,255,255,0.1);}
+
