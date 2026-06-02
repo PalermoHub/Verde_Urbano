@@ -12,6 +12,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Titillium+Web:wght@300;400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 <link rel="stylesheet" href="css/lipu.css"/>
+<script src="js/theme.js"></script>
 
 	<meta name="description" content="Protocollo di Tutela Faunistica, Ispezione alberi prima del taglio">
 	<meta name="author" content="Giovan Battista Vitrano">
@@ -92,6 +93,9 @@
     </div>
     <div class="topbar-actions">
       <span class="topbar-user" id="topbar-user"></span>
+      <button class="btn-theme" id="themeToggle" onclick="toggleTheme()" title="Tema scuro">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
       <button class="stats-toggle-btn" id="search-btn-top" onclick="openSearchModal()" title="Cerca albero">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
       </button>
@@ -276,8 +280,8 @@
           </div>
           <button class="panel-close" onclick="closePanel()"><span class="ss-switch-track"><span class="ss-switch-thumb"></span></span></button>
         </div>
-        <div id="p-pdf-wrap" style="display:none;padding:6px 16px 8px;border-top:1px solid #c8e6d0;">
-          <a id="p-pdf-link" href="#" target="_blank" rel="noopener" title="" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#2D6A4F;text-decoration:none;background:#e8f5e9;border:1px solid #a5d6a7;border-radius:6px;padding:4px 10px;">
+        <div id="p-pdf-wrap" style="display:none;padding:6px 16px 8px;border-top:1px solid rgba(212,130,10,0.3);">
+          <a id="p-pdf-link" href="#" target="_blank" rel="noopener" title="" style="display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;color:#d4820a;text-decoration:none;background:#fef3e2;border:1px solid rgba(212,130,10,0.35);border-radius:6px;padding:4px 10px;">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
             <span class="pdf-label">Scheda PDF</span>
           </a>
@@ -509,6 +513,28 @@
   </div>
 </div>
 
+<nav class="bottom-nav" id="bottom-nav">
+  <button class="bnav-item" id="bnav-filtri" onclick="toggleSidebar()">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="8" y1="12" x2="16" y2="12"/><line x1="11" y1="18" x2="13" y2="18"/></svg>
+    <span>Filtri</span>
+  </button>
+  <button class="bnav-item" id="bnav-mappa" onclick="tbHome()">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    <span>Mappa</span>
+  </button>
+  <button class="bnav-item" id="bnav-stats" onclick="toggleStatsSidebar()">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="2" width="20" height="20" rx="2"/><path d="M7 18V11M12 18V6M17 18V14"/></svg>
+    <span>Statistiche</span>
+  </button>
+  <button class="bnav-item" id="bnav-cerca" onclick="openSearchModal()">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    <span>Cerca</span>
+  </button>
+  <button class="bnav-item" id="bnav-info" onclick="openInfoModal()">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="8"/><line x1="12" y1="12" x2="12" y2="16"/></svg>
+    <span>Info</span>
+  </button>
+</nav>
 <script src="https://unpkg.com/maplibre-gl@4/dist/maplibre-gl.js"></script>
 <script src="https://unpkg.com/pmtiles@3/dist/pmtiles.js"></script>
 
