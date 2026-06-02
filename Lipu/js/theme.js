@@ -15,7 +15,8 @@
     btn.title = dark ? 'Passa al tema chiaro' : 'Passa al tema scuro';
   }
 
-  applyTheme(localStorage.getItem(STORAGE_KEY) === 'dark');
+  // Sempre chiaro al caricamento — ignora preferenza salvata
+  applyTheme(false);
 
   window.toggleTheme = function () {
     var isDark = document.documentElement.classList.contains('dark');
