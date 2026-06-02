@@ -13,5 +13,11 @@
       "runtimeArgs": ["serve", "-l", "8081", "."],
       "port": 8081
     }
+    ,{
+      "name": "npx serve verde",
+      "runtimeExecutable": "npx",
+      "runtimeArgs": ["serve", "-l", "8082", "D:\\GitHub - Clone\\SiciliaHub\\Verde_Urbano"],
+      "port": 8082
+    }
   ]
 }

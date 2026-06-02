@@ -58,7 +58,14 @@
       "PowerShell(\\(Get-Content \"D:\\\\GitHub - Clone\\\\SiciliaHub\\\\Verde_Urbano\\\\index - Copia.html\"\\).Count)",
       "PowerShell(npx --version; python --version)",
       "PowerShell(python -m http.server 8765 --directory \"D:\\\\GitHub - Clone\\\\SiciliaHub\\\\Verde_Urbano\" 2>&1 &)",
-      "PowerShell(Out-Null *)"
+      "PowerShell(Out-Null *)",
+      "Bash(ls \"C:\\\\Users\\\\giova\\\\AppData\\\\Roaming\\\\Claude\\\\local-agent-mode-sessions\\\\skills-plugin\\\\4e4ff41a-0bc2-46d3-b071-0531f53d8031\\\\b5f1c3ce-7754-4a41-892c-d0af82be09c6\\\\skills\\\\canvas-design\\\\canvas-fonts\" 2>/dev/null || echo \"no fonts dir\")",
+      "Bash(npx puppeteer *)",
+      "Bash(where wkhtmltoimage *)",
+      "Bash(where node *)",
+      "Bash(where npx *)",
+      "Bash(npx puppeteer@latest node screenshot.mjs)",
+      "Bash(npm install *)"
     ]
   }
 }
