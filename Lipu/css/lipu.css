@@ -714,6 +714,7 @@ input,select,textarea{-webkit-tap-highlight-color:transparent}
 /* ══ Sistema navigazione a pagine mobile ≤768px ══════════════════ */
 @media (max-width: 768px) {
 
+
   /* Topbar: singola riga compatta */
   .topbar {
     height: 56px !important;
@@ -966,3 +967,4 @@ html.dark .tb-divider        { background: rgba(255,255,255,0.1); }
 html.dark .tb-zoom-slider    { background: rgba(255,255,255,0.15); }
 html.dark .tb-zoom-marks span{ color: rgba(245,240,232,0.4); }
 html.dark .tb-btn:hover      { background: rgba(212,130,10,0.2); }
+html.dark .fi-box { background: #1a1410; }
