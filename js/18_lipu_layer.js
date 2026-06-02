@@ -486,7 +486,7 @@ function _showLipuStatsTab() {
     const btn = document.getElementById('sb-tab-btn-lipu');
     if (btn) btn.style.display = '';
     const container = document.querySelector('.container');
-    if (container && container.classList.contains('sidebar-right-hidden')) {
+    if (container && container.classList.contains('sidebar-right-hidden') && window.innerWidth > 768) {
         if (typeof toggleSidebarRight === 'function') toggleSidebarRight();
     }
     if (typeof showRightSidebarTab === 'function') showRightSidebarTab('lipu-stats');

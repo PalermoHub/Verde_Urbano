@@ -55,7 +55,10 @@
       "mcp__Claude_Preview__preview_start",
       "Bash(Select-String -Path \"D:\\\\GitHub - Clone\\\\SiciliaHub\\\\Verde_Urbano\\\\index - Copia.html\" -Pattern \"^</script>$|^</body>$\")",
       "Bash(Select-Object -First 10 LineNumber, Line)",
-      "PowerShell(\\(Get-Content \"D:\\\\GitHub - Clone\\\\SiciliaHub\\\\Verde_Urbano\\\\index - Copia.html\"\\).Count)"
+      "PowerShell(\\(Get-Content \"D:\\\\GitHub - Clone\\\\SiciliaHub\\\\Verde_Urbano\\\\index - Copia.html\"\\).Count)",
+      "PowerShell(npx --version; python --version)",
+      "PowerShell(python -m http.server 8765 --directory \"D:\\\\GitHub - Clone\\\\SiciliaHub\\\\Verde_Urbano\" 2>&1 &)",
+      "PowerShell(Out-Null *)"
     ]
   }
 }

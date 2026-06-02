@@ -770,6 +770,9 @@
             </div>
         </div>
 
+        <!-- Toggle sidebar destra — fuori da sbWrapRight per evitare il parent transform su mobile -->
+        <button class="sb-toggle sb-toggle-right" id="sidebarRightToggle" onclick="toggleSidebarRight()" title="Mostra/nascondi pannello">&#8250;</button>
+
         <!-- Sidebar Destra: Statistiche + DataViz -->
         <div class="sb-wrap sb-wrap-right" id="sbWrapRight">
 
@@ -834,7 +837,6 @@
             </div>
             <!-- Fine modale LIPU -->
 
-            <button class="sb-toggle sb-toggle-right" id="sidebarRightToggle" onclick="toggleSidebarRight()" title="Mostra/nascondi pannello">&#8250;</button>
             <div class="sb-resize-handle sb-resize-handle-right" id="sbResizeHandleRight"></div>
             <div class="sidebar sidebar-right-tabbed" id="sidebarRight">
 
@@ -1331,13 +1333,15 @@
         if (window.innerWidth <= 768 && isHidden) {
             if (!container.classList.contains('sidebar-right-hidden')) {
                 container.classList.add('sidebar-right-hidden');
-                document.getElementById('sidebarRight').style.display = 'none';
-                document.getElementById('sidebarRightToggle').innerHTML = '&#8249;';
+                const sr = document.getElementById('sidebarRight');
+                if (sr) sr.style.display = 'none';
+                const srt = document.getElementById('sidebarRightToggle');
+                if (srt) srt.innerHTML = '&#8249;';
             }
         }
         container.classList.toggle('sidebar-left-hidden');
-        sidebar.style.display = isHidden ? '' : 'none';
-        btn.innerHTML = isHidden ? '&#8249;' : '&#8250;';
+        if (sidebar) sidebar.style.display = isHidden ? '' : 'none';
+        if (btn) btn.innerHTML = isHidden ? '&#8249;' : '&#8250;';
     }
     function toggleSidebarRight() {
         const container = document.querySelector('.container');
@@ -1347,8 +1351,10 @@
         if (window.innerWidth <= 768 && isHidden) {
             if (!container.classList.contains('sidebar-left-hidden')) {
                 container.classList.add('sidebar-left-hidden');
-                document.getElementById('sidebarLeft').style.display = 'none';
-                document.getElementById('sidebarLeftToggle').innerHTML = '&#8250;';
+                const _sl = document.getElementById('sidebarLeft');
+                if (_sl) _sl.style.display = 'none';
+                const _slt = document.getElementById('sidebarLeftToggle');
+                if (_slt) _slt.innerHTML = '&#8250;';
             }
         }
         container.classList.toggle('sidebar-right-hidden');
@@ -1370,11 +1376,15 @@
         if (window.innerWidth <= 768) {
             const container = document.querySelector('.container');
             container.classList.add('sidebar-left-hidden');
-            document.getElementById('sidebarLeft').style.display = 'none';
-            document.getElementById('sidebarLeftToggle').innerHTML = '&#8250;';
+            const sl = document.getElementById('sidebarLeft');
+            if (sl) sl.style.display = 'none';
+            const slt = document.getElementById('sidebarLeftToggle');
+            if (slt) slt.innerHTML = '&#8250;';
             container.classList.add('sidebar-right-hidden');
-            document.getElementById('sidebarRight').style.display = 'none';
-            document.getElementById('sidebarRightToggle').innerHTML = '&#8249;';
+            const sr = document.getElementById('sidebarRight');
+            if (sr) sr.style.display = 'none';
+            const srt = document.getElementById('sidebarRightToggle');
+            if (srt) srt.innerHTML = '&#8249;';
         }
     })();
 

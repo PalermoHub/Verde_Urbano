@@ -1751,12 +1751,12 @@ hr {
 .sb-toggle-right {
     position: absolute;
     top: 50%;
-    left: -12px;
-    right: auto;
+    right: var(--sb-w-right, 390px);  /* bordo dx = bordo sx di sb-wrap-right */
+    left: auto;
     transform: translateY(-50%);
     width: 12px;
     height: 52px;
-    z-index: 1002;
+    z-index: 3000;
     background: #fff;
     border: 1px solid #c8e6c9;
     border-right: 3px solid var(--pa-green-500);
@@ -1769,13 +1769,16 @@ hr {
     align-items: center;
     justify-content: center;
     box-shadow: -2px 1px 5px rgba(0,0,0,.12);
-    transition: background .15s;
+    transition: background .15s, right .25s ease;
     padding: 0;
     flex-shrink: 0;
 }
 .sb-toggle-right:hover {
     background: #f1f8f1;
     transform: translateY(-50%);
+}
+.container.sidebar-right-hidden .sb-toggle-right {
+    right: 0;  /* sidebar nascosta: linguetta al bordo dx del container */
 }
 .sb-resize-handle-right {
     position: absolute;
@@ -2313,8 +2316,17 @@ hr {
         transform: translateX(0); /* aperta solo quando esplicitamente mostrata */
     }
     .sb-toggle-right {
+        position: fixed;
+        right: 0;
+        top: 50%;
+        left: auto;
+        transform: translateY(-50%);
         width: 20px;
         height: 64px;
+        transition: right .25s ease;
+    }
+    .container:not(.sidebar-right-hidden) .sb-toggle-right {
+        right: 80vw;  /* sidebar aperta: linguetta al bordo sx della sidebar */
     }
     /* Tab bar: solo icone su mobile (testo non entra con 3 tab) */
     .sb-tab-btn {
