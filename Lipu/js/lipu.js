@@ -270,7 +270,7 @@ async function chkPin(){
     if(d.status==='ok'){
       currentUser=d.operator;
       const ls=document.getElementById('login-screen');ls.style.transition='opacity .4s';ls.style.opacity='0';
-      setTimeout(()=>{ls.style.display='none';const tu=document.getElementById('topbar-user');tu.innerHTML='<i class="fa-solid fa-user"></i>';tu.title=currentUser.nome+' '+currentUser.cognome;document.getElementById('app').classList.add('visible');initMap();showDisclaimer();},400);
+      setTimeout(()=>{ls.style.display='none';const tu=document.getElementById('topbar-user');tu.innerHTML='<i class="fa-solid fa-user"></i>';tu.title=currentUser.nome+' '+currentUser.cognome;document.getElementById('app').classList.add('visible');initMap();showDisclaimer();setTimeout(checkGpsPermission,1200);},400);
     }else{
       pinErr(d.error||'PIN non riconosciuto - riprova');
       pinBuffer='';updDots();
@@ -639,7 +639,26 @@ async function inviaScheda(){
   }catch(err){showToast('Errore: '+err.message,'error');btn.disabled=false;btn.textContent='Invia scheda';}
 }
 
-function showToast(msg,type){const t=document.getElementById('toast');t.textContent=msg;t.className=type||'';t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3500);}
+function showToast(msg,type){
+  const t=document.getElementById('toast');
+  clearTimeout(t._timer);
+  if(type==='info'){
+    t.innerHTML=msg+'<button class="toast-close" aria-label="Chiudi">×</button>';
+    const btn=t.querySelector('.toast-close');
+    if(btn){
+      btn.addEventListener('click',function(e){
+        e.stopPropagation();
+        clearTimeout(t._timer);
+        t.classList.remove('show');
+      });
+    }
+  }else{
+    t.textContent=msg;
+  }
+  t.className=type||'';
+  t.classList.add('show');
+  t._timer=setTimeout(()=>t.classList.remove('show'),type==='info'?8000:3500);
+}
 
 function buildPdfUrl(id,ts){
   const idSafe=id.replace(/\s+/g,'_');
@@ -821,11 +840,39 @@ function toggleSidebar(){
 
 // TOOLBAR MAPPA
 function tbHome(){map&&map.flyTo({center:[13.35151,38.14277],zoom:12,bearing:0,pitch:0});}
+function _setGpsBtnState(denied){
+  const btn=document.getElementById('tb-gps');
+  if(!btn)return;
+  btn.classList.toggle('gps-denied',!!denied);
+  btn.title=denied?'GPS non attivo — abilita nelle impostazioni':'La mia posizione';
+}
+
+function checkGpsPermission(){
+  if(!navigator.permissions)return;
+  navigator.permissions.query({name:'geolocation'}).then(s=>{
+    _setGpsBtnState(s.state==='denied');
+    s.onchange=()=>_setGpsBtnState(s.state==='denied');
+    if(s.state==='denied'&&window.innerWidth<=768)
+      showToast('GPS non attivo — abilita nelle impostazioni del browser','info');
+  }).catch(()=>{});
+}
+
 function tbGps(){
-  if(!navigator.geolocation){showToast('Geolocalizzazione non disponibile','error');return;}
-  navigator.geolocation.getCurrentPosition(pos=>{
-    map&&map.flyTo({center:[pos.coords.longitude,pos.coords.latitude],zoom:16});
-  },()=>showToast('Posizione non disponibile','error'));
+  if(!navigator.geolocation){showToast('GPS non disponibile su questo dispositivo','info');return;}
+  navigator.geolocation.getCurrentPosition(
+    pos=>{
+      _setGpsBtnState(false);
+      map&&map.flyTo({center:[pos.coords.longitude,pos.coords.latitude],zoom:16});
+    },
+    err=>{
+      if(err.code===1){
+        _setGpsBtnState(true);
+        showToast('GPS bloccato — abilita la posizione nelle impostazioni del browser','info');
+      } else {
+        showToast('Posizione non disponibile','error');
+      }
+    }
+  );
 }
 function tbFullscreen(){
   if(!document.fullscreenElement){document.documentElement.requestFullscreen().catch(()=>{});}

@@ -3,6 +3,7 @@
 
   var MOBILE_BP = 768;
   var current = 'mappa';
+  var _gpsAutoTriggered = false;
 
   var TABS = ['mappa', 'filtri', 'stats', 'cerca', 'schede'];
 
@@ -34,6 +35,17 @@
     if (prev === 'schede' && page !== 'schede') {
       var schede = document.getElementById('modal-schede');
       if (schede) schede.classList.remove('open');
+    }
+
+    // Auto-GPS alla prima visualizzazione mappa (solo se permesso già concesso)
+    if (page === 'mappa' && !_gpsAutoTriggered) {
+      _gpsAutoTriggered = true;
+      setTimeout(function () {
+        if (!navigator.permissions) return;
+        navigator.permissions.query({ name: 'geolocation' }).then(function (s) {
+          if (s.state === 'granted' && typeof tbGps === 'function') tbGps();
+        }).catch(function () {});
+      }, 800);
     }
 
     // Setup new page
